@@ -455,8 +455,7 @@ struct ProcPrepDiscardScreen {
     /* 50 */ u16 unk_50;
     /* 52 */ u16 unk_52;
 
-    /* 54 */ struct Unit *unit1;
-    /* 58 */ struct Unit *unit2;
+    /* 54 */ struct Unit *units[2];
 };
 
 void PrepDiscardUpdateInfoWindow(struct ProcPrepDiscardScreen *proc);
