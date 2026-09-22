@@ -390,8 +390,6 @@ SECTIONS
         src/prep_subitemscreen3.o(.text);
         asm/prep_subitemscreen3.o(.text);
         src/prep_subitemscreen.o(.text);
-        src/prep_subscreen_discard1.o(.text);
-        asm/prep_subscreen_discard.o(.text);
         src/prep_subscreen_discard.o(.text);
         src/prep_menuscrollbar1.o(.text);
         asm/prep_menuscrollbar.o(.text);
@@ -568,7 +566,7 @@ SECTIONS
         . = ALIGN(4); src/prepmenuitem.o(.rodata);
         . = ALIGN(4); src/prepscreenfx.o(.rodata);
         . = ALIGN(4); src/prep_subitemscreen.o(.rodata);
-        . = ALIGN(4); src/prep_subscreen_discard1.o(.rodata);
+        . = ALIGN(4); src/prep_subscreen_discard.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
         . = ALIGN(4); src/save_multiarena.o(.rodata);
         . = ALIGN(4); data/rodata_3273E4.o(.rodata);
