@@ -1,4 +1,3 @@
-.include "macro.inc"
 .include "animscr.inc"
 .include "gba_sprites.inc"
 
