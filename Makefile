@@ -59,7 +59,7 @@ SHASUM ?= sha1sum
 # = BUILD CONFIG =
 # ================
 
-INC_DIRS := include asm/include $(AGBCC_HOME)/include .
+INC_DIRS := include $(AGBCC_HOME)/include .
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
 CPPFLAGS := $(INC_FLAG) -nostdinc -undef

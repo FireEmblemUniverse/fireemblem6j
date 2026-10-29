@@ -1,70 +1,70 @@
-	.include "macro.inc"
+	.include "asm_macros.inc"
 	.include "asm_gbaio.inc"
 
 	.syntax unified
 
-	THUMB_FUNC_START ArcTan2
+	thumb_function ArcTan2
 ArcTan2:
 	swi #0xa
 	bx lr
 
-	THUMB_FUNC_START BgAffineSet
+	thumb_function BgAffineSet
 BgAffineSet:
 	swi #0xe
 	bx lr
 
-	THUMB_FUNC_START CpuFastSet
+	thumb_function CpuFastSet
 CpuFastSet:
 	swi #0xc
 	bx lr
 
-	THUMB_FUNC_START CpuSet
+	thumb_function CpuSet
 CpuSet:
 	swi #0xb
 	bx lr
 
-	THUMB_FUNC_START Div
+	thumb_function Div
 Div:
 	swi #6
 	bx lr
 
-	THUMB_FUNC_START DivRem
+	thumb_function DivRem
 DivRem:
 	swi #6
 	adds r0, r1, #0
 	bx lr
 
-	THUMB_FUNC_START HuffUnComp
+	thumb_function HuffUnComp
 HuffUnComp:
 	swi #0x13
 	bx lr
 
-	THUMB_FUNC_START LZ77UnCompVram
+	thumb_function LZ77UnCompVram
 LZ77UnCompVram:
 	swi #0x12
 	bx lr
 
-	THUMB_FUNC_START LZ77UnCompWram
+	thumb_function LZ77UnCompWram
 LZ77UnCompWram:
 	swi #0x11
 	bx lr
 
-	THUMB_FUNC_START ObjAffineSet
+	thumb_function ObjAffineSet
 ObjAffineSet:
 	swi #0xf
 	bx lr
 
-	THUMB_FUNC_START RLUnCompVram
+	thumb_function RLUnCompVram
 RLUnCompVram:
 	swi #0x15
 	bx lr
 
-	THUMB_FUNC_START RLUnCompWram
+	thumb_function RLUnCompWram
 RLUnCompWram:
 	swi #0x14
 	bx lr
 
-	THUMB_FUNC_START SoftReset
+	thumb_function SoftReset
 SoftReset:
 	ldr r3, =REG_IME
 	movs r2, #0
@@ -76,24 +76,24 @@ SoftReset:
 
 	.pool
 
-	THUMB_FUNC_START SoundBiasReset
+	thumb_function SoundBiasReset
 SoundBiasReset:
 	movs r0, #0
 	swi #0x19
 	bx lr
 
-	THUMB_FUNC_START SoundBiasSet
+	thumb_function SoundBiasSet
 SoundBiasSet:
 	movs r0, #1
 	swi #0x19
 	bx lr
 
-	THUMB_FUNC_START Sqrt
+	thumb_function Sqrt
 Sqrt:
 	swi #8
 	bx lr
 
-	THUMB_FUNC_START VBlankIntrWait
+	thumb_function VBlankIntrWait
 VBlankIntrWait:
 	movs r2, #0
 	swi #5
