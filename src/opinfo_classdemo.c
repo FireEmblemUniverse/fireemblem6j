@@ -34,7 +34,7 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 
 EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
 
-EWRAM_OVERLAY(opinfo) struct OpInfoUnk0200FF54 unk_opinfo_0200FF54[14] = {};
+EWRAM_OVERLAY(opinfo) struct OpClassDemoCharPos OpClassDemoCharPositions[14] = {};
 
 CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5] = {
 	0, 0, 0, 0, 0,
@@ -478,8 +478,8 @@ void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 	proc->unk_43 = 250;
 
 	for (i = 0; i < 14; i++) {
-		unk_opinfo_0200FF54[i].x = 0;
-		unk_opinfo_0200FF54[i].y = 0;
+		OpClassDemoCharPositions[i].x = 0;
+		OpClassDemoCharPositions[i].y = 0;
 
 		if (gClassDemoNames[proc->gauge->index][i] == '\0') {
 			proc->ch_pos[i] = 0xFF;
@@ -547,8 +547,8 @@ void SetOpClassDemoStatusPos(struct ProcClassDemoStatus *proc, int pos)
 
 void func_fe6_08095D48(ProcPtr unused)
 {
-	unk_opinfo_0200FF54[0].x = 0x80;
-	unk_opinfo_0200FF54[0].y = 2;
+	OpClassDemoCharPositions[0].x = 0x80;
+	OpClassDemoCharPositions[0].y = 2;
 }
 
 void func_fe6_08095D58(void)

@@ -46,7 +46,7 @@
 
 #include "eventscript.h"
 
-EWRAM_OVERLAY(0) struct Font gFont_Unk_02002770 = {};
+EWRAM_OVERLAY(0) struct Font gItemActionMenuFont = {};
 
 static void CheckTutorialInterruptPromptResult(ProcPtr proc);
 
@@ -902,7 +902,7 @@ fu8 SingleItemMenu_Entry_SwitchOut(struct MenuProc * menu, struct MenuEntProc * 
 
 void func_fe6_0801F854(int x, int y)
 {
-    InitTextFont(&gFont_Unk_02002770, (u8 *) VRAM + CHR_SIZE*0x200, 0x200, 0);
+    InitTextFont(&gItemActionMenuFont, (u8 *) VRAM + CHR_SIZE*0x200, 0x200, 0);
 
     TmCopyRect(gBg0Tm + TM_OFFSET(11, 1), gUiTmScratchA, 9, 19);
     TmCopyRect(gBg1Tm + TM_OFFSET(11, 1), gUiTmScratchB, 9, 19);
