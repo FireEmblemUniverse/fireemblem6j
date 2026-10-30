@@ -33,11 +33,11 @@ void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 
 	proc->unk_4C = 0;
 
-	if (unk_02016A3F == 0)
+	if (gCreditNameDispMode == 0)
 		return;
 
 	oam0 = 0;
-	if (unk_02016A3F == 1)
+	if (gCreditNameDispMode == 1)
 		oam0 = OAM0_BLEND;
 
 	while ((index = ch = gCreditInfo[step].staff[i]) != '\0') {
@@ -112,8 +112,8 @@ void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 		i++;
 	}
 
-	if (unk_02016A42 < 20)
-		unk_02016A42++;
+	if (gCreditNameAnimTimer < 20)
+		gCreditNameAnimTimer++;
 }
 
 void EndingCredit_PutJobName(int step)
@@ -126,7 +126,7 @@ void EndingCredit_PutJobName(int step)
 	SetBgOffset(BG_0, 0, 0);
 	SetBgOffset(BG_1, 0, 0);
 
-	unk_02016A42 = 0;
+	gCreditNameAnimTimer = 0;
 
 	if (step != 0) {
 		int _y = gCreditInfo[step - 1].y;
@@ -202,7 +202,7 @@ void func_fe6_080904F0(struct ProcGameEnding *proc)
 {
 	proc->timer = 0;
 	proc->step = 0;
-	unk_02016A3F = true;
+	gCreditNameDispMode = true;
 }
 
 void func_fe6_08090508(struct ProcGameEnding *proc)
@@ -240,7 +240,7 @@ void func_fe6_080905A0(struct ProcGameEnding *proc)
 		proc->timer++;
 		if (proc->timer > 15) {
 			Proc_Break(proc);
-			unk_02016A3F = 0;
+			gCreditNameDispMode = 0;
 		}
 
 		SetBlendAlpha(0x10 - proc->timer, proc->timer);
@@ -271,7 +271,7 @@ struct ProcScr CONST_DATA ProcScr_0868BB7C[] = {
 
 void func_fe6_08090644(ProcPtr proc)
 {
-	unk_02016A3F = -1;
+	gCreditNameDispMode = -1;
 	EndingCredit_PutJobName(gCreditInfoDispStep);
 }
 
@@ -325,7 +325,7 @@ void EndingCredit_Loop(struct ProcGameEnding *proc)
 
 void EndingCredit_End(struct ProcGameEnding *proc)
 {
-	unk_02016A3F = false;
+	gCreditNameDispMode = false;
 	TmFill(gBg0Tm, 0);
 	EnableBgSync(BG0_SYNC_BIT);
 	Proc_EndEach(ProcScr_0868BB7C);

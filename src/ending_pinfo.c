@@ -366,7 +366,7 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 	for (i = 0; i < 6; i++) {
-		struct Text *text = &Texts_02016B48[i];
+		struct Text *text = &gEndingPInfoTexts[i];
 
 		InitText(text, (i < 2) ? 20: 30);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
@@ -376,11 +376,11 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
-			&Texts_02016B48[0],
+			&gEndingPInfoTexts[0],
 			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
-		Text_SetCursor(&Texts_02016B48[0], proc->text_x + 3);
+		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x + 3);
 		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
@@ -419,9 +419,9 @@ void EndingP0InfoText_Loop(struct ProcEndingPinfoText *proc)
 		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 		for (i = 0; i < 6; i++)
-			type_writter->text[i] = &Texts_02016B48[i];
+			type_writter->text[i] = &gEndingPInfoTexts[i];
 
-		Text_SetCursor(&Texts_02016B48[0], proc->text_x);
+		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x);
 		type_writter->str_it = DecodeMsg(MSG_A6E);
 		type_writter->line = 0;
 		type_writter->font = NULL;
@@ -481,7 +481,7 @@ void EndingPInfo1_StartMerge(struct ProcEndingPInfo1 *proc)
 	Ending_DrawPInfoTitle(0, 0, unit, 0);
 
 	proc->timer = 0;
-	unk_02016B44 = false;
+	gEndingPInfoIsDyad = false;
 
 	SpawnProc(ProcScr_EndingFacePosCtrl, PROC_TREE_VSYNC);
 	SetOnHBlankA(HBlank_Ending_SinglePInfo);
@@ -527,7 +527,7 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 	for (i = 0; i < 2; i++) {
-		struct Text *text = &Texts_02016B48[i];
+		struct Text *text = &gEndingPInfoTexts[i];
 
 		InitText(text, 20);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
@@ -537,11 +537,11 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
-			&Texts_02016B48[0],
+			&gEndingPInfoTexts[0],
 			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
-		Text_SetCursor(&Texts_02016B48[0], proc->text_x + 3);
+		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x + 3);
 		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
@@ -574,9 +574,9 @@ void EndingP1InfoText_Loop(struct ProcEndingPinfoText *proc)
 		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 		for (i = 0; i < 2; i++)
-			type_writter->text[i] = &Texts_02016B48[i];
+			type_writter->text[i] = &gEndingPInfoTexts[i];
 
-		Text_SetCursor(&Texts_02016B48[0], proc->text_x);
+		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x);
 		type_writter->str_it = DecodeMsg(MSG_A6E);
 		type_writter->line = 0;
 		type_writter->font = NULL;
@@ -612,7 +612,7 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 	for (i = 0; i < 2; i++) {
-		struct Text *text = &Texts_02016B78[i];
+		struct Text *text = &gEndingPInfo2Texts[i];
 
 		InitText(text, 20);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
@@ -622,11 +622,11 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
-			&Texts_02016B78[0],
+			&gEndingPInfo2Texts[0],
 			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
-		Text_SetCursor(&Texts_02016B78[0], proc->text_x + 3);
+		Text_SetCursor(&gEndingPInfo2Texts[0], proc->text_x + 3);
 		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
@@ -659,9 +659,9 @@ void EndingP2InfoText_Loop(struct ProcEndingPinfoText *proc)
 		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
 		for (i = 0; i < 2; i++)
-			type_writter->text[i] = &Texts_02016B78[i];
+			type_writter->text[i] = &gEndingPInfo2Texts[i];
 
-		Text_SetCursor(&Texts_02016B78[0], proc->text_x);
+		Text_SetCursor(&gEndingPInfo2Texts[0], proc->text_x);
 		type_writter->str_it = DecodeMsg(MSG_A6E);
 		type_writter->line = 0;
 		type_writter->font = NULL;
@@ -735,7 +735,7 @@ void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc)
 	}
 
 	proc->timer = 0;
-	unk_02016B44 = true;
+	gEndingPInfoIsDyad = true;
 	SpawnProc(ProcScr_EndingFacePosCtrl, PROC_TREE_VSYNC);
 	SetOnHBlankA(HBlank_Ending_DyadPInfo);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
@@ -807,7 +807,7 @@ void EndingFacePosCtrl_Init(ProcPtr proc)
 
 void EndingFacePosCtrl_Loop(ProcPtr proc)
 {
-	if (unk_02016B44 != false && EndingFaceXPos[1] != 0) {
+	if (gEndingPInfoIsDyad != false && EndingFaceXPos[1] != 0) {
 		struct ProcEndingPInfoDisp *procfx = FindProc(ProcScr_EndingPInfo_x2);
 
 		EndingFaceXPos[0] = Interpolate(INTERPOLATE_RSQUARE, 0xFFFFFF00, 0, procfx->timer, 0x2D);

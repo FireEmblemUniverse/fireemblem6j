@@ -47,7 +47,7 @@ void EndingCredit_Reinit(struct ProcGameCredit *proc)
 	proc->timer = 0;
 	gCreditInfoDispStep = 0;
 	gEndingCgIndex = 0;
-	unk_02016A3F = 0;
+	gCreditNameDispMode = 0;
 	gEndingDoneFlag = 0;
 
 	SetBlendAlpha(0, 0x10);
@@ -79,20 +79,20 @@ void EndingCredit_ReinitType0(struct ProcGameCredit *proc)
 
 u8 func_fe6_0808FF04(struct ProcGameCredit *proc, int b, int c)
 {
-	if (unk_02016A42 <= 0x13) {
-		unk_02016A43[proc->unk_4C] = 0x16;
-		unk_02016AC3[proc->unk_4C] = c >> 1;
+	if (gCreditNameAnimTimer <= 0x13) {
+		gCreditCharOffsets[proc->unk_4C] = 0x16;
+		gCreditCharDelays[proc->unk_4C] = c >> 1;
 	}
 
-	else if (unk_02016AC3[proc->unk_4C] != 0) {
-		unk_02016AC3[proc->unk_4C]--;
+	else if (gCreditCharDelays[proc->unk_4C] != 0) {
+		gCreditCharDelays[proc->unk_4C]--;
 	} else {
-		unk_02016A43[proc->unk_4C] += 4;
+		gCreditCharOffsets[proc->unk_4C] += 4;
 
-		if (unk_02016A43[proc->unk_4C] > b)
-			unk_02016A43[proc->unk_4C] = b;
+		if (gCreditCharOffsets[proc->unk_4C] > b)
+			gCreditCharOffsets[proc->unk_4C] = b;
 
-		return unk_02016A43[proc->unk_4C++];
+		return gCreditCharOffsets[proc->unk_4C++];
 	}
 
 	proc->unk_4C++;

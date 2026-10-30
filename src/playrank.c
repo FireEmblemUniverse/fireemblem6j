@@ -1184,7 +1184,7 @@ void PlayRank_InitDisplay(void)
 	SetDispEnable(1, 1, 1, 1, 1);
 
 	gPlayRankCurChapter = 0;
-	unk_02016A26 = 0;
+	gPlayRankDispStep = 0;
 	gPasswdScreenDisabled = 0;
 	gPlayRankBg0Offset = 0x80;
 	gPlayRankBg1Offset = 0xE0;
@@ -1254,7 +1254,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		proc->unk_30 = 0;
 	}
 
-	if (unk_02016A26 <= 8) {
+	if (gPlayRankDispStep <= 8) {
 		if (proc->unk_2E++ < 4)
 			return;
 		proc->unk_2E = 0;
@@ -1263,7 +1263,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 	gPlayRankBg0Offset++;
 	SetBgOffset(BG_0, 0, gPlayRankBg0Offset & 0xFF);
 
-	if (unk_02016A26 > 0xC) {
+	if (gPlayRankDispStep > 0xC) {
 		gPlayRankBg1Offset++;
 		SetBgOffset(BG_1, 0, gPlayRankBg1Offset & 0xFF);
 	}
@@ -1276,7 +1276,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 	proc->unk_30 = true;
 
-	switch (unk_02016A26) {
+	switch (gPlayRankDispStep) {
 	case 0:
 		if (!PlayRank_ChapterTurns_DrawTurn(gPlayRankDispLine))
 			return;
@@ -1318,7 +1318,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		break;
 	}
 
-	unk_02016A26++;
+	gPlayRankDispStep++;
 }
 
 void PlayRank_Idle(ProcPtr proc)
