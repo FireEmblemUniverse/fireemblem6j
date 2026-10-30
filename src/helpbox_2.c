@@ -387,23 +387,20 @@ void func_fe6_08071410(struct HelpBoxStartPrintProc * proc)
 
     switch (gPlaySt.config_talk_speed)
     {
-
-        // TODO: talk speed enum constants
-
-    case 0:
+    case PLAY_TALKSPEED_SLOW:
         print_proc->clock_interval = 2;
         break;
 
-    case 1:
+    case PLAY_TALKSPEED_NORMAL:
         print_proc->clock_interval = 1;
         break;
 
-    case 2:
+    case PLAY_TALKSPEED_FAST:
         print_proc->clock_interval = 1;
         print_proc->chars_per_print = 2;
         break;
 
-    case 3:
+    case PLAY_TALKSPEED_FASTEST:
         print_proc->clock_interval = 0;
         print_proc->chars_per_print = INT8_MAX;
         break;

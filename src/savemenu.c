@@ -1111,7 +1111,7 @@ void StartMainMenu(ProcPtr parent)
 	proc->action = SAVEMENU_ACTION_EXIT;
 	proc->extra_action = 0;
 
-	gPlaySt.config_talk_speed = 2;
+	gPlaySt.config_talk_speed = PLAY_TALKSPEED_FAST;
 }
 
 void StartSaveMenu(ProcPtr parent)

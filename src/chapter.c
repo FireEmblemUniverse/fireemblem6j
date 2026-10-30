@@ -69,7 +69,7 @@ void InitPlayConfig(int is_hard)
     gPlaySt.config_terrain_mapui = 0;
     gPlaySt.config_unit_mapui = 0;
     gPlaySt.config_no_auto_cursor = FALSE;
-    gPlaySt.config_talk_speed = 1;
+    gPlaySt.config_talk_speed = PLAY_TALKSPEED_NORMAL;
     gPlaySt.config_walk_speed = 0;
     gPlaySt.config_bgm_disable = FALSE;
     gPlaySt.config_se_disable = FALSE;
