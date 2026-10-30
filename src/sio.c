@@ -345,7 +345,7 @@ void func_fe6_08036C60(void)
 	int i;
 
 	for (i = 0; i < 6; i++)
-		InitText(&gSioText_0203C67C[i], 12);
+		InitText(&gSioMenuTexts[i], 12);
 
 	for (i = 0; i < 11; i++)
 		InitText(&gLinkArenaSt.texts[i], 12);
@@ -634,9 +634,9 @@ int func_fe6_080372B0(u8 mode, struct SioTeamListProc * proc)
 
 	if (mode == 1) {
 		for (i = 0; i < gLinkArenaSt.unk_05 + 2; i++) {
-			SioStrCpy("未選択", gUnk_Sio_0203C944[i]);
+			SioStrCpy("未選択", gSioSelectedTeamNames[i]);
 			ClearText(&gLinkArenaSt.unk_64[i]);
-			PutDrawTextCentered(&gLinkArenaSt.unk_64[i], 1, i * 3 + 5, gUnk_Sio_0203C944[i], 10);
+			PutDrawTextCentered(&gLinkArenaSt.unk_64[i], 1, i * 3 + 5, gSioSelectedTeamNames[i], 10);
 		}
 
 		return gLinkArenaSt.unk_05 + 2;
@@ -654,9 +654,9 @@ int func_fe6_080372B0(u8 mode, struct SioTeamListProc * proc)
 			color = TEXT_COLOR_SYSTEM_GRAY;
 		}
 
-		ClearText(&gSioText_0203C67C[i]);
-		Text_SetColor(&gSioText_0203C67C[i], color);
-		PutDrawTextCentered(&gSioText_0203C67C[i], 1, i * 2 + 5, conf[i].menu_text, 7);
+		ClearText(&gSioMenuTexts[i]);
+		Text_SetColor(&gSioMenuTexts[i], color);
+		PutDrawTextCentered(&gSioMenuTexts[i], 1, i * 2 + 5, conf[i].menu_text, 7);
 
 		i++;
 	}
@@ -706,7 +706,7 @@ void SioTeamList_SetupGfx(struct SioTeamListProc * proc)
 
 	EnablePalSync();
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -985,14 +985,14 @@ void SioTeamList_Loop_SubSel(struct SioTeamListProc * proc)
 		case MULTIARENA_LIST_8:
 			SioPlaySe(2);
 
-			SioStrCpy(gLinkArenaTeamList[unk_40].name, gUnk_Sio_0203C944[proc->selected_team]);
+			SioStrCpy(gLinkArenaTeamList[unk_40].name, gSioSelectedTeamNames[proc->selected_team]);
 
 			gLinkArenaSt.unk_06[proc->selected_team] = gLinkArenaTeamList[unk_40].unk_0F;
 
 			ClearText(&gLinkArenaSt.unk_64[proc->selected_team]);
 			PutDrawTextCentered(
 				&gLinkArenaSt.unk_64[proc->selected_team], 1, proc->selected_team * 3 + 5,
-				gUnk_Sio_0203C944[proc->selected_team], 10);
+				gSioSelectedTeamNames[proc->selected_team], 10);
 
 			proc->unk_5C = func_fe6_0803784C();
 
@@ -1146,9 +1146,9 @@ void SioTeamList_StartEraseTeamSubMenu(struct SioTeamListProc * proc)
 	else
 		proc->unk_58 = var * 2 + 5;
 
-	ClearText(&gSioText_0203C6A4);
-	Text_DrawString(&gSioText_0203C6A4, "消す　　　やめる");
-	PutText(&gSioText_0203C6A4, gBg0Tm + TM_OFFSET(15, proc->unk_58 + 4));
+	ClearText(&gSioPromptText);
+	Text_DrawString(&gSioPromptText, "消す　　　やめる");
+	PutText(&gSioPromptText, gBg0Tm + TM_OFFSET(15, proc->unk_58 + 4));
 
 	EnableBgSync(BG0_SYNC_BIT);
 }
@@ -1213,28 +1213,28 @@ void func_fe6_08038040(struct ProcTactician * proc)
 	int i, j;
 
 	for (i = 0; i < 5; i++) {
-		ClearText(gSioText_0203C708 + (i + proc->text_idx * 5));
-		Text_SetColor(gSioText_0203C708 + (i + proc->text_idx * 5), TEXT_COLOR_SYSTEM_WHITE);
+		ClearText(gSioLineTexts + (i + proc->text_idx * 5));
+		Text_SetColor(gSioLineTexts + (i + proc->text_idx * 5), TEXT_COLOR_SYSTEM_WHITE);
 
 		for (j = 0; j < 15; j++) {
 			i16 idx = gUnk_Sio_0810EFD2[i * 15 + j];
 			struct TacticianTextConf const * conf = gTacticianTextConf + idx;
 
 			if (*conf->str[proc->line_idx][0] != '\0') {
-				Text_SetCursor(gSioText_0203C708 + (i + proc->text_idx * 5), conf->x);
-				Text_DrawString(gSioText_0203C708 + (i + proc->text_idx * 5), conf->str[proc->line_idx][0]);
+				Text_SetCursor(gSioLineTexts + (i + proc->text_idx * 5), conf->x);
+				Text_DrawString(gSioLineTexts + (i + proc->text_idx * 5), conf->str[proc->line_idx][0]);
 			}
 		}
 
-		PutText(gSioText_0203C708 + (i + proc->text_idx * 5), gBg1Tm + TM_OFFSET(0, i * 2 + 9));
+		PutText(gSioLineTexts + (i + proc->text_idx * 5), gBg1Tm + TM_OFFSET(0, i * 2 + 9));
 	}
 }
 
 void TacticianDrawCharacters(struct ProcTactician * proc)
 {
-	ClearText(&gSioText_0203C910);
-	Text_DrawString(&gSioText_0203C910, proc->str);
-	PutText(&gSioText_0203C910, gBg0Tm + TM_OFFSET(12, 5));
+	ClearText(&gSioHeaderText);
+	Text_DrawString(&gSioHeaderText, proc->str);
+	PutText(&gSioHeaderText, gBg0Tm + TM_OFFSET(12, 5));
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -1251,7 +1251,7 @@ void Tactician_InitScreen(struct ProcTactician * proc)
 	ApplyPalette(gUnk_08109C40, 0x14);
 	Sio_RestartBgSlide(0, 0);
 	TmApplyTsa(gBg2Tm + TM_OFFSET(0, 8), gUnk_0810A044, 0x1000);
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -1259,7 +1259,7 @@ void Tactician_InitScreen(struct ProcTactician * proc)
 	CpuFill16(0, proc->unk_4A, 14);
 
 	proc->cur_len = 0;
-	InitText(&gSioText_0203C910, 8);
+	InitText(&gSioHeaderText, 8);
 	proc->line_idx = 0;
 	proc->conf_idx = 6;
 
@@ -1268,7 +1268,7 @@ void Tactician_InitScreen(struct ProcTactician * proc)
 	proc->unk_37 = 0;
 
 	for (i = 0; i < 10; i++)
-		InitText(gSioText_0203C708 + i, 0x1A);
+		InitText(gSioLineTexts + i, 0x1A);
 
 	InitText(&gLinkArenaSt.unk_64[5], 0xC);
 	StartLinkArenaTitleBanner(proc->child, 3);
@@ -1599,9 +1599,9 @@ void NameSelect_DrawName(struct ProcTactician * proc)
 {
 	proc->unk_39 = 1;
 	SioPutSupportMenuImage();
-	ClearText(&gSioText_0203C6A4);
-	Text_DrawString(&gSioText_0203C6A4, "戻る　　　やめる");
-	PutText(&gSioText_0203C6A4, gBg0Tm + TM_OFFSET(11, 12));
+	ClearText(&gSioPromptText);
+	Text_DrawString(&gSioPromptText, "戻る　　　やめる");
+	PutText(&gSioPromptText, gBg0Tm + TM_OFFSET(11, 12));
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -1819,7 +1819,7 @@ void func_fe6_08038DEC(struct SioPostBattleProc * proc)
 	int i;
 
 	int unk_40 = proc->unk_40;
-	SetTextFont(&gFont_Unk_Sio_02001000);
+	SetTextFont(&gSioSpriteFont);
 
 	for (i = 0; i < unk_40; i++) {
 		char * str = gLinkArenaSt.unk_A1[i];
@@ -1828,11 +1828,11 @@ void func_fe6_08038DEC(struct SioPostBattleProc * proc)
 		len = (72 - len) / 2;
 
 		if (i < 3)
-			Text_InsertDrawString(&gSioText_0203C708[0], 72 * i + len, TEXT_COLOR_SYSTEM_WHITE, str);
+			Text_InsertDrawString(&gSioLineTexts[0], 72 * i + len, TEXT_COLOR_SYSTEM_WHITE, str);
 		else
-			Text_InsertDrawString(&gSioText_0203C708[1], len, TEXT_COLOR_SYSTEM_WHITE, str);
+			Text_InsertDrawString(&gSioLineTexts[1], len, TEXT_COLOR_SYSTEM_WHITE, str);
 
-		Text_InsertDrawNumberOrBlank(&gSioText_0203C708[1], i * 32 + 152, TEXT_COLOR_SYSTEM_BLUE, proc->unk_44[i].points);
+		Text_InsertDrawNumberOrBlank(&gSioLineTexts[1], i * 32 + 152, TEXT_COLOR_SYSTEM_BLUE, proc->unk_44[i].points);
 	}
 }
 
@@ -1869,14 +1869,14 @@ void SioPostBattle_Init(struct SioPostBattleProc * proc)
 	ApplyPalettes(Pal_LinkArenaPostBattleBg, 10, 4);
 	TmApplyTsa(gBg3Tm, Tsa_LinkArenaPostBattleBg, 0);
 
-	InitSpriteTextFont(&gFont_Unk_Sio_02001000, OBJ_VRAM0 + 0x2000, 0xE);
+	InitSpriteTextFont(&gSioSpriteFont, OBJ_VRAM0 + 0x2000, 0xE);
 	ApplyPalette(Pal_Text, 0x1E);
 	SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);
 	ResetTextFont();
 
 	for (i = 0; i < 2; i++) {
-		InitSpriteText(&gSioText_0203C708[i]);
-		SpriteText_DrawBackgroundExt(&gSioText_0203C708[i], 0);
+		InitSpriteText(&gSioLineTexts[i]);
+		SpriteText_DrawBackgroundExt(&gSioLineTexts[i], 0);
 	}
 
 	proc->unk_40 = gSioSt->unk_007;
@@ -2158,7 +2158,7 @@ void func_fe6_08039650(struct SioBatProc * proc)
 
 	ReadMultiArenaSaveTeamName(gLinkArenaSt.unk_03, buf);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 	func_fe6_08036C60();
@@ -2209,7 +2209,7 @@ void func_fe6_080397F4(struct SioBatProc * proc)
 	u16 got = 0;
 	struct SioBatProc_Unk2C * unk_2C = proc->unk_2C;
 
-	gUnk_Sio_0203C91C = 0;
+	gSioWaitTimer = 0;
 	buf[0] = 0;
 
 	func_fe6_08039580();
@@ -2313,9 +2313,9 @@ void func_fe6_08039A1C(struct SioBatProc * proc)
 {
 	func_fe6_08039580();
 
-	gUnk_Sio_0203C91C++;
+	gSioWaitTimer++;
 
-	if (gLinkArenaSt.unk_A0 != gSioSt->unk_007 || gUnk_Sio_0203C91C > 600) {
+	if (gLinkArenaSt.unk_A0 != gSioSt->unk_007 || gSioWaitTimer > 600) {
 		SioBat_EndHandler();
 		SioBat_ReleaseIrq();
 		func_fe6_080397AC(proc);
@@ -2452,7 +2452,7 @@ void func_fe6_08039D34(struct SioBatProc * proc)
 	int i;
 
 	int base = gSioSt->self_id * 0x40 + 1;
-	gUnk_Sio_0203C91C = 0;
+	gSioWaitTimer = 0;
 
 	InitUnits();
 	ReadMultiArenaSaveTeamRaw(gLinkArenaSt.unk_03, gUnk_Sio_085C9EA8);
@@ -2546,9 +2546,9 @@ void func_fe6_08039F84(struct SioBatProc * proc)
 	if (proc->unk_4C > 23)
 		proc->unk_4C = 0;
 
-	gUnk_Sio_0203C91C++;
+	gSioWaitTimer++;
 
-	if (gUnk_Sio_0203C91C > 600)
+	if (gSioWaitTimer > 600)
 		StartSioErrorScreen();
 
 	gSioMsgBuf.kind = SIO_MSG_19;
@@ -2606,7 +2606,7 @@ void func_SioBat_0803A08C(ProcPtr proc)
 
 	func_fe6_0803FB08(0);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	ResetTextFont();
 
 	func_fe6_08036C60();
@@ -2660,7 +2660,7 @@ void SioTerm_Init(struct SioTermProc * proc)
 
 	Sio_RestartBgSlide(0, 4);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -2864,14 +2864,14 @@ void DrawLinkArenaRankings(void)
 	int i;
 
 	for (i = 0; i < 10; i++) {
-		ClearText(&gSioText_0203C708[i]);
+		ClearText(&gSioLineTexts[i]);
 
 		DrawLinkArenaRankingRow(
-			&gSioText_0203C708[i], gSioResultRankings[i].name, gSioResultRankings[i].ranking + 1,
+			&gSioLineTexts[i], gSioResultRankings[i].name, gSioResultRankings[i].ranking + 1,
 			gSioResultRankings[i].points, gSioResultRankings[i].player_count + 1);
 
 		DrawLinkArenaRankIcon(gBg1Tm + TM_OFFSET(2, i * 2), i);
-		PutText(&gSioText_0203C708[i], gBg1Tm + TM_OFFSET(5, i * 2));
+		PutText(&gSioLineTexts[i], gBg1Tm + TM_OFFSET(5, i * 2));
 		DrawLinkArenaModeIcon(gBg1Tm + TM_OFFSET(20, i * 2), gSioResultRankings[i].mode);
 	}
 }
@@ -2894,7 +2894,7 @@ void SioResult_Init(struct SioResultProc * proc)
 	Sio_RestartBgSlide(0, 2);
 	TmApplyTsa(gBg2Tm + TM_OFFSET(1, 4), gUnk_0810A318, TILEREF(0, 1));
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -2906,7 +2906,7 @@ void SioResult_Init(struct SioResultProc * proc)
 	SetBgOffset(BG_1, 0, proc->unk_36);
 
 	for (i = 0; i < 10; i++)
-		InitText(&gSioText_0203C708[i], 24);
+		InitText(&gSioLineTexts[i], 24);
 
 	InitText(&gSioTexts[0], 24);
 	InitText(&gSioTexts[1], 24);
@@ -3024,7 +3024,7 @@ void SioResult_NewHS_Init(struct SioResultProc * proc)
 	Sio_RestartBgSlide(0, 0);
 	TmApplyTsa(gBg2Tm + TM_OFFSET(1, 4), gUnk_0810A318, TILEREF(0, 1));
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -3038,7 +3038,7 @@ void SioResult_NewHS_Init(struct SioResultProc * proc)
 	SetBgOffset(BG_1, 0, proc->unk_36);
 
 	for (i = 0; i < 10; i++)
-		InitText(&gSioText_0203C708[i], 24);
+		InitText(&gSioLineTexts[i], 24);
 
 	InitText(&gSioTexts[0], 24);
 	InitText(&gSioTexts[1], 24);
@@ -3144,10 +3144,10 @@ void func_fe6_0803AED0(int idx, int state)
 	int color_lut[2] = { TEXT_COLOR_SYSTEM_BLUE, TEXT_COLOR_SYSTEM_WHITE };
 
 	for (i = 0; i < 2; i++) {
-		ClearText(&gSioText_0203C67C[idx * 2 + i]);
-		Text_SetColor(&gSioText_0203C67C[idx * 2 + i], color_lut[(state + i) & 1]);
-		Text_DrawString(&gSioText_0203C67C[idx * 2 + i], gLinkArenaRuleData[idx].option_text[i]);
-		PutText(&gSioText_0203C67C[idx * 2 + i], gBg0Tm + TM_OFFSET(gLinkArenaRuleData[idx].x_pos[i], 6 + idx * 3));
+		ClearText(&gSioMenuTexts[idx * 2 + i]);
+		Text_SetColor(&gSioMenuTexts[idx * 2 + i], color_lut[(state + i) & 1]);
+		Text_DrawString(&gSioMenuTexts[idx * 2 + i], gLinkArenaRuleData[idx].option_text[i]);
+		PutText(&gSioMenuTexts[idx * 2 + i], gBg0Tm + TM_OFFSET(gLinkArenaRuleData[idx].x_pos[i], 6 + idx * 3));
 	}
 
 	EnableBgSync(BG0_SYNC_BIT);
@@ -3170,7 +3170,7 @@ void SioRuleSettings_Init(struct ProcSioRuleSettings * proc)
 
 	func_fe6_0803FB08(0);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	ResetTextFont();
 
 	func_fe6_08036C60();
@@ -3326,7 +3326,7 @@ void SioMenu_LoadGraphics(struct SioMenuProc * proc)
 	ApplyPaletteExt(Pal_SioMenuBgSlide, 0x260, 0x60);
 	Sio_RestartBgSlide(0, 4);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -3433,7 +3433,7 @@ void SioMenu_RestartGraphics(struct SioMenuProc * proc)
 	ApplyPaletteExt(Pal_SioMenuBgSlide, 0x260, 0x60);
 	Sio_RestartBgSlide(0, 4);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 	ResetTextFont();
 
@@ -3635,7 +3635,7 @@ void SioMenu_End(struct SioMenuProc * proc)
 void StartLinkArenaMainMenu(ProcPtr parent)
 {
 	UnpackUiWindowFrameGraphics();
-	InitTextFont(&gSioFont_0203C758, (u8 *)BG_VRAM + 0x1800, 0xC0, 0);
+	InitTextFont(&gSioFont, (u8 *)BG_VRAM + 0x1800, 0xC0, 0);
 
 	if (!IsSaveValid(SAVE_MULTIARENA))
 		WriteNewMultiArenaSave();
@@ -3784,7 +3784,7 @@ void DrawXMapSendProgress(struct SioBigSendProc * proc)
 		PlaySe(SONG_7D);
 		proc->unk_3C++;
 
-		PutXMapProgressPercent(gSioText_0203C67C, "送信中", proc->unk_3C);
+		PutXMapProgressPercent(gSioMenuTexts, "送信中", proc->unk_3C);
 		PutDrawUiGauge(0x100, 14, gBg0Tm + TM_OFFSET(14, 15), TILEREF(0, 6), 100, proc->unk_3C, 100 - proc->unk_3C);
 		EnableBgSync(BG0_SYNC_BIT);
 	}
@@ -3796,7 +3796,7 @@ void DrawXMapReceiveProgress(struct SioBigReceiveProc * proc)
 		PlaySe(SONG_7D);
 		proc->unk_3C++;
 
-		PutXMapProgressPercent(gSioText_0203C67C, "受信中", proc->unk_3C);
+		PutXMapProgressPercent(gSioMenuTexts, "受信中", proc->unk_3C);
 		PutDrawUiGauge(0x100, 14, gBg0Tm + TM_OFFSET(14, 15), TILEREF(0, 6), 100, proc->unk_3C, 100 - proc->unk_3C);
 		EnableBgSync(BG0_SYNC_BIT);
 	}
@@ -3804,14 +3804,14 @@ void DrawXMapReceiveProgress(struct SioBigReceiveProc * proc)
 
 void StartXMapTransfer(ProcPtr proc)
 {
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 
 	if (gSioSt->self_id == 0) {
-		ReadSramFast(SRAM_XMAP_ADDR, gUnk_Sio_02000000, SRAM_XMAP_SIZE);
-		StartSioBigSend(gUnk_Sio_02000000, SRAM_XMAP_SIZE, DrawXMapSendProgress, 0, proc);
+		ReadSramFast(SRAM_XMAP_ADDR, gSioXmapBuf, SRAM_XMAP_SIZE);
+		StartSioBigSend(gSioXmapBuf, SRAM_XMAP_SIZE, DrawXMapSendProgress, 0, proc);
 	} else {
-		StartSioBigReceive(gUnk_Sio_02000000, DrawXMapReceiveProgress, proc);
+		StartSioBigReceive(gSioXmapBuf, DrawXMapReceiveProgress, proc);
 	}
 }
 
@@ -3825,7 +3825,7 @@ bool XMapTransfer_AwaitCompletion(void)
 	InitTalkTextFont();
 
 	if (gSioSt->self_id != 0)
-		WriteAndVerifySramFast(gUnk_Sio_02000000, SRAM_XMAP_ADDR, SRAM_XMAP_SIZE);
+		WriteAndVerifySramFast(gSioXmapBuf, SRAM_XMAP_ADDR, SRAM_XMAP_SIZE);
 
 	return FALSE;
 }
@@ -3855,10 +3855,10 @@ void XMapTransfer_0803BF28(void)
 	ApplyUiStatBarPal(6);
 	PutUiWindowFrame(13, 11, 16, 6, 0);
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 
-	PutXMapProgressPercent(gSioText_0203C67C, "準備中", 0);
+	PutXMapProgressPercent(gSioMenuTexts, "準備中", 0);
 	PutDrawUiGauge(0x100, 13, gBg0Tm + TM_OFFSET(14, 15), TILEREF(0, 6), 100, 0, 100);
 
 	EnableBgSync(BG0_SYNC_BIT);
@@ -3888,10 +3888,10 @@ void func_fe6_0803BFB0(struct Proc * proc)
 
 	gSioSt->unk_000 = 3;
 
-	SetTextFont(&gSioFont_0203C758);
+	SetTextFont(&gSioFont);
 	InitSystemTextFont();
 
-	InitTextDb(gSioText_0203C67C, 10);
+	InitTextDb(gSioMenuTexts, 10);
 
 	FadeBgmOut(1);
 }
