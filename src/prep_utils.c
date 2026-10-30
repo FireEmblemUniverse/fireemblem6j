@@ -183,7 +183,7 @@ void SetupPrepUiPalette(void)
 	struct PlaySt *play_st = &gPlaySt;
 
 	for (; i < 0x10; i++)
-		gUnk_Pal_02016874[i] = gUnk_Ui_Pal_08321F24[play_st->config_window_theme * 0x10 + i];
+		gPrepUiPal[i] = gUnk_Ui_Pal_08321F24[play_st->config_window_theme * 0x10 + i];
 }
 
 ProcPtr func_fe6_08082CF4(ProcPtr parent)

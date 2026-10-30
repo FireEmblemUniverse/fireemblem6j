@@ -607,7 +607,7 @@ void PrepDisp_PutHand(struct PrepUpperDispProc * proc)
                 Sprite_0867916C,
                 0x3000);
 
-            gPal[0x13E] = gUnk_Pal_02016874[(proc->unk_3E / 4) & 0xF];
+            gPal[0x13E] = gPrepUiPal[(proc->unk_3E / 4) & 0xF];
             EnablePalSync();
         }
         break;
