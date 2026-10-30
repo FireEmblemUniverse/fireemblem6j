@@ -2,7 +2,6 @@
 
 #include "random.h"
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "faction.h"

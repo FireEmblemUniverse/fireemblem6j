@@ -1,10 +1,8 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "datamove.h"
 #include "banim.h"
-#include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 
 struct ProcScr CONST_DATA ProcScr_EfxQuakePure[] =

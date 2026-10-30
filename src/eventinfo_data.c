@@ -4,7 +4,6 @@
 #include "constants/pids.h"
 #include "constants/chapters.h"
 #include "constants/msg.h"
-#include "constants/flags.h"
 
 struct BattleTalkEnt CONST_DATA gBattleTalkList[] = {
 	{

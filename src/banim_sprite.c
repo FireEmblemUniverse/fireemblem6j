@@ -1,6 +1,5 @@
 #include "banim_sprite.h"
 
-#include "hardware.h"
 #include "oam.h"
 
 static int BasRunScript(struct BaSprite * BaSprite);

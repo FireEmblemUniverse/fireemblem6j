@@ -3,11 +3,9 @@
 #include "armfunc.h"
 #include "random.h"
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "trap.h"
 #include "action.h"
-#include "mu.h"
 
 #include "constants/terrains.h"
 

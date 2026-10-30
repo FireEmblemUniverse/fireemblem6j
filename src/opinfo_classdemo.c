@@ -1,14 +1,9 @@
 #include "prelude.h"
 #include "proc.h"
 #include "banim.h"
-#include "sound.h"
 #include "oam.h"
 #include "sprite.h"
-#include "hardware.h"
-#include "savemenu.h"
-#include "unit.h"
 #include "item.h"
-#include "text.h"
 #include "util.h"
 #include "talk.h"
 #include "armfunc.h"
@@ -16,7 +11,6 @@
 #include "opinfo.h"
 
 #include "constants/jids.h"
-#include "constants/terrains.h"
 
 EWRAM_OVERLAY(opinfo) struct EkrMainMiniDesc OpEkrMiniDesc = {};
 EWRAM_OVERLAY(opinfo) u16 OpEkrMini_ImgBuf[0x1000] = {};

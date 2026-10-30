@@ -1,28 +1,20 @@
 #include "talk.h"
 
-#include <string.h>
-
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "proc.h"
 #include "debugtext.h"
-#include "text.h"
 #include "sprite.h"
-#include "face.h"
 #include "event.h"
 #include "msg.h"
 #include "util.h"
-#include "bm.h"
-#include "unit.h"
 #include "chapter.h"
 #include "ui.h"
 #include "scanline.h"
 #include "shop.h"
 #include "worldmap.h"
 #include "banim_ekrbattle.h"
-#include "manim.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"

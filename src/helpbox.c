@@ -1,14 +1,11 @@
 #include "helpbox.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "sprite.h"
 #include "msg.h"
 #include "util.h"
 #include "item.h"
-#include "chapter.h"
-#include "chapterinfo.h"
 #include "ui.h"
 
 #include "constants/videoalloc_global.h"

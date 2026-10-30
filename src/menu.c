@@ -2,7 +2,6 @@
 
 #include "hardware.h"
 #include "sound.h"
-#include "text.h"
 #include "face.h"
 #include "ui.h"
 #include "helpbox.h"

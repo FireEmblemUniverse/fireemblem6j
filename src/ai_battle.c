@@ -1,7 +1,6 @@
 #include "ai_battle.h"
 
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "battle.h"

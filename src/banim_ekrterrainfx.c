@@ -1,6 +1,4 @@
 #include "prelude.h"
-#include "gbasvc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "datamove.h"
 #include "banim.h"

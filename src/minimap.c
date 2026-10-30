@@ -1,10 +1,7 @@
 #include "minimap.h"
 
-#include <string.h>
-
 #include "armfunc.h"
 #include "oam.h"
-#include "hardware.h"
 #include "sound.h"
 #include "proc.h"
 #include "util.h"

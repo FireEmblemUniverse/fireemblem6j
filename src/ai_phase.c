@@ -1,6 +1,5 @@
 #include "ai_phase.h"
 
-#include "bm.h"
 #include "ai_order.h"
 #include "ai_utility.h"
 #include "ai_data.h"

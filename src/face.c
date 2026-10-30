@@ -2,14 +2,12 @@
 
 #include "armfunc.h"
 #include "random.h"
-#include "hardware.h"
 #include "datamove.h"
 #include "oam.h"
 #include "proc.h"
 #include "sprite.h"
 #include "util.h"
 #include "bm.h"
-#include "gamedata.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/faces.h"
