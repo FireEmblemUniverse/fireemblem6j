@@ -172,7 +172,7 @@ u8 TutorialInterruptMenu_Continue_Select(struct MenuProc * menu, struct MenuEntP
 
 static void CheckTutorialInterruptPromptResult(ProcPtr proc)
 {
-    if (GetTalkChoiceResult() != 1)
+    if (GetTalkChoiceResult() != TALK_CHOICE_YES)
         EventGotoLabel(proc, 99);
 }
 

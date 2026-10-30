@@ -842,7 +842,7 @@ bool func_fe6_0806C578(void)
 
 bool func_fe6_0806C594(void)
 {
-    if (GetTalkChoiceResult() == 1) // TODO: talk choice constants
+    if (GetTalkChoiceResult() == TALK_CHOICE_YES)
         return TRUE;
 
     return FALSE;

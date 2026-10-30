@@ -844,7 +844,7 @@ static int TalkInterpret(ProcPtr proc)
         StartTalkChoice(gYesNoTalkChoice,
             TALK_TEXT_BY_LINE(sTalkSt->line_active),
             gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            1, sTalkSt->print_color, proc);
+            TALK_CHOICE_YES, sTalkSt->print_color, proc);
 
         sTalkSt->str++;
         return 3;
@@ -853,7 +853,7 @@ static int TalkInterpret(ProcPtr proc)
         StartTalkChoice(gYesNoTalkChoice,
             TALK_TEXT_BY_LINE(sTalkSt->line_active),
             gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            2, sTalkSt->print_color, proc);
+            TALK_CHOICE_NO, sTalkSt->print_color, proc);
 
         sTalkSt->str++;
         return 3;
@@ -1262,7 +1262,7 @@ void TalkChoice_OnIdle(struct TalkChoiceProc * proc)
     {
         PlaySe(SONG_6B);
 
-        sTalkChoiceResult = 0;
+        sTalkChoiceResult = TALK_CHOICE_CANCEL;
 
         Proc_Break(proc);
         return;
