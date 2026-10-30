@@ -1212,7 +1212,7 @@ void StatScreen_Init(ProcPtr proc)
 
     StartMuralBackground(NULL, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_BACKMURAL * CHR_SIZE, -1);
 
-    Decompress(Img_Statscreen_083080D0, ((void *) VRAM + 0x10000) + OBCHR_STATSCREEN_240 * CHR_SIZE);
+    Decompress(Img_Statscreen_MiscSprites, ((void *) VRAM + 0x10000) + OBCHR_STATSCREEN_240 * CHR_SIZE);
 
     ApplyIconPalettes(BGPAL_ICONS);
     ApplyUiStatBarPal(BGPAL_STATSCREEN_STATBAR);

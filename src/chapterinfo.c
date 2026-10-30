@@ -38,7 +38,7 @@ struct ChapterEventInfo const * GetChapterEventInfo(int chapter)
     return gExtraMapInfo->event_info;
 }
 
-char const * GetChapterUnk_0802BBD0(int chapter)
+char const * GetChapterTitle(int chapter)
 {
     if (chapter >= 0)
         return DecodeMsg(GetChapterInfo(chapter)->msg_chapter_title);

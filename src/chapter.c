@@ -53,7 +53,7 @@ int IsFirstPlaythrough(void)
     if (gPlaySt.flags & PLAY_FLAG_COMPLETE)
         return FALSE;
 
-    return gPlaySt.unk_1D_5;
+    return gPlaySt.first_playthrough_mode;
 }
 
 void InitPlayConfig(int is_hard)
@@ -80,7 +80,7 @@ void InitPlayConfig(int is_hard)
     gPlaySt.debug_control_red = 0;
     gPlaySt.debug_control_green = 0;
     gPlaySt.config_unique_pal = 0;
-    gPlaySt.unk_1D_5 = 0;
+    gPlaySt.first_playthrough_mode = 0;
 }
 
 void ResetBmSt(void)

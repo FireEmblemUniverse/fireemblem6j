@@ -151,9 +151,9 @@ bool ListAvailableTrialChapters(i8 * list_out)
     return TRUE;
 }
 
-char const * func_fe6_080867F0(int chapter)
+char const * GetExtraMapChapterTitle(int chapter)
 {
-    return GetChapterUnk_0802BBD0(chapter);
+    return GetChapterTitle(chapter);
 }
 
 char const * DecodeExtraMapGoalMsg(int chapter)

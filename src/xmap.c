@@ -200,7 +200,7 @@ void Xmap_Init(struct ProcXmap * proc)
     for (i = 0; i < proc->num_chapters; i++)
     {
         Text_SetParams(&gXmapTexts[i], 0, proc->chapter_list[i] < 0 ? TEXT_COLOR_SYSTEM_GREEN : TEXT_COLOR_SYSTEM_WHITE);
-        Text_DrawString(&gXmapTexts[i], func_fe6_080867F0(proc->chapter_list[i]));
+        Text_DrawString(&gXmapTexts[i], GetExtraMapChapterTitle(proc->chapter_list[i]));
 
         PutText(&gXmapTexts[i], gBg0Tm + TM_OFFSET(2, 6 + 2 * i));
     }
@@ -235,7 +235,7 @@ void func_fe6_0808AEFC(struct ProcXmap * proc)
     SpriteText_DrawBackgroundExt(&gXmapState.text[0], 0);
 
     Text_SetColor(&gXmapState.text[0], TEXT_COLOR_SYSTEM_BLUE);
-    Text_DrawString(&gXmapState.text[0], func_fe6_080867F0(proc->chapter_list[proc->selected_idx]));
+    Text_DrawString(&gXmapState.text[0], GetExtraMapChapterTitle(proc->chapter_list[proc->selected_idx]));
 
     SetTextFont(NULL);
 }
@@ -259,7 +259,7 @@ void func_fe6_0808AF4C(struct ProcXmap * proc)
     Text_DrawString(&gXmapState.text[1], JTEXT("いいえ"));
 
     Text_SetColor(&gXmapState.text[0], TEXT_COLOR_SYSTEM_BLUE);
-    Text_DrawString(&gXmapState.text[0], func_fe6_080867F0(proc->chapter_list[proc->selected_idx]));
+    Text_DrawString(&gXmapState.text[0], GetExtraMapChapterTitle(proc->chapter_list[proc->selected_idx]));
     Text_SetCursor(&gXmapState.text[0], 0x58);
     Text_SetColor(&gXmapState.text[0], TEXT_COLOR_SYSTEM_WHITE);
     Text_DrawString(&gXmapState.text[0], JTEXT("目的："));

@@ -32,8 +32,8 @@ Tsa_Statscreen_08308070: @ 08308070
 Tsa_Statscreen_083080AC: @ 083080AC
 	.incbin "fe6-base.gba", 0x3080AC, (0x3080D0 - 0x3080AC) @ length: 0024
 
-	.global Img_Statscreen_083080D0
-Img_Statscreen_083080D0: @ 083080D0
+	.global Img_Statscreen_MiscSprites
+Img_Statscreen_MiscSprites: @ 083080D0
 	.incbin "fe6-base.gba", 0x3080D0, (0x3087C8 - 0x3080D0) @ length: 06F8
 
 	.global Pal_StatscreenPageNameFlashing

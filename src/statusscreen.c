@@ -32,7 +32,6 @@
 
 #include "constants/videoalloc_global.h"
 
-// TODO: put in ewram overlay properly
 EWRAM_OVERLAY(0) struct StatusScreenSt gStatusScreenSt = {};
 
 void StatusScreenFadeIn_Init(struct StatusScreenProc * proc)
@@ -80,7 +79,7 @@ struct ProcScr CONST_DATA ProcScr_StatusScreenFadeOut[] =
     PROC_END,
 };
 
-u16 CONST_DATA Sprite_086782D4[] =
+u16 CONST_DATA Sprite_StatusScreen_PlaythroughFrame[] =
 {
     12,
     OAM0_SHAPE_8x8 + OAM0_BLEND, OAM1_SIZE_8x8 + OAM1_HFLIP, OAM2_CHR(4),
@@ -106,7 +105,7 @@ void StatusScreenSprites_Loop(struct StatusScreenProc * proc)
     {
         if (gStatusScreenSt.put_playthrough_number)
         {
-            PutSprite(4, 0, 144, Sprite_086782D4, OAM2_CHR(0x240) + OAM2_PAL(4) + OAM2_LAYER(2));
+            PutSprite(4, 0, 144, Sprite_StatusScreen_PlaythroughFrame, OAM2_CHR(0x240) + OAM2_PAL(4) + OAM2_LAYER(2));
         }
 
         PutTime(gBg0Tm + TM_OFFSET(20, 17), TEXT_COLOR_SYSTEM_BLUE, GetGameTime(), FALSE);
@@ -115,7 +114,6 @@ void StatusScreenSprites_Loop(struct StatusScreenProc * proc)
 
     if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) != 0)
     {
-        // D=
         int oam2 = OAM2_CHR(0x280 + 10) + OAM2_PAL(3);
         oam2 += (GetGameTime() / 8) % 6;
 
@@ -147,7 +145,7 @@ char const * GetRedLeaderName(void)
     return DecodeMsg(MSG_____);
 }
 
-void func_fe6_080736C8(void)
+void PutStatusScreenChapterTitle(void)
 {
     int hard_flag = (gPlaySt.flags & PLAY_FLAG_HARD) != 0 ? 4 : 0;
 
@@ -159,7 +157,7 @@ void func_fe6_080736C8(void)
     PutChapterTitleBgTSA(gBg1Tm + TM_OFFSET(3, 0), BGPAL_STATUSSCREEN_5);
 }
 
-void func_fe6_0807372C(struct StatusScreenProc * proc)
+void PutStatusScreenObjective(struct StatusScreenProc * proc)
 {
     Text_InsertDrawString(gStatusScreenSt.text + 1, 2, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_724));
     PutDrawText(gStatusScreenSt.text + 1, gBg0Tm + TM_OFFSET(1, 5), TEXT_COLOR_SYSTEM_BLUE, 25, 0,
@@ -176,7 +174,7 @@ void func_fe6_0807372C(struct StatusScreenProc * proc)
     PutText(gStatusScreenSt.text + 3, gBg0Tm + TM_OFFSET(18, 6));
 }
 
-void func_fe6_08073808(struct StatusScreenProc * proc)
+void PutStatusScreenExtraMapObjective(struct StatusScreenProc * proc)
 {
     char const * text_str;
     int x_text;
@@ -193,7 +191,7 @@ void func_fe6_08073808(struct StatusScreenProc * proc)
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
     gActiveFont->tileref |= TILE_PAL_SAFE(BGPAL_STATUSSCREEN_TALKTEXT);
 
-    text_str = func_fe6_080867F0(gPlaySt.chapter);
+    text_str = GetExtraMapChapterTitle(gPlaySt.chapter);
     x_text = GetStringTextCenteredPos(12 * 8, text_str);
 
     Text_InsertDrawString(gStatusScreenSt.text + 0, x_text, 0, text_str);
@@ -203,7 +201,7 @@ void func_fe6_08073808(struct StatusScreenProc * proc)
     gActiveFont->tileref &= ~TILE_PAL_SAFE(-1);
 }
 
-void func_fe6_080738FC(struct StatusScreenProc * proc)
+void InitStatusScreenFactionText(struct StatusScreenProc * proc)
 {
     Text_InsertDrawString(gStatusScreenSt.text + 4, 0, TEXT_COLOR_SYSTEM_WHITE,
         DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_upper_army));
@@ -234,8 +232,8 @@ void DrawStatusScreenPageA(int unused)
     PutFaceChibi(FID_FACTION_CHIBI + chibi,
         gUiTmScratchC + TM_OFFSET(4, 4), 0x400 + BGCHR_B_STATUSSCREEN_280 + 1 + 0x10, 9, FALSE);
 
-    TmApplyTsa(gUiTmScratchB + TM_OFFSET(0, 0), gUnk_0833C6F4, TILEREF(0, 2));
-    TmApplyTsa(gUiTmScratchB + TM_OFFSET(19, 8), gUnk_0833C8D8, TILEREF(0, 2));
+    TmApplyTsa(gUiTmScratchB + TM_OFFSET(0, 0), Tsa_StatusScreen_FactionInfoBg, TILEREF(0, 2));
+    TmApplyTsa(gUiTmScratchB + TM_OFFSET(19, 8), Tsa_StatusScreen_PlaytimeBg, TILEREF(0, 2));
 
     PutText(gStatusScreenSt.text + 4, gUiTmScratchA + TM_OFFSET(8, 1));
     PutText(gStatusScreenSt.text + 5, gUiTmScratchA + TM_OFFSET(8, 5));
@@ -249,7 +247,7 @@ void DrawStatusScreenPageA(int unused)
     PutTime(gUiTmScratchA + TM_OFFSET(20, 9), 2, GetGameTime(), FALSE);
 }
 
-void func_fe6_08073AC8(struct StatusScreenProc * proc)
+void InitStatusScreenExtraMapInfoText(struct StatusScreenProc * proc)
 {
     struct ProcTypeWritter * print_proc;
     int i;
@@ -268,7 +266,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
     for (i = 0; i < 5; i++)
         print_proc->text[i] = gStatusScreenSt.text + 9 + i;
 
-    GetStringTextBox(print_proc->str_it, &gStatusScreenSt.trial_something_width, &gStatusScreenSt.trial_something_height);
+    GetStringTextBox(print_proc->str_it, &gStatusScreenSt.extra_map_info_width, &gStatusScreenSt.extra_map_info_height);
 
     TypeWritter_Loop(print_proc);
     Proc_End(print_proc);
@@ -282,8 +280,8 @@ void DrawStatusScreenPageB(int unused)
 
     gActiveFont->tileref |= TILE_PAL_SAFE(BGPAL_STATUSSCREEN_TALKTEXT);
 
-    x = (24 - gStatusScreenSt.trial_something_width / 8) / 2 + 3;
-    y = (6 - gStatusScreenSt.trial_something_height / 16);
+    x = (24 - gStatusScreenSt.extra_map_info_width / 8) / 2 + 3;
+    y = (6 - gStatusScreenSt.extra_map_info_height / 16);
 
     for (i = 0; i < 5; i++)
     {
@@ -292,7 +290,7 @@ void DrawStatusScreenPageB(int unused)
 
     gActiveFont->tileref &= ~TILE_PAL_SAFE(-1);
 
-    Decompress(Tsa_08309408, gBuf);
+    Decompress(Tsa_StatusScreen_ExtraMapInfoBg, gBuf);
     TmApplyTsa(gUiTmScratchB + TM_OFFSET(2, 0), gBuf, TILEREF(0, BGPAL_STATUSSCREEN_2));
 }
 
@@ -314,7 +312,7 @@ void DrawStatusScreenPage(struct StatusScreenProc * proc, int page)
     }
 }
 
-struct TextInitInfo CONST_DATA gUnk_08678330[] =
+struct TextInitInfo CONST_DATA gStatusScreenTextList[] =
 {
     { gStatusScreenSt.text + 1, 22 },
     { gStatusScreenSt.text + 2, 11 },
@@ -327,7 +325,7 @@ struct TextInitInfo CONST_DATA gUnk_08678330[] =
     { 0 }, // end
 };
 
-struct TextInitInfo CONST_DATA gUnk_08678378[] =
+struct TextInitInfo CONST_DATA gStatusScreenExtraMapTextList[] =
 {
     { gStatusScreenSt.text + 0,  12 },
     { gStatusScreenSt.text + 9,  24 },
@@ -361,30 +359,30 @@ void StatusScreen_Init(struct StatusScreenProc * proc)
     TmFill(gBg2Tm, BGCHR_B_STATUSSCREEN_280 | TILE_HFLIP);
 
     ApplyPalettes(Pal_Text, 0, 2);
-    ApplyPalettes(Pal_Unk_0833C944, BGPAL_STATUSSCREEN_2, 2);
+    ApplyPalettes(Pal_StatusScreen_Bg, BGPAL_STATUSSCREEN_2, 2);
     ApplyUiWindowFramePal(0x10 + 4);
     ApplyIconPalette(1, 6);
     ApplyIconPalette(1, 0x10 + 3);
 
     Decompress(Img_PlayRankTimeOBJ, (void *) VRAM + CHR_SIZE * (0x400 + BGCHR_B_STATUSSCREEN_380));
-    Decompress(Img_Unk_0833C378, (void *) VRAM + CHR_SIZE * 0);
-    Decompress(Img_Statscreen_083080D0, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
+    Decompress(Img_StatusScreen_Bg, (void *) VRAM + CHR_SIZE * 0);
+    Decompress(Img_Statscreen_MiscSprites, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
 
-    func_fe6_080736C8();
+    PutStatusScreenChapterTitle();
 
-    InitTextList(gUnk_08678330);
+    InitTextList(gStatusScreenTextList);
 
-    func_fe6_080738FC(proc);
+    InitStatusScreenFactionText(proc);
 
     if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
     {
-        func_fe6_0807372C(proc);
+        PutStatusScreenObjective(proc);
     }
     else
     {
-        InitTextList(gUnk_08678378);
-        func_fe6_08073808(proc);
-        func_fe6_08073AC8(proc);
+        InitTextList(gStatusScreenExtraMapTextList);
+        PutStatusScreenExtraMapObjective(proc);
+        InitStatusScreenExtraMapInfoText(proc);
     }
 
     DrawStatusScreenPage(proc, 0);
@@ -495,24 +493,24 @@ void StartStatusScreenPageSlide(struct StatusScreenProc * parent, int direction,
     PlaySe(SONG_6F);
 }
 
-void func_fe6_08073F90(struct StatusScreenProc * proc)
+void StartStatusScreenHelpBox(struct StatusScreenProc * proc)
 {
     struct HelpBoxInfo const * help;
 
     if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) != 0)
     {
-        help = gStatusScreenSt.page != 0 ? &HelpInfo_0868B3C4 : &HelpInfo_0868B2C8;
+        help = gStatusScreenSt.page != 0 ? &HelpInfo_StatusScreenExtraMapInfo : &HelpInfo_StatusScreenExtraMap;
     }
     else
     {
-        help = &HelpInfo_0868B1B0;
+        help = &HelpInfo_StatusScreen;
     }
 
     LoadHelpBoxGfx(NULL, -1);
     StartMovingHelpBox(help, proc);
 }
 
-void func_fe6_08073FE0(int is_first_playthrough)
+void PutStatusScreenPlaythroughNumber(int is_first_playthrough)
 {
     if (is_first_playthrough == 0)
     {
@@ -535,27 +533,27 @@ void func_fe6_08073FE0(int is_first_playthrough)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void func_fe6_08074084(struct StatusScreenProc * proc)
+void ToggleFirstPlaythroughMode(struct StatusScreenProc * proc)
 {
     if (IsNotFirstPlaythrough() && (gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
     {
-        gPlaySt.unk_1D_5 ^= 1;
+        gPlaySt.first_playthrough_mode ^= 1;
 
-        func_fe6_08073FE0(IsFirstPlaythrough());
+        PutStatusScreenPlaythroughNumber(IsFirstPlaythrough());
 
         PlaySe(SONG_77);
     }
 }
 
-void func_fe6_080740D0(void)
+void EndStatusScreenSprites(void)
 {
     Proc_EndEach(ProcScr_StatusScreenSprites);
     EndMuralBackground();
 }
 
-void func_fe6_080740E4(void)
+void InitStatusScreenTextList(void)
 {
-    InitTextList(gUnk_08678330);
+    InitTextList(gStatusScreenTextList);
 }
 
 void StatusScreen_Loop(struct StatusScreenProc * proc)
@@ -570,13 +568,13 @@ void StatusScreen_Loop(struct StatusScreenProc * proc)
 
     if ((gKeySt->pressed & KEY_BUTTON_R) != 0)
     {
-        func_fe6_08073F90(proc);
+        StartStatusScreenHelpBox(proc);
         return;
     }
 
     if ((gKeySt->pressed & KEY_BUTTON_L) != 0)
     {
-        func_fe6_08074084(proc);
+        ToggleFirstPlaythroughMode(proc);
         return;
     }
 
@@ -601,7 +599,7 @@ void StatusScreen_InitPlaythroughCount(struct StatusScreenProc * proc)
     if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) != 0)
         return;
 
-    func_fe6_08073FE0(IsFirstPlaythrough());
+    PutStatusScreenPlaythroughNumber(IsFirstPlaythrough());
 }
 
 struct ProcScr CONST_DATA ProcScr_StatusScreen[] =
