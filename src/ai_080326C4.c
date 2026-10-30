@@ -41,7 +41,7 @@ void AiAttemptDoorKey(int slot);
 void AiAttemptLockpick(int slot);
 void AiAttemptAntitoxin(int slot);
 
-u8 EWRAM_DATA gAiAttackTargetPid = 0;
+u8 EWRAM_DATA gUnk_Pid_02039694 = 0;
 
 void AiRefreshDangerMap(void)
 {
@@ -1042,7 +1042,7 @@ skip_fallback:
 
 bool func_fe6_0803395C(struct Unit * unit)
 {
-    if (UNIT_PID(unit) != gAiAttackTargetPid)
+    if (UNIT_PID(unit) != gUnk_Pid_02039694)
         return FALSE;
 
     if (AreUnitIdsAllied(gActiveUnit->id, unit->id))
@@ -1055,7 +1055,7 @@ bool func_fe6_08033998(void const * input)
 {
     u8 const * cast = input;
 
-    gAiAttackTargetPid = cast[0];
+    gUnk_Pid_02039694 = cast[0];
 
     if (AiUnitWithPidExists(cast[0]) != 1)
     {
