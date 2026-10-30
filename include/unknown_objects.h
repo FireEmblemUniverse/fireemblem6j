@@ -1,7 +1,7 @@
 #ifndef UNKNOWN_OBJECTS_H
 #define UNKNOWN_OBJECTS_H
 
-#include "gba/gba.h"
+#include "gba.h"
 #include "types.h"
 
 #include "proc.h"

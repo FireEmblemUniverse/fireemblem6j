@@ -27,7 +27,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#include "gba/gba.h"
+#include "gba.h"
 
 #include "attributes.h"
 #include "types.h"

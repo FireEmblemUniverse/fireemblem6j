@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gba/gba.h"
+#include "gba.h"
 
 void InitIcons(void);
 void ClearIcons(void);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gba/gba.h"
+#include "gba.h"
 
 // TODO: move elsewhere
 #ifndef CHR_SIZE

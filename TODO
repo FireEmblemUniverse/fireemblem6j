@@ -2,7 +2,6 @@
 - tools: face, unitinfo
 - decomp: unitlistscreen needs matches and finish.
 
-- flatten dir structure (include/gba -> include)
 - name remaining ewram symbols
 
 rename move.h/move.c
