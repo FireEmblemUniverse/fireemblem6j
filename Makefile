@@ -118,7 +118,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@ $(GBAGFX) $< $@
+	@ $(GBAGFX) $< $@ $(GFX_OPTS)
 
 %.8bpp: %.png
 	@echo "[GEN]	$@"
@@ -143,6 +143,22 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILES:%.png=%.4bpp.lz.o)
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 CLEAN_FILES += $(TSA_FILES:%.tsa=%.tsa.lz)
+
+# ==============
+# = Map assets =
+# ==============
+
+MAPASSET_DIR := data/mapassets
+
+# tile sheets are 32 tiles wide; these end on a partial row
+$(MAPASSET_DIR)/MapAsset14_Img.4bpp: GFX_OPTS := -num_tiles 508
+$(MAPASSET_DIR)/MapAsset13_Img.4bpp: GFX_OPTS := -num_tiles 914
+$(MAPASSET_DIR)/MapAsset12_Img.4bpp: GFX_OPTS := -num_tiles 787
+$(MAPASSET_DIR)/MapAsset09_Img.4bpp: GFX_OPTS := -num_tiles 838
+$(MAPASSET_DIR)/MapAsset08_Img.4bpp: GFX_OPTS := -num_tiles 958
+$(MAPASSET_DIR)/MapAsset02_Img.4bpp: GFX_OPTS := -num_tiles 828
+
+CLEAN_FILES += $(patsubst %.pal,%.gbapal,$(wildcard $(MAPASSET_DIR)/*.pal))
 
 # ==============
 # = Banim data =

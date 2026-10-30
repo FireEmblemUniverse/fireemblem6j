@@ -56,7 +56,7 @@ extern u16 MapAsset04_TsaConf[];
 extern u16 MapAsset03_TsaConf[];
 extern u16 MapAsset02_TsaConf[];
 extern u16 MapAsset01_TsaConf[];
-extern u16 MapAsset4d_ImgAnims[];
+extern u16 MapAsset04d_Pal[];
 extern u16 MapAsset10b_Pal[];
 extern u16 MapAsset12b_Pal[];
 extern u16 MapAsset04c_Pal[];
