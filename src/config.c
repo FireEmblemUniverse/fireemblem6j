@@ -12,6 +12,7 @@
 #include "icon.h"
 #include "shop.h"
 #include "chapter.h"
+#include "battle.h"
 #include "statscreen.h"
 #include "helpbox.h"
 #include "sound.h"
@@ -593,13 +594,13 @@ u8 GetGameOption(u8 item_index)
     switch (item_index) {
     case GAME_OPTION_ANIMATION:
         switch (gPlaySt.config_battle_anim) {
-        case 0:
+        case PLAY_ANIMCONF_ON:
             return 0;
-        case 3:
+        case PLAY_ANIMCONF_ON_UNIQUE_BG:
             return 1;
-        case 1:
+        case PLAY_ANIMCONF_OFF:
             return 2;
-        case 2:
+        case PLAY_ANIMCONF_SOLO_ANIM:
             return 3;
         }
 
@@ -666,19 +667,19 @@ void SetGameOption(u8 item_index, u8 option_value)
     case GAME_OPTION_ANIMATION:
         switch (option_value) {
         case 0:
-            gPlaySt.config_battle_anim = 0;
+            gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON;
             return;
 
         case 1:
-            gPlaySt.config_battle_anim = 3;
+            gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON_UNIQUE_BG;
             return;
 
         case 2:
-            gPlaySt.config_battle_anim = 1;
+            gPlaySt.config_battle_anim = PLAY_ANIMCONF_OFF;
             return;
 
         case 3:
-            gPlaySt.config_battle_anim = 2;
+            gPlaySt.config_battle_anim = PLAY_ANIMCONF_SOLO_ANIM;
             return;
         }
 

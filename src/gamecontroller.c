@@ -5,6 +5,7 @@
 #include "bm.h"
 #include "unit.h"
 #include "chapter.h"
+#include "battle.h"
 #include "chapterinfo.h"
 #include "ui.h"
 #include "eventinfo.h"
@@ -523,7 +524,7 @@ void ForceEnableSounds(void)
 
 void func_fe6_08013A64(void)
 {
-    gPlaySt.config_battle_anim = 0;
+    gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON;
     gPlaySt.config_talk_speed = 1;
     gPlaySt.config_walk_speed = 0;
     gPlaySt.config_bgm_disable = FALSE;
