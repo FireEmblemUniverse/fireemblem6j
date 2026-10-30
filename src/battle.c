@@ -22,6 +22,7 @@
 
 #include "constants/pids.h"
 #include "constants/jids.h"
+#include "constants/terrains.h"
 
 enum { BATTLE_HIT_MAX = 7 };
 enum { BATTLE_MAX_DAMAGE = 99 };
@@ -1747,7 +1748,7 @@ void BattleGenerateArena(struct Unit * unit)
     WriteSuspendSave(SAVE_SUSPEND);
 
     SetBattleUnitTerrainBonusesAuto(&gBattleUnitA);
-    SetBattleUnitTerrainBonuses(&gBattleUnitB, 8); // TODO: terrain id constants
+    SetBattleUnitTerrainBonuses(&gBattleUnitB, TERRAIN_ARENA_08);
 
     BattleGenerate(unit, target);
 
