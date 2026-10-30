@@ -27,6 +27,7 @@
 #include "systemlabels.h"
 #include "save_stats.h"
 
+#include "constants/icons.h"
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
@@ -562,7 +563,7 @@ void PutStatScreenWeaponExpBar(int num, int x, int y, int item_kind)
     int wexp = gStatScreenSt.unit->wexp[item_kind];
 
     PutIcon(gUiTmScratchA + TM_OFFSET(x, y),
-        0x70 + item_kind, // TODO: icon id definitions
+        ICON_ITEM_KIND_BASE + item_kind,
         TILEREF(0, BGPAL_ICONS + 1));
 
     color = (wexp >= WEXP_S)

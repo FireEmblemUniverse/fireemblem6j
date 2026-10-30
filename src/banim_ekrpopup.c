@@ -8,6 +8,7 @@
 #include "sound.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
+#include "constants/icons.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 
@@ -268,7 +269,7 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     if (type == 0)
     {
         ApplyIconPalette(1, 0x12);
-        PutIconObjImg(GetItemKind(item) + 0x70, 0x40);
+        PutIconObjImg(GetItemKind(item) + ICON_ITEM_KIND_BASE, 0x40);
     }
     else
     {

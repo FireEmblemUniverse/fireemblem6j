@@ -41,6 +41,7 @@
 #include "constants/videoalloc_wm.h"
 #include "constants/videoalloc_banim.h"
 #include "constants/terrains.h"
+#include "constants/icons.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 
@@ -157,7 +158,7 @@ int PreparePopup(struct PopupProc * proc)
 
         case POPUP_CMD_ICON_IKIND:
             proc->iconX = result;
-            proc->icon = sPopupItem + 0x70; // TODO: icon constants?
+            proc->icon = ICON_ITEM_KIND_BASE + sPopupItem;
             ApplyIconPalette(1, proc->iconPalid);
 
             result += 16;
