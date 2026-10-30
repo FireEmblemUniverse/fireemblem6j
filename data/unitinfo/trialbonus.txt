@@ -1,0 +1,23 @@
+[TrialBonusUnitA]
+NARCIAN blue lv=10 at=0,0 to=0,0 items=RUNESWORD,DELPHISHIELD
+
+[TrialBonusUnitB]
+GALLE blue lv=18 at=0,0 to=0,0 items=KILLERLANCE,LIGHTBRAND
+
+[TrialBonusUnitC]
+HECTOR blue lv=20 at=0,0 to=0,0 items=BRAVEAXE,SILVERLANCE
+
+[TrialBonusUnitD]
+BRUNNYA blue lv=20 at=0,0 to=0,0 items=FIMBULVETR,BOLTING,FORTIFYSTAFF
+
+[TrialBonusUnitE]
+ELIWOOD blue lv=20 at=0,0 to=0,0 items=SILVERLANCE,SILVERSWORD
+
+[TrialBonusUnitF]
+MURDOCK blue lv=20 at=0,0 to=0,0 items=TOMAHAWK
+
+[TrialBonusUnitG]
+ZEPHIEL blue lv=20 at=0,0 to=0,0 items=ECKESACHS
+
+[TrialBonusUnitH]
+GUINIVERE blue lv=20 at=0,0 to=0,0 items=DIVINE,RECOVERSTAFF

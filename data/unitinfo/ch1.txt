@@ -1,0 +1,39 @@
+[Chapter1_BlueA]
+ROY blue lv=1 at=1,20 to=2,18 items=RAPIER,VULNERARY
+MARCUS lead=ROY blue lv=1 at=2,20 to=1,17 items=IRONSWORD,SILVERLANCE
+
+[Chapter1_BlueB]
+ALEN lead=ROY blue lv=1 at=0,20 to=3,17 items=IRONSWORD,IRONLANCE
+BORS lead=ROY blue lv=1 at=1,20 to=3,19 items=IRONLANCE,VULNERARY
+WOLT lead=ROY blue lv=1 at=2,20 to=2,16 items=IRONBOW,VULNERARY
+
+[Chapter1_Lance]
+LANCE lead=ROY blue lv=1 at=10,9 to=2,17 items=IRONSWORD,JAVELIN,VULNERARY
+
+[Chapter1_RedDummy] nocamera
+
+[Chapter1_RedA]
+CHAPTER1_ARCHER class=ARCHER lead=CHAPTER1_4A red lv=1 at=1,0 to=1,2 items=IRONBOW ai=AI_A_00,AI_B_06,0x29,0x00
+CHAPTER1_4A class=FIGHTER red lv=5 at=5,0 to=5,6 items=STEELAXE ai=AI_A_03,AI_B_03,0x09,0x20
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=2,6 to=1,3 items=IRONAXE ai=AI_A_00,AI_B_06,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=3,10 to=4,5 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=12,10 to=6,5 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+
+[Chapter1_RedB]
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=8,4 to=8,9 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=9,4 to=9,9 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=7,2 to=11,7 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+CHAPTER1_ARCHER class=ARCHER lead=CHAPTER1_4A red lv=1 at=7,3 to=10,10 items=IRONBOW ai=AI_A_00,AI_B_00,0x29,0x00
+
+[Chapter1_RedC]
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=12,7 to=7,15 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=12,8 to=8,14 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=3,8 to=12,13 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER1_BANDIT class=FIGHTER lead=CHAPTER1_4A red lv=1 at=4,8 to=8,18 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[Chapter1_Pillager]
+CHAPTER1_PILLAGER lead=CHAPTER1_4A red lv=1 at=7,4 to=7,7 items=IRONAXE ai=AI_A_00,AI_B_04,0x09,0x00
+
+[Chapter1_BlueUnused]
+ROY blue lv=1 at=9,7 to=9,7 items=RAPIER,VULNERARY
+MARCUS lead=ROY blue lv=1 at=6,7 to=6,7 items=IRONLANCE

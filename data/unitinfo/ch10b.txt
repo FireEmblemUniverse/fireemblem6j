@@ -1,0 +1,97 @@
+[Chapter10B_Deploy]
+ROY class=ROY auto blue lv=9 at=2,30 to=2,30 items=RAPIER,IRONSWORD,DOORKEY
+LILINA class=MAGE_F lead=ROY auto blue lv=7 at=2,31 to=2,31 items=THUNDER,FIRE,VULNERARY
+ALEN class=CAVALIER lead=ROY auto blue lv=10 at=1,28 to=1,28 items=IRONSWORD,IRONLANCE,JAVELIN,STEELLANCE
+LANCE class=CAVALIER lead=ROY auto blue lv=10 at=1,30 to=1,30 items=IRONSWORD,IRONLANCE,JAVELIN,STEELLANCE
+WARD class=FIGHTER lead=ROY auto blue lv=8 at=5,28 to=5,28 items=IRONAXE,HAMMER,HANDAXE,STEELAXE
+LOT class=FIGHTER lead=ROY auto blue lv=9 at=5,30 to=5,30 items=IRONAXE,HAMMER,HANDAXE,STEELAXE
+OGIER class=MERCENARY lead=ROY auto blue lv=9 at=6,29 to=6,29 items=IRONBLADE,IRONSWORD,ARMORSLAYER,STEELSWORD
+LUGH class=MAGE lead=ROY auto blue lv=9 at=3,29 to=3,29 items=FIRE,THUNDER,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=9 at=3,28 to=3,28 items=IRONSWORD,LOCKPICK
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=10 at=4,29 to=4,29 items=STEELLANCE,JAVELIN
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=11 at=3,30 to=3,30 items=HEALSTAFF,UNLOCKSTAFF,RESTORESTAFF,VULNERARY
+MERLINUS class=SUPPLY lead=ROY auto blue lv=1 at=2,29 to=2,29 items=IRONSWORD,IRONLANCE,JAVELIN,RESTORESTAFF
+
+[Chapter10B_Red] nocamera
+UNKNOWN_68 class=GENERAL red lv=5 at=20,2 to=20,2 items=SILVERLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x01,0x20
+UNKNOWN_81 class=MERCENARY lead=UNKNOWN_68 auto red lv=12 at=19,4 to=19,4 items=STEELBLADE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_81 class=PRIEST lead=UNKNOWN_68 auto red lv=12 at=21,4 to=21,4 items=PHYSICSTAFF ai=AI_A_0E,AI_B_03,0x11,0x20
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=22,9 to=22,9 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=22,19 to=22,19 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=11 at=18,8 to=18,8 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=12 at=19,13 to=19,13 items=KILLERAXE ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_81 class=SHAMAN lead=UNKNOWN_68 auto red lv=9 at=17,13 to=17,13 items=NOSFERATU ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=12 at=18,19 to=18,19 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=12,28 to=12,28 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=14,28 to=14,28 items=HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=MERCENARY lead=UNKNOWN_68 auto red lv=9 at=18,27 to=18,27 items=STEELSWORD ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=6,6 to=6,6 items=HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=11 at=12,9 to=12,9 items=IRONBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=12 at=7,11 to=7,11 items=IRONBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=11,11 to=11,11 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_81 class=SHAMAN lead=UNKNOWN_68 auto red lv=10 at=15,17 to=15,17 items=FLUX ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_81 class=SHAMAN lead=UNKNOWN_68 auto red lv=10 at=17,21 to=17,21 items=FLUX ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=11 at=16,19 to=16,19 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=12 at=15,24 to=15,24 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_81 class=SHAMAN lead=UNKNOWN_68 auto red lv=12 at=13,15 to=13,15 items=FLUX ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=13,19 to=13,19 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_81 class=SHAMAN lead=UNKNOWN_68 auto red lv=9 at=13,23 to=13,23 items=FLUX ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=PRIEST lead=UNKNOWN_68 auto red lv=11 at=18,4 to=18,4 items=PHYSICSTAFF ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_81 class=ARCHER lead=UNKNOWN_68 auto red lv=12 at=8,17 to=8,17 items=STEELBOW ai=AI_A_00,AI_B_03,0x29,0x00
+UNKNOWN_81 class=FIGHTER lead=UNKNOWN_68 auto red lv=10 at=3,16 to=3,16 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+
+[Unk_086821DC]
+UNKNOWN_80 class=BRIGAND auto red lv=13 at=2,0 to=1,1 items=IRONAXE ai=AI_A_00,AI_B_04,0x09,0x00
+UNKNOWN_80 class=BRIGAND auto red lv=13 at=2,0 to=1,0 items=HANDAXE ai=AI_A_00,AI_B_04,0x09,0x00
+
+[Unk_0868220C]
+UNKNOWN_B6 class=BRIGAND red lv=11 at=2,0 to=0,0 items=IRONAXE ai=AI_A_00,AI_B_04,0x09,0x00
+GONZALEZ_ALT class=BRIGAND red lv=11 at=2,0 to=0,1 items=DEVILAXE ai=AI_A_00,AI_B_04,0x09,0x00
+
+[Unk_0868223C]
+UNKNOWN_81 class=PALADIN auto red lv=5 at=0,31 to=2,30 items=SILVERLANCE,HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=2,31 to=1,29 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=2,29 to=1,31 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0868227C]
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=1,31 to=3,29 items=STEELLANCE,IRONSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=12 at=1,29 to=3,31 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Chapter10B_KleinSquadA]
+KLEIN class=SNIPER red lv=1 at=21,31 to=21,30 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=14 at=20,28 to=20,29 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=14 at=22,28 to=22,29 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+
+[Chapter10B_KleinSquadB]
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=15 at=20,30 to=20,31 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=15 at=22,30 to=22,31 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+
+[Chapter10B_TheaSquadA]
+THEA class=PEGASUSKNIGHT red lv=8 at=12,0 to=12,1 items=SLIMLANCE,JAVELIN ai=AI_A_01,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=10,0 to=11,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=14,0 to=13,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Chapter10B_TheaSquadB]
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=11,1 to=12,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=15,1 to=14,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Unk_0868238C]
+UNKNOWN_81 class=CAVALIER auto red lv=18 at=0,31 to=2,30 items=STEELLANCE,STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=2,31 to=1,29 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=2,29 to=1,31 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_086823CC]
+UNKNOWN_81 class=CAVALIER auto red lv=13 at=1,31 to=3,29 items=STEELLANCE,IRONSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_81 class=CAVALIER auto red lv=12 at=1,29 to=3,31 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Chapter10B_CutsceneMelady]
+MELADY class=WYVERNRIDER_F auto red lv=6 at=20,2 to=6,1 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00
+
+[Chapter10B_CutsceneGalle]
+GALLE class=WYVERNLORD auto red lv=6 at=6,0 to=6,0 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00
+
+[Chapter10B_CutsceneThea]
+THEA class=PEGASUSKNIGHT auto red lv=6 at=17,31 to=20,30 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00
+
+[Unk_0868245C]
+ELFFIN class=BARD auto green lv=6 at=16,7 to=16,7 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00

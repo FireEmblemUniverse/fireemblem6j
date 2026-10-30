@@ -1,0 +1,76 @@
+[Unk_08685BC0]
+ROY class=ROY auto blue lv=7 at=15,27 to=15,27 items=RAPIER,IRONSWORD,DOORKEY,ARMORSLAYER
+MARCUS class=PALADIN lead=ROY auto blue lv=6 at=14,26 to=14,26 items=SILVERLANCE,IRONSWORD,IRONLANCE,HORSESLAYER
+ALEN class=CAVALIER lead=ROY auto blue lv=8 at=16,26 to=16,26 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+LANCE class=CAVALIER lead=ROY auto blue lv=5 at=14,27 to=14,27 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+BORS class=ARMOR lead=ROY auto blue lv=10 at=16,27 to=16,27 items=IRONLANCE,JAVELIN,CHESTKEY
+RUTGER class=MYRMIDON lead=ROY auto blue lv=6 at=13,26 to=13,26 items=KILLINGEDGE
+ASTOLFO class=THIEF lead=ROY auto blue lv=10 at=17,26 to=17,26 items=LOCKPICK,IRONSWORD
+BARTHE class=ARMOR lead=ROY auto blue lv=9 at=13,25 to=13,25 items=STEELLANCE
+CHAD class=THIEF lead=ROY auto blue lv=10 at=17,25 to=17,25 items=LOCKPICK,IRONSWORD
+MERLINUS class=SUPPLY lead=ROY auto blue lv=1 at=15,28 to=15,28 items=IRONSWORD,IRONLANCE,JAVELIN,RESTORESTAFF
+
+[Unk_08685C70] nocamera
+UNKNOWN_C4 class=DRUID red lv=17 at=15,1 to=15,1 items=NOSFERATU ai=AI_A_03,AI_B_03,0x01,0x20
+UNKNOWN_C5 class=DRUID auto red lv=10 at=13,2 to=13,2 items=FENRIR,PHYSICSTAFF ai=AI_A_03,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=DRUID auto red lv=10 at=17,2 to=17,2 items=FENRIR,PHYSICSTAFF ai=AI_A_03,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=20 at=4,28 to=4,28 items=STEELSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=HERO auto red lv=10 at=0,27 to=0,27 items=BRAVESWORD,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=20 at=4,26 to=4,26 items=STEELSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=8 at=2,27 to=2,27 items=SILVERBOW ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=ARMOR auto red lv=19 at=0,20 to=0,20 items=STEELLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=ARMOR auto red lv=19 at=30,20 to=30,20 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=HERO auto red lv=10 at=30,13 to=30,13 items=SILVERSWORD ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=7 at=29,13 to=29,13 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=HERO auto red lv=10 at=0,13 to=0,13 items=SILVERSWORD ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=7 at=1,13 to=1,13 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=18 at=27,13 to=27,13 items=STEELSWORD ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=7 at=27,20 to=27,20 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=GENERAL auto red lv=12 at=26,19 to=26,19 items=SILVERLANCE,HANDAXE ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=7 at=4,19 to=4,19 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=GENERAL auto red lv=12 at=3,20 to=3,20 items=SILVERLANCE,HANDAXE ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=19 at=26,26 to=26,26 items=LIGHTBRAND ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=HERO auto red lv=10 at=30,27 to=30,27 items=SILVERSWORD,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=20 at=26,28 to=26,28 items=STEELSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=8 at=28,27 to=28,27 items=SILVERBOW ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=18 at=3,14 to=3,14 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=7 at=3,17 to=3,17 items=STEELBOW ai=AI_A_00,AI_B_03,0x29,0x00
+UNKNOWN_C5 class=ARMOR auto red lv=19 at=24,9 to=24,9 items=AXEREAVER,JAVELIN ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_C5 class=GENERAL auto red lv=12 at=29,6 to=29,6 items=HORSESLAYER,HANDAXE ai=AI_A_03,AI_B_03,0x29,0x00
+UNKNOWN_C5 class=ARMOR auto red lv=19 at=23,9 to=23,9 items=AXEREAVER,JAVELIN ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=19 at=6,9 to=6,9 items=STEELSWORD ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_C5 class=HERO auto red lv=12 at=2,6 to=2,6 items=ARMORSLAYER ai=AI_A_03,AI_B_03,0x29,0x00
+UNKNOWN_C5 class=SHAMAN auto red lv=18 at=6,19 to=6,19 items=NOSFERATU ai=AI_A_03,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=SHAMAN auto red lv=19 at=23,19 to=23,19 items=FENRIR ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_C5 class=SHAMAN auto red lv=18 at=5,5 to=5,5 items=NOSFERATU ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=SHAMAN auto red lv=19 at=29,5 to=29,5 items=FENRIR ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=20 at=27,2 to=27,2 items=LANCEREAVER ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=MERCENARY auto red lv=20 at=7,9 to=7,9 items=LANCEREAVER ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_C5 class=DRUID auto red lv=6 at=11,11 to=11,11 items=NOSFERATU ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_C5 class=GENERAL auto red lv=10 at=20,2 to=20,2 items=SILVERLANCE,HANDAXE ai=AI_A_03,AI_B_03,0x29,0x00
+UNKNOWN_C5 class=BERSERKER auto red lv=10 at=10,2 to=10,2 items=DEVILAXE,HANDAXE ai=AI_A_03,AI_B_03,0x29,0x00
+UNKNOWN_C5 class=DRUID auto red lv=10 at=20,9 to=20,9 items=FENRIR ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=SHAMAN auto red lv=19 at=19,6 to=19,6 items=FLUX ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=10 at=10,9 to=10,9 items=KILLERBOW ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=ARCHER auto red lv=19 at=11,6 to=11,6 items=STEELBOW ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_C5 class=SNIPER auto red lv=6 at=19,11 to=19,11 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_C5 class=HERO auto red lv=10 at=15,6 to=15,6 items=BRAVESWORD ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_C5 class=DRUID auto red lv=8 at=15,10 to=15,10 items=SILENCESTAFF,FENRIR,PHYSICSTAFF ai=AI_A_03,AI_B_03,0x09,0x00
+
+[Unk_08685F50]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=3,1 to=3,0 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685F70]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=6,1 to=6,0 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685F90]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=14,12 to=14,11 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685FB0]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=16,12 to=16,11 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685FD0]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=25,1 to=25,0 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685FF0]
+COMMON_MANAKETE class=MANAKETE auto red lv=12 at=29,1 to=29,0 items=FIRESTONE ai=AI_A_00,AI_B_03,0x0A,0x00

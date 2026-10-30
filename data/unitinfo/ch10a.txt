@@ -1,0 +1,77 @@
+[Unk_0867C898]
+ROY class=ROY auto blue lv=9 at=12,4 to=12,4 items=RAPIER,IRONSWORD,DOORKEY
+LANCE class=CAVALIER lead=ROY auto blue lv=10 at=9,3 to=9,3 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=6 at=11,3 to=11,3 items=IRONLANCE,JAVELIN,CHESTKEY
+WOLT class=ARCHER lead=ROY auto blue lv=8 at=9,4 to=9,4 items=IRONBOW,SILVERBOW,VULNERARY,STEELBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=12 at=10,4 to=10,4 items=IRONBLADE,IRONSWORD,ARMORSLAYER,STEELSWORD
+WARD class=FIGHTER lead=ROY auto blue lv=8 at=8,5 to=8,5 items=IRONAXE,HAMMER,HANDAXE,STEELAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=9 at=10,5 to=10,5 items=SLIMLANCE,JAVELIN,VULNERARY
+ELEN class=CLERIC lead=ROY auto blue lv=11 at=11,5 to=11,5 items=HEALSTAFF,UNLOCKSTAFF,RESTORESTAFF,VULNERARY
+LILINA class=MAGE_F lead=ROY auto blue lv=7 at=5,7 to=5,7 items=FIRE,THUNDER,VULNERARY
+SUE class=NOMAD_F lead=ROY auto blue lv=8 at=6,5 to=6,5 items=IRONBOW,LONGBOW,ANTITOXIN,PUREWATER
+FIR class=MYRMIDON_F lead=ROY auto blue lv=2 at=6,6 to=6,6 items=WODAO,IRONSWORD,-,STEELSWORD
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=7,7 to=7,7 items=IRONSWORD,IRONLANCE,JAVELIN,RESTORESTAFF
+
+[Unk_0867C968] nocamera
+UNKNOWN_53 class=DRUID red lv=5 at=18,29 to=18,29 items=NOSFERATU ai=AI_A_03,AI_B_03,0x00,0x20
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=10 at=11,10 to=11,10 items=STEELAXE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=10 at=13,10 to=13,10 items=HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=11 at=11,11 to=11,11 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=11 at=13,11 to=13,11 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=11 at=11,12 to=11,12 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=12 at=13,12 to=13,12 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=11 at=10,13 to=10,13 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=14 at=12,13 to=12,13 items=HALBERD,VULNERARY ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7C class=ARCHER lead=UNKNOWN_53 auto red lv=10 at=14,13 to=14,13 items=IRONBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=10 at=12,18 to=12,18 items=KILLINGEDGE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=12 at=11,19 to=11,19 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=11 at=13,19 to=13,19 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=11 at=11,20 to=11,20 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=11 at=13,20 to=13,20 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=12 at=10,19 to=10,19 items=STEELSWORD ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=11 at=14,19 to=14,19 items=STEELSWORD ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=MERCENARY lead=UNKNOWN_53 auto red lv=11 at=14,22 to=14,22 items=STEELSWORD ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7C class=BERSERKER lead=UNKNOWN_53 auto red lv=1 at=12,21 to=12,21 items=STEELAXE,VULNERARY ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7C class=ARCHER lead=UNKNOWN_53 auto red lv=13 at=10,22 to=10,22 items=IRONBOW ai=AI_A_00,AI_B_06,0x2A,0x00
+UNKNOWN_7C class=SHAMAN lead=UNKNOWN_53 auto red lv=12 at=14,30 to=14,30 items=FLUX ai=AI_A_00,AI_B_00,0x08,0x00
+UNKNOWN_7C class=SHAMAN lead=UNKNOWN_53 auto red lv=12 at=19,30 to=19,30 items=NOSFERATU ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7C class=ARCHER lead=UNKNOWN_53 auto red lv=10 at=6,19 to=6,19 items=IRONBOW ai=AI_A_03,AI_B_03,0x29,0x00
+
+[Unk_0867CAE8]
+UNKNOWN_7D class=PIRATE auto red lv=11 at=0,16 to=0,16 items=POISONAXE,ANTITOXIN ai=AI_A_00,AI_B_04,0x02,0x00
+
+[Unk_0867CB08]
+UNKNOWN_7D class=PIRATE auto red lv=13 at=0,16 to=0,16 items=HAMMER ai=AI_A_00,AI_B_04,0x02,0x00
+
+[Unk_0867CB28]
+UNKNOWN_7D class=PIRATE auto red lv=12 at=0,16 to=0,16 items=STEELAXE ai=AI_A_00,AI_B_04,0x02,0x00
+
+[Unk_0867CB48]
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=12 at=9,31 to=9,31 items=STEELAXE ai=AI_A_00,AI_B_00,0x02,0x00
+UNKNOWN_7C class=FIGHTER lead=UNKNOWN_53 auto red lv=13 at=11,31 to=11,31 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x02,0x00
+
+[Unk_0867CB78]
+BARTRE class=WARRIOR green lv=1 at=9,1 to=9,1 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x6A,0x00
+UNKNOWN_7E class=FIGHTER auto green lv=12 at=10,1 to=10,1 items=IRONAXE ai=AI_A_00,AI_B_00,0x6A,0x00
+UNKNOWN_7E class=FIGHTER auto green lv=12 at=11,0 to=11,0 items=HANDAXE ai=AI_A_00,AI_B_00,0x6A,0x00
+
+[Unk_0867CBB8]
+GONZALEZ class=BRIGAND lead=UNKNOWN_53 red lv=5 at=18,30 to=18,31 items=DEVILAXE,VULNERARY ai=AI_A_00,AI_B_04,0x23,0x00
+
+[Unk_0867CBD8]
+GEESE class=PIRATE lead=UNKNOWN_53 green lv=10 at=18,15 to=18,12 items=BRAVEAXE ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Unk_0867CBF8]
+
+[Unk_0867CC08]
+WOLT class=ARCHER lead=ROY blue lv=3 at=8,20 to=8,20 items=IRONBOW ai=AI_A_00,AI_B_00,0x02,0x00
+LANCE class=CAVALIER lead=ROY blue lv=9 at=12,19 to=12,19 ai=AI_A_00,AI_B_00,0x02,0x00
+SHANNA class=PEGASUSKNIGHT lead=ROY blue lv=8 at=11,16 to=11,16 ai=AI_A_00,AI_B_00,0x02,0x00
+DIECK class=MERCENARY lead=ROY blue lv=11 at=6,17 to=6,17 ai=AI_A_00,AI_B_00,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=2,17 to=2,17 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=3,15 to=3,15 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7A class=ARCHER red lv=4 at=10,22 to=10,22 items=STEELBOW ai=AI_A_00,AI_B_00,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=9,23 to=9,23 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=12,23 to=12,23 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=14,21 to=14,21 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_7B class=PIRATE red lv=5 at=9,26 to=9,26 items=STEELAXE ai=AI_A_00,AI_B_03,0x02,0x00

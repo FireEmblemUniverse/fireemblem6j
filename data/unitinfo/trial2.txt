@@ -1,0 +1,85 @@
+[Unk_08686498]
+ROY class=ROY auto blue lv=20 at=12,14 to=12,14 items=RAPIER,IRONSWORD,VULNERARY
+MARCUS class=PALADIN lead=ROY auto blue lv=20 at=14,14 to=14,14 items=IRONLANCE
+ALEN class=CAVALIER lead=ROY auto blue lv=20 at=13,15 to=13,15 items=IRONSWORD,IRONLANCE,VULNERARY
+LANCE class=CAVALIER lead=ROY auto blue lv=20 at=11,15 to=11,15 items=IRONSWORD,JAVELIN,VULNERARY,IRONLANCE
+BORS class=ARMOR lead=ROY auto blue lv=20 at=12,16 to=12,16 items=SILVERLANCE,IRONLANCE,IRONLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=20 at=11,13 to=11,13 items=IRONBOW,IRONBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=20 at=14,16 to=14,16 items=IRONSWORD,IRONBLADE,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=20 at=10,14 to=10,14 items=HANDAXE,IRONAXE,HAMMER,VULNERARY
+LOT class=FIGHTER lead=ROY auto blue lv=20 at=13,13 to=13,13 items=IRONAXE,STEELAXE
+MERLINUS class=SUPPLY lead=ROY auto blue lv=20 at=12,12 to=12,12
+
+[Unk_08686548] nocamera
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=20,4 to=20,4 items=SILVERSWORD ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=21,8 to=21,8 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=MAGE auto red lv=20 at=23,13 to=23,13 items=ELFIRE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=ARCHER auto red lv=20 at=23,18 to=23,18 items=STEELBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=20,20 to=20,20 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=17,10 to=17,10 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=16,21 to=16,21 items=SILVERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=MAGE auto red lv=20 at=13,29 to=13,29 items=AIRCALIBUR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=ARCHER auto red lv=20 at=13,5 to=13,5 items=SILVERBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=11,8 to=11,8 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=10,19 to=10,19 items=LIGHTBRAND ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=8,10 to=8,10 items=KILLERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=MAGE auto red lv=20 at=7,14 to=7,14 items=BOLTING,FIRE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=ARCHER auto red lv=20 at=6,3 to=6,3 items=LONGBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=3,18 to=3,18 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=NOMAD auto red lv=20 at=1,26 to=1,26 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_7A class=HERO auto red lv=10 at=9,23 to=9,23 items=LIGHTBRAND ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_7A class=BERSERKER auto red lv=10 at=26,16 to=26,16 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_7A class=SNIPER auto red lv=10 at=17,1 to=17,1 items=SILVERBOW ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_7A class=DRUID auto red lv=10 at=1,14 to=1,14 items=FLUX,SLEEPSTAFF ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_7A class=NOMAD auto red lv=20 at=27,5 to=27,5 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086866A8]
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=20,4 to=20,4 items=SILVERSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086866C8]
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=21,8 to=21,8 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086866E8]
+UNKNOWN_7A class=MAGE auto red lv=20 at=23,13 to=23,13 items=ELFIRE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686708]
+UNKNOWN_7A class=ARCHER auto red lv=20 at=23,18 to=23,18 items=STEELBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686728]
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=20,20 to=20,20 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686748]
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=17,10 to=17,10 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686768]
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=16,21 to=16,21 items=SILVERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686788]
+UNKNOWN_7A class=MAGE auto red lv=20 at=13,29 to=13,29 items=AIRCALIBUR ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086867A8]
+UNKNOWN_7A class=ARCHER auto red lv=20 at=13,5 to=13,5 items=SILVERBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086867C8]
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=11,8 to=11,8 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086867E8]
+UNKNOWN_7A class=MERCENARY auto red lv=20 at=10,19 to=10,19 items=LIGHTBRAND ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686808]
+UNKNOWN_7A class=FIGHTER auto red lv=20 at=8,10 to=8,10 items=KILLERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686828]
+UNKNOWN_7A class=MAGE auto red lv=20 at=7,14 to=7,14 items=BOLTING ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686848]
+UNKNOWN_7A class=ARCHER auto red lv=20 at=6,3 to=6,3 items=LONGBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686868]
+UNKNOWN_7A class=PEGASUSKNIGHT auto red lv=20 at=3,18 to=3,18 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08686888]
+UNKNOWN_7A class=NOMAD auto red lv=20 at=1,25 to=1,25 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086868A8]
+UNKNOWN_7A class=NOMAD auto red lv=20 at=27,5 to=27,5 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0C,0x00
