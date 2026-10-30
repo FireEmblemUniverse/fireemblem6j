@@ -93,7 +93,7 @@ struct ShowMapChangeProc
     /* 34 */ int sndx;
 };
 
-static void RescueTransferSpriteAnim_Loop(struct RescueTransferAnimProc * proc);
+void RescueTransferSpriteAnim_Loop(struct RescueTransferAnimProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_RescueTransferAnim[] =
 {
@@ -115,9 +115,9 @@ struct ProcScr CONST_DATA ProcScr_RescueTransferAnimParentless[] =
     PROC_END,
 };
 
-static void MapFade_Init(struct Proc * proc);
-static void MapFade_Loop(struct Proc * proc);
-static void MapFade_End(struct Proc * proc);
+void MapFade_Init(struct Proc * proc);
+void MapFade_Loop(struct Proc * proc);
+void MapFade_End(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_MapFade[] =
 {
@@ -134,7 +134,7 @@ struct ProcScr CONST_DATA ProcScr_MapFade[] =
     PROC_END,
 };
 
-static void InitPhaseCursor_Init(ProcPtr proc);
+void InitPhaseCursor_Init(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_InitPhaseCursor[] =
 {
@@ -144,7 +144,7 @@ struct ProcScr CONST_DATA ProcScr_InitPhaseCursor[] =
     PROC_END,
 };
 
-static void ReturnFromStatScreen_Init(ProcPtr proc);
+void ReturnFromStatScreen_Init(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_ReturnFromStatScreen[] =
 {
@@ -156,10 +156,10 @@ struct ProcScr CONST_DATA ProcScr_ReturnFromStatScreen[] =
     PROC_END,
 };
 
-static int DiscardItem_StartItemSelect(ProcPtr proc);
-static int DiscardItem_PostItemSelect(ProcPtr proc);
-static int DiscardItem_SendToConvoy(ProcPtr proc);
-static int DiscardItem_0801C59C(ProcPtr proc);
+int DiscardItem_StartItemSelect(ProcPtr proc);
+int DiscardItem_PostItemSelect(ProcPtr proc);
+int DiscardItem_SendToConvoy(ProcPtr proc);
+int DiscardItem_0801C59C(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_DiscardItem[] =
 {
@@ -174,7 +174,7 @@ PROC_LABEL(99),
     PROC_END,
 };
 
-static void EquipInfoWindow_Loop(struct EquipInfoWindowProc * proc);
+void EquipInfoWindow_Loop(struct EquipInfoWindowProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_EquipInfoWindow[] =
 {
@@ -185,9 +185,9 @@ struct ProcScr CONST_DATA ProcScr_EquipInfoWindow[] =
     PROC_END,
 };
 
-static void UnitPrepSwapAnim_Init(struct UnitPrepSwapAnimProc * proc);
-static void UnitPrepSwapAnim_Loop(struct UnitPrepSwapAnimProc * proc);
-static void UnitPrepSwapAnim_Cleanup(struct UnitPrepSwapAnimProc * proc);
+void UnitPrepSwapAnim_Init(struct UnitPrepSwapAnimProc * proc);
+void UnitPrepSwapAnim_Loop(struct UnitPrepSwapAnimProc * proc);
+void UnitPrepSwapAnim_Cleanup(struct UnitPrepSwapAnimProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_UnitPrepSwapAnim[] =
 {
@@ -200,11 +200,11 @@ struct ProcScr CONST_DATA ProcScr_UnitPrepSwapAnim[] =
     PROC_END,
 };
 
-static void PhaseIntroText_Init(struct Proc * proc);
-static void PhaseIntroText_PutText(struct Proc * proc);
-static void PhaseIntroText_InLoop(struct Proc * proc);
-static void PhaseIntroText_OutLoop(struct Proc * proc);
-static void PhaseIntroText_Clear(struct Proc * proc);
+void PhaseIntroText_Init(struct Proc * proc);
+void PhaseIntroText_PutText(struct Proc * proc);
+void PhaseIntroText_InLoop(struct Proc * proc);
+void PhaseIntroText_OutLoop(struct Proc * proc);
+void PhaseIntroText_Clear(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PhaseIntroText[] =
 {
@@ -223,9 +223,9 @@ struct ProcScr CONST_DATA ProcScr_PhaseIntroText[] =
     PROC_END,
 };
 
-static void PhaseIntroSquares_Init(struct Proc * proc);
-static void PhaseIntroSquares_InLoop(struct Proc * proc);
-static void PhaseIntroSquares_OutLoop(struct Proc * proc);
+void PhaseIntroSquares_Init(struct Proc * proc);
+void PhaseIntroSquares_InLoop(struct Proc * proc);
+void PhaseIntroSquares_OutLoop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PhaseIntroSquares[] =
 {
@@ -236,9 +236,9 @@ struct ProcScr CONST_DATA ProcScr_PhaseIntroSquares[] =
     PROC_END,
 };
 
-static void PhaseIntroBlendBox_Init(struct Proc * proc);
-static void PhaseIntroBlendBox_InLoop(struct Proc * proc);
-static void PhaseIntroBlendBox_OutLoop(struct Proc * proc);
+void PhaseIntroBlendBox_Init(struct Proc * proc);
+void PhaseIntroBlendBox_InLoop(struct Proc * proc);
+void PhaseIntroBlendBox_OutLoop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PhaseIntroBlendBox[] =
 {
@@ -249,10 +249,10 @@ struct ProcScr CONST_DATA ProcScr_PhaseIntroBlendBox[] =
     PROC_END,
 };
 
-static void PhaseIntro_EndIfNoUnits(ProcPtr proc);
-static void PhaseIntro_InitGraphics(ProcPtr proc);
-static void PhaseIntro_InitDisp(ProcPtr proc);
-static void PhaseIntro_WaitForEnd(ProcPtr proc);
+void PhaseIntro_EndIfNoUnits(ProcPtr proc);
+void PhaseIntro_InitGraphics(ProcPtr proc);
+void PhaseIntro_InitDisp(ProcPtr proc);
+void PhaseIntro_WaitForEnd(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_PhaseIntro[] =
 {
@@ -272,7 +272,7 @@ struct ProcScr CONST_DATA ProcScr_PhaseIntro[] =
     PROC_END,
 };
 
-static void GasTrapSpriteAnim_Init(struct Proc * proc);
+void GasTrapSpriteAnim_Init(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_GasTrapAnim[] =
 {
@@ -284,7 +284,7 @@ struct ProcScr CONST_DATA ProcScr_GasTrapAnim[] =
     PROC_END,
 };
 
-static void FireTrapSpriteAnim_Init(struct Proc * proc);
+void FireTrapSpriteAnim_Init(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_FireTrapAnim[] =
 {
@@ -296,7 +296,7 @@ struct ProcScr CONST_DATA ProcScr_FireTrapAnim[] =
     PROC_END,
 };
 
-static void ArrowTrapSpriteAnim_Init(struct Proc * proc);
+void ArrowTrapSpriteAnim_Init(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_ArrowTrapAnim[] =
 {
@@ -310,8 +310,8 @@ struct ProcScr CONST_DATA ProcScr_ArrowTrapAnim[] =
     PROC_END,
 };
 
-static void func_fe6_0801D8B8(struct ShowMapChangeProc * proc);
-static void func_fe6_0801D8E4(struct ShowMapChangeProc * proc);
+void func_fe6_0801D8B8(struct ShowMapChangeProc * proc);
+void func_fe6_0801D8E4(struct ShowMapChangeProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_MapChange_085C5B50[] =
 {
@@ -326,7 +326,7 @@ struct ProcScr CONST_DATA ProcScr_MapChange_085C5B50[] =
     PROC_END,
 };
 
-static void PikeTrapSpriteAnim_Init(struct Proc * proc);
+void PikeTrapSpriteAnim_Init(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PikeTrapAnim[] =
 {
@@ -338,8 +338,8 @@ struct ProcScr CONST_DATA ProcScr_PikeTrapAnim[] =
     PROC_END,
 };
 
-static void func_fe6_0801DA1C(struct Proc * proc);
-static void func_fe6_0801DA24(struct Proc * proc);
+void func_fe6_0801DA1C(struct Proc * proc);
+void func_fe6_0801DA24(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_Unk_085C5BA0[] =
 {
@@ -351,7 +351,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_085C5BA0[] =
     PROC_END,
 };
 
-static void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc);
+void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_ChapterIntro_Bg3Scroll[] =
 {
@@ -359,8 +359,8 @@ struct ProcScr CONST_DATA ProcScr_ChapterIntro_Bg3Scroll[] =
     PROC_END,
 };
 
-static void ChapterIntro_KeyListen_Init(struct Proc * proc);
-static void ChapterIntro_KeyListen_Loop(struct Proc * proc);
+void ChapterIntro_KeyListen_Init(struct Proc * proc);
+void ChapterIntro_KeyListen_Loop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_ChapterIntro_KeyListen[] =
 {
@@ -370,32 +370,32 @@ struct ProcScr CONST_DATA ProcScr_ChapterIntro_KeyListen[] =
     PROC_END,
 };
 
-static void ChapterIntro_Init(struct Proc * proc);
-static void ChapterIntro_BeginFadeIn(struct Proc * proc);
-static void ChapterIntro_LoopFadeIn(struct Proc * proc);
-static void ChapterIntro_BeginMotifFadeIn(struct Proc * proc);
-static void ChapterIntro_LoopMotifFadeIn(struct Proc * proc);
-static void ChapterIntro_BeginHOpenText(struct Proc * proc);
-static void ChapterIntro_LoopHOpenText(struct Proc * proc);
-static void ChapterIntro_BeginVOpenText(struct Proc * proc);
-static void ChapterIntro_LoopVOpenText(struct Proc * proc);
-static void ChapterIntro_Begin_0801E1A0(struct Proc * proc);
-static void ChapterIntro_Loop_0801E1F8(struct Proc * proc);
-static void ChapterIntro_Begin_0801E220(struct Proc * proc);
-static void ChapterIntro_Loop_0801E244(struct Proc * proc);
-static void ChapterIntro_0801E2B0(struct Proc * proc);
-static void ChapterIntro_InitMapDisplay(struct Proc * proc);
-static void ChapterIntro_BeginFadeToMap(struct Proc * proc);
-static void ChapterIntro_LoopFadeToMap(struct Proc * proc);
-static void ChapterIntro_BeginCloseText(struct Proc * proc);
-static void ChapterIntro_LoopCloseText(struct Proc * proc);
-static void ChapterIntro_BeginFastCloseText(struct Proc * proc);
-static void ChapterIntro_LoopFastCloseText(struct Proc * proc);
-static void ChapterIntro_BeginFadeOut(struct Proc * proc);
-static void ChapterIntro_LoopFadeOut(struct Proc * proc);
-static void ChapterIntro_BeginFastFadeToMap(struct Proc * proc);
-static void ChapterIntro_LoopFastFadeToMap(struct Proc * proc);
-static void ChapterIntro_SetSkipTarget(short arg, struct Proc * proc);
+void ChapterIntro_Init(struct Proc * proc);
+void ChapterIntro_BeginFadeIn(struct Proc * proc);
+void ChapterIntro_LoopFadeIn(struct Proc * proc);
+void ChapterIntro_BeginMotifFadeIn(struct Proc * proc);
+void ChapterIntro_LoopMotifFadeIn(struct Proc * proc);
+void ChapterIntro_BeginHOpenText(struct Proc * proc);
+void ChapterIntro_LoopHOpenText(struct Proc * proc);
+void ChapterIntro_BeginVOpenText(struct Proc * proc);
+void ChapterIntro_LoopVOpenText(struct Proc * proc);
+void ChapterIntro_Begin_0801E1A0(struct Proc * proc);
+void ChapterIntro_Loop_0801E1F8(struct Proc * proc);
+void ChapterIntro_Begin_0801E220(struct Proc * proc);
+void ChapterIntro_Loop_0801E244(struct Proc * proc);
+void ChapterIntro_0801E2B0(struct Proc * proc);
+void ChapterIntro_InitMapDisplay(struct Proc * proc);
+void ChapterIntro_BeginFadeToMap(struct Proc * proc);
+void ChapterIntro_LoopFadeToMap(struct Proc * proc);
+void ChapterIntro_BeginCloseText(struct Proc * proc);
+void ChapterIntro_LoopCloseText(struct Proc * proc);
+void ChapterIntro_BeginFastCloseText(struct Proc * proc);
+void ChapterIntro_LoopFastCloseText(struct Proc * proc);
+void ChapterIntro_BeginFadeOut(struct Proc * proc);
+void ChapterIntro_LoopFadeOut(struct Proc * proc);
+void ChapterIntro_BeginFastFadeToMap(struct Proc * proc);
+void ChapterIntro_LoopFastFadeToMap(struct Proc * proc);
+void ChapterIntro_SetSkipTarget(short arg, struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_ChapterIntro[] =
 {
@@ -485,8 +485,8 @@ PROC_LABEL(99),
     PROC_END,
 };
 
-static void GameOverScreen_RandomScroll_Init(struct Proc * proc);
-static void GameOverScreen_RandomScroll_Loop(struct Proc * proc);
+void GameOverScreen_RandomScroll_Init(struct Proc * proc);
+void GameOverScreen_RandomScroll_Loop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_GameOverScreen_RandomScroll[] =
 {
@@ -496,13 +496,13 @@ struct ProcScr CONST_DATA ProcScr_GameOverScreen_RandomScroll[] =
     PROC_END,
 };
 
-static void GameOverScreen_Init(struct Proc * proc);
-static void GameOverScreen_LoopFadeIn(struct Proc * proc);
-static void GameOverScreen_BeginIdle(struct Proc * proc);
-static void GameOverScreen_LoopIdle(struct Proc * proc);
-static void GameOverScreen_BeginFadeOut(struct Proc * proc);
-static void GameOverScreen_LoopFadeOut(struct Proc * proc);
-static void GameOverScreen_End(struct Proc * proc);
+void GameOverScreen_Init(struct Proc * proc);
+void GameOverScreen_LoopFadeIn(struct Proc * proc);
+void GameOverScreen_BeginIdle(struct Proc * proc);
+void GameOverScreen_LoopIdle(struct Proc * proc);
+void GameOverScreen_BeginFadeOut(struct Proc * proc);
+void GameOverScreen_LoopFadeOut(struct Proc * proc);
+void GameOverScreen_End(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_GameOverScreen[] =
 {
@@ -548,7 +548,7 @@ int GetRescueTransferFacing(int xa, int ya, int xb, int yb)
     return FACING_LEFT;
 }
 
-static struct MuProc * StartMuForRescueTransferAnim(struct Unit * unit)
+struct MuProc * StartMuForRescueTransferAnim(struct Unit * unit)
 {
     if (!(UNIT_ATTRIBUTES(unit) & UNIT_ATTR_MOUNTED))
         return StartMu(unit);
@@ -559,7 +559,7 @@ static struct MuProc * StartMuForRescueTransferAnim(struct Unit * unit)
         return StartMuExt(unit->x, unit->y, JID_DISMOUNTED, 12);
 }
 
-static void RescueTransferSpriteAnim_Loop(struct RescueTransferAnimProc * proc)
+void RescueTransferSpriteAnim_Loop(struct RescueTransferAnimProc * proc)
 {
     if (MuExistsActive())
         return;
@@ -613,7 +613,7 @@ void StartRescueTransferAnimParentless(struct Unit * unit, int facing)
     SetMuMoveScript(proc->mu, proc->movescr);
 }
 
-static void MapFade_Init(struct Proc * proc)
+void MapFade_Init(struct Proc * proc)
 {
     proc->unk4C = 0x10;
 
@@ -623,7 +623,7 @@ static void MapFade_Init(struct Proc * proc)
     SetBlendTargetB(0, 0, 0, 1, 1);
 }
 
-static void MapFade_Loop(struct Proc * proc)
+void MapFade_Loop(struct Proc * proc)
 {
     SetBlendAlpha(proc->unk4C, 0x10 - proc->unk4C);
 
@@ -642,7 +642,7 @@ static void MapFade_Loop(struct Proc * proc)
     }
 }
 
-static void MapFade_End(struct Proc * proc)
+void MapFade_End(struct Proc * proc)
 {
     ClearMapFadeUnits();
 
@@ -666,7 +666,7 @@ bool IsMapFadeActive(void)
     return Proc_Exists(ProcScr_MapFade);
 }
 
-static void GetPlayerInitialCursorPosition(int * x_out, int * y_out)
+void GetPlayerInitialCursorPosition(int * x_out, int * y_out)
 {
     struct Unit * unit;
 
@@ -692,7 +692,7 @@ static void GetPlayerInitialCursorPosition(int * x_out, int * y_out)
     }
 }
 
-static void GetAiInitialCursorPosition(int * x_out, int * y_out)
+void GetAiInitialCursorPosition(int * x_out, int * y_out)
 {
     int i;
 
@@ -717,7 +717,7 @@ static void GetAiInitialCursorPosition(int * x_out, int * y_out)
     }
 }
 
-static void InitPhaseCursor_Init(ProcPtr proc)
+void InitPhaseCursor_Init(ProcPtr proc)
 {
     int x = -1;
     int y = -1;
@@ -749,7 +749,7 @@ static void InitPhaseCursor_Init(ProcPtr proc)
     }
 }
 
-static void ReturnFromStatScreen_Init(ProcPtr proc)
+void ReturnFromStatScreen_Init(ProcPtr proc)
 {
     struct Unit * unit = GetUnit(GetLastStatScreenUnitId());
 
@@ -763,7 +763,7 @@ static void ReturnFromStatScreen_Init(ProcPtr proc)
     }
 }
 
-static int DiscardItem_StartItemSelect(ProcPtr proc)
+int DiscardItem_StartItemSelect(ProcPtr proc)
 {
     ApplyIconPalettes(BGPAL_ICONS);
     StartLockingMenu(&MenuInfo_DiscardItem, proc);
@@ -771,7 +771,7 @@ static int DiscardItem_StartItemSelect(ProcPtr proc)
     return FALSE;
 }
 
-static int DiscardItem_PostItemSelect(ProcPtr proc)
+int DiscardItem_PostItemSelect(ProcPtr proc)
 {
     EndSubtitleHelp();
     EndEquipInfoWindow();
@@ -785,13 +785,13 @@ static int DiscardItem_PostItemSelect(ProcPtr proc)
     return FALSE;
 }
 
-static int DiscardItem_SendToConvoy(ProcPtr proc)
+int DiscardItem_SendToConvoy(ProcPtr proc)
 {
     StartBmSupplyForDrop(NULL, proc);
     return FALSE;
 }
 
-static int DiscardItem_0801C59C(ProcPtr proc)
+int DiscardItem_0801C59C(ProcPtr proc)
 {
     return AddSupplyItem(gBmSt.convoy_item_overflow);
 }
@@ -890,7 +890,7 @@ void BuildWarpDestinationMap(struct Unit * actor, struct Unit * target)
     gMapMovementSigned[actor->y][actor->x] = -1;
 }
 
-static void EquipInfoWindow_Loop(struct EquipInfoWindowProc * proc)
+void EquipInfoWindow_Loop(struct EquipInfoWindowProc * proc)
 {
     if (proc->compareWeaponSlot < 0)
         return;
@@ -1066,7 +1066,7 @@ void EndEquipInfoWindow(void)
     Proc_EndEach(ProcScr_EquipInfoWindow);
 }
 
-static void UnitPrepSwapAnim_Init(struct UnitPrepSwapAnimProc * proc)
+void UnitPrepSwapAnim_Init(struct UnitPrepSwapAnimProc * proc)
 {
     int xd, yd, dist;
 
@@ -1084,7 +1084,7 @@ static void UnitPrepSwapAnim_Init(struct UnitPrepSwapAnimProc * proc)
     proc->unk_3C = 0;
 }
 
-static void UnitPrepSwapAnim_Loop(struct UnitPrepSwapAnimProc * proc)
+void UnitPrepSwapAnim_Loop(struct UnitPrepSwapAnimProc * proc)
 {
     int var = Interpolate(INTERPOLATE_LINEAR, 0, 1 << 16, proc->unk_3C, proc->unk_3E);
 
@@ -1112,7 +1112,7 @@ static void UnitPrepSwapAnim_Loop(struct UnitPrepSwapAnimProc * proc)
         Proc_Break(proc);
 }
 
-static void UnitPrepSwapAnim_Cleanup(struct UnitPrepSwapAnimProc * proc)
+void UnitPrepSwapAnim_Cleanup(struct UnitPrepSwapAnimProc * proc)
 {
     proc->unit->x = proc->x_target / 16;
     proc->unit->y = proc->y_target / 16;
@@ -1135,11 +1135,11 @@ void StartUnitPrepSwapAnim(ProcPtr parent, struct Unit * unit, int x, int y)
     HideUnitSprite(unit);
 }
 
-static void PhaseIntroVMatchHi(void);
-static void PhaseIntroVMatchMid(void);
-static void PhaseIntroVMatchLo(void);
+void PhaseIntroVMatchHi(void);
+void PhaseIntroVMatchMid(void);
+void PhaseIntroVMatchLo(void);
 
-static void PhaseIntroVMatchHi(void)
+void PhaseIntroVMatchHi(void)
 {
     REG_BLDCNT = BLDCNT_EFFECT_ALPHA
         | BLDCNT_TARGETA(0, 1, 0, 0, 0)
@@ -1152,7 +1152,7 @@ static void PhaseIntroVMatchHi(void)
     SetOnVMatch(PhaseIntroVMatchMid);
 }
 
-static void PhaseIntroVMatchMid(void)
+void PhaseIntroVMatchMid(void)
 {
     REG_BLDCNT = BLDCNT_EFFECT_ALPHA
         | BLDCNT_TARGETA(1, 0, 0, 0, 0)
@@ -1165,7 +1165,7 @@ static void PhaseIntroVMatchMid(void)
     SetOnVMatch(PhaseIntroVMatchLo);
 }
 
-static void PhaseIntroVMatchLo(void)
+void PhaseIntroVMatchLo(void)
 {
     REG_BLDCNT = BLDCNT_EFFECT_ALPHA
         | BLDCNT_TARGETA(0, 1, 0, 0, 0)
@@ -1178,7 +1178,7 @@ static void PhaseIntroVMatchLo(void)
     SetOnVMatch(PhaseIntroVMatchHi);
 }
 
-static void PhaseIntroText_PutText(struct Proc * proc)
+void PhaseIntroText_PutText(struct Proc * proc)
 {
     u16 * tm = gBg0Tm + TM_OFFSET(0, 9);
     int i;
@@ -1189,7 +1189,7 @@ static void PhaseIntroText_PutText(struct Proc * proc)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-static void PhaseIntroText_Init(struct Proc * proc)
+void PhaseIntroText_Init(struct Proc * proc)
 {
     if (GetCurrentBgmSong() != GetActiveMapSong())
         FadeBgmOut(4);
@@ -1199,7 +1199,7 @@ static void PhaseIntroText_Init(struct Proc * proc)
     proc->unk4C = 15;
 }
 
-static void PhaseIntroText_InLoop(struct Proc * proc)
+void PhaseIntroText_InLoop(struct Proc * proc)
 {
     SetBgOffset(0, Interpolate(INTERPOLATE_CUBIC, -28, -64, proc->unk4C, 0x10), 0);
 
@@ -1215,7 +1215,7 @@ static void PhaseIntroText_InLoop(struct Proc * proc)
     }
 }
 
-static void PhaseIntroText_OutLoop(struct Proc * proc)
+void PhaseIntroText_OutLoop(struct Proc * proc)
 {
     SetBgOffset(0, Interpolate(INTERPOLATE_RCUBIC, +36, -28, proc->unk4C, 0x10), 0);
 
@@ -1231,18 +1231,18 @@ static void PhaseIntroText_OutLoop(struct Proc * proc)
     }
 }
 
-static void PhaseIntroText_Clear(struct Proc * proc)
+void PhaseIntroText_Clear(struct Proc * proc)
 {
     TmFill(gBg0Tm, 0);
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-static void PhaseIntroSquares_Init(struct Proc * proc)
+void PhaseIntroSquares_Init(struct Proc * proc)
 {
     proc->unk4C = 4;
 }
 
-static void PhaseIntroSquares_InLoop(struct Proc * proc)
+void PhaseIntroSquares_InLoop(struct Proc * proc)
 {
     int ix, iy;
 
@@ -1278,7 +1278,7 @@ static void PhaseIntroSquares_InLoop(struct Proc * proc)
     }
 }
 
-static void PhaseIntroSquares_OutLoop(struct Proc * proc)
+void PhaseIntroSquares_OutLoop(struct Proc * proc)
 {
     int ix, iy;
 
@@ -1314,12 +1314,12 @@ static void PhaseIntroSquares_OutLoop(struct Proc * proc)
     }
 }
 
-static void PhaseIntroBlendBox_Init(struct Proc * proc)
+void PhaseIntroBlendBox_Init(struct Proc * proc)
 {
     proc->unk4C = 4;
 }
 
-static void PhaseIntroBlendBox_InLoop(struct Proc * proc)
+void PhaseIntroBlendBox_InLoop(struct Proc * proc)
 {
     int yoff, blend;
 
@@ -1338,7 +1338,7 @@ static void PhaseIntroBlendBox_InLoop(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void PhaseIntroBlendBox_OutLoop(struct Proc * proc)
+void PhaseIntroBlendBox_OutLoop(struct Proc * proc)
 {
     int yoff, blend;
 
@@ -1357,13 +1357,13 @@ static void PhaseIntroBlendBox_OutLoop(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void PhaseIntro_EndIfNoUnits(ProcPtr proc)
+void PhaseIntro_EndIfNoUnits(ProcPtr proc)
 {
     if (CountFactionMoveableUnits(gPlaySt.faction) == 0)
         Proc_End(proc);
 }
 
-static void PhaseIntro_InitGraphics(ProcPtr proc)
+void PhaseIntro_InitGraphics(ProcPtr proc)
 {
     Decompress(Img_PhaseChangeSquares, (u8 *) VRAM + CHR_SIZE*BGCHR_PHASE_CHANGE_SQUARES);
 
@@ -1395,7 +1395,7 @@ static void PhaseIntro_InitGraphics(ProcPtr proc)
     }
 }
 
-static void PhaseIntro_InitDisp(ProcPtr proc)
+void PhaseIntro_InitDisp(ProcPtr proc)
 {
     SetWinEnable(1, 0, 0);
 
@@ -1422,7 +1422,7 @@ static void PhaseIntro_InitDisp(ProcPtr proc)
     SetOnVMatch(PhaseIntroVMatchHi);
 }
 
-static void PhaseIntro_WaitForEnd(ProcPtr proc)
+void PhaseIntro_WaitForEnd(ProcPtr proc)
 {
     SetBlendAlpha(gBmSt.alt_blend_b_ca, gBmSt.alt_blend_b_cb);
 
@@ -1450,7 +1450,7 @@ void MakeActiveMuWatchPosition(int x, int y)
     SetAutoMuMoveScript(gWorkingMoveScr);
 }
 
-static void GasTrapSpriteAnim_Init(struct Proc * proc)
+void GasTrapSpriteAnim_Init(struct Proc * proc)
 {
     int x, y, oam2;
 
@@ -1507,7 +1507,7 @@ void StartGasTrapAnim(ProcPtr parent, int x, int y, int facing)
     proc->unk4A = facing;
 }
 
-static void FireTrapSpriteAnim_Init(struct Proc * proc)
+void FireTrapSpriteAnim_Init(struct Proc * proc)
 {
     int x, y, oam2;
 
@@ -1532,7 +1532,7 @@ void StartFireTrapAnim(ProcPtr parent, int x, int y)
     proc->y = y;
 }
 
-static void ArrowTrapSpriteAnim_Init(struct Proc * proc)
+void ArrowTrapSpriteAnim_Init(struct Proc * proc)
 {
     int x, oam2;
 
@@ -1556,7 +1556,7 @@ void StartArrowTrapAnim(ProcPtr parent, int x)
     proc->x = x;
 }
 
-static void func_fe6_0801D8B8(struct ShowMapChangeProc * proc)
+void func_fe6_0801D8B8(struct ShowMapChangeProc * proc)
 {
     struct MapChangeInfo const * info = GetMapChange(proc->map_change_id);
 
@@ -1568,7 +1568,7 @@ static void func_fe6_0801D8B8(struct ShowMapChangeProc * proc)
     proc->sndx = x;
 }
 
-static void func_fe6_0801D8E4(struct ShowMapChangeProc * proc)
+void func_fe6_0801D8E4(struct ShowMapChangeProc * proc)
 {
     int x, song;
 
@@ -1605,7 +1605,7 @@ void StartTimedMapChangeAnim(ProcPtr parent, int unused, int trapid)
     proc->alt_song = trap->extra;
 }
 
-static void PikeTrapSpriteAnim_Init(struct Proc * proc)
+void PikeTrapSpriteAnim_Init(struct Proc * proc)
 {
     int x, y, oam2;
 
@@ -1647,12 +1647,12 @@ void StartPikeTrapAnim(ProcPtr parent, int x, int y, int facing)
     }
 }
 
-static void func_fe6_0801DA1C(struct Proc * proc)
+void func_fe6_0801DA1C(struct Proc * proc)
 {
     proc->unk4C = 120; // 2 seconds
 }
 
-static void func_fe6_0801DA24(struct Proc * proc)
+void func_fe6_0801DA24(struct Proc * proc)
 {
     proc->unk4C--;
 
@@ -1688,14 +1688,14 @@ void func_fe6_0801DA54(ProcPtr parent, int icon, char const * str)
     SpawnProcLocking(ProcScr_Unk_085C5BA0, parent);
 }
 
-static void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc)
+void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc)
 {
     int offset = (GetGameTime()/2) % 0x100;
 
     SetBgOffset(3, offset, offset);
 }
 
-static void ChapterIntro_KeyListen_Init(struct Proc * proc)
+void ChapterIntro_KeyListen_Init(struct Proc * proc)
 {
     struct Proc * parent = proc->proc_parent;
 
@@ -1703,7 +1703,7 @@ static void ChapterIntro_KeyListen_Init(struct Proc * proc)
     proc->unk50 = 0;
 }
 
-static void ChapterIntro_KeyListen_Loop(struct Proc * proc)
+void ChapterIntro_KeyListen_Loop(struct Proc * proc)
 {
     if (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B | KEY_BUTTON_START))
         proc->unk50 = 1;
@@ -1794,7 +1794,7 @@ void PutScreenFogEffectOverlayed(void)
     }
 }
 
-static void ChapterIntro_Init(struct Proc * proc)
+void ChapterIntro_Init(struct Proc * proc)
 {
     InitBmBgLayers();
 
@@ -1852,7 +1852,7 @@ static void ChapterIntro_Init(struct Proc * proc)
     EnableBgSync(BG0_SYNC_BIT + BG1_SYNC_BIT + BG2_SYNC_BIT + BG3_SYNC_BIT);
 }
 
-static void ChapterIntro_BeginFadeIn(struct Proc * proc)
+void ChapterIntro_BeginFadeIn(struct Proc * proc)
 {
     SetDispEnable(0, 0, 0, 1, 1);
     SetBlendTargetA(0, 0, 0, 1, 1);
@@ -1862,7 +1862,7 @@ static void ChapterIntro_BeginFadeIn(struct Proc * proc)
     FadeBgmOut(2);
 }
 
-static void ChapterIntro_LoopFadeIn(struct Proc * proc)
+void ChapterIntro_LoopFadeIn(struct Proc * proc)
 {
     SetBlendDarken(proc->unk4C);
 
@@ -1875,7 +1875,7 @@ static void ChapterIntro_LoopFadeIn(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_BeginMotifFadeIn(struct Proc * proc)
+void ChapterIntro_BeginMotifFadeIn(struct Proc * proc)
 {
     SetDispEnable(0, 0, 1, 1, 1);
 
@@ -1887,7 +1887,7 @@ static void ChapterIntro_BeginMotifFadeIn(struct Proc * proc)
     PlaySe(SONG_90);
 }
 
-static void ChapterIntro_LoopMotifFadeIn(struct Proc * proc)
+void ChapterIntro_LoopMotifFadeIn(struct Proc * proc)
 {
     SetBlendAlpha(0x10 - proc->unk4C, 0x10);
 
@@ -1900,7 +1900,7 @@ static void ChapterIntro_LoopMotifFadeIn(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_BeginHOpenText(struct Proc * proc)
+void ChapterIntro_BeginHOpenText(struct Proc * proc)
 {
     proc->unk4C = 0;
 
@@ -1908,7 +1908,7 @@ static void ChapterIntro_BeginHOpenText(struct Proc * proc)
     PlaySe(SONG_91);
 }
 
-static void ChapterIntro_LoopHOpenText(struct Proc * proc)
+void ChapterIntro_LoopHOpenText(struct Proc * proc)
 {
     int val = Interpolate(INTERPOLATE_RSQUARE, 0, DISPLAY_WIDTH/2, proc->unk4C, 0x10);
     SetWin0Box(DISPLAY_WIDTH/2 - val, 78, DISPLAY_WIDTH/2 + val, 81);
@@ -1919,12 +1919,12 @@ static void ChapterIntro_LoopHOpenText(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void ChapterIntro_BeginVOpenText(struct Proc * proc)
+void ChapterIntro_BeginVOpenText(struct Proc * proc)
 {
     proc->unk4C = 1;
 }
 
-static void ChapterIntro_LoopVOpenText(struct Proc * proc)
+void ChapterIntro_LoopVOpenText(struct Proc * proc)
 {
     int val = Interpolate(INTERPOLATE_LINEAR, 0, 0x10, proc->unk4C, 3);
     SetWin0Box(0, DISPLAY_HEIGHT/2 - val, DISPLAY_WIDTH, DISPLAY_HEIGHT/2 + val);
@@ -1935,7 +1935,7 @@ static void ChapterIntro_LoopVOpenText(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void ChapterIntro_Begin_0801E1A0(struct Proc * proc)
+void ChapterIntro_Begin_0801E1A0(struct Proc * proc)
 {
     proc->unk4C = 0x20;
 
@@ -1945,7 +1945,7 @@ static void ChapterIntro_Begin_0801E1A0(struct Proc * proc)
     SetBlendTargetB(0, 0, 0, 1, 1);
 }
 
-static void ChapterIntro_Loop_0801E1F8(struct Proc * proc)
+void ChapterIntro_Loop_0801E1F8(struct Proc * proc)
 {
     ColorFadeTick();
     EnablePalSync();
@@ -1956,7 +1956,7 @@ static void ChapterIntro_Loop_0801E1F8(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void ChapterIntro_Begin_0801E220(struct Proc * proc)
+void ChapterIntro_Begin_0801E220(struct Proc * proc)
 {
     proc->unk4C = 13;
 
@@ -1964,7 +1964,7 @@ static void ChapterIntro_Begin_0801E220(struct Proc * proc)
     ColFadeDirect(gPal + 0x10*BGPAL_CHAPTERINTRO_FOG, BGPAL_CHAPTERINTRO_FOG, 2, -1);
 }
 
-static void ChapterIntro_Loop_0801E244(struct Proc * proc)
+void ChapterIntro_Loop_0801E244(struct Proc * proc)
 {
     if ((GetGameTime() % 4) == 0)
     {
@@ -1983,12 +1983,12 @@ static void ChapterIntro_Loop_0801E244(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_0801E2B0(struct Proc * proc)
+void ChapterIntro_0801E2B0(struct Proc * proc)
 {
     gBmSt.camera.y = 40*16;
 }
 
-static void ChapterIntro_InitMapDisplay(struct Proc * proc)
+void ChapterIntro_InitMapDisplay(struct Proc * proc)
 {
     int val;
 
@@ -2022,7 +2022,7 @@ static void ChapterIntro_InitMapDisplay(struct Proc * proc)
     RenderMap();
 }
 
-static void ChapterIntro_BeginFadeToMap(struct Proc * proc)
+void ChapterIntro_BeginFadeToMap(struct Proc * proc)
 {
     ColorFadeInit();
 
@@ -2040,7 +2040,7 @@ static void ChapterIntro_BeginFadeToMap(struct Proc * proc)
         ApplyFlamesWeatherGradient();
 }
 
-static void ChapterIntro_LoopFadeToMap(struct Proc * proc)
+void ChapterIntro_LoopFadeToMap(struct Proc * proc)
 {
     if ((GetGameTime() % 2) == 0)
     {
@@ -2069,12 +2069,12 @@ static void ChapterIntro_LoopFadeToMap(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_BeginCloseText(struct Proc * proc)
+void ChapterIntro_BeginCloseText(struct Proc * proc)
 {
     proc->unk4C = 0x10;
 }
 
-static void ChapterIntro_LoopCloseText(struct Proc * proc)
+void ChapterIntro_LoopCloseText(struct Proc * proc)
 {
     SetWin0Box(0, DISPLAY_HEIGHT/2 - proc->unk4C, DISPLAY_WIDTH, DISPLAY_HEIGHT/2 + proc->unk4C);
 
@@ -2084,12 +2084,12 @@ static void ChapterIntro_LoopCloseText(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void ChapterIntro_BeginFastCloseText(struct Proc * proc)
+void ChapterIntro_BeginFastCloseText(struct Proc * proc)
 {
     proc->unk4C = 8;
 }
 
-static void ChapterIntro_LoopFastCloseText(struct Proc * proc)
+void ChapterIntro_LoopFastCloseText(struct Proc * proc)
 {
     SetWin0Box(0, DISPLAY_HEIGHT/2 - proc->unk4C, DISPLAY_WIDTH, DISPLAY_HEIGHT/2 + proc->unk4C);
 
@@ -2099,7 +2099,7 @@ static void ChapterIntro_LoopFastCloseText(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void ChapterIntro_BeginFadeOut(struct Proc * proc)
+void ChapterIntro_BeginFadeOut(struct Proc * proc)
 {
     ColorFadeInit();
     ColFadeDirect(gPal, 0, 6, -2);
@@ -2109,7 +2109,7 @@ static void ChapterIntro_BeginFadeOut(struct Proc * proc)
     EarthQuakeSoundFadeOut(1);
 }
 
-static void ChapterIntro_LoopFadeOut(struct Proc * proc)
+void ChapterIntro_LoopFadeOut(struct Proc * proc)
 {
     ColorFadeTick();
     EnablePalSync();
@@ -2126,7 +2126,7 @@ static void ChapterIntro_LoopFadeOut(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_BeginFastFadeToMap(struct Proc * proc)
+void ChapterIntro_BeginFastFadeToMap(struct Proc * proc)
 {
     ClearUi();
 
@@ -2145,7 +2145,7 @@ static void ChapterIntro_BeginFastFadeToMap(struct Proc * proc)
     StartBgm(GetChapterInfo(gPlaySt.chapter)->song_opening_bgm, NULL);
 }
 
-static void ChapterIntro_LoopFastFadeToMap(struct Proc * proc)
+void ChapterIntro_LoopFastFadeToMap(struct Proc * proc)
 {
     ColorFadeTick();
 
@@ -2164,12 +2164,12 @@ static void ChapterIntro_LoopFastFadeToMap(struct Proc * proc)
     }
 }
 
-static void ChapterIntro_SetSkipTarget(short arg, struct Proc * proc)
+void ChapterIntro_SetSkipTarget(short arg, struct Proc * proc)
 {
     proc->unk50 = arg;
 }
 
-static void GameOverScreen_RandomScroll_Init(struct Proc * proc)
+void GameOverScreen_RandomScroll_Init(struct Proc * proc)
 {
     proc->unk34 = +46;
     proc->unk38 = -90;
@@ -2182,7 +2182,7 @@ static void GameOverScreen_RandomScroll_Init(struct Proc * proc)
     proc->unk6A = 8536;
 }
 
-static void GameOverScreen_RandomScroll_Loop(struct Proc * proc)
+void GameOverScreen_RandomScroll_Loop(struct Proc * proc)
 {
     proc->timer1 += proc->unk34;
     proc->timer2 += proc->unk38;
@@ -2193,7 +2193,7 @@ static void GameOverScreen_RandomScroll_Loop(struct Proc * proc)
     SetBgOffset(3, -proc->unk68 >> 8, -proc->unk6A >> 8);
 }
 
-static void GameOverScreenHBlank(void)
+void GameOverScreenHBlank(void)
 {
     u16 val = REG_VCOUNT + 1;
 
@@ -2212,7 +2212,7 @@ static void GameOverScreenHBlank(void)
     REG_BLDCB = val;
 }
 
-static void GameOverScreen_Init(struct Proc * proc)
+void GameOverScreen_Init(struct Proc * proc)
 {
     int i;
 
@@ -2261,7 +2261,7 @@ static void GameOverScreen_Init(struct Proc * proc)
     EnablePalSync();
 }
 
-static void GameOverScreen_LoopFadeIn(struct Proc * proc)
+void GameOverScreen_LoopFadeIn(struct Proc * proc)
 {
     if ((GetGameTime() % 8) == 0)
     {
@@ -2275,12 +2275,12 @@ static void GameOverScreen_LoopFadeIn(struct Proc * proc)
     }
 }
 
-static void GameOverScreen_BeginIdle(struct Proc * proc)
+void GameOverScreen_BeginIdle(struct Proc * proc)
 {
     proc->unk4E = 1500;
 }
 
-static void GameOverScreen_LoopIdle(struct Proc * proc)
+void GameOverScreen_LoopIdle(struct Proc * proc)
 {
     proc->unk4E--;
 
@@ -2291,7 +2291,7 @@ static void GameOverScreen_LoopIdle(struct Proc * proc)
         Proc_Goto(proc, 99);
 }
 
-static void GameOverScreen_BeginFadeOut(struct Proc * proc)
+void GameOverScreen_BeginFadeOut(struct Proc * proc)
 {
     ColorFadeInit();
     ColFadeDirect(gPal + 0x10*BGPAL_GAMEOVER_TEXT, BGPAL_GAMEOVER_TEXT, 1, -1);
@@ -2300,7 +2300,7 @@ static void GameOverScreen_BeginFadeOut(struct Proc * proc)
     FadeBgmOut(4);
 }
 
-static void GameOverScreen_LoopFadeOut(struct Proc * proc)
+void GameOverScreen_LoopFadeOut(struct Proc * proc)
 {
     ColorFadeTick();
     EnablePalSync();
@@ -2311,7 +2311,7 @@ static void GameOverScreen_LoopFadeOut(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void GameOverScreen_End(struct Proc * proc)
+void GameOverScreen_End(struct Proc * proc)
 {
     SetOnHBlankA(NULL);
     SetOnHBlankB(NULL);

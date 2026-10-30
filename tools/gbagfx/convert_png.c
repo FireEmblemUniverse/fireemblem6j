@@ -7,7 +7,7 @@
 #include "convert_png.h"
 #include "gfx.h"
 
-static FILE *PngReadOpen(char *path, png_structp *pngStruct, png_infop *pngInfo)
+FILE *PngReadOpen(char *path, png_structp *pngStruct, png_infop *pngInfo)
 {
     FILE *fp = fopen(path, "rb");
 
@@ -45,7 +45,7 @@ static FILE *PngReadOpen(char *path, png_structp *pngStruct, png_infop *pngInfo)
     return fp;
 }
 
-static unsigned char *ConvertBitDepth(unsigned char *src, int srcBitDepth, int destBitDepth, int numPixels)
+unsigned char *ConvertBitDepth(unsigned char *src, int srcBitDepth, int destBitDepth, int numPixels)
 {
     // Round the number of bits up to the next 8 and divide by 8 to get the number of bytes.
     int srcSize = ((numPixels * srcBitDepth + 7) & ~7) / 8;

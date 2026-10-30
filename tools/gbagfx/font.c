@@ -16,7 +16,7 @@ unsigned char gFontPalette[][3] = {
 	{0xFF, 0xFF, 0xFF}  // box (white)
 };
 
-static void ConvertFromLatinFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertFromLatinFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	unsigned int srcPixelsOffset = 0;
 
@@ -39,7 +39,7 @@ static void ConvertFromLatinFont(unsigned char *src, unsigned char *dest, unsign
 	}
 }
 
-static void ConvertToLatinFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertToLatinFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	unsigned int destPixelsOffset = 0;
 
@@ -62,7 +62,7 @@ static void ConvertToLatinFont(unsigned char *src, unsigned char *dest, unsigned
 	}
 }
 
-static void ConvertFromHalfwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertFromHalfwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	for (unsigned int row = 0; row < numRows; row++) {
 		for (unsigned int column = 0; column < 16; column++) {
@@ -86,7 +86,7 @@ static void ConvertFromHalfwidthJapaneseFont(unsigned char *src, unsigned char *
 	}
 }
 
-static void ConvertToHalfwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertToHalfwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	for (unsigned int row = 0; row < numRows; row++) {
 		for (unsigned int column = 0; column < 16; column++) {
@@ -110,7 +110,7 @@ static void ConvertToHalfwidthJapaneseFont(unsigned char *src, unsigned char *de
 	}
 }
 
-static void ConvertFromFullwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertFromFullwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	for (unsigned int row = 0; row < numRows; row++) {
 		for (unsigned int column = 0; column < 16; column++) {
@@ -134,7 +134,7 @@ static void ConvertFromFullwidthJapaneseFont(unsigned char *src, unsigned char *
 	}
 }
 
-static void ConvertToFullwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
+void ConvertToFullwidthJapaneseFont(unsigned char *src, unsigned char *dest, unsigned int numRows)
 {
 	for (unsigned int row = 0; row < numRows; row++) {
 		for (unsigned int column = 0; column < 16; column++) {
@@ -158,7 +158,7 @@ static void ConvertToFullwidthJapaneseFont(unsigned char *src, unsigned char *de
 	}
 }
 
-static void SetTextFontPalette(struct Image *image)
+void SetTextFontPalette(struct Image *image)
 {
 	image->hasPalette = true;
 

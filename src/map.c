@@ -17,11 +17,11 @@
 enum { MAP_POOL_SIZE = 0x7B8 };
 enum { TILESET_METATILES = 0x400 };
 
-static void MapInit(u8 * data, u8 *** rowsOut, int width, int height);
-static void UnpackRawMap(void * buf, int chapter);
-static void InitMetatilesMap(void);
-static void RenderMapColumn(u16 x_offset);
-static void RenderMapLine(u16 y_offset);
+void MapInit(u8 * data, u8 *** rowsOut, int width, int height);
+void UnpackRawMap(void * buf, int chapter);
+void InitMetatilesMap(void);
+void RenderMapColumn(u16 x_offset);
+void RenderMapLine(u16 y_offset);
 
 EWRAM_OVERLAY(0) u16 gMapBuf[0x7B8] = {}; // ??
 
@@ -44,7 +44,7 @@ static u8 sMapRangeData[MAP_POOL_SIZE];
 static u8 EWRAM_DATA sMapFogData[MAP_POOL_SIZE] = {};
 static u8 EWRAM_DATA sMapHiddenData[MAP_POOL_SIZE] = {};
 static u8 EWRAM_DATA sMapOtherData[MAP_POOL_SIZE] = {};
-static u16 EWRAM_DATA sTilesetInfo[TILESET_METATILES*4 + (TILESET_METATILES+1)/2] = {};
+u16 EWRAM_DATA sTilesetInfo[TILESET_METATILES*4 + (TILESET_METATILES+1)/2] = {};
 static u16 EWRAM_DATA sMapMetatiles[MAP_POOL_SIZE] = {};
 
 u8 * CONST_DATA gMetatilesTerrainLut = (u8 *) &sTilesetInfo[TILESET_METATILES*4];

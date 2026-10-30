@@ -70,7 +70,7 @@ void ForEachPositionInRange(void (* func)(int x, int y))
     }
 }
 
-static void ListAdjacentTargetUnits(int x, int y, void (* tryEnlistTarget)(struct Unit * unit))
+void ListAdjacentTargetUnits(int x, int y, void (* tryEnlistTarget)(struct Unit * unit))
 {
     BeginTargetList(x, y);
 
@@ -80,7 +80,7 @@ static void ListAdjacentTargetUnits(int x, int y, void (* tryEnlistTarget)(struc
     ForEachUnitInRange(tryEnlistTarget);
 }
 
-static void ListAdjacentTargetPositions(int x, int y, void (* tryEnlistTarget)(int x, int y))
+void ListAdjacentTargetPositions(int x, int y, void (* tryEnlistTarget)(int x, int y))
 {
     BeginTargetList(x, y);
 
@@ -90,7 +90,7 @@ static void ListAdjacentTargetPositions(int x, int y, void (* tryEnlistTarget)(i
     ForEachPositionInRange(tryEnlistTarget);
 }
 
-static void ListTargetPositionsWithinTwoSquares(int x, int y, void (* tryEnlistTarget)(int x, int y))
+void ListTargetPositionsWithinTwoSquares(int x, int y, void (* tryEnlistTarget)(int x, int y))
 {
     BeginTargetList(x, y);
 
@@ -100,7 +100,7 @@ static void ListTargetPositionsWithinTwoSquares(int x, int y, void (* tryEnlistT
     ForEachPositionInRange(tryEnlistTarget);
 }
 
-static void ListTargetUnitsWithinSubjectMagRange(void (* tryEnlistTarget)(struct Unit * unit))
+void ListTargetUnitsWithinSubjectMagRange(void (* tryEnlistTarget)(struct Unit * unit))
 {
     int x = gSubjectUnit->x;
     int y = gSubjectUnit->y;

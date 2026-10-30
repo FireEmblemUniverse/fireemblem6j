@@ -37,20 +37,20 @@ enum
     L_PREPPHASE_BEGINMAP = 0x32,
 };
 
-static void PrepPhase_RightInitCamera(struct Proc * proc);
-static void PrepPhase_DownInitCamera(struct Proc * proc);
-static void PrepPhase_LeftInitCamera(struct Proc * proc);
-static void PrepPhase_UpInitCamera(struct Proc * proc);
-static void PrepPhase_InitCameraLoop(struct Proc * proc);
-static void PrepPhase_Init(struct Proc * proc);
-static void PrepPhase_WatchRoy(struct Proc * proc);
-static void PrepPhase_MapIdle(struct Proc * proc);
-static void PrepPhase_MapSwapSelectBegin(struct Proc * proc);
-static void PrepPhase_MapSwapSelectIdle(struct Proc * proc);
-static void PrepPhase_MapSwapSelectCancel(struct Proc * proc);
-static void PrepPhase_MapSwapSelectApply(struct Proc * proc);
-static void PrepPhase_MapSwapSelectFogFadeA(struct Proc * proc);
-static void PrepPhase_MapSwapSelectFogFadeB(struct Proc * proc);
+void PrepPhase_RightInitCamera(struct Proc * proc);
+void PrepPhase_DownInitCamera(struct Proc * proc);
+void PrepPhase_LeftInitCamera(struct Proc * proc);
+void PrepPhase_UpInitCamera(struct Proc * proc);
+void PrepPhase_InitCameraLoop(struct Proc * proc);
+void PrepPhase_Init(struct Proc * proc);
+void PrepPhase_WatchRoy(struct Proc * proc);
+void PrepPhase_MapIdle(struct Proc * proc);
+void PrepPhase_MapSwapSelectBegin(struct Proc * proc);
+void PrepPhase_MapSwapSelectIdle(struct Proc * proc);
+void PrepPhase_MapSwapSelectCancel(struct Proc * proc);
+void PrepPhase_MapSwapSelectApply(struct Proc * proc);
+void PrepPhase_MapSwapSelectFogFadeA(struct Proc * proc);
+void PrepPhase_MapSwapSelectFogFadeB(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PrepPhase[] =
 {
@@ -159,7 +159,7 @@ PROC_LABEL(L_PLAYERPHASE_SEE_RANGE),
     PROC_END,
 };
 
-static void PrepPhase_RightInitCamera(struct Proc * proc)
+void PrepPhase_RightInitCamera(struct Proc * proc)
 {
     StartBgm(SONG_22, NULL);
 
@@ -174,7 +174,7 @@ static void PrepPhase_RightInitCamera(struct Proc * proc)
     proc->unk4C = (gMapSize.x*16 - DISPLAY_WIDTH)/2;
 }
 
-static void PrepPhase_DownInitCamera(struct Proc * proc)
+void PrepPhase_DownInitCamera(struct Proc * proc)
 {
     proc->unk34 = 0;
     proc->unk38 = 2;
@@ -182,7 +182,7 @@ static void PrepPhase_DownInitCamera(struct Proc * proc)
     proc->unk4C = (gMapSize.y*16 - DISPLAY_HEIGHT)/2;
 }
 
-static void PrepPhase_LeftInitCamera(struct Proc * proc)
+void PrepPhase_LeftInitCamera(struct Proc * proc)
 {
     proc->unk34 = -2;
     proc->unk38 = 0;
@@ -190,7 +190,7 @@ static void PrepPhase_LeftInitCamera(struct Proc * proc)
     proc->unk4C = (gMapSize.x*16 - DISPLAY_WIDTH)/2;
 }
 
-static void PrepPhase_UpInitCamera(struct Proc * proc)
+void PrepPhase_UpInitCamera(struct Proc * proc)
 {
     proc->unk34 = 0;
     proc->unk38 = -2;
@@ -198,7 +198,7 @@ static void PrepPhase_UpInitCamera(struct Proc * proc)
     proc->unk4C = (gMapSize.y*16 - DISPLAY_HEIGHT)/2;
 }
 
-static void PrepPhase_InitCameraLoop(struct Proc * proc)
+void PrepPhase_InitCameraLoop(struct Proc * proc)
 {
     if (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B | KEY_BUTTON_START))
         proc->unk4A = TRUE;
@@ -221,7 +221,7 @@ static void PrepPhase_InitCameraLoop(struct Proc * proc)
         Proc_Break(proc);
 }
 
-static void PrepPhase_Init(struct Proc * proc)
+void PrepPhase_Init(struct Proc * proc)
 {
     if (!GetChapterInfo(gPlaySt.chapter)->has_prep)
     {
@@ -245,7 +245,7 @@ static void PrepPhase_Init(struct Proc * proc)
     RenderMap();
 }
 
-static void PrepPhase_WatchRoy(struct Proc * proc)
+void PrepPhase_WatchRoy(struct Proc * proc)
 {
     struct Unit * roy = GetUnitByPid(PID_ROY);
 
@@ -255,7 +255,7 @@ static void PrepPhase_WatchRoy(struct Proc * proc)
     gBmSt.camera.y = GetCameraCenteredY(gBmSt.cursor.y*16);
 }
 
-static void PrepPhase_MapIdle(struct Proc * proc)
+void PrepPhase_MapIdle(struct Proc * proc)
 {
     HandlePlayerMapCursor();
 
@@ -365,7 +365,7 @@ fu8 PrepMapMenuConfirm(struct MenuProc * menu, struct MenuEntProc * ent)
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
-static void PrepPhase_MapSwapSelectBegin(struct Proc * proc)
+void PrepPhase_MapSwapSelectBegin(struct Proc * proc)
 {
     struct UnitInfo const * info;
     struct SpriteAnim * anim;
@@ -399,7 +399,7 @@ static void PrepPhase_MapSwapSelectBegin(struct Proc * proc)
     PlaySe(SONG_69);
 }
 
-static void PrepPhase_MapSwapSelectIdle(struct Proc * proc)
+void PrepPhase_MapSwapSelectIdle(struct Proc * proc)
 {
     int x, y;
 
@@ -453,13 +453,13 @@ static void PrepPhase_MapSwapSelectIdle(struct Proc * proc)
     proc->unk4A = isValid;
 }
 
-static void PrepPhase_MapSwapSelectCancel(struct Proc * proc)
+void PrepPhase_MapSwapSelectCancel(struct Proc * proc)
 {
     SetMapCursorPosition(gActiveUnit->x, gActiveUnit->y);
     CameraMoveWatchPosition(proc, gActiveUnit->x, gActiveUnit->y);
 }
 
-static void PrepPhase_MapSwapSelectApply(struct Proc * proc)
+void PrepPhase_MapSwapSelectApply(struct Proc * proc)
 {
     struct Unit * unit_a = gActiveUnit;
     struct Unit * unit_b = GetUnit(gMapUnit[gBmSt.cursor.y][gBmSt.cursor.x]);
@@ -477,13 +477,13 @@ static void PrepPhase_MapSwapSelectApply(struct Proc * proc)
     PlaySe(SONG_61);
 }
 
-static void PrepPhase_MapSwapSelectFogFadeA(struct Proc * proc)
+void PrepPhase_MapSwapSelectFogFadeA(struct Proc * proc)
 {
     if (gPlaySt.vision != 0)
         RenderMapForFade();
 }
 
-static void PrepPhase_MapSwapSelectFogFadeB(struct Proc * proc)
+void PrepPhase_MapSwapSelectFogFadeB(struct Proc * proc)
 {
     if (gPlaySt.vision != 0)
     {

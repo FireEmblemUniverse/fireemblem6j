@@ -26,7 +26,7 @@ enum
 struct MoveStats EWRAM_DATA gMoveStats = {};
 struct MoveEntry EWRAM_DATA gMoveList[MOVE_MAX] = {};
 
-static void ClearMoveList(void)
+void ClearMoveList(void)
 {
     int i;
 

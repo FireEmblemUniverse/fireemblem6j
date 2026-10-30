@@ -3,9 +3,9 @@
 #include "hardware.h"
 #include "oam.h"
 
-static int BasRunScript(struct BaSprite * BaSprite);
-static void BasInsert(struct BaSprite * BaSprite);
-static void PutBas(struct BaSprite * BaSprite);
+int BasRunScript(struct BaSprite * BaSprite);
+void BasInsert(struct BaSprite * BaSprite);
+void PutBas(struct BaSprite * BaSprite);
 
 typedef void (* BasFunc)(struct BaSprite * bas);
 

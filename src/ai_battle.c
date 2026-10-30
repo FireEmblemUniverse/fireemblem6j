@@ -14,14 +14,14 @@
 #include "constants/iids.h"
 #include "constants/terrains.h"
 
-static int AiGetDamageDealtCombatScoreComponent(void);
-static int AiGetOpponentLowHpScoreComponent(void);
-static int AiGetFriendZoneCombatScoreComponent(void);
-static int AiGetTargetJobCombatScoreComponent(void);
-static int AiGetTurnCombatScoreComponent(void);
-static int AiGetDamageTakenScoreComponent(void);
-static int AiGetDangerScoreComponent(void);
-static int AiGetLowHpScoreComponent(void);
+int AiGetDamageDealtCombatScoreComponent(void);
+int AiGetOpponentLowHpScoreComponent(void);
+int AiGetFriendZoneCombatScoreComponent(void);
+int AiGetTargetJobCombatScoreComponent(void);
+int AiGetTurnCombatScoreComponent(void);
+int AiGetDamageTakenScoreComponent(void);
+int AiGetDangerScoreComponent(void);
+int AiGetLowHpScoreComponent(void);
 
 static struct AiCombatScoreCoefficients const * sCombatScoreCoefficients;
 
@@ -325,7 +325,7 @@ bool AiAttemptBallistaCombat(bool (* is_enemy)(struct Unit * unit), struct AiCom
     return FALSE;
 }
 
-static u8 AiAttemptStealAction_GetMovementAt(int x, int y)
+u8 AiAttemptStealAction_GetMovementAt(int x, int y)
 {
     if (gMapMovementSigned[y][x] >= MAP_MOVEMENT_MAX)
         return -1;

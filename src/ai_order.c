@@ -6,9 +6,9 @@
 #include "bm.h"
 #include "ai_decide.h"
 
-static u32 * CONST_DATA sUnitScores = (u32 *) gBuf;
+u32 * CONST_DATA sUnitScores = (u32 *) gBuf;
 
-static void AiOrder_Main(ProcPtr proc);
+void AiOrder_Main(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_AiOrder[] =
 {
@@ -17,8 +17,8 @@ struct ProcScr CONST_DATA ProcScr_AiOrder[] =
     PROC_END,
 };
 
-static void AiOrder_Berserk_Init(ProcPtr proc);
-static void AiOrder_End(ProcPtr proc);
+void AiOrder_Berserk_Init(ProcPtr proc);
+void AiOrder_End(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_AiOrder_Berserk[] =
 {
@@ -28,8 +28,8 @@ struct ProcScr CONST_DATA ProcScr_AiOrder_Berserk[] =
     PROC_END,
 };
 
-static void AiOrder_Init(ProcPtr proc);
-static void AiOrder_End(ProcPtr proc);
+void AiOrder_Init(ProcPtr proc);
+void AiOrder_End(ProcPtr proc);
 
 void AiOrder_Main(ProcPtr proc)
 {

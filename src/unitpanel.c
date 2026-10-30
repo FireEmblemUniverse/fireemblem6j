@@ -32,7 +32,7 @@ struct UnitPanelProc
     /* 63 */ u8 xNameText;
 };
 
-static void UnitPanel_OnLoop(struct UnitPanelProc * proc);
+void UnitPanel_OnLoop(struct UnitPanelProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_UnitPanel[] =
 {
@@ -42,7 +42,7 @@ struct ProcScr CONST_DATA ProcScr_UnitPanel[] =
 
 static struct UnitPanelProc * EWRAM_DATA sRescueUnitPanels[2] = {};
 
-static void UnitPanel_OnLoop(struct UnitPanelProc * proc)
+void UnitPanel_OnLoop(struct UnitPanelProc * proc)
 {
     SHOULD_BE_STATIC u16 SHOULD_BE_CONST factionPalLut[] =
     {
@@ -69,7 +69,7 @@ static void UnitPanel_OnLoop(struct UnitPanelProc * proc)
     }
 }
 
-static struct UnitPanelProc * StartUnitPanel(ProcPtr parent)
+struct UnitPanelProc * StartUnitPanel(ProcPtr parent)
 {
     struct UnitPanelProc * proc = SpawnProc(ProcScr_UnitPanel, parent);
 
@@ -81,7 +81,7 @@ static struct UnitPanelProc * StartUnitPanel(ProcPtr parent)
     return proc;
 }
 
-static void InitUnitPanelSpriteTextPositions(struct UnitPanelProc * proc)
+void InitUnitPanelSpriteTextPositions(struct UnitPanelProc * proc)
 {
     if (GetStringTextLen(DecodeMsg(proc->unit->pinfo->msg_name)) < 40)
     {
@@ -98,7 +98,7 @@ static void InitUnitPanelSpriteTextPositions(struct UnitPanelProc * proc)
     proc->xNameText -= 16;
 }
 
-static struct UnitPanelProc * InitUnitPanel(struct UnitPanelProc * proc, struct Unit * unit, int x, int y, int width, int lines)
+struct UnitPanelProc * InitUnitPanel(struct UnitPanelProc * proc, struct Unit * unit, int x, int y, int width, int lines)
 {
     if (proc == NULL)
     {
@@ -138,7 +138,7 @@ static struct UnitPanelProc * InitUnitPanel(struct UnitPanelProc * proc, struct 
     return proc;
 }
 
-static int GetUnitPanelXForUnit(struct Unit * unit, int width)
+int GetUnitPanelXForUnit(struct Unit * unit, int width)
 {
     if (unit->x*16 - gBmSt.camera.x < DISPLAY_WIDTH/2)
         return 30 - width;
@@ -146,7 +146,7 @@ static int GetUnitPanelXForUnit(struct Unit * unit, int width)
     return 0;
 }
 
-static void DrawUnitHpText(struct Text * text, struct Unit * unit)
+void DrawUnitHpText(struct Text * text, struct Unit * unit)
 {
     ClearText(text);
 
@@ -157,7 +157,7 @@ static void DrawUnitHpText(struct Text * text, struct Unit * unit)
     Text_InsertDrawNumberOrBlank(text, 56, TEXT_COLOR_SYSTEM_BLUE, GetUnitMaxHp(unit));
 }
 
-static void DrawUnitConText(struct Text * text, struct Unit * unit)
+void DrawUnitConText(struct Text * text, struct Unit * unit)
 {
     ClearText(text);
 
@@ -165,7 +165,7 @@ static void DrawUnitConText(struct Text * text, struct Unit * unit)
     Text_InsertDrawNumberOrBlank(text, 56, TEXT_COLOR_SYSTEM_BLUE, UNIT_CON(unit));
 }
 
-static void DrawUnitAidText(struct Text * text, struct Unit * unit)
+void DrawUnitAidText(struct Text * text, struct Unit * unit)
 {
     ClearText(text);
 
@@ -173,14 +173,14 @@ static void DrawUnitAidText(struct Text * text, struct Unit * unit)
     Text_InsertDrawNumberOrBlank(text, 56, TEXT_COLOR_SYSTEM_BLUE, GetUnitAid(unit));
 }
 
-static void PutUnitAidIconForTextAt(struct Unit * unit, int x, int y)
+void PutUnitAidIconForTextAt(struct Unit * unit, int x, int y)
 {
     PutIcon(gBg0Tm + TM_OFFSET(x+4, y),
         GetAidIconFromAttributes(UNIT_ATTRIBUTES(unit)),
         TILEREF(0, BGPAL_ICONS+1));
 }
 
-static void DrawUnitStatusText(struct Text * text, struct Unit * unit)
+void DrawUnitStatusText(struct Text * text, struct Unit * unit)
 {
     ClearText(text);
 
@@ -188,7 +188,7 @@ static void DrawUnitStatusText(struct Text * text, struct Unit * unit)
     Text_InsertDrawString(text, 32, TEXT_COLOR_SYSTEM_BLUE, GetUnitStatusName(unit));
 }
 
-static void DrawUnitResChangeText(struct Text * text, struct Unit * unit, int bonus)
+void DrawUnitResChangeText(struct Text * text, struct Unit * unit, int bonus)
 {
     ClearText(text);
 
@@ -199,7 +199,7 @@ static void DrawUnitResChangeText(struct Text * text, struct Unit * unit, int bo
     Text_InsertDrawNumberOrBlank(text, 32, TEXT_COLOR_SYSTEM_BLUE, GetUnitResistance(unit));
 }
 
-static void DrawUnitResUnkText(struct Text * text, struct Unit * unit, int unused)
+void DrawUnitResUnkText(struct Text * text, struct Unit * unit, int unused)
 {
     ClearText(text);
 
@@ -207,7 +207,7 @@ static void DrawUnitResUnkText(struct Text * text, struct Unit * unit, int unuse
     Text_InsertDrawNumberOrBlank(text, 56, TEXT_COLOR_SYSTEM_BLUE, GetUnitResistance(unit));
 }
 
-static void DrawAccuracyText(struct Text * text, int accuracy)
+void DrawAccuracyText(struct Text * text, int accuracy)
 {
     ClearText(text);
 
@@ -429,7 +429,7 @@ void RefreshUnitStaffOffensePanel(struct Unit * unit, int hit)
     PutText(proc->lines+1, gBg0Tm + TM_OFFSET(x+1, y+5));
 }
 
-static void StartUnitRescuePanelsCore(ProcPtr parent)
+void StartUnitRescuePanelsCore(ProcPtr parent)
 {
     sRescueUnitPanels[0] = StartUnitPanel(parent);
     InitTextDb(sRescueUnitPanels[0]->lines+0, 8);

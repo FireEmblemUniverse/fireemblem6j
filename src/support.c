@@ -244,7 +244,7 @@ void DoTurnSupportExp(void)
     }
 }
 
-static struct SupportBonuses const * GetAffinityBonuses(int affinity)
+struct SupportBonuses const * GetAffinityBonuses(int affinity)
 {
     struct SupportBonuses const * it;
 
@@ -259,7 +259,7 @@ static struct SupportBonuses const * GetAffinityBonuses(int affinity)
 #endif
 }
 
-static void ApplyAffinityBonuses(struct SupportBonuses * bonuses, int affinity, int level)
+void ApplyAffinityBonuses(struct SupportBonuses * bonuses, int affinity, int level)
 {
     struct SupportBonuses const * added = GetAffinityBonuses(affinity);
 
@@ -271,7 +271,7 @@ static void ApplyAffinityBonuses(struct SupportBonuses * bonuses, int affinity, 
     bonuses->bonus_dodge   += level * added->bonus_dodge;
 }
 
-static void InitBonuses(struct SupportBonuses * bonuses)
+void InitBonuses(struct SupportBonuses * bonuses)
 {
     bonuses->bonus_attack  = 0;
     bonuses->bonus_defense = 0;
