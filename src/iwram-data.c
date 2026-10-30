@@ -121,8 +121,8 @@ IWRAM_DATA u8 Pad_Common_03004574[0xC] = {};
  */
 IWRAM_DATA u8 gUnk_Sio_03004580[0x80] = {};
 IWRAM_DATA struct ManimDebugSt gManimDebugStObj = {};
-IWRAM_DATA struct UnkSt_030046D0 gUnk_030046D0[0x10] = {};
-IWRAM_DATA u16 gUnk_03004750[10 * 0x10] = {};
+IWRAM_DATA struct ManimStarSt gManimStars[0x10] = {};
+IWRAM_DATA u16 gManimPalBackup[10 * 0x10] = {};
 
 /**
  * Event info
