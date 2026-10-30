@@ -27,10 +27,10 @@
 #include "systemlabels.h"
 #include "save_stats.h"
 
-#include "constants/icons.h"
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
+#include "constants/icons.h"
 
 enum
 {
