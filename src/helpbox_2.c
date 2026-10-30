@@ -492,7 +492,7 @@ void func_fe6_080715DC(int x, int y, int msg)
     func_fe6_08071748(&static_info);
 }
 
-struct HelpBoxInfo const * EWRAM_DATA gUnk_0203D45C = NULL;
+struct HelpBoxInfo const * EWRAM_DATA gCurrentHelpBoxInfo = NULL;
 
 void func_fe6_080715FC(struct HelpBoxInfo const * info)
 {
@@ -532,7 +532,7 @@ void func_fe6_080715FC(struct HelpBoxInfo const * info)
     func_fe6_08071514();
     func_fe6_080714F8(proc->item, proc->msg);
 
-    gUnk_0203D45C = info;
+    gCurrentHelpBoxInfo = info;
 }
 
 void func_fe6_080716C8(void)
