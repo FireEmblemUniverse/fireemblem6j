@@ -1,5 +1,5 @@
 - clean up: ai_080326C4, manim, eventfunctions, statusscreen
-- tools: unitinfo
+- tools: face, unitinfo
 - decomp: unitlistscreen needs matches and finish.
 
 - flatten dir structure (include/gba -> include)
