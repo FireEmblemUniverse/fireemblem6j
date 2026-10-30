@@ -1,4 +1,4 @@
-#include "ai_unk.h"
+#include "ai_action.h"
 #include "ai.h"
 
 #include "random.h"
@@ -41,7 +41,7 @@ void AiAttemptDoorKey(int slot);
 void AiAttemptLockpick(int slot);
 void AiAttemptAntitoxin(int slot);
 
-u8 EWRAM_DATA gUnk_Pid_02039694 = 0;
+u8 EWRAM_DATA gAiTargetPid = 0;
 
 void AiRefreshDangerMap(void)
 {
@@ -757,42 +757,42 @@ bool AiFunc_CountEnemiesInRange(void const * arg)
     return 0;
 }
 
-bool AiFunc_080334F4(void const * arg)
+bool AiFunc_MoveTowardsPointAttacking(void const * arg)
 {
-    struct UnkAiFuncArg_080334F4 const * cast = arg;
+    struct AiMoveTowardsPointArg const * cast = arg;
 
     fu16 item;
     int ix;
     int iy;
-    int x_unk;
-    int y_unk;
+    int x_target;
+    int y_target;
     fu16 move;
     int x_prev;
     int y_prev;
 
-    move = UNIT_MOV(gActiveUnit) * cast->unk_04;
+    move = UNIT_MOV(gActiveUnit) * cast->move_coeff_q4;
     move = move >> 4;
 
     item = GetUnitEquippedWeapon(gActiveUnit);
 
-    x_unk = cast->unk_00[((gActiveUnit->ai_config & 0x1FC0) >> 8) * 2 + 0];
-    y_unk = cast->unk_00[((gActiveUnit->ai_config & 0x1FC0) >> 8) * 2 + 1];
+    x_target = cast->points[((gActiveUnit->ai_config & 0x1FC0) >> 8) * 2 + 0];
+    y_target = cast->points[((gActiveUnit->ai_config & 0x1FC0) >> 8) * 2 + 1];
 
     x_prev = gActiveUnit->x;
     y_prev = gActiveUnit->y;
 
-    gActiveUnit->x = x_unk;
-    gActiveUnit->y = y_unk;
+    gActiveUnit->x = x_target;
+    gActiveUnit->y = y_target;
 
-    if ((cast->unk_05 != 0) && (item != 0))
+    if ((cast->attack_range != 0) && (item != 0))
     {
         AiFloodMovementAndRange(gActiveUnit, move, item);
 
-        if (gMapRangeSigned[y_unk][x_unk] == 0)
+        if (gMapRangeSigned[y_target][x_target] == 0)
         {
             gActiveUnit->x = x_prev;
             gActiveUnit->y = y_prev;
-            AiTryMoveTowards(x_unk, y_unk, 0, 0xff, 1);
+            AiTryMoveTowards(x_target, y_target, 0, 0xff, 1);
             return TRUE;
         }
     }
@@ -803,11 +803,11 @@ bool AiFunc_080334F4(void const * arg)
         SetWorkingMap(gMapRange);
         BeginMapFlood(gActiveUnit->x, gActiveUnit->y, move, 0);
 
-        if (gMapRange[y_unk][x_unk] > MAP_MOVEMENT_MAX)
+        if (gMapRange[y_target][x_target] > MAP_MOVEMENT_MAX)
         {
             gActiveUnit->x = x_prev;
             gActiveUnit->y = y_prev;
-            AiTryMoveTowards(x_unk, y_unk, 0, 0xff, 1);
+            AiTryMoveTowards(x_target, y_target, 0, 0xff, 1);
             return TRUE;
         }
     }
@@ -843,7 +843,7 @@ bool AiFunc_080334F4(void const * arg)
     if (gAiDecision.action_performed == TRUE)
         return TRUE;
 
-    AiTryMoveTowards(x_unk, y_unk, 0, UINT8_MAX, 1);
+    AiTryMoveTowards(x_target, y_target, 0, UINT8_MAX, 1);
 
     return TRUE;
 }
@@ -854,7 +854,7 @@ bool AiFunc_GetCounter(void const * no_input)
     return FALSE;
 }
 
-bool func_fe6_080336CC(void const * no_input)
+bool AiFunc_RestartDecide(void const * no_input)
 {
     int alliance = GetActiveFactionAlliance();
 
@@ -868,7 +868,7 @@ bool func_fe6_080336CC(void const * no_input)
     return FALSE;
 }
 
-bool func_fe6_080336FC(void const * no_input)
+bool AiFunc_RestartDecide2(void const * no_input)
 {
     int alliance = GetActiveFactionAlliance();
 
@@ -882,27 +882,27 @@ bool func_fe6_080336FC(void const * no_input)
     return FALSE;
 }
 
-bool func_fe6_0803372C(struct Vec2i * pos_out)
+bool AiGetNextPatrolPoint(struct Vec2i * pos_out)
 {
     struct Vec2i const * pos_a;
     struct Vec2i const * pos_b;
 
     int idx = (gActiveUnit->ai_config & 0x1FC0) >> 8;
-    int unk46 = gActiveUnit->ai_counter;
+    int counter = gActiveUnit->ai_counter;
 
-    if (gUnk_085C8878 == NULL)
+    if (gAiPatrolPaths == NULL)
         return FALSE;
 
-    pos_a = gUnk_085C8878[idx];
+    pos_a = gAiPatrolPaths[idx];
 
     if (pos_a == NULL)
         return FALSE;
 
-    pos_b = pos_a + unk46;
+    pos_b = pos_a + counter;
 
     if (pos_b->x == -1)
     {
-        unk46 = 0;
+        counter = 0;
         gActiveUnit->ai_counter = 0;
         pos_b = pos_a;
     }
@@ -912,14 +912,14 @@ bool func_fe6_0803372C(struct Vec2i * pos_out)
 
     if (gMapMovement[pos_b->y][pos_b->x] != 0xFF)
     {
-        unk46++;
-        gActiveUnit->ai_counter = unk46;
+        counter++;
+        gActiveUnit->ai_counter = counter;
     }
 
     return TRUE;
 }
 
-bool func_fe6_080337B4(void const * no_input)
+bool AiFunc_CountEnemiesInRangeOrPatrol(void const * no_input)
 {
     int enemies_in_range;
     struct Vec2i pos;
@@ -942,7 +942,7 @@ bool func_fe6_080337B4(void const * no_input)
         MapFlood_UpToMove(gActiveUnit);
     }
 
-    if (func_fe6_0803372C(&pos) == 1)
+    if (AiGetNextPatrolPoint(&pos) == 1)
     {
         AiTryMoveTowards(pos.x, pos.y, 0, 0xff, 1);
         return TRUE;
@@ -978,7 +978,7 @@ bool AiFunc_DecideTalk(void const * input)
     return TRUE;
 }
 
-bool func_fe6_08033898(void const * input)
+bool AiFunc_GetLeaderAttackTarget(void const * input)
 {
     int i = 0;
 
@@ -1040,9 +1040,9 @@ skip_fallback:
     return FALSE;
 }
 
-bool func_fe6_0803395C(struct Unit * unit)
+bool AiIsUnitEnemyWithTargetPid(struct Unit * unit)
 {
-    if (UNIT_PID(unit) != gUnk_Pid_02039694)
+    if (UNIT_PID(unit) != gAiTargetPid)
         return FALSE;
 
     if (AreUnitIdsAllied(gActiveUnit->id, unit->id))
@@ -1051,19 +1051,19 @@ bool func_fe6_0803395C(struct Unit * unit)
     return TRUE;
 }
 
-bool func_fe6_08033998(void const * input)
+bool AiFunc_GetAttackTargetByPid(void const * input)
 {
-    u8 const * cast = input;
+    struct AiGetAttackTargetByPidArg const * cast = input;
 
-    gUnk_Pid_02039694 = cast[0];
+    gAiTargetPid = cast->pid;
 
-    if (AiUnitWithPidExists(cast[0]) != 1)
+    if (AiUnitWithPidExists(cast->pid) != 1)
     {
         gAiSt.cmd_result[1] = TRUE;
         return FALSE;
     }
 
-    AiAttemptOffensiveAction(func_fe6_0803395C);
+    AiAttemptOffensiveAction(AiIsUnitEnemyWithTargetPid);
 
     gAiSt.cmd_result[0] = 0;
 
@@ -1135,9 +1135,9 @@ bool AiFunc_AttackCmdResult(void const * no_input)
     return TRUE;
 }
 
-bool AiFunc_08033B04(void const * arg)
+bool AiFunc_TryStaffThenAttack(void const * arg)
 {
-    struct UnkAiFuncArg_08033B04 const * cast = arg;
+    struct AiTryStaffThenAttackArg const * cast = arg;
     fu8 random_number = RandNext(100);
 
     gAiSt.maximum_heal_percent = cast->maximum_heal_percent;
@@ -1154,9 +1154,9 @@ bool AiFunc_08033B04(void const * arg)
     return TRUE;
 }
 
-bool AiFunc_08033B50(void const * arg)
+bool AiFunc_TryConsumableThenAttack(void const * arg)
 {
-    struct UnkAiFuncArg_08033B50 const * cast = arg;
+    struct AiTryConsumableThenAttackArg const * cast = arg;
 
     fu8 random_number = RandNext(100);
 

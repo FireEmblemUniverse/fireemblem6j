@@ -8,7 +8,7 @@
 #include "ai_perform.h"
 #include "ai_utility.h"
 #include "ai_script.h"
-#include "ai_unk.h"
+#include "ai_action.h"
 #include "save_game.h"
 
 struct AiDecision EWRAM_DATA gAiDecision = {};

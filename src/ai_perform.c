@@ -15,7 +15,7 @@
 #include "battle.h"
 #include "itemaction.h"
 #include "ai_decide.h"
-#include "ai_unk.h"
+#include "ai_action.h"
 #include "ui.h"
 #include "mu.h"
 #include "eventinfo.h"

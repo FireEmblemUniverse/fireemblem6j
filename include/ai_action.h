@@ -43,11 +43,11 @@ struct AiCountEnemiesInRangeArg
     /* 02 */ u8 result_slot;
 };
 
-struct UnkAiFuncArg_080334F4
+struct AiMoveTowardsPointArg
 {
-    /* 00 */ u8 const * unk_00;
-    /* 04 */ u8 unk_04;
-    /* 05 */ u8 unk_05;
+    /* 00 */ u8 const * points; // x, y pairs
+    /* 04 */ u8 move_coeff_q4;
+    /* 05 */ u8 attack_range;
 };
 
 struct AiIsInAreaArg
@@ -58,19 +58,24 @@ struct AiIsInAreaArg
     /* 03 */ u8 y2;
 };
 
+struct AiGetAttackTargetByPidArg
+{
+    /* 00 */ u8 pid;
+};
+
 struct AiDecideTalkArg
 {
     /* 00 */ u8 pid_a;
     /* 01 */ u8 pid_b;
 };
 
-struct UnkAiFuncArg_08033B04
+struct AiTryStaffThenAttackArg
 {
     /* 00 */ u8 action_random_threshold;
     /* 01 */ u8 maximum_heal_percent;
 };
 
-struct UnkAiFuncArg_08033B50
+struct AiTryConsumableThenAttackArg
 {
     /* 00 */ u8 do_anything_threshold;
     /* 01 */ u8 do_offensive_threshold;
@@ -78,22 +83,22 @@ struct UnkAiFuncArg_08033B50
 
 bool AiFunc_CountEnemiesInRange_IsEnemyAt(int x, int y);
 bool AiFunc_CountEnemiesInRange(void const * arg);
-bool AiFunc_080334F4(void const * arg);
+bool AiFunc_MoveTowardsPointAttacking(void const * arg);
 bool AiFunc_GetCounter(void const * no_input);
-bool func_fe6_080336CC(void const * no_input);
-bool func_fe6_080336FC(void const * no_input);
-bool func_fe6_0803372C(struct Vec2i * pos_out);
-bool func_fe6_080337B4(void const * no_input);
+bool AiFunc_RestartDecide(void const * no_input);
+bool AiFunc_RestartDecide2(void const * no_input);
+bool AiGetNextPatrolPoint(struct Vec2i * pos_out);
+bool AiFunc_CountEnemiesInRangeOrPatrol(void const * no_input);
 bool AiFunc_IsInArea(void const * arg);
 bool AiFunc_DecideTalk(void const * arg);
-bool func_fe6_08033898(void const * arg);
-bool func_fe6_0803395C(struct Unit * unit);
-bool func_fe6_08033998(void const * arg);
+bool AiFunc_GetLeaderAttackTarget(void const * arg);
+bool AiIsUnitEnemyWithTargetPid(struct Unit * unit);
+bool AiFunc_GetAttackTargetByPid(void const * arg);
 bool AiIsUnitEnemyCmdResult(struct Unit * unit);
 bool AiIsUnitEnemyOnTheWayToCmdResult(struct Unit * unit);
 bool AiFunc_AttackCmdResult(void const * no_input);
-bool AiFunc_08033B04(void const * arg);
-bool AiFunc_08033B50(void const * arg);
+bool AiFunc_TryStaffThenAttack(void const * arg);
+bool AiFunc_TryConsumableThenAttack(void const * arg);
 
 int AiGetStaffAttemptId(fu16 item);
 bool AiAttemptStaffAction(bool (* is_enemy)(struct Unit * unit));

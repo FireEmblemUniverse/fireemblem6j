@@ -146,7 +146,7 @@ SECTIONS
         . = ALIGN(4); src/unitpanel.o(ewram_data);
         . = ALIGN(4); src/ai_phase.o(ewram_data);
         . = ALIGN(4); src/ai_decide.o(ewram_data);
-        . = ALIGN(4); src/ai_080326C4.o(ewram_data);
+        . = ALIGN(4); src/ai_action.o(ewram_data);
         . = ALIGN(4); src/sio_core.o(ewram_data);
 
         /* SIO */
@@ -330,7 +330,7 @@ SECTIONS
         src/ai_utility.o(.text);
         src/ai_script.o(.text);
         src/ai_battle.o(.text);
-        src/ai_080326C4.o(.text);
+        src/ai_action.o(.text);
         src/sio_core.o(.text);
         src/sio.o(.text);
         src/sio_bm.o(.text);
@@ -503,7 +503,7 @@ SECTIONS
         . = ALIGN(4); src/ai_script.o(.rodata);
         . = ALIGN(4); src/ai_data.o(.rodata);
         . = ALIGN(4); src/ai_battle.o(.rodata);
-        . = ALIGN(4); src/ai_080326C4.o(.rodata);
+        . = ALIGN(4); src/ai_action.o(.rodata);
         . = ALIGN(4); src/sio_core.o(.rodata);
         . = ALIGN(4); src/sio.o(.rodata);
         . = ALIGN(4); src/sio_bm.o(.rodata);
@@ -641,7 +641,7 @@ SECTIONS
         . = ALIGN(4); src/ai_utility.o(.data);
         . = ALIGN(4); src/ai_data.o(.data);
         . = ALIGN(4); src/ai_battle.o(.data);
-        . = ALIGN(4); src/ai_080326C4.o(.data);
+        . = ALIGN(4); src/ai_action.o(.data);
         . = ALIGN(4); src/sio_core.o(.data);
         . = ALIGN(4); data/sio_data.o(.data);
         . = ALIGN(4); src/sio_bm.o(.data);
