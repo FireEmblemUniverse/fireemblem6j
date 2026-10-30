@@ -474,21 +474,21 @@ extern u8 const Img_EkrExpBarChange[]; // img exp bar b
 extern u8 const Img_BarNumfx[]; // img exp bar c
 extern u16 const Pal_EkrExpBar[]; // pal exp bar
 extern u8 const Tsa_ManimExpBar[]; // tsa exp bar
-extern u8 const Img_ManimRubble[]; // img
+extern u32 const Img_ManimRubble[]; // img
 extern u16 const Pal_ManimRubble[]; // pal
 extern u16 const SpriteAnim_ManimRubble[]; // sprite anim
 extern u8 const Img_ManimMissTag[]; // img
 extern u16 const Ap_ManimMissTag[]; // sprite anim
 extern u8 const Img_ManimNoDamageTag[]; // img
 extern u16 const Ap_ManimNoDamageTag[]; // sprite anim
-extern u8 const Img_ManimPoison[]; // img
+extern u32 const Img_ManimPoison[]; // img
 extern u16 const Pal_ManimPoison[]; // pal
 extern u16 const SpriteAnim_ManimPoison[]; // sprite anim
 extern u8 const gUnk_082DE994[]; // img
 extern u16 const gUnk_082DEFBC[]; // pal/colors
 extern u8 const gUnk_082DEFFC[]; // img
 extern u16 const gUnk_082DE354[]; // tm
-extern u8 const Img_ManimWarp[]; // img
+extern u32 const Img_ManimWarp[]; // img
 extern u16 const Pal_ManimWarp[]; // pal
 extern u16 const TsaRef_ManimWarp[]; // tm
 extern u8 const gUnk_082DF3D8[]; // img
@@ -525,7 +525,7 @@ extern u16 const SpriteAnim_ManimStatGain[]; // sprite anim
 extern u16 const Pal_ManimLevelUpStatGainCycling[]; // colors
 extern u8 const Img_ManimLevelUpText[]; // img
 extern u16 const SpriteAnim_082A7CBC[]; // sprite anim
-extern u8 const Img_ManimStar[]; // img
+extern u32 const Img_ManimStar[]; // img
 extern u16 const Pal_ManimStar[]; // pal
 extern u8 const gUnk_082DD848[]; // img
 extern u16 const gUnk_082DE974[]; // ^ pal
