@@ -187,8 +187,8 @@ enum
     OBPAL_UNITLIST_9 = 9,
 };
 
-extern u16 gUnk_0200CD3A[]; // tm
-extern u16 gUnk_0200D53A[]; // tm
+extern u16 gUnk_0200CD3A[0x20][0x20]; // tm
+extern u16 gUnk_0200D53A[2][0x20]; // tm
 
 extern u8 CONST_DATA gUnk_0867871C[];
 

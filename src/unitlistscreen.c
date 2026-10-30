@@ -36,8 +36,8 @@
 EWRAM_OVERLAY(0) struct SortedUnitEnt gSortedUnitsBuf[0x40] = {};
 EWRAM_OVERLAY(0) struct SortedUnitEnt *gSortedUnits[0x40] = {};
 EWRAM_OVERLAY(0) u8 gUnk_0200CD38 = 0;
-EWRAM_OVERLAY(0) u16 gUnk_0200CD3A[0x400] = {};
-EWRAM_OVERLAY(0) u16 gUnk_0200D53A[0x41] = {};
+EWRAM_OVERLAY(0) u16 gUnk_0200CD3A[0x20][0x20] = {};
+EWRAM_OVERLAY(0) u16 gUnk_0200D53A[2][0x20] = {};
 EWRAM_OVERLAY(0) struct Text gUnk_0200D5BC[7] = {};
 EWRAM_OVERLAY(0) struct Text gUnk_0200D5F4[7][3] = {};
 EWRAM_OVERLAY(0) struct Text gUnk_0200D69C = {};
@@ -1175,27 +1175,27 @@ void UnitList_StartPageChange(struct UnitListScreenProc * proc)
 {
     int i;
 
-    TmFillRect(gUnk_0200CD3A, 31, 31, 0);
+    TmFillRect(gUnk_0200CD3A[0], 31, 31, 0);
 
     for (i = proc->unk_40 / 16; i < proc->unk_40 / 16 + 6 && i < gUnk_0200CD38; i++)
     {
-        func_fe6_08076448(proc, i, gUnk_0200CD3A, proc->page, 0);
+        func_fe6_08076448(proc, i, gUnk_0200CD3A[0], proc->page, 0);
     }
 
-    TmFillRect(gUnk_0200D53A, 31, 1, 0);
+    TmFillRect(gUnk_0200D53A[0], 31, 1, 0);
 
-    func_fe6_08076314(gUnk_0200D53A, proc->page);
+    func_fe6_08076314(gUnk_0200D53A[0], proc->page);
 
     proc->unk_3E = 0;
     proc->unk_37 = proc->page;
     proc->unk_38 = 0;
 }
 
-#if NONMATCHING
-
 void func_fe6_08075E94(struct UnitListScreenProc * proc)
 {
-    int r4, i;
+    int i;
+    int r4;
+    u8 r1;
 
     proc->unk_38 += gUnk_0867871C[proc->unk_3E];
 
@@ -1206,13 +1206,8 @@ void func_fe6_08075E94(struct UnitListScreenProc * proc)
 
     for (i = 0; i < 20; i++)
     { 
-        fu8 r1;
-
         if (proc->page_target > proc->page)
         {
-            // permuter found that idk though
-            proc->sort_key = proc->sort_key;
-
             if (proc->unk_38 + i > 20)
                 r1 = 0;
             else
@@ -1228,14 +1223,14 @@ void func_fe6_08075E94(struct UnitListScreenProc * proc)
 
         for (r4 = proc->unk_40 / 8; r4 < 12 + proc->unk_40 / 8; r4++)
         {
-            int off = 8 + (r4 & 0x1F) * 0x20;
-            gBg0Tm[off + i] = *(gUnk_0200CD3A + r1 + (r4 & 0x1F) * 0x20);
+            u16 off = 8 + (r4 & 0x1F) * 0x20;
+            gBg0Tm[off + i] = gUnk_0200CD3A[r4 & 0x1F][r1];
         }
 
         for (r4 = 0; r4 < 2; r4++)
         {
             int off = 0xA8 + r4 * 0x20;
-            gBg2Tm[i + off] = *(gUnk_0200D53A + r1 + r4 * 0x20);
+            gBg2Tm[off + i] = gUnk_0200D53A[r4][r1];
         }
     }
 
@@ -1257,10 +1252,10 @@ void func_fe6_08075E94(struct UnitListScreenProc * proc)
 
     for (r4 = proc->unk_40 / 16; r4 < proc->unk_40 / 16 + 6 && r4 < gUnk_0200CD38; r4++)
     {
-        func_fe6_08076448(proc, r4, gUnk_0200CD3A, proc->page, 0);
+        func_fe6_08076448(proc, r4, gUnk_0200CD3A[0], proc->page, 0);
     }
 
-    func_fe6_08076314(gUnk_0200D53A, proc->page);
+    func_fe6_08076314(gUnk_0200D53A[0], proc->page);
     func_fe6_080763D8(proc->unk_2E, proc->page, 0);
 
     proc->unk_38 = 0;
@@ -1268,245 +1263,6 @@ void func_fe6_08075E94(struct UnitListScreenProc * proc)
 
     Proc_Break(proc);
 }
-
-#else
-
-NAKEDFUNC
-void func_fe6_08075E94(struct UnitListScreenProc * proc)
-{
-    // https://decomp.me/scratch/sjiAE
-
-    asm(".syntax unified\n\
-        push {r4, r5, r6, r7, lr}\n\
-        mov r7, sl\n\
-        mov r6, sb\n\
-        mov r5, r8\n\
-        push {r5, r6, r7}\n\
-        sub sp, #0x18\n\
-        adds r7, r0, #0\n\
-        adds r1, r7, #0\n\
-        adds r1, #0x38\n\
-        ldr r0, .L08075EF8 @ =gUnk_0867871C\n\
-        ldrh r2, [r7, #0x3e]\n\
-        adds r0, r2, r0\n\
-        ldrb r2, [r1]\n\
-        ldrb r0, [r0]\n\
-        adds r0, r2, r0\n\
-        strb r0, [r1]\n\
-        lsls r0, r0, #0x18\n\
-        lsrs r0, r0, #0x18\n\
-        cmp r0, #0x14\n\
-        bls .L08075EC0\n\
-        movs r0, #0x14\n\
-        strb r0, [r1]\n\
-    .L08075EC0:\n\
-        ldrh r0, [r7, #0x3e]\n\
-        adds r0, #1\n\
-        strh r0, [r7, #0x3e]\n\
-        movs r3, #0\n\
-        str r1, [sp, #0x10]\n\
-        adds r0, r7, #0\n\
-        adds r0, #0x36\n\
-        str r0, [sp, #0xc]\n\
-        adds r1, r7, #0\n\
-        adds r1, #0x2f\n\
-        str r1, [sp, #8]\n\
-        adds r2, r7, #0\n\
-        adds r2, #0x40\n\
-        str r2, [sp, #0x14]\n\
-        ldr r0, [sp, #0x10]\n\
-        str r0, [sp, #4]\n\
-    .L08075EE0:\n\
-        ldr r1, [sp, #0xc]\n\
-        ldrb r2, [r1]\n\
-        ldr r1, [sp, #8]\n\
-        ldrb r1, [r1]\n\
-        cmp r2, r1\n\
-        bls .L08075EFC\n\
-        ldr r2, [sp, #4]\n\
-        ldrb r2, [r2]\n\
-        adds r0, r2, r3\n\
-        cmp r0, #0x14\n\
-        bgt .L08075F04\n\
-        b .L08075F0A\n\
-        .align 2, 0\n\
-    .L08075EF8: .4byte gUnk_0867871C\n\
-    .L08075EFC:\n\
-        ldr r1, [sp, #4]\n\
-        ldrb r0, [r1]\n\
-        cmp r3, r0\n\
-        bge .L08075F08\n\
-    .L08075F04:\n\
-        movs r1, #0\n\
-        b .L08075F10\n\
-    .L08075F08:\n\
-        subs r0, r3, r0\n\
-    .L08075F0A:\n\
-        adds r0, #8\n\
-        lsls r0, r0, #0x18\n\
-        lsrs r1, r0, #0x18\n\
-    .L08075F10:\n\
-        ldr r6, [sp, #0x14]\n\
-        ldrh r2, [r6]\n\
-        lsrs r4, r2, #3\n\
-        adds r0, r4, #0\n\
-        adds r0, #0xc\n\
-        lsls r5, r1, #1\n\
-        adds r1, r3, #1\n\
-        mov sl, r1\n\
-        cmp r4, r0\n\
-        bge .L08075F58\n\
-        movs r2, #0x1f\n\
-        mov sb, r2\n\
-        ldr r0, .L08075FD8 @ =gBg0Tm\n\
-        mov r8, r0\n\
-        ldr r1, .L08075FDC @ =gUnk_0200CD3A\n\
-        mov ip, r1\n\
-        adds r2, r5, #0\n\
-    .L08075F32:\n\
-        adds r0, r4, #0\n\
-        mov r1, sb\n\
-        ands r0, r1\n\
-        lsls r1, r0, #5\n\
-        adds r1, #8\n\
-        adds r1, r1, r3\n\
-        lsls r1, r1, #1\n\
-        add r1, r8\n\
-        lsls r0, r0, #6\n\
-        adds r0, r2, r0\n\
-        add r0, ip\n\
-        ldrh r0, [r0]\n\
-        strh r0, [r1]\n\
-        adds r4, #1\n\
-        ldrh r1, [r6]\n\
-        lsrs r0, r1, #3\n\
-        adds r0, #0xc\n\
-        cmp r4, r0\n\
-        blt .L08075F32\n\
-    .L08075F58:\n\
-        ldr r0, .L08075FE0 @ =gBg2Tm\n\
-        ldr r1, .L08075FE4 @ =gUnk_0200D53A\n\
-        adds r2, r5, r1\n\
-        adds r1, r3, #0\n\
-        adds r1, #0xa8\n\
-        movs r4, #1\n\
-        lsls r1, r1, #1\n\
-        adds r1, r1, r0\n\
-    .L08075F68:\n\
-        ldrh r0, [r2]\n\
-        strh r0, [r1]\n\
-        adds r2, #0x40\n\
-        adds r1, #0x40\n\
-        subs r4, #1\n\
-        cmp r4, #0\n\
-        bge .L08075F68\n\
-        mov r3, sl\n\
-        cmp r3, #0x13\n\
-        ble .L08075EE0\n\
-        movs r0, #5\n\
-        bl EnableBgSync\n\
-        ldr r2, [sp, #0x10]\n\
-        ldrb r2, [r2]\n\
-        cmp r2, #0x13\n\
-        bls .L08076042\n\
-        ldr r1, [sp, #0xc]\n\
-        ldrb r0, [r1]\n\
-        ldr r2, [sp, #8]\n\
-        strb r0, [r2]\n\
-        ldr r0, .L08075FE8 @ =gBg2Tm+0x150\n\
-        movs r1, #0x16\n\
-        movs r2, #1\n\
-        movs r3, #0\n\
-        bl TmFillRect_thm\n\
-        ldr r0, .L08075FEC @ =gBg0Tm+0x10\n\
-        movs r1, #0x16\n\
-        movs r2, #0x1f\n\
-        movs r3, #0\n\
-        bl TmFillRect_thm\n\
-        adds r4, r7, #0\n\
-        adds r4, #0x32\n\
-        adds r5, r7, #0\n\
-        adds r5, #0x2e\n\
-        ldr r1, .L08075FF0 @ =gUnk_0200E6B4\n\
-        movs r2, #0xff\n\
-        adds r0, r1, #0\n\
-        adds r0, #0x4c\n\
-    .L08075FBA:\n\
-        str r2, [r0]\n\
-        subs r0, #4\n\
-        cmp r0, r1\n\
-        bge .L08075FBA\n\
-        bl ClearIcons\n\
-        ldrb r0, [r4]\n\
-        bl func_fe6_080742D0\n\
-        ldr r0, [sp, #0x14]\n\
-        ldrh r0, [r0]\n\
-        lsrs r4, r0, #4\n\
-        adds r0, r4, #6\n\
-        b .L08076012\n\
-        .align 2, 0\n\
-    .L08075FD8: .4byte gBg0Tm\n\
-    .L08075FDC: .4byte gUnk_0200CD3A\n\
-    .L08075FE0: .4byte gBg2Tm\n\
-    .L08075FE4: .4byte gUnk_0200D53A\n\
-    .L08075FE8: .4byte gBg2Tm+0x150\n\
-    .L08075FEC: .4byte gBg0Tm+0x10\n\
-    .L08075FF0: .4byte gUnk_0200E6B4\n\
-    .L08075FF4:\n\
-        lsls r1, r4, #0x18\n\
-        lsrs r1, r1, #0x18\n\
-        ldr r2, [sp, #8]\n\
-        ldrb r3, [r2]\n\
-        movs r0, #0\n\
-        str r0, [sp]\n\
-        adds r0, r7, #0\n\
-        ldr r2, .L08076054 @ =gUnk_0200CD3A\n\
-        bl func_fe6_08076448\n\
-        adds r4, #1\n\
-        ldr r1, [sp, #0x14]\n\
-        ldrh r1, [r1]\n\
-        lsrs r0, r1, #4\n\
-        adds r0, #6\n\
-    .L08076012:\n\
-        cmp r4, r0\n\
-        bge .L0807601E\n\
-        ldr r0, .L08076058 @ =gUnk_0200CD38\n\
-        ldrb r0, [r0]\n\
-        cmp r4, r0\n\
-        blt .L08075FF4\n\
-    .L0807601E:\n\
-        ldr r0, .L0807605C @ =gUnk_0200D53A\n\
-        ldr r2, [sp, #8]\n\
-        ldrb r1, [r2]\n\
-        bl func_fe6_08076314\n\
-        ldrb r0, [r5]\n\
-        ldr r2, [sp, #8]\n\
-        ldrb r1, [r2]\n\
-        movs r2, #0\n\
-        bl func_fe6_080763D8\n\
-        movs r0, #0\n\
-        ldr r1, [sp, #0x10]\n\
-        strb r0, [r1]\n\
-        strh r0, [r7, #0x3e]\n\
-        adds r0, r7, #0\n\
-        bl Proc_Break\n\
-    .L08076042:\n\
-        add sp, #0x18\n\
-        pop {r3, r4, r5}\n\
-        mov r8, r3\n\
-        mov sb, r4\n\
-        mov sl, r5\n\
-        pop {r4, r5, r6, r7}\n\
-        pop {r0}\n\
-        bx r0\n\
-        .align 2, 0\n\
-    .L08076054: .4byte gUnk_0200CD3A\n\
-    .L08076058: .4byte gUnk_0200CD38\n\
-    .L0807605C: .4byte gUnk_0200D53A\n\
-        .syntax divided\n");
-}
-
-#endif // NONMATCHING
 
 #if NONMATCHING
 
@@ -1528,12 +1284,12 @@ void func_fe6_08076060(struct UnitListScreenProc * proc)
         {    
             for (r4 = proc->unk_40 / 8; r4 < 12 + proc->unk_40 / 8; r4++)
             {
-                gBg0Tm[r5 + 0x1C + (r4 & 0x1F) * 0x20 - proc->unk_38] = *(r5 + 8 + (r4 & 0x1F) * 0x20 + gUnk_0200CD3A);
+                gBg0Tm[r5 + 0x1C + (r4 & 0x1F) * 0x20 - proc->unk_38] = *(r5 + 8 + (r4 & 0x1F) * 0x20 + gUnk_0200CD3A[0]);
             }
 
             for (r4 = 0; r4 < 2; r4++)
             {
-                gBg2Tm[r5 + 0x1C - proc->unk_38 + r4 * 0x20 + 0xA0] = *(gUnk_0200D53A + r5 + 8 + r4 * 0x20);
+                gBg2Tm[r5 + 0x1C - proc->unk_38 + r4 * 0x20 + 0xA0] = *(gUnk_0200D53A[0] + r5 + 8 + r4 * 0x20);
             }
         }
     }
@@ -1543,12 +1299,12 @@ void func_fe6_08076060(struct UnitListScreenProc * proc)
         {    
             for (r4 = proc->unk_40 / 8; r4 < 12 + proc->unk_40 / 8; r4++)
             {
-                gBg0Tm[(((r4 & 0x1F) << 5) + 8) + r5] = *((r5 + 0x1C - proc->unk_38) + (r4 & 0x1F) * 0x20 + gUnk_0200CD3A);
+                gBg0Tm[(((r4 & 0x1F) << 5) + 8) + r5] = *((r5 + 0x1C - proc->unk_38) + (r4 & 0x1F) * 0x20 + gUnk_0200CD3A[0]);
             }
 
             for (r4 = 0; r4 < 2; r4++)
             {
-                gBg2Tm[0xA8 + TM_OFFSET(r5, r4)] = *(gUnk_0200D53A + (r5 + 0x1C - proc->unk_38) + r4 * 0x20);
+                gBg2Tm[0xA8 + TM_OFFSET(r5, r4)] = *(gUnk_0200D53A[0] + (r5 + 0x1C - proc->unk_38) + r4 * 0x20);
             }
         }
     }
