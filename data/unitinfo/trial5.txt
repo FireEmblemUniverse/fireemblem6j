@@ -1,0 +1,47 @@
+[TrialE_Deploy]
+ROY blue lv=1 at=16,14 to=16,14 items=RAPIER,VULNERARY
+
+[TrialE_Red] nocamera
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=13,10 to=13,10 items=SILVERAXE,STEELBOW ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=20,10 to=20,10 items=KILLERAXE,STEELBOW ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=21,16 to=21,16 items=HALBERD,STEELBOW ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=17,20 to=17,20 items=SILVERBOW,STEELAXE ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=12,18 to=12,18 items=KILLERBOW,STEELAXE ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=WARRIOR auto red lv=10 at=10,14 to=10,14 items=LONGBOW,STEELAXE ai=AI_A_03,AI_B_03,0x09,0x20
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=4,1 to=4,1 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=0,5 to=0,5 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=2,21 to=2,21 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=MERCENARY auto red lv=18 at=4,26 to=4,26 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=1,30 to=1,30 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=10,30 to=10,30 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=MERCENARY auto red lv=18 at=18,25 to=18,25 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=29,26 to=29,26 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=31,13 to=31,13 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=30,5 to=30,5 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=MERCENARY auto red lv=18 at=27,1 to=27,1 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=21,1 to=21,1 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=8,0 to=8,0 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=MERCENARY auto red lv=18 at=2,16 to=2,16 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=18 at=3,10 to=3,10 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=12 at=13,13 to=13,13 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=12 at=21,13 to=21,13 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=MERCENARY auto red lv=12 at=18,11 to=18,11 items=STEELSWORD ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_89 class=FIGHTER auto red lv=12 at=15,18 to=15,18 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn10Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=13,10 to=13,10 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn12Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=20,10 to=20,10 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn14Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=21,16 to=21,16 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn16Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=17,20 to=17,20 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn18Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=12,18 to=12,18 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+
+[TrialE_Turn20Extra]
+UNKNOWN_89 class=FIGHTER auto red lv=15 at=10,14 to=10,14 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00

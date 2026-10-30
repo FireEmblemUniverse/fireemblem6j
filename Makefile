@@ -104,6 +104,26 @@ $(MSG_LIST) $(TEXT_HEADER): $(TEXT_SRC) $(TEXT_DEFS)
 C_GENERATED += $(MSG_LIST)
 CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
 
+# =============
+# = Unit info =
+# =============
+
+UNITINFO_DIR := data/unitinfo
+UNITINFO_PROCESS := $(PYTHON) tools/unitinfo/process.py
+
+UNITINFO_MAIN := $(UNITINFO_DIR)/chapterunits.txt
+UNITINFO_SRC := $(shell find $(UNITINFO_DIR) -type f -name "*.txt")
+
+UNITINFO_LIST := src/chapterunits.c
+UNITINFO_HEADER := include/chapterunits.h
+
+$(UNITINFO_LIST) $(UNITINFO_HEADER) &: $(UNITINFO_SRC) tools/unitinfo/process.py
+	@echo "[GEN]	$@"
+	@$(UNITINFO_PROCESS) $(UNITINFO_MAIN) $(UNITINFO_LIST) $(UNITINFO_HEADER)
+
+C_GENERATED += $(UNITINFO_LIST)
+CLEAN_FILES += $(UNITINFO_LIST)
+
 # ============
 # = Spritans =
 # ============
@@ -217,9 +237,7 @@ ROM := $(BUILD_NAME).gba
 ELF := $(ROM:%.gba=%.elf)
 MAP := $(ROM:%.gba=%.map)
 
-ifeq (,$(findstring $(C_GENERATED),$(C_SRCS)))
-C_SRCS += $(C_GENERATED)
-endif
+C_SRCS := $(sort $(C_SRCS) $(C_GENERATED))
 
 C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 ASM_OBJS := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)

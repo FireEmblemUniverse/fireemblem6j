@@ -1,0 +1,66 @@
+[Chapter3_Blue]
+ROY class=ROY auto blue lv=3 at=3,19 to=3,19 items=RAPIER,IRONSWORD,VULNERARY
+MARCUS class=PALADIN lead=ROY auto blue lv=1 at=1,19 to=1,19 items=IRONLANCE
+ALEN class=CAVALIER lead=ROY auto blue lv=3 at=4,18 to=4,18 items=IRONSWORD,IRONLANCE,VULNERARY
+LANCE class=CAVALIER lead=ROY auto blue lv=3 at=2,18 to=2,18 items=IRONSWORD,JAVELIN,VULNERARY,IRONLANCE
+BORS class=ARMOR lead=ROY auto blue lv=3 at=5,19 to=5,19 items=SILVERLANCE,IRONLANCE,IRONLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=4 at=2,20 to=2,20 items=IRONBOW,IRONBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=5 at=6,20 to=6,20 items=IRONSWORD,IRONBLADE,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=2 at=4,20 to=4,20 items=HANDAXE,IRONAXE,HAMMER,VULNERARY
+LOT class=FIGHTER lead=ROY auto blue lv=3 at=5,21 to=5,21 items=IRONAXE,STEELAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=1 at=3,21 to=3,21 items=JAVELIN,SLIMLANCE,IRONLANCE
+ELEN class=CLERIC lead=ROY auto blue lv=2 at=1,21 to=1,21 items=HEALSTAFF,VULNERARY,VULNERARY,VULNERARY
+MERLINUS class=SUPPLY lead=ROY auto blue lv=1 at=0,20 to=0,20
+
+[Chapter3_Chad]
+CHAD class=THIEF lead=ROY blue lv=1 at=3,18 to=3,17 items=IRONSWORD,LOCKPICK
+
+[Chapter3_Red] nocamera
+CHAPTER3_BERN class=ARMOR lead=UNKNOWN_4C auto red lv=2 at=10,7 to=10,7 items=IRONLANCE ai=AI_A_00,AI_B_03,0x01,0x00
+CHAPTER3_BERN class=ARMOR lead=UNKNOWN_4C auto red lv=3 at=15,12 to=15,12 items=IRONLANCE ai=AI_A_00,AI_B_03,0x01,0x00
+CHAPTER3_BERN class=ARMOR lead=UNKNOWN_4C auto red lv=3 at=18,12 to=18,12 items=IRONLANCE,JAVELIN,VULNERARY ai=AI_A_03,AI_B_03,0x01,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=9,17 to=9,17 items=JAVELIN ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=11,17 to=11,17 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=14,11 to=14,11 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=13,4 to=13,4 items=JAVELIN ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=7,9 to=7,9 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=5,11 to=5,11 items=IRONLANCE ai=AI_A_00,AI_B_03,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=14,8 to=14,8 items=IRONLANCE ai=AI_A_00,AI_B_03,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=6,13 to=6,13 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=16,19 to=16,19 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=17,21 to=17,21 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=1,5 to=1,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x51,0x00
+CHAPTER3_LANCER class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=0,6 to=0,6 items=JAVELIN ai=AI_A_00,AI_B_00,0x51,0x00
+CHAPTER3_BERN class=SOLDIER lead=UNKNOWN_4C auto red lv=3 at=17,13 to=17,13 items=IRONLANCE ai=AI_A_00,AI_B_00,0x11,0x00
+CHAPTER3_BERN class=ARCHER lead=UNKNOWN_4C auto red lv=2 at=2,4 to=2,4 items=IRONBOW ai=AI_A_00,AI_B_03,0x29,0x00
+CHAPTER3_BERN class=ARCHER lead=UNKNOWN_4C auto red lv=2 at=9,13 to=9,13 items=IRONBOW ai=AI_A_00,AI_B_03,0x29,0x00
+
+[Chapter3_ZephielSquad]
+ZEPHIEL class=KING red lv=8 at=19,4 to=19,4 items=STEELLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x01,0x00
+IDUNN class=SHAMAN_F lead=UNKNOWN_4C auto red lv=4 at=18,5 to=18,5 items=HANDAXE ai=AI_A_00,AI_B_00,0x01,0x00
+NARCIAN class=WYVERNLORD lead=UNKNOWN_4C auto red lv=4 at=20,5 to=20,5 items=IRONAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_4C class=ARMOR red lv=7 at=21,5 to=21,5 items=STEELLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x19,0x20
+CHAPTER3_BERN class=FIGHTER lead=UNKNOWN_4C auto red lv=4 at=16,5 to=16,5 items=HANDAXE ai=AI_A_00,AI_B_03,0x19,0x00
+CHAPTER3_BERN class=FIGHTER lead=UNKNOWN_4C auto red lv=4 at=22,5 to=22,5 items=IRONAXE ai=AI_A_00,AI_B_03,0x19,0x00
+
+[Chapter3_UnusedRedA]
+CHAPTER3_BERN class=SOLDIER lead=UNKNOWN_4C auto red lv=5 at=4,9 to=4,9 items=IRONLANCE ai=AI_A_00,AI_B_00,0x01,0x00
+CHAPTER3_BERN class=ARCHER lead=UNKNOWN_4C auto red lv=2 at=4,13 to=4,13 items=IRONBOW ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter3_UnusedRedB]
+CHAPTER3_BERN class=MERCENARY lead=UNKNOWN_4C auto red lv=4 at=15,14 to=15,14 items=IRONSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter3_CavalierReinforcements]
+CHAPTER3_BERN class=CAVALIER lead=UNKNOWN_4C auto red lv=1 at=24,8 to=23,8 items=IRONSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+CHAPTER3_BERN class=CAVALIER lead=UNKNOWN_4C auto red lv=1 at=24,9 to=23,9 items=JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter3_Lugh]
+LUGH class=MAGE lead=ROY blue lv=1 at=3,3 to=3,4 items=FIRE,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter3_CutsceneBishop]
+UNKNOWN_56 class=BISHOP lead=ROY green lv=1 at=3,3 to=5,4 ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter3_CutsceneChildren]
+CATH class=CHILD lead=ROY green lv=1 at=3,3 to=4,4
+RAIGH class=CHILD_F lead=ROY green lv=1 at=3,3 to=4,5
+LILINA class=CHILD_F lead=ROY green lv=1 at=3,3 to=3,4 ai=AI_A_00,AI_B_00,0x01,0x00

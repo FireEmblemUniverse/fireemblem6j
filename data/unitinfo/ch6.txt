@@ -1,0 +1,105 @@
+[Unk_0867AFA0]
+ROY class=ROY auto blue lv=8 at=12,20 to=12,20 items=RAPIER,IRONSWORD,ARMORSLAYER
+CHAD class=THIEF lead=ROY auto blue lv=2 at=11,19 to=12,19 items=IRONSWORD,SLIMSWORD,LOCKPICK
+LANCE class=CAVALIER lead=ROY auto blue lv=7 at=13,19 to=13,19 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=7 at=14,20 to=14,20 items=IRONLANCE,JAVELIN,CHESTKEY
+WOLT class=ARCHER lead=ROY auto blue lv=8 at=13,20 to=13,20 items=IRONBOW,VULNERARY,VULNERARY
+DIECK class=MERCENARY lead=ROY auto blue lv=7 at=11,20 to=11,20 items=IRONSWORD,IRONBLADE,VULNERARY
+RUTGER class=MYRMIDON lead=ROY auto blue lv=6 at=14,21 to=14,21 items=IRONSWORD,KILLINGEDGE
+ALEN class=CAVALIER lead=ROY auto blue lv=6 at=11,21 to=11,21 items=IRONSWORD,IRONLANCE,VULNERARY
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=2 at=12,22 to=12,22 items=HEALSTAFF,VULNERARY
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=13,22 to=13,22 items=IRONSWORD,IRONLANCE,JAVELIN,FIRE
+
+[Unk_0867B050]
+SAUL class=PRIEST lead=ROY blue lv=5 at=11,23 to=11,23 items=MENDSTAFF
+DOROTHY class=ARCHER_F lead=ROY blue lv=3 at=14,23 to=14,23 items=STEELBOW,VULNERARY
+
+[Unk_0867B080] nocamera
+UNKNOWN_4F class=SHAMAN red lv=9 at=5,1 to=12,1 items=FLUX ai=AI_A_03,AI_B_03,0x00,0x20
+UNKNOWN_74 class=ARMOR auto red lv=8 at=11,1 to=11,1 items=IRONLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x02,0x00
+UNKNOWN_74 class=ARMOR auto red lv=7 at=13,1 to=13,1 items=STEELLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x02,0x00
+UNKNOWN_74 class=MAGE auto red lv=7 at=12,5 to=12,5 items=THUNDER ai=AI_A_03,AI_B_03,0x0A,0x00
+UNKNOWN_74 class=ARMOR auto red lv=7 at=12,7 to=12,7 items=STEELLANCE ai=AI_A_00,AI_B_00,0x02,0x00
+UNKNOWN_74 class=ARMOR auto red lv=10 at=13,7 to=13,7 items=IRONLANCE ai=AI_A_00,AI_B_00,0x02,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=10 at=11,8 to=11,8 items=JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=12,8 to=12,8 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=10 at=13,8 to=13,8 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=14,8 to=14,8 items=JAVELIN ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=10 at=6,9 to=6,9 items=JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=19,9 to=19,9 items=JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=12,9 to=12,9 items=FIRE,VULNERARY ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_74 class=MAGE auto red lv=3 at=13,9 to=13,9 items=THUNDER,VULNERARY ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=8 at=7,8 to=7,8 items=STEELLANCE ai=AI_A_00,AI_B_06,0x02,0x00
+UNKNOWN_74 class=MERCENARY auto red lv=5 at=7,14 to=7,14 items=IRONSWORD ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=7 at=18,8 to=18,8 items=JAVELIN ai=AI_A_00,AI_B_06,0x02,0x00
+UNKNOWN_74 class=MERCENARY auto red lv=5 at=18,14 to=18,14 items=IRONSWORD ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=10,2 to=10,2 items=FIRE,VULNERARY ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=14,2 to=14,2 items=THUNDER,VULNERARY ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_74 class=ARMOR auto red lv=5 at=6,3 to=6,3 items=IRONLANCE,VULNERARY ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=4,3 to=4,3 items=THUNDER ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=6,5 to=6,5 items=JAVELIN ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=4,5 to=4,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=ARMOR auto red lv=5 at=18,3 to=18,3 items=IRONLANCE,VULNERARY ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=20,3 to=20,3 items=FIRE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=18,5 to=18,5 items=JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=20,5 to=20,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+SUE class=NOMAD_F green lv=1 at=2,9 to=2,9 ai=AI_A_00,AI_B_03
+
+[Unk_0867B260]
+UNKNOWN_74 class=ARMOR auto red lv=6 at=4,21 to=6,18 items=STEELLANCE ai=AI_A_00,AI_B_03,0x04,0x00
+UNKNOWN_74 class=ARCHER auto red lv=5 at=4,21 to=5,18 items=STEELBOW ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=4,21 to=6,20 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=4,21 to=5,20 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B2B0]
+UNKNOWN_74 class=ARMOR auto red lv=6 at=21,21 to=19,18 items=STEELLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=ARCHER auto red lv=5 at=21,21 to=20,18 items=STEELBOW ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=21,21 to=19,20 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=21,21 to=20,20 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B300]
+UNKNOWN_74 class=ARMOR auto red lv=5 at=6,3 to=6,3 items=STEELLANCE ai=AI_A_00,AI_B_03,0x04,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=4,3 to=4,3 items=THUNDER ai=AI_A_00,AI_B_03,0x1C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=6,5 to=6,5 items=JAVELIN ai=AI_A_00,AI_B_03,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=4,5 to=4,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B350]
+UNKNOWN_74 class=ARMOR auto red lv=5 at=18,3 to=18,3 items=STEELLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=20,3 to=20,3 items=FIRE ai=AI_A_00,AI_B_00,0x1C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=18,5 to=18,5 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=20,5 to=20,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B3A0]
+UNKNOWN_74 class=ARCHER auto red lv=6 at=8,23 to=8,23 items=STEELBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=10 at=18,23 to=18,23 items=JAVELIN ai=AI_A_00,AI_B_00,0x02,0x00
+
+[Unk_0867B3D0]
+CATH class=THIEF_F red lv=5 at=17,23 to=17,23 items=IRONSWORD,LOCKPICK,VULNERARY ai=AI_A_06,AI_B_05,0x13,0x00
+
+[Unk_0867B3F0]
+UNKNOWN_74 class=ARCHER auto red lv=5 at=9,0 to=9,1 items=STEELBOW ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=ARCHER auto red lv=4 at=10,0 to=10,1 items=IRONBOW ai=AI_A_00,AI_B_00,0x1C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=14,0 to=14,1 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=15,0 to=15,1 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B440]
+UNKNOWN_74 class=MAGE auto red lv=5 at=9,0 to=9,1 items=FIRE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=MAGE auto red lv=4 at=10,0 to=10,1 items=THUNDER ai=AI_A_00,AI_B_00,0x1C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=14,0 to=14,1 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=15,0 to=15,1 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B490]
+UNKNOWN_74 class=ARMOR auto red lv=5 at=9,0 to=9,1 items=STEELLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=ARMOR auto red lv=4 at=10,0 to=10,1 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x1C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=14,0 to=14,1 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=9 at=15,0 to=15,1 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B4E0]
+UNKNOWN_74 class=ARMOR auto red lv=5 at=13,23 to=13,22 items=STEELLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=ARCHER auto red lv=4 at=12,23 to=12,22 items=STEELBOW ai=AI_A_00,AI_B_00,0x2C,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=8 at=14,23 to=14,22 items=JAVELIN ai=AI_A_00,AI_B_00,0x04,0x00
+
+[Unk_0867B520]
+UNKNOWN_74 class=SOLDIER auto red lv=8 at=11,23 to=12,22 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=SOLDIER auto red lv=8 at=15,23 to=14,22 items=IRONLANCE ai=AI_A_00,AI_B_00,0x04,0x00
+UNKNOWN_74 class=MAGE auto red lv=3 at=10,23 to=13,22 items=FIRE ai=AI_A_00,AI_B_00,0x1C,0x00

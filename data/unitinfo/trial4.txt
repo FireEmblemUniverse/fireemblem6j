@@ -1,0 +1,67 @@
+[Unk_08686F24]
+ROY class=ROY auto blue lv=20 at=17,15 to=17,15 items=RAPIER,IRONSWORD,VULNERARY
+MARCUS class=PALADIN lead=ROY auto blue lv=20 at=16,16 to=16,16 items=IRONLANCE
+ALEN class=CAVALIER lead=ROY auto blue lv=20 at=18,16 to=18,16 items=IRONSWORD,IRONLANCE,VULNERARY
+LANCE class=CAVALIER lead=ROY auto blue lv=20 at=18,14 to=18,14 items=IRONSWORD,JAVELIN,VULNERARY,IRONLANCE
+BORS class=ARMOR lead=ROY auto blue lv=20 at=14,15 to=14,15 items=SILVERLANCE,IRONLANCE,IRONLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=20 at=14,13 to=14,13 items=IRONBOW,IRONBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=20 at=17,13 to=17,13 items=IRONSWORD,IRONBLADE,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=20 at=19,13 to=19,13 items=HANDAXE,IRONAXE,HAMMER,VULNERARY
+LOT class=FIGHTER lead=ROY auto blue lv=20 at=19,15 to=19,15 items=IRONAXE,STEELAXE
+MERLINUS class=SUPPLY lead=ROY auto blue lv=20 at=17,17 to=17,17
+
+[Unk_08686FD4] nocamera
+UNKNOWN_A5 class=BERSERKER auto red lv=10 at=7,2 to=7,2 items=KILLERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=10,6 to=10,6 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=28,2 to=28,2 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=16 at=27,21 to=27,21 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=26,23 to=26,23 items=STEELAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=SAGE auto red lv=15 at=22,17 to=22,17 items=ELFIRE,MENDSTAFF ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=BERSERKER auto red lv=10 at=14,2 to=14,2 items=SILVERAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=17,2 to=17,2 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=28,12 to=28,12 items=HORSESLAYER,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=4,6 to=4,6 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=16 at=15,26 to=15,26 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=17,26 to=17,26 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=DRUID auto red lv=15 at=10,18 to=10,18 items=NOSFERATU,PHYSICSTAFF ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=23,5 to=23,5 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=23,7 to=23,7 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=22,28 to=22,28 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=15 at=6,25 to=6,25 items=KILLERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNLORD auto red lv=7 at=9,28 to=9,28 items=SILVERLANCE,SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=SNIPER auto red lv=15 at=19,20 to=19,20 items=LONGBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=MERCENARY auto red lv=10 at=14,19 to=14,19 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=MERCENARY auto red lv=11 at=19,10 to=19,10 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=MERCENARY auto red lv=10 at=20,12 to=20,12 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=MERCENARY auto red lv=11 at=12,17 to=12,17 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=MERCENARY auto red lv=10 at=14,10 to=14,10 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=ARCHER auto red lv=15 at=15,18 to=15,18 items=KILLERBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=ARCHER auto red lv=14 at=21,15 to=21,15 items=LONGBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08687184]
+UNKNOWN_A5 class=BERSERKER auto red lv=10 at=7,2 to=7,2 items=KILLERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=10,6 to=10,6 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=28,2 to=28,2 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=16 at=27,21 to=27,21 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=26,23 to=26,23 items=STEELAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=SAGE auto red lv=15 at=22,17 to=22,17 items=ELFIRE,MENDSTAFF ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=4,6 to=4,6 items=STEELLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08687204]
+UNKNOWN_A5 class=BERSERKER auto red lv=10 at=14,2 to=14,2 items=SILVERAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=17,2 to=17,2 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=18 at=28,12 to=28,12 items=HORSESLAYER,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=16 at=15,26 to=15,26 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=17,26 to=17,26 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=DRUID auto red lv=15 at=10,18 to=10,18 items=NOSFERATU,PHYSICSTAFF ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_08687274]
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=23,5 to=23,5 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=17 at=23,7 to=23,7 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=PIRATE auto red lv=15 at=22,28 to=22,28 items=POISONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNRIDER auto red lv=15 at=6,25 to=6,25 items=KILLERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=WYVERNLORD auto red lv=7 at=9,28 to=9,28 items=SILVERLANCE,SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_A5 class=SNIPER auto red lv=15 at=19,20 to=19,20 items=LONGBOW ai=AI_A_00,AI_B_00,0x0C,0x00
+
+[Unk_086872E4]
+UNKNOWN_DA class=BERSERKER auto red lv=20 at=1,14 to=3,16 items=SILVERAXE ai=AI_A_00,AI_B_00,0x0C,0x00
