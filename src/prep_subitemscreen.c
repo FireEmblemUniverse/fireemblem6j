@@ -19,7 +19,7 @@
 #include "action.h"
 #include "prepscreen.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 

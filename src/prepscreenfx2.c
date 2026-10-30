@@ -17,6 +17,7 @@
 #include "constants/msg.h"
 
 #include <string.h>
+#include "constants/videoalloc.h"
 
 extern const char String_Prep_08327294[];
 extern const char Msg_Prep_Supply[]; // 輸送隊

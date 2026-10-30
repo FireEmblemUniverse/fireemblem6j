@@ -12,6 +12,8 @@
 #include "unknown_objects.h"
 #include "opinfo.h"
 
+#include "constants/videoalloc.h"
+
 EWRAM_OVERLAY(opinfo) u16 gOpInfoPalettes[0x200] = {};
 
 struct ProcScr CONST_DATA ProcScr_OpInfo[] = {

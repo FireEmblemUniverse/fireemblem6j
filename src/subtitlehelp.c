@@ -8,7 +8,7 @@
 #include "map.h"
 #include "bm.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 void PutSubtitleHelpText(struct SubtitleHelpProc * proc, int y)
 {

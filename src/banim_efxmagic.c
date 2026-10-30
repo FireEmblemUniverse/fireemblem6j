@@ -6,7 +6,7 @@
 #include "banim.h"
 #include "banim_ekrdragon.h"
 #include "constants/songs.h"
-#include "constants/videoalloc_banim.h"
+#include "constants/videoalloc.h"
 
 EWRAM_OVERLAY(banim) int gEkrBg2ScrollFlip = 0;
 EWRAM_OVERLAY(banim) u16 *gpBg2ScrollOffsetStart = NULL;

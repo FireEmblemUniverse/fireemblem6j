@@ -13,7 +13,7 @@
 #include "unitsprite.h"
 #include "chapterinfo.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 static void WeatherInit_None(void);
 static void WeatherInit_Snow(void);

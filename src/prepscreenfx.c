@@ -16,6 +16,7 @@
 
 #include "constants/msg.h"
 #include "constants/icons.h"
+#include "constants/videoalloc.h"
 
 extern const char String_Prep_0832726C[];
 extern const char String_Prep_08327274[];

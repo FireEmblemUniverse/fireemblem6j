@@ -16,7 +16,7 @@
 #include "spriteanim.h"
 #include "chapterinfo.h"
 #include "worldmap.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/worldmap.h"
 
 void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)

@@ -37,7 +37,7 @@
 #include "prepscreen.h"
 #include "suspend_ui.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/terrains.h"
 #include "constants/pids.h"
 #include "constants/iids.h"

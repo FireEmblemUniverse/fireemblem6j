@@ -19,6 +19,7 @@
 #include "gbasvc.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
+#include "constants/videoalloc.h"
 #include "opanim.h"
 
 EWRAM_OVERLAY(opanim) u8 OpAnimGlyphBuffer[0x2800] = {};

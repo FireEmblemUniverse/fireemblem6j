@@ -13,8 +13,7 @@
 #include "manim.h"
 #include "constants/iids.h"
 #include "constants/songs.h"
-#include "constants/videoalloc_banim.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 #include "banim.h"
 #include "banim_ekrdragon.h"

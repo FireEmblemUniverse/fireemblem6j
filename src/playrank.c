@@ -22,7 +22,7 @@
 #include "chapterinfo.h"
 #include "constants/chapters.h"
 #include "constants/msg.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 #include "playrank.h"
 

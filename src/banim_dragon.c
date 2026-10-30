@@ -5,7 +5,7 @@
 #include "hardware.h"
 #include "constants/jids.h"
 #include "constants/iids.h"
-#include "constants/videoalloc_banim.h"
+#include "constants/videoalloc.h"
 
 #include "banim_sprite.h"
 #include "banim.h"

@@ -7,11 +7,6 @@
 
 #define MAX_TRIAL_CHAPTERS 6
 
-enum videoalloc_xmap {
-    OBCHR_XMAP = 0x80,
-    OBPAL_XMAP = 4,
-};
-
 enum proc_label_xmap {
     PL_XMAP_0,
     PL_XMAP_1,

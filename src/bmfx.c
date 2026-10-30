@@ -36,7 +36,7 @@
 #include "helpbox.h"
 #include "prepscreen.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/pids.h"
 #include "constants/jids.h"
 #include "constants/icons.h"

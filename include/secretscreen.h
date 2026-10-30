@@ -5,10 +5,6 @@
 #include "unit.h"
 #include "text.h"
 
-enum videoalloc_secret_screen {
-	BGPAL_SECRETSCREEN_MURALBG = 10,
-};
-
 enum { SID_PID_POOL_SIZE = 5 };
 
 struct ProcSecretScreen {

@@ -25,7 +25,7 @@
 #include "constants/chapters.h"
 #include "constants/pids.h"
 #include "constants/msg.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 #include "playrank.h"
 #include "ending.h"

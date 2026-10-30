@@ -5,7 +5,7 @@
 #include "proc.h"
 #include "unit.h"
 #include "spriteanim.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 enum
 {

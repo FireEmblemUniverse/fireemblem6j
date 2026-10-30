@@ -3,10 +3,6 @@
 #include "prelude.h"
 #include "proc.h"
 
-enum videoalloc_opanim {
-	OBPAL_OPANIM_0F = 0xF,
-};
-
 extern IWRAM_DATA u8 gOpAnimTextMask[4];
 extern IWRAM_DATA bool bool_opanim_03005284;
 extern IWRAM_DATA u8 Pad_Common_03005285[11];

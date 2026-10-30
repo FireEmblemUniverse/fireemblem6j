@@ -18,6 +18,7 @@
 #include "oam.h"
 
 #include "constants/songs.h"
+#include "constants/videoalloc.h"
 
 #define BGCHR_XMAP_MINIMAP 0x100
 #define BGPAL_XMAP_MINIMAP 0x0A // x2

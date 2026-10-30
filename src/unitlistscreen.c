@@ -29,7 +29,7 @@
 #include "constants/songs.h"
 #include "constants/pids.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 // TODO: fix nonmatches
 

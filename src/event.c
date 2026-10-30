@@ -37,9 +37,7 @@
 #include "banim_ekrbattle.h"
 #include "eventinfo.h"
 
-#include "constants/videoalloc_global.h"
-#include "constants/videoalloc_wm.h"
-#include "constants/videoalloc_banim.h"
+#include "constants/videoalloc.h"
 #include "constants/terrains.h"
 #include "constants/icons.h"
 #include "constants/songs.h"

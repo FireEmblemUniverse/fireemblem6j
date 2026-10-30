@@ -4,7 +4,7 @@
 #include "prelude.h"
 
 // TODO: CHR_LINE and CHR_SIZE in appropriate headers
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 #define UNITSPRITE_ID_BITS 7
 

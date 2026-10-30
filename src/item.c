@@ -12,7 +12,7 @@
 #include "supply.h"
 #include "gamedata.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/iids.h"
 #include "constants/icons.h"
 
