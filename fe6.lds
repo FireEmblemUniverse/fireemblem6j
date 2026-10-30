@@ -528,7 +528,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrtriangle.o(.rodata);
         . = ALIGN(4); src/banim_ekrtriangle_img.o(.rodata);
         . = ALIGN(4); src/banim_bg_img.o(.rodata);
-        . = ALIGN(4); data/rodata_chapterinfo1.o(.rodata);
+        . = ALIGN(4); src/chapterinfo_assets_data.o(.rodata);
         . = ALIGN(4); src/unitsprite_img.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
