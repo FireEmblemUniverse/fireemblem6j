@@ -8,6 +8,9 @@ RE_SYM = re.compile(r'^(?P<addr>0[238][0-9a-f]+).+\s+(?P<name>[^_][^ .]+)$')
 RE_UNK = re.compile(r'[Uu]nk(nown)?_|^func_fe6_')
 RE_PAR = re.compile(r'_(?P<addr>[0-9a-fA-F]{7,8})$')
 
+# interworking veneers the original linker emitted; not source code
+LINKER_GENERATED = {'asm/code_linker_stubs.o'}
+
 RE_MAP_INPUT_SECTION = re.compile(r'^ +(?P<name>[._\w]+)\s+0x0*(?P<addr>[0-9a-f]+)\s+0x0*(?P<size>[0-9a-f]+)\s+(?P<file>[^ ]+\.o)?$')
 RE_MAP_INPUT_SECTION_LONG_LINE1 = re.compile(r'^ +(?P<name>[._\w]+)$')
 RE_MAP_INPUT_SECTION_LONG_LINE2 = re.compile(r'^\s+0x0*(?P<addr>[0-9a-f]+)\s+0x0*(?P<size>[0-9a-f]+)\s+(?P<file>[^ ]+\.o)?$')
@@ -125,6 +128,9 @@ def main(args: List[str]) -> str | int:
                 addr = int(m.group('addr'), base = 16)
                 size = int(m.group('size'), base = 16)
                 file = m.group('file')
+
+            if file in LINKER_GENERATED:
+                continue
 
             dirname = file.split('/')[0]
 

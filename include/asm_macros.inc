@@ -7,3 +7,9 @@
     .macro endfunction name
     .size \name , . - \name
     .endm
+
+    .macro thumb_function name
+    function \name
+    .thumb
+    .thumb_func
+    .endm

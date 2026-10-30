@@ -4,7 +4,6 @@
 
 - flatten dir structure (include/gba -> include)
 - name remaining ewram symbols
-- clean up hard asm (not decompilable) in asm/ and move them to src/ (NOTE: port from fe7_us)
 
 rename move.h/move.c
 remove static funcs

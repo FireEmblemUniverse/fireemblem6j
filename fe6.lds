@@ -266,9 +266,8 @@ SECTIONS
     . = 0x08000000;
     ROM : ALIGN(4)
     {
-        asm/crt0.o(.text);
+        src/crt0.o(.text);
         src/armfunc.o(.text);
-        asm/arm.o(.text);
 
         src/main.o(.text);
         src/irq.o(.text);
@@ -436,7 +435,7 @@ SECTIONS
 
         src/m4a_1.o(.text);
         src/m4a.o(.text);
-        asm/gbasyscall.o(.text);
+        src/gbasyscall.o(.text);
         src/gbasram.o(.text);
         *libgcc.a:_ashldi3.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
