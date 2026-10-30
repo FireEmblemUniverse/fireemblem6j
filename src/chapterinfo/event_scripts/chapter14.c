@@ -40,7 +40,7 @@ EventScr CONST_DATA EventScr_Unk_0866FC0C[] =
     EvtTalk(MSG_136)
     EvtClearTalk
     EvtFadeBgmOut(1)
-    EvtFunc(func_fe6_0806D000)
+    EvtFunc(PlaySeC4)
     EvtLoadUnitsParty(UnitInfo_Unk_0867E13C)
     EvtMoveWait
     EvtCameraUnit(PID_ROY)
@@ -48,7 +48,7 @@ EventScr CONST_DATA EventScr_Unk_0866FC0C[] =
     EvtClearTalk
     EvtLoadUnits(UnitInfo_Unk_0867E1FC)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D01C)
+    EvtFunc(StopEarthQuakeSound)
     EvtClearSkip
     EvtEnd
 };
@@ -134,7 +134,7 @@ EventScr CONST_DATA EventScr_Unk_0866FDE0[] =
 // EventScr @ 0866FE1C
 EventScr CONST_DATA EventScr_Unk_0866FE1C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_9)
     EvtGoto(9)
@@ -151,7 +151,7 @@ EvtLabel(9)
 // EventScr @ 0866FE5C
 EventScr CONST_DATA EventScr_Unk_0866FE5C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_10)
     EvtGoto(9)
@@ -168,7 +168,7 @@ EvtLabel(9)
 // EventScr @ 0866FE9C
 EventScr CONST_DATA EventScr_Unk_0866FE9C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_11)
     EvtGoto(9)
@@ -185,7 +185,7 @@ EvtLabel(9)
 // EventScr @ 0866FEDC
 EventScr CONST_DATA EventScr_Unk_0866FEDC[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_12)
     EvtGoto(9)
@@ -202,7 +202,7 @@ EvtLabel(9)
 // EventScr @ 0866FF1C
 EventScr CONST_DATA EventScr_Unk_0866FF1C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_13)
     EvtGoto(9)
@@ -219,7 +219,7 @@ EvtLabel(9)
 // EventScr @ 0866FF5C
 EventScr CONST_DATA EventScr_Unk_0866FF5C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_14)
     EvtGoto(9)
@@ -236,7 +236,7 @@ EvtLabel(9)
 // EventScr @ 0866FF9C
 EventScr CONST_DATA EventScr_Unk_0866FF9C[] =
 {
-    EvtGotoIfFunc(1, func_fe6_0806D028)
+    EvtGotoIfFunc(1, Chapter14_CheckFindHiddenItem)
 
     EvtClearFlag(FLAG_CHAPTER14_15)
     EvtGoto(9)

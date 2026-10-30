@@ -201,7 +201,7 @@ EvtLabel(9)
     EvtEnd
 };
 
-u8 CONST_DATA gUnk_08672458[] =
+u8 CONST_DATA LegendaryWeaponIids[] =
 {
     IID_BINDINGBLADE,
     IID_DURANDAL,
@@ -226,17 +226,17 @@ EventScr CONST_DATA EventScr_Unk_08672464[] =
     EvtFadeFromBlack(16)
     EvtEnterMap
     EvtTalk(MSG_1CD)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtTalkMore(MSG_1CE)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtSetBgm(SONG_0E)
     EvtTalkMore(MSG_1CF)
     EvtTalkMore(MSG_1D0)
-    EvtFunc(TruEnding_PlaySe269)
+    EvtFunc(TrueEnding_PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtBackgroundMore(BACKGROUND_6)

@@ -13,12 +13,12 @@
 EventListScr CONST_DATA EventListScr_Unk_086695B8[] =
 {
     EvtListTurn(0, EventScr_Unk_08672818, 1, 0, FACTION_BLUE)
-    EvtListFunc(0, EventScr_Unk_08672874, func_fe6_0806BC5C)
-    EvtListFunc(0, EventScr_Unk_08672890, func_fe6_0806BCA4)
-    EvtListFunc(0, EventScr_Unk_086728AC, func_fe6_0806BCEC)
-    EvtListFunc(0, EventScr_Unk_086728C8, func_fe6_0806BD34)
-    EvtListFunc(0, EventScr_Unk_086728E4, func_fe6_0806BD7C)
-    EvtListFunc(0, EventScr_Unk_08672900, func_fe6_0806BDC4)
+    EvtListFunc(0, EventScr_Unk_08672874, Chapter24_CheckReinforcementWave1)
+    EvtListFunc(0, EventScr_Unk_08672890, Chapter24_CheckReinforcementWave2)
+    EvtListFunc(0, EventScr_Unk_086728AC, Chapter24_CheckReinforcementWave3)
+    EvtListFunc(0, EventScr_Unk_086728C8, Chapter24_CheckReinforcementWave4)
+    EvtListFunc(0, EventScr_Unk_086728E4, Chapter24_CheckReinforcementWave5)
+    EvtListFunc(0, EventScr_Unk_08672900, Chapter24_CheckReinforcementWave6)
     EvtListEnd
 };
 

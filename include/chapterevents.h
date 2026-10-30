@@ -56,9 +56,9 @@ extern EventScr CONST_DATA EventScr_RoyDefeated[];
 extern EventScr CONST_DATA EventScr_CathTalk[];
 extern EventScr CONST_DATA EventScr_GameOver[];
 
-extern u16 CONST_DATA Sprite_0866ACCC[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0866ACE8[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0866AD00[];
+extern u16 CONST_DATA Sprite_TutorialHighlight[];
+extern struct ProcScr CONST_DATA ProcScr_TutorialHighlight[];
+extern struct ProcScr CONST_DATA ProcScr_TutorialHighlightEnd[];
 extern EventScr CONST_DATA EventScr_Unk_0866AD18[];
 extern EventScr CONST_DATA EventScr_Unk_0866AD78[];
 extern EventScr CONST_DATA EventScr_Unk_0866ADE4[];
@@ -383,7 +383,7 @@ extern EventScr CONST_DATA EventScr_Unk_08672260[];
 extern EventScr CONST_DATA EventScr_Unk_086722EC[];
 extern EventScr CONST_DATA EventScr_Unk_08672378[];
 extern EventScr CONST_DATA EventScr_Unk_08672430[];
-extern u8 CONST_DATA gUnk_08672458[];
+extern u8 CONST_DATA LegendaryWeaponIids[];
 extern EventScr CONST_DATA EventScr_Unk_08672464[];
 
 extern EventScr CONST_DATA EventScr_Unk_08672560[];
@@ -520,7 +520,7 @@ extern EventScr CONST_DATA EventScr_Unk_08675410[];
 extern EventScr CONST_DATA EventScr_Unk_0867557C[];
 extern EventScr CONST_DATA EventScr_Unk_086756A8[];
 
-extern u32 CONST_DATA gUnk_08675750[6];
+extern u32 CONST_DATA Chapter20xS_RealSeizeTileFlags[6];
 extern EventScr CONST_DATA EventScr_Unk_08675768[];
 extern EventScr CONST_DATA EventScr_Unk_086758D4[];
 extern EventScr CONST_DATA EventScr_Unk_0867592C[];
@@ -530,7 +530,7 @@ extern EventScr CONST_DATA EventScr_Unk_08675A34[];
 extern EventScr CONST_DATA EventScr_Unk_08675A8C[];
 extern EventScr CONST_DATA EventScr_Unk_08675AE4[];
 
-extern u32 CONST_DATA gUnk_08675B90[6];
+extern u32 CONST_DATA Chapter21x_TrappedChestFlags[6];
 extern EventScr CONST_DATA EventScr_Unk_08675BA8[];
 extern EventScr CONST_DATA EventScr_Unk_08675CF4[];
 extern EventScr CONST_DATA EventScr_Unk_08675D38[];

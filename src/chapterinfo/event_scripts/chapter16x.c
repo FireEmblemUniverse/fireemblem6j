@@ -56,7 +56,7 @@ EvtLabel(7)
 // EventScr @ 086753E0
 EventScr CONST_DATA EventScr_Unk_086753E0[] =
 {
-    EvtGotoIfNotFunc(9, func_fe6_0806C3BC)
+    EvtGotoIfNotFunc(9, IsUnknownC6NonBlue)
 
     EvtCameraUnit(PID_UNKNOWN_C6)
     EvtSetAi(PID_UNKNOWN_C7, AI_A_00, AI_B_00, 0)

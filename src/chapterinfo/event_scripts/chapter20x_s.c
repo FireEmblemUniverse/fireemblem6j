@@ -18,7 +18,7 @@
 #include "constants/iids.h"
 #include "constants/chapters.h"
 
-u32 CONST_DATA gUnk_08675750[] =
+u32 CONST_DATA Chapter20xS_RealSeizeTileFlags[] =
 {
     FLAG_CHAPTER20XS_10,
     FLAG_CHAPTER20XS_11,
@@ -31,7 +31,7 @@ u32 CONST_DATA gUnk_08675750[] =
 // EventScr @ 08675768
 EventScr CONST_DATA EventScr_Unk_08675768[] =
 {
-    EvtFunc(func_fe6_0806D6B4)
+    EvtFunc(Chapter20xS_ChooseRealSeizeTile)
     EvtFadeToBlack(16)
     EvtExitMap
     EvtBackground(BACKGROUND_7)

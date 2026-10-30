@@ -188,7 +188,7 @@ extern u8 gPermanentFlagBits[(MAX_PERMANENT_FLAGS + CHAR_BIT - 1) / CHAR_BIT];
 extern u16 const Pal_08342A98[]; // colors
 extern struct ProcScr CONST_DATA ProcScr_DemoSceneIntro[];
 extern struct ProcScr CONST_DATA ProcScr_TrueEnding_EarthQuake[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08676854[];
+extern struct ProcScr CONST_DATA ProcScr_MapShake[];
 extern struct ProcScr CONST_DATA ProcScr_EndingCreditFade[];
 extern u8 gUnk_030048A8;
 extern u32 EWRAM_DATA gUnk_0203D354;

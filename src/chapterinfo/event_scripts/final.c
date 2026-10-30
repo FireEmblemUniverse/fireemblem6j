@@ -36,7 +36,7 @@ EventScr CONST_DATA EventScr_Unk_08672BE4[] =
     EvtSetBgm(SONG_29)
     EvtTalk(MSG_201)
     EvtClearTalk
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtSleep(30)
@@ -49,8 +49,8 @@ EventScr CONST_DATA EventScr_Unk_08672BE4[] =
     EvtSleep(16)
     EvtCamera(8, 15)
     EvtSleep(16)
-    EvtFunc(func_fe6_0806D1D4)
-    EvtFuncWhile(func_fe6_0806D1FC)
+    EvtFunc(FinalChapter_InitUnitQuotes)
+    EvtFuncWhile(FinalChapter_PlayUnitQuotes)
     EvtClearTalk
     EvtCameraUnit(PID_ROY)
     EvtUnitCameraOn
@@ -73,22 +73,22 @@ EvtLabel(6)
 // EventScr @ 08672D10
 EventScr CONST_DATA EventScr_Unk_08672D10[] =
 {
-    EvtGotoIfFunc(0, func_fe6_0806D35C)
+    EvtGotoIfFunc(0, IsThreeOrMoreNonBlueAlive)
 
 EvtLabel(1)
-    EvtGotoIfNotFunc(2, func_fe6_0806D398)
+    EvtGotoIfNotFunc(2, EventRandOneInFive)
 
     EvtLoadUnits(UnitInfo_Unk_08681E14)
     EvtGoto(9)
 
 EvtLabel(2)
-    EvtGotoIfNotFunc(3, func_fe6_0806D398)
+    EvtGotoIfNotFunc(3, EventRandOneInFive)
 
     EvtLoadUnits(UnitInfo_Unk_08681E34)
     EvtGoto(9)
 
 EvtLabel(3)
-    EvtGotoIfNotFunc(4, func_fe6_0806D398)
+    EvtGotoIfNotFunc(4, EventRandOneInFive)
 
     EvtLoadUnits(UnitInfo_Unk_08681E54)
     EvtGoto(9)

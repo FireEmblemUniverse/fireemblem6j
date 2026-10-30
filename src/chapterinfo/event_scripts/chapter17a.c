@@ -92,7 +92,7 @@ EventScr CONST_DATA EventScr_Unk_08670D44[] =
     EvtPlaySe(SONG_BE)
     EvtMapChangePosition(11, 8)
     EvtSleep(64)
-    EvtGotoIfNotFunc(9, func_fe6_0806C35C)
+    EvtGotoIfNotFunc(9, IsUnknown5ENonBlue)
 
     EvtCamera(29, 3)
     EvtTalk(MSG_179)

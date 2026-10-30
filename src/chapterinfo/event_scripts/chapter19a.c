@@ -195,7 +195,7 @@ EventScr CONST_DATA EventScr_Unk_086715E0[] =
     EvtSleep(30)
     EvtGotoIfSkipped(22)
 
-    EvtFunc(func_fe6_0806CFB8)
+    EvtFunc(PlayBgmSong2B)
 
 EvtLabel(22)
     EvtTalkContinue

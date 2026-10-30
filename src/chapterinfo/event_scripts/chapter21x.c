@@ -18,7 +18,7 @@
 #include "constants/iids.h"
 #include "constants/chapters.h"
 
-u32 CONST_DATA gUnk_08675B90[6] =
+u32 CONST_DATA Chapter21x_TrappedChestFlags[6] =
 {
     FLAG_CHAPTER21X_8,
     FLAG_CHAPTER21X_9,
@@ -32,7 +32,7 @@ u32 CONST_DATA gUnk_08675B90[6] =
 EventScr CONST_DATA EventScr_Unk_08675BA8[] =
 {
     EvtFunc(AddChapter21xStepTraps)
-    EvtFunc(func_fe6_0806D77C)
+    EvtFunc(Chapter21x_ChooseTrappedChests)
     EvtCamera(15, 1)
     EvtFlashCursor(15, 1)
     EvtFadeToBlack(16)
@@ -217,11 +217,11 @@ EventScr CONST_DATA EventScr_Unk_08675E8C[] =
     EvtFadeFromBlack(16)
     EvtEnterMap
     EvtTalk(MSG_1C0)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtTalkContinue
-    EvtFunc(TruEnding_PlaySe269)
+    EvtFunc(TrueEnding_PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtBackground(BACKGROUND_4)
@@ -229,7 +229,7 @@ EventScr CONST_DATA EventScr_Unk_08675E8C[] =
     EvtEnterMap
     EvtSetBgm(SONG_29)
     EvtTalk(MSG_1C1)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtFadeToWhite(4)
@@ -243,7 +243,7 @@ EventScr CONST_DATA EventScr_Unk_08675E8C[] =
     EvtNoSkip
     EvtGiveItemTo(IID_BINDINGBLADE, PID_ROY)
     EvtSleep(64)
-    EvtFunc(func_fe6_0806D0E4)
+    EvtFunc(PromoteRoyWithBindingBlade)
     EvtSleep(1280)
     EvtNextChapter(CHAPTER_22)
     EvtSleep(1)

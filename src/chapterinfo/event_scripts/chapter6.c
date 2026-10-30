@@ -67,7 +67,7 @@ EventScr CONST_DATA EventScr_Unk_0866CB34[] =
 // EventScr @ 0866CC5C
 EventScr CONST_DATA EventScr_Unk_0866CC5C[] =
 {
-    EvtGotoIfFunc(7, func_fe6_0806CEF0)
+    EvtGotoIfFunc(7, Chapter6_CheckWestDoorReinforcements)
 
     EvtClearFlag(FLAG_CHAPTER6_7)
     EvtGoto(9)
@@ -84,7 +84,7 @@ EvtLabel(9)
 // EventScr @ 0866CC9C
 EventScr CONST_DATA EventScr_Unk_0866CC9C[] =
 {
-    EvtGotoIfFunc(7, func_fe6_0806CF3C)
+    EvtGotoIfFunc(7, Chapter6_CheckEastDoorReinforcements)
 
     EvtClearFlag(FLAG_CHAPTER6_11)
     EvtGoto(9)

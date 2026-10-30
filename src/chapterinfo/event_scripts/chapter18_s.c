@@ -62,94 +62,94 @@ EventScr CONST_DATA EventScr_Unk_08673FD4[] =
 {
     EvtNoSkip
     EvtClearFlag(FLAG_CHAPTER18S_5)
-    EvtFunc(func_fe6_0806D3E0)
+    EvtFunc(Chapter18S_UpdateReinforcementState)
 
 EvtLabel(1)
-    EvtGotoIfNotFunc(2, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(2, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683438)
     EvtMoveWait
 
 EvtLabel(2)
-    EvtGotoIfNotFunc(3, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(3, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683458)
     EvtMoveWait
 
 EvtLabel(3)
-    EvtGotoIfNotFunc(4, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(4, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683478)
     EvtMoveWait
 
 EvtLabel(4)
-    EvtGotoIfNotFunc(5, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(5, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683498)
     EvtMoveWait
 
 EvtLabel(5)
-    EvtGotoIfNotFunc(6, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(6, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086834B8)
     EvtMoveWait
 
 EvtLabel(6)
-    EvtGotoIfNotFunc(7, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(7, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086834D8)
     EvtMoveWait
 
 EvtLabel(7)
-    EvtGotoIfNotFunc(8, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(8, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086834F8)
     EvtMoveWait
 
 EvtLabel(8)
-    EvtGotoIfNotFunc(9, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(9, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683518)
     EvtMoveWait
 
 EvtLabel(9)
-    EvtGotoIfNotFunc(10, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(10, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683538)
     EvtMoveWait
 
 EvtLabel(10)
-    EvtGotoIfNotFunc(11, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(11, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683558)
     EvtMoveWait
 
 EvtLabel(11)
-    EvtGotoIfNotFunc(12, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(12, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683578)
     EvtMoveWait
 
 EvtLabel(12)
-    EvtGotoIfNotFunc(13, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(13, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_08683598)
     EvtMoveWait
 
 EvtLabel(13)
-    EvtGotoIfNotFunc(14, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(14, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086835B8)
     EvtMoveWait
 
 EvtLabel(14)
-    EvtGotoIfNotFunc(15, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(15, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086835D8)
     EvtMoveWait
 
 EvtLabel(15)
-    EvtGotoIfNotFunc(0, func_fe6_0806D3B4)
+    EvtGotoIfNotFunc(0, Chapter18S_CheckReinforcements)
 
     EvtLoadUnits(UnitInfo_Unk_086835F8)
     EvtMoveWait
@@ -232,7 +232,7 @@ EventScr CONST_DATA EventScr_Unk_086742C8[] =
     EvtSleep(30)
     EvtGotoIfSkipped(22)
 
-    EvtFunc(func_fe6_0806CFB8)
+    EvtFunc(PlayBgmSong2B)
 
 EvtLabel(22)
     EvtTalkContinue

@@ -94,7 +94,7 @@ struct BattleHit CONST_DATA FightScr_Chapter13_CeciliaVsZephiel[] =
 EventScr CONST_DATA EventScr_Unk_0866F3B0[] =
 {
     EvtNoSkip
-    EvtFunc(func_fe6_0806CFD0)
+    EvtFunc(PlayBgmSong2A)
     EvtCamera(43, 9)
     EvtMoveUnit(PID_ZEPHIEL, 43, 10)
     EvtMoveWait
@@ -161,7 +161,7 @@ EventScr CONST_DATA EventScr_Unk_0866F4A4[] =
     EvtSleep(30)
     EvtGotoIfSkipped(22)
 
-    EvtFunc(func_fe6_0806CFB8)
+    EvtFunc(PlayBgmSong2B)
 
 EvtLabel(22)
     EvtTalkContinue
@@ -302,21 +302,21 @@ EventScr CONST_DATA EventScr_Unk_0866F7B0[] =
     EvtMoveWait
     EvtRemoveUnit(PID_PERCEVAL)
     EvtRestoreBgm
-    EvtGotoIfNotFunc(1, func_fe6_0806C3EC)
+    EvtGotoIfNotFunc(1, IsUnknownD5NonBlue)
 
     EvtMoveUnit(PID_UNKNOWN_D5, 45, 6)
     EvtMoveWait
     EvtRemoveUnit(PID_UNKNOWN_D5)
 
 EvtLabel(1)
-    EvtGotoIfNotFunc(2, func_fe6_0806C3FC)
+    EvtGotoIfNotFunc(2, IsUnknownD6NonBlue)
 
     EvtMoveUnit(PID_UNKNOWN_D6, 45, 6)
     EvtMoveWait
     EvtRemoveUnit(PID_UNKNOWN_D6)
 
 EvtLabel(2)
-    EvtGotoIfNotFunc(9, func_fe6_0806C40C)
+    EvtGotoIfNotFunc(9, IsUnknownD7NonBlue)
 
     EvtMoveUnit(PID_UNKNOWN_D7, 45, 6)
     EvtMoveWait

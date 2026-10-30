@@ -198,7 +198,7 @@ EvtLabel(5)
     EvtClearTalk
     EvtMoveUnit(PID_CECILIA, 5, 10)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D55C)
+    EvtFunc(SetChapter8x)
     EvtNextChapter(CHAPTER_9)
     EvtSleep(1)
     EvtKill

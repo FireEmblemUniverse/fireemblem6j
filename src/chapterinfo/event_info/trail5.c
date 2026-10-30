@@ -37,7 +37,7 @@ EventListScr CONST_DATA EventListScr_TrialE_Tile[] =
 // EventListScr @ 0866A7D8
 EventListScr CONST_DATA EventListScr_TrialE_Move[] =
 {
-    EvtListFunc(FLAG_3, EventScr_TrialE_Victory, func_fe6_0806C2F8)
+    EvtListFunc(FLAG_3, EventScr_TrialE_Victory, AreAllNonBlueUnitsDead)
     EvtListFlag(FLAG_3, EventScr_TrialE_Failure, FLAG_101)
     EvtListFlag(0, EventScr_GameOver, FLAG_101)
     EvtListEnd

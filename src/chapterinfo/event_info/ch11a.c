@@ -32,11 +32,11 @@ EventListScr CONST_DATA EventListScr_Unk_08668380[] =
 EventListScr CONST_DATA EventListScr_Unk_08668420[] =
 {
     EvtListTalk(FLAG_CHAPTER11A_6, EventScr_Unk_0866E7BC, PID_LARUM, PID_ECHIDNA)
-    EvtListFunc(FLAG_CHAPTER11A_7, EventScr_Unk_0866E808, func_fe6_0806BB34)
+    EvtListFunc(FLAG_CHAPTER11A_7, EventScr_Unk_0866E808, Chapter11A_CheckTalkShannaThea)
     EvtListTalk(FLAG_CHAPTER11A_8, EventScr_Unk_0866E824, PID_ROY, PID_KLEIN)
     EvtListTalk(FLAG_CHAPTER11A_8, EventScr_Unk_0866E870, PID_CLARINE, PID_KLEIN)
-    EvtListFunc(FLAG_CHAPTER11A_10, EventScr_Unk_0866E8B4, func_fe6_0806BB68)
-    EvtListFunc(FLAG_CHAPTER11A_12, EventScr_Unk_0866E94C, func_fe6_0806BB9C)
+    EvtListFunc(FLAG_CHAPTER11A_10, EventScr_Unk_0866E8B4, Chapter11A_CheckShannaRecruitsThea)
+    EvtListFunc(FLAG_CHAPTER11A_12, EventScr_Unk_0866E94C, Chapter11A_CheckTalkShannaTheaAfterKlein)
     EvtListTalk(FLAG_CHAPTER11A_10, EventScr_Unk_0866E900, PID_KLEIN, PID_THEA)
     EvtListTalk(FLAG_CHAPTER11A_13, EventScr_TalkKleinClarine, PID_CLARINE, PID_KLEIN)
     EvtListTalk(FLAG_CHAPTER11A_13, EventScr_TalkKleinClarine, PID_KLEIN, PID_CLARINE)

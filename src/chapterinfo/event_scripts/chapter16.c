@@ -153,13 +153,13 @@ EventScr CONST_DATA EventScr_Unk_08670890[] =
     EvtNoSkipNoTextSkip
     EvtTalk(MSG_161)
     EvtClearTalk
-    EvtGotoIfFunc(1, func_fe6_0806C524)
+    EvtGotoIfFunc(1, HasTenThousandGold)
 
-    EvtGotoIfFunc(2, func_fe6_0806C540)
+    EvtGotoIfFunc(2, HasEightThousandGold)
 
-    EvtGotoIfFunc(3, func_fe6_0806C55C)
+    EvtGotoIfFunc(3, HasSixThousandGold)
 
-    EvtGotoIfFunc(4, func_fe6_0806C578)
+    EvtGotoIfFunc(4, HasFiveThousandGold)
 
     EvtTalk(MSG_162)
     EvtClearTalk
@@ -168,7 +168,7 @@ EventScr CONST_DATA EventScr_Unk_08670890[] =
 EvtLabel(1)
     EvtTalk(MSG_163)
     EvtClearTalk
-    EvtGotoIfNotFunc(2, func_fe6_0806C594)
+    EvtGotoIfNotFunc(2, IsTalkChoiceYes)
 
     EvtSetFlag(FLAG_CHAPTER16_15)
     EvtGoto(10)
@@ -178,7 +178,7 @@ EvtLabel(2)
     EvtClearTalk
     EvtTalk(MSG_163)
     EvtClearTalk
-    EvtGotoIfNotFunc(3, func_fe6_0806C594)
+    EvtGotoIfNotFunc(3, IsTalkChoiceYes)
 
     EvtSetFlag(FLAG_CHAPTER16_16)
     EvtGoto(10)
@@ -188,7 +188,7 @@ EvtLabel(3)
     EvtClearTalk
     EvtTalk(MSG_163)
     EvtClearTalk
-    EvtGotoIfNotFunc(4, func_fe6_0806C594)
+    EvtGotoIfNotFunc(4, IsTalkChoiceYes)
 
     EvtSetFlag(FLAG_CHAPTER16_17)
     EvtGoto(10)
@@ -198,7 +198,7 @@ EvtLabel(4)
     EvtClearTalk
     EvtTalk(MSG_163)
     EvtClearTalk
-    EvtGotoIfNotFunc(7, func_fe6_0806C594)
+    EvtGotoIfNotFunc(7, IsTalkChoiceYes)
 
     EvtSetFlag(FLAG_CHAPTER16_18)
     EvtGoto(10)
@@ -213,7 +213,7 @@ EvtLabel(10)
     EvtTalk(MSG_164)
     EvtClearTalk
     EvtChangeFaction(PID_HUGH, FACTION_BLUE)
-    EvtFunc(func_fe6_0806D064)
+    EvtFunc(Chapter16_PayHughCost)
     EvtRestoreBgm
 
 EvtLabel(0)

@@ -8,48 +8,48 @@
 #include "event.h"
 #include "eventinfo.h"
 
-struct TutorialEventProcA
+struct TutorialHighlightProc
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
-    /* 64 */ i16 unk_64;
-    /* 66 */ i16 unk_66;
+    /* 64 */ i16 clock;
+    /* 66 */ i16 fading_out;
 };
 
-struct TutorialEventProcB
+struct TutorialHighlightEndProc
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
-    /* 64 */ i16 unk_64;
+    /* 64 */ i16 timer;
 };
 
 bool IsHard(void);
 // GetHardModeBonusLevelsByPid
 void ApplyAllHardModeBonusLevels(void);
-bool func_fe6_0806BB34(struct EventInfo * info);
-bool func_fe6_0806BB68(struct EventInfo * info);
-bool func_fe6_0806BB9C(struct EventInfo * info);
-bool func_fe6_0806BBD0(struct EventInfo * info);
-// func_fe6_0806BBF8
-bool func_fe6_0806BC20(struct EventInfo * info);
-bool func_fe6_0806BC5C(struct EventInfo * info);
-bool func_fe6_0806BCA4(struct EventInfo * info);
-bool func_fe6_0806BCEC(struct EventInfo * info);
-bool func_fe6_0806BD34(struct EventInfo * info);
-bool func_fe6_0806BD7C(struct EventInfo * info);
-bool func_fe6_0806BDC4(struct EventInfo * info);
+bool Chapter11A_CheckTalkShannaThea(struct EventInfo * info);
+bool Chapter11A_CheckShannaRecruitsThea(struct EventInfo * info);
+bool Chapter11A_CheckTalkShannaTheaAfterKlein(struct EventInfo * info);
+bool Chapter13_CheckBlueEntersEast(struct EventInfo * info);
+// CheckFindHiddenItemNoThief
+bool Chapter15_CheckTalkRoyPerceval(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave1(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave2(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave3(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave4(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave5(struct EventInfo * info);
+bool Chapter24_CheckReinforcementWave6(struct EventInfo * info);
 bool Chapter10B_CheckTalkShannaThea(struct EventInfo * info);
 bool Chapter10B_CheckTalkShannaTheaAfterKlein(struct EventInfo * info);
 bool Chapter10B_CheckShannaRecruitsThea(struct EventInfo * info);
-// func_fe6_0806BE90
-// func_fe6_0806BEB8
-bool func_fe6_0806BEEC(struct EventInfo * info);
-bool func_fe6_0806BF14(struct EventInfo * info);
+// CheckTalkShannaTheaWhileDouglasEnemy
+// CheckTalkShannaTheaAfterDouglas
+bool TrialC_CheckRedOnTile(struct EventInfo * info);
+bool TrialD_CheckBerserkerDefeated(struct EventInfo * info);
 bool IsGuinivereAround(void);
-// func_fe6_0806BF70
-// func_fe6_0806BF7C
-// func_fe6_0806BF98
-// func_fe6_0806BFA4
+// SoftResetKeepEwram
+// IsAButtonNotPressed
+// SoftResetKeepEwram2
+// IsAButtonPressed
 void RemoveFog(void);
 void AddFiveThousandGold(void);
 // RemoveGold
@@ -86,125 +86,125 @@ bool IsDayanBlue(void);
 bool IsKleinBlue(void);
 bool IsTheaBlue(void);
 bool IsDouglasBlue(void);
-// func_fe6_0806C2C4
-bool func_fe6_0806C2F8(void);
+// IsAnyNonBlueUnitAlive
+bool AreAllNonBlueUnitsDead(void);
 bool IsPidNonBlue(fu8 pid);
 // IsTheaNonBlue
-bool func_fe6_0806C35C(void);
+bool IsUnknown5ENonBlue(void);
 bool IsKleinNonBlue(void);
 bool IsCathNonBlue(void);
 bool IsHughNonBlue(void);
 bool IsGalleNonBlue(void);
-bool func_fe6_0806C3AC(void);
-bool func_fe6_0806C3BC(void);
+bool IsUnknownC4NonBlue(void);
+bool IsUnknownC6NonBlue(void);
 bool IsDouglasNonBlue(void);
 bool IsPercevalNonBlue(void);
-bool func_fe6_0806C3EC(void);
-bool func_fe6_0806C3FC(void);
-bool func_fe6_0806C40C(void);
-// func_fe6_0806C41C
-// func_fe6_0806C460
+bool IsUnknownD5NonBlue(void);
+bool IsUnknownD6NonBlue(void);
+bool IsUnknownD7NonBlue(void);
+// CountFactionUnitsByPid
+// CountFactionUnits
 bool IsPastTurn20(void);
 bool IsPastTurn25(void);
 bool IsPastTurn30(void);
 bool IsBluePhase(void);
 bool IsRedPhase(void);
 bool IsActiveUnitMale(void);
-bool func_fe6_0806C524(void);
-bool func_fe6_0806C540(void);
-bool func_fe6_0806C55C(void);
-bool func_fe6_0806C578(void);
-bool func_fe6_0806C594(void);
+bool HasTenThousandGold(void);
+bool HasEightThousandGold(void);
+bool HasSixThousandGold(void);
+bool HasFiveThousandGold(void);
+bool IsTalkChoiceYes(void);
 bool AreWeGoingToSacae(void);
-void func_fe6_0806C608(void);
-bool func_fe6_0806C62C(void);
-void func_fe6_0806C64C(void);
-void func_fe6_0806C670(void);
-bool func_fe6_0806C68C(void);
-void func_fe6_0806C69C(void);
-void func_fe6_0806C6B0(void);
-void func_fe6_0806C718(void);
-void func_fe6_0806C734(void);
-void func_fe6_0806C750(void);
-// func_fe6_0806C76C
-void func_fe6_0806C7BC(struct TutorialEventProcA * proc);
-void func_fe6_0806C7E0(struct TutorialEventProcA * proc);
-void func_fe6_0806C948(struct TutorialEventProcB * proc);
-void func_fe6_0806C950(struct TutorialEventProcB * proc);
-// func_fe6_0806C998
-bool func_fe6_0806C9F8(void);
-void func_fe6_0806CA1C(void);
-void func_fe6_0806CA30(void);
-void func_fe6_0806CA44(void);
-void func_fe6_0806CA58(void);
-void func_fe6_0806CA6C(void);
-void func_fe6_0806CA84(void);
-void func_fe6_0806CA98(void);
-void func_fe6_0806CAAC(void);
-void func_fe6_0806CAC4(void);
-void func_fe6_0806CAD8(void);
-void func_fe6_0806CAEC(void);
-void func_fe6_0806CB00(void);
-void func_fe6_0806CB18(void);
-// func_fe6_0806CB2C
-void func_fe6_0806CB40(void);
-void func_fe6_0806CB54(void);
-void func_fe6_0806CB6C(void);
-void func_fe6_0806CB80(void);
-void func_fe6_0806CB94(void);
-void func_fe6_0806CBA8(void);
-void func_fe6_0806CBBC(void);
+void GameOver_FadeOutBgm(void);
+bool GameOver_ShouldSkipScreen(void);
+void Tutorial_InitActionSelectHelp(void);
+void Tutorial_FreezeMenuOnce(void);
+bool Tutorial_IsMenuFrozen(void);
+void Tutorial_ResumeMenu(void);
+void Tutorial_StartMoveSelectEvent(void);
+void Tutorial_StartAttackMenuEvent(void);
+void Tutorial_StartAttackMenuItemEvent(void);
+void Tutorial_StartMapMenuEvent(void);
+// TutorialHighlight_SetFade
+void TutorialHighlight_Init(struct TutorialHighlightProc * proc);
+void TutorialHighlight_Loop(struct TutorialHighlightProc * proc);
+void TutorialHighlightEnd_Init(struct TutorialHighlightEndProc * proc);
+void TutorialHighlightEnd_Loop(struct TutorialHighlightEndProc * proc);
+// Tutorial_StartHighlight
+bool Tutorial_EndHighlightAfterHelp(void);
+void Tutorial_HelpMoveRange(void);
+void Tutorial_HelpAttackRange(void);
+void Tutorial_HelpBowRange(void);
+void Tutorial_HelpBowAttack(void);
+void Tutorial_HelpBowMove(void);
+void Tutorial_HelpMagicRange(void);
+void Tutorial_HelpMagicAttack(void);
+void Tutorial_HelpMagicMove(void);
+void Tutorial_HelpWeaponSelect(void);
+void Tutorial_HelpTargetSelect(void);
+void Tutorial_HelpConfirmAttack(void);
+void Tutorial_HelpAlenMove(void);
+void Tutorial_HelpVisit(void);
+// Tutorial_HelpUnused
+void Tutorial_HelpMapMenu(void);
+void Tutorial_HelpMeleeMove(void);
+void Tutorial_HelpTrade(void);
+void Tutorial_HelpRescue(void);
+void Tutorial_HelpSeize(void);
+void Tutorial_HelpUnitMenu(void);
+void Tutorial_HelpAttackCommand(void);
 bool IsActiveUnitRoy(void);
 bool IsActiveUnitWolt(void);
 bool IsActiveUnitLilina(void);
 // IsActiveUnitAlen
-bool func_fe6_0806CC68(void);
+bool Tutorial_CanAttackAfterMove(void);
 bool IsCombatAction(void);
-bool func_fe6_0806CC94(void);
-// func_fe6_0806CCC0
-void func_fe6_0806CCC4(void);
+bool Tutorial_CheckFirstVisit(void);
+// Tutorial_FalseStub
+void Tutorial_DisableUnitMenuHelp(void);
 bool IsAnyTutorialUnitDamaged(void);
 bool IsAnyTutorialUnitPastColumn16(void);
 bool IsBossDefeated(void);
 // IsPastTurn1
-bool func_fe6_0806CDC0(void);
-bool func_fe6_0806CE18(void);
-bool func_fe6_0806CE34(void);
-bool func_fe6_0806CE50(void);
-bool func_fe6_0806CE80(void);
-bool func_fe6_0806CEAC(void);
+bool Tutorial_ShouldHelpAttack(void);
+bool Tutorial_CanVisit(void);
+bool Tutorial_CanSeize(void);
+bool Tutorial_ShouldHelpUnitMenu(void);
+bool Tutorial_ShouldHelpRescue(void);
+bool Tutorial_ShouldHelpTrade(void);
 void RefreshClarine(void);
-bool func_fe6_0806CEF0(void);
-bool func_fe6_0806CF3C(void);
+bool Chapter6_CheckWestDoorReinforcements(void);
+bool Chapter6_CheckEastDoorReinforcements(void);
 void Chapter8_WeakenNorthWestWall(void);
-// func_fe6_0806CFA0
-void func_fe6_0806CFB8(void);
-void func_fe6_0806CFD0(void);
-// func_fe6_0806CFE8
-void func_fe6_0806D000(void);
-void func_fe6_0806D01C(void);
-bool func_fe6_0806D028(void);
-void func_fe6_0806D064(void);
-void func_fe6_0806D0E4(void);
-// func_fe6_0806D0FC
+// PlayBgmSong28
+void PlayBgmSong2B(void);
+void PlayBgmSong2A(void);
+// PlayBgmSong26
+void PlaySeC4(void);
+void StopEarthQuakeSound(void);
+bool Chapter14_CheckFindHiddenItem(void);
+void Chapter16_PayHughCost(void);
+void PromoteRoyWithBindingBlade(void);
+// IsItemOwned
 bool HaveAllLegendaryWeapons(void);
-void func_fe6_0806D17C(void);
-void func_fe6_0806D194(void);
-void func_fe6_0806D1AC(void);
-void func_fe6_0806D1D4(void);
-bool func_fe6_0806D1FC(struct EventProc * proc);
-bool func_fe6_0806D35C(void);
-bool func_fe6_0806D398(void);
-bool func_fe6_0806D3B4(void);
-void func_fe6_0806D3E0(void);
+void Chapter23_StartMapChange(void);
+void Chapter24_ResetReinforcementCount(void);
+void Chapter24_CountReinforcementWave(void);
+void FinalChapter_InitUnitQuotes(void);
+bool FinalChapter_PlayUnitQuotes(struct EventProc * proc);
+bool IsThreeOrMoreNonBlueAlive(void);
+bool EventRandOneInFive(void);
+bool Chapter18S_CheckReinforcements(void);
+void Chapter18S_UpdateReinforcementState(void);
 void AddChapter8xFireTraps(void);
-void func_fe6_0806D55C(void);
+void SetChapter8x(void);
 void AddChapter12xGasTraps(void);
 void AddChapter14xTimedMapChanges(void);
 void AddChapter16xArrowTraps(void);
-void func_fe6_0806D6B4(void);
+void Chapter20xS_ChooseRealSeizeTile(void);
 void AddChapter21xStepTraps(void);
-void func_fe6_0806D77C(void);
+void Chapter21x_ChooseTrappedChests(void);
 
 struct DemoMonologueMsg
 {
@@ -246,23 +246,23 @@ void TrueEnding_EarthQuake_Main(void);
 void TrueEnding_EarthQuake(ProcPtr proc);
 void TrueEnding_EarthQuakeEnd(void);
 
-struct UnkProc_08676854
+struct ProcMapShake
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
-    /* 64 */ i16 unk_64;
+    /* 64 */ i16 timer;
 };
 
-void func_fe6_0806DBA0(struct UnkProc_08676854 * proc);
-void func_fe6_0806DBA8(struct UnkProc_08676854 * proc);
-void func_fe6_0806DC24(ProcPtr parent);
-void func_fe6_0806DC38(void);
+void MapShake_Init(struct ProcMapShake * proc);
+void MapShake_Loop(struct ProcMapShake * proc);
+void StartMapShake(ProcPtr parent);
+void EndMapShake(void);
 
 struct ProcGameCreditFade
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
-    /* 64 */ i16 unk_64;
+    /* 64 */ i16 timer;
 };
 
 void EndingCreditFade_Init(struct ProcGameCreditFade * proc);
@@ -278,35 +278,35 @@ void Epilogue_RemoveEventEngineBG(struct EventProc * proc);
 void Epilogue_RemoveEventEngineNoMap(struct EventProc * proc);
 void TrueEnding_SetNiceWeather(void);
 void Epilogue_StartWind(void);
-void func_fe6_0806DE00(void);
-void TruEnding_PlaySe269(void);
-void func_fe6_0806DE40(void);
+void PlaySe269(void);
+void TrueEnding_PlaySe269(void);
+void PlaySe6A(void);
 
-struct UnkProc_086768C4
+struct ProcEndingBgmLooper
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
-    /* 64 */ u16 unk_64;
+    /* 64 */ u16 timer;
 };
 
-void EndingBgmLooper_Init(struct UnkProc_086768C4 * proc);
-void EndingBgmLooper_Ioop(struct UnkProc_086768C4 * proc);
+void EndingBgmLooper_Init(struct ProcEndingBgmLooper * proc);
+void EndingBgmLooper_Loop(struct ProcEndingBgmLooper * proc);
 void NewEndingBgmLooper(ProcPtr parent);
 void EndEndingBgmLooper(void);
 
 void RenderMapForDirectJump(void);
 
-struct UnkProc_086768DC
+struct ProcTrueEndingSortAllies
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x4C);
-    /* 4C */ ProcPtr unk_4C;
+    /* 4C */ ProcPtr parent;
     /* 50 */ STRUCT_PAD(0x50, 0x64);
-    /* 64 */ i16 unk_64;
+    /* 64 */ i16 uid;
 };
 
-void TrueEnding_SortAllies_Init(struct UnkProc_086768DC * proc);
-void TrueEnding_SortAllies_Loop(struct UnkProc_086768DC * proc);
+void TrueEnding_SortAllies_Init(struct ProcTrueEndingSortAllies * proc);
+void TrueEnding_SortAllies_Loop(struct ProcTrueEndingSortAllies * proc);
 void TrueEnding_SortAllies(ProcPtr parent);
 bool TrueEnding_SortAlliesExists(void);
 
@@ -327,7 +327,7 @@ void EarthQuakeSoundFadeOutDefault(void);
 void Epilogue_BgmFadeIn(ProcPtr parent);
 void Epilogue_BgmFadeOut(ProcPtr parent);
 
-void func_fe6_0806E074(void);
+void RestoreBlueUnits(void);
 
 struct GameEndingPosition { u8 x, y; u16 more; };
 
@@ -357,4 +357,4 @@ extern EventScr CONST_DATA EventScr_FalseEnding[];
 extern EventScr CONST_DATA EventScr_CharacterEnding[];
 
 void StartGameEndingScene(ProcPtr parent);
-void func_fe6_0806E32C(void);
+void SetupEndingUids(void);

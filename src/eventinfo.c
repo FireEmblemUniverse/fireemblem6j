@@ -780,7 +780,7 @@ void StartAvailableVictoryEvent(void)
 bool StartAvailableMoveSelectEvent(void)
 {
     if (gPlaySt.chapter == CHAPTER_TUTORIAL)
-        func_fe6_0806C6B0();
+        Tutorial_StartMoveSelectEvent();
 
     return FALSE;
 }
@@ -828,7 +828,7 @@ bool StartAvailableAttackMenuEvent(void)
 {
     if (gPlaySt.chapter == CHAPTER_TUTORIAL)
     {
-        func_fe6_0806C718();
+        Tutorial_StartAttackMenuEvent();
     }
 
     return FALSE;
@@ -838,7 +838,7 @@ bool StartAvailableAttackMenuItemEvent(void)
 {
     if (gPlaySt.chapter == CHAPTER_TUTORIAL)
     {
-        func_fe6_0806C734();
+        Tutorial_StartAttackMenuItemEvent();
     }
 
     return FALSE;
@@ -848,7 +848,7 @@ bool StartAvailableMapMenuEvent(void)
 {
     if (gPlaySt.chapter == CHAPTER_TUTORIAL)
     {
-        func_fe6_0806C750();
+        Tutorial_StartMapMenuEvent();
     }
 
     return FALSE;

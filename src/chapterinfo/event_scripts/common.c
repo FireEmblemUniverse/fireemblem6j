@@ -91,12 +91,12 @@ EventScr CONST_DATA EventScr_GameOver[] =
 {
     EvtNoSkipNoTextSkip
     EvtSleep(30)
-    EvtFunc(func_fe6_0806C608)
+    EvtFunc(GameOver_FadeOutBgm)
     EvtSleep(10)
     EvtFunc(StartSlowFadeToBlack)
     EvtSleep(80)
     EvtFunc(EndAllMus)
-    EvtGotoIfFunc(1, func_fe6_0806C62C)
+    EvtGotoIfFunc(1, GameOver_ShouldSkipScreen)
 
     EvtFunc(StartGameOverScreen)
 
@@ -106,7 +106,7 @@ EvtLabel(1)
     EvtEnd
 };
 
-u16 CONST_DATA Sprite_0866ACCC[] =
+u16 CONST_DATA Sprite_TutorialHighlight[] =
 {
     4,
     OAM0_SHAPE_8x8 + OAM0_Y(-1), OAM1_SIZE_8x8 + OAM1_X(-2), 0,
@@ -115,16 +115,16 @@ u16 CONST_DATA Sprite_0866ACCC[] =
     OAM0_SHAPE_8x8 + OAM0_Y(10), OAM1_SIZE_8x8 + OAM1_X(9) + OAM1_HFLIP + OAM1_VFLIP, 0,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_0866ACE8[] =
+struct ProcScr CONST_DATA ProcScr_TutorialHighlight[] =
 {
-    PROC_CALL(func_fe6_0806C7BC),
-    PROC_REPEAT(func_fe6_0806C7E0),
+    PROC_CALL(TutorialHighlight_Init),
+    PROC_REPEAT(TutorialHighlight_Loop),
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_0866AD00[] =
+struct ProcScr CONST_DATA ProcScr_TutorialHighlightEnd[] =
 {
-    PROC_CALL(func_fe6_0806C948),
-    PROC_REPEAT(func_fe6_0806C950),
+    PROC_CALL(TutorialHighlightEnd_Init),
+    PROC_REPEAT(TutorialHighlightEnd_Loop),
     PROC_END,
 };
