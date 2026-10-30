@@ -24,20 +24,20 @@ struct TextPrintProc
     /* 36 */ i8 char_per_tick;
 };
 
-static u8 * GetTextDrawDest(struct Text * text);
-static u16 const * GetColorLut(int color);
-static void DrawTextGlyph(struct Text * text, struct Glyph const * glyph);
-static void DrawTextGlyphNoClear(struct Text * text, struct Glyph const * glyph);
-static void Text_DrawStringAscii(struct Text * text, char const * str);
-static char const * Text_DrawCharacterAscii(struct Text * text, char const * str);
-static int GetStringTextLenAscii(char const * str);
-static u8 * GetSpriteTextDrawDest(struct Text * text);
-static void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph);
-static void TextPrint_OnLoop(struct TextPrintProc * proc);
-static void GreenText_OnLoop(ProcPtr proc);
-static void DrawSpecialCharGlyph(int chr_position, int color, struct Glyph const * glyph);
-static int AddSpecialChar(struct SpecialCharSt * st, int color, int id);
-static int GetSpecialCharChr(int color, int id);
+u8 * GetTextDrawDest(struct Text * text);
+u16 const * GetColorLut(int color);
+void DrawTextGlyph(struct Text * text, struct Glyph const * glyph);
+void DrawTextGlyphNoClear(struct Text * text, struct Glyph const * glyph);
+void Text_DrawStringAscii(struct Text * text, char const * str);
+char const * Text_DrawCharacterAscii(struct Text * text, char const * str);
+int GetStringTextLenAscii(char const * str);
+u8 * GetSpriteTextDrawDest(struct Text * text);
+void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph);
+void TextPrint_OnLoop(struct TextPrintProc * proc);
+void GreenText_OnLoop(ProcPtr proc);
+void DrawSpecialCharGlyph(int chr_position, int color, struct Glyph const * glyph);
+int AddSpecialChar(struct SpecialCharSt * st, int color, int id);
+int GetSpecialCharChr(int color, int id);
 
 extern u16 CONST_DATA TextColorLut_0123[];
 extern u16 CONST_DATA TextColorLut_0456[];
@@ -472,19 +472,19 @@ retry_draw:
     return str;
 }
 
-static u8 * GetTextDrawDest(struct Text * text)
+u8 * GetTextDrawDest(struct Text * text)
 {
     int chrNumber = (text->chr_position + text->db_id * text->tile_width + text->x / 8);
 
     return gActiveFont->draw_dest + chrNumber * 2 * CHR_SIZE;
 }
 
-static u16 const * GetColorLut(int color)
+u16 const * GetColorLut(int color)
 {
     return s2bppTo4bppLutTable[color];
 }
 
-static void DrawTextGlyph(struct Text * text, struct Glyph const * glyph)
+void DrawTextGlyph(struct Text * text, struct Glyph const * glyph)
 {
     u8 * draw_dest = gActiveFont->get_draw_dest(text);
     int subx = text->x & 7;
@@ -494,7 +494,7 @@ static void DrawTextGlyph(struct Text * text, struct Glyph const * glyph)
     text->x += glyph->width;
 }
 
-static void DrawTextGlyphNoClear(struct Text * text, struct Glyph const * glyph)
+void DrawTextGlyphNoClear(struct Text * text, struct Glyph const * glyph)
 {
     int i;
 
@@ -584,7 +584,7 @@ void Text_InsertDrawNumberOrBlank(struct Text * text, int x, int color, int numb
     Text_DrawNumberOrBlank(text, number);
 }
 
-static void Text_DrawStringAscii(struct Text * text, char const * str)
+void Text_DrawStringAscii(struct Text * text, char const * str)
 {
     struct Glyph const * glyph;
 
@@ -599,7 +599,7 @@ static void Text_DrawStringAscii(struct Text * text, char const * str)
     }
 }
 
-static char const * Text_DrawCharacterAscii(struct Text * text, char const * str)
+char const * Text_DrawCharacterAscii(struct Text * text, char const * str)
 {
     struct Glyph const * glyph = gActiveFont->glyphs[*str++];
 
@@ -611,7 +611,7 @@ static char const * Text_DrawCharacterAscii(struct Text * text, char const * str
     return str;
 }
 
-static int GetStringTextLenAscii(char const * str)
+int GetStringTextLenAscii(char const * str)
 {
     struct Glyph const * glyph;
 
@@ -676,14 +676,14 @@ void SpriteText_DrawBackgroundExt(struct Text * text, u32 line)
     CpuFastFill(line, gActiveFont->get_draw_dest(text), 2 * 0x20 * CHR_SIZE);
 }
 
-static u8 * GetSpriteTextDrawDest(struct Text * text)
+u8 * GetSpriteTextDrawDest(struct Text * text)
 {
     int chr = (text->chr_position + text->db_id * text->tile_width + text->x / 8);
 
     return gActiveFont->draw_dest + chr * CHR_SIZE;
 }
 
-static void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph)
+void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph)
 {
     int i;
 
@@ -724,7 +724,7 @@ static void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph)
     text->x += glyph->width;
 }
 
-static void TextPrint_OnLoop(struct TextPrintProc * proc)
+void TextPrint_OnLoop(struct TextPrintProc * proc)
 {
     int i;
 
@@ -796,7 +796,7 @@ void EndTextPrinting(void)
     Proc_EndEach(ProcScr_TextPrint);
 }
 
-static void GreenText_OnLoop(ProcPtr proc)
+void GreenText_OnLoop(ProcPtr proc)
 {
     int index = (GetGameTime() / 4) & 0xF;
 
@@ -817,7 +817,7 @@ void EndGreenText(void)
     Proc_EndEach(ProcScr_GreenTextColor);
 }
 
-static void DrawSpecialCharGlyph(int chr_position, int color, struct Glyph const * glyph)
+void DrawSpecialCharGlyph(int chr_position, int color, struct Glyph const * glyph)
 {
     int i;
 
@@ -840,7 +840,7 @@ static void DrawSpecialCharGlyph(int chr_position, int color, struct Glyph const
     }
 }
 
-static int AddSpecialChar(struct SpecialCharSt * st, int color, int id)
+int AddSpecialChar(struct SpecialCharSt * st, int color, int id)
 {
     st->color = color;
     st->id = id;
@@ -853,7 +853,7 @@ static int AddSpecialChar(struct SpecialCharSt * st, int color, int id)
     return st->chr_position;
 }
 
-static int GetSpecialCharChr(int color, int id)
+int GetSpecialCharChr(int color, int id)
 {
     struct SpecialCharSt * it = sSpecialCharStList;
 

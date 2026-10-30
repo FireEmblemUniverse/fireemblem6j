@@ -3,20 +3,20 @@
 extern IrqFunc gIrqFuncs[INT_COUNT];
 extern u32 IntrMainRam[0x200];
 
-static void DummyFunc(void);
+void DummyFunc_irq(void);
 
 void IrqInit(void)
 {
     int i;
 
     for (i = 0; i < INT_COUNT; ++i)
-        gIrqFuncs[i] = DummyFunc;
+        gIrqFuncs[i] = DummyFunc_irq;
 
     CpuFastCopy(IrqMain, IntrMainRam, sizeof IntrMainRam);
     INTR_VECTOR = IntrMainRam;
 }
 
-static void DummyFunc(void)
+void DummyFunc_irq(void)
 {
 }
 

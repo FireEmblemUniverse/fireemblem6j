@@ -11,7 +11,7 @@
 
 struct AiDecision EWRAM_DATA gAiDecision = {};
 
-static void (* CONST_DATA sAllDecideFuncs[])(void) =
+void (* CONST_DATA sAllDecideFuncs[])(void) =
 {
     AiDecideHealOrEscape,
     AiDecideScriptA,
@@ -20,7 +20,7 @@ static void (* CONST_DATA sAllDecideFuncs[])(void) =
     NULL, NULL,
 };
 
-static void (* CONST_DATA sAllDecideFuncsUnused[])(void) =
+void (* CONST_DATA sAllDecideFuncsUnused[])(void) =
 {
     AiDecideSpecialItems,
     AiDecideScriptA,
@@ -29,8 +29,8 @@ static void (* CONST_DATA sAllDecideFuncsUnused[])(void) =
     NULL, NULL,
 };
 
-static void AiDecide_NextUnit(ProcPtr proc);
-static void AiDecide_Suspend(ProcPtr proc);
+void AiDecide_NextUnit(ProcPtr proc);
+void AiDecide_Suspend(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_AiDecide[] =
 {

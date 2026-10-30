@@ -3,7 +3,7 @@
 static u16 sRandStA[3];
 static i32 sRandStB;
 
-static int NextRN(void)
+int NextRN(void)
 {
     // This generates a pseudorandom string of 16 bits
     // In other words, a pseudorandom integer that can range from 0 to 65535

@@ -31,7 +31,7 @@ extern void CgbSound(void);
 extern void CgbOscOff(u8);
 extern void CgbModVol(struct CgbChannel * chan);
 extern u32 MidiKeyToCgbFreq(u8, u8, u8);
-extern void DummyFunc(void);
+extern void DummyFunc_m4a(void);
 extern void SampleFreqSet(u32 freq);
 extern void ClearModM(struct MusicPlayerTrack * track);
 
@@ -416,10 +416,10 @@ void SoundInit(struct SoundInfo * sound_info)
     sound_info->max_channels = 8;
     sound_info->master_volume = 15;
     sound_info->plynote = ply_note;
-    sound_info->cgb_sound_func = (CgbSoundFunc) DummyFunc;
-    sound_info->cgb_osc_off_func = (CgbOscOffFunc) DummyFunc;
-    sound_info->midi_to_cgb_func = (MidiKeyToCgbFreqFunc) DummyFunc;
-    sound_info->ext_vol_pit_func = (ExtVolPitFunc) DummyFunc;
+    sound_info->cgb_sound_func = (CgbSoundFunc) DummyFunc_m4a;
+    sound_info->cgb_osc_off_func = (CgbOscOffFunc) DummyFunc_m4a;
+    sound_info->midi_to_cgb_func = (MidiKeyToCgbFreqFunc) DummyFunc_m4a;
+    sound_info->ext_vol_pit_func = (ExtVolPitFunc) DummyFunc_m4a;
 
     MPlayJumpTableCopy(gMPlayJumpTable);
 
@@ -1646,7 +1646,7 @@ void ply_xswee(struct MusicPlayer * music_player, struct MusicPlayerTrack * trac
 
 #undef READ_XCMD_BYTE
 
-void DummyFunc(void)
+void DummyFunc_m4a(void)
 {
 }
 
