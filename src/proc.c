@@ -23,12 +23,12 @@ static struct ProcDummy ** EWRAM_DATA sProcAllocListHead = NULL;
 
 ProcPtr EWRAM_DATA gProcTreeRootArray[8] = {};
 
-static ProcPtr AllocProc(void);
-static void FreeProc(ProcPtr proc);
-static void InsertRootProc(struct ProcDummy * proc, int treenum);
-static void InsertProc(struct ProcDummy *, struct ProcDummy *);
-static void UnlinkProc(struct ProcDummy * proc);
-static void StepProcScr(struct ProcDummy * proc);
+ProcPtr AllocProc(void);
+void FreeProc(ProcPtr proc);
+void InsertRootProc(struct ProcDummy * proc, int treenum);
+void InsertProc(struct ProcDummy *, struct ProcDummy *);
+void UnlinkProc(struct ProcDummy * proc);
+void StepProcScr(struct ProcDummy * proc);
 
 void InitProcs(void)
 {
@@ -106,7 +106,7 @@ ProcPtr SpawnProcLocking(struct ProcScr const * scr, ProcPtr parent)
     return proc;
 }
 
-static void ClearProc(struct ProcDummy * proc)
+void ClearProc(struct ProcDummy * proc)
 {
     if (proc->proc_prev)
         ClearProc(proc->proc_prev);
@@ -142,7 +142,7 @@ void Proc_End(ProcPtr proc)
     ClearProc(proc);
 }
 
-static ProcPtr AllocProc(void)
+ProcPtr AllocProc(void)
 {
     ProcPtr proc = *sProcAllocListHead;
     sProcAllocListHead++;
@@ -150,13 +150,13 @@ static ProcPtr AllocProc(void)
     return proc;
 }
 
-static void FreeProc(ProcPtr proc)
+void FreeProc(ProcPtr proc)
 {
     sProcAllocListHead--;
     *sProcAllocListHead = proc;
 }
 
-static void InsertRootProc(struct ProcDummy * proc, int treenum)
+void InsertRootProc(struct ProcDummy * proc, int treenum)
 {
     struct ProcDummy ** root = NULL;
 
@@ -172,7 +172,7 @@ static void InsertRootProc(struct ProcDummy * proc, int treenum)
     *root = proc;
 }
 
-static void InsertProc(struct ProcDummy * proc, struct ProcDummy * parent)
+void InsertProc(struct ProcDummy * proc, struct ProcDummy * parent)
 {
     if (parent->proc_child != NULL)
     {
@@ -184,7 +184,7 @@ static void InsertProc(struct ProcDummy * proc, struct ProcDummy * parent)
     proc->proc_parent = parent;
 }
 
-static void UnlinkProc(struct ProcDummy * proc)
+void UnlinkProc(struct ProcDummy * proc)
 {
     if (proc->proc_next != NULL)
         ((struct ProcDummy *) proc->proc_next)->proc_prev = proc->proc_prev;
@@ -209,7 +209,7 @@ static void UnlinkProc(struct ProcDummy * proc)
     proc->proc_prev = NULL;
 }
 
-static void RunProcCore(struct ProcDummy * proc)
+void RunProcCore(struct ProcDummy * proc)
 {
     if (proc->proc_prev != NULL)
         RunProcCore(proc->proc_prev);
@@ -396,7 +396,7 @@ void Proc_EndEachMarked(int mark)
     }
 }
 
-static void EndProc(ProcPtr proc)
+void EndProc(ProcPtr proc)
 {
     Proc_End(proc);
 }
@@ -406,7 +406,7 @@ void Proc_EndEach(struct ProcScr const * script)
     Proc_ForEach(script, EndProc);
 }
 
-static void BreakProc(ProcPtr proc)
+void BreakProc(ProcPtr proc)
 {
     Proc_Break(proc);
 }
@@ -416,7 +416,7 @@ void Proc_BreakEach(struct ProcScr const * script)
     Proc_ForEach(script, BreakProc);
 }
 
-static void WalkProcSubtree(struct ProcDummy * proc, ProcFunc func)
+void WalkProcSubtree(struct ProcDummy * proc, ProcFunc func)
 {
     if (proc->proc_prev)
         WalkProcSubtree(proc->proc_prev, func);
@@ -437,13 +437,13 @@ void Proc_ForSubtree(ProcPtr proc, ProcFunc func)
         WalkProcSubtree(casted->proc_child, func);
 }
 
-static bool ProcCmd_End(struct ProcDummy * proc)
+bool ProcCmd_End(struct ProcDummy * proc)
 {
     Proc_End(proc);
     return FALSE;
 }
 
-static bool ProcCmd_Name(struct ProcDummy * proc)
+bool ProcCmd_Name(struct ProcDummy * proc)
 {
     proc->proc_name = proc->proc_script_pc->ptr;
     proc->proc_script_pc++;
@@ -451,7 +451,7 @@ static bool ProcCmd_Name(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_Call(struct ProcDummy * proc)
+bool ProcCmd_Call(struct ProcDummy * proc)
 {
     ProcFunc func = proc->proc_script_pc->ptr;
 
@@ -461,7 +461,7 @@ static bool ProcCmd_Call(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_CallRet(struct ProcDummy * proc)
+bool ProcCmd_CallRet(struct ProcDummy * proc)
 {
     bool (* func)(ProcPtr proc) = proc->proc_script_pc->ptr;
 
@@ -469,7 +469,7 @@ static bool ProcCmd_CallRet(struct ProcDummy * proc)
     return func(proc);
 }
 
-static bool ProcCmd_CallArg(struct ProcDummy * proc)
+bool ProcCmd_CallArg(struct ProcDummy * proc)
 {
     bool (* func)(short arg, ProcPtr proc);
     short arg;
@@ -481,7 +481,7 @@ static bool ProcCmd_CallArg(struct ProcDummy * proc)
     return func(arg, proc);
 }
 
-static bool ProcCmd_While(struct ProcDummy * proc)
+bool ProcCmd_While(struct ProcDummy * proc)
 {
     bool (* func)(ProcPtr) = proc->proc_script_pc->ptr;
 
@@ -496,7 +496,7 @@ static bool ProcCmd_While(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_Repeat(struct ProcDummy * proc)
+bool ProcCmd_Repeat(struct ProcDummy * proc)
 {
     proc->proc_repeat_func = proc->proc_script_pc->ptr;
     proc->proc_script_pc++;
@@ -504,7 +504,7 @@ static bool ProcCmd_Repeat(struct ProcDummy * proc)
     return FALSE;
 }
 
-static bool ProcCmd_SetEndFunc(struct ProcDummy * proc)
+bool ProcCmd_SetEndFunc(struct ProcDummy * proc)
 {
     Proc_SetEndFunc(proc, proc->proc_script_pc->ptr);
     proc->proc_script_pc++;
@@ -512,7 +512,7 @@ static bool ProcCmd_SetEndFunc(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_SpawnChild(struct ProcDummy * proc)
+bool ProcCmd_SpawnChild(struct ProcDummy * proc)
 {
     SpawnProc(proc->proc_script_pc->ptr, proc);
     proc->proc_script_pc++;
@@ -520,7 +520,7 @@ static bool ProcCmd_SpawnChild(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_SpawnLockChild(struct ProcDummy * proc)
+bool ProcCmd_SpawnLockChild(struct ProcDummy * proc)
 {
     SpawnProcLocking(proc->proc_script_pc->ptr, proc);
     proc->proc_script_pc++;
@@ -528,7 +528,7 @@ static bool ProcCmd_SpawnLockChild(struct ProcDummy * proc)
     return FALSE;
 }
 
-static bool ProcCmd_SpawnBugged(struct ProcDummy * proc)
+bool ProcCmd_SpawnBugged(struct ProcDummy * proc)
 {
     // It is very much bugged
     // As it uses the proc's sleep timer to choose the tree in which to put the new proc
@@ -540,7 +540,7 @@ static bool ProcCmd_SpawnBugged(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_WhileExists(struct ProcDummy * proc)
+bool ProcCmd_WhileExists(struct ProcDummy * proc)
 {
     if (Proc_Exists(proc->proc_script_pc->ptr) == TRUE)
         return FALSE;
@@ -550,7 +550,7 @@ static bool ProcCmd_WhileExists(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_EndEach(struct ProcDummy * proc)
+bool ProcCmd_EndEach(struct ProcDummy * proc)
 {
     Proc_EndEach(proc->proc_script_pc->ptr);
     proc->proc_script_pc++;
@@ -558,7 +558,7 @@ static bool ProcCmd_EndEach(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_BreakEach(struct ProcDummy * proc)
+bool ProcCmd_BreakEach(struct ProcDummy * proc)
 {
     Proc_BreakEach(proc->proc_script_pc->ptr);
     proc->proc_script_pc++;
@@ -566,28 +566,28 @@ static bool ProcCmd_BreakEach(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_Nop(struct ProcDummy * proc)
+bool ProcCmd_Nop(struct ProcDummy * proc)
 {
     proc->proc_script_pc++;
 
     return TRUE;
 }
 
-static bool ProcCmd_GotoScript(struct ProcDummy * proc)
+bool ProcCmd_GotoScript(struct ProcDummy * proc)
 {
     Proc_GotoScript(proc, proc->proc_script_pc->ptr);
 
     return TRUE;
 }
 
-static bool ProcCmd_Goto(struct ProcDummy * proc)
+bool ProcCmd_Goto(struct ProcDummy * proc)
 {
     Proc_Goto(proc, proc->proc_script_pc->imm);
 
     return TRUE;
 }
 
-static void SleepRepeatFunc(ProcPtr proc)
+void SleepRepeatFunc(ProcPtr proc)
 {
     ((struct ProcDummy *) proc)->proc_sleep_clock--;
 
@@ -595,7 +595,7 @@ static void SleepRepeatFunc(ProcPtr proc)
         Proc_Break(proc);
 }
 
-static bool ProcCmd_Sleep(struct ProcDummy * proc)
+bool ProcCmd_Sleep(struct ProcDummy * proc)
 {
     if (proc->proc_script_pc->imm != 0)
     {
@@ -608,7 +608,7 @@ static bool ProcCmd_Sleep(struct ProcDummy * proc)
     return FALSE;
 }
 
-static bool ProcCmd_Mark(struct ProcDummy * proc)
+bool ProcCmd_Mark(struct ProcDummy * proc)
 {
     proc->proc_mark = proc->proc_script_pc->imm;
     proc->proc_script_pc++;
@@ -616,18 +616,18 @@ static bool ProcCmd_Mark(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_Nop2(struct ProcDummy * proc)
+bool ProcCmd_Nop2(struct ProcDummy * proc)
 {
     proc->proc_script_pc++;
     return TRUE;
 }
 
-static bool ProcCmd_Block(struct ProcDummy * proc)
+bool ProcCmd_Block(struct ProcDummy * proc)
 {
     return FALSE;
 }
 
-static bool ProcCmd_EndIfDup(struct ProcDummy * proc)
+bool ProcCmd_EndIfDup(struct ProcDummy * proc)
 {
     struct ProcDummy * it = sProcArray;
     int i, count;
@@ -649,7 +649,7 @@ static bool ProcCmd_EndIfDup(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_EndDups(struct ProcDummy * proc)
+bool ProcCmd_EndDups(struct ProcDummy * proc)
 {
     struct ProcDummy * it = sProcArray;
     int i, count;
@@ -671,14 +671,14 @@ static bool ProcCmd_EndDups(struct ProcDummy * proc)
     return TRUE;
 }
 
-static bool ProcCmd_Nop3(struct ProcDummy * proc)
+bool ProcCmd_Nop3(struct ProcDummy * proc)
 {
     proc->proc_script_pc++;
 
     return TRUE;
 }
 
-static bool ProcCmd_SetFlag2(struct ProcDummy * proc)
+bool ProcCmd_SetFlag2(struct ProcDummy * proc)
 {
     proc->proc_flags |= PROC_FLAG_UNK2;
     proc->proc_script_pc++;
@@ -686,7 +686,7 @@ static bool ProcCmd_SetFlag2(struct ProcDummy * proc)
     return TRUE;
 }
 
-static void StepProcScr(struct ProcDummy * proc)
+void StepProcScr(struct ProcDummy * proc)
 {
     static bool (* funcLut[])(struct ProcDummy *) =
     {
@@ -734,7 +734,7 @@ static void StepProcScr(struct ProcDummy * proc)
     }
 }
 
-static void PrintProcInfo(struct ProcDummy * proc)
+void PrintProcInfo(struct ProcDummy * proc)
 {
     if (proc->proc_name != NULL)
     {
@@ -743,7 +743,7 @@ static void PrintProcInfo(struct ProcDummy * proc)
     }
 }
 
-static void WalkPrintProcInfo(struct ProcDummy * proc, int * indent)
+void WalkPrintProcInfo(struct ProcDummy * proc, int * indent)
 {
     if (proc->proc_prev != NULL)
         WalkPrintProcInfo(proc->proc_prev, indent);
