@@ -1,9 +1,7 @@
 #include "subtitlehelp.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "proc.h"
-#include "text.h"
 #include "sprite.h"
 #include "map.h"
 #include "bm.h"

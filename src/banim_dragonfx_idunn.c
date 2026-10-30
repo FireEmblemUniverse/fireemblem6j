@@ -3,12 +3,8 @@
 #include "util.h"
 #include "map.h"
 #include "oam.h"
-#include "hardware.h"
 
-#include "banim_sprite.h"
 #include "banim.h"
-#include "banim_data.h"
-#include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 
 #include "constants/songs.h"

@@ -1,8 +1,6 @@
 #include "support.h"
 
 #include "text.h"
-#include "bm.h"
-#include "unit.h"
 #include "faction.h"
 
 #include "constants/icons.h"

@@ -1,12 +1,8 @@
 #include "prelude.h"
 #include "proc.h"
-#include "bm.h"
 #include "m4a.h"
-#include "sound.h"
 #include "util.h"
-#include "unit.h"
 #include "item.h"
-#include "battle.h"
 #include "faction.h"
 
 #include "banim.h"

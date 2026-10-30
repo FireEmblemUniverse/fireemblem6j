@@ -1,7 +1,5 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
-#include "bm.h"
 #include "ui.h"
 #include "oam.h"
 #include "sprite.h"

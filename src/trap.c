@@ -1,4 +1,5 @@
 #include "trap.h"
+#include "mapselect.h"
 
 #include "sound.h"
 #include "proc.h"

@@ -3,7 +3,6 @@
 #include "chapterinfo.h"
 #include "chapterunits.h"
 #include "chapterevents.h"
-#include "eventinfo.h"
 
 // EventListScr @ 08667640
 EventListScr CONST_DATA EventListScr_Unk_08667640[] =

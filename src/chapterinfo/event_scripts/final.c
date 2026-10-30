@@ -1,24 +1,13 @@
 #include "prelude.h"
-#include "ai.h"
-#include "faction.h"
-#include "oam.h"
-#include "util.h"
-#include "mu.h"
-#include "bmfx.h"
-#include "helpbox.h"
-#include "suspend_ui.h"
 #include "map.h"
 #include "unitsprite.h"
 
-#include "eventinfo.h"
 #include "eventfunctions.h"
 #include "chapterunits.h"
 
 #include "constants/pids.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
-#include "constants/iids.h"
-#include "constants/chapters.h"
 
 // EventScr @ 08672BE4
 EventScr CONST_DATA EventScr_Unk_08672BE4[] =

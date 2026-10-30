@@ -1,15 +1,12 @@
-
 #include "action.h"
 
 #include "random.h"
 #include "sound.h"
 #include "util.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "bmfx.h"
 #include "support.h"
-#include "battle.h"
 #include "unitsprite.h"
 #include "itemaction.h"
 #include "mu.h"

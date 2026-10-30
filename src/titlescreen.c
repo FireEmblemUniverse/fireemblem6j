@@ -1,6 +1,5 @@
 #include "prelude.h"
 #include "util.h"
-#include "hardware.h"
 #include "armfunc.h"
 #include "gamecontroller.h"
 #include "sound.h"

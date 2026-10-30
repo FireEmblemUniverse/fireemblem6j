@@ -5,7 +5,6 @@
 #include "opanim.h"
 #include "banim.h"
 #include "eventfunctions.h"
-#include "hardware.h"
 #include "scanline.h"
 #include "ending_monologue.h"
 

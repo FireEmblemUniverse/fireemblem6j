@@ -1,19 +1,14 @@
-
 #include "bmio.h"
 
 #include "random.h"
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "proc.h"
 #include "sprite.h"
 #include "util.h"
-#include "bm.h"
 #include "map.h"
 #include "unitsprite.h"
 #include "chapterinfo.h"
-
-#include "constants/videoalloc_global.h"
 
 static void WeatherInit_None(void);
 static void WeatherInit_Snow(void);

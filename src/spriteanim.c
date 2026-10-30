@@ -1,6 +1,5 @@
 #include "spriteanim.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "sprite.h"
 #include "util.h"

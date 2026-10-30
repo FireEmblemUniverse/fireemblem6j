@@ -1,5 +1,4 @@
 #include "prelude.h"
-#include "hardware.h"
 #include "oam.h"
 #include "proc.h"
 #include "util.h"

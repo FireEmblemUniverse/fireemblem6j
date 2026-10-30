@@ -1,7 +1,6 @@
 #include "prelude.h"
 #include "proc.h"
 #include "sound.h"
-#include "banim_sprite.h"
 #include "banim.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrLvupFan[] = {

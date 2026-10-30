@@ -2,7 +2,6 @@
 
 #include <stdarg.h>
 
-#include "hardware.h"
 #include "datamove.h"
 #include "oam.h"
 #include "armfunc.h"

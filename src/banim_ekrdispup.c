@@ -1,11 +1,6 @@
 #include "prelude.h"
 #include "proc.h"
-#include "util.h"
 #include "hardware.h"
-#include "msg.h"
-#include "text.h"
-#include "unit.h"
-#include "item.h"
 
 #include "banim.h"
 

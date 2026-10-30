@@ -1,18 +1,10 @@
 #include "prelude.h"
-#include "hardware.h"
 #include "oam.h"
 #include "util.h"
 #include "proc.h"
-#include "ui.h"
-#include "util.h"
-#include "eventinfo.h"
 #include "eventfunctions.h"
 
-#include "augury.h"
-#include "playrank.h"
 #include "ending.h"
-
-#include "constants/flags.h"
 
 CONST_DATA struct EndingCgConf gEndingCgConf[] = {
 	[1]  = { EndingCG_Img5, EndingCG_Pal5, NULL, NULL },

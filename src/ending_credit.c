@@ -3,8 +3,6 @@
 #include "util.h"
 #include "proc.h"
 #include "ui.h"
-#include "augury.h"
-#include "playrank.h"
 #include "ending.h"
 
 u16 CONST_DATA BgConf_Ending[] = {

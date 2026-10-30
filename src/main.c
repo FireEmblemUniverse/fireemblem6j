@@ -5,10 +5,8 @@
 #include "hardware.h"
 #include "armfunc.h"
 #include "proc.h"
-#include "spriteanim.h"
 #include "debugtext.h"
 #include "gamecontroller.h"
-#include "bm.h"
 #include "mu.h"
 #include "save_core.h"
 

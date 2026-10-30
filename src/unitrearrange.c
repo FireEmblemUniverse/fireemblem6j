@@ -1,7 +1,5 @@
 #include "unitrearrange.h"
 
-#include "unit.h"
-
 static struct Unit * EWRAM_DATA sUnitBuf = NULL;
 static struct Unit * EWRAM_DATA sUnitBufIt = NULL;
 static u8 EWRAM_DATA sNextId = 0;

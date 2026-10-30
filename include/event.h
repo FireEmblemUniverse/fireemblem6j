@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 #include "proc.h"
+#include "text.h"
 #include "unit.h"
 #include "face.h"
 #include "eventscript.h"

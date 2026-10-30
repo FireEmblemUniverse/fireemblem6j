@@ -2,9 +2,7 @@
 
 #include "hardware.h"
 #include "sound.h"
-#include "event.h"
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "playerphase.h"

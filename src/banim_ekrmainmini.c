@@ -1,7 +1,6 @@
 #include "prelude.h"
 #include "proc.h"
 #include "oam.h"
-#include "banim_sprite.h"
 #include "banim.h"
 #include "banim_data.h"
 

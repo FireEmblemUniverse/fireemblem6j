@@ -1,19 +1,7 @@
 #include "save_core.h"
 #include "savelayout.h"
 
-#include "gbasram.h"
-#include "gbaio.h"
 #include "util.h"
-#include "eventinfo.h"
-#include "supply.h"
-#include "bm.h"
-#include "hardware.h"
-#include "faction.h"
-#include "battle.h"
-#include "chapter.h"
-#include "unit.h"
-#include "action.h"
-#include "trap.h"
 
 static char const sSaveMarker[] = "AGB-FE6";
 

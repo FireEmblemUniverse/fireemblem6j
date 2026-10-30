@@ -2,14 +2,11 @@
 
 #include "oam.h"
 #include "sound.h"
-#include "spriteanim.h"
 #include "util.h"
-#include "unit.h"
 #include "map.h"
 #include "unitsprite.h"
 #include "faction.h"
 #include "chapter.h"
-#include "battle.h"
 #include "manim.h"
 #include "spellassoc.h"
 

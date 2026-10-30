@@ -3,11 +3,9 @@
 
 #include "gba.h"
 #include "types.h"
+#include "unknown_types.h"
 
 #include "proc.h"
-#include "text.h"
-#include "menu.h"
-#include "mapselect.h"
 
 // some or those are not so much "unknown" as much as they just don't have a home yet
 

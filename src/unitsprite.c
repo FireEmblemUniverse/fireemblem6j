@@ -1,21 +1,17 @@
 #include "unitsprite.h"
 
 #include "armfunc.h"
-#include "bm.h"
 #include "faction.h"
-#include "hardware.h"
 #include "map.h"
 #include "datamove.h"
 #include "mu.h"
 #include "oam.h"
 #include "sprite.h"
 #include "trap.h"
-#include "unit.h"
 #include "util.h"
 
 #include "constants/terrains.h"
 #include "constants/unitsprites.h"
-#include "constants/videoalloc_global.h"
 
 enum
 {

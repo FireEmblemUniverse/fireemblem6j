@@ -4,6 +4,7 @@
 #include "proc.h"
 #include "text.h"
 #include "save_multiarena.h"
+#include "sio_core.h"
 
 struct ProcSioBlend
 {
