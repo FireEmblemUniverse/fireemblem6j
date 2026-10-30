@@ -1,7 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "oam.h"
-#include "move.h"
+#include "datamove.h"
 #include "hardware.h"
 #include "unit.h"
 #include "battle.h"

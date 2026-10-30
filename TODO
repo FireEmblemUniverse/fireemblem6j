@@ -5,7 +5,6 @@
 - flatten dir structure (include/gba -> include)
 - name remaining ewram symbols
 
-rename move.h/move.c
 remove static funcs
 remove most static objects (except .bss)
 videoalloc constants in a single file

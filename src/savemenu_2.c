@@ -2,7 +2,7 @@
 
 #include "armfunc.h"
 #include "hardware.h"
-#include "move.h"
+#include "datamove.h"
 #include "oam.h"
 #include "proc.h"
 #include "sprite.h"

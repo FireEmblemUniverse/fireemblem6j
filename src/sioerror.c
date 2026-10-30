@@ -1,7 +1,7 @@
 #include "sioerror.h"
 
 #include "hardware.h"
-#include "move.h"
+#include "datamove.h"
 #include "sound.h"
 #include "text.h"
 #include "msg.h"

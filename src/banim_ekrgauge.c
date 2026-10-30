@@ -1,6 +1,6 @@
 #include "prelude.h"
 #include "item.h"
-#include "move.h"
+#include "datamove.h"
 #include "banim_sprite.h"
 #include "banim.h"
 #include "oam.h"

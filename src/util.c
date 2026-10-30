@@ -1,7 +1,7 @@
 #include "util.h"
 
 #include "hardware.h"
-#include "move.h"
+#include "datamove.h"
 #include "armfunc.h"
 #include "sound.h"
 #include "text.h"

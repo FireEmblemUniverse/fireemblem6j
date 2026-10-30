@@ -4,7 +4,7 @@
 #include "item.h"
 #include "hardware.h"
 #include "oam.h"
-#include "move.h"
+#include "datamove.h"
 #include "util.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"

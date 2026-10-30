@@ -1,7 +1,7 @@
 #include "bm.h"
 
 #include "hardware.h"
-#include "move.h"
+#include "datamove.h"
 #include "oam.h"
 #include "sound.h"
 #include "proc.h"

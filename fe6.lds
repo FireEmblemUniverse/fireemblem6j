@@ -119,7 +119,7 @@ SECTIONS
     ewram_data (NOLOAD) : ALIGN(4)
     {
         . = ALIGN(4); src/hardware.o(ewram_data);
-        . = ALIGN(4); src/move.o(ewram_data);
+        . = ALIGN(4); src/datamove.o(ewram_data);
         . = ALIGN(4); src/sound.o(ewram_data);
         . = ALIGN(4); src/proc.o(ewram_data);
         . = ALIGN(4); src/icon.o(ewram_data);
@@ -273,7 +273,7 @@ SECTIONS
         src/irq.o(.text);
         src/random.o(.text);
         src/hardware.o(.text);
-        src/move.o(.text);
+        src/datamove.o(.text);
         src/oam.o(.text);
         src/sound.o(.text);
         src/ramfunc.o(.text);
@@ -462,7 +462,7 @@ SECTIONS
         . = ALIGN(4); src/random.o(.rodata);
         . = ALIGN(4); src/hardware.o(.rodata);
         . = ALIGN(4); data/rodata_trig.o(.rodata);
-        . = ALIGN(4); src/move.o(.rodata);
+        . = ALIGN(4); src/datamove.o(.rodata);
         . = ALIGN(4); src/oam.o(.rodata);
         . = ALIGN(4); src/sound.o(.rodata);
         . = ALIGN(4); src/ramfunc.o(.rodata);

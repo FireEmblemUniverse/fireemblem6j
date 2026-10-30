@@ -1,7 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "oam.h"
-#include "move.h"
+#include "datamove.h"
 #include "hardware.h"
 #include "sprite.h"
 #include "banim_sprite.h"

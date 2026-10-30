@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 #include "hardware.h"
-#include "move.h"
+#include "datamove.h"
 #include "oam.h"
 #include "armfunc.h"
 #include "sprite.h"

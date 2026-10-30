@@ -2,7 +2,7 @@
 #include "hardware.h"
 #include "util.h"
 #include "oam.h"
-#include "move.h"
+#include "datamove.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
 #include "constants/songs.h"
