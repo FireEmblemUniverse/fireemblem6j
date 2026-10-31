@@ -5,7 +5,7 @@
  * source byte is converted to a 16-bit value representing four 4-bit pixels.
  */
 
-#include "gba/gba.h"
+#include "gba.h"
 
 #define GENERATE_LOOKUP_TABLE \
   X(0x00), X(0x01), X(0x02), X(0x03), X(0x04), X(0x05), X(0x06), X(0x07), \
