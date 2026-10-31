@@ -1,0 +1,37 @@
+[Unk_08684824]
+ROY class=ROY auto blue lv=6 at=4,24 to=4,24 items=RAPIER,IRONSWORD,DOORKEY,ARMORSLAYER
+ALEN class=CAVALIER lead=ROY auto blue lv=13 at=5,24 to=5,24 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+LANCE class=CAVALIER lead=ROY auto blue lv=13 at=3,23 to=3,23 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+BORS class=ARMOR lead=ROY auto blue lv=12 at=6,23 to=6,23 items=IRONLANCE,JAVELIN,CHESTKEY,SILVERLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=16 at=3,25 to=3,25 items=IRONBOW,STEELBOW,KILLERBOW,LONGBOW
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=12 at=6,25 to=6,25 items=HEALSTAFF,HEALSTAFF,MENDSTAFF,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=10 at=4,22 to=4,22 items=IRONSWORD,LOCKPICK
+LUGH class=MAGE lead=ROY auto blue lv=15 at=4,26 to=4,26 items=FIRE,FIRE,THUNDER,ELFIRE
+
+[Unk_086848B4] nocamera
+UNKNOWN_B8 class=BERSERKER red lv=2 at=25,1 to=25,1 items=SILVERAXE,HANDAXE ai=AI_A_03,AI_B_03,0x02,0x20
+UNKNOWN_B7 class=THIEF auto red lv=14 at=4,15 to=4,15 items=IRONSWORD,LOCKPICK ai=AI_A_06,AI_B_05,0x1A,0x00
+UNKNOWN_B7 class=THIEF auto red lv=14 at=18,26 to=18,26 items=IRONSWORD,LOCKPICK ai=AI_A_06,AI_B_05,0x1A,0x00
+UNKNOWN_B7 class=THIEF auto red lv=15 at=11,14 to=11,14 items=IRONSWORD,LOCKPICK ai=AI_A_06,AI_B_05,0x1A,0x00
+UNKNOWN_B7 class=DRUID auto red lv=1 at=21,3 to=21,3 items=ECLIPSE,PHYSICSTAFF,NOSFERATU ai=AI_A_00,AI_B_03,0x02,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=13 at=6,19 to=6,19 items=STEELAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=ARCHER auto red lv=13 at=5,17 to=5,17 items=STEELBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=3,13 to=3,13 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=4,8 to=4,8 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_B7 class=MYRMIDON auto red lv=13 at=1,4 to=1,4 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=8,6 to=8,6 items=STEELAXE ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=16,5 to=16,5 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=ARCHER auto red lv=14 at=18,6 to=18,6 items=STEELBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_B7 class=ARCHER auto red lv=14 at=10,13 to=10,13 items=STEELBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=12,16 to=12,16 items=HALBERD ai=AI_A_00,AI_B_03,0x3A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=15 at=25,14 to=25,14 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=SHAMAN auto red lv=15 at=14,21 to=14,21 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=15 at=26,18 to=26,18 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=15 at=18,25 to=18,25 items=STEELAXE ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_B7 class=MYRMIDON auto red lv=15 at=24,23 to=24,23 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=26,26 to=26,26 items=POISONAXE,HANDAXE ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=24,25 to=24,25 items=STEELAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=13,22 to=13,22 items=HALBERD ai=AI_A_00,AI_B_03,0x3A,0x00
+UNKNOWN_B7 class=MYRMIDON auto red lv=15 at=17,0 to=17,0 items=STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_B7 class=BRIGAND auto red lv=14 at=24,2 to=24,2 items=DEVILAXE ai=AI_A_03,AI_B_03,0x22,0x00
+UNKNOWN_B7 class=MYRMIDON auto red lv=14 at=26,2 to=26,2 items=KILLINGEDGE ai=AI_A_03,AI_B_03,0x0A,0x00

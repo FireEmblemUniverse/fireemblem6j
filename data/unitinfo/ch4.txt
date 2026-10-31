@@ -1,0 +1,64 @@
+[Chapter4_Blue]
+ROY class=ROY auto blue lv=3 at=23,3 to=23,3 items=RAPIER,IRONSWORD,VULNERARY
+MARCUS class=PALADIN lead=ROY auto blue lv=2 at=22,3 to=22,3 items=SILVERLANCE,IRONSWORD
+ALEN class=CAVALIER lead=ROY auto blue lv=5 at=21,2 to=21,2 items=IRONSWORD,IRONLANCE,JAVELIN
+LANCE class=CAVALIER lead=ROY auto blue lv=3 at=21,4 to=21,4 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=4 at=20,3 to=20,3 items=IRONLANCE,JAVELIN
+WOLT class=ARCHER lead=ROY auto blue lv=3 at=23,2 to=23,2 items=IRONBOW,VULNERARY
+DIECK class=MERCENARY lead=ROY auto blue lv=6 at=23,7 to=23,7 items=IRONBLADE,IRONSWORD,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=5 at=24,6 to=24,6 items=IRONAXE,HAMMER
+LOT class=FIGHTER lead=ROY auto blue lv=3 at=24,8 to=24,8 items=STEELAXE,HANDAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=2 at=23,9 to=23,9 items=SLIMLANCE,VULNERARY
+ELEN class=CLERIC lead=ROY auto blue lv=3 at=23,4 to=23,4 items=HEALSTAFF,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=1 at=24,7 to=24,7 items=IRONSWORD,LOCKPICK
+LUGH class=MAGE lead=ROY auto blue lv=2 at=25,7 to=25,7 items=FIRE,VULNERARY
+MERLINUS class=SUPPLY lead=ROY auto blue lv=1 at=24,3 to=24,3
+
+[Chapter4_NarcianOnly] nocamera
+NARCIAN class=WYVERNLORD red lv=1 at=18,10 to=18,10 items=SILVERLANCE,JAVELIN ai=AI_A_03,AI_B_03
+
+[Chapter4_Red]
+NARCIAN class=WYVERNLORD auto red lv=1 at=3,8 to=3,8 items=SILVERLANCE,JAVELIN ai=AI_A_03,AI_B_03
+UNKNOWN_4D class=CAVALIER red lv=10 at=2,9 to=2,9 items=STEELSWORD,JAVELIN ai=AI_A_03,AI_B_03,0x01,0x20
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=4 at=1,5 to=1,5 items=IRONSWORD ai=AI_A_07,AI_B_07,0x01,0x00
+CHAPTER4_LAUS class=ARCHER lead=UNKNOWN_4D auto red lv=5 at=0,6 to=0,6 items=IRONBOW ai=AI_A_07,AI_B_03,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=3 at=5,10 to=3,10 items=IRONLANCE ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=3 at=5,11 to=3,11 items=IRONLANCE ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=3 at=1,10 to=0,10 items=IRONSWORD ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=5 at=1,11 to=0,11 items=IRONLANCE ai=AI_A_07,AI_B_07,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=3 at=6,10 to=6,10 items=IRONSWORD ai=AI_A_07,AI_B_03,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=3 at=6,11 to=6,11 items=IRONLANCE ai=AI_A_07,AI_B_03,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=2 at=15,7 to=12,8 items=IRONLANCE ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=2 at=17,6 to=14,7 items=IRONLANCE ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=CAVALIER lead=UNKNOWN_4D auto red lv=2 at=15,4 to=13,2 items=IRONSWORD ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=ARCHER lead=UNKNOWN_4D auto red lv=5 at=8,12 to=1,12 items=IRONBOW ai=AI_A_07,AI_B_07,0x01,0x00
+CHAPTER4_LAUS class=ARCHER lead=UNKNOWN_4D auto red lv=4 at=5,8 to=4,9 items=IRONBOW ai=AI_A_07,AI_B_07,0x01,0x00
+CHAPTER4_LAUS class=NOMAD lead=UNKNOWN_4D auto red lv=1 at=3,10 to=1,9 items=IRONBOW ai=AI_A_07,AI_B_01,0x01,0x00
+CHAPTER4_LAUS class=NOMAD lead=UNKNOWN_4D auto red lv=1 at=16,6 to=13,7 items=IRONBOW ai=AI_A_07,AI_B_03,0x01,0x00
+
+[Chapter4_Pirates]
+CHAPTER4_PIRATE class=PIRATE auto red lv=4 at=29,15 to=29,15 items=IRONAXE ai=AI_A_07,AI_B_04,0x04,0x00
+CHAPTER4_PIRATE class=PIRATE auto red lv=3 at=23,16 to=23,16 items=HANDAXE ai=AI_A_07,AI_B_04,0x04,0x00
+
+[Chapter4_CavalierReinforcements]
+CHAPTER4_LAUS class=CAVALIER auto red lv=4 at=29,5 to=28,5 items=IRONLANCE ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER4_LAUS class=CAVALIER auto red lv=4 at=29,6 to=28,6 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER4_LAUS class=CAVALIER auto red lv=4 at=29,7 to=28,7 items=IRONLANCE ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER4_LAUS class=CAVALIER auto red lv=4 at=29,8 to=28,8 items=IRONLANCE ai=AI_A_00,AI_B_00,0x02,0x00
+
+[Chapter4_Clarine]
+CLARINE class=TROUBADOUR green lv=1 at=3,6 to=5,5 items=HEALSTAFF,VULNERARY ai=AI_A_06,AI_B_0B,0x01,0x00
+
+[Chapter4_RutgerSquad]
+CHAPTER4_LAUS class=FIGHTER lead=UNKNOWN_4D auto red lv=3 at=3,9 to=5,7 items=IRONAXE,VULNERARY ai=AI_A_07,AI_B_01,0x04,0x00
+CHAPTER4_LAUS class=FIGHTER lead=UNKNOWN_4D auto red lv=2 at=3,9 to=7,7 items=IRONAXE,VULNERARY ai=AI_A_07,AI_B_01,0x04,0x00
+CHAPTER4_LAUS class=ARCHER lead=UNKNOWN_4D auto red lv=2 at=3,9 to=6,7 items=IRONBOW,VULNERARY ai=AI_A_07,AI_B_01,0x04,0x00
+RUTGER class=MYRMIDON red lv=4 at=3,9 to=6,8 items=KILLINGEDGE ai=AI_A_07,AI_B_01,0x01,0x00
+
+[Chaper4_UnusedCavaliers]
+CHAPTER4_LAUS class=CAVALIER red lv=2 at=21,10 to=21,10 ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER4_LAUS class=CAVALIER red lv=2 at=19,11 to=19,11 ai=AI_A_00,AI_B_00,0x02,0x00
+
+[Chaper4_UnusedPegasi]
+CHAPTER4_LAUS class=PEGASUSKNIGHT red lv=5 at=20,9 to=20,9 ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER4_LAUS class=PEGASUSKNIGHT red lv=5 at=21,12 to=21,12 ai=AI_A_00,AI_B_00,0x02,0x00

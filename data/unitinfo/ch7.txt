@@ -1,0 +1,74 @@
+[Unk_0867B680]
+ROY class=ROY auto blue lv=6 at=6,24 to=6,24 items=RAPIER,IRONSWORD,DOORKEY
+MARCUS class=PALADIN lead=ROY auto blue lv=3 at=5,22 to=5,22 items=SILVERLANCE,IRONSWORD,IRONLANCE,HORSESLAYER
+LANCE class=CAVALIER lead=ROY auto blue lv=6 at=6,22 to=6,22 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=4 at=7,22 to=7,22 items=IRONLANCE,JAVELIN,CHESTKEY
+WOLT class=ARCHER lead=ROY auto blue lv=5 at=4,23 to=4,23 items=IRONBOW,SILVERBOW,VULNERARY
+DIECK class=MERCENARY lead=ROY auto blue lv=8 at=6,23 to=6,23 items=IRONBLADE,IRONSWORD,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=5 at=8,23 to=8,23 items=IRONAXE,HAMMER,HANDAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=5 at=5,24 to=5,24 items=SLIMLANCE,JAVELIN,VULNERARY
+ELEN class=CLERIC lead=ROY auto blue lv=7 at=7,24 to=7,24 items=HEALSTAFF,UNLOCKSTAFF,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=3 at=6,27 to=6,27 items=IRONSWORD,LOCKPICK
+LUGH class=MAGE lead=ROY auto blue lv=3 at=5,25 to=5,25 items=FIRE,VULNERARY
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=4 at=7,25 to=7,25 items=HEALSTAFF,VULNERARY
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=6,26 to=6,26 items=IRONSWORD,IRONLANCE,JAVELIN,FIRE
+
+[Unk_0867B760] nocamera
+UNKNOWN_50 class=ARMOR red lv=13 at=5,1 to=5,1 items=SPEAR ai=AI_A_03,AI_B_03,0x00,0x20
+UNKNOWN_76 class=WYVERNRIDER lead=UNKNOWN_50 auto red lv=9 at=3,6 to=3,6 items=STEELLANCE ai=AI_A_00,AI_B_06,0x09,0x00
+UNKNOWN_76 class=WYVERNRIDER lead=UNKNOWN_50 auto red lv=10 at=9,6 to=9,6 items=STEELLANCE,REDGEM ai=AI_A_00,AI_B_03,0x09,0x00
+UNKNOWN_75 class=PRIEST lead=UNKNOWN_50 auto red lv=7 at=8,8 to=8,8 items=PHYSICSTAFF,VULNERARY ai=AI_A_0E,AI_B_03,0x10,0x00
+UNKNOWN_75 class=PRIEST lead=UNKNOWN_50 auto red lv=7 at=11,8 to=11,8 items=PHYSICSTAFF,VULNERARY ai=AI_A_0E,AI_B_03,0x10,0x00
+UNKNOWN_75 class=MERCENARY lead=UNKNOWN_50 auto red lv=6 at=3,14 to=3,14 items=IRONSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=MERCENARY lead=UNKNOWN_50 auto red lv=6 at=11,14 to=11,14 items=IRONSWORD ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=7 at=3,18 to=3,18 items=JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=6 at=11,18 to=11,18 items=STEELLANCE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=6 at=4,11 to=4,11 items=JAVELIN,VULNERARY ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=6 at=10,11 to=10,11 items=STEELLANCE,VULNERARY ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_75 class=MAGE lead=UNKNOWN_50 auto red lv=6 at=6,5 to=6,5 items=ELFIRE ai=AI_A_00,AI_B_00,0x19,0x00
+UNKNOWN_75 class=MAGE lead=UNKNOWN_50 auto red lv=6 at=15,8 to=15,8 items=THUNDER ai=AI_A_00,AI_B_00,0x19,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_50 auto red lv=9 at=5,10 to=5,10 items=STEELSWORD,JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_50 auto red lv=9 at=8,10 to=8,10 items=STEELSWORD,JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_50 auto red lv=7 at=0,9 to=0,9 items=IRONSWORD,JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=17,13 to=17,13 items=JAVELIN,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=17,19 to=17,19 items=JAVELIN,VULNERARY ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=7 at=19,16 to=19,16 items=STEELBOW ai=AI_A_00,AI_B_03,0x28,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=8 at=19,22 to=19,22 items=STEELBOW ai=AI_A_00,AI_B_03,0x28,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=10 at=0,13 to=0,13 items=IRONBOW ai=AI_A_00,AI_B_00,0x28,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=9 at=19,13 to=19,13 items=IRONBOW ai=AI_A_00,AI_B_00,0x28,0x00
+
+[Unk_0867B8D0]
+UNKNOWN_76 class=WYVERNRIDER lead=UNKNOWN_50 auto red lv=8 at=13,6 to=13,6 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_06,0x09,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_50 auto red lv=7 at=6,12 to=6,12 items=IRONSWORD,JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_50 auto red lv=7 at=6,14 to=6,14 items=IRONSWORD,JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=7 at=17,16 to=17,16 items=JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_75 class=ARMOR lead=UNKNOWN_50 auto red lv=7 at=17,22 to=17,22 items=JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+
+[Unk_0867B930]
+ZELOT class=PALADIN lead=ROY green lv=1 at=13,15 to=13,16 items=STEELSWORD,STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x69,0x00
+TREC class=CAVALIER lead=ROY green lv=4 at=13,15 to=14,16 items=IRONLANCE,JAVELIN,VULNERARY ai=AI_A_00,AI_B_00,0x68,0x00
+
+[Unk_0867B960]
+NOAH class=CAVALIER lead=ROY green lv=7 at=6,16 to=6,19 items=STEELSWORD,IRONLANCE,VULNERARY ai=AI_A_00,AI_B_00,0x68,0x00
+
+[Unk_0867B980]
+UNKNOWN_75 class=MAGE lead=UNKNOWN_50 auto red lv=7 at=3,0 to=3,0 items=ELFIRE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=9 at=2,0 to=2,0 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=1,0 to=1,0 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=0,0 to=0,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=MAGE lead=UNKNOWN_50 auto red lv=7 at=7,0 to=7,0 items=THUNDER ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=ARCHER lead=UNKNOWN_50 auto red lv=7 at=8,0 to=8,0 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=9,0 to=9,0 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_75 class=SOLDIER lead=UNKNOWN_50 auto red lv=11 at=10,0 to=10,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Unk_0867BA10]
+UNKNOWN_C9 class=CAVALIER auto red lv=15 at=7,27 to=6,26 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x08,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_C9 auto red lv=7 at=6,27 to=5,26 items=IRONLANCE,JAVELIN ai=AI_A_0D,AI_B_00,0x08,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_C9 auto red lv=5 at=8,27 to=7,26 items=STEELLANCE ai=AI_A_0D,AI_B_00,0x08,0x00
+UNKNOWN_75 class=CAVALIER lead=UNKNOWN_C9 auto red lv=5 at=9,27 to=8,26 items=STEELLANCE ai=AI_A_0D,AI_B_00,0x08,0x00
+
+[Unk_0867BA60]
+UNKNOWN_51 class=GENERAL red lv=12 at=11,0 to=5,1 items=KILLERLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x00,0x20
+
+[Unk_0867BA80]
+FIR class=MYRMIDON_F green lv=12 at=6,16 to=6,17 items=KILLERLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x00,0x20

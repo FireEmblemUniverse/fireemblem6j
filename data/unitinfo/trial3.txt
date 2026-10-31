@@ -1,0 +1,74 @@
+[Unk_08686A4C]
+ROY class=ROY auto blue lv=20 at=10,14 to=10,14 items=RAPIER,IRONSWORD,VULNERARY
+MARCUS class=PALADIN lead=ROY auto blue lv=20 at=9,15 to=9,15 items=IRONLANCE
+ALEN class=CAVALIER lead=ROY auto blue lv=20 at=11,15 to=11,15 items=IRONSWORD,IRONLANCE,VULNERARY
+LANCE class=CAVALIER lead=ROY auto blue lv=20 at=7,13 to=7,13 items=IRONSWORD,JAVELIN,VULNERARY,IRONLANCE
+BORS class=ARMOR lead=ROY auto blue lv=20 at=13,13 to=13,13 items=SILVERLANCE,IRONLANCE,IRONLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=20 at=12,12 to=12,12 items=IRONBOW,IRONBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=20 at=8,12 to=8,12 items=IRONSWORD,IRONBLADE,ARMORSLAYER
+MERLINUS class=SUPPLY lead=ROY auto blue lv=20 at=10,11 to=10,11 items=HANDAXE,IRONAXE,HAMMER,VULNERARY
+WOLT class=ARCHER lead=ROY auto blue lv=20 at=11,8 to=11,8 items=STEELBOW
+IGRENE class=SNIPER_F lead=ROY auto blue lv=20 at=7,18 to=7,18 items=SILVERBOW
+
+[Unk_08686AFC] nocamera
+UNKNOWN_9A class=SNIPER auto red lv=10 at=16,15 to=16,15 items=STEELBOW ai=AI_A_00,AI_B_03,0x2C,0x20
+UNKNOWN_9A class=SNIPER auto red lv=10 at=8,22 to=8,22 items=STEELBOW ai=AI_A_00,AI_B_03,0x2C,0x20
+UNKNOWN_9A class=SNIPER auto red lv=10 at=3,23 to=3,23 items=STEELBOW ai=AI_A_00,AI_B_03,0x2C,0x20
+UNKNOWN_9A class=PALADIN auto red lv=12 at=2,4 to=2,4 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=1,6 to=1,6 items=KILLERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=3,6 to=3,6 items=AXEREAVER ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=1,5 to=1,5 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=3,5 to=3,5 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=TROUBADOUR auto red lv=17 at=2,3 to=2,3 items=RECOVERSTAFF ai=AI_A_0E,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=PALADIN auto red lv=12 at=25,13 to=25,13 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=23,12 to=23,12 items=HORSESLAYER ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=23,14 to=23,14 items=AXEREAVER ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=24,12 to=24,12 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=17 at=24,14 to=24,14 items=SPEAR ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=TROUBADOUR auto red lv=17 at=26,13 to=26,13 items=RECOVERSTAFF ai=AI_A_0E,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=FALCONKNIGHT auto red lv=12 at=15,30 to=15,30 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=14,29 to=14,29 items=STEELLANCE ai=AI_A_03,AI_B_00,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=16,29 to=16,29 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=16,31 to=16,31 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=14,31 to=14,31 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FALCONKNIGHT auto red lv=12 at=24,2 to=24,2 items=SILVERLANCE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=23,1 to=23,1 items=KILLERLANCE ai=AI_A_03,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=23,3 to=23,3 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=25,1 to=25,1 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=17 at=25,3 to=25,3 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686C9C]
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=28,26 to=26,26 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=28,26 to=24,26 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=28,29 to=25,27 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PALADIN auto red lv=15 at=28,29 to=25,28 items=SILVERLANCE ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686CEC]
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=17,0 to=15,2 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=17,0 to=17,2 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=CAVALIER auto red lv=20 at=15,0 to=16,1 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PALADIN auto red lv=15 at=15,0 to=16,0 items=SILVERLANCE ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686D3C]
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=4,27 to=4,27 items=STEELAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=2,28 to=2,28 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=24,30 to=24,30 items=KILLERAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=21,30 to=21,30 items=SILVERAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686D8C]
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=2,3 to=2,3 items=STEELAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=4,1 to=4,1 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=26,4 to=26,4 items=HALBERD ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=FIGHTER auto red lv=20 at=19,8 to=19,8 items=SILVERAXE ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686DDC]
+UNKNOWN_9A class=FALCONKNIGHT auto red lv=15 at=31,3 to=27,4 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=31,3 to=25,4 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=31,5 to=24,3 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=31,5 to=24,5 items=SILVERLANCE ai=AI_A_00,AI_B_18,0x0C,0x00
+
+[Unk_08686E2C]
+UNKNOWN_9A class=FALCONKNIGHT auto red lv=15 at=4,31 to=5,31 items=AXEREAVER ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=4,31 to=5,30 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=6,31 to=4,29 items=SPEAR ai=AI_A_00,AI_B_18,0x0C,0x00
+UNKNOWN_9A class=PEGASUSKNIGHT auto red lv=20 at=6,31 to=6,29 items=SILVERLANCE ai=AI_A_00,AI_B_18,0x0C,0x00

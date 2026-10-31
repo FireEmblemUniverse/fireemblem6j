@@ -1,0 +1,109 @@
+[Unk_086854A0]
+ROY class=ROY auto blue lv=7 at=25,2 to=25,2 items=RAPIER,IRONSWORD,DOORKEY,ARMORSLAYER
+MARCUS class=PALADIN lead=ROY auto blue lv=6 at=0,1 to=0,1 items=SILVERLANCE,IRONSWORD,IRONLANCE,HORSESLAYER
+ALEN class=CAVALIER lead=ROY auto blue lv=8 at=23,26 to=23,26 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+LANCE class=CAVALIER lead=ROY auto blue lv=5 at=23,2 to=23,2 items=IRONSWORD,IRONLANCE,JAVELIN,SILVERLANCE
+BORS class=ARMOR lead=ROY auto blue lv=10 at=0,3 to=0,3 items=IRONLANCE,JAVELIN,CHESTKEY
+RUTGER class=MYRMIDON lead=ROY auto blue lv=6 at=25,4 to=25,4 items=KILLINGEDGE
+ASTOLFO class=THIEF lead=ROY auto blue lv=10 at=22,25 to=22,25 items=LOCKPICK,IRONSWORD
+BARTHE class=ARMOR lead=ROY auto blue lv=15 at=1,2 to=1,2 items=STEELLANCE
+CHAD class=THIEF lead=ROY auto blue lv=10 at=25,0 to=25,0 items=LOCKPICK,IRONSWORD
+GWENDOLYN class=ARMOR_F lead=ROY auto blue lv=6 at=22,27 to=22,27 items=STEELLANCE
+CHAD class=THIEF lead=ROY auto blue lv=10 at=1,0 to=1,0 items=IRONSWORD,LOCKPICK
+CECILIA class=VALKYRIE lead=ROY auto blue lv=6 at=24,27 to=24,27 items=MENDSTAFF,ELFIRE
+MERLINUS class=SUPPLY lead=ROY auto blue lv=1 at=23,4 to=23,4 items=IRONSWORD,IRONLANCE,JAVELIN,RESTORESTAFF
+SUE class=NOMAD_F lead=ROY auto blue lv=6 at=27,0 to=27,0 items=SHORTBOW
+
+[Unk_08685590] nocamera
+UNKNOWN_BE class=NOMADTROOPER red lv=8 at=17,8 to=17,8 items=SHORTBOW,SILVERSWORD ai=AI_A_03,AI_B_03,0x02,0x20
+UNKNOWN_BF class=DRUID red lv=7 at=21,15 to=21,15 items=FENRIR,BERSERKSTAFF ai=AI_A_03,AI_B_03,0x0A,0x20
+UNKNOWN_C0 class=NOMADTROOPER red lv=8 at=3,10 to=3,10 items=SHORTBOW,LANCEREAVER ai=AI_A_03,AI_B_03,0x0A,0x20
+UNKNOWN_C1 class=DRUID red lv=7 at=8,14 to=8,14 items=FENRIR,SLEEPSTAFF ai=AI_A_03,AI_B_03,0x0A,0x20
+UNKNOWN_C2 class=NOMADTROOPER red lv=8 at=3,24 to=3,24 items=SHORTBOW,KILLINGEDGE ai=AI_A_03,AI_B_03,0x0A,0x20
+UNKNOWN_C3 class=DRUID red lv=7 at=12,26 to=12,26 items=NOSFERATU,SILENCESTAFF ai=AI_A_03,AI_B_03,0x0A,0x20
+UNKNOWN_BC class=NOMAD auto red lv=20 at=14,1 to=14,1 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=7 at=11,1 to=11,1 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=20 at=9,1 to=9,1 items=SHORTBOW ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=19 at=7,1 to=7,1 items=FLUX,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=20 at=7,9 to=7,9 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=18 at=9,9 to=9,9 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=6 at=8,10 to=8,10 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=8,11 to=8,11 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=20 at=1,13 to=1,13 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=18 at=3,13 to=3,13 items=SHORTBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=6 at=2,14 to=2,14 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=2,15 to=2,15 items=SHORTBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=7,25 to=7,25 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=9,25 to=9,25 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=6 at=8,26 to=8,26 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=2,19 to=2,19 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=4,19 to=4,19 items=SHORTBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=6 at=3,20 to=3,20 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=18 at=16,10 to=16,10 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_06,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=17,12 to=17,12 items=SHORTBOW ai=AI_A_00,AI_B_06,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=6 at=18,11 to=18,11 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_06,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=19,10 to=19,10 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMADTROOPER auto red lv=7 at=20,11 to=20,11 items=SHORTBOW,STEELSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BD class=WYVERNRIDER auto red lv=18 at=13,17 to=13,17 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_06,0x0A,0x00
+UNKNOWN_BD class=WYVERNLORD auto red lv=9 at=14,19 to=14,19 items=SILVERLANCE ai=AI_A_00,AI_B_06,0x0A,0x00
+UNKNOWN_BD class=WYVERNRIDER auto red lv=18 at=27,17 to=27,17 items=AXEREAVER,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BD class=WYVERNRIDER auto red lv=18 at=27,13 to=27,13 items=STEELLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_BD class=WYVERNLORD auto red lv=9 at=27,15 to=27,15 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_086857C0]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=2,10 to=1,8 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=2,10 to=1,10 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=2,10 to=2,12 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685800]
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=4,10 to=5,8 items=NOSFERATU ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=4,10 to=5,10 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=18 at=4,10 to=4,12 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+
+[Unk_08685840]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=7,14 to=6,12 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=7,14 to=6,13 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=7,14 to=7,15 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685880]
+UNKNOWN_BC class=NOMAD auto red lv=19 at=9,12 to=10,13 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=18 at=9,12 to=10,11 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+
+[Unk_086858B0]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=2,24 to=1,22 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=2,24 to=1,24 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=2,24 to=2,26 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_086858F0]
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=4,24 to=5,22 items=NOSFERATU ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=4,24 to=5,24 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=4,24 to=4,26 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+
+[Unk_08685930]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=11,26 to=10,24 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=11,26 to=10,26 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=11,26 to=11,28 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685970]
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=13,26 to=14,24 items=NOSFERATU ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=13,26 to=14,26 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=13,26 to=13,28 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+
+[Unk_086859B0]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=16,8 to=15,6 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=16,8 to=15,8 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=16,8 to=16,10 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_086859F0]
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=20,8 to=19,6 items=NOSFERATU ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=18,7 to=19,8 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=20,7 to=18,10 items=SHORTBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+
+[Unk_08685A30]
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=20,15 to=19,13 items=STEELSWORD ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=MYRMIDON auto red lv=19 at=20,15 to=19,15 items=STEELSWORD,VULNERARY ai=AI_A_00,AI_B_03,0x0A,0x00
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=20,15 to=20,17 items=FLUX ai=AI_A_00,AI_B_03,0x0A,0x00
+
+[Unk_08685A70]
+UNKNOWN_BC class=SHAMAN auto red lv=18 at=24,15 to=23,14 items=NOSFERATU ai=AI_A_00,AI_B_03,0x2A,0x00
+UNKNOWN_BC class=NOMAD auto red lv=19 at=22,15 to=22,17 items=SHORTBOW,VULNERARY ai=AI_A_00,AI_B_03,0x2A,0x00

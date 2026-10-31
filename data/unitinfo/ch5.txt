@@ -1,0 +1,66 @@
+[Chapter5_Blue]
+ROY class=ROY auto blue lv=4 at=14,14 to=14,14 items=RAPIER,IRONSWORD,DOORKEY
+MARCUS class=PALADIN lead=ROY auto blue lv=2 at=14,16 to=14,16 items=SILVERLANCE,IRONSWORD,IRONLANCE
+ALEN class=CAVALIER lead=ROY auto blue lv=4 at=13,13 to=13,13 items=IRONSWORD,IRONLANCE,JAVELIN
+LANCE class=CAVALIER lead=ROY auto blue lv=4 at=13,15 to=13,15 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=3 at=12,14 to=12,14 items=IRONLANCE,JAVELIN,CHESTKEY
+WOLT class=ARCHER lead=ROY auto blue lv=3 at=15,16 to=15,16 items=IRONBOW,VULNERARY,VULNERARY
+DIECK class=MERCENARY lead=ROY auto blue lv=6 at=16,11 to=16,11 items=IRONBLADE,IRONSWORD,ARMORSLAYER
+WARD class=FIGHTER lead=ROY auto blue lv=4 at=15,12 to=15,12 items=IRONAXE,HAMMER,HANDAXE
+LOT class=FIGHTER lead=ROY auto blue lv=4 at=17,12 to=17,12 items=STEELAXE,HANDAXE,IRONAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=3 at=16,15 to=16,15 items=SLIMLANCE,JAVELIN,VULNERARY
+ELEN class=CLERIC lead=ROY auto blue lv=5 at=14,15 to=14,15 items=HEALSTAFF,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=2 at=15,14 to=15,14 items=IRONSWORD,LOCKPICK
+LUGH class=MAGE lead=ROY auto blue lv=2 at=17,14 to=17,14 items=FIRE,VULNERARY
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=2 at=14,13 to=14,13 items=HEALSTAFF,VULNERARY
+RUTGER class=MYRMIDON lead=ROY auto blue lv=4 at=16,13 to=16,13 items=KILLINGEDGE,IRONSWORD,VULNERARY
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=18,15 to=18,15
+
+[Chapter5_Red] nocamera
+UNKNOWN_4E class=BRIGAND red lv=11 at=2,14 to=2,14 items=KILLERAXE,HANDAXE ai=AI_A_03,AI_B_03,0x00,0x20
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=4 at=14,7 to=14,7 items=IRONAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=4 at=14,5 to=14,5 items=HANDAXE ai=AI_A_00,AI_B_03,0x04,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=11,5 to=11,5 items=STEELAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=9,3 to=9,3 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=7,4 to=7,4 items=STEELAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=5,6 to=5,6 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_03,0x04,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=4,4 to=4,4 items=STEELAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=FIGHTER lead=UNKNOWN_4E auto red lv=5 at=3,5 to=3,5 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=3 at=1,8 to=1,8 items=IRONSWORD ai=AI_A_00,AI_B_06,0x02,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=3 at=3,9 to=3,9 items=IRONSWORD ai=AI_A_00,AI_B_06,0x02,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=1,15 to=1,15 items=HANDAXE ai=AI_A_00,AI_B_03,0x04,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=2,17 to=2,17 items=HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=2,16 to=2,16 items=HANDAXE ai=AI_A_00,AI_B_00,0x0C,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=3,15 to=3,15 items=HANDAXE ai=AI_A_00,AI_B_03,0x04,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=2 at=12,2 to=12,2 items=IRONSWORD ai=AI_A_00,AI_B_00,0x0A,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=4 at=9,6 to=7,6 items=STEELSWORD ai=AI_A_03,AI_B_03,0x02,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=4 at=2,10 to=2,10 items=STEELSWORD ai=AI_A_00,AI_B_06,0x02,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=5 at=3,18 to=3,18 items=STEELBLADE ai=AI_A_00,AI_B_06,0x0A,0x00
+CHAPTER5_BANDIT class=NOMAD lead=UNKNOWN_4E auto red lv=3 at=4,11 to=4,11 items=IRONBOW ai=AI_A_00,AI_B_03,0x2A,0x00
+CHAPTER5_BANDIT class=NOMAD lead=UNKNOWN_4E auto red lv=4 at=4,13 to=4,13 items=STEELBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+CHAPTER5_BANDIT class=NOMAD lead=UNKNOWN_4E auto red lv=3 at=1,11 to=1,11 items=IRONBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+CHAPTER5_BANDIT class=MAGE lead=UNKNOWN_4E auto red lv=5 at=1,18 to=1,18 items=FIRE ai=AI_A_00,AI_B_06,0x0A,0x00
+
+[Chapter5_UnusedEmpty]
+
+[Chapter5_BackFortBrigands]
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=5 at=0,4 to=0,4 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_04,0x21,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=0,17 to=0,17 items=STEELAXE ai=AI_A_00,AI_B_04,0x21,0x00
+
+[Chapter5_OpenBarrierReinforcements]
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=4 at=2,15 to=5,16 items=STEELSWORD ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER5_BANDIT class=MERCENARY lead=UNKNOWN_4E auto red lv=4 at=2,15 to=5,17 items=STEELSWORD ai=AI_A_00,AI_B_00,0x02,0x00
+CHAPTER5_BANDIT class=NOMAD lead=UNKNOWN_4E auto red lv=3 at=2,15 to=4,17 items=IRONBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+CHAPTER5_BANDIT class=NOMAD lead=UNKNOWN_4E auto red lv=4 at=2,15 to=4,16 items=STEELBOW ai=AI_A_00,AI_B_00,0x2A,0x00
+
+[Chapter5_FrontFortBrigands]
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=5 at=18,7 to=18,7 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_04,0x21,0x00
+CHAPTER5_BANDIT class=BRIGAND lead=UNKNOWN_4E auto red lv=6 at=17,8 to=17,8 items=STEELAXE ai=AI_A_00,AI_B_04,0x21,0x00
+
+[Chapter5_SaulDorothy]
+SAUL class=PRIEST lead=UNKNOWN_4E auto green lv=5 at=10,3 to=10,4 ai=AI_A_00,AI_B_00,0x02,0x00
+DOROTHY class=ARCHER_F lead=UNKNOWN_4E auto green lv=6 at=10,2 to=10,3 ai=AI_A_00,AI_B_00,0x02,0x00
+
+[Chapter5_UnusedSaulDorothy]
+SAUL class=PRIEST lead=UNKNOWN_4E auto green lv=5 at=5,5 to=4,5 ai=AI_A_00,AI_B_00,0x02,0x00
+DOROTHY class=ARCHER_F lead=UNKNOWN_4E auto green lv=6 at=5,6 to=4,6 ai=AI_A_00,AI_B_00,0x02,0x00

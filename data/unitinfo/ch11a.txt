@@ -1,0 +1,114 @@
+[Unk_0867CDAC]
+ROY class=ROY auto blue lv=12 at=5,5 to=5,5 items=RAPIER,IRONSWORD,DOORKEY
+CLARINE class=TROUBADOUR lead=ROY auto blue lv=13 at=2,3 to=2,3 items=HEALSTAFF,UNLOCKSTAFF,RESTORESTAFF,VULNERARY
+ALEN class=CAVALIER lead=ROY auto blue lv=13 at=4,3 to=4,3 items=IRONSWORD,IRONLANCE,JAVELIN
+BORS class=ARMOR lead=ROY auto blue lv=9 at=5,3 to=5,3 items=IRONLANCE,JAVELIN,CHESTKEY
+WOLT class=ARCHER lead=ROY auto blue lv=12 at=7,3 to=7,3 items=IRONBOW,SILVERBOW,VULNERARY,STEELBOW
+DIECK class=MERCENARY lead=ROY auto blue lv=15 at=3,4 to=3,4 items=IRONBLADE,IRONSWORD,ARMORSLAYER,STEELSWORD
+LOT class=FIGHTER lead=ROY auto blue lv=11 at=6,4 to=6,4 items=IRONAXE,HAMMER,HANDAXE,STEELAXE
+SHANNA class=PEGASUSKNIGHT lead=ROY auto blue lv=13 at=2,5 to=2,5 items=SLIMLANCE,JAVELIN,VULNERARY
+CHAD class=THIEF lead=ROY auto blue lv=9 at=4,5 to=4,5 items=IRONSWORD,LOCKPICK
+LUGH class=MAGE lead=ROY auto blue lv=11 at=3,6 to=3,6 items=FIRE,THUNDER,VULNERARY
+SUE class=NOMAD_F lead=ROY auto blue lv=11 at=6,6 to=6,6 items=IRONBOW,LONGBOW,ANTITOXIN,PUREWATER
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=5,7 to=5,7 items=IRONSWORD,IRONLANCE,JAVELIN,RESTORESTAFF
+
+[Unk_0867CE7C]
+LARUM class=DANCER lead=ROY blue lv=1 at=2,6 to=2,7 items=VULNERARY
+
+[Unk_0867CE9C] nocamera
+UNKNOWN_56 class=BISHOP red lv=8 at=27,2 to=27,2 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=13 at=3,16 to=3,16 items=STEELAXE ai=AI_A_00,AI_B_00,0x09,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=14 at=8,16 to=8,16 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=13 at=8,19 to=8,19 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=13 at=13,16 to=13,16 items=STEELBOW ai=AI_A_00,AI_B_03,0x29,0x00
+UNKNOWN_7F class=SHAMAN lead=UNKNOWN_56 auto red lv=14 at=15,19 to=15,19 items=FLUX ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=15 at=20,16 to=20,16 items=STEELAXE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=15 at=22,16 to=22,16 items=STEELAXE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=14 at=21,17 to=21,17 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=15 at=21,10 to=21,10 items=STEELBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=15 at=20,7 to=20,7 items=STEELAXE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=14 at=22,7 to=22,7 items=HANDAXE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=14 at=22,9 to=22,9 items=HANDAXE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=14 at=20,9 to=20,9 items=STEELAXE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=15 at=21,8 to=21,8 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_06,0x01,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=14 at=21,6 to=21,6 items=KILLERBOW ai=AI_A_00,AI_B_06,0x29,0x00
+UNKNOWN_7F class=SHAMAN lead=UNKNOWN_56 auto red lv=16 at=26,3 to=26,3 items=FLUX ai=AI_A_00,AI_B_00,0x01,0x00
+UNKNOWN_7F class=SHAMAN lead=UNKNOWN_56 auto red lv=16 at=28,3 to=28,3 items=FLUX ai=AI_A_00,AI_B_03,0x01,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=14 at=14,6 to=14,6 items=STEELBOW ai=AI_A_00,AI_B_03,0x29,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=14 at=14,11 to=14,11 items=LONGBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_7F class=ARCHER lead=UNKNOWN_56 auto red lv=14 at=14,23 to=14,23 items=LONGBOW ai=AI_A_00,AI_B_00,0x29,0x00
+UNKNOWN_7F class=FIGHTER lead=UNKNOWN_56 auto red lv=16 at=8,23 to=8,23 items=HALBERD ai=AI_A_00,AI_B_03,0x39,0x00
+
+[Unk_0867D00C]
+UNKNOWN_56 class=BISHOP red lv=8 at=27,2 to=27,2 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Unk_0867D02C]
+UNKNOWN_7F class=CAVALIER auto red lv=19 at=3,0 to=3,1 items=KILLERLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=1,0 to=1,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=2,0 to=2,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=4,0 to=3,2 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0867D07C]
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=4,0 to=4,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=5,0 to=5,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=3,0 to=3,3 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0867D0BC]
+UNKNOWN_82 class=BRIGAND auto red lv=14 at=26,9 to=26,9 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_04,0x0A,0x00
+UNKNOWN_82 class=BRIGAND auto red lv=15 at=27,15 to=27,15 items=STEELAXE ai=AI_A_00,AI_B_04,0x0A,0x00
+
+[Unk_0867D0EC]
+UNKNOWN_82 class=BRIGAND auto red lv=14 at=26,9 to=26,9 items=STEELAXE,HANDAXE ai=AI_A_00,AI_B_04,0x0A,0x00
+UNKNOWN_82 class=BRIGAND auto red lv=15 at=27,15 to=27,15 items=STEELAXE ai=AI_A_00,AI_B_04,0x0A,0x00
+
+[Unk_0867D11C]
+ECHIDNA class=HERO_F green lv=1 at=18,10 to=18,11 items=STEELAXE ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Unk_0867D13C]
+UNKNOWN_7F class=FIGHTER auto red lv=17 at=16,10 to=16,11 items=HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=FIGHTER auto red lv=15 at=20,12 to=18,12 items=HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=FIGHTER auto red lv=15 at=20,10 to=20,11 items=HANDAXE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0867D17C]
+UNKNOWN_57 class=PALADIN auto red lv=1 at=20,25 to=20,25 items=SILVERLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=18,24 to=18,24 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=19,24 to=19,24 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=20,24 to=20,24 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0867D1CC]
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=21,24 to=21,24 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=15 at=22,24 to=22,24 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x0A,0x00
+UNKNOWN_7F class=CAVALIER lead=UNKNOWN_57 auto red lv=14 at=23,24 to=23,24 items=IRONLANCE ai=AI_A_00,AI_B_00,0x0A,0x00
+
+[Unk_0867D20C]
+KLEIN class=SNIPER red lv=1 at=22,25 to=22,24 items=SILVERBOW,WHITEGEM ai=AI_A_01,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=14 at=21,24 to=21,23 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=14 at=23,24 to=23,23 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+
+[Unk_0867D24C]
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=14 at=20,25 to=21,25 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+KLEIN_SQUAD class=ARCHER lead=KLEIN auto red lv=15 at=24,25 to=23,25 items=STEELBOW ai=AI_A_00,AI_B_00,0x29,0x00
+
+[Unk_0867D27C]
+THEA class=PEGASUSKNIGHT red lv=8 at=2,0 to=2,1 items=SLIMLANCE,JAVELIN ai=AI_A_01,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=0,0 to=1,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=4,0 to=3,0 items=STEELLANCE ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Unk_0867D2BC]
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=1,1 to=2,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x69,0x00
+THEA_SQUAD class=PEGASUSKNIGHT lead=THEA auto red lv=6 at=5,1 to=3,2 items=IRONLANCE,JAVELIN ai=AI_A_00,AI_B_00,0x69,0x00
+
+[Unk_0867D2EC]
+MELADY class=WYVERNRIDER_F auto red lv=8 at=27,2 to=27,2 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Unk_0867D30C]
+GALLE class=WYVERNRIDER auto red lv=8 at=29,14 to=27,13 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Unk_0867D32C]
+MELADY class=WYVERNRIDER_F auto red lv=8 at=29,8 to=27,12 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Unk_0867D34C]
+THEA class=PEGASUSKNIGHT auto red lv=8 at=18,25 to=21,24 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Unk_0867D36C]
+ELFFIN class=BARD auto green lv=8 at=29,3 to=27,2 items=DIVINE ai=AI_A_03,AI_B_03,0x01,0x20

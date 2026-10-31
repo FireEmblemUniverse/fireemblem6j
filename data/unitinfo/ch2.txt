@@ -1,0 +1,71 @@
+[Chapter2_Blue]
+ROY class=ROY auto blue lv=2 at=2,10 to=2,10 items=IRONSWORD,RAPIER
+MARCUS class=PALADIN lead=ROY auto blue lv=1 at=2,8 to=2,8 items=SILVERLANCE,VULNERARY,VULNERARY
+ALEN class=CAVALIER lead=ROY auto blue lv=3 at=3,9 to=3,9 items=IRONSWORD,IRONLANCE
+LANCE class=CAVALIER lead=ROY auto blue lv=2 at=3,11 to=3,11 items=IRONSWORD,JAVELIN,VULNERARY
+BORS class=ARMOR lead=ROY auto blue lv=2 at=1,11 to=1,11 items=IRONLANCE
+WOLT class=ARCHER lead=ROY auto blue lv=1 at=0,10 to=0,10 items=IRONBOW
+
+[Chapter2_Merlinus]
+MERLINUS class=SUPPLY lead=ROY blue lv=1 at=2,9 to=1,9
+
+[Chapter2_RedDummy] nocamera
+
+[Chapter2_RedA]
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=2 at=17,13 to=15,6 items=IRONAXE ai=AI_A_0C,AI_B_11,0x09,0x00
+CHAPTER2_GENERIC class=ARCHER lead=CHAPTER2_4B auto red lv=3 at=18,14 to=17,4 items=IRONBOW ai=AI_A_0C,AI_B_12,0x29,0x00
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=16,15 to=18,6 items=JAVELIN ai=AI_A_00,AI_B_00,0x01,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=1 at=17,12 to=17,11 items=IRONAXE ai=AI_A_00,AI_B_06,0x09,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=2 at=18,12 to=18,10 items=IRONAXE ai=AI_A_00,AI_B_03,0x09,0x00
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=18,12 to=17,9 items=JAVELIN ai=AI_A_00,AI_B_03,0x01,0x00
+CHAPTER2_GENERIC class=SOLDIER lead=CHAPTER2_4B auto red lv=2 at=18,12 to=18,11 items=IRONLANCE ai=AI_A_00,AI_B_06,0x01,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=1 at=18,13 to=18,9 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER2_GENERIC class=SOLDIER lead=CHAPTER2_4B auto red lv=1 at=18,15 to=18,8 items=JAVELIN ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER2_GENERIC class=ARCHER lead=CHAPTER2_4B auto red lv=1 at=16,12 to=16,7 items=IRONBOW ai=AI_A_00,AI_B_06,0x09,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=3 at=16,12 to=16,10 items=STEELAXE ai=AI_A_00,AI_B_03,0x01,0x00
+CHAPTER2_MERCENARY class=MERCENARY lead=CHAPTER2_4B auto red lv=3 at=17,9 to=17,7 items=IRONBLADE ai=AI_A_00,AI_B_03,0x01,0x00
+
+[Chapter2_RedB]
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=7,17 to=3,14 items=IRONLANCE ai=AI_A_00,AI_B_03,0x01,0x00
+
+[Chapter2_RedC]
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=8,18 to=5,16 items=IRONLANCE ai=AI_A_00,AI_B_03,0x01,0x00
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=8,18 to=1,16 items=IRONLANCE ai=AI_A_00,AI_B_03,0x01,0x00
+
+[Chapter2_RedD]
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=1 at=11,18 to=8,17 items=IRONAXE,HANDAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=1 at=11,18 to=6,18 items=IRONAXE ai=AI_A_00,AI_B_00,0x09,0x00
+CHAPTER2_GENERIC class=FIGHTER lead=CHAPTER2_4B auto red lv=2 at=11,18 to=4,18 items=HANDAXE ai=AI_A_00,AI_B_03,0x09,0x00
+
+[Chapter2_WardLot]
+WARD class=FIGHTER lead=DIECK blue lv=2 at=15,18 to=12,16 items=IRONAXE,HAMMER,VULNERARY
+LOT class=FIGHTER lead=DIECK blue lv=3 at=15,18 to=12,18 items=IRONAXE,STEELAXE,HANDAXE ai=AI_A_00,AI_B_03
+
+[Chapter2_DieckShanna]
+DIECK class=MERCENARY blue lv=5 at=15,18 to=13,17 items=IRONBLADE,IRONSWORD ai=AI_A_03,AI_B_03
+SHANNA class=PEGASUSKNIGHT lead=DIECK blue lv=1 at=16,18 to=14,17 items=SLIMLANCE,JAVELIN,VULNERARY ai=AI_A_00,AI_B_03
+
+[Chapter2_CutsceneMelady]
+MELADY class=WYVERNRIDER red lv=5 at=16,3 to=16,3 items=STEELLANCE,JAVELIN ai=AI_A_03,AI_B_03,0x01,0x00
+
+[Chapter2_Boss]
+CHAPTER2_4B class=ARMOR red lv=5 at=16,3 to=16,4 items=JAVELIN ai=AI_A_03,AI_B_03,0x01,0x20
+
+[Chapter2_OpeningSoldier]
+CHAPTER2_SOLDIER_JAVELIN class=SOLDIER lead=CHAPTER2_4B auto red lv=3 at=16,3 to=16,3 items=IRONLANCE ai=AI_A_00,AI_B_00,0x01,0x00
+
+[Chapter2_Elen]
+ELEN class=CLERIC lead=ROY blue lv=2 at=4,14 to=4,14 items=HEALSTAFF,VULNERARY
+
+[Chapter2_MixedUnused]
+ROY class=ROY blue lv=3 at=6,10 to=6,10 items=RAPIER
+ELEN class=CLERIC lead=ROY blue lv=3 at=8,10 to=8,10 items=HEALSTAFF
+WOLT class=ARCHER lead=ROY blue lv=1 at=12,1 to=12,1
+MARCUS class=PALADIN lead=ROY blue lv=1 at=1,9 to=1,9
+ALEN class=CAVALIER lead=ROY blue lv=3 at=2,10 to=2,10
+BORS class=ARMOR lead=ROY blue lv=2 at=6,12 to=6,12
+CHAPTER2_GENERIC class=FIGHTER red lv=1 at=3,6 to=3,6 ai=AI_A_00,AI_B_03
+CHAPTER2_GENERIC class=ARCHER red lv=1 at=5,5 to=5,5 ai=AI_A_00,AI_B_03
+CHAPTER2_GENERIC class=SOLDIER red lv=2 at=3,8 to=3,8 ai=AI_A_00,AI_B_03
+CHAPTER2_GENERIC class=FIGHTER red lv=1 at=1,13 to=1,13 ai=AI_A_00,AI_B_03
+CHAPTER2_MERCENARY class=MERCENARY red lv=3 at=4,14 to=4,14 ai=AI_A_00,AI_B_03
