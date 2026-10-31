@@ -52,7 +52,7 @@ u16 const * CONST_DATA gUiWindowFramePalLut[] =
     [UI_WINDOW_THEME_GREEN] = Pal_UiWindowFrame_ThemeGreen,
 };
 
-u8 const * CONST_DATA gUiWindowFrameImgLut[] =
+u32 const * CONST_DATA gUiWindowFrameImgLut[] =
 {
     [UI_WINDOW_THEME_BLUE]  = Img_UiWindowFrame_ThemeBlue,
     [UI_WINDOW_THEME_RED]   = Img_UiWindowFrame_ThemeRed,

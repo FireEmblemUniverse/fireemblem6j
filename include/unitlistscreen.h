@@ -154,10 +154,10 @@ extern u16 gPrepUiPal[0x3A];
 
 extern u8 const Img_Prep_083198CC[]; // img
 extern u16 const Pal_SpinningArrow[]; // pal
-extern u8 const Img_UnitList_Title[]; // img
+extern u32 const Img_UnitList_Title[]; // img
 extern u16 const Pal_UnitList_Title[]; // pal
 extern u8 const Tsa_UnitList_083210A0[]; // tsa
-extern u16 const Img_HorizontalSpinningArrow[]; // tm
+extern u32 const Img_HorizontalSpinningArrow[]; // tm
 extern u16 const Pal_MonologueBG[]; // pal
 
 extern struct Text gUnitListNameTexts[];
