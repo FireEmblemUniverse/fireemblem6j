@@ -25,6 +25,15 @@ enum
 
 enum
 {
+    UNITLIST_STATE_ROWS = 0,
+    UNITLIST_STATE_SCROLL_DOWN = 1,
+    UNITLIST_STATE_SCROLL_UP = 2,
+    UNITLIST_STATE_HEADER = 3,
+    UNITLIST_STATE_STATSCREEN = 4,
+};
+
+enum
+{
     UNITLIST_SORTKEY_0,
     UNITLIST_SORTKEY_1,
     UNITLIST_SORTKEY_2,
@@ -68,49 +77,49 @@ struct UnitListScreenSpritesProc;
 struct UnitListScreenProc
 {
     /* 00 */ PROC_HEADER;
-    /* 29 */ u8 unk_29;
-    /* 2A */ u8 unk_2A;
-    /* 2B */ u8 unk_2B;
-    /* 2C */ u8 unk_2C;
-    /* 2D */ u8 unk_2D;
-    /* 2E */ u8 unk_2E;
+    /* 29 */ u8 state;
+    /* 2A */ u8 has_sorted;
+    /* 2B */ u8 help_open;
+    /* 2C */ u8 cursor_row;
+    /* 2D */ u8 cursor_column;
+    /* 2E */ u8 max_page;
     /* 2F */ u8 page;
-    /* 30 */ u8 unk_30;
-    /* 31 */ u8 unk_31;
+    /* 30 */ u8 cursor_unit;
+    /* 31 */ u8 scroll_speed;
     /* 32 */ u8 sort_key;
     /* 33 */ u8 target_sort_order; // idk which is which actually
     /* 34 */ u8 sort_order;
-    /* 35 */ u8 unk_35;
+    /* 35 */ u8 sort_column;
     /* 36 */ u8 page_target;
-    /* 37 */ u8 unk_37;
-    /* 38 */ u8 unk_38;
+    /* 37 */ u8 page_from;
+    /* 38 */ u8 page_slide;
     /* 39 */ u8 mode;
-    /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
-    /* 3C */ u8 unk_3C;
+    /* 3A */ u8 max_deploy;
+    /* 3B */ u8 deploy_count;
+    /* 3C */ u8 is_link_arena;
     /* 3D */ STRUCT_PAD(0x3D, 0x3E);
-    /* 3E */ u16 unk_3E;
-    /* 40 */ u16 unk_40;
+    /* 3E */ u16 page_slide_clock;
+    /* 40 */ u16 scroll_y;
     /* 42 */ STRUCT_PAD(0x42, 0x44);
     /* 44 */ struct UnitListScreenSpritesProc * sprites_proc;
-    /* 48 */ ProcPtr unk_48;
+    /* 48 */ ProcPtr bg_proc;
 };
 
-void func_fe6_08076448(struct UnitListScreenProc * proc, fu8 unit_num, u16 * tm, fu8 page, bool put_name);
+void UnitList_PutUnitRow(struct UnitListScreenProc * proc, fu8 unit_num, u16 * tm, fu8 page, bool put_name);
 
 struct UnitListScreenSpritesProc
 {
     /* 00 */ PROC_HEADER;
     /* 2C */ struct UnitListScreenProc * main_proc;
-    /* 30 */ u8 unk_30;
-    /* 34 */ ProcPtr unk_34;
-    /* 38 */ u16 unk_38;
-    /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
-    /* 3C */ u8 unk_3C;
+    /* 30 */ u8 page_arrow_clock;
+    /* 34 */ ProcPtr scroll_bar;
+    /* 38 */ u16 last_scroll_y;
+    /* 3A */ u8 is_scrolling;
+    /* 3B */ u8 sort_arrow_clock;
+    /* 3C */ u8 blink_clock;
 };
 
-void func_fe6_08074EF0(struct UnitListScreenProc * proc);
+void UnitList_Setup(struct UnitListScreenProc * proc);
 
 struct SortedUnitEnt
 {
@@ -129,9 +138,9 @@ extern u8 gUnitRearrangeBuf[];
 extern u8 gUnitListCount;
 extern u32 gUnitListItemIcons[];
 
-extern u8 CONST_DATA gUnk_08678722[];
+extern u8 CONST_DATA gUnitListPageSlideInSpeedLut[];
 
-extern u16 const * CONST_DATA gUnk_08678744[3];
+extern u16 const * CONST_DATA gUnitListBoxSpriteLut[3];
 
 struct UnitListScreenField
 {
@@ -146,7 +155,7 @@ struct UnitListScreenField
 extern struct UnitListScreenField UnitListPageFields[][9];
 
 extern u16 CONST_DATA Sprite_08678750[]; // sprite
-extern u16 const * CONST_DATA gUnk_08678818[]; // sprites
+extern u16 const * CONST_DATA gUnitListPageTitleSpriteLut[]; // sprites
 extern u16 CONST_DATA Sprite_08678758[]; // sprite
 extern u16 CONST_DATA Sprite_08678760[]; // sprite
 
@@ -190,42 +199,42 @@ enum
 extern u16 gUnitListRowsTmBuf[0x20][0x20]; // tm
 extern u16 gUnitListHeaderTmBuf[2][0x20]; // tm
 
-extern u8 CONST_DATA gUnk_0867871C[];
+extern u8 CONST_DATA gUnitListPageSlideOutSpeedLut[];
 
-void func_fe6_080741EC(void);
-void func_fe6_08074254(fu8 x, fu8 y, fu8 width);
-void func_fe6_080742D0(fu8 sort_key);
-void func_fe6_08074384(int arg_0);
-void func_fe6_080743C8(fu16 arg_0);
-void func_fe6_080744A0(fu8 arg_0, fu8 arg_1, fi8 arg_2);
-void func_fe6_08074558(struct UnitListScreenProc * proc, fi8 arg_1);
-void func_fe6_08074668(bool use_win1);
+void UnitList_ApplyUnitOrder(void);
+void UnitList_PutBoxSprites(fu8 x, fu8 y, fu8 width);
+void UnitList_PutSortKeyLabel(fu8 sort_key);
+void UnitList_TrackItemIcon(int icon);
+void UnitList_ClearOffscreenItemIcons(fu16 scroll_y);
+void UnitList_PutPageArrow(fu8 is_right, fu8 clock, fi8 visible);
+void UnitList_MoveCursorToLastUnit(struct UnitListScreenProc * proc, fi8 from_prep_menu);
+void UnitList_SetupWindows(bool use_win1);
 void UnitList_StartStatScreen(struct UnitListScreenProc * proc);
 void UnitList_ResetFromStatScreen(struct UnitListScreenProc * proc);
 void UnitList_ResetDispFromStatScreen(struct UnitListScreenProc * proc);
 void UnitListScreenSprites_Init(struct UnitListScreenSpritesProc * proc);
 void UnitListScreenSprites_Main(struct UnitListScreenSpritesProc * proc);
 void UnitListScreenSprites_Dummy(struct UnitListScreenSpritesProc * proc);
-void func_fe6_08074BA4(struct UnitListScreenProc * proc);
-void func_fe6_08074D54(struct UnitListScreenProc * proc);
-void func_fe6_08074EF0(struct UnitListScreenProc * proc);
+void UnitList_CollectFactionUnits(struct UnitListScreenProc * proc);
+void UnitList_CollectBlueUnits(struct UnitListScreenProc * proc);
+void UnitList_Setup(struct UnitListScreenProc * proc);
 void UnitList_Init(struct UnitListScreenProc * proc);
-void func_fe6_080753A0(struct UnitListScreenProc * proc);
-void func_fe6_080754F4(struct Unit * unit, int step);
-void func_fe6_08075570(struct UnitListScreenProc * proc);
+void UnitList_ToggleDeploy(struct UnitListScreenProc * proc);
+void CycleUnitSoloAnim(struct Unit * unit, int step);
+void UnitList_Loop(struct UnitListScreenProc * proc);
 void UnitList_OnEnd(struct UnitListScreenProc * proc);
 void UnitList_StartPageChange(struct UnitListScreenProc * proc);
-void func_fe6_08075E94(struct UnitListScreenProc * proc);
-void func_fe6_08076060(struct UnitListScreenProc * proc);
+void UnitList_PageSlideOut_Loop(struct UnitListScreenProc * proc);
+void UnitList_PageSlideIn_Loop(struct UnitListScreenProc * proc);
 void StartUnitListScreen(void);
-void func_fe6_08076250(ProcPtr parent);
+void StartUnitListScreenForPrepMenu(ProcPtr parent);
 void StartUnitListScreenForSoloAnim(ProcPtr parent);
 void StartUnitListScreenUnk(ProcPtr parent);
-void func_fe6_08076314(u16 * tm, fu8 arg_1);
-void func_fe6_080763D8(fu8 arg_0, fu8 arg_1, bool arg_2);
-void func_fe6_08076448(struct UnitListScreenProc * proc, fu8 unit_num, u16 * tm, fu8 page, bool put_name);
-int func_fe6_08076D30(struct Unit * unit);
-bool SortUnitList(fu8 arg_0, fu8 arg_1);
+void UnitList_PutFieldLabels(u16 * tm, fu8 page);
+void UnitList_PutPageHeader(fu8 max_page, fu8 page, bool put_labels);
+void UnitList_PutUnitRow(struct UnitListScreenProc * proc, fu8 unit_num, u16 * tm, fu8 page, bool put_name);
+int GetUnitSoloAnimFlags(struct Unit * unit);
+bool SortUnitList(fu8 key, fu8 order);
 
 extern int gPrepCursorUnitPid;
 

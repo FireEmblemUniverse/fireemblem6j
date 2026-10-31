@@ -1255,7 +1255,7 @@ void AtMenu_StartSubmenu(struct PrepMenuProc *proc)
 
 	case PREP_SUB2ACT_9:
 		Proc_End(proc->procbg);
-		func_fe6_08076250(proc);
+		StartUnitListScreenForPrepMenu(proc);
 		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		break;
