@@ -616,7 +616,7 @@ void TryEnlistBarrierUnitTarget(struct Unit * unit)
     if (unit->flags & UNIT_FLAG_RESCUED)
         return;
 
-    if (unit->barrier >= 7) // TODO: barrier max amount constant
+    if (unit->barrier >= UNIT_BARRIER_MAX)
         return;
 
     EnlistTarget(unit->x, unit->y, unit->id, 0);

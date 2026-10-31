@@ -5,6 +5,7 @@
 #include "bm.h"
 #include "unit.h"
 #include "chapter.h"
+#include "battle.h"
 #include "chapterinfo.h"
 #include "ui.h"
 #include "eventinfo.h"
@@ -259,7 +260,7 @@ void GC_InitSramResetScreen(struct GameController * proc)
     InitBgs(NULL);
     ApplySystemGraphics();
 
-    gPlaySt.config_talk_speed = 1;
+    gPlaySt.config_talk_speed = PLAY_TALKSPEED_NORMAL;
 
     StartMuralBackground(PROC_TREE_3, NULL, -1);
 }
@@ -523,8 +524,8 @@ void ForceEnableSounds(void)
 
 void func_fe6_08013A64(void)
 {
-    gPlaySt.config_battle_anim = 0;
-    gPlaySt.config_talk_speed = 1;
+    gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON;
+    gPlaySt.config_talk_speed = PLAY_TALKSPEED_NORMAL;
     gPlaySt.config_walk_speed = 0;
     gPlaySt.config_bgm_disable = FALSE;
     gPlaySt.config_se_disable = TRUE;

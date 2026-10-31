@@ -22,6 +22,7 @@
 
 #include "constants/pids.h"
 #include "constants/jids.h"
+#include "constants/terrains.h"
 
 enum { BATTLE_HIT_MAX = 7 };
 enum { BATTLE_MAX_DAMAGE = 99 };
@@ -1559,8 +1560,6 @@ void BeginBattleAnimations(void)
 
 int GetUnitSoloBattleAnimType(struct Unit * unit)
 {
-    // TODO: battle anim type constants
-
     if (unit->flags & UNIT_FLAG_SOLOANIM_1)
         return PLAY_ANIMCONF_ON;
 
@@ -1572,11 +1571,9 @@ int GetUnitSoloBattleAnimType(struct Unit * unit)
 
 int GetBattleAnimType(void)
 {
-    // TODO: battle anim type constants
-
     // If not solo anim, return global type
 
-    if (gPlaySt.config_battle_anim != 2)
+    if (gPlaySt.config_battle_anim != PLAY_ANIMCONF_SOLO_ANIM)
         return gPlaySt.config_battle_anim;
 
     // If both units are players, use actor solo anim type
@@ -1585,11 +1582,11 @@ int GetBattleAnimType(void)
         if (UNIT_FACTION(&gBattleUnitB.unit) == FACTION_BLUE)
             return GetUnitSoloBattleAnimType(&gBattleUnitA.unit);
 
-    // If neither are players, return 1
+    // If neither are players, animations are off
 
     if (UNIT_FACTION(&gBattleUnitA.unit) != FACTION_BLUE)
         if (UNIT_FACTION(&gBattleUnitB.unit) != FACTION_BLUE)
-            return 1;
+            return PLAY_ANIMCONF_OFF;
 
     // Return solo anim type for the one that is a player unit
 
@@ -1751,7 +1748,7 @@ void BattleGenerateArena(struct Unit * unit)
     WriteSuspendSave(SAVE_SUSPEND);
 
     SetBattleUnitTerrainBonusesAuto(&gBattleUnitA);
-    SetBattleUnitTerrainBonuses(&gBattleUnitB, 8); // TODO: terrain id constants
+    SetBattleUnitTerrainBonuses(&gBattleUnitB, TERRAIN_ARENA_08);
 
     BattleGenerate(unit, target);
 

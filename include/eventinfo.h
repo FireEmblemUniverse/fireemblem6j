@@ -7,6 +7,7 @@
 #include "constants/flags.h"
 
 enum { EVENT_NOSCRIPT = 1 };
+enum { EVENT_MONEY_MAPCHANGE = 3 };
 
 enum { MAX_CHAPTER_FLAGS = 32 };
 enum { MAX_PERMANENT_FLAGS = 40 };

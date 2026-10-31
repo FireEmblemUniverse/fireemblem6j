@@ -713,9 +713,9 @@ void func_fe6_0803CF70(void)
 
 void func_fe6_0803CF9C(void)
 {
-	gPlaySt.config_battle_anim = 0;
+	gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON;
 	gPlaySt.config_no_auto_cursor = 1;
-	gPlaySt.config_talk_speed = 2;
+	gPlaySt.config_talk_speed = PLAY_TALKSPEED_FAST;
 	gPlaySt.config_walk_speed = 0;
 	gPlaySt.config_bgm_disable = 0;
 	gPlaySt.config_se_disable = 0;

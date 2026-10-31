@@ -452,80 +452,79 @@ u16 GetEfxSoundType1FromTerrain(u16 terrain)
 	if (GetBattleAnimArenaFlag() == true)
 		return 0;
 
-	/* TODO: terrain index */
 	switch (terrain) {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
-	case 10:
-	case 17:
-	case 25:
-	case 26:
-	case 27:
-	case 28:
-	case 34:
-	case 35:
-	case 37:
-	case 39:
-	case 40:
-	case 41:
-	case 43:
-	case 47:
+	case TERRAIN_PLAINS:
+	case TERRAIN_ROAD:
+	case TERRAIN_VILLAGE:
+	case TERRAIN_VILLAGE_CLOSED:
+	case TERRAIN_HOUSE:
+	case TERRAIN_FORT:
+	case TERRAIN_MOUNTAIN:
+	case TERRAIN_FENCE_19:
+	case TERRAIN_WALL:
+	case TERRAIN_WALL_BREAKABLE:
+	case TERRAIN_RUBBLE:
+	case TERRAIN_ROOF:
+	case TERRAIN_GATE_23:
+	case TERRAIN_RUINS:
+	case TERRAIN_BALLISTA:
+	case TERRAIN_LONGBALLISTA:
+	case TERRAIN_KILLERBALLISTA:
+	case TERRAIN_SHIP_WRECK:
+	case TERRAIN_GLACIER:
 		ret = 0;
 		break;
 
-	case 12:
-	case 13:
+	case TERRAIN_FOREST:
+	case TERRAIN_THICKET:
 		ret = 1;
 		break;
 
-	case 16:
-	case 21:
-	case 22:
+	case TERRAIN_RIVER:
+	case TERRAIN_SEA:
+	case TERRAIN_LAKE:
 		ret = 2;
 		break;
 
-	case 18:
-	case 38:
-	case 42:
+	case TERRAIN_PEAK:
+	case TERRAIN_CLIFF:
+	case TERRAIN_SHIP_FLAT:
 		ret = 3;
 		break;
 
-	case 14:
-	case 15:
+	case TERRAIN_SAND:
+	case TERRAIN_DESERT:
 		ret = 4;
 		break;
 
-	case 19:
-	case 20:
+	case TERRAIN_BRIDGE:
+	case TERRAIN_DRAWBRIDGE:
 		ret = 5;
 		break;
 
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 11:
-	case 23:
-	case 24:
-	case 29:
-	case 30:
-	case 31:
-	case 32:
-	case 33:
-	case 36:
-	case 45:
-	case 48:
-	case 49:
-	case 50:
+	case TERRAIN_ARMORY:
+	case TERRAIN_VENDOR:
+	case TERRAIN_ARENA_08:
+	case TERRAIN_C_ROOM_09:
+	case TERRAIN_GATE_0B:
+	case TERRAIN_FLOOR_17:
+	case TERRAIN_FLOOR_18:
+	case TERRAIN_PILLAR:
+	case TERRAIN_DOOR:
+	case TERRAIN_THRONE:
+	case TERRAIN_CHEST_OPENED:
+	case TERRAIN_CHEST:
+	case TERRAIN_CHURCH:
+	case TERRAIN_STAIRS:
+	case TERRAIN_ARENA_30:
+	case TERRAIN_VALLEY:
+	case TERRAIN_FENCE_32:
 		ret = 6;
 		break;
 
-	case 0:
-	case 44:
-	case 46:
+	case TERRAIN_TILE_00:
+	case TERRAIN_TILE_2C:
+	case TERRAIN_TILE_2E:
 	default:
 		ret = 0;
 		break;

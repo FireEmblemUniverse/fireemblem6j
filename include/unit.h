@@ -7,6 +7,8 @@
 #define UNIT_WEAPON_EXP_COUNT 8
 #define UNIT_SUPPORT_COUNT 10
 #define UNIT_LEVEL_MAX 20
+#define UNIT_TORCH_MAX 4
+#define UNIT_BARRIER_MAX 7
 
 enum
 {
