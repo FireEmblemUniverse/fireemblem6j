@@ -9,7 +9,7 @@
 #include "ai_decide.h"
 #include "ai_data.h"
 #include "ai_battle.h"
-#include "ai_unk.h"
+#include "ai_action.h"
 
 #include "constants/iids.h"
 #include "constants/terrains.h"

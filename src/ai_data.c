@@ -1,7 +1,7 @@
 #include "ai_data.h"
 
 #include "ai_script.h"
-#include "ai_unk.h"
+#include "ai_action.h"
 
 #include "constants/iids.h"
 #include "constants/jids.h"
@@ -996,13 +996,13 @@ struct Vec2i const gUnk_0810DAF0[] =
     { -1, -1 },
 };
 
-struct Vec2i const * CONST_DATA gUnk_085C8870[] =
+struct Vec2i const * CONST_DATA gAiPatrolPathTable[] =
 {
     gUnk_0810DADC,
     gUnk_0810DAF0,
 };
 
-struct Vec2i const * const * CONST_DATA gUnk_085C8878 = gUnk_085C8870;
+struct Vec2i const * const * CONST_DATA gAiPatrolPaths = gAiPatrolPathTable;
 
 char CONST_DATA gUnk_085C887C[] = "CALL TEST\n";
 char CONST_DATA gUnk_085C8887   = 3;
@@ -1064,18 +1064,17 @@ AI_LABEL(1),
     AI_GOTO(1),
 };
 
-// FIXME: use func_fe6_080336CC input struct
 u8 const gUnk_0810DB00[] = { -1, +1, 0, 0 };
 
 struct AiScr CONST_DATA AiScr_Unk_085C89C8[] =
 {
-    AI_CALL_FUNC(func_fe6_080337B4, NULL),
+    AI_CALL_FUNC(AiFunc_CountEnemiesInRangeOrPatrol, NULL),
     AI_GOTO_IFGT(1, gAiSt.cmd_result+0, 0),
 
     AI_GOTO_START,
 
 AI_LABEL(1),
-    AI_CALL_FUNC(func_fe6_080336CC, gUnk_0810DB00),
+    AI_CALL_FUNC(AiFunc_RestartDecide, gUnk_0810DB00),
 };
 
 struct AiCountEnemiesInRangeArg const gUnk_0810DB04 =
@@ -1294,7 +1293,7 @@ AI_LABEL(1),
 
 struct AiScr CONST_DATA AiScr_Unk_085C8F68[] =
 {
-    AI_CALL_FUNC(func_fe6_08033898, NULL),
+    AI_CALL_FUNC(AiFunc_GetLeaderAttackTarget, NULL),
 
     AI_GOTO_IFEQ(1, gAiSt.cmd_result+1, 1),
 
@@ -1306,13 +1305,12 @@ AI_LABEL(1),
     AI_GOTO_START,
 };
 
-// FIXME: use func_fe6_08033998 input struct
-struct { u8 unk_00; } const gUnk_0810DB0C = { 1 };
+struct AiGetAttackTargetByPidArg const gUnk_0810DB0C = { .pid = 1 };
 
 // unused
 struct AiScr CONST_DATA AiScr_Unk_085C8FD8[] =
 {
-    AI_CALL_FUNC(func_fe6_08033998, &gUnk_0810DB0C),
+    AI_CALL_FUNC(AiFunc_GetAttackTargetByPid, &gUnk_0810DB0C),
 
     AI_GOTO_IFEQ(1, gAiSt.cmd_result+1, 1),
 
@@ -1520,12 +1518,12 @@ AI_LABEL(2),
 // unused
 struct AiScr CONST_DATA AiScr_Unk_085C9568[] =
 {
-    AI_CALL_FUNC(func_fe6_08033898, NULL),
+    AI_CALL_FUNC(AiFunc_GetLeaderAttackTarget, NULL),
     AI_CALL_FUNC(AiFunc_AttackCmdResult, NULL),
     AI_GOTO_START,
 };
 
-struct UnkAiFuncArg_08033B04 const gUnk_0810DB1C =
+struct AiTryStaffThenAttackArg const gUnk_0810DB1C =
 {
     .action_random_threshold = 100,
     .maximum_heal_percent = 50,
@@ -1533,18 +1531,18 @@ struct UnkAiFuncArg_08033B04 const gUnk_0810DB1C =
 
 struct AiScr CONST_DATA AiScr_Unk_085C9698[] =
 {
-    AI_CALL_FUNC(AiFunc_08033B04, &gUnk_0810DB1C),
+    AI_CALL_FUNC(AiFunc_TryStaffThenAttack, &gUnk_0810DB1C),
     AI_GOTO_START,
 };
 
 struct AiScr CONST_DATA AiScr_Unk_085C96B8[] =
 {
-    AI_CALL_FUNC(AiFunc_08033B04, &gUnk_0810DB1C),
+    AI_CALL_FUNC(AiFunc_TryStaffThenAttack, &gUnk_0810DB1C),
     AI_ACTION_IN_PLACE(100),
     AI_GOTO_START,
 };
 
-struct UnkAiFuncArg_08033B50 const gUnk_0810DB20 =
+struct AiTryConsumableThenAttackArg const gUnk_0810DB20 =
 {
     .do_anything_threshold = 100,
     .do_offensive_threshold = 0,
@@ -1552,7 +1550,7 @@ struct UnkAiFuncArg_08033B50 const gUnk_0810DB20 =
 
 struct AiScr CONST_DATA AiScr_Unk_085C96E8[] =
 {
-    AI_CALL_FUNC(AiFunc_08033B50, &gUnk_0810DB20),
+    AI_CALL_FUNC(AiFunc_TryConsumableThenAttack, &gUnk_0810DB20),
     AI_GOTO_IFEQ(1, gAiSt.cmd_result+0, 5),
 
     AI_GOTO_START,

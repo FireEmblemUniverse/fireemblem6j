@@ -8,7 +8,7 @@
 #include "ai_utility.h"
 #include "ai_data.h"
 #include "ai_battle.h"
-#include "ai_unk.h"
+#include "ai_action.h"
 
 enum ScriptKind
 {
