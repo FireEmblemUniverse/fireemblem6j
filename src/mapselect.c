@@ -3,7 +3,6 @@
 #include "hardware.h"
 #include "sound.h"
 #include "face.h"
-#include "bm.h"
 #include "chapter.h"
 #include "ui.h"
 

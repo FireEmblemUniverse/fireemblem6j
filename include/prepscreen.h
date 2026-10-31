@@ -1,6 +1,7 @@
 #pragma once
 
 #include "prelude.h"
+#include "text.h"
 #include "unit.h"
 
 enum

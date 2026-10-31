@@ -1,7 +1,6 @@
 #include "unitlistscreen.h"
 
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "icon.h"
@@ -10,7 +9,6 @@
 #include "msg.h"
 #include "util.h"
 #include "item.h"
-#include "unit.h"
 #include "battle.h"
 #include "bmio.h"
 #include "chapter.h"
@@ -28,8 +26,6 @@
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/pids.h"
-
-#include "constants/videoalloc_global.h"
 
 // TODO: fix nonmatches
 

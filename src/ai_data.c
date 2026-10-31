@@ -1,6 +1,5 @@
 #include "ai_data.h"
 
-#include "ai_script.h"
 #include "ai_action.h"
 
 #include "constants/iids.h"

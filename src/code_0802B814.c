@@ -2,10 +2,10 @@
 
 #include "hardware.h"
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "targetlist.h"
+#include "mapselect.h"
 #include "faction.h"
 #include "action.h"
 #include "eventinfo.h"

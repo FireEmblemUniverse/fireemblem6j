@@ -1,9 +1,5 @@
 #include "gamedata.h"
 
-#include "item.h"
-#include "unit.h"
-#include "support.h"
-
 #include "constants/pids.h"
 #include "constants/jids.h"
 #include "constants/iids.h"

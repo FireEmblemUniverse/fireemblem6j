@@ -1,16 +1,13 @@
 #include "mapui.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "armfunc.h"
 #include "proc.h"
 #include "icon.h"
 #include "sprite.h"
-#include "face.h"
 #include "debugtext.h" // GenNumberStr, gNumberStr
 #include "msg.h"
 #include "util.h"
-#include "unit.h"
 #include "map.h"
 #include "trap.h"
 #include "bmfx.h"

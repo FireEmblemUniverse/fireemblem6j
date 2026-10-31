@@ -1,7 +1,5 @@
 #include "prelude.h"
-#include "hardware.h"
 #include "proc.h"
-#include "text.h"
 #include "prepscreen.h"
 
 void SetPrepMenuScrollBarBaseInfo(struct MenuScrollBarProc *proc, int a, int b, int c, int d, int e, int f)

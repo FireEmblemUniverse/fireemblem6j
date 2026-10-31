@@ -2,14 +2,10 @@
 #include "proc.h"
 #include "oam.h"
 #include "datamove.h"
-#include "hardware.h"
-#include "constants/jids.h"
 #include "constants/iids.h"
 #include "constants/videoalloc_banim.h"
 
-#include "banim_sprite.h"
 #include "banim.h"
-#include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 
 EWRAM_OVERLAY(banim) struct ProcEkrDragon *EkrDragonProcs[2] = {};

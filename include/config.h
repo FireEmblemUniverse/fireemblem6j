@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 #include "proc.h"
+#include "text.h"
 
 enum config_item_index {
     GAME_OPTION_ANIMATION      =  0,

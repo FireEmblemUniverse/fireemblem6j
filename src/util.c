@@ -4,10 +4,7 @@
 #include "datamove.h"
 #include "armfunc.h"
 #include "sound.h"
-#include "text.h"
-#include "bm.h"
 
-#include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 
 int Interpolate(int method, int lo, int hi, int x, int end)

@@ -1,17 +1,13 @@
 #include "helpbox.h"
 
-#include "armfunc.h"
 #include "oam.h"
 #include "sound.h"
-#include "text.h"
 #include "sprite.h"
 #include "msg.h"
 #include "util.h"
 #include "item.h"
 #include "talk.h"
-#include "bm.h"
 #include "chapter.h"
-#include "chapterinfo.h"
 #include "ui.h"
 
 #include "constants/videoalloc_global.h"

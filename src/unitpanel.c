@@ -5,15 +5,11 @@
 #include "oam.h"
 #include "icon.h"
 #include "sprite.h"
-#include "text.h"
 #include "msg.h"
 #include "item.h"
-#include "unit.h"
 #include "unitsprite.h"
 #include "faction.h"
 #include "ui.h"
-
-#include "constants/videoalloc_global.h"
 
 enum { LINES_MAX = 5 };
 

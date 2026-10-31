@@ -1,10 +1,9 @@
 #include "itemaction.h"
+#include "mapselect.h"
 
 #include "random.h"
 #include "sound.h"
 #include "msg.h"
-#include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "mapwork.h"
 #include "bmfx.h"

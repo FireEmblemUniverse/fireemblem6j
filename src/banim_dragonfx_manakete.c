@@ -4,13 +4,8 @@
 #include "datamove.h"
 #include "util.h"
 #include "map.h"
-#include "unit.h"
-#include "hardware.h"
-#include "constants/jids.h"
 
-#include "banim_sprite.h"
 #include "banim.h"
-#include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 
 /**

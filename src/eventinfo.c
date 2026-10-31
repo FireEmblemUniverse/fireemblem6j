@@ -1,11 +1,7 @@
 #include "eventinfo.h"
 
 #include "sound.h"
-#include "event.h"
-#include "eventscript.h"
-#include "bm.h"
 #include "item.h"
-#include "unit.h"
 #include "map.h"
 #include "unitsprite.h"
 #include "battle.h"

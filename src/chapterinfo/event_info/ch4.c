@@ -3,10 +3,8 @@
 #include "chapterinfo.h"
 #include "chapterunits.h"
 #include "chapterevents.h"
-#include "eventinfo.h"
 
 #include "constants/pids.h"
-#include "constants/iids.h"
 
 EventListScr CONST_DATA EventListScr_Chapter4_Turn[] =
 {

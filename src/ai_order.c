@@ -2,8 +2,6 @@
 
 #include "hardware.h"
 #include "item.h"
-#include "unit.h"
-#include "bm.h"
 #include "ai_decide.h"
 
 static u32 * CONST_DATA sUnitScores = (u32 *) gBuf;

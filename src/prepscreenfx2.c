@@ -1,22 +1,13 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
-#include "bm.h"
 #include "oam.h"
-#include "sound.h"
 #include "sprite.h"
-#include "text.h"
 #include "msg.h"
 #include "icon.h"
-#include "unit.h"
 #include "item.h"
 #include "supply.h"
-#include "ui.h"
 #include "armfunc.h"
 #include "prepscreen.h"
-#include "constants/msg.h"
-
-#include <string.h>
 
 extern const char String_Prep_08327294[];
 extern const char Msg_Prep_Supply[]; // 輸送隊

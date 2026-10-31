@@ -1,8 +1,6 @@
-
 #include "supply.h"
 
 #include "hardware.h"
-#include "bm.h"
 #include "item.h"
 
 static u16 EWRAM_DATA sSupplyItems[SUPPLY_ITEM_COUNT] = {};

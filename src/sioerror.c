@@ -9,7 +9,6 @@
 
 #include "constants/msg.h"
 #include "constants/songs.h"
-#include "constants/videoalloc_global.h" // for CHR_SIZE
 
 void OnVBlank_SioError(void)
 {

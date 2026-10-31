@@ -1,5 +1,4 @@
 #include "prelude.h"
-#include "chapterevents.h"
 #include "constants/iids.h"
 
 // ShopItems @ 0866A81C

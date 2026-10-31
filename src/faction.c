@@ -1,6 +1,5 @@
 #include "faction.h"
 
-#include "bm.h"
 #include "unit.h"
 
 int CountFactionMoveableUnits(int faction)

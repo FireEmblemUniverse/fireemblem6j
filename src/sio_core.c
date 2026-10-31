@@ -1,11 +1,8 @@
 #include "prelude.h"
-#include "gbaio.h"
 #include "irq.h"
 #include "proc.h"
 #include "hardware.h"
-#include "bm.h"
 #include "sound.h"
-#include "m4a.h"
 #include "sioerror.h"
 #include "sio_core.h"
 
