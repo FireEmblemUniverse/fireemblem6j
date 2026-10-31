@@ -144,6 +144,19 @@ CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILE
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 CLEAN_FILES += $(TSA_FILES:%.tsa=%.tsa.lz)
 
+# =============
+# = Portraits =
+# =============
+
+PORTRAIT_DIR := data/portraits
+
+# 136 tiles: a 32-tile-wide sheet whose last row is partial
+$(PORTRAIT_DIR)/%_face.4bpp: $(PORTRAIT_DIR)/%_face.png
+	@echo "[GEN]	$@"
+	@$(GBAGFX) $< $@ -num_tiles 136
+
+CLEAN_FILES += $(patsubst %.pal,%.gbapal,$(wildcard $(PORTRAIT_DIR)/*.pal))
+
 # ==============
 # = Banim data =
 # ==============
