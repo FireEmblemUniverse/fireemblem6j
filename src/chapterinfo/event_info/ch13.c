@@ -58,7 +58,7 @@ EventListScr CONST_DATA EventListScr_Unk_08668818[] =
 EventListScr CONST_DATA EventListScr_Unk_08668894[] =
 {
     EvtListFlag(0, EventScr_GameOver, FLAG_101)
-    EvtListFunc(FLAG_CHAPTER13_6, EventScr_Unk_0866F710, func_fe6_0806BBD0)
+    EvtListFunc(FLAG_CHAPTER13_6, EventScr_Unk_0866F710, Chapter13_CheckBlueEntersEast)
     EvtListEnd
 };
 

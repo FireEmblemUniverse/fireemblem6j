@@ -131,7 +131,7 @@ EventScr CONST_DATA gUnk_0866AEA8[] =
     EvtSetFlag(FLAG_TUTORIAL_9)
     EvtDisableAutoClear
     EvtFunc(FreezeMenu)
-    EvtFunc(func_fe6_0806CAC4)
+    EvtFunc(Tutorial_HelpWeaponSelect)
     EvtFuncWhile(func_fe6_080718E0)
     EvtFunc(ResumeMenu)
     EvtClearSkip
@@ -145,9 +145,9 @@ EventScr CONST_DATA gUnk_0866AEE0[] =
     EvtSetFlag(FLAG_TUTORIAL_10)
     EvtDisableAutoClear
     EvtFunc(FreezeMapSelect)
-    EvtFunc(func_fe6_0806CAD8)
+    EvtFunc(Tutorial_HelpTargetSelect)
     EvtFuncWhile(func_fe6_080718E0)
-    EvtFunc(func_fe6_0806CAEC)
+    EvtFunc(Tutorial_HelpConfirmAttack)
     EvtFuncWhile(func_fe6_080718E0)
     EvtFunc(ResumeMapSelect)
     EvtClearSkip
@@ -160,7 +160,7 @@ EventScr CONST_DATA gUnk_0866AF28[] =
     EvtNoSkipNoTextSkip
     EvtSetFlag(FLAG_TUTORIAL_11)
     EvtFunc(FreezeMenu)
-    EvtFunc(func_fe6_0806CB40)
+    EvtFunc(Tutorial_HelpMapMenu)
     EvtFuncWhile(func_fe6_080718E0)
     EvtFunc(ResumeMenu)
     EvtClearSkip
@@ -174,21 +174,21 @@ EventScr CONST_DATA gUnk_0866AF5C[] =
     EvtGotoIfFlag(10, FLAG_TUTORIAL_5)
 
     EvtSetFlag(FLAG_TUTORIAL_5)
-    EvtFunc(func_fe6_0806CA1C)
+    EvtFunc(Tutorial_HelpMoveRange)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
 
 EvtLabel(10)
-    EvtGotoIfNotFunc(99, func_fe6_0806CC68)
+    EvtGotoIfNotFunc(99, Tutorial_CanAttackAfterMove)
 
     EvtGotoIfFlag(99, FLAG_TUTORIAL_14)
 
-    EvtFunc(func_fe6_0806CA30)
+    EvtFunc(Tutorial_HelpAttackRange)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
-    EvtFunc(func_fe6_0806CB54)
+    EvtFunc(Tutorial_HelpMeleeMove)
     EvtSleep(20)
-    EvtFuncWhile(func_fe6_0806C9F8)
+    EvtFuncWhile(Tutorial_EndHighlightAfterHelp)
 
 EvtLabel(99)
     EvtClearSkip
@@ -202,21 +202,21 @@ EventScr CONST_DATA gUnk_0866AFEC[] =
     EvtGotoIfFlag(10, FLAG_TUTORIAL_6)
 
     EvtSetFlag(FLAG_TUTORIAL_6)
-    EvtFunc(func_fe6_0806CA44)
+    EvtFunc(Tutorial_HelpBowRange)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
 
 EvtLabel(10)
-    EvtGotoIfNotFunc(99, func_fe6_0806CC68)
+    EvtGotoIfNotFunc(99, Tutorial_CanAttackAfterMove)
 
     EvtGotoIfFlag(99, FLAG_TUTORIAL_15)
 
-    EvtFunc(func_fe6_0806CA58)
+    EvtFunc(Tutorial_HelpBowAttack)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
-    EvtFunc(func_fe6_0806CA6C)
+    EvtFunc(Tutorial_HelpBowMove)
     EvtSleep(20)
-    EvtFuncWhile(func_fe6_0806C9F8)
+    EvtFuncWhile(Tutorial_EndHighlightAfterHelp)
 
 EvtLabel(99)
     EvtClearSkip
@@ -230,21 +230,21 @@ EventScr CONST_DATA gUnk_0866B07C[] =
     EvtGotoIfFlag(10, FLAG_TUTORIAL_7)
 
     EvtSetFlag(FLAG_TUTORIAL_7)
-    EvtFunc(func_fe6_0806CA84)
+    EvtFunc(Tutorial_HelpMagicRange)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
 
 EvtLabel(10)
-    EvtGotoIfNotFunc(99, func_fe6_0806CC68)
+    EvtGotoIfNotFunc(99, Tutorial_CanAttackAfterMove)
 
     EvtGotoIfFlag(99, FLAG_TUTORIAL_16)
 
-    EvtFunc(func_fe6_0806CA98)
+    EvtFunc(Tutorial_HelpMagicAttack)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(20)
-    EvtFunc(func_fe6_0806CAAC)
+    EvtFunc(Tutorial_HelpMagicMove)
     EvtSleep(20)
-    EvtFuncWhile(func_fe6_0806C9F8)
+    EvtFuncWhile(Tutorial_EndHighlightAfterHelp)
 
 EvtLabel(99)
     EvtClearSkip
@@ -258,9 +258,9 @@ EventScr CONST_DATA gUnk_0866B10C[] =
     EvtGotoIfFlag(99, FLAG_TUTORIAL_8)
 
     EvtSetFlag(FLAG_TUTORIAL_8)
-    EvtFunc(func_fe6_0806CB00)
+    EvtFunc(Tutorial_HelpAlenMove)
     EvtSleep(20)
-    EvtFuncWhile(func_fe6_0806C9F8)
+    EvtFuncWhile(Tutorial_EndHighlightAfterHelp)
 
 EvtLabel(99)
     EvtClearSkip
@@ -271,64 +271,64 @@ EvtLabel(99)
 EventScr CONST_DATA EventScr_Unk_0866B14C[] =
 {
     EvtNoSkipNoTextSkip
-    EvtFunc(func_fe6_0806C64C)
-    EvtGotoIfNotFunc(5, func_fe6_0806CE34)
+    EvtFunc(Tutorial_InitActionSelectHelp)
+    EvtGotoIfNotFunc(5, Tutorial_CanSeize)
 
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CB94)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpSeize)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
     EvtGoto(10)
 
 EvtLabel(5)
-    EvtGotoIfNotFunc(6, func_fe6_0806CE18)
+    EvtGotoIfNotFunc(6, Tutorial_CanVisit)
 
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CB18)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpVisit)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
     EvtGoto(10)
 
 EvtLabel(6)
-    EvtGotoIfNotFunc(7, func_fe6_0806CDC0)
+    EvtGotoIfNotFunc(7, Tutorial_ShouldHelpAttack)
 
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CBBC)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpAttackCommand)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
 
 EvtLabel(7)
-    EvtGotoIfNotFunc(72, func_fe6_0806CE80)
+    EvtGotoIfNotFunc(72, Tutorial_ShouldHelpRescue)
 
     EvtSetFlag(FLAG_TUTORIAL_20)
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CB80)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpRescue)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
 
 EvtLabel(72)
-    EvtGotoIfNotFunc(8, func_fe6_0806CEAC)
+    EvtGotoIfNotFunc(8, Tutorial_ShouldHelpTrade)
 
     EvtSetFlag(FLAG_TUTORIAL_21)
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CB6C)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpTrade)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
     EvtGoto(10)
 
 EvtLabel(8)
-    EvtGotoIfNotFunc(10, func_fe6_0806CE50)
+    EvtGotoIfNotFunc(10, Tutorial_ShouldHelpUnitMenu)
 
     EvtSetFlag(FLAG_TUTORIAL_19)
-    EvtFunc(func_fe6_0806C670)
-    EvtFunc(func_fe6_0806CBA8)
+    EvtFunc(Tutorial_FreezeMenuOnce)
+    EvtFunc(Tutorial_HelpUnitMenu)
     EvtFuncWhile(func_fe6_080718E0)
     EvtSleep(30)
 
 EvtLabel(10)
-    EvtGotoIfNotFunc(99, func_fe6_0806C68C)
+    EvtGotoIfNotFunc(99, Tutorial_IsMenuFrozen)
 
-    EvtFunc(func_fe6_0806C69C)
+    EvtFunc(Tutorial_ResumeMenu)
 
 EvtLabel(99)
     EvtClearSkip
@@ -388,14 +388,14 @@ EvtLabel(10)
     EvtGoto(99)
 
 EvtLabel(12)
-    EvtGotoIfNotFunc(14, func_fe6_0806CC94)
+    EvtGotoIfNotFunc(14, Tutorial_CheckFirstVisit)
 
     EvtTalk(MSG_02F)
     EvtClearTalk
     EvtGoto(99)
 
 EvtLabel(14)
-    EvtFunc(func_fe6_0806CCC4)
+    EvtFunc(Tutorial_DisableUnitMenuHelp)
     EvtGoto(99)
 
 EvtLabel(20)
@@ -409,14 +409,14 @@ EvtLabel(20)
     EvtGoto(99)
 
 EvtLabel(22)
-    EvtGotoIfNotFunc(24, func_fe6_0806CC94)
+    EvtGotoIfNotFunc(24, Tutorial_CheckFirstVisit)
 
     EvtTalk(MSG_02F)
     EvtClearTalk
     EvtGoto(99)
 
 EvtLabel(24)
-    EvtFunc(func_fe6_0806CCC4)
+    EvtFunc(Tutorial_DisableUnitMenuHelp)
     EvtGoto(99)
 
 EvtLabel(30)
@@ -430,14 +430,14 @@ EvtLabel(30)
     EvtGoto(99)
 
 EvtLabel(32)
-    EvtGotoIfNotFunc(34, func_fe6_0806CC94)
+    EvtGotoIfNotFunc(34, Tutorial_CheckFirstVisit)
 
     EvtTalk(MSG_02F)
     EvtClearTalk
     EvtGoto(99)
 
 EvtLabel(34)
-    EvtFunc(func_fe6_0806CCC4)
+    EvtFunc(Tutorial_DisableUnitMenuHelp)
 
 EvtLabel(99)
     EvtGotoIfFlag(100, FLAG_TUTORIAL_25)

@@ -43,7 +43,7 @@ EventScr CONST_DATA EventScr_Unk_08672874[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681B68)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -53,7 +53,7 @@ EventScr CONST_DATA EventScr_Unk_08672890[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681B88)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -63,7 +63,7 @@ EventScr CONST_DATA EventScr_Unk_086728AC[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681BA8)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -73,7 +73,7 @@ EventScr CONST_DATA EventScr_Unk_086728C8[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681BC8)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -83,7 +83,7 @@ EventScr CONST_DATA EventScr_Unk_086728E4[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681BE8)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -93,7 +93,7 @@ EventScr CONST_DATA EventScr_Unk_08672900[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08681C08)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D1AC)
+    EvtFunc(Chapter24_CountReinforcementWave)
     EvtClearSkip
     EvtEnd
 };
@@ -101,7 +101,7 @@ EventScr CONST_DATA EventScr_Unk_08672900[] =
 // EventScr @ 0867291C
 EventScr CONST_DATA EventScr_Unk_0867291C[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3D)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -119,7 +119,7 @@ EventScr CONST_DATA EventScr_Unk_0867291C[] =
 // EventScr @ 0867296C
 EventScr CONST_DATA EventScr_Unk_0867296C[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3D)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -137,7 +137,7 @@ EventScr CONST_DATA EventScr_Unk_0867296C[] =
 // EventScr @ 086729BC
 EventScr CONST_DATA EventScr_Unk_086729BC[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3D)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -155,7 +155,7 @@ EventScr CONST_DATA EventScr_Unk_086729BC[] =
 // EventScr @ 08672A0C
 EventScr CONST_DATA EventScr_Unk_08672A0C[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3D)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -173,7 +173,7 @@ EventScr CONST_DATA EventScr_Unk_08672A0C[] =
 // EventScr @ 08672A5C
 EventScr CONST_DATA EventScr_Unk_08672A5C[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3D)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -191,7 +191,7 @@ EventScr CONST_DATA EventScr_Unk_08672A5C[] =
 // EventScr @ 08672AAC
 EventScr CONST_DATA EventScr_Unk_08672AAC[] =
 {
-    EvtFunc(func_fe6_0806D194)
+    EvtFunc(Chapter24_ResetReinforcementCount)
     EvtOverrideBgm(SONG_3E)
     EvtFadeToBlack(16)
     EvtExitMap

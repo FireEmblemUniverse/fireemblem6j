@@ -110,7 +110,7 @@ EvtLabel(7)
     EvtClearTalk
     EvtLoadUnits(UnitInfo_Unk_08681880)
     EvtMoveWait
-    EvtFunc(func_fe6_0806D17C)
+    EvtFunc(Chapter23_StartMapChange)
     EvtSetFlag(FLAG_CHAPTER23_4)
     EvtRestoreBgm
 

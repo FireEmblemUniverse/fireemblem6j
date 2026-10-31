@@ -25,7 +25,7 @@ EventListScr CONST_DATA EventListScr_Unk_08668A4C[] =
     EvtListTalk(FLAG_CHAPTER15_5, EventScr_Unk_086702FC, PID_ELFFIN, PID_PERCEVAL)
     EvtListTalk(FLAG_CHAPTER15_5, EventScr_Unk_08670348, PID_LARUM, PID_PERCEVAL)
     EvtListTalk(FLAG_CHAPTER15_7, EventScr_Unk_08670394, PID_LILINA, PID_GARRET)
-    EvtListFunc(FLAG_CHAPTER15_8, EventScr_Unk_086703C0, func_fe6_0806BC20)
+    EvtListFunc(FLAG_CHAPTER15_8, EventScr_Unk_086703C0, Chapter15_CheckTalkRoyPerceval)
     EvtListEnd
 };
 

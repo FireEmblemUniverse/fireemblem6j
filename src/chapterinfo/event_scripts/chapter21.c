@@ -193,7 +193,7 @@ EventScr CONST_DATA EventScr_Unk_08671E6C[] =
 {
     EvtLoadUnits(UnitInfo_Unk_08680AC4)
     EvtMoveWait
-    EvtGotoIfNotFunc(9, func_fe6_0806C3AC)
+    EvtGotoIfNotFunc(9, IsUnknownC4NonBlue)
 
     EvtTalk(MSG_1B6)
     EvtClearTalk
@@ -293,11 +293,11 @@ EvtLabel(3)
     EvtFadeFromBlack(16)
     EvtEnterMap
     EvtTalk(MSG_1C0)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtTalkContinue
-    EvtFunc(TruEnding_PlaySe269)
+    EvtFunc(TrueEnding_PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtBackground(BACKGROUND_4)
@@ -305,7 +305,7 @@ EvtLabel(3)
     EvtEnterMap
     EvtSetBgm(SONG_29)
     EvtTalk(MSG_1C1)
-    EvtFunc(func_fe6_0806DE00)
+    EvtFunc(PlaySe269)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtFadeToWhite(4)
@@ -319,7 +319,7 @@ EvtLabel(3)
     EvtNoSkip
     EvtGiveItemTo(IID_BINDINGBLADE, PID_ROY)
     EvtSleep(64)
-    EvtFunc(func_fe6_0806D0E4)
+    EvtFunc(PromoteRoyWithBindingBlade)
     EvtSleep(1280)
     EvtNextChapter(CHAPTER_22)
     EvtSleep(1)
