@@ -8,7 +8,7 @@
 #include "armfunc.h"
 #include "sprite.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 extern u8 CONST_DATA Img_DebugFont[];
 

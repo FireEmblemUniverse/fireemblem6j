@@ -48,7 +48,7 @@
 #include "constants/chapters.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 bool IsHard(void)
 {

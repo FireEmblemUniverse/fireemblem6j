@@ -30,7 +30,7 @@
 #include "constants/faces.h"
 #include "constants/songs.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 EWRAM_OVERLAY(0) struct StatusScreenSt gStatusScreenSt = {};
 

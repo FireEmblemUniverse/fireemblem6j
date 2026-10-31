@@ -16,7 +16,7 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 #include "soundroom.h"
 

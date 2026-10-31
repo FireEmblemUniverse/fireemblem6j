@@ -12,6 +12,8 @@
 #include "playrank.h"
 #include "secretscreen.h"
 
+#include "constants/videoalloc.h"
+
 EWRAM_DATA u8 SioPidPool[SID_PID_POOL_SIZE] = {};
 EWRAM_DATA u8 _pad_0203D499[7] = { 0 };
 EWRAM_DATA struct SecretScreenData gSecretScreenData[SID_PID_POOL_SIZE] = {};

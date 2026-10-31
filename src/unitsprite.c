@@ -15,7 +15,7 @@
 
 #include "constants/terrains.h"
 #include "constants/unitsprites.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 enum
 {

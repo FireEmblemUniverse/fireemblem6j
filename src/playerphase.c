@@ -25,7 +25,7 @@
 #include "save_game.h"
 #include "minimap.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/chapters.h"
 #include "constants/pids.h"
 #include "constants/songs.h"

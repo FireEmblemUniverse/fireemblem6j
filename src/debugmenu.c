@@ -22,7 +22,7 @@
 #include "save_game.h"
 #include "savemenu.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/chapters.h"
 #include "constants/faces.h"
 

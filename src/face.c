@@ -11,7 +11,7 @@
 #include "bm.h"
 #include "gamedata.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/faces.h"
 
 struct FaceVramEnt CONST_DATA DefaultFaceConfig[FACE_SLOT_COUNT] =

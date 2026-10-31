@@ -17,7 +17,7 @@
 #include "ui.h"
 #include "helpbox.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/msg.h"
 
 enum

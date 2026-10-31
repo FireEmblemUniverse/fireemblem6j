@@ -13,7 +13,7 @@
 #include "ui.h"
 #include "helpbox.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/songs.h"
 
 EWRAM_OVERLAY(0) struct Text gTradeMenuText[2][ITEMSLOT_INV_COUNT] = {};

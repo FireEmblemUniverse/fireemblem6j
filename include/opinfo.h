@@ -3,13 +3,6 @@
 #include "prelude.h"
 #include "proc.h"
 
-enum videoalloc_opinfo {
-	OBPAL_OFINFOVIEW_LETTER_REF = 0,
-	OBPAL_OFINFOVIEW_LETTER0 = 1,
-	OBPAL_OFINFOICON_LINE = 14,
-	OBPAL_OFINFOICON = 15,
-};
-
 enum OpInfoModeIndex {
 	OPINFO_STATE_0,
 	OPINFO_STATE_IDLE,

@@ -9,7 +9,7 @@
 #include "mapwork.h"
 #include "action.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 enum { MOVEPATH_MAX = 20 };
 

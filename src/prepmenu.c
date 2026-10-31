@@ -34,7 +34,7 @@
 #include "constants/msg.h"
 #include "constants/songs.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 EWRAM_OVERLAY(0) struct Unit *gPrepUnitList[64] = {};
 EWRAM_OVERLAY(0) u8 gPrepUnitCount = 0;

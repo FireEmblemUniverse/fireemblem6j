@@ -28,6 +28,7 @@
 #include "constants/faces.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
+#include "constants/videoalloc.h"
 
 static struct Text Text_GoldBox;
 

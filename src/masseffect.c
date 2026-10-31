@@ -22,7 +22,7 @@
 
 #include "constants/iids.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/songs.h"
 
 void ApplyHazardHealing(ProcPtr proc, struct Unit * unit, int hp, int status)

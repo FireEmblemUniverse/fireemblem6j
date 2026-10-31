@@ -13,7 +13,7 @@
 
 #include "constants/terrains.h"
 #include "constants/songs.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 // TODO: those are in this file, part of the ewram overlay
 EWRAM_OVERLAY(0) i16 gMinimapWinBuf[320 * 2] = {};

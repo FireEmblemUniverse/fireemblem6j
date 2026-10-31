@@ -13,7 +13,7 @@
 #include "faction.h"
 #include "ui.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 enum { LINES_MAX = 5 };
 

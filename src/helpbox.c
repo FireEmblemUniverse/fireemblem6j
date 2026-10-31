@@ -11,7 +11,7 @@
 #include "chapterinfo.h"
 #include "ui.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/songs.h"
 
 struct HelpBoxInfo EWRAM_DATA gMutableHelpBoxInfo = { 0 };

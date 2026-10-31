@@ -1,7 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "util.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "scanline.h"
 
 void InitScanlineEffect(void)

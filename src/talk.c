@@ -24,7 +24,7 @@
 #include "banim_ekrbattle.h"
 #include "manim.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 

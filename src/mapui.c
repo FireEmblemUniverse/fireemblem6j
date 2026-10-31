@@ -19,7 +19,7 @@
 #include "gamedata.h"
 
 #include "constants/terrains.h"
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 i8 CONST_DATA gUnitBurstMapUiTextXTable[] =
 {

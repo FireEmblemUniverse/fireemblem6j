@@ -4,7 +4,7 @@
 #include "armfunc.h"
 #include "proc.h"
 
-#include "constants/videoalloc_global.h"
+#include "constants/videoalloc.h"
 
 struct SpecialCharSt
 {
