@@ -5,7 +5,7 @@
 #include "faction.h"
 #include "hardware.h"
 #include "map.h"
-#include "move.h"
+#include "datamove.h"
 #include "mu.h"
 #include "oam.h"
 #include "sprite.h"

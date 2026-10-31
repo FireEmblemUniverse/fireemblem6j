@@ -310,7 +310,7 @@ clean:
 %/irq.o:            CFLAG_OPT := -O0
 %/random.o:         CFLAG_OPT := -O0
 %/hardware.o:       CFLAG_OPT := -O0
-%/move.o:           CFLAG_OPT := -O0
+%/datamove.o:       CFLAG_OPT := -O0
 %/oam.o:            CFLAG_OPT := -O0
 %/sound.o:          CFLAG_OPT := -O0
 %/ramfunc.o:        CFLAG_OPT := -O0

@@ -2,7 +2,7 @@
 #include "proc.h"
 #include "hardware.h"
 #include "util.h"
-#include "move.h"
+#include "datamove.h"
 #include "oam.h"
 #include "banim.h"
 #include "banim_data.h"

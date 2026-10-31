@@ -7,7 +7,7 @@
 #include "battle.h"
 #include "arena.h"
 #include "manim.h"
-#include "move.h"
+#include "datamove.h"
 #include "banim_sprite.h"
 #include "banim.h"
 #include "banim_ekrbattle.h"
