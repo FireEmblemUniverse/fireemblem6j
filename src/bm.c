@@ -61,18 +61,18 @@ struct UnkMapCursorProc
     /* 38 */ int duration;
 };
 
-static void HandleChangePhase(void);
+void HandleChangePhase(void);
 
-static int BmMain_ChangePhase(ProcPtr proc);
-static void BmMain_StartPhase(ProcPtr proc);
-static void BmMain_ResumePlayerPhase(ProcPtr proc);
-static int BmMain_UpdateTraps(ProcPtr proc);
-static void BmMain_SuspendBeforePhase(ProcPtr proc);
+int BmMain_ChangePhase(ProcPtr proc);
+void BmMain_StartPhase(ProcPtr proc);
+void BmMain_ResumePlayerPhase(ProcPtr proc);
+int BmMain_UpdateTraps(ProcPtr proc);
+void BmMain_SuspendBeforePhase(ProcPtr proc);
 
-static void CamMove_OnInit(struct CamMoveProc * proc);
-static void CamMove_OnLoop(struct CamMoveProc * proc);
+void CamMove_OnInit(struct CamMoveProc * proc);
+void CamMove_OnLoop(struct CamMoveProc * proc);
 
-static void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc);
+void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_BmMain[] =
 {
@@ -380,7 +380,7 @@ u8 GetGameLock(void)
     return gBmSt.lock;
 }
 
-static void HandleChangePhase(void)
+void HandleChangePhase(void)
 {
     switch (gPlaySt.faction)
     {
@@ -801,7 +801,7 @@ void PutSysAButton(int x, int y, int palid)
         OAM2_CHR(OBCHR_SYSTEM_OBJECTS + (frame ? 0x50 : 0x10)) + OAM2_PAL(palid));
 }
 
-static void CamMove_OnInit(struct CamMoveProc * proc)
+void CamMove_OnInit(struct CamMoveProc * proc)
 {
     i8 speed = 1;
 
@@ -845,7 +845,7 @@ static void CamMove_OnInit(struct CamMoveProc * proc)
     proc->distance = proc->calibration;
 }
 
-static void CamMove_OnLoop(struct CamMoveProc * proc)
+void CamMove_OnLoop(struct CamMoveProc * proc)
 {
     if (proc->frame == 0)
     {
@@ -922,7 +922,7 @@ bool CameraMove_08016290(ProcPtr proc)
     return TRUE;
 }
 
-static void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc)
+void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc)
 {
     // BUG: should this be proc->from.xy + ...?
 

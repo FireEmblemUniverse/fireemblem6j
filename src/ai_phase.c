@@ -8,8 +8,8 @@
 
 struct AiSt EWRAM_DATA gAiSt = {};
 
-static void AiPhase_Begin(ProcPtr proc);
-static void AiPhase_Finish(ProcPtr proc);
+void AiPhase_Begin(ProcPtr proc);
+void AiPhase_Finish(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_AiPhase[] =
 {
@@ -23,7 +23,7 @@ struct ProcScr CONST_DATA ProcScr_AiPhase[] =
     PROC_END,
 };
 
-static void AiPhase_Berserk_Begin(ProcPtr proc);
+void AiPhase_Berserk_Begin(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_AiPhase_Berserk[] =
 {
@@ -37,7 +37,7 @@ struct ProcScr CONST_DATA ProcScr_AiPhase_Berserk[] =
     PROC_END,
 };
 
-static void AiPhase_Begin(ProcPtr proc)
+void AiPhase_Begin(ProcPtr proc)
 {
     int i;
 
@@ -58,7 +58,7 @@ static void AiPhase_Begin(ProcPtr proc)
     SpawnProcLocking(ProcScr_AiOrder, proc);
 }
 
-static void AiPhase_Berserk_Begin(ProcPtr proc)
+void AiPhase_Berserk_Begin(ProcPtr proc)
 {
     int i;
 
@@ -76,7 +76,7 @@ static void AiPhase_Berserk_Begin(ProcPtr proc)
     SpawnProcLocking(ProcScr_AiOrder_Berserk, proc);
 }
 
-static void AiPhase_Finish(ProcPtr proc)
+void AiPhase_Finish(ProcPtr proc)
 {
     gAiSt.flags = AI_FLAGS_NONE;
 }

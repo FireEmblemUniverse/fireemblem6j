@@ -38,18 +38,18 @@ struct MovePath
     /* 55 */ i8 move[MOVEPATH_MAX];
 };
 
-static void SetMovePathLastCursorPosition(u16 x, u16 y);
-static void CutMovePath(i8 path);
-static void AddMovePathSquare(i8 x, i8 y);
-static int FindMovePathSquare(i8 x, i8 y);
-static void MovePathFloodFromTail(void);
-static void RebuildMovePath(void);
-static bool MovePathIsValid(void);
-static void UpdateMovePath(void);
-static u8 GetMovePathDirFrom(u8 path);
-static u8 GetMovePathDirTo(u8 path);
-static bool ShouldDrawMovePathBitAt(short x, short y, u8 xEdge, u8 yEdge);
-static void DrawMovePath(void);
+void SetMovePathLastCursorPosition(u16 x, u16 y);
+void CutMovePath(i8 path);
+void AddMovePathSquare(i8 x, i8 y);
+int FindMovePathSquare(i8 x, i8 y);
+void MovePathFloodFromTail(void);
+void RebuildMovePath(void);
+bool MovePathIsValid(void);
+void UpdateMovePath(void);
+u8 GetMovePathDirFrom(u8 path);
+u8 GetMovePathDirTo(u8 path);
+bool ShouldDrawMovePathBitAt(short x, short y, u8 xEdge, u8 yEdge);
+void DrawMovePath(void);
 
 u16 CONST_DATA gUnk_085C7E0C[5][5] =
 {
@@ -64,13 +64,13 @@ u16 CONST_DATA gUnk_085C7E0C[5][5] =
 static struct MovePath EWRAM_DATA sMovePathObj = {};
 struct MovePath * CONST_DATA gMovePath = &sMovePathObj;
 
-static void SetMovePathLastCursorPosition(u16 x, u16 y)
+void SetMovePathLastCursorPosition(u16 x, u16 y)
 {
     gMovePath->xLast = x;
     gMovePath->yLast = y;
 }
 
-static void CutMovePath(i8 path)
+void CutMovePath(i8 path)
 {
     i8 i;
 
@@ -88,7 +88,7 @@ static void CutMovePath(i8 path)
     }
 }
 
-static void AddMovePathSquare(i8 x, i8 y)
+void AddMovePathSquare(i8 x, i8 y)
 {
     gMovePath->path++;
 
@@ -99,7 +99,7 @@ static void AddMovePathSquare(i8 x, i8 y)
         - GetWorkingMovTable()[gMapTerrain[y][x]];
 }
 
-static int FindMovePathSquare(i8 x, i8 y)
+int FindMovePathSquare(i8 x, i8 y)
 {
     i8 i;
 
@@ -171,14 +171,14 @@ void GenMoveScriptFromMovePath(void)
     gWorkingMoveScr[i-1] = MOVE_CMD_HALT;
 }
 
-static void MovePathFloodFromTail(void)
+void MovePathFloodFromTail(void)
 {
     MapFloodWorkingMap_From_UpTo(gActiveUnit,
         gMovePath->x[gMovePath->path], gMovePath->y[gMovePath->path],
         gMovePath->move[gMovePath->path]);
 }
 
-static void RebuildMovePath(void)
+void RebuildMovePath(void)
 {
     CutMovePath(1);
     MovePathFloodFromTail();
@@ -186,7 +186,7 @@ static void RebuildMovePath(void)
     GenMovePathFromMoveScript();
 }
 
-static bool MovePathIsValid(void)
+bool MovePathIsValid(void)
 {
     i8 i, j;
 
@@ -222,7 +222,7 @@ void InitMovePath(bool display_only)
     }
 }
 
-static void UpdateMovePath(void)
+void UpdateMovePath(void)
 {
     if (gMovePath->xLast != gBmSt.cursor.x || gMovePath->yLast != gBmSt.cursor.y)
     {
@@ -268,7 +268,7 @@ static void UpdateMovePath(void)
     }
 }
 
-static u8 GetMovePathDirFrom(u8 path)
+u8 GetMovePathDirFrom(u8 path)
 {
     if (path == 0)
         return MOVEPATH_DIR_NONE;
@@ -286,7 +286,7 @@ static u8 GetMovePathDirFrom(u8 path)
         return MOVEPATH_DIR_DOWN;
 }
 
-static u8 GetMovePathDirTo(u8 path)
+u8 GetMovePathDirTo(u8 path)
 {
     if (path == gMovePath->path)
         return MOVEPATH_DIR_NONE;
@@ -304,7 +304,7 @@ static u8 GetMovePathDirTo(u8 path)
         return MOVEPATH_DIR_UP;
 }
 
-static bool ShouldDrawMovePathBitAt(short x, short y, u8 xEdge, u8 yEdge)
+bool ShouldDrawMovePathBitAt(short x, short y, u8 xEdge, u8 yEdge)
 {
     if ((y-gBmSt.camera.y) > -yEdge && (y-gBmSt.camera.y) < DISPLAY_HEIGHT
         && (x-gBmSt.camera.x) > -xEdge && (x-gBmSt.camera.x) < DISPLAY_WIDTH)
@@ -313,7 +313,7 @@ static bool ShouldDrawMovePathBitAt(short x, short y, u8 xEdge, u8 yEdge)
     return FALSE;
 }
 
-static void DrawMovePath(void)
+void DrawMovePath(void)
 {
     i8 i;
 

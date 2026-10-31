@@ -11,7 +11,7 @@
 
 #include "constants/terrains.h"
 
-static void RevertAndCvtToMoveScr(u8 * begin, u8 * end);
+void RevertAndCvtToMoveScr(u8 * begin, u8 * end);
 
 u8 EWRAM_DATA gWorkingMoveScr[MOVE_SCRIPT_MAX_LENGTH] = {};
 
@@ -259,7 +259,7 @@ void BuildBestMoveScript(int x, int y, u8 * output)
     RevertAndCvtToMoveScr(outputStart, output);
 }
 
-static void RevertAndCvtToMoveScr(u8 * begin, u8 * end)
+void RevertAndCvtToMoveScr(u8 * begin, u8 * end)
 {
     u8 buf[MOVE_SCRIPT_MAX_LENGTH];
 

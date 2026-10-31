@@ -5,10 +5,10 @@
 #include "oam.h"
 #include "bm.h"
 
-static struct BgCnt * GetBgCt(u16 bgid);
-static void RefreshKeyStFromKeys(struct KeySt * keySt, short keys);
-static void OnHBlankBoth(void);
-static void RefreshOnHBlank(void);
+struct BgCnt * GetBgCt(u16 bgid);
+void RefreshKeyStFromKeys(struct KeySt * keySt, short keys);
+void OnHBlankBoth(void);
+void RefreshOnHBlank(void);
 
 static u8 sBgSyncBits;
 static bool sPalSyncFlag;

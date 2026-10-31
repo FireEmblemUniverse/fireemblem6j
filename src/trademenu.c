@@ -113,8 +113,8 @@ u16 CONST_DATA Sprite_085C6234[] =
     OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8 + OAM1_X(184),             OAM2_CHR(0x16),
 };
 
-static void TradeMenu_HighlightUpdater_Init(struct TradeMenuProc * proc);
-static void TradeMenu_HighlightUpdater_Loop(struct TradeMenuProc * proc);
+void TradeMenu_HighlightUpdater_Init(struct TradeMenuProc * proc);
+void TradeMenu_HighlightUpdater_Loop(struct TradeMenuProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TradeMenu_HighlightUpdater[] =
 {
@@ -124,15 +124,15 @@ struct ProcScr CONST_DATA ProcScr_TradeMenu_HighlightUpdater[] =
     PROC_END
 };
 
-static void TradeMenu_InitItemDisplay(struct TradeMenuProc * proc);
-static void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc);
-static bool TradeMenu_LoadForcedInitialHover(struct TradeMenuProc * proc);
-static void TradeMenu_OnInitUnselected(struct TradeMenuProc * proc);
-static void TradeMenu_OnLoopUnselected(struct TradeMenuProc * proc);
-static void TradeMenu_OnInitSelected(struct TradeMenuProc * proc);
-static void TradeMenu_OnLoopSelected(struct TradeMenuProc * proc);
-static void TradeMenu_OnEndSelected(struct TradeMenuProc * proc);
-static void TradeMenu_ClearDisplay(struct TradeMenuProc * proc);
+void TradeMenu_InitItemDisplay(struct TradeMenuProc * proc);
+void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc);
+bool TradeMenu_LoadForcedInitialHover(struct TradeMenuProc * proc);
+void TradeMenu_OnInitUnselected(struct TradeMenuProc * proc);
+void TradeMenu_OnLoopUnselected(struct TradeMenuProc * proc);
+void TradeMenu_OnInitSelected(struct TradeMenuProc * proc);
+void TradeMenu_OnLoopSelected(struct TradeMenuProc * proc);
+void TradeMenu_OnEndSelected(struct TradeMenuProc * proc);
+void TradeMenu_ClearDisplay(struct TradeMenuProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TradeMenu[] =
 {
@@ -169,9 +169,9 @@ PROC_LABEL(L_TRADEMENU_END),
     PROC_END
 };
 
-static void TradeMenu_HelpBox_OnInit(struct Proc * proc);
-static void TradeMenu_HelpBox_OnLoop(struct Proc * proc);
-static void TradeMenu_HelpBox_OnEnd(struct Proc * proc);
+void TradeMenu_HelpBox_OnInit(struct Proc * proc);
+void TradeMenu_HelpBox_OnLoop(struct Proc * proc);
+void TradeMenu_HelpBox_OnEnd(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TradeMenu_HelpBox[] =
 {
@@ -183,7 +183,7 @@ struct ProcScr CONST_DATA ProcScr_TradeMenu_HelpBox[] =
     PROC_END
 };
 
-static void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc)
+void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc)
 {
     char const * str;
     int x;
@@ -203,12 +203,12 @@ static void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-static void TradeMenu_HighlightUpdater_Init(struct TradeMenuProc * proc)
+void TradeMenu_HighlightUpdater_Init(struct TradeMenuProc * proc)
 {
     proc->hoverColumn = TRADEMENU_UNIT_UNDEFINED;
 }
 
-static void TradeMenu_HighlightUpdater_Loop(struct TradeMenuProc * proc)
+void TradeMenu_HighlightUpdater_Loop(struct TradeMenuProc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 
@@ -232,7 +232,7 @@ static void TradeMenu_HighlightUpdater_Loop(struct TradeMenuProc * proc)
     proc->hoverRow = tradeMenu->hoverRow;
 }
 
-static int TradeMenu_GetAdjustedRow(struct TradeMenuProc * proc, int col, int row)
+int TradeMenu_GetAdjustedRow(struct TradeMenuProc * proc, int col, int row)
 {
     while (proc->hasItem[col][row] == 0 && row >= 0)
         row--;
@@ -240,7 +240,7 @@ static int TradeMenu_GetAdjustedRow(struct TradeMenuProc * proc, int col, int ro
     return row;
 }
 
-static void TradeMenu_InitItemText(struct TradeMenuProc * proc)
+void TradeMenu_InitItemText(struct TradeMenuProc * proc)
 {
     int col, row;
 
@@ -253,7 +253,7 @@ static void TradeMenu_InitItemText(struct TradeMenuProc * proc)
     }
 }
 
-static void TradeMenu_RefreshItemText(struct TradeMenuProc * proc)
+void TradeMenu_RefreshItemText(struct TradeMenuProc * proc)
 {
     SHOULD_BE_STATIC u8 SHOULD_BE_CONST xLookup[] = { ITEM_PANEL_LEFT_X, ITEM_PANEL_RIGHT_X };
     SHOULD_BE_STATIC u8 SHOULD_BE_CONST yLookup[] = { ITEM_PANEL_LEFT_Y, ITEM_PANEL_RIGHT_Y };
@@ -281,7 +281,7 @@ static void TradeMenu_RefreshItemText(struct TradeMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-static void TradeMenu_RefreshSelectableCells(struct TradeMenuProc * proc)
+void TradeMenu_RefreshSelectableCells(struct TradeMenuProc * proc)
 {
     int col, row;
 
@@ -298,7 +298,7 @@ static void TradeMenu_RefreshSelectableCells(struct TradeMenuProc * proc)
     proc->hasItem[1][ITEMSLOT_INV_COUNT] = 0;
 }
 
-static bool TradeMenu_UpdateSelection(struct TradeMenuProc * proc)
+bool TradeMenu_UpdateSelection(struct TradeMenuProc * proc)
 {
     bool changedSelection = FALSE;
     int newSelectedRow;
@@ -371,7 +371,7 @@ end:
     return changedSelection;
 }
 
-static void TradeMenu_ApplyItemSwap(struct TradeMenuProc * proc)
+void TradeMenu_ApplyItemSwap(struct TradeMenuProc * proc)
 {
     u16 * itemA = &proc->units[proc->hoverColumn]->items[proc->hoverRow];
     u16 * itemB = &proc->units[proc->selectedColumn]->items[proc->selectedRow];
@@ -390,7 +390,7 @@ static void TradeMenu_ApplyItemSwap(struct TradeMenuProc * proc)
     TradeMenu_RefreshItemText(proc);
 }
 
-static void TradeMenu_InitItemDisplay(struct TradeMenuProc * proc)
+void TradeMenu_InitItemDisplay(struct TradeMenuProc * proc)
 {
     PutUiWindowFrame(1,  8, 14, 12, UI_WINDOW_REGULAR);
     PutUiWindowFrame(15, 8, 14, 12, UI_WINDOW_REGULAR);
@@ -409,13 +409,13 @@ static void TradeMenu_InitItemDisplay(struct TradeMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
 
-static void TradeMenu_OnInitUnselected(struct TradeMenuProc * proc)
+void TradeMenu_OnInitUnselected(struct TradeMenuProc * proc)
 {
     TradeMenu_RefreshSelectableCells(proc);
     proc->extraCellEnabled = FALSE;
 }
 
-static void TradeMenu_OnLoopUnselected(struct TradeMenuProc * proc)
+void TradeMenu_OnLoopUnselected(struct TradeMenuProc * proc)
 {
     TradeMenu_UpdateSelection(proc);
 
@@ -439,7 +439,7 @@ static void TradeMenu_OnLoopUnselected(struct TradeMenuProc * proc)
     }
 }
 
-static void TradeMenu_OnInitSelected(struct TradeMenuProc * proc)
+void TradeMenu_OnInitSelected(struct TradeMenuProc * proc)
 {
     int lastRow;
 
@@ -462,7 +462,7 @@ static void TradeMenu_OnInitSelected(struct TradeMenuProc * proc)
     }
 }
 
-static void TradeMenu_OnLoopSelected(struct TradeMenuProc * proc)
+void TradeMenu_OnLoopSelected(struct TradeMenuProc * proc)
 {
     TradeMenu_UpdateSelection(proc);
 
@@ -492,7 +492,7 @@ static void TradeMenu_OnLoopSelected(struct TradeMenuProc * proc)
     }
 }
 
-static void TradeMenu_OnEndSelected(struct TradeMenuProc * proc)
+void TradeMenu_OnEndSelected(struct TradeMenuProc * proc)
 {
     proc->hoverColumn = proc->selectedColumn;
     proc->hoverRow = proc->selectedRow;
@@ -505,7 +505,7 @@ static void TradeMenu_OnEndSelected(struct TradeMenuProc * proc)
     proc->hoverRow = TradeMenu_GetAdjustedRow(proc, proc->hoverColumn, proc->hoverRow);
 }
 
-static bool TradeMenu_LoadForcedInitialHover(struct TradeMenuProc * proc)
+bool TradeMenu_LoadForcedInitialHover(struct TradeMenuProc * proc)
 {
     if (gBmSt.unk_3F < 0)
         return TRUE;
@@ -519,13 +519,13 @@ static bool TradeMenu_LoadForcedInitialHover(struct TradeMenuProc * proc)
     return FALSE;
 }
 
-static void TradeMenu_ClearDisplay(struct TradeMenuProc * proc)
+void TradeMenu_ClearDisplay(struct TradeMenuProc * proc)
 {
     EndFaceById(0);
     EndFaceById(1);
 }
 
-static void TradeMenu_HelpBox_OnInit(struct Proc * proc)
+void TradeMenu_HelpBox_OnInit(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 
@@ -550,7 +550,7 @@ static void TradeMenu_HelpBox_OnInit(struct Proc * proc)
     gKeySt->pressed = gKeySt->pressed &~ (KEY_BUTTON_B | KEY_BUTTON_R);
 }
 
-static void TradeMenu_HelpBox_OnLoop(struct Proc * proc)
+void TradeMenu_HelpBox_OnLoop(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 
@@ -580,7 +580,7 @@ static void TradeMenu_HelpBox_OnLoop(struct Proc * proc)
     }
 }
 
-static void TradeMenu_HelpBox_OnEnd(struct Proc * proc)
+void TradeMenu_HelpBox_OnEnd(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 

@@ -34,19 +34,19 @@ struct AiPerformProc
     /* 31 */ u8 isUnitVisible;
 };
 
-static void AiStartCombatAction(struct AiPerformProc * proc);
-static void AiStartEscapeAction(struct AiPerformProc * proc);
-static void AiStartStealAction(struct AiPerformProc * proc);
-static bool AiPillageAction(struct AiPerformProc * proc);
-static bool AiStaffAction(struct AiPerformProc * proc);
-static bool AiUseItemAction(struct AiPerformProc * proc);
-static bool AiRefreshAction(struct AiPerformProc * proc);
-static bool AiTalkAction(struct AiPerformProc * proc);
-static bool AiDummyAction(struct AiPerformProc * proc);
-static bool AiEscapeAction(struct AiPerformProc * proc);
-static bool AiWaitAndClearScreenAction(struct AiPerformProc * proc);
+void AiStartCombatAction(struct AiPerformProc * proc);
+void AiStartEscapeAction(struct AiPerformProc * proc);
+void AiStartStealAction(struct AiPerformProc * proc);
+bool AiPillageAction(struct AiPerformProc * proc);
+bool AiStaffAction(struct AiPerformProc * proc);
+bool AiUseItemAction(struct AiPerformProc * proc);
+bool AiRefreshAction(struct AiPerformProc * proc);
+bool AiTalkAction(struct AiPerformProc * proc);
+bool AiDummyAction(struct AiPerformProc * proc);
+bool AiEscapeAction(struct AiPerformProc * proc);
+bool AiWaitAndClearScreenAction(struct AiPerformProc * proc);
 
-static void AiActionCursor_Idle(struct Proc * proc);
+void AiActionCursor_Idle(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_AiActionCursor[] =
 {
@@ -58,13 +58,13 @@ struct ProcScr CONST_DATA ProcScr_AiActionCursor[] =
     PROC_END,
 };
 
-static void AiPerform_WatchUnit(struct AiPerformProc * proc);
-static void AiPerform_StartMovement(struct AiPerformProc * proc);
-static void AiPerform_WatchTarget(struct AiPerformProc * proc);
-static void AiPerform_StartAction(struct AiPerformProc * proc);
-static void AiPerform_WaitAction(struct AiPerformProc * proc);
-static void AiPerform_Cleanup(struct AiPerformProc * proc);
-static void AiPerform_EquipBest(struct AiPerformProc * proc);
+void AiPerform_WatchUnit(struct AiPerformProc * proc);
+void AiPerform_StartMovement(struct AiPerformProc * proc);
+void AiPerform_WatchTarget(struct AiPerformProc * proc);
+void AiPerform_StartAction(struct AiPerformProc * proc);
+void AiPerform_WaitAction(struct AiPerformProc * proc);
+void AiPerform_Cleanup(struct AiPerformProc * proc);
+void AiPerform_EquipBest(struct AiPerformProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_AiPerform[] =
 {

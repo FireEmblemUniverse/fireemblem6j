@@ -18,7 +18,7 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
-static void ApplyStatusChange(ProcPtr proc);
+void ApplyStatusChange(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_ApplyStatusChange[] =
 {
@@ -67,7 +67,7 @@ void DoItemBarrierStaffAction(ProcPtr proc)
     BeginBattleAnimations();
 }
 
-static void GetRescueStaffTargetPosition(struct Unit * unit, struct Unit * target, int * x_out, int * y_out)
+void GetRescueStaffTargetPosition(struct Unit * unit, struct Unit * target, int * x_out, int * y_out)
 {
     int foundDist, dist;
     int ix, iy;
@@ -605,7 +605,7 @@ void DoItemAction(ProcPtr proc)
         SpawnProcLocking(ProcScr_ApplyStatusChange, proc);
 }
 
-static void ApplyStatusChange(ProcPtr proc)
+void ApplyStatusChange(ProcPtr proc)
 {
     if (gBattleUnitB.output_status >= 0)
     {

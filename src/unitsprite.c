@@ -26,9 +26,9 @@ enum
     UNITSPRITE_FRAME_END = 72,
 };
 
-static int ApplyUnitSpriteImage16x16(int slot, u32 id);
-static int ApplyUnitSpriteImage16x32(int slot, u32 id);
-static int ApplyUnitSpriteImage32x32(int slot, u32 id);
+int ApplyUnitSpriteImage16x16(int slot, u32 id);
+int ApplyUnitSpriteImage16x32(int slot, u32 id);
+int ApplyUnitSpriteImage32x32(int slot, u32 id);
 
 u8 EWRAM_DATA gUnitSpriteSlots[UNITSPRITE_MAX] = { 0 };
 
@@ -381,7 +381,7 @@ int UseUnitSprite(u32 id)
     return OBCHR_MAPSPRITES + gUnitSpriteSlots[id] * 2;
 }
 
-static int ApplyUnitSpriteImage16x16(int slot, u32 id)
+int ApplyUnitSpriteImage16x16(int slot, u32 id)
 {
     int out_off, i;
 
@@ -403,7 +403,7 @@ static int ApplyUnitSpriteImage16x16(int slot, u32 id)
     return UnitSpriteSlotToChrTable[slot];
 }
 
-static int ApplyUnitSpriteImage16x32(int slot, u32 id)
+int ApplyUnitSpriteImage16x32(int slot, u32 id)
 {
     int out_off, i;
 
@@ -431,7 +431,7 @@ static int ApplyUnitSpriteImage16x32(int slot, u32 id)
     return UnitSpriteSlotToChrTable[slot];
 }
 
-static int ApplyUnitSpriteImage32x32(int slot, u32 id)
+int ApplyUnitSpriteImage32x32(int slot, u32 id)
 {
     int out_off, i;
 

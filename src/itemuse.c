@@ -32,16 +32,16 @@ extern IWRAM_DATA struct Unit gStatGainSimUnit;
 // TODO: map-menu.h
 extern struct ProcScr CONST_DATA ProcScr_BackToUnitMenu[];
 
-static bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Unit * unit));
+bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Unit * unit));
 
-static void SetStaffUseAction(struct Unit * unit);
-static void SetItemUseAction(struct Unit * unit);
+void SetStaffUseAction(struct Unit * unit);
+void SetItemUseAction(struct Unit * unit);
 
-static void WarpSelect_Init(struct Proc * proc);
-static void WarpSelect_Loop(struct Proc * proc);
-static void WarpSelect_HandleConfirm(struct Proc * proc);
-static void WarpSelect_HandleCancel(struct Proc * proc);
-static void WarpSelect_End(struct Proc * proc);
+void WarpSelect_Init(struct Proc * proc);
+void WarpSelect_Loop(struct Proc * proc);
+void WarpSelect_HandleConfirm(struct Proc * proc);
+void WarpSelect_HandleCancel(struct Proc * proc);
+void WarpSelect_End(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_SquareSelectWarp[] =
 {
@@ -306,7 +306,7 @@ void DoUseUnitItem(struct Unit * unit, int item)
     }
 }
 
-static bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Unit *))
+bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Unit *))
 {
     list_targets(unit);
     return CountTargets() != 0;
@@ -481,7 +481,7 @@ bool CanUnitUseStatGainItem(struct Unit * unit, int item)
     return result;
 }
 
-static void SetStaffUseAction(struct Unit * unit)
+void SetStaffUseAction(struct Unit * unit)
 {
     EndLimitView();
 
@@ -491,7 +491,7 @@ static void SetStaffUseAction(struct Unit * unit)
     gAction.id = ACTION_STAFF;
 }
 
-static void SetItemUseAction(struct Unit * unit)
+void SetItemUseAction(struct Unit * unit)
 {
     gAction.id = ACTION_USEITEM;
 }
@@ -515,7 +515,7 @@ void DoUseRescueStaff(struct Unit * unit, void (* list_targets)(struct Unit * un
         DecodeMsg(MSG_C2A));
 }
 
-static void WarpSelect_Init(struct Proc * proc)
+void WarpSelect_Init(struct Proc * proc)
 {
     struct SpriteAnim * anim;
 
@@ -546,7 +546,7 @@ static void WarpSelect_Init(struct Proc * proc)
     proc->unk4A = 2; // neither TRUE nor FALSE
 }
 
-static void WarpSelect_Loop(struct Proc * proc)
+void WarpSelect_Loop(struct Proc * proc)
 {
     bool warpAllowed = gMapMovementSigned[gBmSt.cursor.y][gBmSt.cursor.x] != -1;
 
@@ -598,7 +598,7 @@ static void WarpSelect_Loop(struct Proc * proc)
     proc->unk4A = warpAllowed;
 }
 
-static void WarpSelect_HandleConfirm(struct Proc * proc)
+void WarpSelect_HandleConfirm(struct Proc * proc)
 {
     ResetTextFont();
     EndLimitView();
@@ -613,7 +613,7 @@ static void WarpSelect_HandleConfirm(struct Proc * proc)
         gActiveUnit->y);
 }
 
-static void WarpSelect_HandleCancel(struct Proc * proc)
+void WarpSelect_HandleCancel(struct Proc * proc)
 {
     ResetTextFont();
     EndLimitView();
@@ -626,7 +626,7 @@ static void WarpSelect_HandleCancel(struct Proc * proc)
     SpawnProc(ProcScr_BackToUnitMenu, PROC_TREE_3);
 }
 
-static void WarpSelect_End(struct Proc * proc)
+void WarpSelect_End(struct Proc * proc)
 {
     EndLimitView();
     EndSpriteAnim(proc->ptr);
