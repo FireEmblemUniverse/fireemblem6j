@@ -47,7 +47,7 @@ u16 ExtraMapChecksum(void const * data, int size);
 bool IsExtraMapAvailable(void);
 void ReadExtraMapInfo(void);
 bool ListAvailableTrialChapters(i8 * list_out);
-char const * func_fe6_080867F0(int chapter);
+char const * GetExtraMapChapterTitle(int chapter);
 char const * DecodeExtraMapGoalMsg(int chapter);
 char const * DecodeExtraMapInfoMsg(int chapter);
 void CreateTrialChapterBonusUnits(void);

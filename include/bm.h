@@ -153,7 +153,7 @@ struct PlaySt
     /* bit  8 */ u32 config_bgm_disable : 1;
     /* bit  9 */ u32 config_se_disable : 1;
     /* bit 10 */ u32 config_window_theme : 2;
-    /* bit 12 */ u32 unk_1D_5 : 1;
+    /* bit 12 */ u32 first_playthrough_mode : 1;
     /* bit 13 */ u32 unk_1D_6 : 1;
     /* bit 14 */ u32 config_no_auto_end_turn : 1;
     /* bit 15 */ u32 config_no_subtitle_help : 1;

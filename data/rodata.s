@@ -48,20 +48,20 @@ Tsa_0833C1D8: @ 0833C1D8
 Tsa_0833C234: @ 0833C234
 	.incbin "fe6-base.gba", 0x33C234, (0x33C378 - 0x33C234) @ length: 0144
 
-	.global Img_Unk_0833C378
-Img_Unk_0833C378: @ 0833C378
+	.global Img_StatusScreen_Bg
+Img_StatusScreen_Bg: @ 0833C378
 	.incbin "fe6-base.gba", 0x33C378, (0x33C6F4 - 0x33C378) @ length: 037C
 
-	.global gUnk_0833C6F4
-gUnk_0833C6F4: @ 0833C6F4
+	.global Tsa_StatusScreen_FactionInfoBg
+Tsa_StatusScreen_FactionInfoBg: @ 0833C6F4
 	.incbin "fe6-base.gba", 0x33C6F4, (0x33C8D8 - 0x33C6F4) @ length: 01E4
 
-	.global gUnk_0833C8D8
-gUnk_0833C8D8: @ 0833C8D8
+	.global Tsa_StatusScreen_PlaytimeBg
+Tsa_StatusScreen_PlaytimeBg: @ 0833C8D8
 	.incbin "fe6-base.gba", 0x33C8D8, (0x33C944 - 0x33C8D8) @ length: 006C
 
-	.global Pal_Unk_0833C944
-Pal_Unk_0833C944: @ 0833C944
+	.global Pal_StatusScreen_Bg
+Pal_StatusScreen_Bg: @ 0833C944
 	.incbin "fe6-base.gba", 0x33C944, (0x33C984 - 0x33C944) @ length: 0040
 
 	.global Img_WorldMap_PlayRank

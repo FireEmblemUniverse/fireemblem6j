@@ -48,8 +48,8 @@ Tsa_StatusScreen_FactionInfoFrame: @ 083093EC
 Tsa_StatusScreen_PlaytimeFrame: @ 083093F8
 	.incbin "fe6-base.gba", 0x3093F8, (0x309408 - 0x3093F8) @ length: 0010
 
-	.global Tsa_08309408
-Tsa_08309408: @ 08309408
+	.global Tsa_StatusScreen_ExtraMapInfoBg
+Tsa_StatusScreen_ExtraMapInfoBg: @ 08309408
 	.incbin "fe6-base.gba", 0x309408, (0x309474 - 0x309408) @ length: 006C
 
 	.global Pal_Unk_08309474
