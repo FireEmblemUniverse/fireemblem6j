@@ -60,15 +60,15 @@ SECTIONS
     . = __ewram_overlay_beg;
     ewram_overlay_sio (NOLOAD) : ALIGN(4)
     {
-        . = 0x000000; gUnk_Sio_02000000 = .;
-        . = 0x001000; gFont_Unk_Sio_02001000 = .;
-        . = 0x001018; gText_Unk_Sio_02001018 = .;
+        . = 0x000000; gSioXmapBuf = .;
+        . = 0x001000; gSioSpriteFont = .;
+        . = 0x001018; gSioSpriteTexts = .;
         /* gap? */
-        . = 0x0012A0; gUnk_Sio_020012A0 = .;
+        . = 0x0012A0; gSioWinLineBuf = .;
         /* gap? */
-        . = 0x001520; gUnk_Sio_02001520 = .;
-        . = 0x001524; gUnk_Sio_02001524 = .;
-        . = 0x001528; gUnk_Sio_02001528 = .;
+        . = 0x001520; gSioWinBufFront = .;
+        . = 0x001524; gSioWinBufBack = .;
+        . = 0x001528; gSioWinHBlankBuf = .;
         . = 0x00152C; gSioImgBuf = .;
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
@@ -151,21 +151,21 @@ SECTIONS
 
         /* SIO */
         . = 0x0203C618 - __ewram_overlay_end; gLinkArenaSt = .;
-        . = 0x0203C67C - __ewram_overlay_end; gSioText_0203C67C = .;
-        . = 0x0203C6A4 - __ewram_overlay_end; gSioText_0203C6A4 = .;
+        . = 0x0203C67C - __ewram_overlay_end; gSioMenuTexts = .;
+        . = 0x0203C6A4 - __ewram_overlay_end; gSioPromptText = .;
         . = 0x0203C6B9 - __ewram_overlay_end; gSioTeamNames = .;
         . = 0x0203C704 - __ewram_overlay_end; gSioSaveConfig = .;
-        . = 0x0203C708 - __ewram_overlay_end; gSioText_0203C708 = .;
-        . = 0x0203C758 - __ewram_overlay_end; gSioFont_0203C758 = .;
+        . = 0x0203C708 - __ewram_overlay_end; gSioLineTexts = .;
+        . = 0x0203C758 - __ewram_overlay_end; gSioFont = .;
         . = 0x0203C770 - __ewram_overlay_end; gLinkArenaTeamList = .;
         . = 0x0203C838 - __ewram_overlay_end; gSioResultRankings = .;
         . = 0x0203C900 - __ewram_overlay_end; gSioTexts = .;
-        . = 0x0203C910 - __ewram_overlay_end; gSioText_0203C910 = .;
+        . = 0x0203C910 - __ewram_overlay_end; gSioHeaderText = .;
         . = 0x0203C918 - __ewram_overlay_end; gUnk_Sio_0203C918 = .;
-        . = 0x0203C91C - __ewram_overlay_end; gUnk_Sio_0203C91C = .;
+        . = 0x0203C91C - __ewram_overlay_end; gSioWaitTimer = .;
         . = 0x0203C920 - __ewram_overlay_end; gKeyInputSequenceBuffer = .;
         . = 0x0203C940 - __ewram_overlay_end; gKeyInputSequenceTimer = .;
-        . = 0x0203C944 - __ewram_overlay_end; gUnk_Sio_0203C944 = .;
+        . = 0x0203C944 - __ewram_overlay_end; gSioSelectedTeamNames = .;
         . = 0x0203C980 - __ewram_overlay_end; gSioXmapOption = .;
         . = 0x0203C984 - __ewram_overlay_end; gSioBmSt = .;
         . = 0x0203C9D0 - __ewram_overlay_end; Unk_Sio_0203C9D0 = .;
@@ -180,19 +180,19 @@ SECTIONS
         . = ALIGN(4); src/banim_efxopmagic.o(ewram_data);
         . = ALIGN(4); src/banim_dragon.o(ewram_data);
         . = ALIGN(4); src/manim.o(ewram_data);
-        . = ALIGN(4); gUnk_0203D354 = .; . = . + 4;
-        . = ALIGN(4); gUnk_0203D358 = .; . = . + 4;
-        . = ALIGN(1); gUnk_0203D35C = .; . = . + 1;
-        . = ALIGN(1); gUnk_0203D35D = .; . = . + 1;
-        . = ALIGN(4); gUnk_0203D360 = .; . = . + 1;
-        . = ALIGN(1); gUnk_0203D361 = .; . = . + 1;
-        . = ALIGN(1); gUnk_0203D362 = .; . = . + 1;
-        . = ALIGN(2); gUnk_0203D364 = .; . = . + 2;
-        . = ALIGN(4); gUnk_0203D368 = .; . = . + 4;
+        . = ALIGN(4); gTutorialActionsAfterMove = .; . = . + 4;
+        . = ALIGN(4); gTutorialActionsInPlace = .; . = . + 4;
+        . = ALIGN(1); gTutorialTargetCount = .; . = . + 1;
+        . = ALIGN(1); gTutorialPointerKind = .; . = . + 1;
+        . = ALIGN(4); gDefeatTalkState = .; . = . + 1;
+        . = ALIGN(1); gDefeatTalkNextIdx = .; . = . + 1;
+        . = ALIGN(1); gDefeatTalkPid = .; . = . + 1;
+        . = ALIGN(2); gDefeatTalkMsg = .; . = . + 2;
+        . = ALIGN(4); gDemoSceneId = .; . = . + 4;
         . = ALIGN(4); gDemoMonologueId = .; . = . + 4;
         . = ALIGN(4); Texts_DemoMonologue = .; . = . + 0x30;
         . = ALIGN(4); Text_EndingTimeFlowMonologue = .; . = . + 0x38;
-        . = ALIGN(1); gUnk_0203D3D8 = .; . = . + 1;
+        . = ALIGN(1); gEndingSceneKind = .; . = . + 1;
         . = ALIGN(1); gEndingId = .; . = . + 1; . = . + 2;
         . = ALIGN(4); src/statscreen.o(ewram_data);
         . = ALIGN(4); src/helpbox.o(ewram_data);

@@ -51,9 +51,9 @@ struct ProcAugury {
 };
 
 extern EWRAM_OVERLAY(0) i16 gAuguryIndex;
-extern EWRAM_OVERLAY(0) u16 unk_020169CE;
-extern EWRAM_OVERLAY(0) u16 unk_020169D0;
-extern EWRAM_OVERLAY(0) u16 unk_020169D2;
+extern EWRAM_OVERLAY(0) u16 gAuguryFadeStep;
+extern EWRAM_OVERLAY(0) u16 gAuguryBlendA;
+extern EWRAM_OVERLAY(0) u16 gAuguryBlendB;
 extern EWRAM_OVERLAY(0) u8 gAuguryStatus[7];
 extern EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex;
 extern EWRAM_OVERLAY(0) i8 gAuguryChoice;
@@ -65,7 +65,7 @@ extern EWRAM_OVERLAY(0) u16 gPlayRankBg1Offset;
 extern EWRAM_OVERLAY(0) u16 gPlayRankDispLine;
 extern EWRAM_OVERLAY(0) u16 gPlayRankBg0MoveStep;
 extern EWRAM_OVERLAY(0) u16 gPlayRankCurChapter;
-extern EWRAM_OVERLAY(0) u16 unk_02016A26;
+extern EWRAM_OVERLAY(0) u16 gPlayRankDispStep;
 extern EWRAM_OVERLAY(0) u16 gPlayRankLayer;
 extern EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect;
 extern EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled;

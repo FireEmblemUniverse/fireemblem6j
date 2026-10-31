@@ -17,11 +17,11 @@
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 
-struct Unk_0203D40C
+struct HelpBoxSt
 {
     /* 00 */ struct Font font;
     /* 18 */ struct Text text[3];
-    /* 30 */ u16 unk_30;
+    /* 30 */ u16 oam2_base;
 };
 
 struct HelpBoxStartPrintProc
@@ -62,7 +62,7 @@ struct ProcTypeWritter2
 };
 
 int EWRAM_DATA unused_0203D408 = 0;
-struct Unk_0203D40C EWRAM_DATA gUnk_0203D40C = { { 0 } };
+struct HelpBoxSt EWRAM_DATA gHelpBoxSt = { { 0 } };
 
 void LoadHelpBoxGfx(void * vram, int pal)
 {
@@ -76,15 +76,15 @@ void LoadHelpBoxGfx(void * vram, int pal)
 
     Decompress(Img_Helpbox_08308A78, vram);
 
-    InitSpriteTextFont(&gUnk_0203D40C.font, vram, pal);
-    InitSpriteText(gUnk_0203D40C.text + 0);
-    InitSpriteText(gUnk_0203D40C.text + 1);
-    InitSpriteText(gUnk_0203D40C.text + 2);
+    InitSpriteTextFont(&gHelpBoxSt.font, vram, pal);
+    InitSpriteText(gHelpBoxSt.text + 0);
+    InitSpriteText(gHelpBoxSt.text + 1);
+    InitSpriteText(gHelpBoxSt.text + 2);
     SetTextFont(NULL);
 
     ApplyPalette(Pal_08100A48, pal);
 
-    gUnk_0203D40C.unk_30 = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
+    gHelpBoxSt.oam2_base = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
 }
 
 void func_fe6_08070EEC(void * vram, int pal)
@@ -99,15 +99,15 @@ void func_fe6_08070EEC(void * vram, int pal)
 
     Decompress(Img_Helpbox_08308A78, vram);
 
-    InitSpriteTextFont(&gUnk_0203D40C.font, vram, pal);
-    InitSpriteText(gUnk_0203D40C.text + 0);
-    InitSpriteText(gUnk_0203D40C.text + 1);
-    gUnk_0203D40C.text[2].tile_width = 0; // ok???
+    InitSpriteTextFont(&gHelpBoxSt.font, vram, pal);
+    InitSpriteText(gHelpBoxSt.text + 0);
+    InitSpriteText(gHelpBoxSt.text + 1);
+    gHelpBoxSt.text[2].tile_width = 0; // ok???
     SetTextFont(NULL);
 
     ApplyPalette(Pal_08100A48, pal);
 
-    gUnk_0203D40C.unk_30 = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
+    gHelpBoxSt.oam2_base = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
 }
 
 void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
@@ -144,7 +144,7 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
                 y_px = h_box;
             y_px = y_px - 0x10;
 
-            PutSprite(0, x_box + x_px, y_box + y_px, Sprite_32x16, gUnk_0203D40C.unk_30 + ix * 4 + iy * 0x40);
+            PutSprite(0, x_box + x_px, y_box + y_px, Sprite_32x16, gHelpBoxSt.oam2_base + ix * 4 + iy * 0x40);
         }
     }
 
@@ -155,8 +155,8 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
             x_px = w_box;
         x_px = x_px - 0x20;
 
-        PutSprite(0, x_box + x_px, y_box - 8, Sprite_32x8, gUnk_0203D40C.unk_30 + 0x1B);
-        PutSprite(0, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gUnk_0203D40C.unk_30 + 0x1B);
+        PutSprite(0, x_box + x_px, y_box - 8, Sprite_32x8, gHelpBoxSt.oam2_base + 0x1B);
+        PutSprite(0, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpBoxSt.oam2_base + 0x1B);
     }
 
     for (iy = y_count; iy >= 0; iy--)
@@ -166,44 +166,44 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
             y_px = h_box;
         y_px -= 0x10;
 
-        PutSprite(0, x_box - 8, y_box + y_px, Sprite_8x16, gUnk_0203D40C.unk_30 + 0x1F);
-        PutSprite(0, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gUnk_0203D40C.unk_30 + 0x1F);
+        PutSprite(0, x_box - 8, y_box + y_px, Sprite_8x16, gHelpBoxSt.oam2_base + 0x1F);
+        PutSprite(0, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpBoxSt.oam2_base + 0x1F);
     }
 
-    PutSprite(0, x_box - 8, y_box - 8, Sprite_8x8, gUnk_0203D40C.unk_30 + 0x3E);
-    PutSprite(0, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gUnk_0203D40C.unk_30 + 0x3E);
-    PutSprite(0, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gUnk_0203D40C.unk_30 + 0x3E);
-    PutSprite(0, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gUnk_0203D40C.unk_30 + 0x3E);
+    PutSprite(0, x_box - 8, y_box - 8, Sprite_8x8, gHelpBoxSt.oam2_base + 0x3E);
+    PutSprite(0, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpBoxSt.oam2_base + 0x3E);
+    PutSprite(0, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpBoxSt.oam2_base + 0x3E);
+    PutSprite(0, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpBoxSt.oam2_base + 0x3E);
 }
 
 int DrawHelpBoxWeaponLabels(int item)
 {
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x00, TEXT_COLOR_47CF, GetItemKindString(GetItemKind(item)));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x24, TEXT_COLOR_47CF, JTEXT("射程"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x60, TEXT_COLOR_47CF, JTEXT("重さ"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[1], 0x00, TEXT_COLOR_47CF, JTEXT("威力"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[1], 0x30, TEXT_COLOR_47CF, JTEXT("命中"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[1], 0x60, TEXT_COLOR_47CF, JTEXT("必殺"));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x00, TEXT_COLOR_47CF, GetItemKindString(GetItemKind(item)));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x24, TEXT_COLOR_47CF, JTEXT("射程"));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x60, TEXT_COLOR_47CF, JTEXT("重さ"));
+    Text_InsertDrawString(&gHelpBoxSt.text[1], 0x00, TEXT_COLOR_47CF, JTEXT("威力"));
+    Text_InsertDrawString(&gHelpBoxSt.text[1], 0x30, TEXT_COLOR_47CF, JTEXT("命中"));
+    Text_InsertDrawString(&gHelpBoxSt.text[1], 0x60, TEXT_COLOR_47CF, JTEXT("必殺"));
 
     return 2; // TODO: what?
 }
 
 void DrawHelpBoxWeaponStats(int item)
 {
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x0C, TEXT_COLOR_456F, GetWeaponLevelStringFromExp(GetItemRequiredExp(item)));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x38, TEXT_COLOR_456F, GetItemRangeString(item));
-    Text_InsertDrawNumberOrBlank(&gUnk_0203D40C.text[0], 0x80, TEXT_COLOR_456F, GetItemWeight(item));
-    Text_InsertDrawNumberOrBlank(&gUnk_0203D40C.text[1], 0x20, TEXT_COLOR_456F, GetItemMight(item));
-    Text_InsertDrawNumberOrBlank(&gUnk_0203D40C.text[1], 0x50, TEXT_COLOR_456F, GetItemHit(item));
-    Text_InsertDrawNumberOrBlank(&gUnk_0203D40C.text[1], 0x80, TEXT_COLOR_456F, GetItemCrit(item));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x0C, TEXT_COLOR_456F, GetWeaponLevelStringFromExp(GetItemRequiredExp(item)));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x38, TEXT_COLOR_456F, GetItemRangeString(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[0], 0x80, TEXT_COLOR_456F, GetItemWeight(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 0x20, TEXT_COLOR_456F, GetItemMight(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 0x50, TEXT_COLOR_456F, GetItemHit(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 0x80, TEXT_COLOR_456F, GetItemCrit(item));
 }
 
 int DrawHelpBoxStaffLabels(int item)
 {
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x00, TEXT_COLOR_47CF, JTEXT("杖"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x0C, TEXT_COLOR_456F, GetWeaponLevelStringFromExp(GetItemRequiredExp(item)));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x24, TEXT_COLOR_47CF, JTEXT("射程"));
-    Text_InsertDrawString(&gUnk_0203D40C.text[0], 0x38, TEXT_COLOR_456F, GetItemRangeString(item));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x00, TEXT_COLOR_47CF, JTEXT("杖"));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x0C, TEXT_COLOR_456F, GetWeaponLevelStringFromExp(GetItemRequiredExp(item)));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x24, TEXT_COLOR_47CF, JTEXT("射程"));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 0x38, TEXT_COLOR_456F, GetItemRangeString(item));
 
     return 1; // TODO: what?
 }
@@ -319,7 +319,7 @@ void func_fe6_08071374(struct HelpBoxStartPrintProc * proc)
 {
     int item = proc->item;
 
-    SetTextFont(&gUnk_0203D40C.font);
+    SetTextFont(&gHelpBoxSt.font);
     SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);
 
     switch (func_fe6_08070B30(item))
@@ -350,7 +350,7 @@ void func_fe6_080713DC(struct HelpBoxStartPrintProc * proc)
 {
     int item = proc->item;
 
-    SetTextFont(&gUnk_0203D40C.font);
+    SetTextFont(&gHelpBoxSt.font);
 
     if (func_fe6_08070B30(item) == HELPBOX_INFO_WEAPON)
     {
@@ -366,20 +366,20 @@ void func_fe6_08071410(struct HelpBoxStartPrintProc * proc)
 {
     struct ProcTypeWritter * print_proc;
 
-    SetTextFont(&gUnk_0203D40C.font);
+    SetTextFont(&gHelpBoxSt.font);
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
-    Text_SetColor(&gUnk_0203D40C.text[0], TEXT_COLOR_4DEF);
-    Text_SetColor(&gUnk_0203D40C.text[1], TEXT_COLOR_4DEF);
-    Text_SetColor(&gUnk_0203D40C.text[2], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxSt.text[0], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxSt.text[1], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxSt.text[2], TEXT_COLOR_4DEF);
     SetTextFont(NULL);
 
     Proc_EndEach(ProcScr_TypeWritter);
 
     print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
-    print_proc->font = &gUnk_0203D40C.font;
-    print_proc->text[0] = &gUnk_0203D40C.text[0];
-    print_proc->text[1] = &gUnk_0203D40C.text[1];
-    print_proc->text[2] = &gUnk_0203D40C.text[2];
+    print_proc->font = &gHelpBoxSt.font;
+    print_proc->text[0] = &gHelpBoxSt.text[0];
+    print_proc->text[1] = &gHelpBoxSt.text[1];
+    print_proc->text[2] = &gHelpBoxSt.text[2];
     print_proc->line = proc->unk_64;
     print_proc->str_it = DecodeMsg(proc->msg);
     print_proc->chars_per_print = 1;
@@ -432,11 +432,11 @@ void func_fe6_080714F8(int item, int msg)
 
 void func_fe6_08071514(void)
 {
-    SetTextFont(&gUnk_0203D40C.font);
+    SetTextFont(&gHelpBoxSt.font);
 
-    SpriteText_DrawBackground(&gUnk_0203D40C.text[0]);
-    SpriteText_DrawBackground(&gUnk_0203D40C.text[1]);
-    SpriteText_DrawBackground(&gUnk_0203D40C.text[2]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[0]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[1]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[2]);
 
     Proc_EndEach(ProcScr_TypeWritter);
     Proc_EndEach(gUnk_08677FF8);
@@ -492,7 +492,7 @@ void func_fe6_080715DC(int x, int y, int msg)
     func_fe6_08071748(&static_info);
 }
 
-struct HelpBoxInfo const * EWRAM_DATA gUnk_0203D45C = NULL;
+struct HelpBoxInfo const * EWRAM_DATA gCurrentHelpBoxInfo = NULL;
 
 void func_fe6_080715FC(struct HelpBoxInfo const * info)
 {
@@ -532,7 +532,7 @@ void func_fe6_080715FC(struct HelpBoxInfo const * info)
     func_fe6_08071514();
     func_fe6_080714F8(proc->item, proc->msg);
 
-    gUnk_0203D45C = info;
+    gCurrentHelpBoxInfo = info;
 }
 
 void func_fe6_080716C8(void)
@@ -700,12 +700,12 @@ bool func_fe6_080718E0(void)
     return FALSE;
 }
 
-struct Unk_0203D40C EWRAM_DATA gUnk_0203D460 = { { 0 } };
+struct HelpBoxSt EWRAM_DATA gHelpBoxStAlt = { { 0 } };
 
 void func_fe6_080718FC(void * vram, int pal)
 {
     // identical to LoadHelpBoxGfx
-    // except for gUnk_0203D460 instead of gUnk_0203D40C
+    // except for gHelpBoxStAlt instead of gHelpBoxSt
 
     if (vram == NULL)
         vram = ((void *) VRAM) + 0x10000 + OBCHR_HELPBOX_180 * CHR_SIZE;
@@ -717,15 +717,15 @@ void func_fe6_080718FC(void * vram, int pal)
 
     Decompress(Img_Helpbox_08308A78, vram);
 
-    InitSpriteTextFont(&gUnk_0203D460.font, vram, pal);
-    InitSpriteText(gUnk_0203D460.text + 0);
-    InitSpriteText(gUnk_0203D460.text + 1);
-    InitSpriteText(gUnk_0203D460.text + 2);
+    InitSpriteTextFont(&gHelpBoxStAlt.font, vram, pal);
+    InitSpriteText(gHelpBoxStAlt.text + 0);
+    InitSpriteText(gHelpBoxStAlt.text + 1);
+    InitSpriteText(gHelpBoxStAlt.text + 2);
     SetTextFont(NULL);
 
     ApplyPalette(Pal_08100A48, pal);
 
-    gUnk_0203D460.unk_30 = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
+    gHelpBoxStAlt.oam2_base = OAM2_CHR(((uptr) vram) / CHR_SIZE) + OAM2_PAL(pal);
 }
 
 void func_fe6_08071978(struct HelpBoxProc * proc, int x, int y)
@@ -1048,7 +1048,7 @@ void func_fe6_08071D04(int x, int y, int msg)
 void func_fe6_08071D94(int x_box, int y_box, int w_box, int h_box)
 {
     // identical to PutSpriteTalkBox
-    // except it refers to gUnk_0203D460 instead of gUnk_0203D40C, and uses layer 2 instead of 0
+    // except it refers to gHelpBoxStAlt instead of gHelpBoxSt, and uses layer 2 instead of 0
 
     int y_count, x_count;
     int iy, ix, x_px, y_px;
@@ -1082,7 +1082,7 @@ void func_fe6_08071D94(int x_box, int y_box, int w_box, int h_box)
                 y_px = h_box;
             y_px = y_px - 0x10;
 
-            PutSprite(2, x_box + x_px, y_box + y_px, Sprite_32x16, gUnk_0203D460.unk_30 + ix * 4 + iy * 0x40);
+            PutSprite(2, x_box + x_px, y_box + y_px, Sprite_32x16, gHelpBoxStAlt.oam2_base + ix * 4 + iy * 0x40);
         }
     }
 
@@ -1093,8 +1093,8 @@ void func_fe6_08071D94(int x_box, int y_box, int w_box, int h_box)
             x_px = w_box;
         x_px = x_px - 0x20;
 
-        PutSprite(2, x_box + x_px, y_box - 8, Sprite_32x8, gUnk_0203D460.unk_30 + 0x1B);
-        PutSprite(2, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gUnk_0203D460.unk_30 + 0x1B);
+        PutSprite(2, x_box + x_px, y_box - 8, Sprite_32x8, gHelpBoxStAlt.oam2_base + 0x1B);
+        PutSprite(2, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpBoxStAlt.oam2_base + 0x1B);
     }
 
     for (iy = y_count; iy >= 0; iy--)
@@ -1104,14 +1104,14 @@ void func_fe6_08071D94(int x_box, int y_box, int w_box, int h_box)
             y_px = h_box;
         y_px -= 0x10;
 
-        PutSprite(2, x_box - 8, y_box + y_px, Sprite_8x16, gUnk_0203D460.unk_30 + 0x1F);
-        PutSprite(2, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gUnk_0203D460.unk_30 + 0x1F);
+        PutSprite(2, x_box - 8, y_box + y_px, Sprite_8x16, gHelpBoxStAlt.oam2_base + 0x1F);
+        PutSprite(2, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpBoxStAlt.oam2_base + 0x1F);
     }
 
-    PutSprite(2, x_box - 8, y_box - 8, Sprite_8x8, gUnk_0203D460.unk_30 + 0x3E);
-    PutSprite(2, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gUnk_0203D460.unk_30 + 0x3E);
-    PutSprite(2, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gUnk_0203D460.unk_30 + 0x3E);
-    PutSprite(2, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gUnk_0203D460.unk_30 + 0x3E);
+    PutSprite(2, x_box - 8, y_box - 8, Sprite_8x8, gHelpBoxStAlt.oam2_base + 0x3E);
+    PutSprite(2, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpBoxStAlt.oam2_base + 0x3E);
+    PutSprite(2, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpBoxStAlt.oam2_base + 0x3E);
+    PutSprite(2, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpBoxStAlt.oam2_base + 0x3E);
 }
 
 void func_fe6_08071F50(struct ProcTypeWritter2 * proc)
@@ -1126,11 +1126,11 @@ void func_fe6_08071F64(struct ProcTypeWritter2 * proc)
 
     if (proc->unk_58 == 1)
     {
-        SetTextFont(&gUnk_0203D460.font);
+        SetTextFont(&gHelpBoxStAlt.font);
 
-        SpriteText_DrawBackground(&gUnk_0203D460.text[0]);
-        SpriteText_DrawBackground(&gUnk_0203D460.text[1]);
-        SpriteText_DrawBackground(&gUnk_0203D460.text[2]);
+        SpriteText_DrawBackground(&gHelpBoxStAlt.text[0]);
+        SpriteText_DrawBackground(&gHelpBoxStAlt.text[1]);
+        SpriteText_DrawBackground(&gHelpBoxStAlt.text[2]);
 
         SetTextFont(NULL);
 
@@ -1233,13 +1233,13 @@ void func_fe6_08072100(struct HelpBoxStartPrintProc * proc)
 {
     struct ProcTypeWritter2 * new_proc;
 
-    SetTextFont(&gUnk_0203D460.font);
+    SetTextFont(&gHelpBoxStAlt.font);
 
     SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM); // NOTE: useless
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
-    Text_SetColor(&gUnk_0203D460.text[0], TEXT_COLOR_4DEF);
-    Text_SetColor(&gUnk_0203D460.text[1], TEXT_COLOR_4DEF);
-    Text_SetColor(&gUnk_0203D460.text[2], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxStAlt.text[0], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxStAlt.text[1], TEXT_COLOR_4DEF);
+    Text_SetColor(&gHelpBoxStAlt.text[2], TEXT_COLOR_4DEF);
 
     SetTextFont(NULL);
 
@@ -1247,10 +1247,10 @@ void func_fe6_08072100(struct HelpBoxStartPrintProc * proc)
 
     new_proc = SpawnProc(ProcScr_HelpBoxPrint_086780E8, PROC_TREE_3);
 
-    new_proc->font = &gUnk_0203D460.font;
-    new_proc->text[0] = &gUnk_0203D460.text[0];
-    new_proc->text[1] = &gUnk_0203D460.text[1];
-    new_proc->text[2] = &gUnk_0203D460.text[2];
+    new_proc->font = &gHelpBoxStAlt.font;
+    new_proc->text[0] = &gHelpBoxStAlt.text[0];
+    new_proc->text[1] = &gHelpBoxStAlt.text[1];
+    new_proc->text[2] = &gHelpBoxStAlt.text[2];
     new_proc->line = 0;
     new_proc->str = DecodeMsg(proc->msg);
     new_proc->unk_50 = GetTextPrintDelay();
@@ -1276,11 +1276,11 @@ void func_fe6_080721B8(int msg)
 
 void func_fe6_080721D0(void)
 {
-    SetTextFont(&gUnk_0203D460.font);
+    SetTextFont(&gHelpBoxStAlt.font);
 
-    SpriteText_DrawBackground(&gUnk_0203D460.text[0]);
-    SpriteText_DrawBackground(&gUnk_0203D460.text[1]);
-    SpriteText_DrawBackground(&gUnk_0203D460.text[2]);
+    SpriteText_DrawBackground(&gHelpBoxStAlt.text[0]);
+    SpriteText_DrawBackground(&gHelpBoxStAlt.text[1]);
+    SpriteText_DrawBackground(&gHelpBoxStAlt.text[2]);
 
     Proc_EndEach(ProcScr_HelpBoxPrint_086780E8);
     Proc_EndEach(ProcScr_HelpBoxStartPrint_08678110);

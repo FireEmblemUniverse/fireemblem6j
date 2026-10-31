@@ -94,9 +94,9 @@ u16 CONST_DATA BgConf_Augury[12] = {
 };
 
 EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
-EWRAM_OVERLAY(0) u16 unk_020169CE = 0;
-EWRAM_OVERLAY(0) u16 unk_020169D0 = 0;
-EWRAM_OVERLAY(0) u16 unk_020169D2 = 0;
+EWRAM_OVERLAY(0) u16 gAuguryFadeStep = 0;
+EWRAM_OVERLAY(0) u16 gAuguryBlendA = 0;
+EWRAM_OVERLAY(0) u16 gAuguryBlendB = 0;
 EWRAM_OVERLAY(0) u8 gAuguryStatus[7] = {};
 EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex = 0;
 EWRAM_OVERLAY(0) i8 gAuguryChoice = 0;
@@ -108,7 +108,7 @@ EWRAM_OVERLAY(0) u16 gPlayRankBg1Offset = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankDispLine = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankBg0MoveStep = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankCurChapter = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A26 = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankDispStep = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankLayer = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect = 0;
 EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled = 0;
@@ -117,15 +117,15 @@ EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
 EWRAM_OVERLAY(0) u8 gCreditInfoDispStep = 0;
 EWRAM_OVERLAY(0) u8 gEndingCgIndex = 0;
 EWRAM_OVERLAY(0) u8 gGameEndingFlag = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A3F = 0;
+EWRAM_OVERLAY(0) u8 gCreditNameDispMode = 0;
 EWRAM_OVERLAY(0) u8 gEndingDoneFlag = 0;
 EWRAM_OVERLAY(0) u8 gEndingDispType = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A42 = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A43[0x80] = {};
-EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81] = {};
-EWRAM_OVERLAY(0) bool unk_02016B44 = 0;
-EWRAM_OVERLAY(0) struct Text Texts_02016B48[6] = {};
-EWRAM_OVERLAY(0) struct Text Texts_02016B78[2] = {};
+EWRAM_OVERLAY(0) u8 gCreditNameAnimTimer = 0;
+EWRAM_OVERLAY(0) u8 gCreditCharOffsets[0x80] = {};
+EWRAM_OVERLAY(0) u8 gCreditCharDelays[0x81] = {};
+EWRAM_OVERLAY(0) bool gEndingPInfoIsDyad = 0;
+EWRAM_OVERLAY(0) struct Text gEndingPInfoTexts[6] = {};
+EWRAM_OVERLAY(0) struct Text gEndingPInfo2Texts[2] = {};
 EWRAM_OVERLAY(0) i8 gEndingUid1 = 0;
 EWRAM_OVERLAY(0) i8 gEndingUid2 = 0;
 EWRAM_OVERLAY(0) u8 gEndingDisplaySecondUnit = 0;
@@ -255,7 +255,7 @@ void Augury_Init(void)
 {
 	int i;
 
-	unk_020169CE = 0;
+	gAuguryFadeStep = 0;
 	gAuguryChoice = AUGURY_CHOICE_0;
 	gCurrentAuguryIndex = GetAuguryIndex();
 
@@ -321,26 +321,26 @@ void func_fe6_0808D59C(ProcPtr proc)
 {
 	int val;
 
-	switch (unk_020169CE) {
+	switch (gAuguryFadeStep) {
 	case 0:
-		unk_020169D0 = 0;
-		unk_020169D2 = 0x10;
-		unk_020169CE += 1;
+		gAuguryBlendA = 0;
+		gAuguryBlendB = 0x10;
+		gAuguryFadeStep += 1;
 		break;
 
 	case 1:
-		val = unk_020169D2 / 4;
+		val = gAuguryBlendB / 4;
 
 		if (val == 0)
 			val = 1;
 
-		if (unk_020169D2 > 1) {
-			unk_020169D0 += val;
-			unk_020169D2 -= val;
+		if (gAuguryBlendB > 1) {
+			gAuguryBlendA += val;
+			gAuguryBlendB -= val;
 
-			SetBlendAlpha(unk_020169D0, unk_020169D2);
+			SetBlendAlpha(gAuguryBlendA, gAuguryBlendB);
 		} else {
-			unk_020169CE = 0;
+			gAuguryFadeStep = 0;
 			Proc_Break(proc);
 		}
 		break;
@@ -354,31 +354,31 @@ void func_fe6_0808D630(ProcPtr proc)
 {
 	int val;
 
-	switch (unk_020169CE) {
+	switch (gAuguryFadeStep) {
 	case 0:
 		if (!IsTalkActive()) {
 			ClearTalkText();
 			EndTalk();
 			EnableBgSync(BG0_SYNC_BIT);
-			unk_020169D0 = 0x10;
-			unk_020169D2 = 0;
-			unk_020169CE += 1;
+			gAuguryBlendA = 0x10;
+			gAuguryBlendB = 0;
+			gAuguryFadeStep += 1;
 		}
 		break;
 
 	case 1:
-		val = unk_020169D0 / 4;
+		val = gAuguryBlendA / 4;
 
 		if (val == 0)
 			val = 1;
 
-		if (unk_020169D0 >= 1) {
-			unk_020169D0 -= val;
-			unk_020169D2 += val;
+		if (gAuguryBlendA >= 1) {
+			gAuguryBlendA -= val;
+			gAuguryBlendB += val;
 
-			SetBlendAlpha(unk_020169D0, unk_020169D2);
+			SetBlendAlpha(gAuguryBlendA, gAuguryBlendB);
 		} else {
-			unk_020169CE = 0;
+			gAuguryFadeStep = 0;
 			Proc_Break(proc);
 		}
 		break;

@@ -895,7 +895,7 @@ void func_fe6_0806C64C(void)
     gUnk_030048A8 = 0;
     ClearFlag(FLAG_TUTORIAL_22);
     unk = func_fe6_0802BA08();
-    gUnk_0203D358 = unk;
+    gTutorialActionsInPlace = unk;
 }
 
 void func_fe6_0806C670(void)
@@ -921,7 +921,7 @@ void func_fe6_0806C69C(void)
 void func_fe6_0806C6B0(void)
 {
     u32 unk = func_fe6_0802B9DC();
-    gUnk_0203D354 = unk;
+    gTutorialActionsAfterMove = unk;
 
     switch (UNIT_PID(gActiveUnit))
     {
@@ -981,10 +981,10 @@ void func_fe6_0806C7E0(struct TutorialEventProcA * proc)
 {
     int x, y, r4;
 
-    switch (gUnk_0203D35D)
+    switch (gTutorialPointerKind)
     {
         case 0:
-            for (r4 = 0; r4 < gUnk_0203D35C; r4++)
+            for (r4 = 0; r4 < gTutorialTargetCount; r4++)
             {
                 struct SelectTarget * target = GetTarget(r4);
 
@@ -1057,12 +1057,12 @@ void func_fe6_0806C950(struct TutorialEventProcB * proc)
 
 void func_fe6_0806C998(int what)
 {
-    gUnk_0203D35D = what;
+    gTutorialPointerKind = what;
 
     func_fe6_0802BA44(gActiveUnit);
-    gUnk_0203D35C = CountTargets();
+    gTutorialTargetCount = CountTargets();
 
-    if (gUnk_0203D35C != 0)
+    if (gTutorialTargetCount != 0)
     {
         struct SelectTarget * target;
 
@@ -1229,7 +1229,7 @@ bool IsActiveUnitAlen(void)
 
 bool func_fe6_0806CC68(void)
 {
-    if ((gUnk_0203D354 & 2) != 0)
+    if ((gTutorialActionsAfterMove & 2) != 0)
         return TRUE;
 
     return FALSE;
@@ -1339,7 +1339,7 @@ bool func_fe6_0806CDC0(void)
             break;
     }
 
-    if ((gUnk_0203D358 & 2) != 0)
+    if ((gTutorialActionsInPlace & 2) != 0)
         return TRUE;
 
     return FALSE;
@@ -1347,7 +1347,7 @@ bool func_fe6_0806CDC0(void)
 
 bool func_fe6_0806CE18(void)
 {
-    if ((gUnk_0203D358 & 0x8000) != 0)
+    if ((gTutorialActionsInPlace & 0x8000) != 0)
         return TRUE;
 
     return FALSE;
@@ -1355,7 +1355,7 @@ bool func_fe6_0806CE18(void)
 
 bool func_fe6_0806CE34(void)
 {
-    if ((gUnk_0203D358 & 0x10000) != 0)
+    if ((gTutorialActionsInPlace & 0x10000) != 0)
         return TRUE;
 
     return FALSE;
@@ -1366,7 +1366,7 @@ bool func_fe6_0806CE50(void)
     if (CheckFlag(FLAG_TUTORIAL_18))
         return FALSE;
 
-    if ((gUnk_0203D358 & 0x18002) != 0)
+    if ((gTutorialActionsInPlace & 0x18002) != 0)
         return FALSE;
 
     return TRUE;
@@ -1377,7 +1377,7 @@ bool func_fe6_0806CE80(void)
     if (CheckFlag(FLAG_TUTORIAL_20))
         return FALSE;
 
-    if ((gUnk_0203D358 & 0x100) != 0)
+    if ((gTutorialActionsInPlace & 0x100) != 0)
         return TRUE;
 
     return FALSE;
@@ -1388,7 +1388,7 @@ bool func_fe6_0806CEAC(void)
     if (CheckFlag(FLAG_TUTORIAL_21))
         return FALSE;
 
-    if ((gUnk_0203D358 & 0x800000) != 0)
+    if ((gTutorialActionsInPlace & 0x800000) != 0)
         return TRUE;
 
     return FALSE;
@@ -1600,10 +1600,10 @@ void func_fe6_0806D1AC(void)
 
 void func_fe6_0806D1D4(void)
 {
-    gUnk_0203D360 = 0;
-    gUnk_0203D361 = 0;
-    gUnk_0203D362 = 0;
-    gUnk_0203D364 = 0;
+    gDefeatTalkState = 0;
+    gDefeatTalkNextIdx = 0;
+    gDefeatTalkPid = 0;
+    gDefeatTalkMsg = 0;
 }
 
 bool func_fe6_0806D1FC(struct EventProc * proc)
@@ -1620,13 +1620,13 @@ bool func_fe6_0806D1FC(struct EventProc * proc)
     if (IsTalkActive())
         return TRUE;
 
-    switch (gUnk_0203D360)
+    switch (gDefeatTalkState)
     {
         case 0:
             i = 1;
 
-            if (gUnk_0203D361 != 0)
-                i = gUnk_0203D361;
+            if (gDefeatTalkNextIdx != 0)
+                i = gDefeatTalkNextIdx;
 
             for (; i < 0x40; ++i)
             {
@@ -1641,18 +1641,18 @@ bool func_fe6_0806D1FC(struct EventProc * proc)
                 if ((unit->flags & UNIT_FLAG_UNAVAILABLE) != 0)
                     continue;
 
-                gUnk_0203D362 = UNIT_PID(unit);
+                gDefeatTalkPid = UNIT_PID(unit);
 
-                if (gUnk_0203D362 == PID_ROY)
+                if (gDefeatTalkPid == PID_ROY)
                     continue;
 
                 for (j = 0; gBattleDefeatTalkList[j].pid != 0; j++)
                 {
-                    if (gUnk_0203D362 == gBattleDefeatTalkList[j].pid)
+                    if (gDefeatTalkPid == gBattleDefeatTalkList[j].pid)
                     {
-                        gUnk_0203D364 = gBattleDefeatTalkList[j].unk_0C;
-                        gUnk_0203D361 = i + 1;
-                        gUnk_0203D360++;
+                        gDefeatTalkMsg = gBattleDefeatTalkList[j].unk_0C;
+                        gDefeatTalkNextIdx = i + 1;
+                        gDefeatTalkState++;
                         return TRUE;
                     }
                 }
@@ -1661,12 +1661,12 @@ bool func_fe6_0806D1FC(struct EventProc * proc)
             return FALSE;
 
         case 1:
-            unit = GetUnitByPid(gUnk_0203D362);
+            unit = GetUnitByPid(gDefeatTalkPid);
 
             CameraMoveWatchPosition(proc, unit->x, unit->y);
             SetMapCursorPosition(unit->x, unit->y);
 
-            gUnk_0203D360++;
+            gDefeatTalkState++;
             break;
 
         case 2:
@@ -1675,11 +1675,11 @@ bool func_fe6_0806D1FC(struct EventProc * proc)
             ClearPutTalkText();
             ClearTalk();
 
-            StartTalkExt(10, 14, DecodeMsg(gUnk_0203D364), proc);
+            StartTalkExt(10, 14, DecodeMsg(gDefeatTalkMsg), proc);
             SetTalkPrintColor(TEXT_COLOR_0456);
             SetActiveTalkFace(TALK_FACE_1);
 
-            gUnk_0203D360 = 0;
+            gDefeatTalkState = 0;
             break;
     }
 
@@ -2384,7 +2384,7 @@ void StartDemoSceneEvent(int arg_0, ProcPtr proc)
 {
     StartEventLocking(EventScrs_DemoScene[arg_0], proc);
 
-    gUnk_0203D368 = arg_0;
+    gDemoSceneId = arg_0;
     gDemoMonologueId = 0;
 }
 
@@ -3479,17 +3479,17 @@ void func_fe6_0806E32C(void)
     switch (GetEndingId())
     {
         case TRUE_ENDING:
-            gUnk_0203D3D8 = 0;
+            gEndingSceneKind = 0;
             SetupTrueEndingUids();
             return;
 
         case NORMAL_ENDING:
-            gUnk_0203D3D8 = 1;
+            gEndingSceneKind = 1;
             SetupTrueEndingUids();
             return;
 
         case FAKE_ENDING:
-            gUnk_0203D3D8 = 0x80;
+            gEndingSceneKind = 0x80;
             SetupFakeEndingUids();
             return;
     }

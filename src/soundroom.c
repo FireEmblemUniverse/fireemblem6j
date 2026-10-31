@@ -23,7 +23,7 @@
 #include "soundroom.h"
 
 EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText = {};
-EWRAM_OVERLAY(savemenu) u8 gSoundRoom_020004AC[2] = {};
+EWRAM_OVERLAY(savemenu) u8 gSoundRoomRecentCgs[2] = {};
 
 CONST_DATA struct SoundRoomInfo gSoundRoomInfo[] = {
 	{
@@ -440,15 +440,15 @@ void PutSoundRoomCG(int seed)
 	cg %= SOUNDROOM_CG_NUM;
 
 	for (i = 0; i < 3; i++) {
-		if (gSoundRoom_020004AC[i % 2] == cg)
+		if (gSoundRoomRecentCgs[i % 2] == cg)
 			cg = (cg + 1) % SOUNDROOM_CG_NUM;
 	}
 
-	gSoundRoom_020004AC[1] = gSoundRoom_020004AC[0];
-	gSoundRoom_020004AC[0] = cg;
+	gSoundRoomRecentCgs[1] = gSoundRoomRecentCgs[0];
+	gSoundRoomRecentCgs[0] = cg;
 
 	Decompress(gSoundRoomCgInfo[cg].img, (u8 *)BG_VRAM + 0x2800 + GetBgChrOffset(BG_2));
-	ApplyPaletteExt(gSoundRoomCgInfo[gSoundRoom_020004AC[0]].pal, 0xC0, 0x20);
+	ApplyPaletteExt(gSoundRoomCgInfo[gSoundRoomRecentCgs[0]].pal, 0xC0, 0x20);
 }
 
 int CountTotalSoundRoomSongs(void)
@@ -491,8 +491,8 @@ void Soundroom_Init(struct ProcSoundRoom *proc)
 	proc->unk_34 = 0;
 	proc->cur_index = 0;
 
-	gSoundRoom_020004AC[1] |= 0xFF;
-	gSoundRoom_020004AC[0] |= 0xFF;
+	gSoundRoomRecentCgs[1] |= 0xFF;
+	gSoundRoomRecentCgs[0] |= 0xFF;
 
 	proc->unk_29 = 1;
 	proc->unk_2c = 0;

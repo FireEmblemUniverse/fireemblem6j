@@ -368,7 +368,7 @@ struct ProcEkrGauge {
 
 extern struct ProcEkrGauge * gpProcEkrGauge;
 extern EWRAM_OVERLAY(banim) u16 Buf_EkrGaugeNumImg[0x200];
-extern EWRAM_OVERLAY(banim) u16 gUnk_Banim_02016DC0[0x40];
+extern EWRAM_OVERLAY(banim) u16 gEkrGaugeHpNumImgBuf[0x40];
 extern EWRAM_OVERLAY(banim) u8 gEkrGaugeBuf[0x800];
 extern EWRAM_OVERLAY(banim) u16 gEkrGaugeDecoder[18];
 

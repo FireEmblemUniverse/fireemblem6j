@@ -185,8 +185,8 @@ void PointsNumberMover_Init(struct PointsNumberMoverProc * proc)
 	proc->x_target = gUnk_Sio_0810F400[idx * 2 + 0] * 8 + 8;
 	proc->y_target = gUnk_Sio_0810F400[idx * 2 + 1] * 8 + 8;
 
-	SetTextFont(&gFont_Unk_Sio_02001000);
-	Text_InsertDrawNumberOrBlank(gText_Unk_Sio_02001018, proc->player_id * 32 + 24, TEXT_COLOR_SYSTEM_BLUE, proc->difference);
+	SetTextFont(&gSioSpriteFont);
+	Text_InsertDrawNumberOrBlank(gSioSpriteTexts, proc->player_id * 32 + 24, TEXT_COLOR_SYSTEM_BLUE, proc->difference);
 
 	proc->timer = 0;
 }
@@ -294,8 +294,8 @@ void PointsNumberMover_AwaitEnd(struct PointsNumberMoverProc * proc)
 
 void PointsSpriteText_Init(struct PointsSpriteTextProc * proc)
 {
-	SetTextFont(&gFont_Unk_Sio_02001000);
-	Text_InsertDrawString(gText_Unk_Sio_02001018, 128, 0, proc->str);
+	SetTextFont(&gSioSpriteFont);
+	Text_InsertDrawString(gSioSpriteTexts, 128, 0, proc->str);
 	proc->timer = 0;
 }
 
@@ -356,13 +356,13 @@ bool NewSioPointsSpriteText(int x, int y, char const * str, u8 flag, ProcPtr par
 
 	ApplyPalette(Pal_Text, 0x19);
 
-	InitSpriteTextFont(&gFont_Unk_Sio_02001000, (void *) 0x06016800, 3);
+	InitSpriteTextFont(&gSioSpriteFont, (void *) 0x06016800, 3);
 
 	SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);
 	ResetTextFont();
 
-	InitSpriteText(gText_Unk_Sio_02001018);
-	SpriteText_DrawBackgroundExt(gText_Unk_Sio_02001018, 0);
+	InitSpriteText(gSioSpriteTexts);
+	SpriteText_DrawBackgroundExt(gSioSpriteTexts, 0);
 
 	SetTextFont(NULL);
 
@@ -2385,18 +2385,18 @@ void func_fe6_0803EFEC(void)
 	u16 vcount = REG_VCOUNT + 1;
 
 	if (vcount > DISPLAY_HEIGHT) {
-		gUnk_Sio_02001528 = gUnk_Sio_02001520;
+		gSioWinHBlankBuf = gSioWinBufFront;
 		vcount = 0;
 	}
 
-	REG_WIN1H = (gUnk_Sio_02001528[vcount * 2 + 0] << 8) + gUnk_Sio_02001528[vcount * 2 + 1];
+	REG_WIN1H = (gSioWinHBlankBuf[vcount * 2 + 0] << 8) + gSioWinHBlankBuf[vcount * 2 + 1];
 }
 
 void func_fe6_0803F028(void)
 {
-	i16 * swap = gUnk_Sio_02001520;
-	gUnk_Sio_02001520 = gUnk_Sio_02001524;
-	gUnk_Sio_02001524 = swap;
+	i16 * swap = gSioWinBufFront;
+	gSioWinBufFront = gSioWinBufBack;
+	gSioWinBufBack = swap;
 }
 
 void func_fe6_0803F040(void)
@@ -2456,13 +2456,13 @@ void func_fe6_0803F068(i16 * buf, int x_a, int y_a, int x_b, int y_b, int x_c, i
 
 void func_fe6_0803F1D8(struct SioWarpWindowProc * proc)
 {
-	gUnk_Sio_02001520 = gUnk_Sio_020012A0;
+	gSioWinBufFront = gSioWinLineBuf;
 
-	gUnk_Sio_02001524 = gUnk_Sio_020012A0 - 320;
-	gUnk_Sio_02001528 = gUnk_Sio_020012A0;
+	gSioWinBufBack = gSioWinLineBuf - 320;
+	gSioWinHBlankBuf = gSioWinLineBuf;
 
-	func_fe6_08013EE4(gUnk_Sio_02001520);
-	func_fe6_08013EE4(gUnk_Sio_02001524);
+	func_fe6_08013EE4(gSioWinBufFront);
+	func_fe6_08013EE4(gSioWinBufBack);
 
 	proc->clock = 0;
 
@@ -2482,8 +2482,8 @@ void func_fe6_0803F224(struct SioWarpWindowProc * proc)
 	angle = Interpolate(INTERPOLATE_LINEAR, 0xA0, 0xC0, proc->clock, proc->duration);
 	scale = Interpolate(INTERPOLATE_SQUARE, 0x10, 0x110, proc->clock, proc->duration);
 
-	func_fe6_08013EE4(gUnk_Sio_02001524);
-	func_fe6_0803F068(gUnk_Sio_02001524, 0, 0, DISPLAY_WIDTH, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, DISPLAY_HEIGHT, angle, scale);
+	func_fe6_08013EE4(gSioWinBufBack);
+	func_fe6_0803F068(gSioWinBufBack, 0, 0, DISPLAY_WIDTH, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, DISPLAY_HEIGHT, angle, scale);
 	func_fe6_0803F028();
 
 	proc->clock++;
@@ -2531,8 +2531,8 @@ void func_fe6_0803F3BC(struct SioWarpWindowProc * proc)
 	angle = Interpolate(INTERPOLATE_RSQUARE, 0xC0, 0xA0, proc->clock, proc->duration);
 	scale = Interpolate(INTERPOLATE_RCUBIC, 0x110, 0x10, proc->clock, proc->duration);
 
-	func_fe6_08013EE4(gUnk_Sio_02001524);
-	func_fe6_0803F068(gUnk_Sio_02001524, 0, 0, DISPLAY_WIDTH, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, DISPLAY_HEIGHT, angle, scale);
+	func_fe6_08013EE4(gSioWinBufBack);
+	func_fe6_0803F068(gSioWinBufBack, 0, 0, DISPLAY_WIDTH, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, DISPLAY_HEIGHT, angle, scale);
 	func_fe6_0803F028();
 
 	proc->clock++;

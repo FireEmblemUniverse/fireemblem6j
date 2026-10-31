@@ -5,7 +5,7 @@
 
 EWRAM_OVERLAY(0) struct Win1H sSallyCirWinH_obj[2][160] = {};
 EWRAM_OVERLAY(0) struct Win1H *sSallyCirWinH[2] = {};
-EWRAM_OVERLAY(0) u16 gUnk_Pal_02016874[0x3A] = {};
+EWRAM_OVERLAY(0) u16 gPrepUiPal[0x3A] = {};
 
 struct ProcScr CONST_DATA ProcScr_SallyCir1[] = {
 	PROC_NAME_DEBUG("SallyCir"),

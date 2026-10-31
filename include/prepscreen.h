@@ -575,10 +575,10 @@ void func_fe6_08082D08(struct Proc_Prep_08679774 *proc, int unused_1, fu16 obpal
 void func_fe6_08082D54(struct Proc_Prep_08679774 *proc, int msg_order_idx);
 void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale);
 
-extern EWRAM_OVERLAY(0) u8 gUnk_0200E7D4;
+extern EWRAM_OVERLAY(0) u8 gPrepUnitCount;
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_PickLeftBar;
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenTexts_Units[16];
-extern EWRAM_OVERLAY(0) struct Text gUnk_0200E864[5];
+extern EWRAM_OVERLAY(0) struct Text gPrepItemTexts[5];
 extern EWRAM_OVERLAY(0) struct Text gUnk_0200E88C[2];
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_LeftPersonName;
 extern EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400];

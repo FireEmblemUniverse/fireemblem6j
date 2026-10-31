@@ -32,8 +32,8 @@
 EWRAM_DATA struct XmapState gXmapState = { 0 };
 
 EWRAM_DATA struct Text gXmapTexts[MAX_TRIAL_CHAPTERS] = { 0 };
-EWRAM_DATA u8 gUnk_0203DC6C = 0;
-EWRAM_DATA u8 gUnk_0203DC6D = 0;
+EWRAM_DATA u8 gXmapFadeTimer = 0;
+EWRAM_DATA u8 gXmapWindowStep = 0;
 
 bool func_fe6_0808AA84(struct ProcXmap * proc)
 {
@@ -95,7 +95,7 @@ void func_fe6_0808AB44(void)
     if (val == 0x20)
     {
         REG_BLDCNT = 0xCF;
-        (*(u16 volatile *)((void*) &REG_BLDY)) = gUnk_0203DC6C / 2;
+        (*(u16 volatile *)((void*) &REG_BLDY)) = gXmapFadeTimer / 2;
         return;
     }
 
@@ -108,7 +108,7 @@ void func_fe6_0808AB44(void)
     if (val == 0x84)
     {
         REG_BLDCNT = 0xCF;
-        REG_WIN0H = (((10 - gUnk_0203DC6D) * 12) << 8) + (120 + (gUnk_0203DC6D * 12));
+        REG_WIN0H = (((10 - gXmapWindowStep) * 12) << 8) + (120 + (gXmapWindowStep * 12));
         REG_WINOUT = 0x000F;
         return;
     }
@@ -219,8 +219,8 @@ void Xmap_Init(struct ProcXmap * proc)
 
     proc->vsync_proc = func_fe6_0808B928(proc);
 
-    gUnk_0203DC6C = 0;
-    gUnk_0203DC6D = 0;
+    gXmapFadeTimer = 0;
+    gXmapWindowStep = 0;
 
     func_fe6_0808AEFC(proc);
 
@@ -396,15 +396,15 @@ void func_fe6_0808B2BC(struct ProcXmap * proc)
 
 void func_fe6_0808B378(struct ProcXmap * proc)
 {
-    gUnk_0203DC6C++;
+    gXmapFadeTimer++;
 
     if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) != 0)
     {
         proc->unk_45 = -1;
-        gUnk_0203DC6C = 20;
+        gXmapFadeTimer = 20;
     }
 
-    if (gUnk_0203DC6C >= 20)
+    if (gXmapFadeTimer >= 20)
     {
         Proc_Break(proc);
     }
@@ -427,9 +427,9 @@ void func_fe6_0808B3B8(struct ProcXmap * proc)
 
 void func_fe6_0808B40C(struct ProcXmap * proc)
 {
-    gUnk_0203DC6D++;
+    gXmapWindowStep++;
 
-    if (gUnk_0203DC6D == 10)
+    if (gXmapWindowStep == 10)
     {
         Proc_Break(proc);
     }
@@ -452,8 +452,8 @@ void func_fe6_0808B430(struct ProcXmap * proc)
 
         SetOnHBlankA(NULL);
 
-        gUnk_0203DC6C = 0;
-        gUnk_0203DC6D = 0;
+        gXmapFadeTimer = 0;
+        gXmapWindowStep = 0;
 
         Proc_Break(proc);
 
@@ -469,8 +469,8 @@ void func_fe6_0808B430(struct ProcXmap * proc)
 
             SetOnHBlankA(NULL);
 
-            gUnk_0203DC6C = 0;
-            gUnk_0203DC6D = 0;
+            gXmapFadeTimer = 0;
+            gXmapWindowStep = 0;
 
             Proc_Break(proc);
         }

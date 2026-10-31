@@ -11,7 +11,7 @@
 
 // some or those are not so much "unknown" as much as they just don't have a home yet
 
-extern struct Font gFont_Unk_02002770;
+extern struct Font gItemActionMenuFont;
 extern u16 gUiTmScratchA[0x280];
 extern u16 gUiTmScratchB[0x280];
 extern u16 gUiTmScratchC[0x240];

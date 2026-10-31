@@ -74,15 +74,15 @@ enum game_ending_flags {
 };
 extern EWRAM_OVERLAY(0) u8 gGameEndingFlag;
 
-extern EWRAM_OVERLAY(0) u8 unk_02016A3F;
+extern EWRAM_OVERLAY(0) u8 gCreditNameDispMode;
 extern EWRAM_OVERLAY(0) u8 gEndingDoneFlag;
 extern EWRAM_OVERLAY(0) u8 gEndingDispType;
-extern EWRAM_OVERLAY(0) u8 unk_02016A42;
-extern EWRAM_OVERLAY(0) u8 unk_02016A43[0x80];
-extern EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81];
-extern EWRAM_OVERLAY(0) bool unk_02016B44;
-extern EWRAM_OVERLAY(0) struct Text Texts_02016B48[6];
-extern EWRAM_OVERLAY(0) struct Text Texts_02016B78[2];
+extern EWRAM_OVERLAY(0) u8 gCreditNameAnimTimer;
+extern EWRAM_OVERLAY(0) u8 gCreditCharOffsets[0x80];
+extern EWRAM_OVERLAY(0) u8 gCreditCharDelays[0x81];
+extern EWRAM_OVERLAY(0) bool gEndingPInfoIsDyad;
+extern EWRAM_OVERLAY(0) struct Text gEndingPInfoTexts[6];
+extern EWRAM_OVERLAY(0) struct Text gEndingPInfo2Texts[2];
 extern EWRAM_OVERLAY(0) i8 gEndingUid1;
 extern EWRAM_OVERLAY(0) i8 gEndingUid2;
 extern EWRAM_OVERLAY(0) u8 gEndingDisplaySecondUnit;

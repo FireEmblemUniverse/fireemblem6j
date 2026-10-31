@@ -37,11 +37,11 @@
 #include "constants/videoalloc_global.h"
 
 EWRAM_OVERLAY(0) struct Unit *gPrepUnitList[64] = {};
-EWRAM_OVERLAY(0) u8 gUnk_0200E7D4 = 0;
-EWRAM_OVERLAY(0) int gUnk_0200E7D8 = 0;
+EWRAM_OVERLAY(0) u8 gPrepUnitCount = 0;
+EWRAM_OVERLAY(0) int gPrepCursorUnitPid = 0;
 EWRAM_OVERLAY(0) struct Text gPrepScreenText_PickLeftBar = {};
 EWRAM_OVERLAY(0) struct Text gPrepScreenTexts_Units[16] = {};
-EWRAM_OVERLAY(0) struct Text gUnk_0200E864[5] = {};
+EWRAM_OVERLAY(0) struct Text gPrepItemTexts[5] = {};
 EWRAM_OVERLAY(0) struct Text gUnk_0200E88C[2] = {};
 EWRAM_OVERLAY(0) struct Text gPrepScreenText_LeftPersonName = {};
 EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400] = {};
@@ -382,7 +382,7 @@ void func_fe6_08079A94(struct PrepMenuProc *proc)
 		TmFillRect(gBg1Tm, 12, 19, 0);
 
 		PutUiWindowFrame(0, 4, 12, 2 + r7 * 2, UI_WINDOW_REGULAR);
-		PutPrepScreenMenuItems(gUnk_0200E864, 0, gBg0Tm + TM_OFFSET(2, 5), r7);
+		PutPrepScreenMenuItems(gPrepItemTexts, 0, gBg0Tm + TM_OFFSET(2, 5), r7);
 		PutUiEntryHover(1, 5 + proc->disp_idx[proc->submenu_level] * 2, 10);
 	} else {
 		if (GetUnitItemCount(gPrepUnitList[proc->list_num_cur]) > 0)
@@ -394,7 +394,7 @@ void func_fe6_08079A94(struct PrepMenuProc *proc)
 		TmFillRect(gBg1Tm + TM_OFFSET(0, 8), 12, 11, 0);
 
 		PutUiWindowFrame(0, 8, 13, 2 + r7 * 2, UI_WINDOW_REGULAR);
-		PutPrepScreenMenuItems(gUnk_0200E864, proc->submenu_level, gBg0Tm + TM_OFFSET(2, 9), r7);
+		PutPrepScreenMenuItems(gPrepItemTexts, proc->submenu_level, gBg0Tm + TM_OFFSET(2, 9), r7);
 		PutUiEntryHover(1, 9 + proc->disp_idx[proc->submenu_level] * 2, 10);
 	}
 
@@ -427,17 +427,17 @@ void func_fe6_08079C38(struct UnkProc_08678E18 *proc)
 
 	for (i = 0; i < 5; i++)
 	{
-		ClearText(&gUnk_0200E864[proc->unk_34]);
+		ClearText(&gPrepItemTexts[proc->unk_34]);
 
 		PutIcon(gBg0Tm + TM_OFFSET(1, 9 + proc->unk_34 * 2),
 			GetItemIcon(proc->unit->items[proc->unk_34]), TILEREF(0, BGPAL_ICONS));
 
-		Text_SetColor(&gUnk_0200E864[proc->unk_34],
+		Text_SetColor(&gPrepItemTexts[proc->unk_34],
 			IsItemDisplayUsable(proc->unit, proc->unit->items[proc->unk_34])
 				? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
-		Text_SetCursor(&gUnk_0200E864[proc->unk_34], 0);
-		Text_DrawString(&gUnk_0200E864[proc->unk_34], GetItemName(proc->unit->items[proc->unk_34]));
-		PutText(&gUnk_0200E864[proc->unk_34], gBg0Tm + TM_OFFSET(3, 9 + proc->unk_34 * 2));
+		Text_SetCursor(&gPrepItemTexts[proc->unk_34], 0);
+		Text_DrawString(&gPrepItemTexts[proc->unk_34], GetItemName(proc->unit->items[proc->unk_34]));
+		PutText(&gPrepItemTexts[proc->unk_34], gBg0Tm + TM_OFFSET(3, 9 + proc->unk_34 * 2));
 
 		PutNumberOrBlank(gBg0Tm + TM_OFFSET(11, 9 + proc->unk_34 * 2),
 			IsItemDisplayUsable(proc->unit, proc->unit->items[proc->unk_34])
@@ -482,17 +482,17 @@ void func_fe6_08079D84(struct PrepMenuProc *proc)
 
 	for (i = 0; i < count; i++)
 	{
-		ClearText(&gUnk_0200E864[i]);
+		ClearText(&gPrepItemTexts[i]);
 
 		PutIcon(gBg0Tm + TM_OFFSET(1, 9 + i * 2),
 			GetItemIcon(unit->items[i]), TILEREF(0, BGPAL_ICONS));
 
-		Text_SetColor(&gUnk_0200E864[i],
+		Text_SetColor(&gPrepItemTexts[i],
 			IsItemDisplayUsable(unit, unit->items[i])
 				? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
-		Text_SetCursor(&gUnk_0200E864[i], 0);
-		Text_DrawString(&gUnk_0200E864[i], GetItemName(unit->items[i]));
-		PutText(&gUnk_0200E864[i], gBg0Tm + TM_OFFSET(3, 9 + i * 2));
+		Text_SetCursor(&gPrepItemTexts[i], 0);
+		Text_DrawString(&gPrepItemTexts[i], GetItemName(unit->items[i]));
+		PutText(&gPrepItemTexts[i], gBg0Tm + TM_OFFSET(3, 9 + i * 2));
 
 		PutNumberOrBlank(gBg0Tm + TM_OFFSET(11, 9 + i * 2),
 			IsItemDisplayUsable(unit, unit->items[i])
@@ -642,7 +642,7 @@ void func_fe6_0807A1C8(struct PrepMenuProc *proc, bool load_sprites)
 {
 	proc->cur_counter = 0;
 	proc->unk_2D = 0;
-	gUnk_0200E7D4 = 0;
+	gPrepUnitCount = 0;
 
 	FOR_UNITS_FACTION(FACTION_BLUE, unit,
 	{
@@ -661,7 +661,7 @@ void func_fe6_0807A1C8(struct PrepMenuProc *proc, bool load_sprites)
 			unit->flags |= UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_TURN_ENDED;
 		}
 
-		gUnk_0200E7D4++;
+		gPrepUnitCount++;
 		proc->unk_2D++;
 
 		if (load_sprites)
@@ -702,14 +702,14 @@ void PrepMenu_InitScreenExt(struct PrepMenuProc *proc)
 	if (proc->sub2_action == 6)
 		func_fe6_08079928(proc, GetLastStatScreenUnitId(), FALSE);
 	else if (proc->sub2_action == 9)
-		func_fe6_08079928(proc, gUnk_0200E7D8, TRUE);
+		func_fe6_08079928(proc, gPrepCursorUnitPid, TRUE);
 
 	TmFill(gBg0Tm, 0);
 	TmFill(gBg1Tm, 0);
 	TmFill(gBg2Tm, 0);
 
 	for (i = 0; i < 5; i++)
-		InitTextDb(&gUnk_0200E864[i], 7);
+		InitTextDb(&gPrepItemTexts[i], 7);
 
 	InitText(&gUnk_0200E88C[0], 7);
 	InitText(&gUnk_0200E88C[1], 7);
@@ -854,7 +854,7 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 {
 	int i;
 
-	gUnk_0200E7D8 = 0;
+	gPrepCursorUnitPid = 0;
 
 	proc->unit1 = 0;
 	proc->unit2 = 0;
@@ -1132,7 +1132,7 @@ void PrepMenu_Loop(struct PrepMenuProc *proc)
 					proc->sub2_action = 6;
 					Proc_Goto(proc, 0x3);
 				} else if (gKeySt->pressed & KEY_BUTTON_SELECT && proc->submenu_level != 1) {
-					gUnk_0200E7D8 = UNIT_PID(gPrepUnitList[proc->list_num_cur]);
+					gPrepCursorUnitPid = UNIT_PID(gPrepUnitList[proc->list_num_cur]);
 
 					PlaySe(0x6A);
 					proc->sub2_action = 9;
