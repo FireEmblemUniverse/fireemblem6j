@@ -118,7 +118,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@ $(GBAGFX) $< $@ $(GFX_OPTS)
+	@ $(GBAGFX) $< $@
 
 %.8bpp: %.png
 	@echo "[GEN]	$@"
@@ -150,19 +150,25 @@ CLEAN_FILES += $(TSA_FILES:%.tsa=%.tsa.lz)
 
 MAPASSET_DIR := data/mapassets
 
+MAPCHIPS := $(PYTHON) tools/scripts/mapchips.py
+
 # tile sheets are 32 tiles wide; these end on a partial row
-$(MAPASSET_DIR)/MapAsset14_Img.4bpp: GFX_OPTS := -num_tiles 508
-$(MAPASSET_DIR)/MapAsset13_Img.4bpp: GFX_OPTS := -num_tiles 914
-$(MAPASSET_DIR)/MapAsset12_Img.4bpp: GFX_OPTS := -num_tiles 787
-$(MAPASSET_DIR)/MapAsset09_Img.4bpp: GFX_OPTS := -num_tiles 838
-$(MAPASSET_DIR)/MapAsset08_Img.4bpp: GFX_OPTS := -num_tiles 958
-$(MAPASSET_DIR)/MapAsset02_Img.4bpp: GFX_OPTS := -num_tiles 828
+$(MAPASSET_DIR)/MapAsset14_Img.4bpp: NUM_TILES := 508
+$(MAPASSET_DIR)/MapAsset13_Img.4bpp: NUM_TILES := 914
+$(MAPASSET_DIR)/MapAsset12_Img.4bpp: NUM_TILES := 787
+$(MAPASSET_DIR)/MapAsset09_Img.4bpp: NUM_TILES := 838
+$(MAPASSET_DIR)/MapAsset08_Img.4bpp: NUM_TILES := 958
+$(MAPASSET_DIR)/MapAsset02_Img.4bpp: NUM_TILES := 828
+
+MAPASSET_SHEETS := $(patsubst %.png,%.4bpp,$(wildcard $(MAPASSET_DIR)/MapAsset*_Img*.png))
+
+$(MAPASSET_SHEETS): %.4bpp: %.png
+	@echo "[GEN]	$@"
+	@$(MAPCHIPS) sheet $< $@ $(NUM_TILES)
 
 CLEAN_FILES += $(patsubst %.pal,%.gbapal,$(wildcard $(MAPASSET_DIR)/*.pal))
 
 # chip images reference tiles in these sheets
-MAPCHIPS := $(PYTHON) tools/scripts/mapchips.py
-
 mapasset-sheets = $(MAPASSET_DIR)/MapAsset$(1)_TsaConf.tsa: $(addprefix $(MAPASSET_DIR)/MapAsset,$(addsuffix .4bpp,$(2)))
 
 $(eval $(call mapasset-sheets,01,01_Img1 01_Img2))

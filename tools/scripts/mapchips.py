@@ -10,9 +10,14 @@ The chip sources are:
   - a hints file: the filler entry used for empty chips, and the tile
     choices for chips where several sheet tiles match the same pixels
 
+Tile sheets are 8-bit indexed PNGs in the same palette * 16 + color
+encoding, so each tile can be shown in the palette it is used with.
+Only the low four bits of each pixel reach the 4bpp output.
+
 Usage:
   mapchips.py build   CHIPS.png TERRAIN.txt HINTS.txt OUT.tsa SHEET.4bpp [SHEET2.4bpp]
   mapchips.py extract IN.tsa PAL.pal CHIPS.png TERRAIN.txt HINTS.txt SHEET.4bpp [SHEET2.4bpp]
+  mapchips.py sheet   SHEET.png OUT.4bpp [NUM_TILES]
 """
 
 import struct
@@ -198,8 +203,27 @@ def extract(tsa_path, pal_path, chips_path, terrain_path, hints_path, sheet_path
                 f.write('%03x %04x %04x %04x %04x\n' % ((m,) + tuple(ents[m * 4:m * 4 + 4])))
 
 
+def sheet(png_path, out_path, num_tiles):
+    img = Image.open(png_path)
+    if img.mode != 'P' or img.size[0] != SHEET_W * 8:
+        sys.exit('%s: expected an indexed PNG %d pixels wide' % (png_path, SHEET_W * 8))
+    px = img.load()
+    rows = img.size[1] // 8
+    if num_tiles is None:
+        num_tiles = rows * SHEET_W
+    out = bytearray()
+    for j in range(num_tiles):
+        ox, oy = j % SHEET_W * 8, j // SHEET_W * 8
+        for y in range(8):
+            for x in range(0, 8, 2):
+                out.append(px[ox + x, oy + y] & 15 | (px[ox + x + 1, oy + y] & 15) << 4)
+    open(out_path, 'wb').write(out)
+
+
 def main(argv):
-    if len(argv) >= 7 and argv[1] == 'build':
+    if len(argv) in (4, 5) and argv[1] == 'sheet':
+        sheet(argv[2], argv[3], int(argv[4]) if len(argv) == 5 else None)
+    elif len(argv) >= 7 and argv[1] == 'build':
         build(argv[2], argv[3], argv[4], argv[5], argv[6:])
     elif len(argv) >= 8 and argv[1] == 'extract':
         extract(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7:])
