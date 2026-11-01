@@ -18,7 +18,7 @@
 
 #define DOWNCONVERT_BIT_DEPTH(x) ((x) / 8)
 
-void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
@@ -47,7 +47,7 @@ void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles,
 	}
 }
 
-void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
@@ -81,7 +81,7 @@ void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles,
 	}
 }
 
-void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
@@ -111,7 +111,7 @@ void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles,
 	}
 }
 
-void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
@@ -140,7 +140,7 @@ void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, i
 	}
 }
 
-void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
@@ -174,7 +174,7 @@ void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, i
 	}
 }
 
-void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
+static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int tilesWidth, bool invertColors)
 {
 	int tilesX = 0;
 	int tilesY = 0;
