@@ -18,6 +18,10 @@ Usage:
   mapchips.py build   CHIPS.png TERRAIN.txt HINTS.txt OUT.tsa SHEET.4bpp [SHEET2.4bpp]
   mapchips.py extract IN.tsa PAL.pal CHIPS.png TERRAIN.txt HINTS.txt SHEET.4bpp [SHEET2.4bpp]
   mapchips.py sheet   SHEET.png OUT.4bpp [NUM_TILES]
+  mapchips.py map     MAP.tsa CHIPS.png OUT.png
+
+The map mode renders a decompressed chapter map with a metatile image,
+for previewing edits.
 """
 
 import struct
@@ -220,8 +224,23 @@ def sheet(png_path, out_path, num_tiles):
     open(out_path, 'wb').write(out)
 
 
+def render_map(map_path, chips_path, out_path):
+    data = open(map_path, 'rb').read()
+    w, h = data[0], data[1]
+    cells = struct.unpack('<%dH' % (w * h), data[2:2 + w * h * 2])
+    chips = open_chips(chips_path).convert('RGB')
+    out = Image.new('RGB', (w * 16, h * 16))
+    for i, v in enumerate(cells):
+        m = v >> 2
+        cx, cy = m % GRID * 16, m // GRID * 16
+        out.paste(chips.crop((cx, cy, cx + 16, cy + 16)), (i % w * 16, i // w * 16))
+    out.save(out_path)
+
+
 def main(argv):
-    if len(argv) in (4, 5) and argv[1] == 'sheet':
+    if len(argv) == 5 and argv[1] == 'map':
+        render_map(argv[2], argv[3], argv[4])
+    elif len(argv) in (4, 5) and argv[1] == 'sheet':
         sheet(argv[2], argv[3], int(argv[4]) if len(argv) == 5 else None)
     elif len(argv) >= 7 and argv[1] == 'build':
         build(argv[2], argv[3], argv[4], argv[5], argv[6:])
