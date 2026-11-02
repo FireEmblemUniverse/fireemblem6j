@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-"""Convert between a chapter tileset's TsaConf and editable chip sources.
+"""Convert between a chapter tileset's TsaConf and editable sources.
 
-A TsaConf holds 1024 metatiles ("chips"), each four 8x8 tile references
-(tile index, flips, palette), followed by a 1024-byte terrain table.
-The chip sources are:
-  - a 512x512 8-bit indexed PNG with one chip per 16x16 cell, where each
-    pixel's index is palette * 16 + color
+A TsaConf holds 1024 metatiles, each four 8x8 tile references (tile
+index, flips, palette), followed by a 1024-byte terrain table.
+The sources are:
+  - a 512x512 8-bit indexed PNG with one metatile per 16x16 cell, where
+    each pixel's index is palette * 16 + color
   - a terrain text file, 32 rows of 32 hex bytes
-  - a hints file: the filler entry used for empty chips, and the tile
-    choices for chips where several sheet tiles match the same pixels
+  - a hints file: the filler entry used for empty metatiles, and the tile
+    choices for metatiles where several sheet tiles match the same pixels
 
 Tile sheets are 8-bit indexed PNGs in the same palette * 16 + color
 encoding, so each tile can be shown in the palette it is used with.
 Only the low four bits of each pixel reach the 4bpp output.
 
 Usage:
-  mapchips.py build   CHIPS.png TERRAIN.txt HINTS.txt OUT.tsa SHEET.4bpp [SHEET2.4bpp]
-  mapchips.py extract IN.tsa PAL.pal CHIPS.png TERRAIN.txt HINTS.txt SHEET.4bpp [SHEET2.4bpp]
-  mapchips.py sheet   SHEET.png OUT.4bpp [NUM_TILES]
-  mapchips.py map     MAP.tsa CHIPS.png OUT.png
+  tileset.py build   METATILES.png TERRAIN.txt HINTS.txt OUT.tsa SHEET.4bpp [SHEET2.4bpp]
+  tileset.py extract IN.tsa PAL.pal METATILES.png TERRAIN.txt HINTS.txt SHEET.4bpp [SHEET2.4bpp]
+  tileset.py sheet   SHEET.png OUT.4bpp [NUM_TILES]
+  tileset.py map     MAP.tsa METATILES.png OUT.png
 
 The map mode renders a decompressed chapter map with a metatile image,
 for previewing edits.
@@ -30,7 +30,7 @@ from collections import defaultdict
 
 from PIL import Image
 
-CHIPS = 1024
+METATILES = 1024
 GRID = 32
 SHEET_W = 32
 QUAD_OFF = (0, 1, SHEET_W, SHEET_W + 1)
@@ -48,7 +48,7 @@ def read_sheet(paths):
                 px += [b & 15, b >> 4]
             tiles.append(tuple(px))
         slots += tiles + [None] * (512 - len(tiles))
-    return slots[:CHIPS]
+    return slots[:METATILES]
 
 
 def flip(tile, h, v):
@@ -87,10 +87,10 @@ def read_hints(path):
     return filler, picks
 
 
-def chip_quads(img):
-    """Yield (pal, pattern) for each 8x8 quadrant of each chip, chip-major."""
+def metatile_quads(img):
+    """Yield (pal, pattern) for each 8x8 quadrant of each metatile, metatile-major."""
     px = img.load()
-    for m in range(CHIPS):
+    for m in range(METATILES):
         cx, cy = m % GRID * 16, m // GRID * 16
         quads = []
         for k in range(4):
@@ -98,13 +98,13 @@ def chip_quads(img):
             vals = [px[ox + x, oy + y] for y in range(8) for x in range(8)]
             pals = set(v >> 4 for v in vals)
             if len(pals) != 1:
-                sys.exit('chip %03x quadrant %d mixes palettes' % (m, k))
+                sys.exit('metatile %03x quadrant %d mixes palettes' % (m, k))
             quads.append((pals.pop(), tuple(v & 15 for v in vals)))
         yield m, quads
 
 
 def default_pick(cands, k):
-    """Prefer a 2x2 sheet block holding the whole chip, else the lowest tile."""
+    """Prefer a 2x2 sheet block holding the whole metatile, else the lowest tile."""
     blocks = set(j for j, h, v in cands[0] if (h, v) == (0, 0))
     for kk in range(1, 4):
         blocks &= set(j - QUAD_OFF[kk] for j, h, v in cands[kk] if (h, v) == (0, 0))
@@ -131,7 +131,7 @@ def convert(img, sheet, filler, picks):
         return flip(sheet[j], h, v) == pattern
 
     out = []
-    for m, quads in chip_quads(img):
+    for m, quads in metatile_quads(img):
         hint = picks.get(m)
         if hint and all(renders(hint[k], *quads[k]) for k in range(4)):
             out += hint
@@ -142,41 +142,41 @@ def convert(img, sheet, filler, picks):
         cands = [look.get(pattern) for pal, pattern in quads]
         for k in range(4):
             if not cands[k]:
-                sys.exit('chip %03x quadrant %d: no sheet tile matches' % (m, k))
+                sys.exit('metatile %03x quadrant %d: no sheet tile matches' % (m, k))
         for k in range(4):
             j, h, v = default_pick(cands, k)
             out.append(entry(j, h, v, quads[k][0]))
     return out
 
 
-def open_chips(path):
+def open_metatiles(path):
     img = Image.open(path)
     if img.mode != 'P' or img.size != (GRID * 16, GRID * 16):
         sys.exit('%s: expected a 512x512 indexed PNG' % path)
     return img
 
 
-def build(chips_path, terrain_path, hints_path, out_path, sheet_paths):
+def build(metatiles_path, terrain_path, hints_path, out_path, sheet_paths):
     filler, picks = read_hints(hints_path)
-    ents = convert(open_chips(chips_path), read_sheet(sheet_paths), filler, picks)
+    ents = convert(open_metatiles(metatiles_path), read_sheet(sheet_paths), filler, picks)
     terrain = bytes(int(w, 16) for line in open(terrain_path) for w in line.split())
-    if len(terrain) != CHIPS:
-        sys.exit('%s: expected %d terrain bytes' % (terrain_path, CHIPS))
+    if len(terrain) != METATILES:
+        sys.exit('%s: expected %d terrain bytes' % (terrain_path, METATILES))
     with open(out_path, 'wb') as f:
-        f.write(struct.pack('<%dH' % (CHIPS * 4), *ents))
+        f.write(struct.pack('<%dH' % (METATILES * 4), *ents))
         f.write(terrain)
 
 
-def extract(tsa_path, pal_path, chips_path, terrain_path, hints_path, sheet_paths):
+def extract(tsa_path, pal_path, metatiles_path, terrain_path, hints_path, sheet_paths):
     sheet = read_sheet(sheet_paths)
     raw = open(tsa_path, 'rb').read()
-    ents = list(struct.unpack('<%dH' % (CHIPS * 4), raw[:CHIPS * 8]))
-    terrain = raw[CHIPS * 8:]
+    ents = list(struct.unpack('<%dH' % (METATILES * 4), raw[:METATILES * 8]))
+    terrain = raw[METATILES * 8:]
 
     img = Image.new('P', (GRID * 16, GRID * 16))
     img.putpalette([c for col in read_jasc(pal_path)[:80] for c in col])
     px = img.load()
-    for m in range(CHIPS):
+    for m in range(METATILES):
         cx, cy = m % GRID * 16, m // GRID * 16
         for k in range(4):
             j, h, v, p = split_entry(ents[m * 4 + k])
@@ -186,14 +186,14 @@ def extract(tsa_path, pal_path, chips_path, terrain_path, hints_path, sheet_path
             for y in range(8):
                 for x in range(8):
                     px[ox + x, oy + y] = p * 16 + tile[y * 8 + x]
-    img.save(chips_path)
+    img.save(metatiles_path)
 
     with open(terrain_path, 'w') as f:
         for r in range(GRID):
             f.write(' '.join('%02x' % b for b in terrain[r * GRID:(r + 1) * GRID]) + '\n')
 
     uniform = defaultdict(int)
-    for m in range(CHIPS):
+    for m in range(METATILES):
         e = ents[m * 4:m * 4 + 4]
         if len(set(e)) == 1:
             uniform[e[0]] += 1
@@ -202,7 +202,7 @@ def extract(tsa_path, pal_path, chips_path, terrain_path, hints_path, sheet_path
     with open(hints_path, 'w') as f:
         if filler is not None:
             f.write('filler %04x\n' % filler)
-        for m in range(CHIPS):
+        for m in range(METATILES):
             if rebuilt[m * 4:m * 4 + 4] != ents[m * 4:m * 4 + 4]:
                 f.write('%03x %04x %04x %04x %04x\n' % ((m,) + tuple(ents[m * 4:m * 4 + 4])))
 
@@ -224,16 +224,16 @@ def sheet(png_path, out_path, num_tiles):
     open(out_path, 'wb').write(out)
 
 
-def render_map(map_path, chips_path, out_path):
+def render_map(map_path, metatiles_path, out_path):
     data = open(map_path, 'rb').read()
     w, h = data[0], data[1]
     cells = struct.unpack('<%dH' % (w * h), data[2:2 + w * h * 2])
-    chips = open_chips(chips_path).convert('RGB')
+    metatiles = open_metatiles(metatiles_path).convert('RGB')
     out = Image.new('RGB', (w * 16, h * 16))
     for i, v in enumerate(cells):
         m = v >> 2
         cx, cy = m % GRID * 16, m // GRID * 16
-        out.paste(chips.crop((cx, cy, cx + 16, cy + 16)), (i % w * 16, i // w * 16))
+        out.paste(metatiles.crop((cx, cy, cx + 16, cy + 16)), (i % w * 16, i // w * 16))
     out.save(out_path)
 
 
