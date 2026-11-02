@@ -18,10 +18,11 @@ Usage:
   tileset.py build   METATILES.png TERRAIN.txt HINTS.txt OUT.tsa SHEET.4bpp [SHEET2.4bpp]
   tileset.py extract IN.tsa PAL.pal METATILES.png TERRAIN.txt HINTS.txt SHEET.4bpp [SHEET2.4bpp]
   tileset.py sheet   SHEET.png OUT.4bpp [NUM_TILES]
-  tileset.py map     MAP.tsa METATILES.png OUT.png
+  tileset.py map     MAP.tsa METATILES.png OUT.png [PAL.pal]
 
 The map mode renders a decompressed chapter map with a metatile image,
-for previewing edits.
+for previewing edits. Pass the chapter's palette when it is not the one
+the metatile image carries.
 """
 
 import struct
@@ -224,11 +225,14 @@ def sheet(png_path, out_path, num_tiles):
     open(out_path, 'wb').write(out)
 
 
-def render_map(map_path, metatiles_path, out_path):
+def render_map(map_path, metatiles_path, out_path, pal_path=None):
     data = open(map_path, 'rb').read()
     w, h = data[0], data[1]
     cells = struct.unpack('<%dH' % (w * h), data[2:2 + w * h * 2])
-    metatiles = open_metatiles(metatiles_path).convert('RGB')
+    metatiles = open_metatiles(metatiles_path)
+    if pal_path:
+        metatiles.putpalette([c for col in read_jasc(pal_path)[:80] for c in col])
+    metatiles = metatiles.convert('RGB')
     out = Image.new('RGB', (w * 16, h * 16))
     for i, v in enumerate(cells):
         m = v >> 2
@@ -238,8 +242,8 @@ def render_map(map_path, metatiles_path, out_path):
 
 
 def main(argv):
-    if len(argv) == 5 and argv[1] == 'map':
-        render_map(argv[2], argv[3], argv[4])
+    if len(argv) in (5, 6) and argv[1] == 'map':
+        render_map(argv[2], argv[3], argv[4], argv[5] if len(argv) == 6 else None)
     elif len(argv) in (4, 5) and argv[1] == 'sheet':
         sheet(argv[2], argv[3], int(argv[4]) if len(argv) == 5 else None)
     elif len(argv) >= 7 and argv[1] == 'build':

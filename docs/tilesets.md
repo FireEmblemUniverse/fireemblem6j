@@ -110,6 +110,14 @@ edits before a build. Find the map and tileset for a chapter in
 `src/chapterinfo_data.c`: `asset_map` names the map and `asset_tileset` names
 the TsaConf, and `MapAssetXX_TsaConf` goes with `MapAssetXX_Metatiles.png`.
 
+Chapters on an alternate palette, such as 21x on `MapAsset04d_Pal`, need the
+palette passed as a fourth argument, since the metatile PNG carries only the
+tileset's base palette:
+
+```
+python3 tools/scripts/tileset.py map data/mapassets/MapTsa_Ch21x.tsa data/mapassets/MapAsset04_Metatiles.png ch21x.png data/mapassets/MapAsset04d_Pal.pal
+```
+
 Map changes, such as a village being visited or a door opening, are not in the
 map file. They are rectangles of replacement metatiles in
 `src/chapterinfo/map_changes.c`, applied by `ApplyMapChange` in `src/trap.c`.
