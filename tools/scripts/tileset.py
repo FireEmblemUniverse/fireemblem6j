@@ -74,6 +74,31 @@ def read_jasc(path):
     return [tuple(int(x) for x in line.split()) for line in lines[3:3 + int(lines[2])]]
 
 
+def png_palette(cols):
+    """Flatten colours for PIL, nudging repeats so every index has a unique
+    RGB value. Editors that paint by colour then can't land on the wrong
+    palette bank. The build never reads these values."""
+    seen = set()
+    out = []
+    for col in cols:
+        pick = tuple(col)
+        step = 1
+        while pick in seen:
+            for k in range(3):
+                for d in (step, -step):
+                    cand = list(col)
+                    cand[k] += d
+                    if 0 <= cand[k] <= 255 and tuple(cand) not in seen:
+                        pick = tuple(cand)
+                        break
+                if pick not in seen:
+                    break
+            step += 1
+        seen.add(pick)
+        out += pick
+    return out
+
+
 def read_hints(path):
     filler = None
     picks = {}
@@ -175,7 +200,7 @@ def extract(tsa_path, pal_path, metatiles_path, terrain_path, hints_path, sheet_
     terrain = raw[METATILES * 8:]
 
     img = Image.new('P', (GRID * 16, GRID * 16))
-    img.putpalette([c for col in read_jasc(pal_path)[:80] for c in col])
+    img.putpalette(png_palette(read_jasc(pal_path)[:80]))
     px = img.load()
     for m in range(METATILES):
         cx, cy = m % GRID * 16, m // GRID * 16
@@ -231,7 +256,7 @@ def render_map(map_path, metatiles_path, out_path, pal_path=None):
     cells = struct.unpack('<%dH' % (w * h), data[2:2 + w * h * 2])
     metatiles = open_metatiles(metatiles_path)
     if pal_path:
-        metatiles.putpalette([c for col in read_jasc(pal_path)[:80] for c in col])
+        metatiles.putpalette(png_palette(read_jasc(pal_path)[:80]))
     metatiles = metatiles.convert('RGB')
     out = Image.new('RGB', (w * 16, h * 16))
     for i, v in enumerate(cells):

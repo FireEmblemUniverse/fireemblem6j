@@ -38,12 +38,34 @@ Each tileset `XX` has these sources:
 | `MapAssetXX_Hints.txt` | Tile picks needed to rebuild the vanilla ROM byte for byte | Nothing; see below |
 
 Both PNG kinds are 8-bit indexed with the same pixel encoding: pixel index is
-`palette * 16 + colour`. So a pixel with index 35 is colour 3 of bank 2. Keep
-images in indexed mode when editing, and pick colours from the image's own
-palette rather than painting RGB values, otherwise the editor may remap indices.
+`palette * 16 + colour`. So a pixel with index 35 is colour 3 of bank 2. The
+build reads only the indices. The RGB values in the PNG are for display, and
+where two banks share a colour the PNG's copy is nudged by one so that every
+index has its own RGB value.
 
 Colour 0 of every bank is transparent in-game. It appears in the PNGs as
 whatever RGB the palette file gives it, usually a solid dark colour.
+
+### Editing in GIMP or Aseprite
+
+The images must stay indexed, with their palette untouched. That gives these
+rules for a general-purpose editor:
+
+- Never convert to RGB and back. The editor would rebuild the palette and the
+  indices would no longer encode banks.
+- Pick colours from the image or its colormap, not from an RGB picker. Since
+  every palette entry has a unique RGB value, a colour picked from the image
+  maps back to the right index.
+- Copy and paste within the same image, or between images of the same tileset,
+  is fine. Pasting from another tileset goes through RGB and will be remapped
+  to the nearest colours, which is rarely what you want.
+- Export as PNG with the default options. GIMP keeps the colormap as is;
+  Aseprite's indexed mode paints by index directly.
+- Don't let the editor add transparency, drop unused palette entries, or
+  reduce the colour count.
+
+Usenti and other GBA-specific editors work on indices natively and need no
+special care.
 
 ## Editing metatiles
 
