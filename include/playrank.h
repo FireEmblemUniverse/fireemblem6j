@@ -231,7 +231,6 @@ void PlayRankTrialOBJ_Init(ProcPtr proc);
 void PlayRankTrialOBJ_Loop(ProcPtr proc);
 void PlayRankTrail_Init(ProcPtr proc);
 void PlayRankTrail_Loop(ProcPtr proc);
-// NewPlayRank_unused
 void NewPlayRankTrail(ProcPtr parent);
 
 extern CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreen;
@@ -310,7 +309,6 @@ extern CONST_DATA u8 TotalRankA_Ref1[6][5];
 extern CONST_DATA u16 TotalRankA_Ref2[6];
 extern CONST_DATA u8 TotalRankB_Ref1[6];
 extern CONST_DATA u16 TotalRankB_Ref2[6];
-// extern CONST_DATA ??? BgConfig_PlayRank
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrailGradeSeq[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankMissionFlash[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrialOBJ[];

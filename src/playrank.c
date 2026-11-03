@@ -26,7 +26,6 @@
 
 #include "playrank.h"
 
-// 0x868B1B0
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreen = {
 	.adjacent_down =  &HelpInfo_StatusScreenPlayerName,
 	.adjacent_right = &HelpInfo_StatusScreenTurn,
@@ -35,7 +34,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreen = {
 	.msg = MSG_6A1,
 };
 
-// 0x868B1CC
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenTurn = {
 	.adjacent_down =  &HelpInfo_StatusScreenGold,
 	.adjacent_left =  &HelpInfo_StatusScreen,
@@ -44,7 +42,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenTurn = {
 	.msg = MSG_69D,
 };
 
-// 0x868B1E8
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenGold = {
 	.adjacent_up =    &HelpInfo_StatusScreenTurn,
 	.adjacent_down =  &HelpInfo_StatusScreenPlayerLeader,
@@ -54,7 +51,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenGold = {
 	.msg = MSG_6A2,
 };
 
-// 0x868B204
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerName = {
 	.adjacent_up =    &HelpInfo_StatusScreen,
 	.adjacent_down =  &HelpInfo_StatusScreenEnemyName,
@@ -64,7 +60,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerName = {
 	.msg = MSG_69E,
 };
 
-// 0x868B220
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyName = {
 	.adjacent_up =    &HelpInfo_StatusScreenPlayerName,
 	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
@@ -74,7 +69,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyName = {
 	.msg = MSG_69E,
 };
 
-// 0x868B23C
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerUnits = {
 	.adjacent_up =    &HelpInfo_StatusScreenGold,
 	.adjacent_down =  &HelpInfo_StatusScreenEnemyUnits,
@@ -85,7 +79,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerUnits = {
 	.msg = MSG_69F,
 };
 
-// 0x868B258
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyUnits = {
 	.adjacent_up =    &HelpInfo_StatusScreenPlayerUnits,
 	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
@@ -96,7 +89,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyUnits = {
 	.msg = MSG_69F,
 };
 
-// 0x868B274
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerLeader = {
 	.adjacent_up =    &HelpInfo_StatusScreenGold,
 	.adjacent_down =  &HelpInfo_StatusScreenEnemyLeader,
@@ -106,7 +98,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerLeader = {
 	.msg = MSG_6A0,
 };
 
-// 0x868B290
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyLeader = {
 	.adjacent_up =    &HelpInfo_StatusScreenPlayerLeader,
 	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
@@ -116,7 +107,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyLeader = {
 	.msg = MSG_6A0,
 };
 
-// 0x868B2AC
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayTime = {
 	.adjacent_up =    &HelpInfo_StatusScreenEnemyLeader,
 	.adjacent_left =  &HelpInfo_StatusScreenEnemyUnits,
@@ -125,7 +115,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayTime = {
 	.msg = MSG_69C,
 };
 
-// 0x868B2C8
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMap = {
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayerName,
 	.adjacent_right = &HelpInfo_StatusScreenExtraMapTurn,
@@ -134,7 +123,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMap = {
 	.msg = MSG_6A1,
 };
 
-// 0x868B2E4
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapTurn = {
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayerLeader,
 	.adjacent_left =  &HelpInfo_StatusScreenExtraMap,
@@ -143,7 +131,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapTurn = {
 	.msg = MSG_69D,
 };
 
-// 0x868B300
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerName = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMap,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyName,
@@ -153,7 +140,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerName = {
 	.msg = MSG_69E,
 };
 
-// 0x868B31C
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyName = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerName,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
@@ -163,7 +149,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyName = {
 	.msg = MSG_69E,
 };
 
-// 0x868B338
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerUnits = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapTurn,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyUnits,
@@ -174,7 +159,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerUnits = {
 	.msg = MSG_69F,
 };
 
-// 0x868B354
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyUnits = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerUnits,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
@@ -185,7 +169,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyUnits = {
 	.msg = MSG_69F,
 };
 
-// 0x868B370
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerLeader = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapTurn,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyLeader,
@@ -195,7 +178,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerLeader = {
 	.msg = MSG_6A0,
 };
 
-// 0x868B38C
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyLeader = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerLeader,
 	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
@@ -205,7 +187,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyLeader = {
 	.msg = MSG_6A0,
 };
 
-// 0x868B3A8
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayTime = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMapEnemyLeader,
 	.adjacent_left =  &HelpInfo_StatusScreenExtraMapEnemyUnits,
@@ -214,7 +195,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayTime = {
 	.msg = MSG_69C,
 };
 
-// 0x868B3C4
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapInfo = {
 	.adjacent_right = &HelpInfo_StatusScreenExtraMapInfoTurn,
 	.x = 0x08,
@@ -222,7 +202,6 @@ CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapInfo = {
 	.msg = MSG_6A1,
 };
 
-// 0x868B3E0
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapInfoTurn = {
 	.adjacent_left =  &HelpInfo_StatusScreenExtraMapInfo,
 	.x = 0xA5,
@@ -507,7 +486,7 @@ void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 		proc->timer1 = 8;
 
 		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc; // WTF
+		bug_st = (struct PlayRankSt *)proc;
 
 		if (st->disp_grades[bug_st->step] < st->ranks[bug_st->step]) {
 			Proc_Break(proc);
@@ -538,7 +517,7 @@ void PlayRankGradeFlip_Shrink(struct ProcPlayRankSparkle *proc)
 		proc->timer1 = 0x10;
 
 		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc; // WTF
+		bug_st = (struct PlayRankSt *)proc;
 
 		tmp = st->disp_grades[bug_st->step];
 
@@ -593,7 +572,6 @@ void PlayRankGradeSeq_StartFlip(ProcPtr p)
 	struct ProcPlayRankSparkle *proc = SpawnProcLocking(ProcScr_PlayRankGradeFlip, p);
 	struct PlayRankSt *bug_st = (void *)proc;
 
-	// ?
 	bug_st->step = gpPlayRankSt->step;
 	bug_st->unk_32 = gpPlayRankSt->xs[gpPlayRankSt->step];
 	bug_st->unk_34 = gpPlayRankSt->ys[gpPlayRankSt->step];
@@ -715,7 +693,7 @@ void PlayRankMissionObj_Loop(struct ProcPlayRankMissionObj *proc)
 
 	y= 0x100 - gPlayRankBg1Offset;
 	if (gPlayRankMissonObjSelect == 0) {
-		y = OAM1_X(y + 0x80); // ?
+		y = OAM1_X(y + 0x80);
 
 		PutOamHi(0xA2, y, Sprite_PlayRankTrial_Time, OAM2_PAL(BGPAL_PLAYRANK_TIME) + OBCHR_PLAYRANK_84);
 	}
@@ -1388,7 +1366,6 @@ u8 PlayRankGetter_Tactics(void)
 		ranks[3] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_D];
 	}
 
-	// WTF
 	i = PALYRANK_D;
 	_ranks = ranks;
 	while (1) {
