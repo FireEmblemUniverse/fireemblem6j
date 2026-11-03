@@ -323,7 +323,7 @@ void SetupPlayRanks(void)
 {
 	int i;
 
-	for (i = 0; i < 7; i++) {
+	for (i = 0; i < PLAYRANK_MAX; i++) {
 		gpPlayRankSt->xs[i] = gTotalPlayRankConf1[i].x;
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf1[i].y;
 	}
@@ -333,7 +333,7 @@ void SetupXmapPlayRanks(void)
 {
 	int i;
 
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < PLAYRANK_XMAP_MAX; i++) {
 		gpPlayRankSt->xs[i] = gTotalPlayRankConf2[i].x;
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf2[i].y;
 	}
@@ -489,7 +489,7 @@ void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 			return;
 		}
 
-		if (bug_st->step <= 5 && gpPlayRankSt->disp_grades[bug_st->step] > 3)
+		if (bug_st->step < PLAYRANK_TOTAL && gpPlayRankSt->disp_grades[bug_st->step] >= PLAYRANK_GRADE_A)
 			StartPlayRankSparkle(bug_st->step, proc->x, proc->y);
 
 		Proc_Goto(proc, 1);
@@ -513,7 +513,7 @@ void PlayRankGradeFlip_Shrink(struct ProcPlayRankSparkle *proc)
 
 		grade = gpPlayRankSt->disp_grades[bug_st->step];
 
-		if (grade <= 5) {
+		if (grade < PLAYRANK_GRADE_SS) {
 			SetupPlayRankDispUnit(bug_st->step, grade + 1);
 			Proc_Goto(proc, 0);
 		}
@@ -555,7 +555,7 @@ void PlayRankGradeSeq_ResetAffine(void)
 
 void PlayRankGradeSeq_CheckLastRow(struct ProcPlayRankGradeSeq *proc)
 {
-	if (gpPlayRankSt->step <= 4)
+	if (gpPlayRankSt->step < PLAYRANK_POWER)
 		Proc_Goto(proc, 2);
 }
 
@@ -571,7 +571,7 @@ void PlayRankGradeSeq_StartFlip(ProcPtr p)
 
 void PlayRankGradeSeq_CheckDone(struct ProcPlayRankGradeSeq *proc)
 {
-	if (gpPlayRankSt->step > 5)
+	if (gpPlayRankSt->step >= PLAYRANK_TOTAL)
 		Proc_Goto(proc, 3);
 }
 
@@ -603,18 +603,18 @@ void PlayRankGradeDisp_PutSprites(void)
 		oam0 = gpPlayRankSt->ys[i] << 3;
 
 		if (i == gpPlayRankSt->step) {
-			oam1 |= 0x3E00;
-			oam0 |= 0x100;
+			oam1 |= OAM1_AFFINE_ID(0x1F);
+			oam0 |= OAM0_AFFINE_ENABLE;
 		}
 
-		oam2 = gpPlayRankSt->disp_grades[i] * 2 + 0xC0;
+		oam2 = gpPlayRankSt->disp_grades[i] * 2 + OBCHR_PLAYRANK_GRADES;
 
 		PutSpriteExt(
 			4,
 			oam1,
 			oam0,
 			gpPlayRankSt->objs[i],
-			(((i + 4) & 0xF) << 0xC) | oam2
+			OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2
 		);
 	}
 }
@@ -710,7 +710,7 @@ void PlayRankMissionObj_Loop(struct ProcPlayRankMissionObj *proc)
 			oam1,
 			oam0,
 			ref[i].size != 0 ? Sprite_PlayRankMissionGlyphWide : Sprite_PlayRankMissionGlyph,
-			ref[i].chr * 2 + 0x3180
+			OAM2_PAL(OBPAL_PLAYRANK_MISSION) + OBCHR_PLAYRANK_MISSION + ref[i].chr * 2
 		);
 
 		val = ref[i].len + val;
@@ -766,7 +766,7 @@ void PlayRank_InitTexts(void)
 {
 	int i;
 
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < PLAYRANK_TEXT_8; i++)
 		InitText(&gpPlayRankSt->texts[i], 0xF);
 
 	InitText(&gpPlayRankSt->texts[PLAYRANK_TEXT_8], 0x3);
@@ -917,7 +917,7 @@ void PutPlayRankTexts(int line)
 	gPlayRanks[PLAYRANK_ASSET] = gpPlayRankSt->ranks[PLAYRANK_ASSET] = PlayRankGetter_Asset();
 	gPlayRanks[PLAYRANK_POWER] = gpPlayRankSt->ranks[PLAYRANK_POWER] = PlayRankGetter_Power();
 
-	for (i = 0; i < (PLAYRANK_MAX - 1); i++)
+	for (i = 0; i < PLAYRANK_TOTAL; i++)
 		SetupPlayRankDispUnit(i, 0);
 
 	gpPlayRankSt->ranks[PLAYRANK_TOTAL] = GameRank_GetTotalRankA();
@@ -1191,9 +1191,9 @@ void PlayRank_InitDisplay(void)
 	ApplyObPalette(Pal_GoldHighlight, OBPAL_PLAYRANK_B);
 
 	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
-	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
-	Decompress(Img_PlayRank, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
-	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + OBCHR_PLAYRANK_GRADES * CHR_SIZE);
+	Decompress(Img_PlayRank, OBJ_VRAM0 + OBCHR_PLAYRANK_MISSION * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_FOG * CHR_SIZE);
 	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	TmApplyTsa(gBg1Tm + TM_OFFSET(0x13, 0x10), Tsa_PlayRankPlayTimeWindow, OAM2_PAL(BGPAL_PLAYRANK_1));
 	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
@@ -1293,7 +1293,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 void PlayRank_Idle(ProcPtr proc)
 {
-	if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) && gpPlayRankSt->step == 6) {
+	if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) && gpPlayRankSt->step == PLAYRANK_TOTAL) {
 		Proc_Break(proc);
 		return;
 	}
@@ -1343,22 +1343,22 @@ u16 PlayRank_GetTotalTurn(void)
 u8 PlayRankGetter_Tactics(void)
 {
 	int slot, total_turn = PlayRank_GetTotalTurn();
-	int i, ranks[PALYRANK_MAX], *_ranks;
+	int i, ranks[REFRANK_MAX], *_ranks;
 
-	for (i = 0; i < PALYRANK_MAX; i++)
+	for (i = 0; i < REFRANK_MAX; i++)
 		ranks[i] = 0;
 
 	slot = GetNextChapterStatsSlot();
 	for (i = 0; i < slot; i++) {
 		struct ChapterStats *chapter_stat = GetChapterStats(i);
 
-		ranks[0] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_A];
-		ranks[1] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_B];
-		ranks[2] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_C];
-		ranks[3] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_D];
+		ranks[0] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
+		ranks[1] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
+		ranks[2] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
+		ranks[3] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
 	}
 
-	i = PALYRANK_D;
+	i = PLAYRANK_GRADE_E;
 	_ranks = ranks;
 	while (1) {
 		if (total_turn > *_ranks)
@@ -1367,7 +1367,7 @@ u8 PlayRankGetter_Tactics(void)
 		_ranks++;
 		i++;
 
-		if (i > 3)
+		if (i >= REFRANK_MAX)
 			break;
 	}
 
@@ -1377,32 +1377,32 @@ u8 PlayRankGetter_Tactics(void)
 u8 PlayRankGetter_XmapTactics(void)
 {
 	int total_turn;
-	int i, ranks[PALYRANK_MAX];
+	int i, ranks[REFRANK_MAX];
 	struct ChapterStats *chapter_stat = GetXmapChapterStats();
 
-	ranks[PALYRANK_D] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
-	ranks[PALYRANK_C] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
-	ranks[PALYRANK_B] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
-	ranks[PALYRANK_A] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
+	ranks[PLAYRANK_GRADE_E] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
+	ranks[PLAYRANK_GRADE_D] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
+	ranks[PLAYRANK_GRADE_C] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
+	ranks[PLAYRANK_GRADE_B] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
 
 	total_turn = chapter_stat->chapter_turn;
 
 	if (gPlayRankMissionCompleted == 0)
-		return PALYRANK_D;
+		return PLAYRANK_GRADE_E;
 
 	i = 0;
 	for (;;) {
 		if (total_turn > ranks[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_CombatRef[4] = { 15, 25, 35, 40 };
+CONST_DATA u8 gPlayRank_CombatRef[REFRANK_MAX] = { 15, 25, 35, 40 };
 
 u16 PlayRank_GetWinningRate(void)
 {
@@ -1421,7 +1421,7 @@ u8 PlayRankGetter_Combat(void)
 		if (winning_rate < gPlayRank_CombatRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1439,13 +1439,13 @@ u8 PlayRankGetter_XmapCombat(void)
 		if (winning_rate < gPlayRank_CombatRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_SurvivalRef[4] = { 6, 4, 2, 1 };
+CONST_DATA u8 gPlayRank_SurvivalRef[REFRANK_MAX] = { 6, 4, 2, 1 };
 
 u16 PlayRank_GetDeadAllies(void)
 {
@@ -1467,13 +1467,13 @@ u8 PlayRankGetter_Survival(void)
 		if (dead_allies >= gPlayRank_SurvivalRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_XmapSurvivalRef[4] = { 4, 3, 2, 1 };
+CONST_DATA u8 gPlayRank_XmapSurvivalRef[REFRANK_MAX] = { 4, 3, 2, 1 };
 
 u8 PlayRankGetter_XmapSurvival(void)
 {
@@ -1490,7 +1490,7 @@ u8 PlayRankGetter_XmapSurvival(void)
 		if (dead_allies >= gPlayRank_XmapSurvivalRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1510,25 +1510,25 @@ u8 PlayRankGetter_Experience(void)
 	/**
 	 * What a horrible coding style....
 	 */
-	ret = PALYRANK_D;
+	ret = PLAYRANK_GRADE_E;
 	if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_D]) {
-		ret = PALYRANK_C;
+		ret = PLAYRANK_GRADE_D;
 
 		if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_C]) {
-			ret = PALYRANK_B;
+			ret = PLAYRANK_GRADE_C;
 
 			if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_B]) {
-				ret = PALYRANK_A;
+				ret = PLAYRANK_GRADE_B;
 
 				if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_A])
-					ret = PALYRANK_S;
+					ret = PLAYRANK_GRADE_A;
 			}
 		}
 	}
 	return ret;
 }
 
-CONST_DATA int gPlayRank_AssetRef[4] = { 1600, 3200, 4800, 6000 };
+CONST_DATA int gPlayRank_AssetRef[REFRANK_MAX] = { 1600, 3200, 4800, 6000 };
 
 u8 PlayRankGetter_Asset(void)
 {
@@ -1547,7 +1547,7 @@ u8 PlayRankGetter_Asset(void)
 
 		ref_assets++;
 		i++;
-		if (i > 3)
+		if (i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1575,25 +1575,25 @@ u8 PlayRankGetter_Power(void)
 	/**
 	 * What a horrible coding style....
 	 */
-	ret = PALYRANK_D;
+	ret = PLAYRANK_GRADE_E;
 	if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_D]) {
-		ret = PALYRANK_C;
+		ret = PLAYRANK_GRADE_D;
 
 		if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_C]) {
-			ret = PALYRANK_B;
+			ret = PLAYRANK_GRADE_C;
 
 			if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_B]) {
-				ret = PALYRANK_A;
+				ret = PLAYRANK_GRADE_B;
 
 				if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_A])
-					ret = PALYRANK_S;
+					ret = PLAYRANK_GRADE_A;
 			}
 		}
 	}
 	return ret;
 }
 
-CONST_DATA u8 TotalRankA_Ref1[6][5] = {
+CONST_DATA u8 TotalRankA_Ref1[PLAYRANK_TOTAL][PLAYRANK_GRADE_S] = {
 	{ 40, 80, 120, 160, 200 }, // Tactics
 	{ 10, 30, 50,  70,  90  }, // Combat
 	{ 15, 35, 55,  75,  95  }, // Surcical
@@ -1616,7 +1616,7 @@ int GameRank_GetTotalRankA(void)
 	int i;
 	u16 ref = 0;
 
-	for (i = 0; i < 6; i++) {
+	for (i = 0; i < PLAYRANK_TOTAL; i++) {
 		ref += TotalRankA_Ref1[i][gPlayRanks[i]];
 	}
 
@@ -1626,7 +1626,7 @@ int GameRank_GetTotalRankA(void)
 			return i;
 
 		i++;
-		if (i > 4)
+		if (i > PLAYRANK_GRADE_A)
 			break;
 	}
 
@@ -1649,7 +1649,7 @@ int GameRank_GetTotalRankB(void)
 	int i;
 	u16 ref = 0;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < PLAYRANK_XMAP_TOTAL; i++) {
 		ref += TotalRankB_Ref1[gPlayRanks[i]];
 	}
 
@@ -1659,7 +1659,7 @@ int GameRank_GetTotalRankB(void)
 			return i;
 
 		i++;
-		if (i > 4)
+		if (i > PLAYRANK_GRADE_A)
 			break;
 	}
 
@@ -1700,13 +1700,13 @@ PROC_LABEL(3),
 
 void PlayRankTrailGradeSeq_CheckDone(ProcPtr proc)
 {
-	if (gpPlayRankSt->step > 2)
+	if (gpPlayRankSt->step >= PLAYRANK_XMAP_TOTAL)
 		Proc_Goto(proc, 3);
 }
 
 void PlayRankTrailGradeSeq_CheckLastRow(ProcPtr proc)
 {
-	if (gpPlayRankSt->step < 2)
+	if (gpPlayRankSt->step < PLAYRANK_XMAP_COMBAT)
 		Proc_Goto(proc, 2);
 }
 
@@ -1807,11 +1807,11 @@ void PlayRankTrialOBJ_Loop(ProcPtr proc)
 		oam0_y = (gpPlayRankSt->ys[i] + 0) * 8;
 
 		if (i == gpPlayRankSt->step) {
-			oam1_x |= 0x3E00;
-			oam0_y |= 0x0100;
+			oam1_x |= OAM1_AFFINE_ID(0x1F);
+			oam0_y |= OAM0_AFFINE_ENABLE;
 		}
 
-		oam2 = gpPlayRankSt->disp_grades[i] * 2 + 0xC0;
+		oam2 = gpPlayRankSt->disp_grades[i] * 2 + OBCHR_PLAYRANK_GRADES;
 
 		PutSpriteExt(4, oam1_x, oam0_y, gpPlayRankSt->objs[i], OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2);
 	}
@@ -1913,9 +1913,9 @@ void PlayRankTrail_Init(ProcPtr proc)
 	ApplyObPalette(Pal_GoldHighlight, OBPAL_PLAYRANK_B);
 
 	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
-	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
-	Decompress(Img_PlayRankMissionCompletesOBJ, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
-	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + OBCHR_PLAYRANK_GRADES * CHR_SIZE);
+	Decompress(Img_PlayRankMissionCompletesOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_MISSION * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_FOG * CHR_SIZE);
 	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
 	TmApplyTsa(gBg3Tm, Tsa_WorldMap_PlayRank, OAM2_PAL(BGPAL_PLAYRANK_WM));
@@ -1947,7 +1947,7 @@ void PlayRankTrail_Init(ProcPtr proc)
 void PlayRankTrail_Loop(ProcPtr proc)
 {
 	if (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B))
-		if (gpPlayRankSt->step == 3)
+		if (gpPlayRankSt->step == PLAYRANK_XMAP_TOTAL)
 			Proc_Break(proc);
 }
 

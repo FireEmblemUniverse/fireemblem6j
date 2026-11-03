@@ -21,23 +21,25 @@ enum videoalloc_playrank {
 	OBPAL_PLAYRANK_C = 0xC,
 
 	BGCHR_PLAYRANK_80 = 0x80,
-	BGCHR_PLAYRANK_C0 = 0xC0,
-	BGCHR_PLAYRANK_180 = 0x180,
-	BGCHR_PLAYRANK_680 = 0x680,
+	BGCHR_PLAYRANK_FOG = 0x680,
 
 	OBCHR_PLAYRANK_TIME = 0x80,
 	OBCHR_PLAYRANK_84 = 0x84,
 	OBCHR_PLAYRANK_98 = 0x98,
+	OBCHR_PLAYRANK_GRADES = 0xC0,
+	OBCHR_PLAYRANK_MISSION = 0x180,
 };
 
-enum play_ranks {
-	PALYRANK_D,
-	PALYRANK_C,
-	PALYRANK_B,
-	PALYRANK_A,
-	PALYRANK_MAX,
+enum play_rank_grades {
+	PLAYRANK_GRADE_E,
+	PLAYRANK_GRADE_D,
+	PLAYRANK_GRADE_C,
+	PLAYRANK_GRADE_B,
+	PLAYRANK_GRADE_A,
+	PLAYRANK_GRADE_S,
+	PLAYRANK_GRADE_SS,
 
-	PALYRANK_S = PALYRANK_MAX,
+	PLAYRANK_GRADE_MAX
 };
 
 enum PlayRankSt_texts_idx {
@@ -299,11 +301,11 @@ extern CONST_DATA struct ProcScr ProcScr_PlayRankMissionObj[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrialOBJ_Time[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankFogHandler[];
 extern CONST_DATA u16 Msgs_PlayRankNum[10];
-extern CONST_DATA u8 gPlayRank_CombatRef[4];
-extern CONST_DATA u8 gPlayRank_SurvivalRef[4];
-extern CONST_DATA u8 gPlayRank_XmapSurvivalRef[4];
-extern CONST_DATA int gPlayRank_AssetRef[4];
-extern CONST_DATA u8 TotalRankA_Ref1[6][5];
+extern CONST_DATA u8 gPlayRank_CombatRef[REFRANK_MAX];
+extern CONST_DATA u8 gPlayRank_SurvivalRef[REFRANK_MAX];
+extern CONST_DATA u8 gPlayRank_XmapSurvivalRef[REFRANK_MAX];
+extern CONST_DATA int gPlayRank_AssetRef[REFRANK_MAX];
+extern CONST_DATA u8 TotalRankA_Ref1[PLAYRANK_TOTAL][PLAYRANK_GRADE_S];
 extern CONST_DATA u16 TotalRankA_Ref2[6];
 extern CONST_DATA u8 TotalRankB_Ref1[6];
 extern CONST_DATA u16 TotalRankB_Ref2[6];
