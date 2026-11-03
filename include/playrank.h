@@ -85,10 +85,8 @@ enum PlayRankSt_Xmap_ranks {
 };
 
 struct PlayRankSt {
-	STRUCT_PAD(0x00, 0x32);
+	STRUCT_PAD(0x00, 0x38);
 
-	/* 32 */ u16 unk_32;
-	/* 34 */ u16 unk_34;
 	/* 38 */ int x, y;
 	/* 40 */ u8 x_step, y_step;
 	/* 42 */ i16 xs[7];

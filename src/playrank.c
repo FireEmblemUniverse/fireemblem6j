@@ -472,6 +472,8 @@ void PlayRankGradeFlip_Init(struct ProcPlayRankSparkle *proc)
 
 void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 {
+	// BUG: the row is stored at PlayRankSt::step (0x9F), past the end of the 0x6C-byte proc
+	struct PlayRankSt *bug_st = (void *)proc;
 	int x_scale = Interpolate(INTERPOLATE_RCUBIC, 2, 0x100, proc->timer1, 8);
 
 	SetObjAffineAuto(0x1F, 0, x_scale, 0x100);
@@ -480,20 +482,14 @@ void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 		proc->timer1++;
 
 	if (proc->timer1++ >= 8) {
-		struct PlayRankSt *st;
-		struct PlayRankSt *bug_st;
-
 		proc->timer1 = 8;
 
-		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc;
-
-		if (st->disp_grades[bug_st->step] < st->ranks[bug_st->step]) {
+		if (gpPlayRankSt->disp_grades[bug_st->step] < gpPlayRankSt->ranks[bug_st->step]) {
 			Proc_Break(proc);
 			return;
 		}
 
-		if (bug_st->step <= 5 && st->disp_grades[bug_st->step] > 3)
+		if (bug_st->step <= 5 && gpPlayRankSt->disp_grades[bug_st->step] > 3)
 			StartPlayRankSparkle(bug_st->step, proc->x, proc->y);
 
 		Proc_Goto(proc, 1);
@@ -502,6 +498,7 @@ void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 
 void PlayRankGradeFlip_Shrink(struct ProcPlayRankSparkle *proc)
 {
+	struct PlayRankSt *bug_st = (void *)proc;
 	int x_scale = Interpolate(INTERPOLATE_RCUBIC, 2, 0x100, 0x11 - proc->timer1, 8);
 
 	SetObjAffineAuto(0x1F, 0, x_scale, 0x100);
@@ -510,19 +507,14 @@ void PlayRankGradeFlip_Shrink(struct ProcPlayRankSparkle *proc)
 		proc->timer1++;
 
 	if (proc->timer1++ >= 0x10) {
-		struct PlayRankSt *st;
-		struct PlayRankSt *bug_st;
-		int tmp;
+		int grade;
 
 		proc->timer1 = 0x10;
 
-		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc;
+		grade = gpPlayRankSt->disp_grades[bug_st->step];
 
-		tmp = st->disp_grades[bug_st->step];
-
-		if (tmp <= 5) {
-			SetupPlayRankDispUnit(bug_st->step, tmp + 1);
+		if (grade <= 5) {
+			SetupPlayRankDispUnit(bug_st->step, grade + 1);
 			Proc_Goto(proc, 0);
 		}
 	}
@@ -573,8 +565,8 @@ void PlayRankGradeSeq_StartFlip(ProcPtr p)
 	struct PlayRankSt *bug_st = (void *)proc;
 
 	bug_st->step = gpPlayRankSt->step;
-	bug_st->unk_32 = gpPlayRankSt->xs[gpPlayRankSt->step];
-	bug_st->unk_34 = gpPlayRankSt->ys[gpPlayRankSt->step];
+	proc->x = gpPlayRankSt->xs[gpPlayRankSt->step];
+	proc->y = gpPlayRankSt->ys[gpPlayRankSt->step];
 }
 
 void PlayRankGradeSeq_CheckDone(struct ProcPlayRankGradeSeq *proc)
