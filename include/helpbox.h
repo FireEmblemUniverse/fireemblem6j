@@ -42,7 +42,7 @@ struct HelpBoxProc
     // NOTE: there's likely more, need to decompile more files
 };
 
-struct ProcTypeWritter
+struct ProcTypeWriter
 {
     /* 00 */ PROC_HEADER;
 
@@ -111,8 +111,8 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box);
 // DrawHelpBoxWeaponLabels
 // DrawHelpBoxWeaponStats
 // DrawHelpBoxStaffLabels
-void TypeWritter_Loop(struct ProcTypeWritter * proc);
-void DemoMonologueDisp_Main(struct ProcTypeWritter * proc);
+void TypeWriter_Loop(struct ProcTypeWriter * proc);
+void DemoMonologueDisp_Main(struct ProcTypeWriter * proc);
 // HelpBoxPrint_DrawLabels
 // HelpBoxPrint_DrawStats
 // HelpBoxPrint_StartText
@@ -166,7 +166,7 @@ extern struct ProcScr CONST_DATA ProcScr_HelpBoxMoveControl[];
 
 extern u8 const * CONST_DATA gChapterTitleData[]; // array img ref
 
-extern struct ProcScr CONST_DATA ProcScr_TypeWritter[];
+extern struct ProcScr CONST_DATA ProcScr_TypeWriter[];
 extern struct ProcScr CONST_DATA ProcScr_DemoMonologueDisp[];
 extern struct ProcScr CONST_DATA ProcScr_HelpBoxPrint[];
 extern struct ProcScr CONST_DATA ProcScr_HelpBoxAlt[];

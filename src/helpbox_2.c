@@ -209,7 +209,7 @@ int DrawHelpBoxStaffLabels(int item)
     return 1; // TODO: what?
 }
 
-void TypeWritter_Loop(struct ProcTypeWritter * proc)
+void TypeWriter_Loop(struct ProcTypeWriter * proc)
 {
     int i;
 
@@ -254,13 +254,13 @@ void TypeWritter_Loop(struct ProcTypeWritter * proc)
     SetTextFont(NULL);
 }
 
-struct ProcScr CONST_DATA ProcScr_TypeWritter[] =
+struct ProcScr CONST_DATA ProcScr_TypeWriter[] =
 {
-    PROC_REPEAT(TypeWritter_Loop),
+    PROC_REPEAT(TypeWriter_Loop),
     PROC_END,
 };
 
-void DemoMonologueDisp_Main(struct ProcTypeWritter * proc)
+void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
 {
     int i;
 
@@ -365,7 +365,7 @@ void HelpBoxPrint_DrawStats(struct HelpBoxPrintProc * proc)
 
 void HelpBoxPrint_StartText(struct HelpBoxPrintProc * proc)
 {
-    struct ProcTypeWritter * print_proc;
+    struct ProcTypeWriter * print_proc;
 
     SetTextFont(&gHelpBoxSt.font);
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
@@ -374,9 +374,9 @@ void HelpBoxPrint_StartText(struct HelpBoxPrintProc * proc)
     Text_SetColor(&gHelpBoxSt.text[2], TEXT_COLOR_4DEF);
     SetTextFont(NULL);
 
-    Proc_EndEach(ProcScr_TypeWritter);
+    Proc_EndEach(ProcScr_TypeWriter);
 
-    print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+    print_proc = SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
     print_proc->font = &gHelpBoxSt.font;
     print_proc->text[0] = &gHelpBoxSt.text[0];
     print_proc->text[1] = &gHelpBoxSt.text[1];
@@ -436,7 +436,7 @@ void ClearHelpBoxText(void)
     SpriteText_DrawBackground(&gHelpBoxSt.text[1]);
     SpriteText_DrawBackground(&gHelpBoxSt.text[2]);
 
-    Proc_EndEach(ProcScr_TypeWritter);
+    Proc_EndEach(ProcScr_TypeWriter);
     Proc_EndEach(ProcScr_HelpBoxPrint);
 
     SetTextFont(NULL);
