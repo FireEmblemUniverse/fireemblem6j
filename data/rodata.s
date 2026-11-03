@@ -28,24 +28,24 @@ Tsa_0833BF08: @ 0833BF08
 Pal_MuralBackground: @ 0833BFDC
 	.incbin "fe6-base.gba", 0x33BFDC, (0x33C01C - 0x33BFDC) @ length: 0040
 
-	.global Pal_0833C01C
-Pal_0833C01C: @ 0833C01C
+	.global Pal_AuguryMural
+Pal_AuguryMural: @ 0833C01C
 	.incbin "fe6-base.gba", 0x33C01C, (0x33C03C - 0x33C01C) @ length: 0020
 
 	.global Pal_PlayRankTimeOBJ
 Pal_PlayRankTimeOBJ: @ 0833C03C
 	.incbin "fe6-base.gba", 0x33C03C, (0x33C09C - 0x33C03C) @ length: 0060
 
-	.global Img_0833C09C
-Img_0833C09C: @ 0833C09C
+	.global Img_AuguryUIObj
+Img_AuguryUIObj: @ 0833C09C
 	.incbin "fe6-base.gba", 0x33C09C, (0x33C1D8 - 0x33C09C) @ length: 013C
 
-	.global Tsa_0833C1D8
-Tsa_0833C1D8: @ 0833C1D8
+	.global Tsa_AuguryTitleFrame
+Tsa_AuguryTitleFrame: @ 0833C1D8
 	.incbin "fe6-base.gba", 0x33C1D8, (0x33C234 - 0x33C1D8) @ length: 005C
 
-	.global Tsa_0833C234
-Tsa_0833C234: @ 0833C234
+	.global Tsa_AuguryMenuFrame
+Tsa_AuguryMenuFrame: @ 0833C234
 	.incbin "fe6-base.gba", 0x33C234, (0x33C378 - 0x33C234) @ length: 0144
 
 	.global Img_StatusScreen_Bg

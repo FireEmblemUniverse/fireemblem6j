@@ -100,7 +100,6 @@ void Augury_RitualInit(struct AuguryAnimProc *proc);
 void Augury_RitualLoop(struct AuguryAnimProc *proc);
 void Augury_End(ProcPtr proc);
 
-extern CONST_DATA int AuguryMsgs[];
 extern CONST_DATA struct AuguryDispConfig gAuguryDispConfig[];
 extern CONST_DATA struct AuguryConfig gAuguryConfig[];
 extern CONST_DATA u16 Obj_AuguryUI[];

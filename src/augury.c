@@ -24,31 +24,31 @@
 
 #include "augury.h"
 
-CONST_DATA int AuguryMsgs0[] = {
+CONST_DATA int AuguryCategoryMsgs[] = {
 	MSG_716, MSG_717, MSG_718, MSG_719, MSG_71A, MSG_71B, MSG_71C
 };
 
-CONST_DATA int AuguryMsgs1[] = {
+CONST_DATA int AuguryScriptMsgsA[] = {
 	MSG_6F3, MSG_6F4, MSG_6FC,
 };
 
-CONST_DATA int AuguryMsgs2[] = {
+CONST_DATA int AuguryScriptMsgsB[] = {
 	MSG_6FD, MSG_6FE, MSG_707,
 };
 
-CONST_DATA int AuguryMsgs3[] = {
+CONST_DATA int AuguryRankMsgsA[] = {
 	MSG_6FB, MSG_6FA, MSG_6F9, MSG_6F8, MSG_6F7, MSG_6F6, MSG_6F5
 };
 
-CONST_DATA int AuguryMsgs4[] = {
+CONST_DATA int AuguryRankMsgsB[] = {
 	MSG_706, MSG_705, MSG_704, MSG_703, MSG_702, MSG_701, MSG_700,
 };
 
-CONST_DATA int AuguryMsgs5[] = {
+CONST_DATA int AuguryDescMsgsA[] = {
 	MSG_708, MSG_709, MSG_70A, MSG_70B, MSG_70C, MSG_70D, MSG_70E,
 };
 
-CONST_DATA int AuguryMsgs6[] = {
+CONST_DATA int AuguryDescMsgsB[] = {
 	MSG_70F, MSG_710, MSG_711, MSG_712, MSG_713, MSG_714, MSG_715,
 };
 
@@ -65,15 +65,15 @@ CONST_DATA struct AuguryDispConfig gAuguryDispConfig[] = {
 CONST_DATA struct AuguryConfig gAuguryConfig[] = {
 	{
 		FID_26, PID_LARUM,
-		AuguryMsgs1, AuguryMsgs3, AuguryMsgs5,
+		AuguryScriptMsgsA, AuguryRankMsgsA, AuguryDescMsgsA,
 	},
 	{
 		FID_2B, PID_ELFFIN,
-		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+		AuguryScriptMsgsB, AuguryRankMsgsB, AuguryDescMsgsB,
 	},
 	{
 		FID_02, PID_NONE,
-		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+		AuguryScriptMsgsB, AuguryRankMsgsB, AuguryDescMsgsB,
 	},
 };
 
@@ -274,16 +274,16 @@ void Augury_Init(void)
 	TmFill(gBg1Tm, 0);
 	TmFill(gBg3Tm, 0);
 
-	ApplyPalette(Pal_0833C01C, 4);
-	ApplyPalette(Pal_0833C01C + 0x10, 0x12);
+	ApplyPalette(Pal_AuguryMural, 4);
+	ApplyPalette(Pal_AuguryMural + 0x10, 0x12);
 
-	Decompress(Img_0833C09C, OBJ_VRAM0 + 0x1000);
+	Decompress(Img_AuguryUIObj, OBJ_VRAM0 + 0x1000);
 	Decompress(Img_MuralBackground, (void *)BG_VRAM + GetBgChrOffset(BG_3));
 	UnpackUiWindowFrameImg((void *)BG_VRAM + 0x3000);
 	UnpackUiWindowFrameGraphics();
 
-	TmApplyTsa(gBg1Tm, Tsa_0833C1D8, 0x1180);
-	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_0833C234, 0x1180);
+	TmApplyTsa(gBg1Tm, Tsa_AuguryTitleFrame, 0x1180);
+	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_AuguryMenuFrame, 0x1180);
 	PutEndingLinearTSA(gBg3Tm, 0x4000);
 	ResetTextFont();
 
@@ -297,7 +297,7 @@ void Augury_Init(void)
 			text,
 			gBg0Tm + TM_OFFSET(gAuguryDispConfig[i].x, gAuguryDispConfig[i].y),
 			TEXT_COLOR_SYSTEM_WHITE, 0, 6,
-			DecodeMsg(AuguryMsgs0[i])
+			DecodeMsg(AuguryCategoryMsgs[i])
 		);
 	}
 
@@ -604,7 +604,7 @@ void Augury_LerpMuralPalette(int lo0, int hi0, int lo1, int hi1, int x)
 	int v1 = Interpolate(INTERPOLATE_SQUARE, lo0, hi0, x, 0x37);
 	int v2 = Interpolate(INTERPOLATE_SQUARE, lo1, hi1, x, 0x37);
 
-	CpuFastCopy(Pal_0833C01C, gPal + PAL_OFFSET(BGPAL_AUGURY_4), 0x20);
+	CpuFastCopy(Pal_AuguryMural, gPal + PAL_OFFSET(BGPAL_AUGURY_4), 0x20);
 
 	AuguryPaletteModify2(gPal, BGPAL_AUGURY_4, 10, 5, v1);
 	AuguryPaletteModify1(gPal, BGPAL_AUGURY_4,  2, 8, v2);
