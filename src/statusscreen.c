@@ -249,12 +249,12 @@ void DrawStatusScreenPageA(int unused)
 
 void InitStatusScreenExtraMapInfoText(struct StatusScreenProc * proc)
 {
-    struct ProcTypeWritter * print_proc;
+    struct ProcTypeWriter * print_proc;
     int i;
 
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-    print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+    print_proc = SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
     print_proc->font = NULL;
     print_proc->line = 0;
@@ -268,7 +268,7 @@ void InitStatusScreenExtraMapInfoText(struct StatusScreenProc * proc)
 
     GetStringTextBox(print_proc->str_it, &gStatusScreenSt.extra_map_info_width, &gStatusScreenSt.extra_map_info_height);
 
-    TypeWritter_Loop(print_proc);
+    TypeWriter_Loop(print_proc);
     Proc_End(print_proc);
 
     SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);

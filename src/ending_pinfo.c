@@ -363,7 +363,7 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct Unit *unit = GetUnit(uid - 1);
 	int pid = UNIT_PID(unit);
 	struct PidStats *pid_status = GetPidStats(pid);
-	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+	struct ProcTypeWriter *type_writer =  SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 	for (i = 0; i < 6; i++) {
 		struct Text *text = &gEndingPInfoTexts[i];
@@ -371,7 +371,7 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 		InitText(text, (i < 2) ? 20: 30);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
 		PutText(text, gBg0Tm + TM_OFFSET(1, 0) + TM_OFFSET(0, 7 + i * 2));
-		type_writter->text[i] = text;
+		type_writer->text[i] = text;
 	}
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
@@ -381,7 +381,7 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 			false);
 
 		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
+		type_writer->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
@@ -392,14 +392,14 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 		else
 			str = DecodeMsg(gPersonEndingInfo[pid].msg_00);
 
-		type_writter->str_it = str;
+		type_writer->str_it = str;
 	}
 
-	type_writter->line = 0;
-	type_writter->font = NULL;
-	type_writter->clock_interval = 4;
-	type_writter->chars_per_print = 1;
-	type_writter->clock = 0;
+	type_writer->line = 0;
+	type_writer->font = NULL;
+	type_writer->clock_interval = 4;
+	type_writer->chars_per_print = 1;
+	type_writer->clock = 0;
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -409,25 +409,25 @@ void EndingP0InfoText_Loop(struct ProcEndingPinfoText *proc)
 
 	if (GetUnit(uid - 1)->flags & UNIT_FLAG_DEAD) {
 		int i;
-		struct ProcTypeWritter *type_writter;
+		struct ProcTypeWriter *type_writer;
 
-		if (FindProc(ProcScr_TypeWritter)) {
+		if (FindProc(ProcScr_TypeWriter)) {
 			/* waiting for exists typing done */
 			return;
 		}
 
-		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+		type_writer = SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 		for (i = 0; i < 6; i++)
-			type_writter->text[i] = &gEndingPInfoTexts[i];
+			type_writer->text[i] = &gEndingPInfoTexts[i];
 
 		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x);
-		type_writter->str_it = DecodeMsg(MSG_A6E);
-		type_writter->line = 0;
-		type_writter->font = NULL;
-		type_writter->clock_interval = 4;
-		type_writter->chars_per_print = 1;
-		type_writter->clock = 0;
+		type_writer->str_it = DecodeMsg(MSG_A6E);
+		type_writer->line = 0;
+		type_writer->font = NULL;
+		type_writer->clock_interval = 4;
+		type_writer->chars_per_print = 1;
+		type_writer->clock = 0;
 		EnableBgSync(BG0_SYNC_BIT);
 	}
 	Proc_Break(proc);
@@ -499,7 +499,7 @@ void EndingPInfo1_Idle(struct ProcEndingPInfo1 *proc)
 void EndingPInfo1_End(struct ProcEndingPInfo1 *proc)
 {
 	EndFaceById(0);
-	Proc_EndEach(ProcScr_TypeWritter);
+	Proc_EndEach(ProcScr_TypeWriter);
 	Proc_EndEach(ProcScr_EndingFacePosCtrl);
 	SetOnHBlankA(NULL);
 }
@@ -524,7 +524,7 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct Unit *unit = GetUnit(uid - 1);
 	int pid = UNIT_PID(unit);
 	struct PidStats *pid_status = GetPidStats(pid);
-	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+	struct ProcTypeWriter *type_writer =  SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 	for (i = 0; i < 2; i++) {
 		struct Text *text = &gEndingPInfoTexts[i];
@@ -532,7 +532,7 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 		InitText(text, 20);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
 		PutText(text, gBg0Tm + TM_OFFSET(2, 0) + TM_OFFSET(0, 6 + i * 2));
-		type_writter->text[i] = text;
+		type_writer->text[i] = text;
 	}
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
@@ -542,19 +542,19 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 			false);
 
 		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
+		type_writer->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
-		type_writter->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
+		type_writer->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
 
 	}
 
-	type_writter->line = 0;
-	type_writter->font = NULL;
-	type_writter->clock_interval = 4;
-	type_writter->chars_per_print = 1;
-	type_writter->clock = 0;
+	type_writer->line = 0;
+	type_writer->font = NULL;
+	type_writer->clock_interval = 4;
+	type_writer->chars_per_print = 1;
+	type_writer->clock = 0;
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -564,25 +564,25 @@ void EndingP1InfoText_Loop(struct ProcEndingPinfoText *proc)
 
 	if (GetUnit(uid - 1)->flags & UNIT_FLAG_DEAD) {
 		int i;
-		struct ProcTypeWritter *type_writter;
+		struct ProcTypeWriter *type_writer;
 
-		if (FindProc(ProcScr_TypeWritter)) {
+		if (FindProc(ProcScr_TypeWriter)) {
 			/* waiting for exists typing done */
 			return;
 		}
 
-		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+		type_writer = SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 		for (i = 0; i < 2; i++)
-			type_writter->text[i] = &gEndingPInfoTexts[i];
+			type_writer->text[i] = &gEndingPInfoTexts[i];
 
 		Text_SetCursor(&gEndingPInfoTexts[0], proc->text_x);
-		type_writter->str_it = DecodeMsg(MSG_A6E);
-		type_writter->line = 0;
-		type_writter->font = NULL;
-		type_writter->clock_interval = 4;
-		type_writter->chars_per_print = 1;
-		type_writter->clock = 0;
+		type_writer->str_it = DecodeMsg(MSG_A6E);
+		type_writer->line = 0;
+		type_writer->font = NULL;
+		type_writer->clock_interval = 4;
+		type_writer->chars_per_print = 1;
+		type_writer->clock = 0;
 		EnableBgSync(BG0_SYNC_BIT);
 	}
 	Proc_Break(proc);
@@ -609,7 +609,7 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 	struct Unit *unit = GetUnit(uid - 1);
 	int pid = UNIT_PID(unit);
 	struct PidStats *pid_status = GetPidStats(pid);
-	struct ProcTypeWritter *type_writter =  SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+	struct ProcTypeWriter *type_writer =  SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 	for (i = 0; i < 2; i++) {
 		struct Text *text = &gEndingPInfo2Texts[i];
@@ -617,7 +617,7 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 		InitText(text, 20);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
 		PutText(text, gBg0Tm + TM_OFFSET(13, 0) + TM_OFFSET(0, 16 + i * 2));
-		type_writter->text[i] = text;
+		type_writer->text[i] = text;
 	}
 
 	if (unit->flags & UNIT_FLAG_DEAD) {
@@ -627,19 +627,19 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 			false);
 
 		Text_SetCursor(&gEndingPInfo2Texts[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
+		type_writer->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
 		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
-		type_writter->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
+		type_writer->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
 
 	}
 
-	type_writter->line = 0;
-	type_writter->font = NULL;
-	type_writter->clock_interval = 4;
-	type_writter->chars_per_print = 1;
-	type_writter->clock = 0;
+	type_writer->line = 0;
+	type_writer->font = NULL;
+	type_writer->clock_interval = 4;
+	type_writer->chars_per_print = 1;
+	type_writer->clock = 0;
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -649,25 +649,25 @@ void EndingP2InfoText_Loop(struct ProcEndingPinfoText *proc)
 
 	if (GetUnit(uid - 1)->flags & UNIT_FLAG_DEAD) {
 		int i;
-		struct ProcTypeWritter *type_writter;
+		struct ProcTypeWriter *type_writer;
 
-		if (FindProc(ProcScr_TypeWritter)) {
+		if (FindProc(ProcScr_TypeWriter)) {
 			/* waiting for exists typing done */
 			return;
 		}
 
-		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+		type_writer = SpawnProc(ProcScr_TypeWriter, PROC_TREE_3);
 
 		for (i = 0; i < 2; i++)
-			type_writter->text[i] = &gEndingPInfo2Texts[i];
+			type_writer->text[i] = &gEndingPInfo2Texts[i];
 
 		Text_SetCursor(&gEndingPInfo2Texts[0], proc->text_x);
-		type_writter->str_it = DecodeMsg(MSG_A6E);
-		type_writter->line = 0;
-		type_writter->font = NULL;
-		type_writter->clock_interval = 4;
-		type_writter->chars_per_print = 1;
-		type_writter->clock = 0;
+		type_writer->str_it = DecodeMsg(MSG_A6E);
+		type_writer->line = 0;
+		type_writer->font = NULL;
+		type_writer->clock_interval = 4;
+		type_writer->chars_per_print = 1;
+		type_writer->clock = 0;
 		EnableBgSync(BG0_SYNC_BIT);
 	}
 	Proc_Break(proc);
@@ -782,7 +782,7 @@ void EndingPInfoDisp_End(struct ProcEndingPInfoDisp *proc)
 {
 	EndFaceById(0);
 	EndFaceById(1);
-	Proc_EndEach(ProcScr_TypeWritter);
+	Proc_EndEach(ProcScr_TypeWriter);
 	Proc_EndEach(ProcScr_EndingFacePosCtrl);
 	SetOnHBlankA(NULL);
 }

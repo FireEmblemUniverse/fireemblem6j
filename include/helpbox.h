@@ -42,7 +42,7 @@ struct HelpBoxProc
     // NOTE: there's likely more, need to decompile more files
 };
 
-struct ProcTypeWritter
+struct ProcTypeWriter
 {
     /* 00 */ PROC_HEADER;
 
@@ -88,13 +88,13 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc * proc, int w_inner, int h_inner
 void ApplyHelpBoxPosition(struct HelpBoxProc * proc, int x, int y);
 void SetHelpBoxInitPosition(struct HelpBoxProc * proc, int x, int y);
 void ResetHelpBoxInitSize(struct HelpBoxProc * proc);
-int func_fe6_08070B30(int item);
+int GetHelpBoxItemInfoKind(int item);
 void HelpBoxPopulateAutoItem(struct HelpBoxProc * proc);
 int HelpBoxTryRelocateUp(struct HelpBoxProc * proc);
 int HelpBoxTryRelocateDown(struct HelpBoxProc * proc);
 int HelpBoxTryRelocateLeft(struct HelpBoxProc * proc);
 int HelpBoxTryRelocateRight(struct HelpBoxProc * proc);
-// func_fe6_08070C4C
+// HelpBoxLockHelper_Loop
 // StartLockingHelpBox
 struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
 void PutChapterTitlePalettle(int flags, int pal);
@@ -106,76 +106,76 @@ void PutChapterTitleBgTSA(u16 * tm, int pal);
 void PutChapterTitleBgDefaultTSA(u16 * tm, int pal);
 int GetChapterTitleExtra(struct PlaySt const * play_st);
 void LoadHelpBoxGfx(void * vram, int pal);
-// func_fe6_08070EEC
+// LoadHelpBoxGfxTwoLines
 void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box);
 // DrawHelpBoxWeaponLabels
 // DrawHelpBoxWeaponStats
 // DrawHelpBoxStaffLabels
-void TypeWritter_Loop(struct ProcTypeWritter * proc);
-void DemoMonologueDisp_Main(struct ProcTypeWritter * proc);
-// func_fe6_08071374
-// func_fe6_080713DC
-// func_fe6_08071410
-void func_fe6_080714F8(int msg, int item);
-void func_fe6_08071514(void);
-// func_fe6_0807155C
-// func_fe6_08071584
-// func_fe6_080715B4
-// func_fe6_080715DC
-// func_fe6_080715FC
-// func_fe6_080716C8
-// func_fe6_080716F0
-// func_fe6_08071714
-// func_fe6_08071734
-void func_fe6_08071748(struct HelpBoxInfo const * info);
-// func_fe6_08071760
-void func_fe6_08071778(struct HelpBoxProc * proc, int w_inner, int h_inner);
-void func_fe6_080717B8(struct HelpBoxProc * proc, int x, int y);
-void func_fe6_08071830(struct HelpBoxProc * proc, int x, int y);
-void func_fe6_08071838(struct HelpBoxProc * proc);
-int func_fe6_08071848(int item);
-// func_fe6_08071888
-// func_fe6_080718A8
-bool func_fe6_080718E0(void);
-// func_fe6_080718FC
-// func_fe6_08071978
-// func_fe6_080719D8
-// func_fe6_080719EC
-// func_fe6_08071A20
-// func_fe6_08071A24
-// func_fe6_08071A34
-// func_fe6_08071AF8
-// func_fe6_08071B20
-// func_fe6_08071B44
-void func_fe6_08071B6C(void);
-void func_fe6_08071B80(int x, int y, int msg, ProcPtr parent);
-// func_fe6_08071BC0
-void func_fe6_08071C00(char const * str, int * out_w, int * out_h);
-// func_fe6_08071C8C
-void func_fe6_08071D04(int x, int y, int msg);
-void func_fe6_08071D94(int x, int y, int w, int h);
-// func_fe6_08071F50
-// func_fe6_08071F64
-// func_fe6_080720E0
-// func_fe6_08072100
-void func_fe6_080721B8(int msg);
-void func_fe6_080721D0(void);
+void TypeWriter_Loop(struct ProcTypeWriter * proc);
+void DemoMonologueDisp_Main(struct ProcTypeWriter * proc);
+// HelpBoxPrint_DrawLabels
+// HelpBoxPrint_DrawStats
+// HelpBoxPrint_StartText
+void StartHelpBoxPrint(int item, int msg);
+void ClearHelpBoxText(void);
+// HelpBoxAlt_OnLoop
+// HelpBoxAlt_OnClose
+// HelpBoxAlt_WaitClose
+// StartHelpBoxAlt
+// StartHelpBoxAltExt
+// CloseHelpBoxAlt
+// HelpBoxAltControl_OnInitBox
+// HelpBoxAltControl_WaitA
+// EndHelpBoxAltControl
+void StartHelpBoxAltControl(struct HelpBoxInfo const * info);
+// IsHelpBoxAltControlActive
+void ApplyHelpBoxAltContentSize(struct HelpBoxProc * proc, int w_inner, int h_inner);
+void ApplyHelpBoxAltPosition(struct HelpBoxProc * proc, int x, int y);
+void SetHelpBoxAltInitPosition(struct HelpBoxProc * proc, int x, int y);
+void ResetHelpBoxAltInitSize(struct HelpBoxProc * proc);
+int GetHelpBoxAltItemInfoKind(int item);
+// HelpBoxAltLockHelper_Loop
+// StartLockingHelpBoxAlt
+bool IsHelpDialogueActive(void);
+// LoadHelpDialogueGfx
+// ApplyHelpDialogueBoxPosition
+// ApplyHelpDialogueBoxContentSize
+// HelpDialogue_Init
+// HelpDialogue_Idle
+// HelpDialogue_Close
+// UpdateHelpDialogueBoxDisplay
+// HelpDialogueBox_OnLoop
+// HelpDialogueBox_OnClose
+// HelpDialogueBox_WaitClose
+void CloseHelpDialogueBox(void);
+void StartHelpDialogue(int x, int y, int msg, ProcPtr parent);
+// StartHelpDialogueExt
+void GetPagedStringTextBox(char const * str, int * out_w, int * out_h);
+// GetStringPageEndPos
+void StartHelpDialogueBox(int x, int y, int msg);
+void PutSpriteHelpDialogueBox(int x, int y, int w, int h);
+// HelpDialoguePrint_Init
+// HelpDialoguePrint_Loop
+// HelpDialoguePrint_End
+// HelpDialogueStartPrint_Init
+void StartHelpDialoguePrint(int msg);
+void ClearHelpDialogueText(void);
 
 extern struct ProcScr CONST_DATA ProcScr_HelpBox[];
 extern struct ProcScr CONST_DATA ProcScr_HelpBoxMoveControl[];
 
 extern u8 const * CONST_DATA gChapterTitleData[]; // array img ref
 
-extern struct ProcScr CONST_DATA ProcScr_TypeWritter[];
+extern struct ProcScr CONST_DATA ProcScr_TypeWriter[];
 extern struct ProcScr CONST_DATA ProcScr_DemoMonologueDisp[];
-extern struct ProcScr CONST_DATA gUnk_08677FF8[];
-extern struct ProcScr CONST_DATA gUnk_08678020[];
-extern struct ProcScr CONST_DATA gUnk_08678040[];
-extern struct ProcScr CONST_DATA gUnk_08678070[];
-extern struct ProcScr CONST_DATA gUnk_08678080[];
-extern struct ProcScr CONST_DATA gUnk_086780C8[];
-extern struct ProcScr CONST_DATA ProcScr_HelpBoxPrint_086780E8[];
-extern struct ProcScr CONST_DATA ProcScr_HelpBoxStartPrint_08678110[];
+extern struct ProcScr CONST_DATA ProcScr_HelpBoxPrint[];
+extern struct ProcScr CONST_DATA ProcScr_HelpBoxAlt[];
+extern struct ProcScr CONST_DATA ProcScr_HelpBoxAltControl[];
+extern struct ProcScr CONST_DATA ProcScr_HelpBoxAltLockHelper[];
+extern struct ProcScr CONST_DATA ProcScr_HelpDialogue[];
+extern struct ProcScr CONST_DATA ProcScr_HelpDialogueBox[];
+extern struct ProcScr CONST_DATA ProcScr_HelpDialoguePrint[];
+extern struct ProcScr CONST_DATA ProcScr_HelpDialogueStartPrint[];
 
 // TODO: move to helpboxinfo
 extern struct HelpBoxInfo CONST_DATA HelpInfo_08677798;

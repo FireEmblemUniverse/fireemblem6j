@@ -1047,7 +1047,7 @@ void TutorialHighlightEnd_Loop(struct TutorialHighlightEndProc * proc)
 {
     if (--proc->timer != 0)
     {
-        if (func_fe6_080718E0())
+        if (IsHelpDialogueActive())
             return;
 
         if (!(gKeySt->pressed & KEY_BUTTON_R))
@@ -1080,7 +1080,7 @@ void Tutorial_StartHighlight(int what)
 
 bool Tutorial_EndHighlightAfterHelp(void)
 {
-    bool result = func_fe6_080718E0();
+    bool result = IsHelpDialogueActive();
 
     if (!result)
         SpawnProc(ProcScr_TutorialHighlightEnd, PROC_TREE_3);
@@ -1090,108 +1090,108 @@ bool Tutorial_EndHighlightAfterHelp(void)
 
 void Tutorial_HelpMoveRange(void)
 {
-    func_fe6_08071B80(16, 104, MSG_019, NULL);
+    StartHelpDialogue(16, 104, MSG_019, NULL);
 }
 
 void Tutorial_HelpAttackRange(void)
 {
-    func_fe6_08071B80(16, 104, MSG_01A, NULL);
+    StartHelpDialogue(16, 104, MSG_01A, NULL);
 }
 
 void Tutorial_HelpBowRange(void)
 {
-    func_fe6_08071B80(16, 104, MSG_01E, NULL);
+    StartHelpDialogue(16, 104, MSG_01E, NULL);
 }
 
 void Tutorial_HelpBowAttack(void)
 {
-    func_fe6_08071B80(16, 104, MSG_01F, NULL);
+    StartHelpDialogue(16, 104, MSG_01F, NULL);
 }
 
 void Tutorial_HelpBowMove(void)
 {
-    func_fe6_08071B80(16, 104, MSG_020, NULL);
+    StartHelpDialogue(16, 104, MSG_020, NULL);
     Tutorial_StartHighlight(0);
 }
 
 void Tutorial_HelpMagicRange(void)
 {
-    func_fe6_08071B80(16, 104, MSG_023, NULL);
+    StartHelpDialogue(16, 104, MSG_023, NULL);
 }
 
 void Tutorial_HelpMagicAttack(void)
 {
-    func_fe6_08071B80(16, 104, MSG_024, NULL);
+    StartHelpDialogue(16, 104, MSG_024, NULL);
 }
 
 void Tutorial_HelpMagicMove(void)
 {
-    func_fe6_08071B80(16, 104, MSG_025, NULL);
+    StartHelpDialogue(16, 104, MSG_025, NULL);
     Tutorial_StartHighlight(0);
 }
 
 void Tutorial_HelpWeaponSelect(void)
 {
-    func_fe6_08071B80(16, 104, MSG_029, NULL);
+    StartHelpDialogue(16, 104, MSG_029, NULL);
 }
 
 void Tutorial_HelpTargetSelect(void)
 {
-    func_fe6_08071B80(16, 104, MSG_02A, NULL);
+    StartHelpDialogue(16, 104, MSG_02A, NULL);
 }
 
 void Tutorial_HelpConfirmAttack(void)
 {
-    func_fe6_08071B80(40, 104, MSG_02B, NULL);
+    StartHelpDialogue(40, 104, MSG_02B, NULL);
 }
 
 // Unsure of the topic: MSG_02D is empty in the text dump.
 void Tutorial_HelpAlenMove(void)
 {
-    func_fe6_08071B80(16, 16, MSG_02D, NULL);
+    StartHelpDialogue(16, 16, MSG_02D, NULL);
     Tutorial_StartHighlight(1);
 }
 
 void Tutorial_HelpVisit(void)
 {
-    func_fe6_08071B80(16, 56, MSG_02E, NULL);
+    StartHelpDialogue(16, 56, MSG_02E, NULL);
 }
 
 // Unsure of the topic: unused, and MSG_030 is empty in the text dump.
 void Tutorial_HelpUnused(void)
 {
-    func_fe6_08071B80(16, 16, MSG_030, NULL);
+    StartHelpDialogue(16, 16, MSG_030, NULL);
 }
 
 void Tutorial_HelpMapMenu(void)
 {
-    func_fe6_08071B80(16, 104, MSG_045, NULL);
+    StartHelpDialogue(16, 104, MSG_045, NULL);
 }
 
 void Tutorial_HelpMeleeMove(void)
 {
-    func_fe6_08071B80(16, 104, MSG_01B, NULL);
+    StartHelpDialogue(16, 104, MSG_01B, NULL);
     Tutorial_StartHighlight(0);
 }
 
 void Tutorial_HelpTrade(void)
 {
-    func_fe6_08071B80(16, 104, MSG_040, NULL);
+    StartHelpDialogue(16, 104, MSG_040, NULL);
 }
 
 void Tutorial_HelpRescue(void)
 {
-    func_fe6_08071B80(16, 104, MSG_03F, NULL);
+    StartHelpDialogue(16, 104, MSG_03F, NULL);
 }
 
 void Tutorial_HelpSeize(void)
 {
-    func_fe6_08071B80(16, 104, MSG_03E, NULL);
+    StartHelpDialogue(16, 104, MSG_03E, NULL);
 }
 
 void Tutorial_HelpUnitMenu(void)
 {
-    func_fe6_08071B80(16, 104, MSG_042, NULL);
+    StartHelpDialogue(16, 104, MSG_042, NULL);
 }
 
 void Tutorial_HelpAttackCommand(void)
@@ -1200,15 +1200,15 @@ void Tutorial_HelpAttackCommand(void)
     {
         case PID_ROY:
         case PID_ALEN:
-            func_fe6_08071B80(16, 104, MSG_01C, NULL);
+            StartHelpDialogue(16, 104, MSG_01C, NULL);
             break;
 
         case PID_WOLT:
-            func_fe6_08071B80(16, 104, MSG_021, NULL);
+            StartHelpDialogue(16, 104, MSG_021, NULL);
             break;
 
         case PID_LILINA:
-            func_fe6_08071B80(16, 104, MSG_026, NULL);
+            StartHelpDialogue(16, 104, MSG_026, NULL);
             break;
     }
 }
@@ -2244,7 +2244,7 @@ EventScr CONST_DATA EventScr_DemoScene[] =
 
 void PutDemoMonologueMsg(void)
 {
-    struct ProcTypeWritter * proc;
+    struct ProcTypeWriter * proc;
     int i;
 
     SetDispEnable(1, 0, 0, 0, 0);

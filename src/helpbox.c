@@ -159,8 +159,8 @@ void StartHelpBoxExt(struct HelpBoxInfo const * info, int plain)
     ApplyHelpBoxContentSize(proc, w_inner, h_inner);
     ApplyHelpBoxPosition(proc, info->x, info->y);
 
-    func_fe6_08071514();
-    func_fe6_080714F8(proc->item, proc->msg);
+    ClearHelpBoxText();
+    StartHelpBoxPrint(proc->item, proc->msg);
 
     gLastHelpBoxInfo = info;
 }
@@ -191,8 +191,8 @@ void StartSimpleHelpBox(int x, int y, int msg)
     proc->x_box_fini = x + 8;
     proc->y_box_fini = y + 8;
 
-    func_fe6_08071514();
-    func_fe6_080714F8(proc->item, proc->msg);
+    ClearHelpBoxText();
+    StartHelpBoxPrint(proc->item, proc->msg);
 }
 
 void CloseHelpBox(void)
@@ -201,7 +201,7 @@ void CloseHelpBox(void)
 
     if (proc != NULL)
     {
-        func_fe6_08071514();
+        ClearHelpBoxText();
         Proc_Goto(proc, 99);
     }
 }
@@ -212,7 +212,7 @@ void KillHelpBox(void)
 
     if (proc != NULL)
     {
-        func_fe6_08071514();
+        ClearHelpBoxText();
         Proc_End(proc);
     }
 }
@@ -302,7 +302,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc * proc, int w_inner, int h_inner
 {
     w_inner = 0xE0 & (w_inner + 31); // align to 32 pixel multiple
 
-    switch (func_fe6_08070B30(proc->item))
+    switch (GetHelpBoxItemInfoKind(proc->item))
     {
 
     case HELPBOX_INFO_WEAPON:
@@ -362,7 +362,7 @@ void ResetHelpBoxInitSize(struct HelpBoxProc * proc)
     proc->h_box_init = 16;
 }
 
-int func_fe6_08070B30(int item)
+int GetHelpBoxItemInfoKind(int item)
 {
     if (GetItemAttributes(item) & ITEM_ATTR_LOCK_DRAGON)
         return HELPBOX_INFO_NONE;
@@ -440,7 +440,7 @@ int HelpBoxTryRelocateRight(struct HelpBoxProc * proc)
     return TRUE;
 }
 
-void func_fe6_08070C4C(ProcPtr proc)
+void HelpBoxLockHelper_Loop(ProcPtr proc)
 {
     if (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R))
         Proc_Break(proc);
@@ -448,7 +448,7 @@ void func_fe6_08070C4C(ProcPtr proc)
 
 struct ProcScr CONST_DATA ProcScr_HelpBoxLockHelper[] =
 {
-    PROC_REPEAT(func_fe6_08070C4C),
+    PROC_REPEAT(HelpBoxLockHelper_Loop),
     PROC_END,
 };
 

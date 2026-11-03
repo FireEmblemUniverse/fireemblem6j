@@ -681,7 +681,7 @@ void func_fe6_0808BF00(struct ProcSoundRoom *proc)
 	SetTextFont(&gSoundRoomText.font);
 	SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-	func_fe6_08071C00(DecodeMsg(gSoundRoomInfo[cur_index].msg_name1), &width, &height);
+	GetPagedStringTextBox(DecodeMsg(gSoundRoomInfo[cur_index].msg_name1), &width, &height);
 
 	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[0], 0);
 	Text_SetCursor(&gSoundRoomText.texts[0], (0xb0 - width) / 2);
@@ -695,7 +695,7 @@ void func_fe6_0808BF00(struct ProcSoundRoom *proc)
 	} else {
 		proc->unk_41 = 0;
 
-		func_fe6_08071C00(DecodeMsg(gSoundRoomInfo[cur_index].msg_name2), &width, &height);
+		GetPagedStringTextBox(DecodeMsg(gSoundRoomInfo[cur_index].msg_name2), &width, &height);
 		Text_SetCursor(&gSoundRoomText.texts[1], 0xa8 - width);
 		Text_SetColor(&gSoundRoomText.texts[1], 0);
 		Text_DrawString(&gSoundRoomText.texts[1], DecodeMsg(gSoundRoomInfo[cur_index].msg_name2));

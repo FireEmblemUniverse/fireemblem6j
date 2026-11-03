@@ -36,10 +36,10 @@ void OnMain_SioErrorWait(void)
 void PutSioErrorMessage(void)
 {
     struct Text text[3];
-    struct ProcTypeWritter fake_proc;
+    struct ProcTypeWriter fake_proc;
     int i;
 
-    struct ProcTypeWritter * const proc = &fake_proc;
+    struct ProcTypeWriter * const proc = &fake_proc;
 
     ResetText();
     InitTalkTextFont();

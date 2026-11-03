@@ -132,7 +132,7 @@ EventScr CONST_DATA gUnk_0866AEA8[] =
     EvtDisableAutoClear
     EvtFunc(FreezeMenu)
     EvtFunc(Tutorial_HelpWeaponSelect)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtFunc(ResumeMenu)
     EvtClearSkip
     EvtEnd
@@ -146,9 +146,9 @@ EventScr CONST_DATA gUnk_0866AEE0[] =
     EvtDisableAutoClear
     EvtFunc(FreezeMapSelect)
     EvtFunc(Tutorial_HelpTargetSelect)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtFunc(Tutorial_HelpConfirmAttack)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtFunc(ResumeMapSelect)
     EvtClearSkip
     EvtEnd
@@ -161,7 +161,7 @@ EventScr CONST_DATA gUnk_0866AF28[] =
     EvtSetFlag(FLAG_TUTORIAL_11)
     EvtFunc(FreezeMenu)
     EvtFunc(Tutorial_HelpMapMenu)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtFunc(ResumeMenu)
     EvtClearSkip
     EvtEnd
@@ -175,7 +175,7 @@ EventScr CONST_DATA gUnk_0866AF5C[] =
 
     EvtSetFlag(FLAG_TUTORIAL_5)
     EvtFunc(Tutorial_HelpMoveRange)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
 
 EvtLabel(10)
@@ -184,7 +184,7 @@ EvtLabel(10)
     EvtGotoIfFlag(99, FLAG_TUTORIAL_14)
 
     EvtFunc(Tutorial_HelpAttackRange)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
     EvtFunc(Tutorial_HelpMeleeMove)
     EvtSleep(20)
@@ -203,7 +203,7 @@ EventScr CONST_DATA gUnk_0866AFEC[] =
 
     EvtSetFlag(FLAG_TUTORIAL_6)
     EvtFunc(Tutorial_HelpBowRange)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
 
 EvtLabel(10)
@@ -212,7 +212,7 @@ EvtLabel(10)
     EvtGotoIfFlag(99, FLAG_TUTORIAL_15)
 
     EvtFunc(Tutorial_HelpBowAttack)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
     EvtFunc(Tutorial_HelpBowMove)
     EvtSleep(20)
@@ -231,7 +231,7 @@ EventScr CONST_DATA gUnk_0866B07C[] =
 
     EvtSetFlag(FLAG_TUTORIAL_7)
     EvtFunc(Tutorial_HelpMagicRange)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
 
 EvtLabel(10)
@@ -240,7 +240,7 @@ EvtLabel(10)
     EvtGotoIfFlag(99, FLAG_TUTORIAL_16)
 
     EvtFunc(Tutorial_HelpMagicAttack)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(20)
     EvtFunc(Tutorial_HelpMagicMove)
     EvtSleep(20)
@@ -276,7 +276,7 @@ EventScr CONST_DATA EventScr_Unk_0866B14C[] =
 
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpSeize)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
     EvtGoto(10)
 
@@ -285,7 +285,7 @@ EvtLabel(5)
 
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpVisit)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
     EvtGoto(10)
 
@@ -294,7 +294,7 @@ EvtLabel(6)
 
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpAttackCommand)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
 
 EvtLabel(7)
@@ -303,7 +303,7 @@ EvtLabel(7)
     EvtSetFlag(FLAG_TUTORIAL_20)
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpRescue)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
 
 EvtLabel(72)
@@ -312,7 +312,7 @@ EvtLabel(72)
     EvtSetFlag(FLAG_TUTORIAL_21)
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpTrade)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
     EvtGoto(10)
 
@@ -322,7 +322,7 @@ EvtLabel(8)
     EvtSetFlag(FLAG_TUTORIAL_19)
     EvtFunc(Tutorial_FreezeMenuOnce)
     EvtFunc(Tutorial_HelpUnitMenu)
-    EvtFuncWhile(func_fe6_080718E0)
+    EvtFuncWhile(IsHelpDialogueActive)
     EvtSleep(30)
 
 EvtLabel(10)

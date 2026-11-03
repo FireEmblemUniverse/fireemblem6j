@@ -283,7 +283,7 @@ void func_fe6_0808B028(struct ProcXmap * proc)
         func_fe6_0808AF4C(proc);
         proc->unk_40 = DecodeExtraMapInfoMsg(proc->chapter_list[proc->selected_idx]);
 
-        func_fe6_08071C00(proc->unk_40, &w, &h);
+        GetPagedStringTextBox(proc->unk_40, &w, &h);
 
         proc->unk_47 = (DISPLAY_WIDTH - w) / 2;
         proc->unk_48 = (0x58 - h) / 2;
