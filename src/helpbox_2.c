@@ -115,7 +115,7 @@ void LoadHelpBoxGfxTwoLines(void * vram, int pal)
     InitSpriteTextFont(&gHelpBoxSt.font, vram, pal);
     InitSpriteText(gHelpBoxSt.text + 0);
     InitSpriteText(gHelpBoxSt.text + 1);
-    gHelpBoxSt.text[2].tile_width = 0; // ok???
+    gHelpBoxSt.text[2].tile_width = 0; // ok??? Skips InitSpriteText, so no tiles are reserved for a third line
     SetTextFont(NULL);
 
     ApplyPalette(Pal_HelpBox, pal);
@@ -198,7 +198,7 @@ int DrawHelpBoxWeaponLabels(int item)
     Text_InsertDrawString(&gHelpBoxSt.text[1], 0x30, TEXT_COLOR_47CF, JTEXT("命中"));
     Text_InsertDrawString(&gHelpBoxSt.text[1], 0x60, TEXT_COLOR_47CF, JTEXT("必殺"));
 
-    return 2; // TODO: what?
+    return 2; // Label line count; HelpBoxPrint_DrawLabels ignores it and hardcodes 2
 }
 
 void DrawHelpBoxWeaponStats(int item)
@@ -218,7 +218,7 @@ int DrawHelpBoxStaffLabels(int item)
     Text_InsertDrawString(&gHelpBoxSt.text[0], 0x24, TEXT_COLOR_47CF, JTEXT("射程"));
     Text_InsertDrawString(&gHelpBoxSt.text[0], 0x38, TEXT_COLOR_456F, GetItemRangeString(item));
 
-    return 1; // TODO: what?
+    return 1; // Label line count; HelpBoxPrint_DrawLabels ignores it and hardcodes 1
 }
 
 void TypeWriter_Loop(struct ProcTypeWriter * proc)
@@ -317,7 +317,7 @@ void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
     }
 
 end:
-    // NOTE: is this supposed to be NULL?
+    // NOTE: is this supposed to be NULL? Every other print path resets the font to NULL here
     SetTextFont(proc->font);
 }
 
