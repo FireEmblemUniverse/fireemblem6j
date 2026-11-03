@@ -197,7 +197,9 @@ SECTIONS
         . = ALIGN(4); src/statscreen.o(ewram_data);
         . = ALIGN(4); src/helpbox.o(ewram_data);
         . = ALIGN(4); src/chapter_title.o(ewram_data);
-        . = ALIGN(4); src/helpbox_2.o(ewram_data);
+        . = ALIGN(4); src/helpbox_display.o(ewram_data);
+        . = ALIGN(4); src/helpbox_alt.o(ewram_data);
+        . = ALIGN(4); src/helpdialogue.o(ewram_data);
         . = ALIGN(4); src/secretscreen.o(ewram_data);
         . = ALIGN(4); src/save_core.o(ewram_data);
         . = ALIGN(4); src/save_stats.o(ewram_data);
@@ -385,7 +387,9 @@ SECTIONS
         src/statscreen.o(.text);
         src/helpbox.o(.text);
         src/chapter_title.o(.text);
-        src/helpbox_2.o(.text);
+        src/helpbox_display.o(.text);
+        src/helpbox_alt.o(.text);
+        src/helpdialogue.o(.text);
         src/mapui.o(.text);
         src/sioerror.o(.text);
         src/statusscreen.o(.text);
@@ -549,7 +553,9 @@ SECTIONS
         . = ALIGN(4); src/statscreen.o(.rodata);
         . = ALIGN(4); src/helpbox.o(.rodata);
         . = ALIGN(4); src/chapter_title.o(.rodata);
-        . = ALIGN(4); src/helpbox_2.o(.rodata);
+        . = ALIGN(4); src/helpbox_display.o(.rodata);
+        . = ALIGN(4); src/helpbox_alt.o(.rodata);
+        . = ALIGN(4); src/helpdialogue.o(.rodata);
         . = ALIGN(4); src/statusscreen.o(.rodata);
         . = ALIGN(4); src/prep_img.o(.rodata);
         . = ALIGN(4); src/unitlistscreen.o(.rodata);
@@ -803,7 +809,9 @@ SECTIONS
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
         . = ALIGN(4); src/chapter_title.o(.data);
-        . = ALIGN(4); src/helpbox_2.o(.data);
+        . = ALIGN(4); src/helpbox_display.o(.data);
+        . = ALIGN(4); src/helpbox_alt.o(.data);
+        . = ALIGN(4); src/helpdialogue.o(.data);
         . = ALIGN(4); src/mapui.o(.data);
         . = ALIGN(4); src/statusscreen.o(.data);
         . = ALIGN(4); src/unitlistscreen.o(.data);

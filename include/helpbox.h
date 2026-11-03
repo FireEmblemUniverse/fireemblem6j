@@ -3,6 +3,7 @@
 #include "prelude.h"
 
 #include "proc.h"
+#include "text.h"
 
 enum
 {
@@ -66,6 +67,36 @@ struct HelpBoxInfo
     /* 12 */ u16 msg;
     /* 14 */ void (* redirect)(struct HelpBoxProc * proc);
     /* 18 */ void (* populate)(struct HelpBoxProc * proc);
+};
+
+enum
+{
+    TALKBOX_CHR_EDGE_H = 0x1B,
+    TALKBOX_CHR_EDGE_V = 0x1F,
+    TALKBOX_CHR_CORNER = 0x3E,
+
+    TALKBOX_MIN_W = 0x20,
+    TALKBOX_MAX_W = 0xC0,
+    TALKBOX_MIN_H = 0x10,
+    TALKBOX_MAX_H = 0x30,
+};
+
+struct HelpBoxSt
+{
+    /* 00 */ struct Font font;
+    /* 18 */ struct Text text[3];
+    /* 30 */ u16 oam2_base;
+};
+
+struct HelpBoxPrintProc
+{
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ u8 pad_29[0x58 - 0x29];
+    /* 58 */ i32 item;
+    /* 5C */ i32 msg;
+    /* 60 */ u8 pad_60[0x64 - 0x60];
+    /* 64 */ i16 line; // NOTE: might not be same proc
 };
 
 void UpdateHelpBoxDisplay(struct HelpBoxProc * proc, int interpolate_method);
