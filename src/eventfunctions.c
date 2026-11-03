@@ -968,7 +968,7 @@ void TutorialHighlight_SetFade(int a, int b, int c)
 {
     int var = Interpolate(INTERPOLATE_SQUARE, a, b, c, 8);
 
-    CpuFastCopy(Pal_08342A98, gPal + 0x12 * 0x10, 0x10 * sizeof(u16));
+    CpuFastCopy(Pal_GoldHighlight, gPal + 0x12 * 0x10, 0x10 * sizeof(u16));
     EfxPalWhiteInOut(gPal, 18, 1, var);
     EnablePalSync();
 }
@@ -977,7 +977,7 @@ void TutorialHighlight_Init(struct TutorialHighlightProc * proc)
 {
     proc->clock = 0;
     proc->fading_out = 0;
-    ApplyPalette(Pal_08342A98, 0x12);
+    ApplyPalette(Pal_GoldHighlight, 0x12);
 }
 
 void TutorialHighlight_Loop(struct TutorialHighlightProc * proc)
