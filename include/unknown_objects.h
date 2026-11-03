@@ -304,8 +304,8 @@ extern u16 const Pal_Unk_0830D5E4[];
 extern u8 const Img_ChapterTitleBG1[]; // img
 extern u8 const Img_ChapterTitleBG2[]; // img
 extern u8 const Tsa_ChapterTitleFxDefaultBG[]; // tsa
-extern u8 const Img_Helpbox_08308A78[]; // img
-extern u16 const Pal_08100A48[]; // pal
+extern u8 const Img_HelpBox[]; // img
+extern u16 const Pal_HelpBox[]; // pal
 
 extern u16 Img_ChapterTitle_0830D9C0[];
 extern u16 Img_ChapterTitle_0830DDBC[];

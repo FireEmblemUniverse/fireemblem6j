@@ -1072,7 +1072,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 			PrepItem_PutItemDesc(1, 0xB,
 				gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].item,
 				proc->subproc1);
-			func_fe6_08071B80(0x10, 0x10, MSG_C47, proc);
+			StartHelpDialogue(0x10, 0x10, MSG_C47, proc);
 			return;
 		}
 	} else if (proc->unk2D < 4) {

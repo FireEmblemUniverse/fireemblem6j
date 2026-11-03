@@ -44,6 +44,6 @@ Pal_StatscreenPageNameFlashing: @ 083087C8
 Img_Statscreen_08308920: @ 08308920
 	.incbin "fe6-base.gba", 0x308920, (0x308A78 - 0x308920) @ length: 0158
 
-	.global Img_Helpbox_08308A78
-Img_Helpbox_08308A78: @ 08308A78
+	.global Img_HelpBox
+Img_HelpBox: @ 08308A78
 	.incbin "fe6-base.gba", 0x308A78, (0x308B98 - 0x308A78) @ length: 0120
