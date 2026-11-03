@@ -3,9 +3,14 @@
 #include "prelude.h"
 #include "menu.h"
 #include "proc.h"
+#include "playrank.h"
 
 enum video_augury {
-    BGPAL_AUGURY_4 = 4,
+    BGPAL_AUGURY_MURAL = 4,
+    BGCHR_AUGURY_WINDOWFRAME = 0x180,
+
+    OBPAL_AUGURY_UI = 2,
+    OBCHR_AUGURY_UI = 0x80,
 };
 
 enum AUGURY_HAND_STATE {
@@ -14,7 +19,7 @@ enum AUGURY_HAND_STATE {
 	AUGURY_HAND_FROZEN,
 };
 
-enum AUGURY_PROC_LABLE {
+enum AUGURY_PROC_LABEL {
 	PL_AUGURY_START,
 	PL_AUGURY_REPROMPT,
 	PL_AUGURY_SELECT,
@@ -39,8 +44,8 @@ struct AuguryConfig {
 struct AuguryAnimProc {
 	PROC_HEADER;
 
-	i16 timer1;
-	i16 timer2;
+	i16 timer;
+	i16 phase;
 	int current_bgm;
 };
 
@@ -52,10 +57,10 @@ extern EWRAM_OVERLAY(0) i16 gAuguryIndex;
 extern EWRAM_OVERLAY(0) u16 gAuguryFadeStep;
 extern EWRAM_OVERLAY(0) u16 gAuguryBlendA;
 extern EWRAM_OVERLAY(0) u16 gAuguryBlendB;
-extern EWRAM_OVERLAY(0) u8 gAuguryStatus[7];
+extern EWRAM_OVERLAY(0) u8 gAuguryStatus[PLAYRANK_MAX];
 extern EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex;
 extern EWRAM_OVERLAY(0) i8 gAuguryHandState;
-extern EWRAM_OVERLAY(0) struct Text gAuguryTexts[7];
+extern EWRAM_OVERLAY(0) struct Text gAuguryTexts[PLAYRANK_MAX];
 extern EWRAM_OVERLAY(0) i16 gAuguryRitualDone;
 extern EWRAM_OVERLAY(0) i16 unk_02016A1A;
 extern EWRAM_OVERLAY(0) u16 gPlayRankBg0Offset;
@@ -68,7 +73,7 @@ extern EWRAM_OVERLAY(0) u16 gPlayRankLayer;
 extern EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect;
 extern EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled;
 extern EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted;
-extern EWRAM_OVERLAY(0) u16 gPlayRanks[7];
+extern EWRAM_OVERLAY(0) u16 gPlayRanks[PLAYRANK_MAX];
 
 bool AuguryMenu_End(struct MenuProc *proc);
 fu8 GetAuguryIndex(void);

@@ -17,6 +17,7 @@
 #include "unitsprite.h"
 #include "playrank.h"
 #include "ending.h"
+#include "constants/chapters.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/faces.h"
@@ -97,10 +98,10 @@ EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
 EWRAM_OVERLAY(0) u16 gAuguryFadeStep = 0;
 EWRAM_OVERLAY(0) u16 gAuguryBlendA = 0;
 EWRAM_OVERLAY(0) u16 gAuguryBlendB = 0;
-EWRAM_OVERLAY(0) u8 gAuguryStatus[7] = {};
+EWRAM_OVERLAY(0) u8 gAuguryStatus[PLAYRANK_MAX] = {};
 EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex = 0;
 EWRAM_OVERLAY(0) i8 gAuguryHandState = 0;
-EWRAM_OVERLAY(0) struct Text gAuguryTexts[7] = {};
+EWRAM_OVERLAY(0) struct Text gAuguryTexts[PLAYRANK_MAX] = {};
 EWRAM_OVERLAY(0) i16 gAuguryRitualDone = 0;
 EWRAM_OVERLAY(0) i16 unk_02016A1A = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankBg0Offset = 0;
@@ -113,7 +114,7 @@ EWRAM_OVERLAY(0) u16 gPlayRankLayer = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect = 0;
 EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled = 0;
 EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted = 0;
-EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
+EWRAM_OVERLAY(0) u16 gPlayRanks[PLAYRANK_MAX] = {};
 EWRAM_OVERLAY(0) u8 gCreditInfoDispStep = 0;
 EWRAM_OVERLAY(0) u8 gEndingCgIndex = 0;
 EWRAM_OVERLAY(0) u8 gGameEndingFlag = 0;
@@ -146,7 +147,7 @@ bool AuguryMenu_End(struct MenuProc *proc)
 
 u8 GetAuguryIndex(void)
 {
-	if (gPlaySt.chapter > 12) {
+	if (gPlaySt.chapter > CHAPTER_12) {
 		int i;
 
 		for (i = 0; i < 2; i++) {
@@ -237,7 +238,7 @@ void AuguryHand_Loop(void)
 	default:
 		break;
 	}
-	PutOamHi(0x20, 8, Obj_AuguryUI, 0x2080);
+	PutOamHi(0x20, 8, Obj_AuguryUI, OAM2_PAL(OBPAL_AUGURY_UI) + OAM2_CHR(OBCHR_AUGURY_UI));
 }
 
 void Augury_ShowHand(void)
@@ -274,20 +275,20 @@ void Augury_Init(void)
 	TmFill(gBg1Tm, 0);
 	TmFill(gBg3Tm, 0);
 
-	ApplyPalette(Pal_AuguryMural, 4);
-	ApplyPalette(Pal_AuguryMural + 0x10, 0x12);
+	ApplyPalette(Pal_AuguryMural, BGPAL_AUGURY_MURAL);
+	ApplyPalette(Pal_AuguryMural + 0x10, 0x10 + OBPAL_AUGURY_UI);
 
-	Decompress(Img_AuguryUIObj, OBJ_VRAM0 + 0x1000);
+	Decompress(Img_AuguryUIObj, OBJ_VRAM0 + OBCHR_AUGURY_UI * CHR_SIZE);
 	Decompress(Img_MuralBackground, (void *)BG_VRAM + GetBgChrOffset(BG_3));
-	UnpackUiWindowFrameImg((void *)BG_VRAM + 0x3000);
+	UnpackUiWindowFrameImg((void *)BG_VRAM + BGCHR_AUGURY_WINDOWFRAME * CHR_SIZE);
 	UnpackUiWindowFrameGraphics();
 
-	TmApplyTsa(gBg1Tm, Tsa_AuguryTitleFrame, 0x1180);
-	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_AuguryMenuFrame, 0x1180);
-	PutEndingLinearTSA(gBg3Tm, 0x4000);
+	TmApplyTsa(gBg1Tm, Tsa_AuguryTitleFrame, TILEREF(BGCHR_AUGURY_WINDOWFRAME, BGPAL_WINDOWFRAME));
+	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_AuguryMenuFrame, TILEREF(BGCHR_AUGURY_WINDOWFRAME, BGPAL_WINDOWFRAME));
+	PutEndingLinearTSA(gBg3Tm, TILEREF(0, BGPAL_AUGURY_MURAL));
 	ResetTextFont();
 
-	for (i = 0; i < 7; i++) {
+	for (i = 0; i < PLAYRANK_MAX; i++) {
 		struct Text *text = &gAuguryTexts[i];
 
 		InitText(text, 6);
@@ -308,12 +309,12 @@ void Augury_Init(void)
 	SpawnProc(ProcScr_AuguryHand, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG3_SYNC_BIT);
 
-	gPlayRanks[0] = gAuguryStatus[1] = PlayRankGetter_Tactics();
-	gPlayRanks[1] = gAuguryStatus[2] = PlayRankGetter_Combat();
-	gPlayRanks[2] = gAuguryStatus[3] = PlayRankGetter_Survival();
-	gPlayRanks[3] = gAuguryStatus[4] = PlayRankGetter_Experience();
-	gPlayRanks[4] = gAuguryStatus[5] = PlayRankGetter_Asset();
-	gPlayRanks[5] = gAuguryStatus[6] = PlayRankGetter_Power();
+	gPlayRanks[PLAYRANK_TACTICS] = gAuguryStatus[1] = PlayRankGetter_Tactics();
+	gPlayRanks[PLAYRANK_COMBAT] = gAuguryStatus[2] = PlayRankGetter_Combat();
+	gPlayRanks[PLAYRANK_SURVIVAL] = gAuguryStatus[3] = PlayRankGetter_Survival();
+	gPlayRanks[PLAYRANK_EXPERIENCE] = gAuguryStatus[4] = PlayRankGetter_Experience();
+	gPlayRanks[PLAYRANK_ASSET] = gAuguryStatus[5] = PlayRankGetter_Asset();
+	gPlayRanks[PLAYRANK_POWER] = gAuguryStatus[6] = PlayRankGetter_Power();
 	gAuguryStatus[0] = GameRank_GetTotalRankA();
 }
 
@@ -604,10 +605,10 @@ void Augury_LerpMuralPalette(int lo0, int hi0, int lo1, int hi1, int x)
 	int v1 = Interpolate(INTERPOLATE_SQUARE, lo0, hi0, x, 0x37);
 	int v2 = Interpolate(INTERPOLATE_SQUARE, lo1, hi1, x, 0x37);
 
-	CpuFastCopy(Pal_AuguryMural, gPal + PAL_OFFSET(BGPAL_AUGURY_4), 0x20);
+	CpuFastCopy(Pal_AuguryMural, gPal + PAL_OFFSET(BGPAL_AUGURY_MURAL), 0x20);
 
-	AuguryPaletteModify2(gPal, BGPAL_AUGURY_4, 10, 5, v1);
-	AuguryPaletteModify1(gPal, BGPAL_AUGURY_4,  2, 8, v2);
+	AuguryPaletteModify2(gPal, BGPAL_AUGURY_MURAL, 10, 5, v1);
+	AuguryPaletteModify1(gPal, BGPAL_AUGURY_MURAL,  2, 8, v2);
 
 	EnablePalSync();
 }
@@ -621,28 +622,28 @@ struct ProcScr CONST_DATA ProcScr_AuguryMuralGlow[] = {
 
 void AuguryMuralGlow_Init(struct AuguryAnimProc *proc)
 {
-	proc->timer1 = 0;
-	proc->timer2 = 0;
+	proc->timer = 0;
+	proc->phase = 0;
 }
 
 void AuguryMuralGlow_Loop(struct AuguryAnimProc *proc)
 {
-	switch (proc->timer2) {
+	switch (proc->phase) {
 	case 0:
-		Augury_LerpMuralPalette(0, 5, 0, 4, proc->timer1);
-		proc->timer1++;
-		if (proc->timer1 > 0x37) {
-			proc->timer1 = 0;
-			proc->timer2++;
+		Augury_LerpMuralPalette(0, 5, 0, 4, proc->timer);
+		proc->timer++;
+		if (proc->timer > 0x37) {
+			proc->timer = 0;
+			proc->phase++;
 		}
 		break;
 
 	case 5:
-		Augury_LerpMuralPalette(5, 0, 4, 0, proc->timer1);
-		proc->timer1++;
-		if (proc->timer1 > 0x37) {
-			proc->timer1 = 0;
-			proc->timer2++;
+		Augury_LerpMuralPalette(5, 0, 4, 0, proc->timer);
+		proc->timer++;
+		if (proc->timer > 0x37) {
+			proc->timer = 0;
+			proc->phase++;
 
 			if (gAuguryRitualDone != 0)
 				Proc_Break(proc);
@@ -650,18 +651,18 @@ void AuguryMuralGlow_Loop(struct AuguryAnimProc *proc)
 		break;
 
 	case 10:
-		proc->timer2 = 0;
+		proc->phase = 0;
 		break;
 
 	default:
-		proc->timer2++;
+		proc->phase++;
 		break;
 	}
 }
 
 void Augury_RitualInit(struct AuguryAnimProc *proc)
 {
-	proc->timer1 = 0;
+	proc->timer = 0;
 	proc->current_bgm = GetCurrentBgmSong();
 	gAuguryRitualDone = 0;
 }
@@ -669,7 +670,7 @@ void Augury_RitualInit(struct AuguryAnimProc *proc)
 void Augury_RitualLoop(struct AuguryAnimProc *proc)
 {
 	if (gCurrentAuguryIndex == 0) {
-		switch (proc->timer1) {
+		switch (proc->timer) {
 		case 0:
 			SpawnProc(ProcScr_AuguryMuralGlow, PROC_TREE_3);
 			break;
@@ -687,7 +688,7 @@ void Augury_RitualLoop(struct AuguryAnimProc *proc)
 			break;
 		}
 	} else {
-		switch (proc->timer1) {
+		switch (proc->timer) {
 		case 0:
 			SpawnProc(ProcScr_AuguryMuralGlow, PROC_TREE_3);
 			PlaySe(SONG_EE);
@@ -706,7 +707,7 @@ void Augury_RitualLoop(struct AuguryAnimProc *proc)
 		}
 	}
 
-	proc->timer1++;
+	proc->timer++;
 
 	if (gAuguryRitualDone) {
 		StartBgm(proc->current_bgm, NULL);
