@@ -17,6 +17,7 @@
 #include "unitsprite.h"
 #include "playrank.h"
 #include "ending.h"
+#include "constants/chapters.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/faces.h"
@@ -24,31 +25,31 @@
 
 #include "augury.h"
 
-CONST_DATA int AuguryMsgs0[] = {
+CONST_DATA int AuguryCategoryMsgs[] = {
 	MSG_716, MSG_717, MSG_718, MSG_719, MSG_71A, MSG_71B, MSG_71C
 };
 
-CONST_DATA int AuguryMsgs1[] = {
+CONST_DATA int AuguryScriptMsgsA[] = {
 	MSG_6F3, MSG_6F4, MSG_6FC,
 };
 
-CONST_DATA int AuguryMsgs2[] = {
+CONST_DATA int AuguryScriptMsgsB[] = {
 	MSG_6FD, MSG_6FE, MSG_707,
 };
 
-CONST_DATA int AuguryMsgs3[] = {
+CONST_DATA int AuguryRankMsgsA[] = {
 	MSG_6FB, MSG_6FA, MSG_6F9, MSG_6F8, MSG_6F7, MSG_6F6, MSG_6F5
 };
 
-CONST_DATA int AuguryMsgs4[] = {
+CONST_DATA int AuguryRankMsgsB[] = {
 	MSG_706, MSG_705, MSG_704, MSG_703, MSG_702, MSG_701, MSG_700,
 };
 
-CONST_DATA int AuguryMsgs5[] = {
+CONST_DATA int AuguryDescMsgsA[] = {
 	MSG_708, MSG_709, MSG_70A, MSG_70B, MSG_70C, MSG_70D, MSG_70E,
 };
 
-CONST_DATA int AuguryMsgs6[] = {
+CONST_DATA int AuguryDescMsgsB[] = {
 	MSG_70F, MSG_710, MSG_711, MSG_712, MSG_713, MSG_714, MSG_715,
 };
 
@@ -65,15 +66,15 @@ CONST_DATA struct AuguryDispConfig gAuguryDispConfig[] = {
 CONST_DATA struct AuguryConfig gAuguryConfig[] = {
 	{
 		FID_26, PID_LARUM,
-		AuguryMsgs1, AuguryMsgs3, AuguryMsgs5,
+		AuguryScriptMsgsA, AuguryRankMsgsA, AuguryDescMsgsA,
 	},
 	{
 		FID_2B, PID_ELFFIN,
-		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+		AuguryScriptMsgsB, AuguryRankMsgsB, AuguryDescMsgsB,
 	},
 	{
 		FID_02, PID_NONE,
-		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+		AuguryScriptMsgsB, AuguryRankMsgsB, AuguryDescMsgsB,
 	},
 };
 
@@ -97,11 +98,11 @@ EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
 EWRAM_OVERLAY(0) u16 gAuguryFadeStep = 0;
 EWRAM_OVERLAY(0) u16 gAuguryBlendA = 0;
 EWRAM_OVERLAY(0) u16 gAuguryBlendB = 0;
-EWRAM_OVERLAY(0) u8 gAuguryStatus[7] = {};
+EWRAM_OVERLAY(0) u8 gAuguryStatus[PLAYRANK_MAX] = {};
 EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex = 0;
-EWRAM_OVERLAY(0) i8 gAuguryChoice = 0;
-EWRAM_OVERLAY(0) struct Text gAuguryTexts[7] = {};
-EWRAM_OVERLAY(0) i16 ProcAugury_0868AFF0_EndEnable = 0;
+EWRAM_OVERLAY(0) i8 gAuguryHandState = 0;
+EWRAM_OVERLAY(0) struct Text gAuguryTexts[PLAYRANK_MAX] = {};
+EWRAM_OVERLAY(0) i16 gAuguryRitualDone = 0;
 EWRAM_OVERLAY(0) i16 unk_02016A1A = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankBg0Offset = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankBg1Offset = 0;
@@ -113,7 +114,7 @@ EWRAM_OVERLAY(0) u16 gPlayRankLayer = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect = 0;
 EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled = 0;
 EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted = 0;
-EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
+EWRAM_OVERLAY(0) u16 gPlayRanks[PLAYRANK_MAX] = {};
 EWRAM_OVERLAY(0) u8 gCreditInfoDispStep = 0;
 EWRAM_OVERLAY(0) u8 gEndingCgIndex = 0;
 EWRAM_OVERLAY(0) u8 gGameEndingFlag = 0;
@@ -134,7 +135,7 @@ EWRAM_OVERLAY(0) u16 EndingFaceXPos[2] = {};
 EWRAM_OVERLAY(0) u16 gEndingPInfoPal1[8][0x10] = {};
 EWRAM_OVERLAY(0) u16 gEndingPInfoPal2[8][0x10] = {};
 
-bool func_fe6_0808D0C0(struct MenuProc *proc)
+bool AuguryMenu_End(struct MenuProc *proc)
 {
 	TmFillRect(gBg0Tm + TM_OFFSET(12, 1), 6, 14, 0);
 	TmFillRect(gBg1Tm + TM_OFFSET(11, 0), 8, 16, 0);
@@ -146,7 +147,7 @@ bool func_fe6_0808D0C0(struct MenuProc *proc)
 
 u8 GetAuguryIndex(void)
 {
-	if (gPlaySt.chapter > 12) {
+	if (gPlaySt.chapter > CHAPTER_12) {
 		int i;
 
 		for (i = 0; i < 2; i++) {
@@ -217,37 +218,37 @@ void Augury_InitIO(ProcPtr proc)
 	PutTalkBubbleTm(9, 13, 20, 6);
 	PutTalkBubbleTail(8, 16, 2);
 	EnableBgSync(BG1_SYNC_BIT);
-	func_fe6_0808D954(proc);
+	Augury_TalkPrompt(proc);
 }
 
-void func_fe6_0808D308(void)
+void AuguryHand_Loop(void)
 {
 	int x = gAuguryDispConfig[gAuguryIndex].x * 8 - 2;
 	int y = gAuguryDispConfig[gAuguryIndex].y * 8;
 
-	switch (gAuguryChoice) {
-	case AUGURY_CHOICE_1:
+	switch (gAuguryHandState) {
+	case AUGURY_HAND_ACTIVE:
 		PutUiHand(x, y);
 		break;
 
-	case AUGURY_CHOICE_2:
+	case AUGURY_HAND_FROZEN:
 		PutFrozenUiHand(x, y);
 		break;
 
 	default:
 		break;
 	}
-	PutOamHi(0x20, 8, Obj_AuguryUI, 0x2080);
+	PutOamHi(0x20, 8, Obj_AuguryUI, OAM2_PAL(OBPAL_AUGURY_UI) + OAM2_CHR(OBCHR_AUGURY_UI));
 }
 
-void func_fe6_0808D368(void)
+void Augury_ShowHand(void)
 {
-	gAuguryChoice = AUGURY_CHOICE_1;
+	gAuguryHandState = AUGURY_HAND_ACTIVE;
 }
 
-struct ProcScr CONST_DATA ProcScr_0868AFD8[] = {
+struct ProcScr CONST_DATA ProcScr_AuguryHand[] = {
 	PROC_19,
-	PROC_REPEAT(func_fe6_0808D308),
+	PROC_REPEAT(AuguryHand_Loop),
 	PROC_END,
 };
 
@@ -256,7 +257,7 @@ void Augury_Init(void)
 	int i;
 
 	gAuguryFadeStep = 0;
-	gAuguryChoice = AUGURY_CHOICE_0;
+	gAuguryHandState = AUGURY_HAND_HIDDEN;
 	gCurrentAuguryIndex = GetAuguryIndex();
 
 	if (gCurrentAuguryIndex == (u8)-1)
@@ -274,20 +275,20 @@ void Augury_Init(void)
 	TmFill(gBg1Tm, 0);
 	TmFill(gBg3Tm, 0);
 
-	ApplyPalette(Pal_0833C01C, 4);
-	ApplyPalette(Pal_0833C01C + 0x10, 0x12);
+	ApplyPalette(Pal_AuguryMural, BGPAL_AUGURY_MURAL);
+	ApplyPalette(Pal_AuguryMural + 0x10, 0x10 + OBPAL_AUGURY_UI);
 
-	Decompress(Img_0833C09C, OBJ_VRAM0 + 0x1000);
+	Decompress(Img_AuguryUIObj, OBJ_VRAM0 + OBCHR_AUGURY_UI * CHR_SIZE);
 	Decompress(Img_MuralBackground, (void *)BG_VRAM + GetBgChrOffset(BG_3));
-	UnpackUiWindowFrameImg((void *)BG_VRAM + 0x3000);
+	UnpackUiWindowFrameImg((void *)BG_VRAM + BGCHR_AUGURY_WINDOWFRAME * CHR_SIZE);
 	UnpackUiWindowFrameGraphics();
 
-	TmApplyTsa(gBg1Tm, Tsa_0833C1D8, 0x1180);
-	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_0833C234, 0x1180);
-	PutEndingLinearTSA(gBg3Tm, 0x4000);
+	TmApplyTsa(gBg1Tm, Tsa_AuguryTitleFrame, TILEREF(BGCHR_AUGURY_WINDOWFRAME, BGPAL_WINDOWFRAME));
+	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_AuguryMenuFrame, TILEREF(BGCHR_AUGURY_WINDOWFRAME, BGPAL_WINDOWFRAME));
+	PutEndingLinearTSA(gBg3Tm, TILEREF(0, BGPAL_AUGURY_MURAL));
 	ResetTextFont();
 
-	for (i = 0; i < 7; i++) {
+	for (i = 0; i < PLAYRANK_MAX; i++) {
 		struct Text *text = &gAuguryTexts[i];
 
 		InitText(text, 6);
@@ -297,27 +298,27 @@ void Augury_Init(void)
 			text,
 			gBg0Tm + TM_OFFSET(gAuguryDispConfig[i].x, gAuguryDispConfig[i].y),
 			TEXT_COLOR_SYSTEM_WHITE, 0, 6,
-			DecodeMsg(AuguryMsgs0[i])
+			DecodeMsg(AuguryCategoryMsgs[i])
 		);
 	}
 
 	gAuguryIndex = 0;
-	func_fe6_0808D6D4(0, 0);
+	Augury_PutSelectBars(0, 0);
 	InitTalk(0x200, 2, 1);
 	StartTalkFace(gAuguryConfig[gCurrentAuguryIndex].fid, 0x20, 0x50, FACE_DISP_FLIPPED | 2, TALK_FACE_1);
-	SpawnProc(ProcScr_0868AFD8, PROC_TREE_3);
+	SpawnProc(ProcScr_AuguryHand, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG3_SYNC_BIT);
 
-	gPlayRanks[0] = gAuguryStatus[1] = PlayRankGetter_Tactics();
-	gPlayRanks[1] = gAuguryStatus[2] = PlayRankGetter_Combat();
-	gPlayRanks[2] = gAuguryStatus[3] = PlayRankGetter_Survival();
-	gPlayRanks[3] = gAuguryStatus[4] = PlayRankGetter_Experience();
-	gPlayRanks[4] = gAuguryStatus[5] = PlayRankGetter_Asset();
-	gPlayRanks[5] = gAuguryStatus[6] = PlayRankGetter_Power();
+	gPlayRanks[PLAYRANK_TACTICS] = gAuguryStatus[1] = PlayRankGetter_Tactics();
+	gPlayRanks[PLAYRANK_COMBAT] = gAuguryStatus[2] = PlayRankGetter_Combat();
+	gPlayRanks[PLAYRANK_SURVIVAL] = gAuguryStatus[3] = PlayRankGetter_Survival();
+	gPlayRanks[PLAYRANK_EXPERIENCE] = gAuguryStatus[4] = PlayRankGetter_Experience();
+	gPlayRanks[PLAYRANK_ASSET] = gAuguryStatus[5] = PlayRankGetter_Asset();
+	gPlayRanks[PLAYRANK_POWER] = gAuguryStatus[6] = PlayRankGetter_Power();
 	gAuguryStatus[0] = GameRank_GetTotalRankA();
 }
 
-void func_fe6_0808D59C(ProcPtr proc)
+void Augury_FadeInBubble(ProcPtr proc)
 {
 	int val;
 
@@ -350,7 +351,7 @@ void func_fe6_0808D59C(ProcPtr proc)
 	}
 }
 
-void func_fe6_0808D630(ProcPtr proc)
+void Augury_FadeOutBubbleAfterTalk(ProcPtr proc)
 {
 	int val;
 
@@ -388,7 +389,7 @@ void func_fe6_0808D630(ProcPtr proc)
 	}
 }
 
-void func_fe6_0808D6D4(u16 a, u16 b)
+void Augury_PutSelectBars(u16 a, u16 b)
 {
 	int offset, tmp, tileref0, tileref1;
 
@@ -439,13 +440,13 @@ void func_fe6_0808D6D4(u16 a, u16 b)
 	EnableBgSync(BG1_SYNC_BIT);
 }
 
-void func_fe6_0808D7B4(ProcPtr proc)
+void Augury_TalkCategoryDesc(ProcPtr proc)
 {
-	StartAuguryDialogue2(gAuguryConfig[gCurrentAuguryIndex].msgs3[gAuguryIndex]);
+	StartAuguryDialogue2(gAuguryConfig[gCurrentAuguryIndex].desc_msgs[gAuguryIndex]);
 	PlaySe(SONG_66);
 }
 
-void func_fe6_0808D7F8(ProcPtr proc)
+void Augury_SelectLoop(ProcPtr proc)
 {
 	int index;
 	int ref_index = 4;
@@ -454,9 +455,9 @@ void func_fe6_0808D7F8(ProcPtr proc)
 	case KEY_BUTTON_A:
 		ClearTalkText();
 		EndTalk();
-		gAuguryChoice = AUGURY_CHOICE_2;
+		gAuguryHandState = AUGURY_HAND_FROZEN;
 		PlaySe(SONG_6A);
-		Proc_Goto(proc, PL_AUGURY_3);
+		Proc_Goto(proc, PL_AUGURY_DIVINE);
 		return;
 
 	case KEY_BUTTON_B:
@@ -465,7 +466,7 @@ void func_fe6_0808D7F8(ProcPtr proc)
 		TmFillRect(gBg1Tm + TM_OFFSET(8, 13), 0x15, 6, 0);
 		EnableBgSync(BG1_SYNC_BIT);
 		PlaySe(SONG_6B);
-		Proc_Goto(proc, PL_AUGURY_4);
+		Proc_Goto(proc, PL_AUGURY_END);
 		return;
 
 	default:
@@ -510,19 +511,19 @@ void func_fe6_0808D7F8(ProcPtr proc)
 			break;
 		}
 		if (gAuguryIndex != index) {
-			func_fe6_0808D6D4(gAuguryIndex, index);
+			Augury_PutSelectBars(gAuguryIndex, index);
 
 			gAuguryIndex = index;
-			func_fe6_0808D7B4(proc);
+			Augury_TalkCategoryDesc(proc);
 		}
 		break;
 	}
 }
 
-void func_fe6_0808D900(ProcPtr proc)
+void Augury_WaitTalkOrCancel(ProcPtr proc)
 {
 	if (gKeySt->held & KEY_BUTTON_B) {
-		Proc_Goto(proc, PL_AUGURY_4);
+		Proc_Goto(proc, PL_AUGURY_END);
 		return;
 	}
 
@@ -530,35 +531,35 @@ void func_fe6_0808D900(ProcPtr proc)
 		Proc_Break(proc);
 }
 
-void func_fe6_0808D938(ProcPtr proc)
+void Augury_WaitTalk(ProcPtr proc)
 {
 	if (!IsTalkActive())
 		Proc_Break(proc);
 }
 
-void func_fe6_0808D954(ProcPtr proc)
+void Augury_TalkPrompt(ProcPtr proc)
 {
-	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[0], proc);
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].script_msgs[0], proc);
 }
 
-void func_fe6_0808D978(ProcPtr proc)
+void Augury_TalkRitualStart(ProcPtr proc)
 {
-	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[1], proc);
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].script_msgs[1], proc);
 }
 
-void func_fe6_0808D99C(ProcPtr proc)
+void Augury_TalkDivining(ProcPtr proc)
 {
 	StartAuguryDialogue1(MSG_6FF, proc);
 }
 
-void func_fe6_0808D9B0(ProcPtr proc)
+void Augury_TalkRankResult(ProcPtr proc)
 {
-	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs2[gAuguryStatus[gAuguryIndex]], proc);
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].rank_msgs[gAuguryStatus[gAuguryIndex]], proc);
 }
 
-void func_fe6_0808D9F0(ProcPtr proc)
+void Augury_TalkResultEnd(ProcPtr proc)
 {
-	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[2], proc);
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].script_msgs[2], proc);
 }
 
 void AuguryPaletteModify1(u16 *pal, int line, int start, int count, int val)
@@ -599,79 +600,79 @@ void AuguryPaletteModify2(u16 *pal, int line, int start, int count, int val)
 	}
 }
 
-void func_fe6_0808DB14(int lo0, int hi0, int lo1, int hi1, int x)
+void Augury_LerpMuralPalette(int lo0, int hi0, int lo1, int hi1, int x)
 {
 	int v1 = Interpolate(INTERPOLATE_SQUARE, lo0, hi0, x, 0x37);
 	int v2 = Interpolate(INTERPOLATE_SQUARE, lo1, hi1, x, 0x37);
 
-	CpuFastCopy(Pal_0833C01C, gPal + PAL_OFFSET(BGPAL_AUGURY_4), 0x20);
+	CpuFastCopy(Pal_AuguryMural, gPal + PAL_OFFSET(BGPAL_AUGURY_MURAL), 0x20);
 
-	AuguryPaletteModify2(gPal, BGPAL_AUGURY_4, 10, 5, v1);
-	AuguryPaletteModify1(gPal, BGPAL_AUGURY_4,  2, 8, v2);
+	AuguryPaletteModify2(gPal, BGPAL_AUGURY_MURAL, 10, 5, v1);
+	AuguryPaletteModify1(gPal, BGPAL_AUGURY_MURAL,  2, 8, v2);
 
 	EnablePalSync();
 }
 
-struct ProcScr CONST_DATA ProcScr_0868AFF0[] = {
+struct ProcScr CONST_DATA ProcScr_AuguryMuralGlow[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808DB90),
-	PROC_REPEAT(func_fe6_0808DB98),
+	PROC_CALL(AuguryMuralGlow_Init),
+	PROC_REPEAT(AuguryMuralGlow_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808DB90(struct Proc_0868AFF0_Augury *proc)
+void AuguryMuralGlow_Init(struct AuguryAnimProc *proc)
 {
-	proc->timer1 = 0;
-	proc->timer2 = 0;
+	proc->timer = 0;
+	proc->phase = 0;
 }
 
-void func_fe6_0808DB98(struct Proc_0868AFF0_Augury *proc)
+void AuguryMuralGlow_Loop(struct AuguryAnimProc *proc)
 {
-	switch (proc->timer2) {
+	switch (proc->phase) {
 	case 0:
-		func_fe6_0808DB14(0, 5, 0, 4, proc->timer1);
-		proc->timer1++;
-		if (proc->timer1 > 0x37) {
-			proc->timer1 = 0;
-			proc->timer2++;
+		Augury_LerpMuralPalette(0, 5, 0, 4, proc->timer);
+		proc->timer++;
+		if (proc->timer > 0x37) {
+			proc->timer = 0;
+			proc->phase++;
 		}
 		break;
 
 	case 5:
-		func_fe6_0808DB14(5, 0, 4, 0, proc->timer1);
-		proc->timer1++;
-		if (proc->timer1 > 0x37) {
-			proc->timer1 = 0;
-			proc->timer2++;
+		Augury_LerpMuralPalette(5, 0, 4, 0, proc->timer);
+		proc->timer++;
+		if (proc->timer > 0x37) {
+			proc->timer = 0;
+			proc->phase++;
 
-			if (ProcAugury_0868AFF0_EndEnable != 0)
+			if (gAuguryRitualDone != 0)
 				Proc_Break(proc);
 		}
 		break;
 
 	case 10:
-		proc->timer2 = 0;
+		proc->phase = 0;
 		break;
 
 	default:
-		proc->timer2++;
+		proc->phase++;
 		break;
 	}
 }
 
-void func_fe6_0808DC30(struct Proc_0868AFF0_Augury *proc)
+void Augury_RitualInit(struct AuguryAnimProc *proc)
 {
-	proc->timer1 = 0;
+	proc->timer = 0;
 	proc->current_bgm = GetCurrentBgmSong();
-	ProcAugury_0868AFF0_EndEnable = 0;
+	gAuguryRitualDone = 0;
 }
 
-void func_fe6_0808DC4C(struct Proc_0868AFF0_Augury *proc)
+void Augury_RitualLoop(struct AuguryAnimProc *proc)
 {
 	if (gCurrentAuguryIndex == 0) {
-		switch (proc->timer1) {
+		switch (proc->timer) {
 		case 0:
-			SpawnProc(ProcScr_0868AFF0, PROC_TREE_3);
+			SpawnProc(ProcScr_AuguryMuralGlow, PROC_TREE_3);
 			break;
 
 		case 0x1E:
@@ -683,13 +684,13 @@ void func_fe6_0808DC4C(struct Proc_0868AFF0_Augury *proc)
 			break;
 
 		case 0xE6:
-			ProcAugury_0868AFF0_EndEnable++;
+			gAuguryRitualDone++;
 			break;
 		}
 	} else {
-		switch (proc->timer1) {
+		switch (proc->timer) {
 		case 0:
-			SpawnProc(ProcScr_0868AFF0, PROC_TREE_3);
+			SpawnProc(ProcScr_AuguryMuralGlow, PROC_TREE_3);
 			PlaySe(SONG_EE);
 			break;
 
@@ -701,25 +702,25 @@ void func_fe6_0808DC4C(struct Proc_0868AFF0_Augury *proc)
 			break;
 
 		case 0xE6:
-			ProcAugury_0868AFF0_EndEnable++;
+			gAuguryRitualDone++;
 			break;
 		}
 	}
 
-	proc->timer1++;
+	proc->timer++;
 
-	if (ProcAugury_0868AFF0_EndEnable) {
+	if (gAuguryRitualDone) {
 		StartBgm(proc->current_bgm, NULL);
 		Proc_Break(proc);
 	}
 }
 
-void func_fe6_0808DD24(ProcPtr proc)
+void Augury_End(ProcPtr proc)
 {
 	ClearPutTalkText();
 	EndTalk();
 	ClearTalk();
-	Proc_EndEach(ProcScr_0868AFD8);
+	Proc_EndEach(ProcScr_AuguryHand);
 }
 
 struct ProcScr CONST_DATA ProcScr_Augury[] =
@@ -730,52 +731,52 @@ struct ProcScr CONST_DATA ProcScr_Augury[] =
 	PROC_REPEAT(WhileFadeExists),
 	PROC_CALL(LockBmDisplay),
 
-PROC_LABEL(PL_AUGURY_0),
+PROC_LABEL(PL_AUGURY_START),
 	PROC_CALL(Augury_InitBG),
 	PROC_CALL(Augury_Init),
 	PROC_CALL(StartMidFadeFromBlack),
 	PROC_REPEAT(WhileFadeExists),
 	PROC_CALL(Augury_InitIO),
-	PROC_REPEAT(func_fe6_0808D900),
-	PROC_GOTO(PL_AUGURY_2),
+	PROC_REPEAT(Augury_WaitTalkOrCancel),
+	PROC_GOTO(PL_AUGURY_SELECT),
 
-PROC_LABEL(PL_AUGURY_1),
+PROC_LABEL(PL_AUGURY_REPROMPT),
 	PROC_SLEEP(20),
-	PROC_CALL(func_fe6_0808D368),
-	PROC_REPEAT(func_fe6_0808D59C),
-	PROC_CALL(func_fe6_0808D954),
-	PROC_REPEAT(func_fe6_0808D900),
+	PROC_CALL(Augury_ShowHand),
+	PROC_REPEAT(Augury_FadeInBubble),
+	PROC_CALL(Augury_TalkPrompt),
+	PROC_REPEAT(Augury_WaitTalkOrCancel),
 
-PROC_LABEL(PL_AUGURY_2),
-	PROC_CALL(func_fe6_0808D368),
+PROC_LABEL(PL_AUGURY_SELECT),
+	PROC_CALL(Augury_ShowHand),
 	PROC_SLEEP(5),
-	PROC_CALL(func_fe6_0808D7B4),
-	PROC_REPEAT(func_fe6_0808D7F8),
+	PROC_CALL(Augury_TalkCategoryDesc),
+	PROC_REPEAT(Augury_SelectLoop),
 
-PROC_LABEL(PL_AUGURY_3),
+PROC_LABEL(PL_AUGURY_DIVINE),
 	PROC_SLEEP(30),
-	PROC_CALL(func_fe6_0808D978),
-	PROC_REPEAT(func_fe6_0808D630),
+	PROC_CALL(Augury_TalkRitualStart),
+	PROC_REPEAT(Augury_FadeOutBubbleAfterTalk),
 	PROC_SLEEP(1),
 	PROC_CALL_ARG(_FadeBgmOut, -1),
 	PROC_SLEEP(30),
-	PROC_CALL(func_fe6_0808DC30),
-	PROC_REPEAT(func_fe6_0808DC4C),
+	PROC_CALL(Augury_RitualInit),
+	PROC_REPEAT(Augury_RitualLoop),
 	PROC_SLEEP(10),
-	PROC_REPEAT(func_fe6_0808D59C),
-	PROC_CALL(func_fe6_0808D99C),
+	PROC_REPEAT(Augury_FadeInBubble),
+	PROC_CALL(Augury_TalkDivining),
 	PROC_SLEEP(30),
-	PROC_REPEAT(func_fe6_0808D938),
-	PROC_CALL(func_fe6_0808D9B0),
-	PROC_REPEAT(func_fe6_0808D938),
-	PROC_CALL(func_fe6_0808D9F0),
-	PROC_REPEAT(func_fe6_0808D630),
-	PROC_GOTO(PL_AUGURY_1),
+	PROC_REPEAT(Augury_WaitTalk),
+	PROC_CALL(Augury_TalkRankResult),
+	PROC_REPEAT(Augury_WaitTalk),
+	PROC_CALL(Augury_TalkResultEnd),
+	PROC_REPEAT(Augury_FadeOutBubbleAfterTalk),
+	PROC_GOTO(PL_AUGURY_REPROMPT),
 
-PROC_LABEL(PL_AUGURY_4),
+PROC_LABEL(PL_AUGURY_END),
 	PROC_CALL(StartMidFadeToBlack),
 	PROC_REPEAT(WhileFadeExists),
-	PROC_CALL(func_fe6_0808DD24),
+	PROC_CALL(Augury_End),
 	PROC_CALL(UnlockBmDisplay),
 	PROC_CALL(ResetUnitSprites),
 	PROC_CALL(InitBmDisplay),
