@@ -17,6 +17,18 @@
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 
+enum
+{
+    TALKBOX_CHR_EDGE_H = 0x1B,
+    TALKBOX_CHR_EDGE_V = 0x1F,
+    TALKBOX_CHR_CORNER = 0x3E,
+
+    TALKBOX_MIN_W = 0x20,
+    TALKBOX_MAX_W = 0xC0,
+    TALKBOX_MIN_H = 0x10,
+    TALKBOX_MAX_H = 0x30,
+};
+
 struct HelpBoxSt
 {
     /* 00 */ struct Font font;
@@ -116,17 +128,17 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
     int y_count, x_count;
     int iy, ix, x_px, y_px;
 
-    if (w_box < 0x20)
-        w_box = 0x20;
+    if (w_box < TALKBOX_MIN_W)
+        w_box = TALKBOX_MIN_W;
 
-    if (w_box > 0xC0)
-        w_box = 0xC0;
+    if (w_box > TALKBOX_MAX_W)
+        w_box = TALKBOX_MAX_W;
 
-    if (h_box < 0x10)
-        h_box = 0x10;
+    if (h_box < TALKBOX_MIN_H)
+        h_box = TALKBOX_MIN_H;
 
-    if (h_box > 0x30)
-        h_box = 0x30;
+    if (h_box > TALKBOX_MAX_H)
+        h_box = TALKBOX_MAX_H;
 
     x_count = (w_box + 0x1F) / 0x20;
     y_count = (h_box + 0x0F) / 0x10;
@@ -156,8 +168,8 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
             x_px = w_box;
         x_px = x_px - 0x20;
 
-        PutSprite(0, x_box + x_px, y_box - 8, Sprite_32x8, gHelpBoxSt.oam2_base + 0x1B);
-        PutSprite(0, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpBoxSt.oam2_base + 0x1B);
+        PutSprite(0, x_box + x_px, y_box - 8, Sprite_32x8, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_H);
+        PutSprite(0, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_H);
     }
 
     for (iy = y_count; iy >= 0; iy--)
@@ -167,14 +179,14 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
             y_px = h_box;
         y_px -= 0x10;
 
-        PutSprite(0, x_box - 8, y_box + y_px, Sprite_8x16, gHelpBoxSt.oam2_base + 0x1F);
-        PutSprite(0, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpBoxSt.oam2_base + 0x1F);
+        PutSprite(0, x_box - 8, y_box + y_px, Sprite_8x16, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_V);
+        PutSprite(0, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_V);
     }
 
-    PutSprite(0, x_box - 8, y_box - 8, Sprite_8x8, gHelpBoxSt.oam2_base + 0x3E);
-    PutSprite(0, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpBoxSt.oam2_base + 0x3E);
-    PutSprite(0, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpBoxSt.oam2_base + 0x3E);
-    PutSprite(0, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpBoxSt.oam2_base + 0x3E);
+    PutSprite(0, x_box - 8, y_box - 8, Sprite_8x8, gHelpBoxSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(0, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(0, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(0, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_CORNER);
 }
 
 int DrawHelpBoxWeaponLabels(int item)
@@ -733,8 +745,8 @@ void ApplyHelpDialogueBoxPosition(struct HelpBoxProc * proc, int x, int y)
 
     y_span = proc->h_box_fini + 0x10;
 
-    if (proc->w_box_fini >= 0xC0)
-        proc->w_box_fini = 0xC0;
+    if (proc->w_box_fini >= TALKBOX_MAX_W)
+        proc->w_box_fini = TALKBOX_MAX_W;
 
     x_span = proc->w_box_fini + 0x10;
 
@@ -1052,17 +1064,17 @@ void PutSpriteHelpDialogueBox(int x_box, int y_box, int w_box, int h_box)
     int y_count, x_count;
     int iy, ix, x_px, y_px;
 
-    if (w_box < 0x20)
-        w_box = 0x20;
+    if (w_box < TALKBOX_MIN_W)
+        w_box = TALKBOX_MIN_W;
 
-    if (w_box > 0xC0)
-        w_box = 0xC0;
+    if (w_box > TALKBOX_MAX_W)
+        w_box = TALKBOX_MAX_W;
 
-    if (h_box < 0x10)
-        h_box = 0x10;
+    if (h_box < TALKBOX_MIN_H)
+        h_box = TALKBOX_MIN_H;
 
-    if (h_box > 0x30)
-        h_box = 0x30;
+    if (h_box > TALKBOX_MAX_H)
+        h_box = TALKBOX_MAX_H;
 
     x_count = (w_box + 0x1F) / 0x20;
     y_count = (h_box + 0x0F) / 0x10;
@@ -1092,8 +1104,8 @@ void PutSpriteHelpDialogueBox(int x_box, int y_box, int w_box, int h_box)
             x_px = w_box;
         x_px = x_px - 0x20;
 
-        PutSprite(2, x_box + x_px, y_box - 8, Sprite_32x8, gHelpDialogueSt.oam2_base + 0x1B);
-        PutSprite(2, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpDialogueSt.oam2_base + 0x1B);
+        PutSprite(2, x_box + x_px, y_box - 8, Sprite_32x8, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_H);
+        PutSprite(2, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_H);
     }
 
     for (iy = y_count; iy >= 0; iy--)
@@ -1103,14 +1115,14 @@ void PutSpriteHelpDialogueBox(int x_box, int y_box, int w_box, int h_box)
             y_px = h_box;
         y_px -= 0x10;
 
-        PutSprite(2, x_box - 8, y_box + y_px, Sprite_8x16, gHelpDialogueSt.oam2_base + 0x1F);
-        PutSprite(2, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpDialogueSt.oam2_base + 0x1F);
+        PutSprite(2, x_box - 8, y_box + y_px, Sprite_8x16, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_V);
+        PutSprite(2, x_box + w_box, y_box + y_px, Sprite_8x16_HFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_V);
     }
 
-    PutSprite(2, x_box - 8, y_box - 8, Sprite_8x8, gHelpDialogueSt.oam2_base + 0x3E);
-    PutSprite(2, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpDialogueSt.oam2_base + 0x3E);
-    PutSprite(2, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpDialogueSt.oam2_base + 0x3E);
-    PutSprite(2, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpDialogueSt.oam2_base + 0x3E);
+    PutSprite(2, x_box - 8, y_box - 8, Sprite_8x8, gHelpDialogueSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(2, x_box + w_box, y_box - 8, Sprite_8x8_HFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(2, x_box - 8, y_box + h_box, Sprite_8x8_VFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_CORNER);
+    PutSprite(2, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_CORNER);
 }
 
 void HelpDialoguePrint_Init(struct HelpDialoguePrintProc * proc)
