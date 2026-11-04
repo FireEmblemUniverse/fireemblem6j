@@ -51,6 +51,13 @@ enum prepscreen_videoalloc {
     OBPAL_PREPMENU_D = 0x0D,
 };
 
+enum {
+    PREP_ICON_SLOT_COUNT = 20,
+    PREP_ICON_SLOT_EMPTY = 0xFF,
+
+    PREP_ITEMKIND_PAGE_COUNT = 9,
+};
+
 struct UnkProc_08678E18;
 struct PrepUpperDispProc;
 struct PrepSubItemProc;
@@ -320,7 +327,7 @@ u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc *proc);
 void SetPrepMenuItemUsability(u8 index, u8 color);
 u8 GetPrepScreenMenuDispItemIndex(u8 disp_idx, fu8 is_submenu);
 
-struct ProcPrepSubItemSubfx {
+struct ProcPrepItemDesc {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x34);
@@ -328,43 +335,44 @@ struct ProcPrepSubItemSubfx {
     /* 34 */ struct Text texts[3];
 };
 
-void func_fe6_0807CF78(struct ProcPrepSubItemSubfx *proc);
-void func_fe6_0807CFA0(struct ProcPrepSubItemSubfx *proc);
-// func_fe6_0807CFA4
-void dummy_0807CFB8(int a, int b, int c);
+void PrepItemDesc_Init(struct ProcPrepItemDesc *proc);
+void PrepItemDesc_Loop(struct ProcPrepItemDesc *proc);
+struct ProcPrepItemDesc *StartPrepItemDesc(ProcPtr parent);
+void PrepItemFx_Dummy(int a, int b, int c);
 
 struct ProcPrepSubItemfx {
     PROC_HEADER_EXT(struct PrepSubItemProc);
 
     /* 2A */ u16 timer;
-    /* 2C */ struct ProcPrepSubItemSubfx *procfx;
+    /* 2C */ struct ProcPrepItemDesc *desc_proc;
     /* 30 */ int obj_offset;
 };
 
-void func_fe6_0807CFBC(struct ProcPrepSubItemfx *proc);
-void func_fe6_0807CFDC(struct ProcPrepSubItemfx *proc);
-ProcPtr func_fe6_0807D074(ProcPtr parent);
+void PrepTradeFx_Init(struct ProcPrepSubItemfx *proc);
+void PrepTradeFx_Loop(struct ProcPrepSubItemfx *proc);
+ProcPtr StartPrepTradeFx(ProcPtr parent);
 
-void func_fe6_0807D088(struct ProcPrepSubItemfx *proc);
-void func_fe6_0807D0A8(struct ProcPrepSubItemfx *proc);
-ProcPtr func_fe6_0807D16C(ProcPtr parent);
-void func_fe6_0807D180(struct ProcPrepSubItemfx *proc);
-void func_fe6_0807D1AC(struct ProcPrepSubItemfx *proc);
-ProcPtr func_fe6_0807D2E0(ProcPtr parent);
+void PrepViewAllFx_Init(struct ProcPrepSubItemfx *proc);
+void PrepViewAllFx_Loop(struct ProcPrepSubItemfx *proc);
+ProcPtr StartPrepViewAllFx(ProcPtr parent);
+
+void PrepSupplyFx_Init(struct ProcPrepSubItemfx *proc);
+void PrepSupplyFx_Loop(struct ProcPrepSubItemfx *proc);
+ProcPtr StartPrepSupplyFx(ProcPtr parent);
 void PrepSubItem_InsertIcon(int icon);
 void PrepSubItem_ResetIcon(void);
-void func_fe6_0807D358(struct PrepSubItemProc *proc);
+void PrepSubItem_ClearUnusedIcons(struct PrepSubItemProc *proc);
 void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc);
-void func_fe6_0807D6C0(u8 index, struct Unit *unit);
-void func_fe6_0807D834(fu8 convoy_page);
-void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
-void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit, int unused);
+void PrepItem_PutUnitItems(u8 index, struct Unit *unit);
+void PrepAllItems_SortByKind(fu8 page);
+void PrepAllItems_PutList(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
+void PrepAllItems_PutListRow(struct Text *texts, u8 x, u16 y, struct Unit *unit, int unused);
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
 void PrepAllItems_PutTotalNum(u8 x, u8 y);
 void PrepAllItems_Update(void);
-void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item);
+void PrepSupply_SwitchToItemKindPage(struct PrepSubItemProc *proc, u16 item);
 bool PrepAllItems_SwapItems(struct Unit *unit, u8 u_slot, u16 c_slot);
-void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
+void PrepAllItems_PutKindCursor(u8 page, int timer, int obj_off);
 
 enum proclabel_prep_subitem_screen {
     PL_PREP_SUBITEM_VIEWALL = 0,
@@ -586,7 +594,7 @@ extern EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400];
 extern EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000];
 extern EWRAM_OVERLAY(0) u16 gPrepFadePal[0x200];
 extern EWRAM_OVERLAY(0) u8 ImgBuf_PrepWorldMap[0x5000];
-extern EWRAM_OVERLAY(0) int gPrepSubMenuIcons[20];
+extern EWRAM_OVERLAY(0) int gPrepSubMenuIcons[PREP_ICON_SLOT_COUNT];
 extern EWRAM_OVERLAY(0) u16 gPrepAllItemsCount;
 extern EWRAM_OVERLAY(0) u16 gPrepMenuScrollPos;
 
@@ -621,17 +629,17 @@ extern CONST_DATA u16 Sprite_086791A2[];
 extern CONST_DATA u16 Sprite_086791B0[];
 extern CONST_DATA u16 Sprite_086791BE[];
 extern struct ProcScr ProcScr_PrepUpperDisp[];
-extern CONST_DATA int HelpboxMsg_0867929C[];
-extern CONST_DATA u16 Sprite_086792A8[];
-extern CONST_DATA u16 Sprite_086792B6[];
-extern CONST_DATA u16 Sprite_086792C4[];
-extern CONST_DATA u16 Sprite_08679326[];
-extern u16 CONST_DATA *Sprites_08679330[];
+extern CONST_DATA int HelpboxMsg_PrepSupplyActions[];
+extern CONST_DATA u16 Sprite_PrepItemNamePlate[];
+extern CONST_DATA u16 Sprite_PrepItemNamePlateFlipped[];
+extern CONST_DATA u16 Sprite_PrepItemNamePlateWide[];
+extern CONST_DATA u16 Sprite_PrepItemKindCursor[];
+extern u16 CONST_DATA *Sprites_PrepItemKinds[PREP_ITEMKIND_PAGE_COUNT];
 extern u8 CONST_DATA PrepItemKindRefTable[20];
-extern struct ProcScr ProcScr_08679368[];
-extern struct ProcScr ProcScr_08679388[];
-extern struct ProcScr ProcScr_086793A8[];
-extern struct ProcScr ProcScr_086793C8[];
+extern struct ProcScr ProcScr_PrepItemDesc[];
+extern struct ProcScr ProcScr_PrepTradeFx[];
+extern struct ProcScr ProcScr_PrepViewAllFx[];
+extern struct ProcScr ProcScr_PrepSupplyFx[];
 extern struct ProcScr ProcScr_PrepSubItemScreen[];
 extern struct ProcScr ProcScr_BmSupplyScreen[];
 extern struct ProcScr ProcScr_PrepDiscardItemScreen[];

@@ -397,8 +397,7 @@ SECTIONS
         src/prepmenu.o(.text);
         src/prepscreen_disp.o(.text);
         src/prepmenuitem.o(.text);
-        src/prepscreenfx.o(.text);
-        src/prepscreenfx2.o(.text);
+        src/prep_subitemscreen_disp.o(.text);
         src/prep_subitemscreen.o(.text);
         src/prep_subscreen_discard.o(.text);
         src/prep_menuscrollbar.o(.text);
@@ -562,7 +561,7 @@ SECTIONS
         . = ALIGN(4); src/prepmenu.o(.rodata);
         . = ALIGN(4); src/prepscreen_disp.o(.rodata);
         . = ALIGN(4); src/prepmenuitem.o(.rodata);
-        . = ALIGN(4); src/prepscreenfx.o(.rodata);
+        . = ALIGN(4); src/prep_subitemscreen_disp.o(.rodata);
         . = ALIGN(4); src/prep_subitemscreen.o(.rodata);
         . = ALIGN(4); src/prep_subscreen_discard.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
@@ -818,7 +817,7 @@ SECTIONS
         . = ALIGN(4); src/prepmenu.o(.data);
         . = ALIGN(4); src/prepscreen_disp.o(.data);
         . = ALIGN(4); src/prepmenuitem.o(.data);
-        . = ALIGN(4); src/prepscreenfx.o(.data);
+        . = ALIGN(4); src/prep_subitemscreen_disp.o(.data);
         . = ALIGN(4); src/prep_subitemscreen.o(.data);
         . = ALIGN(4); src/prep_subscreen_discard.o(.data);
         . = ALIGN(4); src/prep_menuscrollbar.o(.data);

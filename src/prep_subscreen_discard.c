@@ -94,7 +94,7 @@ void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc)
 	PutUiWindowFrame(1, 8, 0xE, 0xC, 0);
 
 	StartFace(0, GetUnitFid(proc->units[POS_L]), 0x40, -4, FACE_DISP_KIND(FACE_96x80_FLIPPED));
-	func_fe6_0807D6C0(0, proc->units[POS_L]);
+	PrepItem_PutUnitItems(0, proc->units[POS_L]);
 	PutUiEntryHover(
 		proc->unk_2F * 14 + 2,
 		proc->sel_slot * 2 + 9,
@@ -195,7 +195,7 @@ void PrepDiscard_Loop(struct ProcPrepDiscardScreen *proc)
 				if (proc->sel_yes == 0) {
 					UnitRemoveItem(proc->units[POS_L], proc->sel_slot);
 					UnitRemoveInvalidItems(proc->units[POS_L]);
-					func_fe6_0807D6C0(0, proc->units[POS_L]);
+					PrepItem_PutUnitItems(0, proc->units[POS_L]);
 
 					if (GetUnitItemCount(proc->units[POS_L]) == 0) {
 						NewSallyCir2(proc, 1);
@@ -280,9 +280,9 @@ void PrepDiscardHand_Init(struct ProcPrepDiscardHand *proc)
 
 void PrepDiscardHand_Loop(struct ProcPrepDiscardHand *proc)
 {
-	dummy_0807CFB8(1, 4, proc->timer);
+	PrepItemFx_Dummy(1, 4, proc->timer);
 
-	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, OAM2_CHR(OBCHR_PREPMENU_390));
+	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_PrepItemNamePlateFlipped, OAM2_CHR(OBCHR_PREPMENU_390));
 
 	if (proc->proc_parent->sub_sel == true) {
 		PutUiHand(proc->proc_parent->sel_yes * 0x20 + 0x9C, 0x40);
