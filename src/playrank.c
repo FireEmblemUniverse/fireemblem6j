@@ -26,204 +26,183 @@
 
 #include "playrank.h"
 
-// 0x868B1B0
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreen = {
-	.adjacent_down =  &HelpInfo_0868B204,
-	.adjacent_right = &HelpInfo_0868B1CC,
+	.adjacent_down =  &HelpInfo_StatusScreenPlayerName,
+	.adjacent_right = &HelpInfo_StatusScreenTurn,
 	.x = 0x08,
 	.y = 0x29,
 	.msg = MSG_6A1,
 };
 
-// 0x868B1CC
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B1CC = {
-	.adjacent_down =  &HelpInfo_0868B1E8,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenTurn = {
+	.adjacent_down =  &HelpInfo_StatusScreenGold,
 	.adjacent_left =  &HelpInfo_StatusScreen,
 	.x = 0x8D,
 	.y = 0x20,
 	.msg = MSG_69D,
 };
 
-// 0x868B1E8
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B1E8 = {
-	.adjacent_up =    &HelpInfo_0868B1CC,
-	.adjacent_down =  &HelpInfo_0868B274,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenGold = {
+	.adjacent_up =    &HelpInfo_StatusScreenTurn,
+	.adjacent_down =  &HelpInfo_StatusScreenPlayerLeader,
 	.adjacent_left =  &HelpInfo_StatusScreen,
 	.x = 0x8D,
 	.y = 0x30,
 	.msg = MSG_6A2,
 };
 
-// 0x868B204
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B204 = {
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerName = {
 	.adjacent_up =    &HelpInfo_StatusScreen,
-	.adjacent_down =  &HelpInfo_0868B220,
-	.adjacent_right = &HelpInfo_0868B23C,
+	.adjacent_down =  &HelpInfo_StatusScreenEnemyName,
+	.adjacent_right = &HelpInfo_StatusScreenPlayerUnits,
 	.x = 0x3C,
 	.y = 0x48,
 	.msg = MSG_69E,
 };
 
-// 0x868B220
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B220 = {
-	.adjacent_up =    &HelpInfo_0868B204,
-	.adjacent_down =  &HelpInfo_0868B2AC,
-	.adjacent_right = &HelpInfo_0868B258,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyName = {
+	.adjacent_up =    &HelpInfo_StatusScreenPlayerName,
+	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
+	.adjacent_right = &HelpInfo_StatusScreenEnemyUnits,
 	.x = 0x3C,
 	.y = 0x68,
 	.msg = MSG_69E,
 };
 
-// 0x868B23C
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B23C = {
-	.adjacent_up =    &HelpInfo_0868B1E8,
-	.adjacent_down =  &HelpInfo_0868B258,
-	.adjacent_left =  &HelpInfo_0868B204,
-	.adjacent_right = &HelpInfo_0868B274,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerUnits = {
+	.adjacent_up =    &HelpInfo_StatusScreenGold,
+	.adjacent_down =  &HelpInfo_StatusScreenEnemyUnits,
+	.adjacent_left =  &HelpInfo_StatusScreenPlayerName,
+	.adjacent_right = &HelpInfo_StatusScreenPlayerLeader,
 	.x = 0x7A,
 	.y = 0x48,
 	.msg = MSG_69F,
 };
 
-// 0x868B258
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B258 = {
-	.adjacent_up =    &HelpInfo_0868B23C,
-	.adjacent_down =  &HelpInfo_0868B2AC,
-	.adjacent_left =  &HelpInfo_0868B220,
-	.adjacent_right = &HelpInfo_0868B290,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyUnits = {
+	.adjacent_up =    &HelpInfo_StatusScreenPlayerUnits,
+	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
+	.adjacent_left =  &HelpInfo_StatusScreenEnemyName,
+	.adjacent_right = &HelpInfo_StatusScreenEnemyLeader,
 	.x = 0x7A,
 	.y = 0x68,
 	.msg = MSG_69F,
 };
 
-// 0x868B274
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B274 = {
-	.adjacent_up =    &HelpInfo_0868B1E8,
-	.adjacent_down =  &HelpInfo_0868B290,
-	.adjacent_left =  &HelpInfo_0868B23C,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayerLeader = {
+	.adjacent_up =    &HelpInfo_StatusScreenGold,
+	.adjacent_down =  &HelpInfo_StatusScreenEnemyLeader,
+	.adjacent_left =  &HelpInfo_StatusScreenPlayerUnits,
 	.x = 0x9C,
 	.y = 0x48,
 	.msg = MSG_6A0,
 };
 
-// 0x868B290
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B290 = {
-	.adjacent_up =    &HelpInfo_0868B274,
-	.adjacent_down =  &HelpInfo_0868B2AC,
-	.adjacent_left =  &HelpInfo_0868B258,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenEnemyLeader = {
+	.adjacent_up =    &HelpInfo_StatusScreenPlayerLeader,
+	.adjacent_down =  &HelpInfo_StatusScreenPlayTime,
+	.adjacent_left =  &HelpInfo_StatusScreenEnemyUnits,
 	.x = 0x9C,
 	.y = 0x68,
 	.msg = MSG_6A0,
 };
 
-// 0x868B2AC
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B2AC = {
-	.adjacent_up =    &HelpInfo_0868B290,
-	.adjacent_left =  &HelpInfo_0868B258,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenPlayTime = {
+	.adjacent_up =    &HelpInfo_StatusScreenEnemyLeader,
+	.adjacent_left =  &HelpInfo_StatusScreenEnemyUnits,
 	.x = 0x9C,
 	.y = 0x88,
 	.msg = MSG_69C,
 };
 
-// 0x868B2C8
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMap = {
-	.adjacent_down =  &HelpInfo_0868B300,
-	.adjacent_right = &HelpInfo_0868B2E4,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayerName,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapTurn,
 	.x = 0x08,
 	.y = 0x31,
 	.msg = MSG_6A1,
 };
 
-// 0x868B2E4
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B2E4 = {
-	.adjacent_down =  &HelpInfo_0868B370,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapTurn = {
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayerLeader,
 	.adjacent_left =  &HelpInfo_StatusScreenExtraMap,
 	.x = 0xA5,
 	.y = 0x30,
 	.msg = MSG_69D,
 };
 
-// 0x868B300
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B300 = {
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerName = {
 	.adjacent_up =    &HelpInfo_StatusScreenExtraMap,
-	.adjacent_down =  &HelpInfo_0868B31C,
-	.adjacent_right = &HelpInfo_0868B338,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyName,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapPlayerUnits,
 	.x = 0x3C,
 	.y = 0x48,
 	.msg = MSG_69E,
 };
 
-// 0x868B31C
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B31C = {
-	.adjacent_up =    &HelpInfo_0868B300,
-	.adjacent_down =  &HelpInfo_0868B3A8,
-	.adjacent_right = &HelpInfo_0868B354,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyName = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerName,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapEnemyUnits,
 	.x = 0x3C,
 	.y = 0x68,
 	.msg = MSG_69E,
 };
 
-// 0x868B338
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B338 = {
-	.adjacent_up =    &HelpInfo_0868B2E4,
-	.adjacent_down =  &HelpInfo_0868B354,
-	.adjacent_left =  &HelpInfo_0868B300,
-	.adjacent_right = &HelpInfo_0868B370,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerUnits = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapTurn,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyUnits,
+	.adjacent_left =  &HelpInfo_StatusScreenExtraMapPlayerName,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapPlayerLeader,
 	.x = 0x7A,
 	.y = 0x48,
 	.msg = MSG_69F,
 };
 
-// 0x868B354
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B354 = {
-	.adjacent_up =    &HelpInfo_0868B338,
-	.adjacent_down =  &HelpInfo_0868B3A8,
-	.adjacent_left =  &HelpInfo_0868B31C,
-	.adjacent_right = &HelpInfo_0868B38C,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyUnits = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerUnits,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
+	.adjacent_left =  &HelpInfo_StatusScreenExtraMapEnemyName,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapEnemyLeader,
 	.x = 0x7A,
 	.y = 0x68,
 	.msg = MSG_69F,
 };
 
-// 0x868B370
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B370 = {
-	.adjacent_up =    &HelpInfo_0868B2E4,
-	.adjacent_down =  &HelpInfo_0868B38C,
-	.adjacent_left =  &HelpInfo_0868B338,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayerLeader = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapTurn,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapEnemyLeader,
+	.adjacent_left =  &HelpInfo_StatusScreenExtraMapPlayerUnits,
 	.x = 0x9C,
 	.y = 0x48,
 	.msg = MSG_6A0,
 };
 
-// 0x868B38C
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B38C = {
-	.adjacent_up =    &HelpInfo_0868B370,
-	.adjacent_down =  &HelpInfo_0868B3A8,
-	.adjacent_left =  &HelpInfo_0868B354,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapEnemyLeader = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapPlayerLeader,
+	.adjacent_down =  &HelpInfo_StatusScreenExtraMapPlayTime,
+	.adjacent_left =  &HelpInfo_StatusScreenExtraMapEnemyUnits,
 	.x = 0x9C,
 	.y = 0x68,
 	.msg = MSG_6A0,
 };
 
-// 0x868B3A8
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B3A8 = {
-	.adjacent_up =    &HelpInfo_0868B38C,
-	.adjacent_left =  &HelpInfo_0868B354,
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapPlayTime = {
+	.adjacent_up =    &HelpInfo_StatusScreenExtraMapEnemyLeader,
+	.adjacent_left =  &HelpInfo_StatusScreenExtraMapEnemyUnits,
 	.x = 0x9C,
 	.y = 0x88,
 	.msg = MSG_69C,
 };
 
-// 0x868B3C4
 CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapInfo = {
-	.adjacent_right = &HelpInfo_0868B3E0,
+	.adjacent_right = &HelpInfo_StatusScreenExtraMapInfoTurn,
 	.x = 0x08,
 	.y = 0x31,
 	.msg = MSG_6A1,
 };
 
-// 0x868B3E0
-CONST_DATA struct HelpBoxInfo HelpInfo_0868B3E0 = {
+CONST_DATA struct HelpBoxInfo HelpInfo_StatusScreenExtraMapInfoTurn = {
 	.adjacent_left =  &HelpInfo_StatusScreenExtraMapInfo,
 	.x = 0xA5,
 	.y = 0x30,
@@ -232,25 +211,25 @@ CONST_DATA struct HelpBoxInfo HelpInfo_0868B3E0 = {
 
 CONST_DATA struct PlayRankSt *gpPlayRankSt = (void *)gBuf;
 
-u16 CONST_DATA Sprite_0868B400[] =
+u16 CONST_DATA Sprite_PlayRankGrade[] =
 {
 	1,
 	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, 0,
 };
 
-u16 CONST_DATA Sprite_0868B408[] =
+u16 CONST_DATA Sprite_PlayRankGradeWide[] =
 {
 	1,
 	OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(504), 0,
 };
 
-u16 CONST_DATA Sprite_0868B410[] =
+u16 CONST_DATA Sprite_PlayRankMissionGlyph[] =
 {
 	1,
 	OAM0_SHAPE_16x32, OAM1_SIZE_16x32, 0,
 };
 
-u16 CONST_DATA Sprite_0868B418[] =
+u16 CONST_DATA Sprite_PlayRankMissionGlyphWide[] =
 {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, 0,
@@ -273,17 +252,17 @@ CONST_DATA struct TotalPlayRankConf gTotalPlayRankConf2[] = {
 	{ MSG_723, TEXT_COLOR_SYSTEM_GREEN, NULL, 18, 13 }
 };
 
-CONST_DATA struct UnkStruct_0868B4D0 Objs_0868B4D0[] = {
-	{ Sprite_0868B400, 2 },
-	{ Sprite_0868B400, 1 },
-	{ Sprite_0868B400, 1 },
-	{ Sprite_0868B400, 0 },
-	{ Sprite_0868B400, 0 },
-	{ Sprite_0868B400, 0 },
-	{ Sprite_0868B408, 0 },
+CONST_DATA struct PlayRankGradeObj PlayRankGradeObjs[] = {
+	{ Sprite_PlayRankGrade, 2 },
+	{ Sprite_PlayRankGrade, 1 },
+	{ Sprite_PlayRankGrade, 1 },
+	{ Sprite_PlayRankGrade, 0 },
+	{ Sprite_PlayRankGrade, 0 },
+	{ Sprite_PlayRankGrade, 0 },
+	{ Sprite_PlayRankGradeWide, 0 },
 };
 
-CONST_DATA struct UnkStruct_0868b508 Unk_0868B508[] = {
+CONST_DATA struct PlayRankMissionGlyph PlayRankMissionGlyphs_PlayRank[] = {
 	{ 0x00, 0x10, 0x01, 0x00 },
 	{ 0x02, 0x14, 0x01, 0x00 },
 	{ 0x04, 0x15, 0x01, 0x00 },
@@ -297,7 +276,7 @@ CONST_DATA struct UnkStruct_0868b508 Unk_0868B508[] = {
 	{ 0xFF, 0x00, 0x00, 0x00 },
 };
 
-CONST_DATA struct UnkStruct_0868b508 Unk_0868B534[] = {
+CONST_DATA struct PlayRankMissionGlyph PlayRankMissionGlyphs_Complete[] = {
 	{ 0x00, 0x18, 0x01, 0x00 },
 	{ 0x06, 0x09, 0x00, 0x00 },
 	{ 0x07, 0x0B, 0x00, 0x00 },
@@ -316,7 +295,7 @@ CONST_DATA struct UnkStruct_0868b508 Unk_0868B534[] = {
 	{ 0xFF, 0x00, 0x00, 0x00 },
 };
 
-CONST_DATA struct UnkStruct_0868b508 Unk_0868B574[] = {
+CONST_DATA struct PlayRankMissionGlyph PlayRankMissionGlyphs_Failed[] = {
 	{ 0x00, 0x18, 0x01, 0x00 },
 	{ 0x06, 0x09, 0x00, 0x00 },
 	{ 0x07, 0x0B, 0x00, 0x00 },
@@ -334,17 +313,17 @@ CONST_DATA struct UnkStruct_0868b508 Unk_0868B574[] = {
 	{ 0xFF, 0x00, 0x00, 0x00 },
 };
 
-CONST_DATA struct UnkStruct_0868B5B0 gPlayRankMissonObjInfo[] = {
-	{ Unk_0868B508, 0x0E, 0x00 },
-	{ Unk_0868B534, 0x10, 0x12 },
-	{ Unk_0868B574, 0x1C, 0x12 }
+CONST_DATA struct PlayRankMissionObjInfo gPlayRankMissonObjInfo[] = {
+	{ PlayRankMissionGlyphs_PlayRank, 0x0E, 0x00 },
+	{ PlayRankMissionGlyphs_Complete, 0x10, 0x12 },
+	{ PlayRankMissionGlyphs_Failed, 0x1C, 0x12 }
 };
 
 void SetupPlayRanks(void)
 {
 	int i;
 
-	for (i = 0; i < 7; i++) {
+	for (i = 0; i < PLAYRANK_MAX; i++) {
 		gpPlayRankSt->xs[i] = gTotalPlayRankConf1[i].x;
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf1[i].y;
 	}
@@ -354,7 +333,7 @@ void SetupXmapPlayRanks(void)
 {
 	int i;
 
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < PLAYRANK_XMAP_MAX; i++) {
 		gpPlayRankSt->xs[i] = gTotalPlayRankConf2[i].x;
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf2[i].y;
 	}
@@ -369,7 +348,7 @@ void SetupXmapPlayRanks(void)
 		SetupPlayRankDispUnit(i, 0);
 }
 
-CONST_DATA struct BaSpriteData BaSprite_0868B5C8[] = {
+CONST_DATA struct BaSpriteData BaSprite_PlayRankSparkle[] = {
 	// ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -16, -16
 	{ 
 		.header = OAM0_SHAPE_32x32 | (OAM1_SIZE_32x32 << 16),
@@ -386,37 +365,37 @@ CONST_DATA struct BaSpriteData BaSprite_0868B5C8[] = {
 	},
 };
 
-CONST_DATA u8 gUnk_0868B5E0[] = {
+CONST_DATA u8 PlayRankSparkleFrameDurations[] = {
 	1, 2, 3, 3, 3, 2
 };
 
-struct ProcScr CONST_DATA ProcScr_0868B5E8[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankSparkle[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808DE5C),
-	PROC_REPEAT(func_fe6_0808DE70),
-	PROC_REPEAT(func_fe6_0808DEA4),
+	PROC_CALL(PlayRankSparkle_Init),
+	PROC_REPEAT(PlayRankSparkle_FadeIn),
+	PROC_REPEAT(PlayRankSparkle_Animate),
 	PROC_END,
 };
 
-void func_fe6_0808DE04(int lo, int hi, int x, int pal_bank)
+void PlayRankSparkleFlashPal(int lo, int hi, int x, int pal_bank)
 {
 	int ret = Interpolate(INTERPOLATE_SQUARE, lo, hi, x, 8);
 
-	CpuFastCopy(Pal_08342AB8, PAL_BG(pal_bank), 0x20);
+	CpuFastCopy(Pal_PlayRankGrade, PAL_BG(pal_bank), 0x20);
 	EfxPalWhiteInOut(gPal, pal_bank, 1, ret);
 	EnablePalSync();
 }
 
-void func_fe6_0808DE5C(struct Proc_0868B5E8 *proc)
+void PlayRankSparkle_Init(struct ProcPlayRankSparkle *proc)
 {
 	proc->timer1 = 0;
 	proc->step = 0;
-	proc->anim_duration = gUnk_0868B5E0[0];
+	proc->anim_duration = PlayRankSparkleFrameDurations[0];
 }
 
-void func_fe6_0808DE70(struct Proc_0868B5E8 *proc)
+void PlayRankSparkle_FadeIn(struct ProcPlayRankSparkle *proc)
 {
-	func_fe6_0808DE04(8, 0x10, proc->timer1, proc->pal_bank + 0x10 + OBPAL_PLAYRANK_4);
+	PlayRankSparkleFlashPal(8, 0x10, proc->timer1, proc->pal_bank + 0x10 + OBPAL_PLAYRANK_4);
 
 	proc->timer1++;
 	if (proc->timer1 > 8) {
@@ -425,18 +404,18 @@ void func_fe6_0808DE70(struct Proc_0868B5E8 *proc)
 	}
 }
 
-void func_fe6_0808DEA4(struct Proc_0868B5E8 *proc)
+void PlayRankSparkle_Animate(struct ProcPlayRankSparkle *proc)
 {
 	struct Anim anim;
 	int _tmp;
 
 	if (proc->timer1 <= 8) {
-		func_fe6_0808DE04(0x10, 0, proc->timer1, proc->pal_bank + 0x10 + OBPAL_PLAYRANK_4);
+		PlayRankSparkleFlashPal(0x10, 0, proc->timer1, proc->pal_bank + 0x10 + OBPAL_PLAYRANK_4);
 		proc->timer1++;
 	}
 
 	anim.oam01 = 0;
-	anim.sprData = BaSprite_0868B5C8;
+	anim.sprData = BaSprite_PlayRankSparkle;
 	anim.xPosition = (proc->x + 7) * 8;
 	anim.yPosition = (proc->y + 1) * 8;
 	anim.oam2 = (_tmp = 0xFFFFC000) | (0x100 + proc->step * 4);
@@ -446,53 +425,55 @@ void func_fe6_0808DEA4(struct Proc_0868B5E8 *proc)
 	proc->anim_duration--;
 	if (proc->anim_duration == 0) {
 		proc->step++;
-		proc->anim_duration = gUnk_0868B5E0[proc->step];
+		proc->anim_duration = PlayRankSparkleFrameDurations[proc->step];
 
 		if (proc->anim_duration == 0)
 			Proc_Break(proc);
 	}
 }
 
-void func_fe6_0808DF3C(u16 pal_bank, int _x, int _y)
+void StartPlayRankSparkle(u16 pal_bank, int _x, int _y)
 {
-	struct Proc_0868B5E8 *proc;
+	struct ProcPlayRankSparkle *proc;
 	u16 x = _x;
 	u16 y = _y;
 
-	ApplyPalette(Pal_08342AD8, 0x10 + OBPAL_PLAYRANK_C);
+	ApplyPalette(Pal_PlayRankSparkle, 0x10 + OBPAL_PLAYRANK_C);
 
-	proc = SpawnProc(ProcScr_0868B5E8, PROC_TREE_3);
+	proc = SpawnProc(ProcScr_PlayRankSparkle, PROC_TREE_3);
 	proc->pal_bank = pal_bank;
 	proc->x = x;
 	proc->y = y;
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B610[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankGradeFlip[] = {
 	PROC_19,
 PROC_LABEL(0),
-	PROC_CALL(func_fe6_0808DFC4),
-	PROC_REPEAT(func_fe6_0808DFCC),
-	PROC_REPEAT(func_fe6_0808E0DC),
+	PROC_CALL(PlayRankGradeFlip_Init),
+	PROC_REPEAT(PlayRankGradeFlip_Expand),
+	PROC_REPEAT(PlayRankGradeFlip_Shrink),
 PROC_LABEL(1),
 	PROC_END,
 };
 
 void SetupPlayRankDispUnit(int step, int b)
 {
-	gpPlayRankSt->unk_5E[step] = b;
-	gpPlayRankSt->objs[step] = Objs_0868B4D0[b].obj;
-	gpPlayRankSt->unk_98[step] = Objs_0868B4D0[b].unk_04;
+	gpPlayRankSt->disp_grades[step] = b;
+	gpPlayRankSt->objs[step] = PlayRankGradeObjs[b].obj;
+	gpPlayRankSt->unk_98[step] = PlayRankGradeObjs[b].unk_04;
 
-	ApplyPalette(Pal_08342AB8, 0x10 + OBPAL_PLAYRANK_4 + step);
+	ApplyPalette(Pal_PlayRankGrade, 0x10 + OBPAL_PLAYRANK_4 + step);
 }
 
-void func_fe6_0808DFC4(struct Proc_0868B5E8 *proc)
+void PlayRankGradeFlip_Init(struct ProcPlayRankSparkle *proc)
 {
 	proc->timer1 = 0;
 }
 
-void func_fe6_0808DFCC(struct Proc_0868B5E8 *proc)
+void PlayRankGradeFlip_Expand(struct ProcPlayRankSparkle *proc)
 {
+	// BUG: the row is stored at PlayRankSt::step (0x9F), past the end of the 0x6C-byte proc
+	struct PlayRankSt *bug_st = (void *)proc;
 	int x_scale = Interpolate(INTERPOLATE_RCUBIC, 2, 0x100, proc->timer1, 8);
 
 	SetObjAffineAuto(0x1F, 0, x_scale, 0x100);
@@ -501,28 +482,23 @@ void func_fe6_0808DFCC(struct Proc_0868B5E8 *proc)
 		proc->timer1++;
 
 	if (proc->timer1++ >= 8) {
-		struct PlayRankSt *st;
-		struct PlayRankSt *bug_st;
-
 		proc->timer1 = 8;
 
-		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc; // WTF
-
-		if (st->unk_5E[bug_st->step] < st->ranks[bug_st->step]) {
+		if (gpPlayRankSt->disp_grades[bug_st->step] < gpPlayRankSt->ranks[bug_st->step]) {
 			Proc_Break(proc);
 			return;
 		}
 
-		if (bug_st->step <= 5 && st->unk_5E[bug_st->step] > 3)
-			func_fe6_0808DF3C(bug_st->step, proc->x, proc->y);
+		if (bug_st->step < PLAYRANK_TOTAL && gpPlayRankSt->disp_grades[bug_st->step] >= PLAYRANK_GRADE_A)
+			StartPlayRankSparkle(bug_st->step, proc->x, proc->y);
 
 		Proc_Goto(proc, 1);
 	}
 }
 
-void func_fe6_0808E0DC(struct Proc_0868B5E8 *proc)
+void PlayRankGradeFlip_Shrink(struct ProcPlayRankSparkle *proc)
 {
+	struct PlayRankSt *bug_st = (void *)proc;
 	int x_scale = Interpolate(INTERPOLATE_RCUBIC, 2, 0x100, 0x11 - proc->timer1, 8);
 
 	SetObjAffineAuto(0x1F, 0, x_scale, 0x100);
@@ -531,98 +507,92 @@ void func_fe6_0808E0DC(struct Proc_0868B5E8 *proc)
 		proc->timer1++;
 
 	if (proc->timer1++ >= 0x10) {
-		struct PlayRankSt *st;
-		struct PlayRankSt *bug_st;
-		int tmp;
+		int grade;
 
 		proc->timer1 = 0x10;
 
-		st = gpPlayRankSt;
-		bug_st = (struct PlayRankSt *)proc; // WTF
+		grade = gpPlayRankSt->disp_grades[bug_st->step];
 
-		tmp = st->unk_5E[bug_st->step];
-
-		if (tmp <= 5) {
-			SetupPlayRankDispUnit(bug_st->step, tmp + 1);
+		if (grade < PLAYRANK_GRADE_SS) {
+			SetupPlayRankDispUnit(bug_st->step, grade + 1);
 			Proc_Goto(proc, 0);
 		}
 	}
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B648[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankGradeSeq[] = {
 	PROC_19,
 	PROC_SLEEP(30),
 
 PROC_LABEL(0),
-	PROC_CALL(func_fe6_0808E284),
+	PROC_CALL(PlayRankGradeSeq_StartFlip),
 	PROC_SLEEP(1),
-	PROC_CALL(func_fe6_0808E2D0),
+	PROC_CALL(PlayRankGradeSeq_CheckDone),
 	PROC_SLEEP(44),
 PROC_LABEL(1),
-	PROC_CALL(func_fe6_0808E264),
+	PROC_CALL(PlayRankGradeSeq_CheckLastRow),
 	PROC_SLEEP(20),
 PROC_LABEL(2),
-	PROC_CALL(func_fe6_0808E1D0),
+	PROC_CALL(PlayRankGradeSeq_NextRow),
 	PROC_SLEEP(1),
-	PROC_CALL(func_fe6_0808E1E4),
+	PROC_CALL(PlayRankGradeSeq_ResetAffine),
 	PROC_GOTO(0),
 
 PROC_LABEL(3),
-	PROC_REPEAT(func_fe6_0808E2F0),
+	PROC_REPEAT(PlayRankGradeSeq_Idle),
 	PROC_END,
 };
 
-void func_fe6_0808E1D0(void)
+void PlayRankGradeSeq_NextRow(void)
 {
 	gpPlayRankSt->step++;
 }
 
-void func_fe6_0808E1E4(void)
+void PlayRankGradeSeq_ResetAffine(void)
 {
 	SetObjAffineAuto(0x1F, 0, 2, 0x100);
 }
 
-void func_fe6_0808E264(struct Proc_0868B648 *proc)
+void PlayRankGradeSeq_CheckLastRow(struct ProcPlayRankGradeSeq *proc)
 {
-	if (gpPlayRankSt->step <= 4)
+	if (gpPlayRankSt->step < PLAYRANK_POWER)
 		Proc_Goto(proc, 2);
 }
 
-void func_fe6_0808E284(ProcPtr p)
+void PlayRankGradeSeq_StartFlip(ProcPtr p)
 {
-	struct Proc_0868B5E8 *proc = SpawnProcLocking(ProcScr_0868B610, p);
+	struct ProcPlayRankSparkle *proc = SpawnProcLocking(ProcScr_PlayRankGradeFlip, p);
 	struct PlayRankSt *bug_st = (void *)proc;
 
-	// ?
 	bug_st->step = gpPlayRankSt->step;
-	bug_st->unk_32 = gpPlayRankSt->xs[gpPlayRankSt->step];
-	bug_st->unk_34 = gpPlayRankSt->ys[gpPlayRankSt->step];
+	proc->x = gpPlayRankSt->xs[gpPlayRankSt->step];
+	proc->y = gpPlayRankSt->ys[gpPlayRankSt->step];
 }
 
-void func_fe6_0808E2D0(struct Proc_0868B648 *proc)
+void PlayRankGradeSeq_CheckDone(struct ProcPlayRankGradeSeq *proc)
 {
-	if (gpPlayRankSt->step > 5)
+	if (gpPlayRankSt->step >= PLAYRANK_TOTAL)
 		Proc_Goto(proc, 3);
 }
 
-void func_fe6_0808E2F0(struct Proc_0868B648 *proc) {}
+void PlayRankGradeSeq_Idle(struct ProcPlayRankGradeSeq *proc) {}
 
-struct ProcScr CONST_DATA ProcScr_0868B6D8[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankGradeDisp[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808E2F4),
+	PROC_CALL(PlayRankGradeDisp_Init),
 	PROC_SLEEP(20),
-	PROC_REPEAT(func_fe6_0808E390),
+	PROC_REPEAT(PlayRankGradeDisp_PutSprites),
 	PROC_END,
 };
 
-void func_fe6_0808E2F4(void)
+void PlayRankGradeDisp_Init(void)
 {
 	SetObjAffine(0xA, 0x100, 0, 0, 0x100);
 	SetObjAffineAuto(0x1F, 0, 2, 0x100);
-	SpawnProc(ProcScr_0868B648, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankGradeSeq, PROC_TREE_3);
 }
 
-void func_fe6_0808E390(void)
+void PlayRankGradeDisp_PutSprites(void)
 {
 	int i;
 
@@ -633,36 +603,36 @@ void func_fe6_0808E390(void)
 		oam0 = gpPlayRankSt->ys[i] << 3;
 
 		if (i == gpPlayRankSt->step) {
-			oam1 |= 0x3E00;
-			oam0 |= 0x100;
+			oam1 |= OAM1_AFFINE_ID(0x1F);
+			oam0 |= OAM0_AFFINE_ENABLE;
 		}
 
-		oam2 = gpPlayRankSt->unk_5E[i] * 2 + 0xC0;
+		oam2 = gpPlayRankSt->disp_grades[i] * 2 + OBCHR_PLAYRANK_GRADES;
 
 		PutSpriteExt(
 			4,
 			oam1,
 			oam0,
 			gpPlayRankSt->objs[i],
-			(((i + 4) & 0xF) << 0xC) | oam2
+			OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2
 		);
 	}
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B700[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankObjUnfold[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808E420),
-	PROC_REPEAT(func_fe6_0808E434),
+	PROC_CALL(PlayRankObjUnfold_Init),
+	PROC_REPEAT(PlayRankObjUnfold_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808E420(struct Proc_0868B700 *proc)
+void PlayRankObjUnfold_Init(struct ProcPlayRankObjUnfold *proc)
 {
 	proc->timer = 0;
 	proc->layer = gPlayRankLayer - 1;
 }
 
-void func_fe6_0808E434(struct Proc_0868B700 *proc)
+void PlayRankObjUnfold_Loop(struct ProcPlayRankObjUnfold *proc)
 {
 	int x_scale, time = proc->timer++;
 
@@ -679,23 +649,23 @@ u16 CONST_DATA Sprite_PlayRankTrial_Time[] = {
 	OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x4),
 };
 
-struct ProcScr CONST_DATA ProcScr_0868B730[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankMissionObj[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808E4E8),
-	PROC_REPEAT(func_fe6_0808E5F0),
+	PROC_CALL(PlayRankMissionObj_Init),
+	PROC_REPEAT(PlayRankMissionObj_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808E4E8(struct Proc_0868B730 *proc)
+void PlayRankMissionObj_Init(struct ProcPlayRankMissionObj *proc)
 {
 	int i;
-	struct UnkStruct_0868b508 *ref;
+	struct PlayRankMissionGlyph *ref;
 
 	gPlayRankLayer = 0;
 	proc->timer = 0;
 	proc->total_sprites = 0;
 
-	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].unk_00;
+	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].glyphs;
 
 	while (ref[proc->total_sprites].chr != -1)
 		proc->total_sprites++;
@@ -706,16 +676,16 @@ void func_fe6_0808E4E8(struct Proc_0868B730 *proc)
 	}
 }
 
-void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
+void PlayRankMissionObj_Loop(struct ProcPlayRankMissionObj *proc)
 {
 	int i, val, y;
-	struct UnkStruct_0868b508 *ref;
+	struct PlayRankMissionGlyph *ref;
 
 	val = 0;
 
 	y= 0x100 - gPlayRankBg1Offset;
 	if (gPlayRankMissonObjSelect == 0) {
-		y = OAM1_X(y + 0x80); // ?
+		y = OAM1_X(y + 0x80);
 
 		PutOamHi(0xA2, y, Sprite_PlayRankTrial_Time, OAM2_PAL(BGPAL_PLAYRANK_TIME) + OBCHR_PLAYRANK_84);
 	}
@@ -725,11 +695,11 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 
 		if (gPlayRankLayer < proc->total_sprites) {
 			gPlayRankLayer++;
-			SpawnProc(ProcScr_0868B700, PROC_TREE_3);
+			SpawnProc(ProcScr_PlayRankObjUnfold, PROC_TREE_3);
 		}
 	}
 
-	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].unk_00;
+	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].glyphs;
 	for (i = 0; i < gPlayRankLayer; i++) {
 		int oam1 = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].x + val + (i << 9);
 		int oam0 = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].y + 0x108;
@@ -739,8 +709,8 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 			4,
 			oam1,
 			oam0,
-			ref[i].size != 0 ? Sprite_0868B418 : Sprite_0868B410,
-			ref[i].chr * 2 + 0x3180
+			ref[i].size != 0 ? Sprite_PlayRankMissionGlyphWide : Sprite_PlayRankMissionGlyph,
+			OAM2_PAL(OBPAL_PLAYRANK_MISSION) + OBCHR_PLAYRANK_MISSION + ref[i].chr * 2
 		);
 
 		val = ref[i].len + val;
@@ -796,7 +766,7 @@ void PlayRank_InitTexts(void)
 {
 	int i;
 
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < PLAYRANK_TEXT_8; i++)
 		InitText(&gpPlayRankSt->texts[i], 0xF);
 
 	InitText(&gpPlayRankSt->texts[PLAYRANK_TEXT_8], 0x3);
@@ -947,7 +917,7 @@ void PutPlayRankTexts(int line)
 	gPlayRanks[PLAYRANK_ASSET] = gpPlayRankSt->ranks[PLAYRANK_ASSET] = PlayRankGetter_Asset();
 	gPlayRanks[PLAYRANK_POWER] = gpPlayRankSt->ranks[PLAYRANK_POWER] = PlayRankGetter_Power();
 
-	for (i = 0; i < (PLAYRANK_MAX - 1); i++)
+	for (i = 0; i < PLAYRANK_TOTAL; i++)
 		SetupPlayRankDispUnit(i, 0);
 
 	gpPlayRankSt->ranks[PLAYRANK_TOTAL] = GameRank_GetTotalRankA();
@@ -969,7 +939,7 @@ void PutPlayRankTexts(int line)
 	}
 }
 
-void func_fe6_0808EB94(int line)
+void PutPlayRankTotalText(int line)
 {
 	int index;
 	int tile_width = 6;
@@ -1011,7 +981,7 @@ void PlayRank_PutTotalPlayTime(int line)
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
-void func_fe6_0808EC78(int x)
+void ClearPlayRankBg0Rows(int x)
 {
 	int x1 = ((x - 0x50) * 4) & 0x3C0;
 	int x2 = (x1 + 0x40) & 0x3C0;
@@ -1217,27 +1187,27 @@ void PlayRank_InitDisplay(void)
 	ApplyBgPalettes(Pal_PlayRankWmBG, BGPAL_PLAYRANK_WM, 2);
 	ApplyBgPalette(Pal_PlayRankFogBG, BGPAL_PLAYRANK_FOG);
 	ApplyObPalette(Pal_PlayRankTimeOBJ, BGPAL_PLAYRANK_TIME);
-	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_MISSION);
-	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_B);
+	ApplyObPalette(Pal_GoldHighlight, OBPAL_PLAYRANK_MISSION);
+	ApplyObPalette(Pal_GoldHighlight, OBPAL_PLAYRANK_B);
 
 	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
-	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
-	Decompress(Img_PlayRank, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
-	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + OBCHR_PLAYRANK_GRADES * CHR_SIZE);
+	Decompress(Img_PlayRank, OBJ_VRAM0 + OBCHR_PLAYRANK_MISSION * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_FOG * CHR_SIZE);
 	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
-	TmApplyTsa(gBg1Tm + TM_OFFSET(0x13, 0x10), Tsa_08342AF8, OAM2_PAL(BGPAL_PLAYRANK_1));
+	TmApplyTsa(gBg1Tm + TM_OFFSET(0x13, 0x10), Tsa_PlayRankPlayTimeWindow, OAM2_PAL(BGPAL_PLAYRANK_1));
 	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
-	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_WM));
+	TmApplyTsa(gBg3Tm, Tsa_WorldMap_PlayRank, OAM2_PAL(BGPAL_PLAYRANK_WM));
 
 	SpawnProc(ProcScr_PlayRankFogHandler, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 }
 
-void func_fe6_0808F060(struct ProcPlayRank *proc)
+void PlayRank_InitScroll(struct ProcPlayRank *proc)
 {
 
-	proc->unk_2E = 4;
-	proc->unk_30 = 0;
+	proc->scroll_delay = 4;
+	proc->redraw_pending = 0;
 	gPlayRankBg0Offset = gPlayRankBg0MoveStep = 0x7A;
 
 	PlayRank_ChapterTurns_DrawTurn(0);
@@ -1249,15 +1219,15 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 {
 	int tmp1, tmp2;
 
-	if (proc->unk_30 != 0) {
-		func_fe6_0808EC78(gPlayRankBg0Offset);
-		proc->unk_30 = 0;
+	if (proc->redraw_pending != 0) {
+		ClearPlayRankBg0Rows(gPlayRankBg0Offset);
+		proc->redraw_pending = 0;
 	}
 
 	if (gPlayRankDispStep <= 8) {
-		if (proc->unk_2E++ < 4)
+		if (proc->scroll_delay++ < 4)
 			return;
-		proc->unk_2E = 0;
+		proc->scroll_delay = 0;
 	}
 
 	gPlayRankBg0Offset++;
@@ -1274,7 +1244,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 	gPlayRankDispLine = tmp1;
 
-	proc->unk_30 = true;
+	proc->redraw_pending = true;
 
 	switch (gPlayRankDispStep) {
 	case 0:
@@ -1298,7 +1268,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		break;
 
 	case 11:
-		func_fe6_0808EB94(gPlayRankDispLine);
+		PutPlayRankTotalText(gPlayRankDispLine);
 		break;
 
 	case 13:
@@ -1308,8 +1278,8 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 	case 14:
 		gPlayRankMissonObjSelect = 0;
-		SpawnProc(ProcScr_0868B730, PROC_TREE_3);
-		SpawnProc(ProcScr_0868B6D8, PROC_TREE_3);
+		SpawnProc(ProcScr_PlayRankMissionObj, PROC_TREE_3);
+		SpawnProc(ProcScr_PlayRankGradeDisp, PROC_TREE_3);
 		Proc_Break(proc);
 		return;
 		break;
@@ -1323,7 +1293,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 void PlayRank_Idle(ProcPtr proc)
 {
-	if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) && gpPlayRankSt->step == 6) {
+	if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) && gpPlayRankSt->step == PLAYRANK_TOTAL) {
 		Proc_Break(proc);
 		return;
 	}
@@ -1336,19 +1306,19 @@ void PlayRank_Idle(ProcPtr proc)
 
 void PlayRank_End1(ProcPtr proc)
 {
-	Proc_EndEach(ProcScr_0868B5E8);
-	Proc_EndEach(ProcScr_0868B88C);
-	Proc_EndEach(ProcScr_0868B610);
+	Proc_EndEach(ProcScr_PlayRankSparkle);
+	Proc_EndEach(ProcScr_PlayRankMissionFlash);
+	Proc_EndEach(ProcScr_PlayRankGradeFlip);
 	EndGreenText();
 }
 
 void PlayRank_PrepareEnd(ProcPtr proc)
 {
-	Proc_EndEach(ProcScr_0868B648);
+	Proc_EndEach(ProcScr_PlayRankGradeSeq);
 	Proc_EndEach(ProcScr_PlayRankFogHandler);
-	Proc_EndEach(ProcScr_0868B730);
-	Proc_EndEach(ProcScr_0868B6D8);
-	Proc_EndEach(ProcScr_0868B80C);
+	Proc_EndEach(ProcScr_PlayRankMissionObj);
+	Proc_EndEach(ProcScr_PlayRankGradeDisp);
+	Proc_EndEach(ProcScr_PlayRankTrailGradeSeq);
 	Proc_EndEach(ProcScr_PlayRankTrialOBJ);
 	Proc_EndEach(ProcScr_PlayRankTrialOBJ_Time);
 }
@@ -1373,23 +1343,22 @@ u16 PlayRank_GetTotalTurn(void)
 u8 PlayRankGetter_Tactics(void)
 {
 	int slot, total_turn = PlayRank_GetTotalTurn();
-	int i, ranks[PALYRANK_MAX], *_ranks;
+	int i, ranks[REFRANK_MAX], *_ranks;
 
-	for (i = 0; i < PALYRANK_MAX; i++)
+	for (i = 0; i < REFRANK_MAX; i++)
 		ranks[i] = 0;
 
 	slot = GetNextChapterStatsSlot();
 	for (i = 0; i < slot; i++) {
 		struct ChapterStats *chapter_stat = GetChapterStats(i);
 
-		ranks[0] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_A];
-		ranks[1] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_B];
-		ranks[2] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_C];
-		ranks[3] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[PALYRANK_D];
+		ranks[0] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
+		ranks[1] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
+		ranks[2] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
+		ranks[3] += ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
 	}
 
-	// WTF
-	i = PALYRANK_D;
+	i = PLAYRANK_GRADE_E;
 	_ranks = ranks;
 	while (1) {
 		if (total_turn > *_ranks)
@@ -1398,7 +1367,7 @@ u8 PlayRankGetter_Tactics(void)
 		_ranks++;
 		i++;
 
-		if (i > 3)
+		if (i >= REFRANK_MAX)
 			break;
 	}
 
@@ -1408,32 +1377,32 @@ u8 PlayRankGetter_Tactics(void)
 u8 PlayRankGetter_XmapTactics(void)
 {
 	int total_turn;
-	int i, ranks[PALYRANK_MAX];
+	int i, ranks[REFRANK_MAX];
 	struct ChapterStats *chapter_stat = GetXmapChapterStats();
 
-	ranks[PALYRANK_D] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
-	ranks[PALYRANK_C] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
-	ranks[PALYRANK_B] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
-	ranks[PALYRANK_A] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
+	ranks[PLAYRANK_GRADE_E] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_D];
+	ranks[PLAYRANK_GRADE_D] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_C];
+	ranks[PLAYRANK_GRADE_C] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_B];
+	ranks[PLAYRANK_GRADE_B] = ChapterInfoTable[chapter_stat->chapter_id].tactics_ranks[REFRANK_A];
 
 	total_turn = chapter_stat->chapter_turn;
 
 	if (gPlayRankMissionCompleted == 0)
-		return PALYRANK_D;
+		return PLAYRANK_GRADE_E;
 
 	i = 0;
 	for (;;) {
 		if (total_turn > ranks[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_CombatRef[4] = { 15, 25, 35, 40 };
+CONST_DATA u8 gPlayRank_CombatRef[REFRANK_MAX] = { 15, 25, 35, 40 };
 
 u16 PlayRank_GetWinningRate(void)
 {
@@ -1452,7 +1421,7 @@ u8 PlayRankGetter_Combat(void)
 		if (winning_rate < gPlayRank_CombatRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1470,13 +1439,13 @@ u8 PlayRankGetter_XmapCombat(void)
 		if (winning_rate < gPlayRank_CombatRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_SurvivalRef[4] = { 6, 4, 2, 1 };
+CONST_DATA u8 gPlayRank_SurvivalRef[REFRANK_MAX] = { 6, 4, 2, 1 };
 
 u16 PlayRank_GetDeadAllies(void)
 {
@@ -1498,13 +1467,13 @@ u8 PlayRankGetter_Survival(void)
 		if (dead_allies >= gPlayRank_SurvivalRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
 }
 
-CONST_DATA u8 gPlayRank_XmapSurvivalRef[4] = { 4, 3, 2, 1 };
+CONST_DATA u8 gPlayRank_XmapSurvivalRef[REFRANK_MAX] = { 4, 3, 2, 1 };
 
 u8 PlayRankGetter_XmapSurvival(void)
 {
@@ -1521,7 +1490,7 @@ u8 PlayRankGetter_XmapSurvival(void)
 		if (dead_allies >= gPlayRank_XmapSurvivalRef[i])
 			break;
 
-		if (++i > 3)
+		if (++i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1541,25 +1510,25 @@ u8 PlayRankGetter_Experience(void)
 	/**
 	 * What a horrible coding style....
 	 */
-	ret = PALYRANK_D;
+	ret = PLAYRANK_GRADE_E;
 	if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_D]) {
-		ret = PALYRANK_C;
+		ret = PLAYRANK_GRADE_D;
 
 		if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_C]) {
-			ret = PALYRANK_B;
+			ret = PLAYRANK_GRADE_C;
 
 			if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_B]) {
-				ret = PALYRANK_A;
+				ret = PLAYRANK_GRADE_B;
 
 				if (total_level > ChapterInfoTable[chapter_id].exp_ranks[REFRANK_A])
-					ret = PALYRANK_S;
+					ret = PLAYRANK_GRADE_A;
 			}
 		}
 	}
 	return ret;
 }
 
-CONST_DATA int gPlayRank_AssetRef[4] = { 1600, 3200, 4800, 6000 };
+CONST_DATA int gPlayRank_AssetRef[REFRANK_MAX] = { 1600, 3200, 4800, 6000 };
 
 u8 PlayRankGetter_Asset(void)
 {
@@ -1578,7 +1547,7 @@ u8 PlayRankGetter_Asset(void)
 
 		ref_assets++;
 		i++;
-		if (i > 3)
+		if (i >= REFRANK_MAX)
 			break;
 	}
 	return i;
@@ -1606,25 +1575,25 @@ u8 PlayRankGetter_Power(void)
 	/**
 	 * What a horrible coding style....
 	 */
-	ret = PALYRANK_D;
+	ret = PLAYRANK_GRADE_E;
 	if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_D]) {
-		ret = PALYRANK_C;
+		ret = PLAYRANK_GRADE_D;
 
 		if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_C]) {
-			ret = PALYRANK_B;
+			ret = PLAYRANK_GRADE_C;
 
 			if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_B]) {
-				ret = PALYRANK_A;
+				ret = PLAYRANK_GRADE_B;
 
 				if (total_level > ChapterInfoTable[chapter_id].combat_ranks[REFRANK_A])
-					ret = PALYRANK_S;
+					ret = PLAYRANK_GRADE_A;
 			}
 		}
 	}
 	return ret;
 }
 
-CONST_DATA u8 TotalRankA_Ref1[6][5] = {
+CONST_DATA u8 TotalRankA_Ref1[PLAYRANK_TOTAL][PLAYRANK_GRADE_S] = {
 	{ 40, 80, 120, 160, 200 }, // Tactics
 	{ 10, 30, 50,  70,  90  }, // Combat
 	{ 15, 35, 55,  75,  95  }, // Surcical
@@ -1647,7 +1616,7 @@ int GameRank_GetTotalRankA(void)
 	int i;
 	u16 ref = 0;
 
-	for (i = 0; i < 6; i++) {
+	for (i = 0; i < PLAYRANK_TOTAL; i++) {
 		ref += TotalRankA_Ref1[i][gPlayRanks[i]];
 	}
 
@@ -1657,7 +1626,7 @@ int GameRank_GetTotalRankA(void)
 			return i;
 
 		i++;
-		if (i > 4)
+		if (i > PLAYRANK_GRADE_A)
 			break;
 	}
 
@@ -1680,7 +1649,7 @@ int GameRank_GetTotalRankB(void)
 	int i;
 	u16 ref = 0;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < PLAYRANK_XMAP_TOTAL; i++) {
 		ref += TotalRankB_Ref1[gPlayRanks[i]];
 	}
 
@@ -1690,7 +1659,7 @@ int GameRank_GetTotalRankB(void)
 			return i;
 
 		i++;
-		if (i > 4)
+		if (i > PLAYRANK_GRADE_A)
 			break;
 	}
 
@@ -1710,46 +1679,46 @@ void PlayRank_InitBgConf(void)
 	InitBgs(BgConfig_PlayRank);
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B80C[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankTrailGradeSeq[] = {
 	PROC_19,
 PROC_LABEL(0),
-	PROC_CALL(func_fe6_0808E284),
+	PROC_CALL(PlayRankGradeSeq_StartFlip),
 	PROC_SLEEP(30),
-	PROC_CALL(func_fe6_0808F7B0),
+	PROC_CALL(PlayRankTrailGradeSeq_CheckDone),
 	PROC_SLEEP(45),
-	PROC_CALL(func_fe6_0808F790),
+	PROC_CALL(PlayRankTrailGradeSeq_CheckLastRow),
 	PROC_SLEEP(20),
 PROC_LABEL(2),
-	PROC_CALL(func_fe6_0808E1D0),
+	PROC_CALL(PlayRankGradeSeq_NextRow),
 	PROC_SLEEP(1),
-	PROC_CALL(func_fe6_0808E1E4),
+	PROC_CALL(PlayRankGradeSeq_ResetAffine),
 	PROC_GOTO(0),
 PROC_LABEL(3),
-	PROC_REPEAT(func_fe6_0808E2F0),
+	PROC_REPEAT(PlayRankGradeSeq_Idle),
 	PROC_END,
 };
 
-void func_fe6_0808F7B0(ProcPtr proc)
+void PlayRankTrailGradeSeq_CheckDone(ProcPtr proc)
 {
-	if (gpPlayRankSt->step > 2)
+	if (gpPlayRankSt->step >= PLAYRANK_XMAP_TOTAL)
 		Proc_Goto(proc, 3);
 }
 
-void func_fe6_0808F790(ProcPtr proc)
+void PlayRankTrailGradeSeq_CheckLastRow(ProcPtr proc)
 {
-	if (gpPlayRankSt->step < 2)
+	if (gpPlayRankSt->step < PLAYRANK_XMAP_COMBAT)
 		Proc_Goto(proc, 2);
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B88C[] =
+struct ProcScr CONST_DATA ProcScr_PlayRankMissionFlash[] =
 {
 	PROC_19,
-	PROC_CALL(func_fe6_0808F838),
-	PROC_REPEAT(func_fe6_0808F844),
+	PROC_CALL(PlayRankMissionFlash_Init),
+	PROC_REPEAT(PlayRankMissionFlash_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808F7D0(int method, int lo, int hi, int x, int end, int pal_bank)
+void PlayRankMissionFlashPal(int method, int lo, int hi, int x, int end, int pal_bank)
 {
 	int ret = Interpolate(method, lo, hi, x, end);
 
@@ -1767,42 +1736,42 @@ void func_fe6_0808F7D0(int method, int lo, int hi, int x, int end, int pal_bank)
 	EnablePalSync();
 }
 
-void func_fe6_0808F838(struct Proc_0868B88C *proc)
+void PlayRankMissionFlash_Init(struct ProcPlayRankMissionFlash *proc)
 {
-	proc->unk_2A = 0;
-	proc->unk_2C = 0;
-	proc->unk_2E = 0;
+	proc->timer = 0;
+	proc->unused_2C = 0;
+	proc->phase = 0;
 }
 
-void func_fe6_0808F844(struct Proc_0868B88C *proc)
+void PlayRankMissionFlash_Loop(struct ProcPlayRankMissionFlash *proc)
 {
-	switch (proc->unk_2E) {
+	switch (proc->phase) {
 	case 0:
-		if (proc->unk_2A < 0x5A) {
-			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0, 0xF, proc->unk_2A, 0x5A, 0x10 + OBPAL_PLAYRANK_MISSION);
-			proc->unk_2A++;
+		if (proc->timer < 0x5A) {
+			PlayRankMissionFlashPal(INTERPOLATE_LINEAR, 0, 0xF, proc->timer, 0x5A, 0x10 + OBPAL_PLAYRANK_MISSION);
+			proc->timer++;
 			return;
 		}
 		break;
 
 	case 2:
-		if (proc->unk_2A < 0x78) {
-			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0xF, 0, proc->unk_2A, 0x78, 0x10 + OBPAL_PLAYRANK_MISSION);
-			proc->unk_2A++;
+		if (proc->timer < 0x78) {
+			PlayRankMissionFlashPal(INTERPOLATE_LINEAR, 0xF, 0, proc->timer, 0x78, 0x10 + OBPAL_PLAYRANK_MISSION);
+			proc->timer++;
 			return;
 		}
 		break;
 
 	case 0x11:
-		proc->unk_2E = 0;
+		proc->phase = 0;
 		return;
 
 	default:
 		break;
 	}
 
-	proc->unk_2A = 0;
-	proc->unk_2E++;
+	proc->timer = 0;
+	proc->phase++;
 }
 
 struct ProcScr CONST_DATA ProcScr_PlayRankTrialOBJ[] = {
@@ -1822,9 +1791,9 @@ void PlayRankTrialOBJ_Init(ProcPtr proc)
 
 	gPlayRankMissonObjSelect = (gPlayRankMissionCompleted) ? 1 : 2;
 
-	SpawnProc(ProcScr_0868B730, PROC_TREE_3);
-	SpawnProc(ProcScr_0868B80C, PROC_TREE_3);
-	SpawnProc(ProcScr_0868B88C, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankMissionObj, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankTrailGradeSeq, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankMissionFlash, PROC_TREE_3);
 }
 
 void PlayRankTrialOBJ_Loop(ProcPtr proc)
@@ -1838,11 +1807,11 @@ void PlayRankTrialOBJ_Loop(ProcPtr proc)
 		oam0_y = (gpPlayRankSt->ys[i] + 0) * 8;
 
 		if (i == gpPlayRankSt->step) {
-			oam1_x |= 0x3E00;
-			oam0_y |= 0x0100;
+			oam1_x |= OAM1_AFFINE_ID(0x1F);
+			oam0_y |= OAM0_AFFINE_ENABLE;
 		}
 
-		oam2 = gpPlayRankSt->unk_5E[i] * 2 + 0xC0;
+		oam2 = gpPlayRankSt->disp_grades[i] * 2 + OBCHR_PLAYRANK_GRADES;
 
 		PutSpriteExt(4, oam1_x, oam0_y, gpPlayRankSt->objs[i], OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2);
 	}
@@ -1857,7 +1826,7 @@ struct ProcScr CONST_DATA ProcScr_PlayRank[] = {
 	PROC_CALL(FadeInBlackSpeed08),
 	PROC_SLEEP(1),
 	PROC_CALL(StartGreenText),
-	PROC_CALL(func_fe6_0808F060),
+	PROC_CALL(PlayRank_InitScroll),
 	PROC_REPEAT(PlayRank_Loop),
 	PROC_REPEAT(PlayRank_Idle),
 PROC_LABEL(0),
@@ -1941,15 +1910,15 @@ void PlayRankTrail_Init(ProcPtr proc)
 			? Pal_PlayRankMissionCompletesOBJ + 0x10
 			: Pal_PlayRankMissionCompletesOBJ,
 		OBPAL_PLAYRANK_MISSION);
-	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_B);
+	ApplyObPalette(Pal_GoldHighlight, OBPAL_PLAYRANK_B);
 
 	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
-	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
-	Decompress(Img_PlayRankMissionCompletesOBJ, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
-	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + OBCHR_PLAYRANK_GRADES * CHR_SIZE);
+	Decompress(Img_PlayRankMissionCompletesOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_MISSION * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_FOG * CHR_SIZE);
 	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
-	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_WM));
+	TmApplyTsa(gBg3Tm, Tsa_WorldMap_PlayRank, OAM2_PAL(BGPAL_PLAYRANK_WM));
 
 	for (i = 0; i < PLAYRANK_TRAIL_TEXT_MAX; i++)
 		InitText(&gpPlayRankSt->texts_rank_name[i], 6);
@@ -1978,7 +1947,7 @@ void PlayRankTrail_Init(ProcPtr proc)
 void PlayRankTrail_Loop(ProcPtr proc)
 {
 	if (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B))
-		if (gpPlayRankSt->step == 3)
+		if (gpPlayRankSt->step == PLAYRANK_XMAP_TOTAL)
 			Proc_Break(proc);
 }
 
