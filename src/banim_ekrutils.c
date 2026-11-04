@@ -373,7 +373,7 @@ i16 EfxAdvanceFrameLut(i16 *ptime, i16 *pcount, const i16 lut[])
     u16 count;
     u16 time;
     int icount;
-    u16 tmp, time2, count2;
+    u16 time2;
     i16 stime;
 
     stime = *ptime;
@@ -383,27 +383,25 @@ i16 EfxAdvanceFrameLut(i16 *ptime, i16 *pcount, const i16 lut[])
         count = *pcount;
         frame = lut[count * 2];
 
-        if (-1 == lut[count * 2])
+        if (lut[count * 2] == -1)
             return -1;
 
-        if (-4 == lut[count * 2])
+        if (lut[count * 2] == -4)
             return -4;
 
-        if (-2 == lut[count * 2])
+        if (lut[count * 2] == -2)
         {
             *pcount = 0;
             frame = lut[0];
         }
-        else if (-3 == lut[count * 2])
+        else if (lut[count * 2] == -3)
         {
             *pcount = count - 1;
-            tmp = *pcount;
-            frame = lut[tmp * 2];
+            frame = lut[(u16)*pcount * 2];
         }
 
         icount = *pcount;
-        count2 = icount;
-        time2 = lut[count2 * 2 + 1];
+        time2 = lut[(u16)icount * 2 + 1];
         ++*pcount;
         *ptime = time2 - 1;
         return frame;
