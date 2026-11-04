@@ -319,7 +319,7 @@ SECTIONS
         src/action.o(.text);
         src/movepath.o(.text);
         src/prepphase.o(.text);
-        src/code_0802B814.o(.text);
+        src/commandflags.o(.text);
         src/chapterinfo.o(.text);
         src/unitpanel.o(.text);
         src/subtitlehelp.o(.text);

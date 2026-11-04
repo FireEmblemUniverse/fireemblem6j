@@ -10,9 +10,11 @@
 #include "action.h"
 #include "eventinfo.h"
 
+#include "commandflags.h"
+
 #include "constants/terrains.h"
 
-bool func_fe6_0802B814(void)
+bool CanActiveUnitUseVisit(void)
 {
     int ix, iy;
 
@@ -29,7 +31,7 @@ bool func_fe6_0802B814(void)
             if (gMapTerrain[iy][ix] != TERRAIN_VILLAGE && gMapTerrain[iy][ix] != TERRAIN_HOUSE)
                 continue;
 
-            if (GetAvailableTileEventCommand(ix, iy) == 0x0E)
+            if (GetAvailableTileEventCommand(ix, iy) == TILE_COMMAND_VISIT)
                 return TRUE;
         }
     }
@@ -37,7 +39,7 @@ bool func_fe6_0802B814(void)
     return FALSE;
 }
 
-bool func_fe6_0802B8A0(void)
+bool CanActiveUnitUseSeize(void)
 {
     int ix, iy;
 
@@ -54,7 +56,7 @@ bool func_fe6_0802B8A0(void)
             if (gMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
                 continue;
 
-            if (GetAvailableTileEventCommand(ix, iy) == 0x0F)
+            if (GetAvailableTileEventCommand(ix, iy) == TILE_COMMAND_SEIZE)
                 return TRUE;
         }
     }
@@ -62,7 +64,7 @@ bool func_fe6_0802B8A0(void)
     return FALSE;
 }
 
-bool func_fe6_0802B928(void)
+bool CanActiveUnitUseAttack(void)
 {
     BeginTargetList(0, 0);
 
@@ -74,50 +76,50 @@ bool func_fe6_0802B928(void)
     return CountTargets() != 0 ? TRUE : FALSE;
 }
 
-bool func_fe6_0802B964(void)
+bool CanActiveUnitUseRescue(void)
 {
     ListRescueTargets(gActiveUnit);
 
     return CountTargets() != 0 ? TRUE : FALSE;
 }
 
-bool func_fe6_0802B980(void)
+bool CanActiveUnitUseTrade(void)
 {
     ListTradeTargets(gActiveUnit);
 
     return CountTargets() != 0 ? TRUE : FALSE;
 }
 
-int func_fe6_0802B99C(void)
+int GetActiveUnitCommandFlags(void)
 {
     int result = 0;
 
-    GetGameTime(); // ?
+    GetGameTime();
 
-    result |= func_fe6_0802B814() << 15;
-    result |= func_fe6_0802B8A0() << 16;
-    result |= func_fe6_0802B928() << 1;
-    result |= func_fe6_0802B964() << 8;
-    result |= func_fe6_0802B980() << 23;
+    result |= CanActiveUnitUseVisit() << COMMAND_FLAG_BIT_VISIT;
+    result |= CanActiveUnitUseSeize() << COMMAND_FLAG_BIT_SEIZE;
+    result |= CanActiveUnitUseAttack() << COMMAND_FLAG_BIT_ATTACK;
+    result |= CanActiveUnitUseRescue() << COMMAND_FLAG_BIT_RESCUE;
+    result |= CanActiveUnitUseTrade() << COMMAND_FLAG_BIT_TRADE;
 
     return result;
 }
 
-int func_fe6_0802B9DC(void)
+int GetActiveUnitCommandFlagsAfterMove(void)
 {
     MapFlood_UpTo(gActiveUnit, UNIT_MOV(gActiveUnit) - gAction.move_count);
-    return func_fe6_0802B99C();
+    return GetActiveUnitCommandFlags();
 }
 
-int func_fe6_0802BA08(void)
+int GetActiveUnitCommandFlagsInPlace(void)
 {
     MapFill(gMapMovement, -1);
     gMapMovement[gActiveUnit->y][gActiveUnit->x] = 0;
 
-    return func_fe6_0802B99C();
+    return GetActiveUnitCommandFlags();
 }
 
-void func_fe6_0802BA44(struct Unit * unit)
+void ListAttackPositions(struct Unit * unit)
 {
     int ix, iy;
 
@@ -125,12 +127,12 @@ void func_fe6_0802BA44(struct Unit * unit)
 
     MapFill(gMapOther, 0);
 
-    FOR_UNITS(FACTION_RED + 1, FACTION_RED + 0x40, unit,
+    FOR_UNITS_FACTION(FACTION_RED, enemy,
     {
-        BuildUnitStandingRangeForReach(unit, reach);
+        BuildUnitStandingRangeForReach(enemy, reach);
 
-        gAction.x_target = unit->x;
-        gAction.y_target = unit->y;
+        gAction.x_target = enemy->x;
+        gAction.y_target = enemy->y;
     })
 
     BeginTargetList(0, 0);
