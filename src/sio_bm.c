@@ -3192,7 +3192,7 @@ void func_fe6_08040154(struct SioProc85AAA78 * proc)
 
 		if (proc->unk_40 != 0) {
 			if (Unk_Sio_0203C9D0 == 0) {
-				PAL_COLOR(0x18, 13) = ((GetGameTime() % 0x40) / 4)[Pal_0831AAFC];
+				PAL_COLOR(0x18, 13) = ((GetGameTime() % 0x40) / 4)[Pal_PrepGoldPulse];
 				EnablePalSync();
 			}
 
