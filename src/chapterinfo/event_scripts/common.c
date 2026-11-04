@@ -7,7 +7,6 @@
 #include "bmfx.h"
 #include "suspend_ui.h"
 
-#include "eventinfo.h"
 #include "eventfunctions.h"
 
 #include "constants/pids.h"

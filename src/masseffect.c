@@ -1,13 +1,11 @@
 #include "masseffect.h"
+#include "mapselect.h"
 
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "util.h"
-#include "unit.h"
 #include "map.h"
-#include "battle.h"
 #include "trap.h"
 #include "bmfx.h"
 #include "faction.h"
@@ -22,7 +20,6 @@
 
 #include "constants/iids.h"
 
-#include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 
 void ApplyHazardHealing(ProcPtr proc, struct Unit * unit, int hp, int status)

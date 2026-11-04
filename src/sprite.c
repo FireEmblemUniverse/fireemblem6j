@@ -1,7 +1,5 @@
-
 #include "sprite.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "armfunc.h"
 #include "proc.h"

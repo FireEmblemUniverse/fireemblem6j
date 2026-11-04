@@ -1,8 +1,6 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
 #include "util.h"
-#include "manim.h"
 #include "armfunc.h"
 #include "scanline.h"
 #include "sound.h"

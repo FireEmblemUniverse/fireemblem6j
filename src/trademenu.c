@@ -1,6 +1,5 @@
 #include "trademenu.h"
 
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "icon.h"
@@ -8,7 +7,6 @@
 #include "face.h"
 #include "msg.h"
 #include "item.h"
-#include "unit.h"
 #include "action.h"
 #include "ui.h"
 #include "helpbox.h"

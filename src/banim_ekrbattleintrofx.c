@@ -1,6 +1,5 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
 #include "util.h"
 #include "datamove.h"
 #include "oam.h"

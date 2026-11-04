@@ -1,13 +1,11 @@
 #include "savemenu.h"
 
 #include "armfunc.h"
-#include "hardware.h"
 #include "datamove.h"
 #include "oam.h"
 #include "proc.h"
 #include "sprite.h"
 #include "spriteanim.h"
-#include "text.h"
 #include "ui.h"
 #include "helpbox.h"
 #include "save_core.h"

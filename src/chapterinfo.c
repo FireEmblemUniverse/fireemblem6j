@@ -3,7 +3,6 @@
 #include "hardware.h"
 #include "msg.h"
 #include "save_xmap.h"
-#include "gbasram.h"
 
 struct ChapterInfo const * GetChapterInfo(int chapter)
 {

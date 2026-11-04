@@ -3,11 +3,7 @@
 #include "random.h"
 #include "hardware.h"
 #include "debugtext.h"
-#include "text.h"
-#include "face.h"
 #include "gamecontroller.h"
-#include "bm.h"
-#include "unit.h"
 #include "map.h"
 #include "bmfx.h"
 #include "bmio.h"
@@ -15,14 +11,11 @@
 #include "chapterinfo.h"
 #include "menuinfo.h"
 #include "ui.h"
-#include "menu.h"
 #include "statscreen.h" // StartMuralBackground
 #include "save_core.h"
-#include "save_stats.h"
 #include "save_game.h"
 #include "savemenu.h"
 
-#include "constants/videoalloc_global.h"
 #include "constants/chapters.h"
 #include "constants/faces.h"
 

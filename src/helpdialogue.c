@@ -1,7 +1,6 @@
 #include "helpbox.h"
 
 #include "oam.h"
-#include "text.h"
 #include "sound.h"
 #include "sprite.h"
 #include "msg.h"

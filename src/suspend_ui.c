@@ -1,9 +1,6 @@
 #include "prelude.h"
-#include "event.h"
 #include "talk.h"
-#include "action.h"
 #include "save_game.h"
-#include "eventscript.h"
 #include "gamecontroller.h"
 #include "constants/msg.h"
 

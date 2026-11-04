@@ -1,5 +1,4 @@
 #include "prelude.h"
-#include "chapterinfo.h"
 
 static const u16 Tiles_MapChange_Ch0_0[] = {
 	0x80,

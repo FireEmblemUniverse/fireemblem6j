@@ -4,7 +4,6 @@
 #include "msg.h"
 #include "icon.h"
 #include "oam.h"
-#include "hardware.h"
 #include "sound.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"

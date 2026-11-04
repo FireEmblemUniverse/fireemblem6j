@@ -1,15 +1,8 @@
 #include "save_game.h"
 
 #include "gbasram.h"
-#include "gbaio.h"
 #include "armfunc.h"
-#include "util.h"
-#include "eventinfo.h"
-#include "supply.h"
-#include "bm.h"
 #include "hardware.h"
-#include "faction.h"
-#include "battle.h"
 #include "chapter.h"
 #include "save_core.h"
 

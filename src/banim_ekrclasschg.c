@@ -1,10 +1,8 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "util.h"
 #include "banim.h"
-#include "banim_sprite.h"
 #include "constants/songs.h"
 
 EWRAM_OVERLAY(banim) struct ProcEfx *gpProcEkrClasschg = NULL;

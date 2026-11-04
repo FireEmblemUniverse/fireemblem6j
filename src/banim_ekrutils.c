@@ -2,9 +2,7 @@
 #include "proc.h"
 #include "oam.h"
 #include "datamove.h"
-#include "hardware.h"
 #include "sprite.h"
-#include "banim_sprite.h"
 #include "banim.h"
 #include "banim_ekrbattle.h"
 

@@ -1,11 +1,8 @@
 #include "savemenu.h"
 
-#include "gbaio.h"
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
-#include "sprite.h"
 #include "spriteanim.h"
 #include "gamecontroller.h"
 #include "util.h"
@@ -15,8 +12,6 @@
 
 #include "constants/songs.h"
 #include "constants/msg.h"
-
-#include "constants/videoalloc_global.h"
 
 #include "soundroom.h"
 

@@ -1,8 +1,6 @@
 #include "prelude.h"
 #include "banim.h"
 #include "item.h"
-#include "unit.h"
-#include "battle.h"
 #include "faction.h"
 #include "constants/iids.h"
 #include "constants/banims.h"

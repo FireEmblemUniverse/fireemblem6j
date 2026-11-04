@@ -2,8 +2,6 @@
 
 #include "hardware.h"
 #include "util.h"
-#include "bm.h"
-#include "unit.h"
 #include "mapwork.h"
 #include "faction.h"
 #include "trap.h"

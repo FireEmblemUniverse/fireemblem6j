@@ -3,6 +3,7 @@
 #include "prelude.h"
 
 #include "proc.h"
+#include "text.h"
 
 // this proc layout is shared between all MapUi procs
 // one could separate them to make room in each one if necessary

@@ -1,21 +1,15 @@
 #include "statscreen.h"
 
-#include <stdlib.h>
-
 #include "armfunc.h"
-#include "hardware.h"
 #include "oam.h"
 #include "sound.h"
 #include "proc.h"
 #include "icon.h"
 #include "sprite.h"
-#include "text.h"
 #include "face.h"
 #include "msg.h"
 #include "util.h"
 #include "item.h"
-#include "unit.h"
-#include "bm.h"
 #include "faction.h"
 #include "unitsprite.h"
 #include "battle.h"
@@ -27,7 +21,6 @@
 #include "systemlabels.h"
 #include "save_stats.h"
 
-#include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 #include "constants/icons.h"

@@ -4,12 +4,9 @@
 #include "sound.h"
 #include "oam.h"
 #include "sprite.h"
-#include "hardware.h"
 #include "savemenu.h"
 #include "gamecontroller.h"
-#include "unit.h"
 #include "util.h"
-#include "unknown_objects.h"
 #include "opinfo.h"
 
 EWRAM_OVERLAY(opinfo) u16 gOpInfoPalettes[0x200] = {};

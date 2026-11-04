@@ -1,6 +1,5 @@
 #include "prelude.h"
 #include "event.h"
-#include "eventscript.h"
 #include "monologue.h"
 #include "worldmap.h"
 #include "constants/msg.h"

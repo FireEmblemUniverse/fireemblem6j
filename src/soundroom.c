@@ -1,8 +1,5 @@
 #include "prelude.h"
 #include "proc.h"
-#include "hardware.h"
-#include "text.h"
-#include "bm.h"
 #include "oam.h"
 #include "sprite.h"
 #include "util.h"
@@ -11,11 +8,8 @@
 #include "constants/msg.h"
 
 #include "sound.h"
-#include "m4a.h"
-#include "gbasvc.h"
 
 #include "ending.h"
-#include "unknown_objects.h"
 #include "unitlistscreen.h"
 
 #include "msg.h"

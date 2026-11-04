@@ -1,9 +1,7 @@
-
 #include "chapter.h"
 
 #include "hardware.h"
 #include "gamecontroller.h"
-#include "bm.h"
 #include "map.h"
 #include "faction.h"
 #include "battle.h"
@@ -16,7 +14,6 @@
 #include "chapterinfo.h"
 #include "ui.h"
 #include "mu.h"
-#include "eventinfo.h"
 #include "save_core.h"
 #include "save_stats.h"
 #include "save_xmap.h"

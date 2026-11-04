@@ -3,7 +3,6 @@
 #include "util.h"
 #include "icon.h"
 #include "hardware.h"
-#include "banim_sprite.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
 

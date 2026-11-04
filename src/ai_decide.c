@@ -1,10 +1,8 @@
 #include "ai_decide.h"
 
-#include "unit.h"
 #include "map.h"
 #include "faction.h"
 #include "unitsprite.h"
-#include "action.h"
 #include "ai_perform.h"
 #include "ai_utility.h"
 #include "ai_script.h"

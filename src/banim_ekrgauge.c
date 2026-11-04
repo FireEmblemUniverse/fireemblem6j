@@ -1,11 +1,9 @@
 #include "prelude.h"
 #include "item.h"
 #include "datamove.h"
-#include "banim_sprite.h"
 #include "banim.h"
 #include "oam.h"
 #include "icon.h"
-#include "hardware.h"
 
 EWRAM_OVERLAY(banim) struct ProcEkrGauge *gpProcEkrGauge = NULL;
 

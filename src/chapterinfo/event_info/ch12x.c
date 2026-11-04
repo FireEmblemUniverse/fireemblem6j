@@ -3,10 +3,7 @@
 #include "chapterinfo.h"
 #include "chapterunits.h"
 #include "chapterevents.h"
-#include "eventinfo.h"
-#include "eventfunctions.h"
 
-#include "constants/pids.h"
 #include "constants/iids.h"
 
 // EventListScr @ 08669FE4

@@ -1,7 +1,6 @@
 #include "ai_script.h"
 
 #include "random.h"
-#include "unit.h"
 #include "mapwork.h"
 #include "faction.h"
 #include "ai_decide.h"

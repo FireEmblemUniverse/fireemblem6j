@@ -4,13 +4,9 @@
 #include "hardware.h"
 #include "sound.h"
 #include "icon.h"
-#include "text.h"
-#include "face.h"
-#include "event.h"
 #include "msg.h"
 #include "util.h"
 #include "item.h"
-#include "unit.h"
 #include "unitsprite.h"
 #include "faction.h"
 #include "chapterinfo.h"
@@ -33,8 +29,6 @@
 #include "constants/chapters.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
-
-#include "constants/videoalloc_global.h"
 
 EWRAM_OVERLAY(0) struct Unit *gPrepUnitList[64] = {};
 EWRAM_OVERLAY(0) u8 gPrepUnitCount = 0;

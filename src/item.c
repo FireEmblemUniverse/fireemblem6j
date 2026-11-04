@@ -2,10 +2,7 @@
 
 #include "hardware.h"
 #include "icon.h"
-#include "text.h"
 #include "msg.h"
-#include "bm.h"
-#include "unit.h"
 #include "faction.h"
 #include "gold.h"
 #include "itemuse.h"

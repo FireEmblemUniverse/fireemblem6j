@@ -5,9 +5,7 @@
 #include "sound.h"
 #include "icon.h"
 #include "talk.h"
-#include "event.h"
 #include "msg.h"
-#include "bm.h"
 #include "item.h"
 #include "map.h"
 #include "mapwork.h"
@@ -27,9 +25,7 @@
 #include "battlepreview.h"
 #include "menuinfo.h"
 #include "ui.h"
-#include "menu.h"
 #include "eventinfo.h"
-#include "helpbox.h"
 #include "statusscreen.h"
 #include "unitlistscreen.h"
 #include "savemenu.h"
@@ -44,7 +40,6 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
-#include "eventscript.h"
 
 EWRAM_OVERLAY(0) struct Font gItemActionMenuFont = {};
 

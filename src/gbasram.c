@@ -1,6 +1,5 @@
 #include "prelude.h"
 #include "gbasram.h"
-#include "gbaio.h"
 
 void ReadSramFast_Core(u8 const *src, u8 *dest, u32 size);
 

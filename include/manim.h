@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 
+#include "text.h"
 #include "unit.h"
 #include "battle.h"
 
