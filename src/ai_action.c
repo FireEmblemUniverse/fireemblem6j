@@ -455,7 +455,7 @@ void AiEquipGetDanger(int x, int y, u16 * range_danger_out, u16 * melee_danger_o
 
         MapFlood_UpToMove(unit);
 
-        if (gMapMovement[y][x] == 0xFF)
+        if (gMapMovement[y][x] == (u8) MAP_MOVEMENT_UNREACHABLE)
             continue;
 
         might = AiGetUnitAttackAndWeapon(unit, &item);
@@ -591,7 +591,7 @@ bool AiTryRefreshAt(int x, int y)
     if ((UNIT_ATTRIBUTES(gActiveUnit) & UNIT_ATTR_REFRESHER) == 0)
         return FALSE;
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapAddInRange(x, y, 1, 1);
 
     for (iy = gMapSize.y - 1; iy >= 0; iy--)
@@ -634,7 +634,7 @@ bool AiTryStealAt(int x, int y)
     if ((UNIT_ATTRIBUTES(gActiveUnit) & UNIT_ATTR_STEAL) == 0)
         return FALSE;
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     gMapMovement[y][x] = 0;
     MapAddInRange(x, y, 1, MAP_MOVEMENT_MAX);
@@ -824,14 +824,14 @@ bool AiFunc_MoveTowardsPointAttacking(void const * arg)
                 if ((gMapMovementSigned[iy][ix] < MAP_MOVEMENT_MAX) && (gMapRangeSigned[iy][ix] != 0))
                     continue;
 
-                gMapMovementSigned[iy][ix] = -1;
+                gMapMovementSigned[iy][ix] = MAP_MOVEMENT_UNREACHABLE;
             }
             else
             {
                 if ((gMapMovementSigned[iy][ix] < MAP_MOVEMENT_MAX) && (gMapRangeSigned[iy][ix] < MAP_MOVEMENT_MAX))
                     continue;
 
-                gMapMovementSigned[iy][ix] = -1;
+                gMapMovementSigned[iy][ix] = MAP_MOVEMENT_UNREACHABLE;
             }
         }
     }
@@ -908,7 +908,7 @@ bool AiGetNextPatrolPoint(struct Vec2i * pos_out)
     pos_out->x = pos_b->x;
     pos_out->y = pos_b->y;
 
-    if (gMapMovement[pos_b->y][pos_b->x] != 0xFF)
+    if (gMapMovement[pos_b->y][pos_b->x] != (u8) MAP_MOVEMENT_UNREACHABLE)
     {
         counter++;
         gActiveUnit->ai_counter = counter;

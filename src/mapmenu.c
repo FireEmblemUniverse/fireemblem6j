@@ -512,7 +512,7 @@ fu8 UnitActionMenu_Attack_SwitchIn(struct MenuProc * menu, struct MenuEntProc * 
 {
     int reach;
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     reach = GetUnitWeaponReach(gActiveUnit, -1);
@@ -586,7 +586,7 @@ fu8 UnitAttackItemMenu_Entry_SwitchIn(struct MenuProc * menu, struct MenuEntProc
 
     UpdateEquipInfoWindow(ent->id);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     reach = GetUnitWeaponReach(gActiveUnit, ent->id);
@@ -1117,7 +1117,7 @@ fu8 UnitAttackBallista_Entry_SwitchIn(struct MenuProc * menu, struct MenuEntProc
 {
     int item;
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     SetWorkingMap(gMapRange);
@@ -1177,7 +1177,7 @@ fu8 UnitActionMenu_Staff_SwitchIn(struct MenuProc * menu, struct MenuEntProc * e
 {
     int reach = GetUnitItemUseReach(gActiveUnit, -1);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     BuildUnitStandingRangeForReach(gActiveUnit, reach);
@@ -1228,7 +1228,7 @@ fu8 UnitStaffItemMenu_Entry_SwitchIn(struct MenuProc * menu, struct MenuEntProc 
 
     UpdateEquipInfoWindow(ent->id);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     BuildUnitStandingRangeForReach(gActiveUnit, reach);

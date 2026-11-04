@@ -860,7 +860,7 @@ void BuildWarpDestinationMap(struct Unit * actor, struct Unit * target)
 {
     int ix, iy;
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     MapFill(gMapRange, 0);
 
     SetWorkingMap(gMapMovement);
@@ -875,11 +875,11 @@ void BuildWarpDestinationMap(struct Unit * actor, struct Unit * target)
                 continue;
 
             if (!CanUnitCrossTerrain(target, gMapTerrain[iy][ix]) || gMapUnit[iy][ix] != 0 || gMapFog[iy][ix] == 0)
-                gMapMovementSigned[iy][ix] = -1;
+                gMapMovementSigned[iy][ix] = MAP_MOVEMENT_UNREACHABLE;
         }
     }
 
-    gMapMovementSigned[actor->y][actor->x] = -1;
+    gMapMovementSigned[actor->y][actor->x] = MAP_MOVEMENT_UNREACHABLE;
 }
 
 static void EquipInfoWindow_Loop(struct EquipInfoWindowProc * proc)
