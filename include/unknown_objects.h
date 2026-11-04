@@ -375,9 +375,6 @@ extern u8 const Img_PlayRankTimeOBJ[];
 // extern const ??? String_Xmap_08336CF0
 // extern const ??? String_Xmap_08336CF8
 // extern const ??? String_Xmap_08336D00
-extern const char String_Xmap_08336D3C[];
-extern const char String_Xmap_08336D48[];
-extern const char String_Xmap_08336D54[];
 extern u8 const Img_MuralBackground[];
 extern u8 const Img_0833B958[];
 extern u8 const Img_0833BB14[];
@@ -527,10 +524,6 @@ extern const u16 Img_XmapObj[];
 extern const u16 Pal_XmapObj[];
 extern const u16 gUnk_0832C35C[];
 extern const u16 gUnk_0832C39C[];
-extern const u16 gUnk_0832C5E8[];
-extern const u16 gUnk_0832CA9C[];
-extern const u16 gUnk_0832CAFC[];
-extern const u16 gUnk_0832CC90[];
 extern u8 EndingCG_Img1[];
 extern u16 EndingCG_Pal1[];
 extern u8 EndingCG_Img2[];
