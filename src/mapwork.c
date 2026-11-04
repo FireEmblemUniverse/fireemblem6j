@@ -472,7 +472,7 @@ void BuildUnitCompleteAttackRange(struct Unit * unit)
             } \
         }
 
-    switch (GetUnitWeaponReach(unit, -1))
+    switch (GetUnitWeaponReach(unit, ITEMSLOT_ALL))
     {
 
     case REACH_RANGE1:
