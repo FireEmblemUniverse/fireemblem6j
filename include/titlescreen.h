@@ -3,6 +3,33 @@
 #include "prelude.h"
 #include "proc.h"
 
+enum {
+    BGPAL_TITLE_BG = 0,
+    BGPAL_TITLE_BG_COUNT = 8,
+    BGPAL_TITLE_BG3 = 15,
+
+    OBPAL_TITLE_SPRITES = 0,
+    OBPAL_TITLE_SPRITES_COUNT = 5,
+    OBPAL_TITLE_PRESS_START = OBPAL_TITLE_SPRITES + 1,
+    OBPAL_TITLE_LENSFLARE = 0,
+
+    OBCHR_TITLE_LENSFLARE = 0x200,
+};
+
+enum {
+    TITLE_SPRITEANIM_SUBTITLE,
+    TITLE_SPRITEANIM_PRESS_START,
+    TITLE_SPRITEANIM_COPYRIGHT,
+    TITLE_SPRITEANIM_ENGLISH_LOGO,
+};
+
+enum {
+    TITLE_BG3_TILE_COUNT = 0x280,
+    TITLE_PRESS_START_GLOW_COLOR = 8,
+    TITLE_PRESS_START_GLOW_LENGTH = 0x10,
+    TITLE_LENSFLARE_FADE_FRAMES = 0x18,
+};
+
 struct ProcTitle {
     PROC_HEADER;
 
@@ -22,33 +49,55 @@ struct ProcTitleDisp {
 void Title_ReinitTimer(struct ProcTitle * proc);
 void Title_Idle(struct ProcTitle * proc);
 void Title_End(struct ProcTitle * proc);
-void func_fe6_0809B378(ProcPtr proc);
+void Title_EndIfOpAnimSkipped(ProcPtr proc);
 void Title_Init(struct ProcTitle * proc);
 void Title_InitDisp(struct ProcTitle * proc);
-void func_fe6_0809B53C(struct ProcTitleDisp * proc);
-void func_fe6_0809B54C(struct ProcTitleDisp * proc);
-void func_fe6_0809B590(struct ProcTitleDisp * proc);
-void func_fe6_0809B608(struct ProcTitleDisp * proc);
-void func_fe6_0809B69C(struct ProcTitleDisp * proc);
-void func_fe6_0809B6A4(struct ProcTitleDisp * proc);
-void func_fe6_0809B6CC(struct ProcTitleDisp * proc);
-void func_fe6_0809B6F4(struct ProcTitleDisp * proc);
-void func_fe6_0809B75C(struct ProcTitleDisp * proc);
-void func_fe6_0809B7D4(struct ProcTitleDisp * proc);
-void func_fe6_0809B864(struct ProcTitleDisp * proc);
-void func_fe6_0809B898(struct ProcTitleDisp * proc);
-void func_fe6_0809B8FC(struct ProcTitleDisp * proc);
-void func_fe6_0809B96C(struct ProcTitleDisp * proc);
-void func_fe6_0809B99C(struct ProcTitleDisp * proc);
+void TitlePressStartGlow_Init(struct ProcTitleDisp * proc);
+void TitlePressStartGlow_Loop(struct ProcTitleDisp * proc);
+void Title_StartLogoFadeIn(struct ProcTitleDisp * proc);
+void Title_LogoFadeIn(struct ProcTitleDisp * proc);
+void TitleSwordDelay_Init(struct ProcTitleDisp * proc);
+void TitleSwordDelay_Loop(struct ProcTitleDisp * proc);
+void TitleSwordSlideIn_Init(struct ProcTitleDisp * proc);
+void TitleSwordSlideIn_Loop(struct ProcTitleDisp * proc);
+void TitleLogoShadow_Init(struct ProcTitleDisp * proc);
+void TitleLogoShadow_Loop(struct ProcTitleDisp * proc);
+void TitleLensFlareFadeIn_Init(struct ProcTitleDisp * proc);
+void TitleLensFlareFadeIn_Loop(struct ProcTitleDisp * proc);
+void TitleLensFlare_Init(struct ProcTitleDisp * proc);
+void TitleLensFlare_Loop(struct ProcTitleDisp * proc);
+void TitleLensFlare_Put(struct ProcTitleDisp * proc);
 void Title_StartBgm(struct ProcTitle * proc);
-void func_fe6_0809BB00(void);
+void Title_PlayRevealSe(void);
 
-extern struct ProcScr CONST_DATA ProcScr_TitleScreenFromOp[];
 extern struct ProcScr CONST_DATA ProcScr_TitleScreen[];
-extern struct ProcScr CONST_DATA ProcScr_Title_08692258[];
-extern struct ProcScr CONST_DATA ProcScr_Title_08692268[];
-extern struct ProcScr CONST_DATA ProcScr_Title_08692298[];
-extern u16 CONST_DATA Sprite_086922F0[];
-extern u16 CONST_DATA Sprite_086922F8[];
-extern u16 CONST_DATA Sprite_08692300[];
 extern struct ProcScr CONST_DATA ProcScr_TitleScreenFromOp[];
+extern struct ProcScr CONST_DATA ProcScr_TitlePressStartGlow[];
+extern struct ProcScr CONST_DATA ProcScr_TitleSwordDelay[];
+extern struct ProcScr CONST_DATA ProcScr_TitleSwordSlideIn[];
+extern struct ProcScr CONST_DATA ProcScr_TitleLogoShadow[];
+extern struct ProcScr CONST_DATA ProcScr_TitleLensFlareFadeIn[];
+extern struct ProcScr CONST_DATA ProcScr_TitleLensFlare[];
+extern u16 CONST_DATA Sprite_TitleLensFlareSmall[];
+extern u16 CONST_DATA Sprite_TitleLensFlareMedium[];
+extern u16 CONST_DATA Sprite_TitleLensFlareLarge[];
+
+extern CONST_DATA int gTitleDuration;
+extern CONST_DATA int gTitleSwordSlideInDuration;
+extern CONST_DATA int gTitleLogoFadeInDuration;
+extern CONST_DATA int gTitleLogoShadowDuration;
+extern CONST_DATA int gTitleLensFlareDuration;
+extern CONST_DATA int gTitleSwordDelay;
+
+extern u16 const Pal_Title_BG[];
+extern u8 const Img_Title_BG[];
+extern u8 const Img_Title_Sprites[];
+extern u16 const SpriteAnim_Title[];
+extern u16 const Pal_Title_PressStartGlow[];
+extern u8 const Tsa_Title_BG2[];
+extern u8 const Tsa_Title_BG0[];
+extern u8 const Tsa_Title_BG1[];
+extern u8 const Img_Title_BG3[];
+extern u16 const Pal_Title_BG3[];
+extern u8 const Img_Title_LensFlare[];
+extern u16 const Pal_Title_LensFlare[];

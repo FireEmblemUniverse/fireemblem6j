@@ -12,12 +12,12 @@ Img_Title_BG: @ 0835CC90
 Img_Title_Sprites: @ 0835E6DC
 	.incbin "fe6-base.gba", 0x35E6DC, (0x35F2C8 - 0x35E6DC) @ length: 0BEC
 
-	.global SpriteAnim_0835F2C8
-SpriteAnim_0835F2C8: @ 0835F2C8
+	.global SpriteAnim_Title
+SpriteAnim_Title: @ 0835F2C8
 	.incbin "fe6-base.gba", 0x35F2C8, (0x35F388 - 0x35F2C8) @ length: 00C0
 
-	.global Pal_Title_0835F388
-Pal_Title_0835F388: @ 0835F388
+	.global Pal_Title_PressStartGlow
+Pal_Title_PressStartGlow: @ 0835F388
 	.incbin "fe6-base.gba", 0x35F388, (0x35F3A8 - 0x35F388) @ length: 0020
 
 	.global Tsa_Title_BG2
@@ -40,10 +40,10 @@ Img_Title_BG3: @ 0835FC3C
 Pal_Title_BG3: @ 08364418
 	.incbin "fe6-base.gba", 0x364418, (0x364438 - 0x364418) @ length: 0020
 
-	.global Img_Title_08364438
-Img_Title_08364438: @ 08364438
+	.global Img_Title_LensFlare
+Img_Title_LensFlare: @ 08364438
 	.incbin "fe6-base.gba", 0x364438, (0x364A94 - 0x364438) @ length: 065C
 
-	.global Pal_Title_08364A94
-Pal_Title_08364A94: @ 08364A94
+	.global Pal_Title_LensFlare
+Pal_Title_LensFlare: @ 08364A94
 	.incbin "fe6-base.gba", 0x364A94, (0x364AB4 - 0x364A94) @ length: 0020
