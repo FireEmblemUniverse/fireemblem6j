@@ -79,7 +79,7 @@ struct HelpBoxSt EWRAM_DATA gHelpBoxSt = { { 0 } };
 void LoadHelpBoxGfx(void * vram, int pal)
 {
     if (vram == NULL)
-        vram = ((void *) VRAM) + 0x10000 + OBCHR_HELPBOX_180 * CHR_SIZE;
+        vram = OBJ_VRAM0 + OBCHR_HELPBOX_180 * CHR_SIZE;
 
     if (pal < 0)
         pal = OBPAL_HELPBOX_5;
@@ -89,9 +89,9 @@ void LoadHelpBoxGfx(void * vram, int pal)
     Decompress(Img_HelpBox, vram);
 
     InitSpriteTextFont(&gHelpBoxSt.font, vram, pal);
-    InitSpriteText(gHelpBoxSt.text + 0);
-    InitSpriteText(gHelpBoxSt.text + 1);
-    InitSpriteText(gHelpBoxSt.text + 2);
+    InitSpriteText(&gHelpBoxSt.text[0]);
+    InitSpriteText(&gHelpBoxSt.text[1]);
+    InitSpriteText(&gHelpBoxSt.text[2]);
     SetTextFont(NULL);
 
     ApplyPalette(Pal_HelpBox, pal);
@@ -103,7 +103,7 @@ void LoadHelpBoxGfx(void * vram, int pal)
 void LoadHelpBoxGfxTwoLines(void * vram, int pal)
 {
     if (vram == NULL)
-        vram = ((void *) VRAM) + 0x10000 + OBCHR_HELPBOX_180 * CHR_SIZE;
+        vram = OBJ_VRAM0 + OBCHR_HELPBOX_180 * CHR_SIZE;
 
     if (pal < 0)
         pal = OBPAL_HELPBOX_5;
@@ -113,8 +113,8 @@ void LoadHelpBoxGfxTwoLines(void * vram, int pal)
     Decompress(Img_HelpBox, vram);
 
     InitSpriteTextFont(&gHelpBoxSt.font, vram, pal);
-    InitSpriteText(gHelpBoxSt.text + 0);
-    InitSpriteText(gHelpBoxSt.text + 1);
+    InitSpriteText(&gHelpBoxSt.text[0]);
+    InitSpriteText(&gHelpBoxSt.text[1]);
     gHelpBoxSt.text[2].tile_width = 0; // ok??? Skips InitSpriteText, so no tiles are reserved for a third line
     SetTextFont(NULL);
 
@@ -150,12 +150,12 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
             x_px = (ix + 1) * 0x20;
             if (x_px > w_box)
                 x_px = w_box;
-            x_px = x_px - 0x20;
+            x_px -= 0x20;
 
             y_px = (iy + 1) * 0x10;
             if (y_px > h_box)
                 y_px = h_box;
-            y_px = y_px - 0x10;
+            y_px -= 0x10;
 
             PutSprite(0, x_box + x_px, y_box + y_px, Sprite_32x16, gHelpBoxSt.oam2_base + ix * 4 + iy * 0x40);
         }
@@ -166,7 +166,7 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box)
         x_px = (ix + 1) * 0x20;
         if (x_px > w_box)
             x_px = w_box;
-        x_px = x_px - 0x20;
+        x_px -= 0x20;
 
         PutSprite(0, x_box + x_px, y_box - 8, Sprite_32x8, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_H);
         PutSprite(0, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpBoxSt.oam2_base + TALKBOX_CHR_EDGE_H);
@@ -272,14 +272,9 @@ struct ProcScr CONST_DATA ProcScr_TypeWriter[] =
     PROC_END,
 };
 
-void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
+static inline void DemoMonologueDisp_PrintLines(struct ProcTypeWriter * proc)
 {
     int i;
-
-    SetTextFont(proc->font);
-
-    // jumping around switches and for loops requires me to use labels
-    // not the nicest
 
     for (i = 0; i < 6; i++)
     {
@@ -295,7 +290,7 @@ void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
                 // TODO: control character constants
 
             case 0:
-                goto end;
+                return;
 
             case 4:
             case 5:
@@ -304,19 +299,25 @@ void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
 
             case 1:
                 proc->str_it++;
-                goto next_line;
+                break;
 
             default:
                 proc->str_it = Text_DrawCharacter(text, proc->str_it);
                 continue;
 
             }
+
+            break;
         }
-
-    next_line:;
     }
+}
 
-end:
+void DemoMonologueDisp_Main(struct ProcTypeWriter * proc)
+{
+    SetTextFont(proc->font);
+
+    DemoMonologueDisp_PrintLines(proc);
+
     // NOTE: is this supposed to be NULL? Every other print path resets the font to NULL here
     SetTextFont(proc->font);
 }
@@ -602,7 +603,7 @@ void ApplyHelpBoxAltContentSize(struct HelpBoxProc * proc, int w_inner, int h_in
     // identical to ApplyHelpBoxContentSize
     // except it calls GetHelpBoxAltItemInfoKind
 
-    w_inner = 0xE0 & (w_inner + 31); // align to 32 pixel multiple
+    w_inner = (w_inner + 31) & 0xE0; // align to 32 pixel multiple (the 8-bit mask also wraps widths of 0x100 and up)
 
     switch (GetHelpBoxAltItemInfoKind(proc->item))
     {
@@ -719,7 +720,7 @@ void LoadHelpDialogueGfx(void * vram, int pal)
     // except for gHelpDialogueSt instead of gHelpBoxSt
 
     if (vram == NULL)
-        vram = ((void *) VRAM) + 0x10000 + OBCHR_HELPBOX_180 * CHR_SIZE;
+        vram = OBJ_VRAM0 + OBCHR_HELPBOX_180 * CHR_SIZE;
 
     if (pal < 0)
         pal = OBPAL_HELPBOX_5;
@@ -729,9 +730,9 @@ void LoadHelpDialogueGfx(void * vram, int pal)
     Decompress(Img_HelpBox, vram);
 
     InitSpriteTextFont(&gHelpDialogueSt.font, vram, pal);
-    InitSpriteText(gHelpDialogueSt.text + 0);
-    InitSpriteText(gHelpDialogueSt.text + 1);
-    InitSpriteText(gHelpDialogueSt.text + 2);
+    InitSpriteText(&gHelpDialogueSt.text[0]);
+    InitSpriteText(&gHelpDialogueSt.text[1]);
+    InitSpriteText(&gHelpDialogueSt.text[2]);
     SetTextFont(NULL);
 
     ApplyPalette(Pal_HelpBox, pal);
@@ -765,7 +766,7 @@ void ApplyHelpDialogueBoxPosition(struct HelpBoxProc * proc, int x, int y)
 
 void ApplyHelpDialogueBoxContentSize(struct HelpBoxProc * proc, int w, int h)
 {
-    w = 0xE0 & (w + 8 + 0x1F); // w + 8 aligned 0x20 up
+    w = (w + 8 + 0x1F) & 0xE0; // w + 8 aligned 0x20 up (the 8-bit mask also wraps widths of 0x100 and up)
 
     proc->w_box_fini = w;
     proc->h_box_fini = h;
@@ -859,13 +860,10 @@ void CloseHelpDialogueBox(void)
 
 void StartHelpDialogue(int x, int y, int msg, ProcPtr parent)
 {
-    // BUG: this function uses proc where it should use parent
-    #if !BUGFIX
-    #  define parent proc
-    #endif
-
     struct HelpDialogueProc * proc;
 
+    // BUG: this function uses proc where it should use parent
+#if BUGFIX
     if (parent == NULL)
     {
         proc = SpawnProc(ProcScr_HelpDialogue, PROC_TREE_3);
@@ -874,27 +872,30 @@ void StartHelpDialogue(int x, int y, int msg, ProcPtr parent)
     {
         proc = SpawnProcLocking(ProcScr_HelpDialogue, parent);
     }
+#else
+    if (proc == NULL)
+    {
+        proc = SpawnProc(ProcScr_HelpDialogue, PROC_TREE_3);
+    }
+    else
+    {
+        proc = SpawnProcLocking(ProcScr_HelpDialogue, proc);
+    }
+#endif
 
     proc->x = x;
     proc->y = y;
     proc->msg = msg;
     proc->pal = UINT8_MAX;
-
-    #if defined(parent)
-    #  undef parent
-    #endif
 }
 
 // unused
 void StartHelpDialogueExt(int x, int y, int msg, ProcPtr parent, u8 pal)
 {
-    // BUG: this function uses proc where it should use parent
-    #if !BUGFIX
-    #  define parent proc
-    #endif
-
     struct HelpDialogueProc * proc;
 
+    // BUG: this function uses proc where it should use parent
+#if BUGFIX
     if (parent == NULL)
     {
         proc = SpawnProc(ProcScr_HelpDialogue, PROC_TREE_3);
@@ -903,15 +904,21 @@ void StartHelpDialogueExt(int x, int y, int msg, ProcPtr parent, u8 pal)
     {
         proc = SpawnProcLocking(ProcScr_HelpDialogue, parent);
     }
+#else
+    if (proc == NULL)
+    {
+        proc = SpawnProc(ProcScr_HelpDialogue, PROC_TREE_3);
+    }
+    else
+    {
+        proc = SpawnProcLocking(ProcScr_HelpDialogue, proc);
+    }
+#endif
 
     proc->x = x;
     proc->y = y;
     proc->msg = msg;
     proc->pal = pal;
-
-    #if defined(parent)
-    #  undef parent
-    #endif
 }
 
 void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
@@ -938,7 +945,7 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
             w = 0;
 
             str++;
-            continue;
+            break;
 
         case 2:
         case 3:
@@ -953,11 +960,11 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
             h = 0;
 
             str++;
-            continue;
+            break;
 
         case 4:
             str++;
-            continue;
+            break;
 
         case 0: // end
             if (*out_w < w)
@@ -966,17 +973,15 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
             if (*out_h < h)
                 *out_h = h;
 
-            break;
+            // case end
+            return;
 
         default:
             str = GetCharTextLen(str, &char_width);
             w += char_width;
-            continue;
+            break;
 
         }
-
-        // case end
-        break;
     }
 }
 
@@ -1000,34 +1005,29 @@ void GetStringPageEndPos(char const * str, u8 * out_x, u8 * out_y)
 
         case 4:
             it++;
-            continue;
+            break;
 
         case 1: // newline
             it++;
             y += 16;
             x = 0;
-            continue;
+            break;
+
+        case 2:
+        case 3:
+        case 0: // end
+            // case end, 2, 3
+            *out_x = x + 2;
+            *out_y = y + 8;
+            return;
 
         default:
             it = GetCharTextLen(it, &char_width);
             x += char_width;
-            continue;
-
-        case 2:
-        case 3:
-            break;
-
-        case 0: // end
             break;
 
         }
-
-        // case end, 2, 3
-        break;
     }
-
-    *out_x = x + 2;
-    *out_y = y + 8;
 }
 
 void StartHelpDialogueBox(int x, int y, int msg)
@@ -1086,12 +1086,12 @@ void PutSpriteHelpDialogueBox(int x_box, int y_box, int w_box, int h_box)
             x_px = (ix + 1) * 0x20;
             if (x_px > w_box)
                 x_px = w_box;
-            x_px = x_px - 0x20;
+            x_px -= 0x20;
 
             y_px = (iy + 1) * 0x10;
             if (y_px > h_box)
                 y_px = h_box;
-            y_px = y_px - 0x10;
+            y_px -= 0x10;
 
             PutSprite(2, x_box + x_px, y_box + y_px, Sprite_32x16, gHelpDialogueSt.oam2_base + ix * 4 + iy * 0x40);
         }
@@ -1102,7 +1102,7 @@ void PutSpriteHelpDialogueBox(int x_box, int y_box, int w_box, int h_box)
         x_px = (ix + 1) * 0x20;
         if (x_px > w_box)
             x_px = w_box;
-        x_px = x_px - 0x20;
+        x_px -= 0x20;
 
         PutSprite(2, x_box + x_px, y_box - 8, Sprite_32x8, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_H);
         PutSprite(2, x_box + x_px, y_box + h_box, Sprite_32x8_VFlipped, gHelpDialogueSt.oam2_base + TALKBOX_CHR_EDGE_H);
