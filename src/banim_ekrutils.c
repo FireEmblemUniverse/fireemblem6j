@@ -369,44 +369,44 @@ void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c)
 
 i16 EfxAdvanceFrameLut(i16 *ptime, i16 *pcount, const i16 lut[])
 {
-    register u16 uframe asm("r4");
+    u16 frame;
     u16 count;
     u16 time;
-    int iframe;
+    int icount;
     u16 tmp, time2, count2;
-    register u32 r6 asm("r6");
+    i16 stime;
 
-    time = *ptime;
-    r6 = time;
-    if (r6 == 0)
+    stime = *ptime;
+    time = stime;
+    if (time == 0)
     {
         count = *pcount;
-        uframe = lut[count * 2];
-        iframe = lut[count * 2];
-    
-        if (-1 == iframe)
+        frame = lut[count * 2];
+
+        if (-1 == lut[count * 2])
             return -1;
-        
-        if (-4 == iframe)
+
+        if (-4 == lut[count * 2])
             return -4;
-        
-        if (-2 == iframe)
+
+        if (-2 == lut[count * 2])
         {
-            *pcount = r6;
-            uframe = lut[0];
+            *pcount = 0;
+            frame = lut[0];
         }
-        else if (-3 == iframe)
+        else if (-3 == lut[count * 2])
         {
             *pcount = count - 1;
             tmp = *pcount;
-            uframe = lut[tmp * 2];
+            frame = lut[tmp * 2];
         }
-    
-        count2 = *pcount;
+
+        icount = *pcount;
+        count2 = icount;
         time2 = lut[count2 * 2 + 1];
-        ++*(i16 *)pcount;
+        ++*pcount;
         *ptime = time2 - 1;
-        return uframe;
+        return frame;
     }
     else
     {
