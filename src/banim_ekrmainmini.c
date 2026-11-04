@@ -122,12 +122,10 @@ void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim * anim)
 
 		ptr = anim1->sprDataPool;
 		offset = scr->oam_offset;
-		ptr += offset;
-		anim1->sprData = ptr;
+		anim1->sprData = ptr += offset;
 
 		ptr = anim2->sprDataPool;
-		ptr += BAS_OAM_REF_MAX_SIZE;
-		anim2->sprData = ptr;
+		anim2->sprData = ptr += BAS_OAM_REF_MAX_SIZE;
 
 		if (desc->img_sheet != anim->imgSheet) {
 			NewEkrChienCHR(anim);
