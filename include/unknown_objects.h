@@ -127,7 +127,7 @@ extern u8 const Img_Prep_0831A088[];
 extern u16 const Pal_Prep_0831A248[];
 // extern ??? Img_Prep_0831A268
 extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
-extern u16 const Pal_0831AAFC[];
+extern u16 const Pal_PrepGoldPulse[];
 extern u8 const Img_Prep_0831AB1C[]; // img
 extern u16 const Pal_Prep_0831B068[];
 extern u8 const Img_MonologueBG[];

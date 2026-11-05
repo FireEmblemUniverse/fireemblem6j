@@ -71,7 +71,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
             if (cur_counter != 0)
             {
                 Proc_Goto(proc, 0x5);
-                proc->disp_proc->unk_2A = TRUE;
+                proc->disp_proc->start_blink_clock = TRUE;
                 PlaySe(SONG_6A);
             }
             else
@@ -184,7 +184,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
     {
         if (proc->unk_2D != 1)
         {
-            func_fe6_0807B8B0(proc->disp_proc, 5);
+            PrepDisp_ChangeSubmenuDesc(proc->disp_proc, 5);
             proc->list_num_cur = proc->unk_32;
             proc->sel_unit = 1;
             func_fe6_0807C840(proc);

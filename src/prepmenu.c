@@ -885,7 +885,7 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 
 	PrepMenu_InitScreen(proc);
 
-	PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepUpperDisp(proc)),
+	PrepDisp_SetWorldMapInfo((proc->disp_proc = StartPrepUpperDisp(proc)),
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
 		GetChapterInfo(gPlaySt.chapter)->index_gaiden);
@@ -903,7 +903,7 @@ fi8 PrepUnitSel_Loop(struct PrepMenuProc *proc)
 	if ((gKeySt->pressed & KEY_BUTTON_START) != 0 && (proc->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0) {
 		if ((proc->a_button_actions & 1) != 0 && proc->cur_counter != 0) {
 			Proc_Goto(proc, L_PREPMENU_5);
-			proc->disp_proc->unk_2A = 1;
+			proc->disp_proc->start_blink_clock = 1;
 			PlaySe(SONG_6A);
 		} else {
 			PlaySe(SONG_6C);
@@ -1004,7 +1004,7 @@ void PrepMenu_CancelAction(struct PrepMenuProc *proc)
 
 void PrepItem_BlockUpperfxDisp(struct PrepMenuProc *proc)
 {
-	Proc_Goto(proc->disp_proc, 2);
+	Proc_Goto(proc->disp_proc, L_PREPUPPERDISP_BLOCK);
 	EndGreenText();
 }
 
@@ -1078,7 +1078,7 @@ void PrepMenu_Loop(struct PrepMenuProc *proc)
 				if (proc->do_help != FALSE)
 					PrepMenuHelpbox(proc);
 				if (proc->submenu_level == 1)
-					func_fe6_0807B8B0(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
+					PrepDisp_ChangeSubmenuDesc(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
 	
 				PlaySe(0x66);
 			}
@@ -1104,7 +1104,7 @@ void PrepMenu_Loop(struct PrepMenuProc *proc)
 					Proc_Goto(proc, 0xA);
 			} else if (_pre_idx == 1) {
 				proc->sel_unit = 0;
-				func_fe6_0807B8B0(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
+				PrepDisp_ChangeSubmenuDesc(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
 				func_fe6_08079A94(proc);
 				proc->unk_32 = proc->list_num_cur;
 				proc->list_num_cur = proc->unk_31;
@@ -1155,7 +1155,7 @@ void AtMenu_ResetBmUiEffect(struct PrepMenuProc *proc)
 	Proc_End(proc->procbg);
 
 	if (proc->disp_proc)
-		Proc_Goto(proc->disp_proc, 0x5);
+		Proc_Goto(proc->disp_proc, L_PREPUPPERDISP_END);
 
 	InitPlayerDeployUnitPositions();
 	ResetUnitSprites();
@@ -1284,7 +1284,7 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc *proc)
 	case PREP_SUB2ACT_DISCARD_ITEM:
 	case PREP_SUB2ACT_CHECK_ALL_ITEM:
 		PrepMenu_InitScreenExt(proc);
-		Proc_Goto(proc->disp_proc, 0x0);
+		Proc_Goto(proc->disp_proc, L_PREPUPPERDISP_INIT);
 		NewSallyCir2(proc, -1);
 		break;
 
@@ -1296,14 +1296,14 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc *proc)
 	case PREP_SUB2ACT_ARMORY:
 		StartBgm(0x22, NULL);
 		PrepMenu_InitScreen(proc);
-		Proc_Goto(proc->disp_proc, 0x0);
+		Proc_Goto(proc->disp_proc, L_PREPUPPERDISP_INIT);
 		break;
 
 	case PREP_SUB2ACT_STATSCREEN:
 	case PREP_SUB2ACT_8:
 	case PREP_SUB2ACT_9:
 		PrepMenu_InitScreen(proc);
-		Proc_Goto(proc->disp_proc, 0x0);
+		Proc_Goto(proc->disp_proc, L_PREPUPPERDISP_INIT);
 		break;
 
 	default:
