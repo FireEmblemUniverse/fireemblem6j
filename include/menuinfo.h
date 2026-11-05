@@ -4,10 +4,10 @@
 #include "menu.h"
 #include "mapselect.h"
 
-extern struct MenuInfo CONST_DATA MenuInfo_Debug_085C7474;
-extern struct MenuInfo CONST_DATA MenuInfo_Debug_085C73E4;
+extern struct MenuInfo CONST_DATA MenuInfo_DebugMain;
+extern struct MenuInfo CONST_DATA MenuInfo_DebugClearFile;
 extern struct MenuInfo CONST_DATA MenuInfo_Debug_LoadGame;
-extern struct MenuInfo CONST_DATA MenuInfo_Debug_085C7450;
+extern struct MenuInfo CONST_DATA MenuInfo_DebugSuspend;
 extern struct MenuInfo CONST_DATA MenuInfo_DebugCpControl;
 extern struct MenuInfo CONST_DATA MenuInfo_Map;
 extern struct MenuInfo CONST_DATA MenuInfo_TutorialInterruptMenu;

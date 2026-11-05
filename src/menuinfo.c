@@ -30,7 +30,7 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_TutorialInterruptMenu[] =
     { 0 }, // end
 };
 
-struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C64B4[] =
+struct MenuEntInfo CONST_DATA MenuEntInfo_DebugClearFile[] =
 {
     {
         .label = JTEXT("ファイルをクリアずみに"),
@@ -56,7 +56,7 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C64B4[] =
         .label = JTEXT("　　　　　　　　　了解"),
         .text_color = TEXT_COLOR_SYSTEM_GREEN,
         .available = MenuEntryEnabled,
-        .on_select = func_fe6_0801AA8C,
+        .on_select = DebugClearFileMenu_OnSelect_Confirm,
     },
 
     { 0 }, // end
@@ -91,81 +91,81 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_LoadGame[] =
 
     {
         .label = JTEXT("　どこでも再開"),
-        .available = DebugMenu_Avaliable_LoadMainSuspend,
+        .available = DebugMenu_Available_LoadMainSuspend,
         .on_select = DebugMenu_OnSelect_LoadMainSuspend,
     },
 
     {
         .label = JTEXT("　手再開"),
-        .available = DebugMenu_Avaliable_LoadAltSuspend,
+        .available = DebugMenu_Available_LoadAltSuspend,
         .on_select = DebugMenu_OnSelect_LoadAltSuspend,
     },
 
     { 0 }, // end
 };
 
-struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C6688[] =
+struct MenuEntInfo CONST_DATA MenuEntInfo_DebugSuspend[] =
 {
     {
         .label = JTEXT("　手中断"),
-        .available = func_fe6_0801AD4C,
-        .on_select = func_fe6_0801AD50,
+        .available = DebugMenu_Available_SaveAltSuspend,
+        .on_select = DebugMenu_OnSelect_SaveAltSuspend,
     },
 
     {
         .label = JTEXT("　手再開"),
-        .available = DebugMenu_Avaliable_LoadAltSuspend,
+        .available = DebugMenu_Available_LoadAltSuspend,
         .on_select = DebugMenu_OnSelect_LoadAltSuspend,
     },
 
     { 0 }, // end
 };
 
-struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C66F4[] =
+struct MenuEntInfo CONST_DATA MenuEntInfo_DebugMain[] =
 {
     {
         .label = JTEXT("　マップ"),
         .available = MenuEntryEnabled,
-        .on_select = func_fe6_0801A724,
-        .on_idle = func_fe6_0801A698,
+        .on_select = DebugMenu_OnSelect_Map,
+        .on_idle = DebugMenu_Idle_Map,
     },
 
     {
         .label = JTEXT("　デブ情報"),
         .available = MenuEntryEnabled,
-        .display = func_fe6_0801A760,
-        .on_select = func_fe6_0801A81C,
-        .on_idle = func_fe6_0801A7D4,
+        .display = DebugMenu_Display_DebugInfo,
+        .on_select = DebugMenu_OnSelect_DebugInfo,
+        .on_idle = DebugMenu_Idle_DebugInfo,
     },
 
     {
         .label = JTEXT("　天気"),
         .available = MenuEntryEnabled,
-        .display = func_fe6_0801A820,
-        .on_select = func_fe6_0801A940,
-        .on_idle = func_fe6_0801A89C,
+        .display = DebugMenu_Display_Weather,
+        .on_select = DebugMenu_OnSelect_Weather,
+        .on_idle = DebugMenu_Idle_Weather,
     },
 
     {
         .label = JTEXT("　索敵"),
         .available = MenuEntryEnabled,
-        .display = func_fe6_0801ADEC,
-        .on_select = func_fe6_0801AEB8,
-        .on_idle = func_fe6_0801AE60,
+        .display = DebugMenu_Display_Fog,
+        .on_select = DebugMenu_OnSelect_Fog,
+        .on_idle = DebugMenu_Idle_Fog,
     },
 
     {
         .label = JTEXT("　周回数"),
         .available = MenuEntryEnabled,
-        .display = func_fe6_0801A944,
-        .on_select = func_fe6_0801AA70,
-        .on_idle = func_fe6_0801A9A8,
+        .display = DebugMenu_Display_Playthroughs,
+        .on_select = DebugMenu_OnSelect_Playthroughs,
+        .on_idle = DebugMenu_Idle_Playthroughs,
     },
 
     {
         .label = JTEXT("　クリアずみ"),
         .available = MenuEntryEnabled,
-        .on_select = func_fe6_0801AA74,
+        .on_select = DebugMenu_OnSelect_ClearFile,
     },
 
     {
@@ -176,7 +176,7 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C66F4[] =
     {
         .label = JTEXT("　おやすみなさい"),
         .available = MenuEntryEnabled,
-        .on_select = func_fe6_0801AEC8,
+        .on_select = DebugMenu_OnSelect_Sleep,
     },
 
     { 0 }, // end
@@ -799,18 +799,18 @@ struct MenuInfo CONST_DATA MenuInfo_TutorialInterruptMenu =
     .on_b_press = MenuActionClose,
 };
 
-struct MenuInfo CONST_DATA MenuInfo_Debug_085C73E4 =
+struct MenuInfo CONST_DATA MenuInfo_DebugClearFile =
 {
     .rect = { 1, 6, 13, 0 },
-    .entries = MenuEntInfo_Debug_085C64B4,
-    .on_b_press = func_fe6_0801A748,
+    .entries = MenuEntInfo_DebugClearFile,
+    .on_b_press = DebugMenu_OnBPress,
 };
 
 struct MenuInfo CONST_DATA MenuInfo_DebugCpControl =
 {
     .rect = { 1, 1, 10, 0 },
     .entries = MenuEntInfo_DebugCpControl,
-    .on_b_press = func_fe6_0801A748,
+    .on_b_press = DebugMenu_OnBPress,
 };
 
 struct MenuInfo CONST_DATA MenuInfo_Debug_LoadGame =
@@ -821,19 +821,19 @@ struct MenuInfo CONST_DATA MenuInfo_Debug_LoadGame =
     .on_end = DebugMenu_OnEnd_LoadGame,
 };
 
-struct MenuInfo CONST_DATA MenuInfo_Debug_085C7450 =
+struct MenuInfo CONST_DATA MenuInfo_DebugSuspend =
 {
     .rect = { 1, 1, 8, 0 },
-    .entries = MenuEntInfo_Debug_085C6688,
-    .on_b_press = func_fe6_0801A748,
+    .entries = MenuEntInfo_DebugSuspend,
+    .on_b_press = DebugMenu_OnBPress,
 };
 
-struct MenuInfo CONST_DATA MenuInfo_Debug_085C7474 =
+struct MenuInfo CONST_DATA MenuInfo_DebugMain =
 {
     .rect = { 1, 1, 14, 0 },
-    .entries = MenuEntInfo_Debug_085C66F4,
-    .on_init = func_fe6_0801AABC,
-    .on_b_press = func_fe6_0801A748,
+    .entries = MenuEntInfo_DebugMain,
+    .on_init = DebugMenu_OnInit_Main,
+    .on_b_press = DebugMenu_OnBPress,
 };
 
 struct MenuInfo CONST_DATA MenuInfo_RepairItem =
