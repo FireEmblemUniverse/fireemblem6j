@@ -105,33 +105,28 @@ void EkrMainMini_C01_Blocking(struct Anim * anim)
 
 void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim * anim)
 {
-	register const void *tmp_ptr;
-	register struct BanimScrFrame *scr_start asm("r1");
-	register int scr_offset asm("r0");
 	struct EkrMainMiniDesc *desc = anim->priv;
 
 	if (GetAnimLayer(anim) == 0) {
 		const u8 *mode_conf = BanimDefaultModeConfig;
-		struct BattleAnim *banim_data = desc->bid + gBanimTable;
-		const int *banim_mode = banim_data->modes;
-
+		const int *banim_mode = (desc->bid + gBanimTable)->modes;
 		struct Anim *anim1 = desc->anim1;
 		struct Anim *anim2 = desc->anim2;
+		const u8 *ptr = desc->scr_buf;
+		struct BanimScrFrame *scr;
+		int offset;
 
-		const u8 *scr_buf = tmp_ptr = desc->scr_buf;
-		int frame_idx = mode_conf[ANIM_ROUND_TAKING_HIT_CLOSE * 4 + 0];
+		offset = banim_mode[mode_conf[ANIM_ROUND_TAKING_HIT_CLOSE * 4 + 0]];
+		scr = (void *)(ptr + offset);
+		anim1->imgSheet = scr->img;
 
-		scr_offset = banim_mode[frame_idx];
-		scr_start = (void *)(scr_buf + scr_offset);
+		ptr = anim1->sprDataPool;
+		offset = scr->oam_offset;
+		anim1->sprData = ptr += offset;
 
-		anim1->imgSheet = scr_start->img;
-#if !NONMATCHING
-		anim1->sprData = tmp_ptr = (tmp_ptr = anim1->sprDataPool) + scr_start->oam_offset;
-		anim2->sprData = tmp_ptr = (tmp_ptr = anim2->sprDataPool) + BAS_OAM_REF_MAX_SIZE;
-#else
-		anim1->sprData = anim1->sprDataPool + scr_start->oam_offset;
-		anim2->sprData = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
-#endif
+		ptr = anim2->sprDataPool;
+		anim2->sprData = ptr += BAS_OAM_REF_MAX_SIZE;
+
 		if (desc->img_sheet != anim->imgSheet) {
 			NewEkrChienCHR(anim);
 			desc->img_sheet = anim->imgSheet;
