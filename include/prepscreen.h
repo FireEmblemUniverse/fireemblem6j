@@ -43,6 +43,7 @@ enum prepscreen_videoalloc {
     BGPAL_PREPMENU_F = 0x0F,
 
     OBPAL_PREPMENU_0 = 0x00,
+    OBPAL_PREPMENU_1 = 0x01,
     OBPAL_PREPMENU_2 = 0x02,
     OBPAL_PREPMENU_4 = 0x04,
     OBPAL_PREPMENU_5 = 0x05,
@@ -477,14 +478,22 @@ void PrepDiscardHand_Init(struct ProcPrepDiscardHand *proc);
 void PrepDiscardHand_Loop(struct ProcPrepDiscardHand *proc);
 ProcPtr NewPrepDiscardHand(ProcPtr parent);
 
+enum {
+    MENUSCROLL_SEGMENT_FULL = 8,
+    MENUSCROLL_SEGMENT_FULL16,
+    MENUSCROLL_SEGMENT_FULL32,
+
+    MENUSCROLL_ARROW_FRAME_COUNT = 6,
+};
+
 struct MenuScrollBarProc {
     PROC_HEADER;
 
-    /* 2A */ u8 unk_29;
+    STRUCT_PAD(0x29, 0x2A);
     /* 2A */ u8 xBase;
     /* 2B */ u8 yBase;
     /* 2C */ u8 numSegments;
-    /* 2D */ u8 unk_2D;
+    STRUCT_PAD(0x2D, 0x2E);
     /* 2E */ u16 currentSegment;
     /* 30 */ u16 prevSegment;
     /* 32 */ u16 numTotalRows;
@@ -499,7 +508,7 @@ void MenuScroll_Init(struct MenuScrollBarProc *proc);
 void MenuScroll_Loop(struct MenuScrollBarProc *proc);
 ProcPtr StartMenuScrollBar(ProcPtr parent);
 void SetPrepMenuScrollBarBaseInfo(struct MenuScrollBarProc *proc,
-        int x, int b, int y, int seg, int total, int len);
+        int x, int y, int numSegments, int currentSegment, int numTotalRows, int numVisibleRows);
 void SetPrepMenuScrollBarOam2Info(struct MenuScrollBarProc *proc, int chr, u8 pal);
 void PrepPutText(struct Text *th, u16 *tm, int color, int x, const char *str);
 void func_fe6_080823A0(u8 * a, u16 * b);
@@ -636,13 +645,30 @@ extern struct ProcScr ProcScr_PrepSubItemScreen[];
 extern struct ProcScr ProcScr_BmSupplyScreen[];
 extern struct ProcScr ProcScr_PrepDiscardItemScreen[];
 extern struct ProcScr ProcScr_PrepDiscardHand[];
-extern CONST_DATA u16 Sprite_08679578[];
-extern CONST_DATA u16 Sprite_08679580[];
-extern CONST_DATA u16 Sprite_MenuScrollContainer[];
-extern CONST_DATA u16 Sprite_08679590[];
-extern CONST_DATA u16 Sprite_08679598[];
-// ??? MenuScrollBarSegmentSprites
-// ??? MenuScrollArrowSprites
+extern CONST_DATA u16 Sprite_MenuScrollContainer8[];
+extern CONST_DATA u16 Sprite_MenuScrollContainer16[];
+extern CONST_DATA u16 Sprite_MenuScrollContainer32[];
+extern CONST_DATA u16 Sprite_MenuScroll_TopDecal[];
+extern CONST_DATA u16 Sprite_MenuScroll_BottomDecal[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentEmpty[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentA[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentB[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentC[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentD[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentE[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentF[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentG[];
+extern CONST_DATA u16 Sprite_MenuScrollSegmentH[];
+extern CONST_DATA u16 Sprite_MenuScrollSegment16[];
+extern CONST_DATA u16 Sprite_MenuScrollSegment32[];
+extern u16 * CONST_DATA MenuScrollBarSegmentSprites[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowA[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowB[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowC[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowD[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowE[];
+extern CONST_DATA u16 Sprite_MenuScrollArrowF[];
+extern u16 * CONST_DATA MenuScrollArrowSprites[];
 extern struct ProcScr ProcScr_menu_scroll[];
 extern struct ProcScr ProcScr_PrepBgScrolling[];
 extern struct ProcScr ProcScr_SallyCir1[];

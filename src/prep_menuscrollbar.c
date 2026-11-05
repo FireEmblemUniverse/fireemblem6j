@@ -4,137 +4,137 @@
 #include "sprite.h"
 #include "prepscreen.h"
 
-u16 CONST_DATA Sprite_08679578[] = {
+u16 CONST_DATA Sprite_MenuScrollContainer8[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1),
 };
 
-u16 CONST_DATA Sprite_08679580[] = {
+u16 CONST_DATA Sprite_MenuScrollContainer16[] = {
 	1,
 	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x1),
 };
 
-u16 CONST_DATA Sprite_MenuScrollContainer[] = {
+u16 CONST_DATA Sprite_MenuScrollContainer32[] = {
 	1,
 	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, OAM2_CHR(0x1),
 };
 
-u16 CONST_DATA Sprite_08679590[] = {
+u16 CONST_DATA Sprite_MenuScroll_TopDecal[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x15),
 };
 
-u16 CONST_DATA Sprite_08679598[] = {
+u16 CONST_DATA Sprite_MenuScroll_BottomDecal[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x16),
 };
 
-u16 CONST_DATA Sprite_086795A0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentEmpty[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x14),
 };
 
-u16 CONST_DATA Sprite_086795A8[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentA[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xC),
 };
 
-u16 CONST_DATA Sprite_086795B0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentB[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xD),
 };
 
-u16 CONST_DATA Sprite_086795B8[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentC[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xE),
 };
 
-u16 CONST_DATA Sprite_086795C0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentD[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xF),
 };
 
-u16 CONST_DATA Sprite_086795C8[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentE[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x10),
 };
 
-u16 CONST_DATA Sprite_086795D0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentF[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x11),
 };
 
-u16 CONST_DATA Sprite_086795D8[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentG[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x12),
 };
 
-u16 CONST_DATA Sprite_086795E0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegmentH[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x13),
 };
 
-u16 CONST_DATA Sprite_086795E8[] = {
+u16 CONST_DATA Sprite_MenuScrollSegment16[] = {
 	1,
 	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, 0,
 };
 
-u16 CONST_DATA Sprite_086795F0[] = {
+u16 CONST_DATA Sprite_MenuScrollSegment32[] = {
 	1,
 	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, 0,
 };
 
 u16 *CONST_DATA MenuScrollBarSegmentSprites[] = {
-	Sprite_086795A0,
-	Sprite_086795A8,
-	Sprite_086795B0,
-	Sprite_086795B8,
-	Sprite_086795C0,
-	Sprite_086795C8,
-	Sprite_086795D0,
-	Sprite_086795D8,
-	Sprite_086795E0,
-	Sprite_086795E8,
-	Sprite_086795F0
+	Sprite_MenuScrollSegmentEmpty,
+	Sprite_MenuScrollSegmentA,
+	Sprite_MenuScrollSegmentB,
+	Sprite_MenuScrollSegmentC,
+	Sprite_MenuScrollSegmentD,
+	Sprite_MenuScrollSegmentE,
+	Sprite_MenuScrollSegmentF,
+	Sprite_MenuScrollSegmentG,
+	Sprite_MenuScrollSegmentH,
+	Sprite_MenuScrollSegment16,
+	Sprite_MenuScrollSegment32
 };
 
-u16 CONST_DATA Sprite_08679624[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowA[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x17),
 };
 
-u16 CONST_DATA Sprite_0867962C[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowB[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x18),
 };
 
-u16 CONST_DATA Sprite_08679634[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowC[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x19),
 };
 
-u16 CONST_DATA Sprite_0867963C[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowD[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1A),
 };
 
-u16 CONST_DATA Sprite_08679644[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowE[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1B),
 };
 
-u16 CONST_DATA Sprite_0867964C[] = {
+u16 CONST_DATA Sprite_MenuScrollArrowF[] = {
 	1,
 	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1C),
 };
 
 u16 *CONST_DATA MenuScrollArrowSprites[] = {
-	Sprite_08679624,
-	Sprite_0867962C,
-	Sprite_08679634,
-	Sprite_0867963C,
-	Sprite_08679644,
-	Sprite_0867964C
+	Sprite_MenuScrollArrowA,
+	Sprite_MenuScrollArrowB,
+	Sprite_MenuScrollArrowC,
+	Sprite_MenuScrollArrowD,
+	Sprite_MenuScrollArrowE,
+	Sprite_MenuScrollArrowF
 };
 
 
@@ -155,8 +155,8 @@ void MenuScroll_Init(struct MenuScrollBarProc * proc)
 	proc->numTotalRows = proc->currentSegment;
 	proc->numVisibleRows = 0;
 	proc->prevSegment = proc->currentSegment;
-	proc->oam2Chr = 0x390;
-	proc->oam2Pal = 0x1000;
+	proc->oam2Chr = OBCHR_PREPMENU_390;
+	proc->oam2Pal = OAM2_PAL(OBPAL_PREPMENU_1);
 	proc->topArrowFrameIdx = 0;
 	proc->bottomArrowFrameIdx = 0;
 }
@@ -170,15 +170,15 @@ void MenuScroll_Loop(struct MenuScrollBarProc *proc)
 
 	for (i = 0; i < proc->numSegments / 4; i++)
 		PutSpriteExt(4, proc->xBase, proc->yBase + i * 32,
-			Sprite_MenuScrollContainer, proc->oam2Chr + proc->oam2Pal);
+			Sprite_MenuScrollContainer32, proc->oam2Chr + proc->oam2Pal);
 
 	for (j = 0; j < (proc->numSegments - i * 4) >> 1; j++)
 		PutSpriteExt(4, proc->xBase, proc->yBase + j * 16 + i * 32,
-			Sprite_08679580, proc->oam2Chr + proc->oam2Pal);
+			Sprite_MenuScrollContainer16, proc->oam2Chr + proc->oam2Pal);
 
 	for (k = 0; k < proc->numSegments - (i * 4 + j * 2); k++)
 		PutSpriteExt(4, proc->xBase, proc->yBase + k * 8 + j * 16 + i * 32,
-			Sprite_08679578, proc->oam2Chr + proc->oam2Pal);
+			Sprite_MenuScrollContainer8, proc->oam2Chr + proc->oam2Pal);
 
 	if (i + j + k > 0) {
 		u32 len = proc->numSegments << 19;
@@ -197,15 +197,15 @@ void MenuScroll_Loop(struct MenuScrollBarProc *proc)
 
 			for (n32 = 0; n32 < bar >> 21; n32++)
 				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32,
-					MenuScrollBarSegmentSprites[10], proc->oam2Chr + proc->oam2Pal);
+					MenuScrollBarSegmentSprites[MENUSCROLL_SEGMENT_FULL32], proc->oam2Chr + proc->oam2Pal);
 
 			for (j = 0; j < ((bar >> 16) - n32 * 32) >> 4; j++)
 				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32 + j * 16,
-					MenuScrollBarSegmentSprites[9], proc->oam2Chr + proc->oam2Pal);
+					MenuScrollBarSegmentSprites[MENUSCROLL_SEGMENT_FULL16], proc->oam2Chr + proc->oam2Pal);
 
 			for (k = 0; k < ((bar >> 16) - n32 * 32 - j * 16) >> 3; k++)
 				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32 + j * 16 + k * 8,
-					MenuScrollBarSegmentSprites[8], proc->oam2Chr + proc->oam2Pal);
+					MenuScrollBarSegmentSprites[MENUSCROLL_SEGMENT_FULL], proc->oam2Chr + proc->oam2Pal);
 
 			if ((proc->currentSegment >> 4) + proc->numVisibleRows == proc->numTotalRows) {
 				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + (n32 * 32 + j * 16 + k * 8),
@@ -220,8 +220,8 @@ void MenuScroll_Loop(struct MenuScrollBarProc *proc)
 			}
 		}
 
-		PutSpriteExt(4, proc->xBase, proc->yBase - 8, Sprite_08679590, proc->oam2Chr + proc->oam2Pal);
-		PutSpriteExt(4, proc->xBase, proc->yBase + proc->numSegments * 8, Sprite_08679598, proc->oam2Chr + proc->oam2Pal);
+		PutSpriteExt(4, proc->xBase, proc->yBase - 8, Sprite_MenuScroll_TopDecal, proc->oam2Chr + proc->oam2Pal);
+		PutSpriteExt(4, proc->xBase, proc->yBase + proc->numSegments * 8, Sprite_MenuScroll_BottomDecal, proc->oam2Chr + proc->oam2Pal);
 	}
 
 	if (proc->prevSegment != proc->currentSegment) {
@@ -237,10 +237,10 @@ void MenuScroll_Loop(struct MenuScrollBarProc *proc)
 	proc->topArrowFrameIdx++;
 	proc->bottomArrowFrameIdx++;
 
-	if ((proc->topArrowFrameIdx >> 3) > 5)
+	if ((proc->topArrowFrameIdx >> 3) >= MENUSCROLL_ARROW_FRAME_COUNT)
 		proc->topArrowFrameIdx = 0;
 
-	if ((proc->bottomArrowFrameIdx >> 3) > 5)
+	if ((proc->bottomArrowFrameIdx >> 3) >= MENUSCROLL_ARROW_FRAME_COUNT)
 		proc->bottomArrowFrameIdx = 0;
 }
 
