@@ -32,6 +32,7 @@
 #include "ending.h"
 #include "ending_monologue.h"
 #include "chapterunits.h"
+#include "commandflags.h"
 
 #include "constants/pids.h"
 #include "constants/jids.h"
@@ -887,7 +888,7 @@ void Tutorial_InitActionSelectHelp(void)
 
     gUnk_030048A8 = 0;
     ClearFlag(FLAG_TUTORIAL_22);
-    unk = func_fe6_0802BA08();
+    unk = GetActiveUnitCommandFlagsInPlace();
     gTutorialActionsInPlace = unk;
 }
 
@@ -913,7 +914,7 @@ void Tutorial_ResumeMenu(void)
 
 void Tutorial_StartMoveSelectEvent(void)
 {
-    u32 unk = func_fe6_0802B9DC();
+    u32 unk = GetActiveUnitCommandFlagsAfterMove();
     gTutorialActionsAfterMove = unk;
 
     switch (UNIT_PID(gActiveUnit))
@@ -1053,7 +1054,7 @@ void Tutorial_StartHighlight(int what)
 {
     gTutorialPointerKind = what;
 
-    func_fe6_0802BA44(gActiveUnit);
+    ListAttackPositions(gActiveUnit);
     gTutorialTargetCount = CountTargets();
 
     if (gTutorialTargetCount != 0)
@@ -1225,7 +1226,7 @@ bool IsActiveUnitAlen(void)
 
 bool Tutorial_CanAttackAfterMove(void)
 {
-    if ((gTutorialActionsAfterMove & 2) != 0)
+    if ((gTutorialActionsAfterMove & COMMAND_FLAG_ATTACK) != 0)
         return TRUE;
 
     return FALSE;
@@ -1336,7 +1337,7 @@ bool Tutorial_ShouldHelpAttack(void)
             break;
     }
 
-    if ((gTutorialActionsInPlace & 2) != 0)
+    if ((gTutorialActionsInPlace & COMMAND_FLAG_ATTACK) != 0)
         return TRUE;
 
     return FALSE;
@@ -1344,7 +1345,7 @@ bool Tutorial_ShouldHelpAttack(void)
 
 bool Tutorial_CanVisit(void)
 {
-    if ((gTutorialActionsInPlace & 0x8000) != 0)
+    if ((gTutorialActionsInPlace & COMMAND_FLAG_VISIT) != 0)
         return TRUE;
 
     return FALSE;
@@ -1352,7 +1353,7 @@ bool Tutorial_CanVisit(void)
 
 bool Tutorial_CanSeize(void)
 {
-    if ((gTutorialActionsInPlace & 0x10000) != 0)
+    if ((gTutorialActionsInPlace & COMMAND_FLAG_SEIZE) != 0)
         return TRUE;
 
     return FALSE;
@@ -1363,7 +1364,7 @@ bool Tutorial_ShouldHelpUnitMenu(void)
     if (CheckFlag(FLAG_TUTORIAL_18))
         return FALSE;
 
-    if ((gTutorialActionsInPlace & 0x18002) != 0)
+    if ((gTutorialActionsInPlace & (COMMAND_FLAG_SEIZE | COMMAND_FLAG_VISIT | COMMAND_FLAG_ATTACK)) != 0)
         return FALSE;
 
     return TRUE;
@@ -1374,7 +1375,7 @@ bool Tutorial_ShouldHelpRescue(void)
     if (CheckFlag(FLAG_TUTORIAL_20))
         return FALSE;
 
-    if ((gTutorialActionsInPlace & 0x100) != 0)
+    if ((gTutorialActionsInPlace & COMMAND_FLAG_RESCUE) != 0)
         return TRUE;
 
     return FALSE;
@@ -1385,7 +1386,7 @@ bool Tutorial_ShouldHelpTrade(void)
     if (CheckFlag(FLAG_TUTORIAL_21))
         return FALSE;
 
-    if ((gTutorialActionsInPlace & 0x800000) != 0)
+    if ((gTutorialActionsInPlace & COMMAND_FLAG_TRADE) != 0)
         return TRUE;
 
     return FALSE;
