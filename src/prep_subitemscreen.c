@@ -63,8 +63,8 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 
 	ClearIcons();
 
-	for (i = 0; i < 20; i++)
-		gPrepSubMenuIcons[i] = 0xFF;
+	for (i = 0; i < PREP_ICON_SLOT_COUNT; i++)
+		gPrepSubMenuIcons[i] = PREP_ICON_SLOT_EMPTY;
 
 	TmFill(gBg0Tm, 0);
 	TmFill(gBg1Tm, 0);
@@ -136,7 +136,7 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 		Text_SetCursor(text, (0x30 - GetStringTextLen(DecodeMsg(proc->units[0]->pinfo->msg_name))) / 2);
 		Text_DrawString(text, DecodeMsg(proc->units[0]->pinfo->msg_name));
 		PutText(text, gBg0Tm);
-		func_fe6_0807D6C0(0, proc->units[0]);
+		PrepItem_PutUnitItems(0, proc->units[0]);
 		StartFace(0, GetUnitFid(proc->units[0]), 0x40, -4, FACE_DISP_KIND(FACE_96x80_FLIPPED));
 	}
 
@@ -170,7 +170,7 @@ void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc)
 	Text_SetCursor(text, (0x28 - GetStringTextLen(DecodeMsg(proc->units[1]->pinfo->msg_name))) / 2);
 	Text_DrawString(text, DecodeMsg(proc->units[1]->pinfo->msg_name));
 	PutText(text, gBg0Tm + TM_OFFSET(0x18, 0));
-	func_fe6_0807D6C0(1, proc->units[1]);
+	PrepItem_PutUnitItems(1, proc->units[1]);
 	StartFace(1, GetUnitFid(proc->units[1]), 0xAC, -4, FACE_DISP_KIND(FACE_96x80));
 
 	if (proc->unk2D != 3) {
@@ -198,7 +198,7 @@ void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc)
 	else if (proc->unk2D == 3)
 		Proc_End(proc->subproc1);
 
-	proc->subproc1 = func_fe6_0807D074(proc);
+	proc->subproc1 = StartPrepTradeFx(proc);
 	proc->unk2D = 1;
 }
 
@@ -355,8 +355,8 @@ void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 				UnitRemoveInvalidItems(proc->units[0]);
 				UnitRemoveInvalidItems(proc->units[1]);
 
-				func_fe6_0807D6C0(0, proc->units[0]);
-				func_fe6_0807D6C0(1, proc->units[1]);
+				PrepItem_PutUnitItems(0, proc->units[0]);
+				PrepItem_PutUnitItems(1, proc->units[1]);
 
 				if (proc->units[proc->unk30]->items[proc->sel_action]) {
 					proc->hand_disp_x = proc->unk30;
@@ -463,12 +463,12 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 	}
 
 	proc->convoy_page = proc->proc_parent->unk_39;
-	func_fe6_0807D834(proc->convoy_page);
+	PrepAllItems_SortByKind(proc->convoy_page);
 	proc->menu_scroll_bar_disp_idx = proc->unk_4E;
 	proc->hand_disp_y = proc->unk_47;
 	func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-	func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
-	func_fe6_0807D358(proc);
+	PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
+	PrepSubItem_ClearUnusedIcons(proc);
 	proc->convoy_scrolling_pos = 0;
 	proc->hand_disp_x = 1;
 	proc->unk30 |= 0xFF;
@@ -504,7 +504,7 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 	else if (proc->unk2D == 1)
 		Proc_End(proc->subproc1);
 
-	proc->subproc1 = func_fe6_0807D16C(proc);
+	proc->subproc1 = StartPrepViewAllFx(proc);
 	func_fe6_0807E06C(true);
 	proc->unk2D = 3;
 }
@@ -594,8 +594,8 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 			proc->hand_disp_x = 1;
 
 			func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-			func_fe6_0807D6C0(0, proc->units[0]);
-			func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
+			PrepItem_PutUnitItems(0, proc->units[0]);
+			PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
 
 			PrepAllItems_PutPName(
 				&gPrepTexts3[1],
@@ -698,8 +698,8 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 			PlaySe(SONG_66);
 
 			if (proc->hand_disp_y == 1 && proc->menu_scroll_bar_disp_idx != 0) {
-				func_fe6_0807DB80(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 0x10 - 1, proc->units[0], 0);
-				func_fe6_0807D358(proc);
+				PrepAllItems_PutListRow(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 0x10 - 1, proc->units[0], 0);
+				PrepSubItem_ClearUnusedIcons(proc);
 
 				if (invalid_pid != gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y - 1].pid)
 					PrepAllItems_PutPName(&gPrepTexts3[1], gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y - 1].pid, 0x18, 0);
@@ -728,8 +728,8 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 
 		if (((gKeySt->repeated & KEY_DPAD_DOWN) || ((gKeySt->pressed2 & KEY_DPAD_DOWN) && proc->unk_4A == 2)) && proc->hand_disp_y <= 5) {
 			if (proc->hand_disp_y == 5 && proc->menu_scroll_bar_disp_idx / 0x10 + 7 < gPrepMenuScrollPos) {
-				func_fe6_0807DB80(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 0x10 + 7, proc->units[0], 0);
-				func_fe6_0807D358(proc);
+				PrepAllItems_PutListRow(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 0x10 + 7, proc->units[0], 0);
+				PrepSubItem_ClearUnusedIcons(proc);
 
 				if (invalid_pid != gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y + 1].pid)
 					PrepAllItems_PutPName(&gPrepTexts3[1], gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y + 1].pid, 0x18, 0);
@@ -827,9 +827,9 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
 		proc->hand_disp_y = proc->unk_3B[proc->convoy_page];
 
-		func_fe6_0807D834(proc->convoy_page);
+		PrepAllItems_SortByKind(proc->convoy_page);
 		func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
+		PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
 
 		PutUiEntryHover(
 			proc->hand_disp_x * 14 + 2,
@@ -839,7 +839,7 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		if (invalid_pid != gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].pid || gPrepMenuScrollPos == 0)
 			PrepAllItems_PutPName(&gPrepTexts3[1], gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].pid, 0x18, 0);
 
-		func_fe6_0807D358(proc);
+		PrepSubItem_ClearUnusedIcons(proc);
 
 		proc->convoy_scrolling_pos += 0xE;
 		proc->menu_scrolling_pos = 7;
@@ -875,9 +875,9 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
 		proc->hand_disp_y = proc->unk_3B[proc->convoy_page];
 
-		func_fe6_0807D834(proc->convoy_page);
+		PrepAllItems_SortByKind(proc->convoy_page);
 		func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
+		PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
 
 		PutUiEntryHover(
 			proc->hand_disp_x * 14 + 2,
@@ -887,7 +887,7 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		if (invalid_pid != gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].pid || gPrepMenuScrollPos == 0)
 			PrepAllItems_PutPName(&gPrepTexts3[1], gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].pid, 0x18, 0);
 
-		func_fe6_0807D358(proc);
+		PrepSubItem_ClearUnusedIcons(proc);
 
 		proc->convoy_scrolling_pos -= 0xE;
 		proc->menu_scrolling_pos = 12;
@@ -945,7 +945,7 @@ void func_fe6_0807FBE8(struct PrepSubItemProc *proc)
 	SetWOutLayers(1, 1, 0, 1, 1);
 
 	PutUiWindowFrame(15, 4, 15, 16, 0);
-	func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
+	PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 
 	SetBgOffset(
@@ -998,7 +998,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 		else
 			proc->convoy_page = 0;
 
-		func_fe6_0807D834(proc->convoy_page);
+		PrepAllItems_SortByKind(proc->convoy_page);
 	}
 
 	proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
@@ -1052,13 +1052,13 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 
 	if (proc->unk2D == 0) {
 		NewSallyCir2(proc, -1);
-		proc->subproc1 = func_fe6_0807D2E0(proc);
+		proc->subproc1 = StartPrepSupplyFx(proc);
 	}
 
 	PrepAllItems_PutTotalNum(0x18, 0);
 
 	if (proc->unk2D == 4) {
-		proc->subproc1 = func_fe6_0807D2E0(proc);
+		proc->subproc1 = StartPrepSupplyFx(proc);
 		proc->unk2D = 5;
 
 		if (proc->unk4B != 0) {
@@ -1159,11 +1159,11 @@ void PrepSubItem_SelLoop1(struct PrepSubItemProc *proc)
 		Proc_Break(proc);
 	} else if ((gKeySt->pressed & KEY_BUTTON_R) && proc->unk29 == 0) {
 		proc->unk29 = 2;
-		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_0867929C[proc->sel_action]);
+		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_PrepSupplyActions[proc->sel_action]);
 	}
 
 	if (proc->unk29 == 2 && proc->sel_action != prev_sel) {
-		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_0867929C[proc->sel_action]);
+		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_PrepSupplyActions[proc->sel_action]);
 	}
 }
 
@@ -1211,7 +1211,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 				(0x30 - GetStringTextLen(DecodeMsg(proc->units[0]->pinfo->msg_name))) / 2,
 				DecodeMsg(proc->units[0]->pinfo->msg_name));
 
-			func_fe6_0807D6C0(0, proc->units[0]);
+			PrepItem_PutUnitItems(0, proc->units[0]);
 		}
 
 		if (proc->unk2D <= 3)
@@ -1242,7 +1242,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 				gPrepMenuScrollPos--;
 
 				func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-				func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
+				PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
 				PrepAllItems_Update();
 				gAction.id = ACTION_TRADED_SUPPLY;
 
@@ -1299,7 +1299,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 				} else {
 					PlaySe(SONG_6A);
 
-					func_fe6_0807DEC8(proc, proc->units[0]->items[proc->hand_disp_y]);
+					PrepSupply_SwitchToItemKindPage(proc, proc->units[0]->items[proc->hand_disp_y]);
 
 					for (i = gPrepAllItemsCount; i >= proc->menu_scroll_bar_disp_idx / 16; i--) {
 						gPrepItemListData[i + 1].item = gPrepItemListData[i].item;
@@ -1313,12 +1313,12 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 					gPrepMenuScrollPos++;
 
 					UnitRemoveItem(proc->units[0], proc->hand_disp_y);
-					func_fe6_0807D6C0(0, proc->units[0]);
+					PrepItem_PutUnitItems(0, proc->units[0]);
 					PrepAllItems_Update();
 					gAction.id = ACTION_TRADED_SUPPLY;
 
 					if (GetUnitItemCount(proc->units[0]) == 0) {
-						func_fe6_0807D358(proc);
+						PrepSubItem_ClearUnusedIcons(proc);
 
 						if (proc->unk2D <= 3)
 							proc->proc_parent->unk_3A = proc->convoy_page;
@@ -1327,7 +1327,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 						return;
 					}
 
-					func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
+					PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
 
 					if (GetUnitItemCount(proc->units[0]) < proc->hand_disp_y + 1)
 						proc->hand_disp_y--;
@@ -1348,8 +1348,8 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 					gPrepMenuScrollPos--;
 
 					func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-					func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
-					func_fe6_0807D6C0(0, proc->units[0]);
+					PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 0);
+					PrepItem_PutUnitItems(0, proc->units[0]);
 					PrepAllItems_Update();
 					gAction.id = ACTION_TRADED_SUPPLY;
 
@@ -1389,7 +1389,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 					break;
 				}
 			} else {
-				func_fe6_0807D358(proc);
+				PrepSubItem_ClearUnusedIcons(proc);
 			}
 
 			PutUiEntryHover(
@@ -1420,8 +1420,8 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 				if ((gKeySt->repeated & KEY_DPAD_UP) || ((gKeySt->pressed2 & KEY_DPAD_UP) && proc->unk_4A == 2)) {
 					if (proc->hand_disp_y == 1 && proc->menu_scroll_bar_disp_idx != 0) {
 						PlaySe(SONG_66);
-						func_fe6_0807DB80(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 16 - 1, proc->units[0], 0);
-						func_fe6_0807D358(proc);
+						PrepAllItems_PutListRow(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 16 - 1, proc->units[0], 0);
+						PrepSubItem_ClearUnusedIcons(proc);
 						proc->menu_scroll_bar_disp_idx -= proc->unk_4A * 4;
 						proc->menu_scrolling_pos = 1;
 						break;
@@ -1446,8 +1446,8 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 				if (((gKeySt->repeated & KEY_DPAD_DOWN) || ((gKeySt->pressed2 & KEY_DPAD_DOWN) && proc->unk_4A == 2)) && proc->hand_disp_y <= 5) {
 					if (proc->hand_disp_y == 5 && proc->menu_scroll_bar_disp_idx / 16 + 7 < gPrepMenuScrollPos) {
 						PlaySe(SONG_66);
-						func_fe6_0807DB80(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 16 + 7, proc->units[0], 0);
-						func_fe6_0807D358(proc);
+						PrepAllItems_PutListRow(&gPrepTexts1[1][0], 1, proc->menu_scroll_bar_disp_idx / 16 + 7, proc->units[0], 0);
+						PrepSubItem_ClearUnusedIcons(proc);
 						proc->menu_scroll_bar_disp_idx += proc->unk_4A * 4;
 						proc->menu_scrolling_pos = 2;
 						break;
@@ -1570,16 +1570,16 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 16;
 		proc->hand_disp_y = proc->unk_3B[proc->convoy_page];
 
-		func_fe6_0807D834(proc->convoy_page);
+		PrepAllItems_SortByKind(proc->convoy_page);
 		func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 1);
+		PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 1);
 
 		PutUiEntryHover(
 			proc->hand_disp_x * 14 + 2,
 			proc->hand_disp_y * 2 + 9 - proc->hand_disp_x * 4,
 			12);
 
-		func_fe6_0807D358(proc);
+		PrepSubItem_ClearUnusedIcons(proc);
 
 		proc->convoy_scrolling_pos += 0xE;
 		proc->menu_scrolling_pos = 7;
@@ -1615,16 +1615,16 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 16;
 		proc->hand_disp_y = proc->unk_3B[proc->convoy_page];
 
-		func_fe6_0807D834(proc->convoy_page);
+		PrepAllItems_SortByKind(proc->convoy_page);
 		func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 1);
+		PrepAllItems_PutList(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 16, 1);
 
 		PutUiEntryHover(
 			proc->hand_disp_x * 14 + 2,
 			proc->hand_disp_y * 2 + 9 - proc->hand_disp_x * 4,
 			12);
 
-		func_fe6_0807D358(proc);
+		PrepSubItem_ClearUnusedIcons(proc);
 
 		proc->convoy_scrolling_pos -= 0xE;
 		proc->menu_scrolling_pos = 12;
@@ -1826,12 +1826,12 @@ void StartBmSupplyForDrop(struct Unit *unit, ProcPtr parent)
 	proc->unk4B = 1;
 }
 
-const char String_Prep_0832726C[] = TEXT("属性", "Affin");
-const char String_Prep_08327274[] = TEXT("威力", "Mt");
-const char String_Prep_0832727C[] = TEXT("命中", "Hit");
-const char String_Prep_08327284[] = TEXT("必殺", "Crt");
-const char String_Prep_0832728C[] = TEXT("重さ", "Wt");
-const char String_Prep_08327294[] = TEXT("何もありません", "None");
+const char String_PrepItem_Affin[] = TEXT("属性", "Affin");
+const char String_PrepItem_Might[] = TEXT("威力", "Mt");
+const char String_PrepItem_Hit[] = TEXT("命中", "Hit");
+const char String_PrepItem_Crit[] = TEXT("必殺", "Crt");
+const char String_PrepItem_Weight[] = TEXT("重さ", "Wt");
+const char String_PrepItem_None[] = TEXT("何もありません", "None");
 const char Msg_Prep_Supply[] = TEXT("輸送隊", "Supply");
 const char String_Prep_083272AC[] = TEXT("あずける", "Save");
 const char String_Prep_083272B8[] = TEXT("うけとる", "Load");
