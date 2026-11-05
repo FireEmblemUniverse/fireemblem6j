@@ -68,6 +68,7 @@ tools/agbcc
 *.4bpp.h
 *.8bpp.h
 *.lz
+data/mapassets/*_TsaConf.tsa
 *.fk
 
 # ==================
