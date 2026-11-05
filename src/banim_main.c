@@ -135,7 +135,7 @@ void BattleAIS_ExecCommands(void)
 
 				/**
 				 * C08
-				 * Critical hit
+				 * Critical hit (C08-C0C)
 				 */
 				case BAS_CMD(0x08):
 				case BAS_CMD(0x09):
@@ -176,7 +176,7 @@ void BattleAIS_ExecCommands(void)
 					case ANIM_ROUND_MISS_CLOSE:
 						if (type != -1) {
 							int frame_idx, scr_offset;
-							struct BanimScrFrame *scr_start;
+							int scr;
 
 							anim1->nextRoundId++;
 							anim2->nextRoundId++;
@@ -194,21 +194,18 @@ void BattleAIS_ExecCommands(void)
 								scr_offset = gpBanimModesRight[frame_idx];
 
 							/* We need to make sure that the first script is the frame? */
-							scr_start = (void *)(scr_offset + gBanimScrs + GetAnimPosition(anim) * BAS_SCR_MAX_SIZE);
+							scr = (int)(scr_offset + gBanimScrs + GetAnimPosition(anim) * BAS_SCR_MAX_SIZE);
 
-							anim1->imgSheet = scr_start->img;
-#if !NONMATCHING
-							{
-								register const void *tmp_ptr asm("r4");
-								register int tmp_val asm("r1");
+							anim1->imgSheet = ((struct BanimScrFrame *)scr)->img;
 
-								anim1->sprData = tmp_ptr = (tmp_ptr = anim1->sprDataPool) + (tmp_val = scr_start->oam_offset);
-								anim2->sprData = tmp_ptr = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
-							}
-#else
-							anim1->sprData = anim1->sprDataPool + scr_start->oam_offset;
-							anim2->sprData = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
-#endif
+							scr_offset = (int)anim1->sprDataPool;
+							scr = ((struct BanimScrFrame *)scr)->oam_offset;
+							scr_offset += scr;
+							anim1->sprData = (void *)scr_offset;
+
+							scr_offset = (int)anim2->sprDataPool;
+							scr_offset += BAS_OAM_REF_MAX_SIZE;
+							anim2->sprData = (void *)scr_offset;
 
 							if (gBanimBallistaImages[GetAnimPosition(anim)] == NULL) {
 								if (gpImgSheet[GetAnimPosition(anim1)] != anim1->imgSheet) {
@@ -231,7 +228,6 @@ void BattleAIS_ExecCommands(void)
 						LoadAnimFrame(anim1, type);
 						LoadAnimFrame(anim2, type);
 						goto L_cmd_loop_end;
-						break;
 					}
 					break;
 
@@ -409,37 +405,37 @@ void BattleAIS_ExecCommands(void)
 						NewEfxDanceOBJ(anim);
 					break;
 
-				case 25:
-				case 27:
-				case 28:
-				case 29:
-				case 30:
-				case 31:
-				case 32:
-				case 33:
-				case 34:
-				case 35:
-				case 36:
-				case 37:
-				case 40:
-				case 41:
-				case 42:
-				case 43:
-				case 51:
-				case 52:
-				case 53:
-				case 54:
-				case 55:
-				case 56:
-				case 60:
-				case 61:
-				case 62:
-				case 63:
-				case 64:
-				case 65:
-				case 66:
-				case 67:
-				case 70:
+				case BAS_CMD(0x19):
+				case BAS_CMD(0x1B):
+				case BAS_CMD(0x1C):
+				case BAS_CMD(0x1D):
+				case BAS_CMD(0x1E):
+				case BAS_CMD(0x1F):
+				case BAS_CMD(0x20):
+				case BAS_CMD(0x21):
+				case BAS_CMD(0x22):
+				case BAS_CMD(0x23):
+				case BAS_CMD(0x24):
+				case BAS_CMD(0x25):
+				case BAS_CMD(0x28):
+				case BAS_CMD(0x29):
+				case BAS_CMD(0x2A):
+				case BAS_CMD(0x2B):
+				case BAS_CMD(0x33):
+				case BAS_CMD(0x34):
+				case BAS_CMD(0x35):
+				case BAS_CMD(0x36):
+				case BAS_CMD(0x37):
+				case BAS_CMD(0x38):
+				case BAS_CMD(0x3C):
+				case BAS_CMD(0x3D):
+				case BAS_CMD(0x3E):
+				case BAS_CMD(0x3F):
+				case BAS_CMD(0x40):
+				case BAS_CMD(0x41):
+				case BAS_CMD(0x42):
+				case BAS_CMD(0x43):
+				case BAS_CMD(0x46):
 					EfxPlaySEwithCmdCtrl(anim, anim->cq[anim->cqSize - 1]);
 					break;
 
