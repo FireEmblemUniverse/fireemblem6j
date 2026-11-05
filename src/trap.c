@@ -23,10 +23,10 @@
 
 static struct Trap EWRAM_DATA sTraps[TRAP_MAX_COUNT] = {};
 
-static void UpdateTraps_CountDownTraps(ProcPtr proc);
-static void UpdateTraps_08027248(ProcPtr proc);
-static void UpdateTraps_08027264(ProcPtr proc);
-static void UpdateTraps_ResetCountedDownTraps(ProcPtr proc);
+void UpdateTraps_CountDownTraps(ProcPtr proc);
+void UpdateTraps_08027248(ProcPtr proc);
+void UpdateTraps_08027264(ProcPtr proc);
+void UpdateTraps_ResetCountedDownTraps(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_UpdateTraps[] =
 {
@@ -45,13 +45,13 @@ struct ProcScr CONST_DATA ProcScr_UpdateTraps[] =
     PROC_END,
 };
 
-static void StepPikeTrap_08027318(ProcPtr proc);
-static void StepPikeTrap_StartAnim(ProcPtr proc);
-static void StepPikeTrap_ApplyDamage(ProcPtr proc);
-static void StepFireTrap_08027318(ProcPtr proc);
-static void StepFireTrap_StartAnim(ProcPtr proc);
-static void StepFireTrap_ApplyDamage(ProcPtr proc);
-static void StepTrap_End(ProcPtr proc);
+void StepPikeTrap_08027318(ProcPtr proc);
+void StepPikeTrap_StartAnim(ProcPtr proc);
+void StepPikeTrap_ApplyDamage(ProcPtr proc);
+void StepFireTrap_08027318(ProcPtr proc);
+void StepFireTrap_StartAnim(ProcPtr proc);
+void StepFireTrap_ApplyDamage(ProcPtr proc);
+void StepTrap_End(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_StepPikeTrap[] =
 {
@@ -596,7 +596,7 @@ void ListDamagingTrapTargetsForDisplay(void)
     }
 }
 
-static void UpdateTraps_CountDownTraps(ProcPtr proc)
+void UpdateTraps_CountDownTraps(ProcPtr proc)
 {
     struct Trap * trap;
 
@@ -616,7 +616,7 @@ static void UpdateTraps_CountDownTraps(ProcPtr proc)
     }
 }
 
-static void UpdateTraps_ResetCountedDownTraps(ProcPtr proc)
+void UpdateTraps_ResetCountedDownTraps(ProcPtr proc)
 {
     struct Trap * trap;
 
@@ -638,7 +638,7 @@ static void UpdateTraps_ResetCountedDownTraps(ProcPtr proc)
     }
 }
 
-static void UpdateTraps_08027248(ProcPtr proc)
+void UpdateTraps_08027248(ProcPtr proc)
 {
     int faction = gPlaySt.faction;
     gPlaySt.faction = FACTION_RED;
@@ -648,23 +648,23 @@ static void UpdateTraps_08027248(ProcPtr proc)
     gPlaySt.faction = faction;
 }
 
-static void UpdateTraps_08027264(ProcPtr proc)
+void UpdateTraps_08027264(ProcPtr proc)
 {
     func_fe6_08021B30(DEFEAT_CAUSE_TRAP);
 }
 
-static void StepPikeTrap_StartAnim(ProcPtr proc)
+void StepPikeTrap_StartAnim(ProcPtr proc)
 {
     struct Trap * trap = GetTrapAt(gActiveUnit->x, gActiveUnit->y);
     StartPikeTrapAnim(proc, gActiveUnit->x, gActiveUnit->y, trap->extra);
 }
 
-static void StepFireTrap_StartAnim(ProcPtr proc)
+void StepFireTrap_StartAnim(ProcPtr proc)
 {
     StartFireTrapAnim(proc, gActiveUnit->x, gActiveUnit->y);
 }
 
-static void StepPikeTrap_ApplyDamage(ProcPtr proc)
+void StepPikeTrap_ApplyDamage(ProcPtr proc)
 {
     int damage = 10 - GetUnitDefense(gActiveUnit);
 
@@ -677,7 +677,7 @@ static void StepPikeTrap_ApplyDamage(ProcPtr proc)
     BeginUnitTrapDamageAnim(gActiveUnit, damage);
 }
 
-static void StepFireTrap_ApplyDamage(ProcPtr proc)
+void StepFireTrap_ApplyDamage(ProcPtr proc)
 {
     EndAllMus();
 
@@ -685,13 +685,13 @@ static void StepFireTrap_ApplyDamage(ProcPtr proc)
     BeginUnitTrapDamageAnim(gActiveUnit, 10);
 }
 
-static void StepFireTrap_08027318(ProcPtr proc)
+void StepFireTrap_08027318(ProcPtr proc)
 {
     if (GetUnitCurrentHp(gActiveUnit) <= 10)
         PidStatsAddLoss(gActiveUnit->pinfo->id);
 }
 
-static void StepPikeTrap_08027318(ProcPtr proc)
+void StepPikeTrap_08027318(ProcPtr proc)
 {
     int damage = 10 - GetUnitDefense(gActiveUnit);
 
@@ -699,7 +699,7 @@ static void StepPikeTrap_08027318(ProcPtr proc)
         PidStatsAddLoss(gActiveUnit->pinfo->id);
 }
 
-static void StepTrap_End(ProcPtr proc)
+void StepTrap_End(ProcPtr proc)
 {
     ApplyHazardHealing(proc, GetUnit(gAction.instigator), -gAction.extra, -1);
 

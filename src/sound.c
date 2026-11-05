@@ -30,12 +30,12 @@ struct MusicProc
     /* 6A */ short vc_time_end;
 };
 
-static void MusicFi_OnLoop(struct MusicProc * proc);
-static void MusicVc_OnLoop(struct MusicProc * proc);
-static void DelaySong_OnLoop(struct MusicProc * proc);
+void MusicFi_OnLoop(struct MusicProc * proc);
+void MusicVc_OnLoop(struct MusicProc * proc);
+void DelaySong_OnLoop(struct MusicProc * proc);
 
-static void PlaySongDelayed(int song, int delay, struct MusicPlayer * music_player);
-static void PlaySongCore(int song, struct MusicPlayer * music_player);
+void PlaySongDelayed(int song, int delay, struct MusicPlayer * music_player);
+void PlaySongCore(int song, struct MusicPlayer * music_player);
 
 static struct SoundSt EWRAM_DATA sSoundSt = { 0 };
 
@@ -271,7 +271,7 @@ void DelaySong_OnLoop(struct MusicProc * proc)
     Proc_End(proc);
 }
 
-static void PlaySongDelayed(int song, int delay, struct MusicPlayer * music_player)
+void PlaySongDelayed(int song, int delay, struct MusicPlayer * music_player)
 {
     struct MusicProc * proc;
 
@@ -285,7 +285,7 @@ static void PlaySongDelayed(int song, int delay, struct MusicPlayer * music_play
     proc->music_player = music_player;
 }
 
-static void PlaySongCore(int song, struct MusicPlayer * music_player)
+void PlaySongCore(int song, struct MusicPlayer * music_player)
 {
     if (music_player)
         m4aMPlayStart(music_player, gSongTable[song].song);

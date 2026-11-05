@@ -84,7 +84,7 @@ void StringCopy(char * dst, char const * src)
     *dst = *src;
 }
 
-static void UnpackRaw(void const * src, void * dst)
+void UnpackRaw(void const * src, void * dst)
 {
     int size = GetDataSize(src) - 4;
 
@@ -207,7 +207,7 @@ void Copy2dChr(void const * src, u8 * dst, int width, int height)
     }
 }
 
-static void ApplyBitmapLine(u8 const * src, void * dst, int width);
+void ApplyBitmapLine(u8 const * src, void * dst, int width);
 
 void ApplyBitmap(u8 const * src, void * dst, int width, int height)
 {
@@ -227,9 +227,9 @@ void ApplyBitmap(u8 const * src, void * dst, int width, int height)
     }
 }
 
-static void ApplyBitmapTile(u8 const * src, u32 * dst, int width);
+void ApplyBitmapTile(u8 const * src, u32 * dst, int width);
 
-static void ApplyBitmapLine(u8 const * src, void * dst, int width)
+void ApplyBitmapLine(u8 const * src, void * dst, int width)
 {
     int i;
 
@@ -245,7 +245,7 @@ static void ApplyBitmapLine(u8 const * src, void * dst, int width)
     }
 }
 
-static void ApplyBitmapTile(u8 const * src, u32 * dst, int width)
+void ApplyBitmapTile(u8 const * src, u32 * dst, int width)
 {
     int i;
 
@@ -487,13 +487,13 @@ void func_fe6_08014130(char const * arg_0)
     func_fe6_08014130(unk);
 }
 
-static void SpacialSeTest_OnInit(struct Proc * proc)
+void SpacialSeTest_OnInit(struct Proc * proc)
 {
     proc->timer1 = 0;
     proc->timer2 = 90;
 }
 
-static void SpacialSeTest_OnLoop(struct Proc * proc)
+void SpacialSeTest_OnLoop(struct Proc * proc)
 {
     int location = 0;
 
@@ -547,7 +547,7 @@ struct PalFadeProc
     /* 2C */ struct PalFadeSt * st;
 };
 
-static void PalFade_OnLoop(struct PalFadeProc * proc);
+void PalFade_OnLoop(struct PalFadeProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PalFade[] =
 {
@@ -586,7 +586,7 @@ void SetPalFadeStop(struct PalFadeSt * st, int val)
     st->clock_stop = val;
 }
 
-static void PalFade_OnLoop(struct PalFadeProc * proc)
+void PalFade_OnLoop(struct PalFadeProc * proc)
 {
     int i;
 
@@ -648,7 +648,7 @@ void SetAllWhitePals(void)
         SetBlackPal(i);
 }
 
-static void FadeToBlack_OnInit(struct Proc * proc)
+void FadeToBlack_OnInit(struct Proc * proc)
 {
     gDispIo.win_ct.win0_enable_blend = 1;
     gDispIo.win_ct.win1_enable_blend = 1;
@@ -664,7 +664,7 @@ static void FadeToBlack_OnInit(struct Proc * proc)
     proc->timer2 = 0;
 }
 
-static void FadeToCommon_OnLoop(struct Proc * proc)
+void FadeToCommon_OnLoop(struct Proc * proc)
 {
     if (gDispIo.blend_y == 0x10)
     {
@@ -680,7 +680,7 @@ static void FadeToCommon_OnLoop(struct Proc * proc)
     gDispIo.blend_y = proc->timer2 >> 4;
 }
 
-static void FadeFromBlack_OnInit(struct Proc * proc)
+void FadeFromBlack_OnInit(struct Proc * proc)
 {
     gDispIo.win_ct.win0_enable_blend = 1;
     gDispIo.win_ct.win1_enable_blend = 1;
@@ -697,7 +697,7 @@ static void FadeFromBlack_OnInit(struct Proc * proc)
     proc->timer2 = 0x100;
 }
 
-static void FadeFromCommon_OnLoop(struct Proc * proc)
+void FadeFromCommon_OnLoop(struct Proc * proc)
 {
     if (gDispIo.blend_y == 0)
     {
@@ -713,13 +713,13 @@ static void FadeFromCommon_OnLoop(struct Proc * proc)
     gDispIo.blend_y = proc->timer2 >> 4;
 }
 
-static void FadeToWhite_OnInit(struct Proc * proc)
+void FadeToWhite_OnInit(struct Proc * proc)
 {
     FadeToBlack_OnInit(proc);
     SetBlendBrighten(0);
 }
 
-static void FadeFromWhite_OnInit(struct Proc * proc)
+void FadeFromWhite_OnInit(struct Proc * proc)
 {
     FadeFromBlack_OnInit(proc);
     SetBlendBrighten(0x10);
@@ -1177,7 +1177,7 @@ void func_fe6_08014B68(void)
     SetBlendBackdropA(1);
 }
 
-static void TemporaryLock_OnLoop(struct Proc * proc);
+void TemporaryLock_OnLoop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TemporaryLock[] =
 {
@@ -1195,7 +1195,7 @@ void StartTemporaryLock(ProcPtr proc, int duration)
     gproc->unk58 = duration;
 }
 
-static void TemporaryLock_OnLoop(struct Proc * proc)
+void TemporaryLock_OnLoop(struct Proc * proc)
 {
     if (proc->unk58 == 0)
     {
@@ -1206,8 +1206,8 @@ static void TemporaryLock_OnLoop(struct Proc * proc)
     proc->unk58--;
 }
 
-static char CONST_DATA sStrZero[] = JTEXT("０");
-static char CONST_DATA sStrDash[] = JTEXT("ー");
+char CONST_DATA sStrZero[] = JTEXT("０");
+char CONST_DATA sStrDash[] = JTEXT("ー");
 
 int NumberToString(int number, char * buf)
 {
@@ -1503,7 +1503,7 @@ struct CallDelayedProc
     /* 34 */ int clock;
 };
 
-static void CallDelayed_OnLoop(struct CallDelayedProc * proc)
+void CallDelayed_OnLoop(struct CallDelayedProc * proc)
 {
     proc->clock--;
 
@@ -1516,7 +1516,7 @@ static void CallDelayed_OnLoop(struct CallDelayedProc * proc)
     }
 }
 
-static void CallDelayedArg_OnLoop(struct CallDelayedProc * proc)
+void CallDelayedArg_OnLoop(struct CallDelayedProc * proc)
 {
     proc->clock--;
 
@@ -1612,7 +1612,7 @@ u16 CONST_DATA Pal_085C4F2C[] = { RGB_16TIMES(30, 31, 1)  };
 
 #undef RGB_16TIMES
 
-static void PartialGameLock_OnLoop(struct Proc * proc);
+void PartialGameLock_OnLoop(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PartialGameLock[] =
 {
@@ -1628,7 +1628,7 @@ void StartPartialGameLock(ProcPtr proc)
     gproc->timer1 = GetGameLock();
 }
 
-static void PartialGameLock_OnLoop(struct Proc * proc)
+void PartialGameLock_OnLoop(struct Proc * proc)
 {
     if (GetGameLock() == proc->timer1)
         Proc_Break(proc);
@@ -1725,14 +1725,14 @@ void PlaySeSpacial(int song, int x)
     m4aMPlayPanpotControl(music_player, 0xFFFF, Screen2Pan(x));
 }
 
-static void PlaySeFunc(int song);
+void PlaySeFunc(int song);
 
 void PlaySeDelayed(int song, int delay)
 {
     CallDelayedArg(PlaySeFunc, song, delay);
 }
 
-static void PlaySeFunc(int song)
+void PlaySeFunc(int song)
 {
     PlaySe(song);
 }
