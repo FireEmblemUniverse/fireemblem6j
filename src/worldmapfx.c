@@ -426,7 +426,7 @@ void WmRotIntro_End(struct Proc * proc)
 
 void StartWmHighlight(int nation, int id)
 {
-    struct ProcWmHighLight * proc = SpawnProc(ProcScr_WroldMapRmBorder, PROC_TREE_3);
+    struct ProcWmHighLight * proc = SpawnProc(ProcScr_WorldMapRmBorder, PROC_TREE_3);
 
     proc->nation = nation;
     proc->id = id;
@@ -486,7 +486,7 @@ struct WmHighlightConfig CONST_DATA Config_WmHighlight[7] =
     },
 };
 
-struct ProcScr CONST_DATA ProcScr_WroldMapRmBorder[] =
+struct ProcScr CONST_DATA ProcScr_WorldMapRmBorder[] =
 {
     PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_ONEND(WmHighlight_End),

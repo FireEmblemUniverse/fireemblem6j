@@ -175,13 +175,6 @@ extern u8 const Tsa_Statscreen_083080AC[]; // tsa: statscreen page B equipped we
 
 extern u8 Img_WmDialogueBox[];
 extern u16 Pal_WmDialogueBox[];
-extern u8 Pal_Wm_082AADA4[];
-extern u8 Pal_Wm_082B2380[];
-extern u8 Pal_Wm_082B9E64[];
-extern u8 Pal_Wm_082C1224[];
-extern u8 Pal_Wm_082C8874[];
-extern u8 Pal_Wm_082D1964[];
-extern u8 Pal_Wm_082D1BA0[];
 extern u32 const Img_WmHighlight_Nation1[];
 extern u32 const Img_WmHighlight_Nation2[];
 extern u32 const Img_WmHighlight_Nation3[];

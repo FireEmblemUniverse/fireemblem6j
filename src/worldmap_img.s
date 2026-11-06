@@ -46,32 +46,32 @@ Pal_WmDialogueBox: @ 082AAD5C
 
     .incbin "fe6-base.gba", 0x2AAD7C, (0x2AADA4 - 0x2AAD7C)
 
-    .global Pal_Wm_082AADA4
-Pal_Wm_082AADA4:    @ 0x082AADA4
+    .global Img_WorldMapZoomNW
+Img_WorldMapZoomNW:    @ 0x082AADA4
     .incbin "fe6-base.gba", 0x2AADA4, 0x2B2380 - 0x2AADA4
 
-    .global Pal_Wm_082B2380
-Pal_Wm_082B2380:    @ 0x082B2380
+    .global Img_WorldMapZoomNE
+Img_WorldMapZoomNE:    @ 0x082B2380
     .incbin "fe6-base.gba", 0x2B2380, 0x2B9E64 - 0x2B2380
 
-    .global Pal_Wm_082B9E64
-Pal_Wm_082B9E64:    @ 0x082B9E64
+    .global Img_WorldMapZoomSW
+Img_WorldMapZoomSW:    @ 0x082B9E64
     .incbin "fe6-base.gba", 0x2B9E64, 0x2C1224 - 0x2B9E64
 
-    .global Pal_Wm_082C1224
-Pal_Wm_082C1224:    @ 0x082C1224
+    .global Img_WorldMapZoomSE
+Img_WorldMapZoomSE:    @ 0x082C1224
     .incbin "fe6-base.gba", 0x2C1224, 0x2C8874 - 0x2C1224
 
-    .global Pal_Wm_082C8874
-Pal_Wm_082C8874:    @ 0x082C8874
+    .global Img_WorldMap
+Img_WorldMap:    @ 0x082C8874
     .incbin "fe6-base.gba", 0x2C8874, 0x2D1964 - 0x2C8874
 
-    .global Pal_Wm_082D1964
-Pal_Wm_082D1964:    @ 0x082D1964
+    .global Pal_WorldMapZoom
+Pal_WorldMapZoom:    @ 0x082D1964
     .incbin "fe6-base.gba", 0x2D1964, 0x2D1BA0 - 0x2D1964
 
-    .global Pal_Wm_082D1BA0
-Pal_Wm_082D1BA0:    @ 0x082D1BA0
+    .global Pal_WorldMap
+Pal_WorldMap:    @ 0x082D1BA0
     .incbin "fe6-base.gba", 0x2D1BA0, 0x2D1DE4 - 0x2D1BA0
 
     .global Img_WmHighlight_Nation1
