@@ -54,7 +54,7 @@ bool AiAttemptOffensiveAction(bool (* is_enemy)(struct Unit * unit))
 
     if (gAiSt.flags & AI_FLAG_STAY)
     {
-        MapFill(gMapMovement, -1);
+        MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
         gMapMovement[gActiveUnit->y][gActiveUnit->x] = 0;
     }
     else
@@ -269,12 +269,12 @@ bool AiAttemptBallistaCombat(bool (* is_enemy)(struct Unit * unit), struct AiCom
                 }
                 else
                 {
-                    gMapMovementSigned[iy][ix] = -1;
+                    gMapMovementSigned[iy][ix] = MAP_MOVEMENT_UNREACHABLE;
                 }
             }
             else
             {
-                gMapMovementSigned[iy][ix] = -1;
+                gMapMovementSigned[iy][ix] = MAP_MOVEMENT_UNREACHABLE;
             }
         }
     }
@@ -327,10 +327,10 @@ bool AiAttemptBallistaCombat(bool (* is_enemy)(struct Unit * unit), struct AiCom
 static u8 AiAttemptStealAction_GetMovementAt(int x, int y)
 {
     if (gMapMovementSigned[y][x] >= MAP_MOVEMENT_MAX)
-        return -1;
+        return MAP_MOVEMENT_UNREACHABLE;
 
     if (gMapUnit[y][x] != 0 && gMapUnit[y][x] != gActiveUnitId)
-        return -1;
+        return MAP_MOVEMENT_UNREACHABLE;
 
     return gMapMovement[y][x];
 }

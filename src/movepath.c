@@ -230,7 +230,7 @@ static void UpdateMovePath(void)
 
         SetWorkingMap(gMapMovement);
 
-        if (gWorkingMapSigned[gBmSt.cursor.y][gBmSt.cursor.x] != -1)
+        if (gWorkingMapSigned[gBmSt.cursor.y][gBmSt.cursor.x] != MAP_MOVEMENT_UNREACHABLE)
         {
             i8 cut;
 
@@ -253,7 +253,7 @@ static void UpdateMovePath(void)
             SetWorkingMap(gMapOther);
             MovePathFloodFromTail();
 
-            if (gWorkingMapSigned[gBmSt.cursor.y][gBmSt.cursor.x] == -1)
+            if (gWorkingMapSigned[gBmSt.cursor.y][gBmSt.cursor.x] == MAP_MOVEMENT_UNREACHABLE)
             {
                 RebuildMovePath();
                 return;

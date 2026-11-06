@@ -503,7 +503,7 @@ void DoUseRescueStaff(struct Unit * unit, void (* list_targets)(struct Unit * un
 {
     list_targets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelectExt(&MapSelectInfo_WarpUnit, StaffMapSelect_Select),
@@ -543,7 +543,7 @@ static void WarpSelect_Init(struct Proc * proc)
 
 static void WarpSelect_Loop(struct Proc * proc)
 {
-    bool warpAllowed = gMapMovementSigned[gBmSt.cursor.y][gBmSt.cursor.x] != -1;
+    bool warpAllowed = gMapMovementSigned[gBmSt.cursor.y][gBmSt.cursor.x] != MAP_MOVEMENT_UNREACHABLE;
 
     HandlePlayerMapCursor();
 
@@ -642,7 +642,7 @@ void DoUseWarpStaff(struct Unit * unit)
 {
     ListWarpTargets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelectExt(&MapSelectInfo_WarpUnit, WarpMapSelect_Select),
@@ -665,7 +665,7 @@ void DoUseUnlockStaff(struct Unit * unit, void (* list_targets)(struct Unit * un
 {
     list_targets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelectExt(&MapSelectInfo_Unlock, UnlockMapSelect_Select),
@@ -694,7 +694,7 @@ void DoUseRepairStaff(struct Unit * unit)
 {
     ListRepairTargets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelect(&MapSelectInfo_Repair),
@@ -776,7 +776,7 @@ void DoUseHealStaff(struct Unit * unit, void (* list_targets)(struct Unit * unit
 {
     list_targets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelect(&MapSelectInfo_Heal),
@@ -787,7 +787,7 @@ void DoUseRestoreStaff(struct Unit * unit, void (* list_targets)(struct Unit * u
 {
     list_targets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelect(&MapSelectInfo_Restore),
@@ -809,7 +809,7 @@ void DoUseBarrierStaff(struct Unit * unit)
 {
     ListBarrierTargets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelect(&MapSelectInfo_Barrier),
@@ -831,7 +831,7 @@ void DoUseAttackStaff(struct Unit * unit, void (* list_targets)(struct Unit * un
 {
     list_targets(unit);
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     StartSubtitleHelp(
         StartMapSelect(&MapSelectInfo_AttackStaff),

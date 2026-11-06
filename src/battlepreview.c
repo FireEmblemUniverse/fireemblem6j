@@ -642,7 +642,7 @@ void StartBattlePreview(struct MapSelectProc * mapselect_proc)
 
     }
 
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 }
 
 void UpdateBattlePreviewContents(void)
