@@ -498,8 +498,6 @@ extern u8 const gUnk_08380F62[];
 // extern CONST_DATA ??? Sprites_0868A518
 // extern CONST_DATA ??? Sprites_0868A550
 // extern CONST_DATA ??? Sprites_0868A55C
-// extern CONST_DATA ??? Sprite_0868A568
-// extern CONST_DATA ??? Sprite_0868A570
 
 extern const u16 Pal_CommGameBgScreenInShop[];
 extern const u8 Tsa_CommGameBgScreenInShop[];
@@ -508,8 +506,6 @@ extern const u8 gUnk_0832A130[];
 extern const u8 Img_SupportMenu[];
 extern const u8 gUnk_0832B554[];
 extern const u16 Pal_SupportMenu[];
-extern const u16 Img_XmapObj[];
-extern const u16 Pal_XmapObj[];
 extern const u16 gUnk_0832C35C[];
 extern const u16 gUnk_0832C39C[];
 extern u8 EndingCG_Img1[];

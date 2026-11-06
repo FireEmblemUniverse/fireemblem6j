@@ -14,9 +14,7 @@
 #include "constants/msg.h"
 
 #include "soundroom.h"
-
-// TODO: belongs in xmap.h (signature mismatch with xmap.c definition)
-void StartXmap(fu8 arg_0, ProcPtr parent);
+#include "xmap.h"
 
 extern u16 const gUnk_0832C35C[]; // colors
 
