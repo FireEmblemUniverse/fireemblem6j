@@ -13,9 +13,6 @@ void StartLinkArenaMainMenu(ProcPtr parent);
 void StartEvent_SioXmap_0803C080(ProcPtr parent);
 void func_fe6_0803CF58(void);
 
-// func_fe6_0808AA84
-// func_fe6_0808AB44
-
 /* xmap.h */
 /* config.h */
 /* ending_credit */
