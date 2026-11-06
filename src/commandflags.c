@@ -123,7 +123,7 @@ void ListAttackPositions(struct Unit * unit)
 {
     int ix, iy;
 
-    int reach = GetUnitWeaponReach(unit, -1);
+    int reach = GetUnitWeaponReach(unit, ITEMSLOT_ALL);
 
     MapFill(gMapOther, 0);
 

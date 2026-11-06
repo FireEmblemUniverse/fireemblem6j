@@ -515,7 +515,7 @@ fu8 UnitActionMenu_Attack_SwitchIn(struct MenuProc * menu, struct MenuEntProc * 
     MapFill(gMapMovement, -1);
     MapFill(gMapRange, 0);
 
-    reach = GetUnitWeaponReach(gActiveUnit, -1);
+    reach = GetUnitWeaponReach(gActiveUnit, ITEMSLOT_ALL);
     BuildUnitStandingRangeForReach(gActiveUnit, reach);
 
     if (UNIT_ATTRIBUTES(gActiveUnit) & UNIT_ATTR_BALLISTA)
@@ -1175,7 +1175,7 @@ fu8 UnitActionMenu_Staff_Select(struct MenuProc * menu, struct MenuEntProc * ent
 
 fu8 UnitActionMenu_Staff_SwitchIn(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    int reach = GetUnitItemUseReach(gActiveUnit, -1);
+    int reach = GetUnitItemUseReach(gActiveUnit, ITEMSLOT_ALL);
 
     MapFill(gMapMovement, -1);
     MapFill(gMapRange, 0);
