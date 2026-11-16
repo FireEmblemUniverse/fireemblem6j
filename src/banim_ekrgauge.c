@@ -384,8 +384,8 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
             }
         }
 
-        RegisterDataMove(gEkrGaugeHpNumImgBuf + 0x00, (void *)0x060139C0, 0x40);
-        RegisterDataMove((u16 *)gEkrGaugeHpNumImgBuf + 0x20, (void *)0x06013DC0, 0x40);
+        RegisterDataMove(gEkrGaugeHpNumImgBuf + 0x00, OBJ_VRAM0 + 0x39C0, 0x40);
+        RegisterDataMove((u16 *)gEkrGaugeHpNumImgBuf + 0x20, OBJ_VRAM0 + 0x3DC0, 0x40);
     }
 
     AStack_130.oam2 = 0x000051CE;
@@ -559,7 +559,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
     }
 
     if (hp_changed == 1) {
-        RegisterDataMove((void *)gEkrGaugeBuf, (void *)0x06013000, 0x800);
+        RegisterDataMove((void *)gEkrGaugeBuf, OBJ_VRAM0 + 0x3000, 0x800);
     }
 
     if (proc->unk4C == 0) {

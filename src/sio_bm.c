@@ -321,7 +321,7 @@ bool NewSioPointsSpriteText(int x, int y, char const * str, u8 flag, ProcPtr par
 
 	ApplyPalette(Pal_Text, 0x19);
 
-	InitSpriteTextFont(&gSioSpriteFont, (void *) 0x06016800, 3);
+	InitSpriteTextFont(&gSioSpriteFont, OBJ_VRAM0 + 0x6800, 3);
 
 	SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);
 	ResetTextFont();
@@ -661,7 +661,7 @@ void func_fe6_0803CF14(void)
 
 void func_fe6_0803CF58(void)
 {
-	Decompress(gUnk_08109854, (void *) 0x06014800);
+	Decompress(gUnk_08109854, OBJ_VRAM0 + 0x4800);
 }
 
 void func_fe6_0803CF70(void)
@@ -2213,7 +2213,7 @@ void func_fe6_0803ED9C(struct SioBattleMapProc * proc)
 {
 	int i;
 
-	LoadHelpBoxGfx((void *) 0x06015000, 6);
+	LoadHelpBoxGfx(OBJ_VRAM0 + 0x5000, 6);
 	StartSimpleHelpBox(64, 56, MSG_6E5);
 
 	for (i = 0; i < 4; i++) {
@@ -2845,7 +2845,7 @@ void func_fe6_0803FBC4(struct LinkArenaTitleBannerProc * proc)
 	int y = proc->kind / 4;
 
 	Decompress(gUnk_08106784, gBuf);
-	SioCopyVRAM(gBuf + (x * 0x100 + y * 0x800), (void *) 0x06014000, 8, 2);
+	SioCopyVRAM(gBuf + (x * 0x100 + y * 0x800), OBJ_VRAM0 + 0x4000, 8, 2);
 
 	TmApplyTsa(gBg2Tm, gUnk_08109D78, TILEREF(0, 1));
 	EnableBgSync(BG2_SYNC_BIT);
@@ -2939,7 +2939,7 @@ void func_fe6_0803FD40(u8 const * chars, int count, int x, int y, int pal, ProcP
 	Decompress(gUnk_081065C8, gBuf);
 
 	for (i = 0; i < count; i++)
-		SioCopyVRAM(gBuf + chars[i % count] * CHR_SIZE, (void *) 0x06014100 + i * CHR_SIZE, 1, 2);
+		SioCopyVRAM(gBuf + chars[i % count] * CHR_SIZE, OBJ_VRAM0 + 0x4100 + i * CHR_SIZE, 1, 2);
 
 	ApplyPalette(gUnk_08109B00 + pal * 0x10, 0x17);
 
@@ -3921,7 +3921,7 @@ ProcPtr func_fe6_0804108C(int x, int y, ProcPtr parent)
 void SioPutSupportMenuImage(void)
 {
 	Decompress(Img_SupportMenu, gSioImgBuf);
-	SioCopyVRAM(gSioImgBuf, (void *) 0x06016800, 6, 4);
+	SioCopyVRAM(gSioImgBuf, OBJ_VRAM0 + 0x6800, 6, 4);
 	ApplyPalette(Pal_SupportMenu, 0x12);
 }
 

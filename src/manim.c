@@ -2408,7 +2408,7 @@ void ManimTorchFx_Init(struct ManimTorchFxProc * proc)
 {
     PlaySe(SONG_B3);
 
-    Decompress(Img_ManimTorch, ((void *) VRAM) + 0x10000 + OBCHR_MANIM_1C0 * CHR_SIZE);
+    Decompress(Img_ManimTorch, OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
     ApplyPalette(Pal_ManimTorch, 0x10 + OBPAL_MANIM_4);
 
     SetWhitePal(BGPAL_MANIM_4);
@@ -2514,7 +2514,7 @@ void ManimBerserkFx_Init(struct ManimBerserkFxProc * proc)
     PlaySeSpacial(SONG_87, proc->x);
     SetBgOffset(2, 0, 0);
     SetDefaultManimScreenConf();
-    Decompress(Img_ManimBerserk, ((void *) VRAM) + 0x10000 + CHR_SIZE * OBCHR_MANIM_1C0);
+    Decompress(Img_ManimBerserk, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
     ApplyPalette(Pal_ManimBerserk, 0x10 + OBPAL_MANIM_4);
     StartSpriteAnimProc(SpriteAnim_ManimBerserk, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
     proc->unused_48 = 1;
@@ -3030,7 +3030,7 @@ void ManimUnlockFx_Init(struct ManimUnlockFxProc * proc)
 
     EnableBgSync(BG2_SYNC_BIT);
 
-    Decompress(Img_ManimUnlockObj, ((void *) VRAM) + 0x10000 + CHR_SIZE * OBCHR_MANIM_1C0);
+    Decompress(Img_ManimUnlockObj, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
     ApplyPalette(Pal_ManimUnlockObj, 0x10 + OBPAL_MANIM_4);
 
     func_fe6_08014D9C(Pal_ManimUnlockBg, 0x20 * BGPAL_MANIM_4, 0x20, 4, proc);

@@ -349,7 +349,7 @@ void InitSpriteTalk(int chr, int lines, int palid)
 {
     int i;
 
-    InitSpriteTextFont(&sTalkFont, (u8 *) VRAM + 0x10000 + ((chr & 0x3FF) << 5), palid);
+    InitSpriteTextFont(&sTalkFont, OBJ_VRAM0 + ((chr & 0x3FF) << 5), palid);
 
     SetTextFont(&sTalkFont);
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
