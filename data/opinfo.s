@@ -55,27 +55,27 @@ ProcScr_ClassDemoStatus: @ 08690014
 	PROC_CALL ClassDemoStatus_Init
 	PROC_REPEAT ClassDemoStatus_Loop
 PROC_LABEL 4
-	PROC_CALL func_fe6_08095D28
+	PROC_CALL ClassDemoStatus_OnEnd
 	PROC_END
 
-	.global Sprite_OpInfo_0869004C
-Sprite_OpInfo_0869004C:
+	.global Sprite_ClassDemoGaugePip1
+Sprite_ClassDemoGaugePip1:
 	.incbin "fe6-base.gba", 0x69004C, (0x690054 - 0x69004C)
 
-	.global Sprite_OpInfo_08690054
-Sprite_OpInfo_08690054:
+	.global Sprite_ClassDemoGaugePip2
+Sprite_ClassDemoGaugePip2:
 	.incbin "fe6-base.gba", 0x690054, (0x69005C - 0x690054)
 
-	.global Sprite_OpInfo_0869005C
-Sprite_OpInfo_0869005C:
+	.global Sprite_ClassDemoGaugePip3
+Sprite_ClassDemoGaugePip3:
 	.incbin "fe6-base.gba", 0x69005C, (0x690064 - 0x69005C)
 
-	.global Sprite_OpInfo_08690064
-Sprite_OpInfo_08690064:
+	.global Sprite_ClassDemoGaugePip4
+Sprite_ClassDemoGaugePip4:
 	.incbin "fe6-base.gba", 0x690064, (0x69006C - 0x690064)
 
-	.global Sprites_OpInfo_0869006C
-Sprites_OpInfo_0869006C: @ 0869006C
+	.global Sprites_ClassDemoGaugePips
+Sprites_ClassDemoGaugePips: @ 0869006C
 	.incbin "fe6-base.gba", 0x69006C, 0x10
 
 	.global Sprite_OpInfo_0869007C

@@ -20,24 +20,24 @@ Img_OpInfoViewIcon: @ 083599AC
 Pal_OpInfoViewIcon: @ 0835A368
 	.incbin "fe6-base.gba", 0x35A368, (0x35A3E8 - 0x35A368) @ length: 0080
 
-	.global Img_Op_0835A3E8
-Img_Op_0835A3E8: @ 0835A3E8
+	.global Img_ClassDemoWindow
+Img_ClassDemoWindow: @ 0835A3E8
 	.incbin "fe6-base.gba", 0x35A3E8, (0x35A5D0 - 0x35A3E8) @ length: 01E8
 
-	.global Pal_Op_0835A5D0
-Pal_Op_0835A5D0: @ 0835A5D0
+	.global Pal_ClassDemoWindow
+Pal_ClassDemoWindow: @ 0835A5D0
 	.incbin "fe6-base.gba", 0x35A5D0, (0x35A5F0 - 0x35A5D0) @ length: 0020
 
-	.global Tsa_Op_0835A5F0
-Tsa_Op_0835A5F0: @ 0835A5F0
+	.global Tsa_ClassDemoWindow
+Tsa_ClassDemoWindow: @ 0835A5F0
 	.incbin "fe6-base.gba", 0x35A5F0, (0x35AB08 - 0x35A5F0) @ length: 0518
 
-	.global Pal_Op_0835AB08
-Pal_Op_0835AB08: @ 0835AB08
+	.global Pal_ClassDemoBg
+Pal_ClassDemoBg: @ 0835AB08
 	.incbin "fe6-base.gba", 0x35AB08, (0x35AB28 - 0x35AB08) @ length: 0020
 
-	.global Tsa_Op_0835AB28
-Tsa_Op_0835AB28: @ 0835AB28
+	.global Tsa_ClassDemoBg
+Tsa_ClassDemoBg: @ 0835AB28
 	.incbin "fe6-base.gba", 0x35AB28, (0x35B040 - 0x35AB28) @ length: 0518
 
 	.global Img_ClassDemoFont
