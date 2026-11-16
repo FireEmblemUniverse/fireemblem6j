@@ -288,60 +288,8 @@ extern u8 const Img_Background_08304E50[];
 extern u8 const Tsa_Background_08306F24[];
 extern u16 const Pal_Background_083073D8[];
 
-extern u16 const Pal_Unk_08309474[];
-extern u16 const Pal_Unk_083094F4[];
-extern u16 const Pal_Unk_0830D5E4[];
-
-extern u8 const Img_ChapterTitleBG1[]; // img
-extern u8 const Img_ChapterTitleBG2[]; // img
-extern u8 const Tsa_ChapterTitleFxDefaultBG[]; // tsa
 extern u8 const Img_HelpBox[]; // img
 extern u16 const Pal_HelpBox[]; // pal
-
-extern u16 Img_ChapterTitle_0830D9C0[];
-extern u16 Img_ChapterTitle_0830DDBC[];
-extern u16 Img_ChapterTitle_0830E1DC[];
-extern u16 Img_ChapterTitle_0830E640[];
-extern u16 Img_ChapterTitle_0830EA4C[];
-extern u16 Img_ChapterTitle_0830EDC8[];
-extern u16 Img_ChapterTitle_0830F250[];
-extern u16 Img_ChapterTitle_0830F6C4[];
-extern u16 Img_ChapterTitle_0830F9B8[];
-extern u16 Img_ChapterTitle_0830FE60[];
-extern u16 Img_ChapterTitle_083102CC[];
-extern u16 Img_ChapterTitle_083107A8[];
-extern u16 Img_ChapterTitle_08310BBC[];
-extern u16 Img_ChapterTitle_08311094[];
-extern u16 Img_ChapterTitle_083114AC[];
-extern u16 Img_ChapterTitle_08311890[];
-extern u16 Img_ChapterTitle_08311D54[];
-extern u16 Img_ChapterTitle_08312158[];
-extern u16 Img_ChapterTitle_083124FC[];
-extern u16 Img_ChapterTitle_083129A0[];
-extern u16 Img_ChapterTitle_08312D20[];
-extern u16 Img_ChapterTitle_08313104[];
-extern u16 Img_ChapterTitle_083135C0[];
-extern u16 Img_ChapterTitle_0831394C[];
-extern u16 Img_ChapterTitle_08313D38[];
-extern u16 Img_ChapterTitle_083140C8[];
-extern u16 Img_ChapterTitle_083144E4[];
-extern u16 Img_ChapterTitle_083149C8[];
-extern u16 Img_ChapterTitle_08314E14[];
-extern u16 Img_ChapterTitle_083151E8[];
-extern u16 Img_ChapterTitle_0831569C[];
-extern u16 Img_ChapterTitle_08315AC0[];
-extern u16 Img_ChapterTitle_08315F88[];
-extern u16 Img_ChapterTitle_08316354[];
-extern u16 Img_ChapterTitle_083167EC[];
-extern u16 Img_ChapterTitle_08316C00[];
-extern u16 Img_ChapterTitle_08317014[];
-extern u16 Img_ChapterTitle_08317484[];
-extern u16 Img_ChapterTitle_08317858[];
-extern u16 Img_ChapterTitle_08317AA4[];
-extern u16 Img_ChapterTitle_08317D94[];
-extern u16 Img_ChapterTitle_08318040[];
-extern u16 Img_ChapterTitle_0831833C[];
-extern u16 Img_ChapterTitle_08318658[];
 
 extern u8 const Img_MapUiElements[];
 

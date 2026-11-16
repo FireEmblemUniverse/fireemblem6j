@@ -10,72 +10,71 @@
 
 struct ChapterTitleFxSt EWRAM_DATA gChapterTitleFxSt = { 0 };
 
-// enum: CHAPTER_TITLE
-u16 const *CONST_DATA gChapterTitleData[] = {
-	Img_ChapterTitle_0830D9C0,
-	Img_ChapterTitle_0830DDBC,
-	Img_ChapterTitle_0830E1DC,
-	Img_ChapterTitle_0830E640,
-	Img_ChapterTitle_0830EA4C,
-	Img_ChapterTitle_0830EDC8,
-	Img_ChapterTitle_0830F250,
-	Img_ChapterTitle_0830F6C4,
-	Img_ChapterTitle_0830F9B8,
-	Img_ChapterTitle_0830FE60,
-	Img_ChapterTitle_083102CC,
-	Img_ChapterTitle_083107A8,
-	Img_ChapterTitle_08310BBC,
-	Img_ChapterTitle_08311094,
-	Img_ChapterTitle_083114AC,
-	Img_ChapterTitle_08311890,
-	Img_ChapterTitle_08311D54,
-	Img_ChapterTitle_08312158,
-	Img_ChapterTitle_083124FC,
-	Img_ChapterTitle_083129A0,
-	Img_ChapterTitle_08312D20,
-	Img_ChapterTitle_08313104,
-	Img_ChapterTitle_083135C0,
-	Img_ChapterTitle_0831394C,
-	Img_ChapterTitle_08313D38,
-	Img_ChapterTitle_083140C8,
-	Img_ChapterTitle_083144E4,
-	Img_ChapterTitle_083149C8,
-	Img_ChapterTitle_08314E14,
-	Img_ChapterTitle_083151E8,
-	Img_ChapterTitle_0831569C,
-	Img_ChapterTitle_08315AC0,
-	Img_ChapterTitle_08315F88,
-	Img_ChapterTitle_08316354,
-	Img_ChapterTitle_083167EC,
-	Img_ChapterTitle_08316C00,
-	Img_ChapterTitle_08317014,
-	Img_ChapterTitle_08317484,
-	Img_ChapterTitle_08317858,
-	Img_ChapterTitle_08317AA4,
-	Img_ChapterTitle_08317D94,
-	Img_ChapterTitle_08318040,
-	Img_ChapterTitle_0831833C,
-	Img_ChapterTitle_08318658,
+u8 const * CONST_DATA gChapterTitleData[] = {
+	Img_ChapterTitle_Ch1,
+	Img_ChapterTitle_Ch2,
+	Img_ChapterTitle_Ch3,
+	Img_ChapterTitle_Ch4,
+	Img_ChapterTitle_Ch5,
+	Img_ChapterTitle_Ch6,
+	Img_ChapterTitle_Ch7,
+	Img_ChapterTitle_Ch8,
+	Img_ChapterTitle_Ch8X,
+	Img_ChapterTitle_Ch9,
+	Img_ChapterTitle_Ch10A,
+	Img_ChapterTitle_Ch11A,
+	Img_ChapterTitle_Ch10B,
+	Img_ChapterTitle_Ch11B,
+	Img_ChapterTitle_Ch12,
+	Img_ChapterTitle_Ch12X,
+	Img_ChapterTitle_Ch13,
+	Img_ChapterTitle_Ch14,
+	Img_ChapterTitle_Ch14X,
+	Img_ChapterTitle_Ch15,
+	Img_ChapterTitle_Ch16,
+	Img_ChapterTitle_Ch16X,
+	Img_ChapterTitle_Ch17I,
+	Img_ChapterTitle_Ch18I,
+	Img_ChapterTitle_Ch19I,
+	Img_ChapterTitle_Ch20I,
+	Img_ChapterTitle_Ch20XI,
+	Img_ChapterTitle_Ch17S,
+	Img_ChapterTitle_Ch18S,
+	Img_ChapterTitle_Ch19S,
+	Img_ChapterTitle_Ch20S,
+	Img_ChapterTitle_Ch20XS,
+	Img_ChapterTitle_Ch21,
+	Img_ChapterTitle_Ch21X,
+	Img_ChapterTitle_Ch22,
+	Img_ChapterTitle_Ch23,
+	Img_ChapterTitle_Ch24,
+	Img_ChapterTitle_Final,
+	Img_ChapterTitle_NoData,
+	Img_ChapterTitle_Tutorial,
+	Img_ChapterTitle_Epilogue,
+	Img_ChapterTitle_EpilogueStar,
+	Img_ChapterTitle_EpilogueTwoStars,
+	Img_ChapterTitle_TrialMap,
 };
 
-void PutChapterTitlePalettle(int flags, int pal)
+void PutChapterTitlePalette(int flags, int pal)
 {
     u16 const * pal_src;
 
-    if (flags & 8)
+    if (flags & CHAPTER_TITLE_PAL_BG2)
     {
-        ApplyPalette(Pal_Unk_0830D5E4, pal);
+        ApplyPalette(Pal_ChapterTitleBG2, pal);
         return;
     }
 
-    pal_src = (flags & 1) != 0
-        ? Pal_Unk_08309474
-        : Pal_Unk_083094F4;
+    pal_src = (flags & CHAPTER_TITLE_PAL_BG1) != 0
+        ? Pal_ChapterTitleBG1
+        : Pal_ChapterTitleText;
 
-    if (flags & 2)
+    if (flags & CHAPTER_TITLE_PAL_UNSELECTED)
         pal_src = pal_src + 0x10;
 
-    if (flags & 4)
+    if (flags & CHAPTER_TITLE_PAL_HARD)
         pal_src = pal_src + 0x20;
 
     ApplyPalette(pal_src, pal);
@@ -84,22 +83,23 @@ void PutChapterTitlePalettle(int flags, int pal)
 void PutChapterTitleGfx(int chr, int title_id)
 {
     // TODO: is this really chapter?
+    // Not the title count either: CHAPTER_COUNT is CHAPTER_TITLE_COUNT + 1, so id 44 reads past gChapterTitleData.
     if (title_id < 0 || title_id >= CHAPTER_COUNT)
-        title_id = CHAPTER_21X;
+        title_id = CHAPTER_TITLE_NO_DATA;
 
-    gChapterTitleFxSt.chr_text = chr & 0x3FF;
+    gChapterTitleFxSt.chr_text = TILE_CHR_SAFE(chr);
     Decompress(gChapterTitleData[title_id], ((void *) VRAM) + chr * CHR_SIZE);
 }
 
 void PutChapterTitleBG1(int chr)
 {
-    gChapterTitleFxSt.chr_bg = chr & 0x3FF;
+    gChapterTitleFxSt.chr_bg = TILE_CHR_SAFE(chr);
     Decompress(Img_ChapterTitleBG1, ((void *) VRAM) + chr * CHR_SIZE);
 }
 
 void PutChapterTitleBG2(int chr)
 {
-    gChapterTitleFxSt.chr_bg = chr & 0x3FF;
+    gChapterTitleFxSt.chr_bg = TILE_CHR_SAFE(chr);
     Decompress(Img_ChapterTitleBG2, ((void *) VRAM) + chr * CHR_SIZE);
 }
 
@@ -107,7 +107,7 @@ void PutChapterTitleTextTSA(u16 * tm, int pal)
 {
     int i, tile = TILEREF(gChapterTitleFxSt.chr_text, pal);
 
-    for (i = 0; i < 0x40; i++)
+    for (i = 0; i < CHAPTER_TITLE_TEXT_TILES; i++)
         *tm++ = tile++;
 }
 
@@ -115,7 +115,7 @@ void PutChapterTitleBgTSA(u16 * tm, int pal)
 {
     int i, tile = TILEREF(gChapterTitleFxSt.chr_bg, pal);
 
-    for (i = 0; i < 0x80; i++)
+    for (i = 0; i < CHAPTER_TITLE_BG_TILES; i++)
         *tm++ = tile++;
 }
 
@@ -127,14 +127,14 @@ void PutChapterTitleBgDefaultTSA(u16 * tm, int pal)
 int GetChapterTitleExtra(struct PlaySt const * play_st)
 {
     if (play_st == NULL)
-        return 0x26;
+        return CHAPTER_TITLE_NO_DATA;
 
     switch (play_st->chapter)
     {
 
     case -1:
-    case 0x28 ... 0x2C:
-        return 0x2B;
+    case CHAPTER_TRIAL_A ... CHAPTER_TRIAL_E:
+        return CHAPTER_TITLE_TRIAL_MAP;
 
     default:
         if ((play_st->flags & PLAY_FLAG_COMPLETE) != 0)
@@ -142,13 +142,13 @@ int GetChapterTitleExtra(struct PlaySt const * play_st)
             switch (play_st->ending_id)
             {
                 case TRUE_ENDING:
-                    return 0x2A;
+                    return CHAPTER_TITLE_EPILOGUE_TRUE;
 
                 case NORMAL_ENDING:
-                    return 0x29;
+                    return CHAPTER_TITLE_EPILOGUE_NORMAL;
 
                 case FAKE_ENDING:
-                    return 0x28;
+                    return CHAPTER_TITLE_EPILOGUE_FAKE;
             }
         }
 

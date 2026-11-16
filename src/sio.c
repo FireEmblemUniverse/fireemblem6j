@@ -14,6 +14,7 @@
 #include "talk.h"
 #include "random.h"
 #include "helpbox.h"
+#include "chapter_title.h"
 #include "prepscreen.h"
 #include "sioerror.h"
 #include "bmio.h"
@@ -2696,12 +2697,12 @@ void SioTerm_Init(struct SioTermProc * proc)
 		proc->unk_48 = proc->unk_4C;
 	}
 
-	PutChapterTitlePalettle(1, 4);
-	PutChapterTitlePalettle(3, 5);
-	PutChapterTitlePalettle(5, 6);
-	PutChapterTitlePalettle(0, 7);
-	PutChapterTitlePalettle(2, 8);
-	PutChapterTitlePalettle(4, 9);
+	PutChapterTitlePalette(CHAPTER_TITLE_PAL_BG1, 4);
+	PutChapterTitlePalette(CHAPTER_TITLE_PAL_BG1 | CHAPTER_TITLE_PAL_UNSELECTED, 5);
+	PutChapterTitlePalette(CHAPTER_TITLE_PAL_BG1 | CHAPTER_TITLE_PAL_HARD, 6);
+	PutChapterTitlePalette(0, 7);
+	PutChapterTitlePalette(CHAPTER_TITLE_PAL_UNSELECTED, 8);
+	PutChapterTitlePalette(CHAPTER_TITLE_PAL_HARD, 9);
 
 	PutChapterTitleBG1(0x1A0);
 

@@ -8,6 +8,7 @@
 #include "icon.h"
 #include "sound.h"
 #include "sprite.h"
+#include "chapter_title.h"
 #include "util.h"
 #include "msg.h"
 #include "item.h"
@@ -1812,8 +1813,8 @@ static void ChapterIntro_Init(struct Proc * proc)
 
     SetWin0Box(0, 0, 0, 0);
 
-    PutChapterTitlePalettle(8, BGPAL_CHAPTERINTRO_0);
-    PutChapterTitlePalettle(0, BGPAL_CHAPTERINTRO_1);
+    PutChapterTitlePalette(CHAPTER_TITLE_PAL_BG2, BGPAL_CHAPTERINTRO_0);
+    PutChapterTitlePalette(0, BGPAL_CHAPTERINTRO_1);
 
     PutChapterTitleBG2(BGCHR_CHAPTERINTRO_80);
 
