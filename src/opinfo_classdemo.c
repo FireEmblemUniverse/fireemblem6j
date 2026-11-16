@@ -26,11 +26,11 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrMagi_ObImgBuf[0x1000] = {};
 EWRAM_OVERLAY(opinfo) struct EkrTerrainfxDesc OpEkrTerrainDesc = {};
 EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 
-EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
+EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[CLASSDEMO_STAT_COUNT] = {};
 
-EWRAM_OVERLAY(opinfo) struct OpClassDemoCharPos OpClassDemoCharPositions[14] = {};
+EWRAM_OVERLAY(opinfo) struct OpClassDemoCharPos OpClassDemoCharPositions[CLASSDEMO_NAME_MAX] = {};
 
-CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5] = {
+CONST_DATA i8 OpClassDemo_MagiConfig[CLASSDEMO_CLASS_COUNT * 5] = {
 	0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0,
@@ -68,7 +68,7 @@ CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5] = {
 	0, 0, 0, 0, 0,
 };
 
-CONST_DATA u8 OpClassDemo_TerrainConfig[35][2] = {
+CONST_DATA u8 OpClassDemo_TerrainConfig[CLASSDEMO_CLASS_COUNT][2] = {
 	{ 0x14, 0x14 },
 	{ 0x11, 0x00 },
 	{ 0x0B, 0x12 },
@@ -106,7 +106,7 @@ CONST_DATA u8 OpClassDemo_TerrainConfig[35][2] = {
 	{ 0x1A, 0x1A },
 };
 
-CONST_DATA u8 OpClassDemo_JidConfig[35] = {
+CONST_DATA u8 OpClassDemo_JidConfig[CLASSDEMO_CLASS_COUNT] = {
 	JID_ROY,
 	JID_CAVALIER,
 	JID_PALADIN,
@@ -213,7 +213,7 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	proc->frame_timer = 0;
 	proc->total_timer = 0;
 	proc->ctrl_index = 0;
-	proc->unk_3E = 1;
+	proc->blocking = 1;
 	proc->anim_x = 0xFA;
 
 	TmFill(gBg0Tm, 0);
@@ -228,7 +228,7 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 
 		while (1) {
 			i++;
-			if (gOpClassDemoBanimCtrl[i].duration == 0) {
+			if (gOpClassDemoBanimCtrl[i].duration == CLASSDEMO_CTRL_END) {
 				k++;
 				if (k == proc->index)
 					break;
@@ -253,11 +253,11 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	SetBgOffset(BG_3, 0, 0);
 
 	Decompress(Img_MonologueBG, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
-	ApplyPalette(Pal_Op_0835AB08, 0xA);
-	TmApplyTsa(gBg3Tm, Tsa_Op_0835AB28, 0xA000);
-	Decompress(Img_Op_0835A3E8, (u8 *)BG_VRAM + GetBgChrOffset(BG_2));
-	ApplyPalette(Pal_Op_0835A5D0, 0x9);
-	TmApplyTsa(gBg2Tm, Tsa_Op_0835A5F0, 0x9000);
+	ApplyPalette(Pal_ClassDemoBg, BGPAL_CLASSDEMO_BG);
+	TmApplyTsa(gBg3Tm, Tsa_ClassDemoBg, TILEREF(0, BGPAL_CLASSDEMO_BG));
+	Decompress(Img_ClassDemoWindow, (u8 *)BG_VRAM + GetBgChrOffset(BG_2));
+	ApplyPalette(Pal_ClassDemoWindow, BGPAL_CLASSDEMO_WINDOW);
+	TmApplyTsa(gBg2Tm, Tsa_ClassDemoWindow, TILEREF(0, BGPAL_CLASSDEMO_WINDOW));
 
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 
@@ -270,7 +270,7 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	proc->unit_status[4] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_def;
 	proc->unit_status[5] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_res;
 
-	for (i = 0; i < 6; i++) {
+	for (i = 0; i < CLASSDEMO_STAT_COUNT; i++) {
 		InitText(&OpClassDemoTexts[i], 3);
 		ClearText(&OpClassDemoTexts[i]);
 		Text_SetColor(&OpClassDemoTexts[i], TEXT_COLOR_SYSTEM_GOLD);
@@ -285,9 +285,9 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 		PutNumber(gBg0Tm + TM_OFFSET(5, 1 + i * 2), TEXT_COLOR_SYSTEM_WHITE, proc->unit_status[i]);
 	}
 
-	proc->procfx = StartClassDemoStatus(proc);
+	proc->status = StartClassDemoStatus(proc);
 
-	InitTalk(0x100, 2, 0);
+	InitTalk(BGCHR_CLASSDEMO_TALKTEXT, 2, 0);
 	SetInitTalkTextFont();
 	ClearTalkText();
 	EndTalk();
@@ -306,8 +306,8 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	OpEkrMiniDesc.round_type = ANIM_ROUND_TAKING_HIT_CLOSE;
 	OpEkrMiniDesc.faction_pal = BANIMPAL_BLUE;
 	OpEkrMiniDesc.pos = POS_R;
-	OpEkrMiniDesc.oam2_chr = 0x180;
-	OpEkrMiniDesc.oam2_pal = 2;
+	OpEkrMiniDesc.oam2_chr = OBCHR_CLASSDEMO_BANIM;
+	OpEkrMiniDesc.oam2_pal = OBPAL_CLASSDEMO_BANIM;
 	OpEkrMiniDesc.img_buf = OpEkrMini_ImgBuf;
 	OpEkrMiniDesc.oam_buf = OpEkrMini_OamBuf;
 	OpEkrMiniDesc.pal_buf = OpEkrMini_PalBuf;
@@ -319,11 +319,11 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	OpEkrMagiDesc.yOffsetBg    = OpClassDemo_MagiConfig[proc->index * 5 + 2];
 	OpEkrMagiDesc.xOffsetObj   = OpClassDemo_MagiConfig[proc->index * 5 + 3];
 	OpEkrMagiDesc.yOffsetObj   = OpClassDemo_MagiConfig[proc->index * 5 + 4];
-	OpEkrMagiDesc.objChr = 0x280;
-	OpEkrMagiDesc.objPalId = 0xF;
-	OpEkrMagiDesc.bgPalId = 0xF;
-	OpEkrMagiDesc.bgChr = 0x200;
-	OpEkrMagiDesc.bgPalId = 0xF;
+	OpEkrMagiDesc.objChr = OBCHR_CLASSDEMO_SPELL;
+	OpEkrMagiDesc.objPalId = OBPAL_CLASSDEMO_SPELL;
+	OpEkrMagiDesc.bgPalId = BGPAL_CLASSDEMO_SPELL;
+	OpEkrMagiDesc.bgChr = BGCHR_CLASSDEMO_SPELL;
+	OpEkrMagiDesc.bgPalId = BGPAL_CLASSDEMO_SPELL;
 	OpEkrMagiDesc.bg = BG_1;
 	OpEkrMagiDesc.bgTmBuf = gBg1Tm;
 	OpEkrMagiDesc.bgImgBuf = OpEkrMagi_BgImgBuf;
@@ -334,11 +334,11 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	NewEkrUnitMainMini(&OpEkrMiniDesc);
 
 	OpEkrTerrainDesc.terrain_l = OpClassDemo_TerrainConfig[proc->index][POS_L];
-	OpEkrTerrainDesc.pal_l = 0xA;
-	OpEkrTerrainDesc.chr_l = 0x380;
+	OpEkrTerrainDesc.pal_l = OBPAL_CLASSDEMO_TERRAIN_L;
+	OpEkrTerrainDesc.chr_l = OBCHR_CLASSDEMO_TERRAIN_L;
 	OpEkrTerrainDesc.terrain_r = OpClassDemo_TerrainConfig[proc->index][POS_R];
-	OpEkrTerrainDesc.pal_r = 0xB;
-	OpEkrTerrainDesc.chr_r = 0x3C0;
+	OpEkrTerrainDesc.pal_r = OBPAL_CLASSDEMO_TERRAIN_R;
+	OpEkrTerrainDesc.chr_r = OBCHR_CLASSDEMO_TERRAIN_R;
 	OpEkrTerrainDesc.distance = EKR_DISTANCE_CLOSE;
 	OpEkrTerrainDesc.bg_index = -1;
 	OpEkrTerrainDesc.vram_offset = (u32)OBJ_VRAM0;
@@ -366,20 +366,20 @@ void ClassDemoMain_Loop_Intro(struct ProcClassDemoMain *proc)
 		proc->anim_x = 180;
 		proc->frame_timer = 0;
 		Proc_Break(proc);
-		func_fe6_08095D48(proc->procfx);
+		SetOpClassDemoFirstCharPos(proc->status);
 	} else
 		proc->frame_timer += 4;
 
 	EkrMainMini_SetAnimPosition(&OpEkrMiniDesc, proc->anim_x, 88);
 	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, proc->anim_x - 48, 104, proc->anim_x + 48, 104);
-	SetOpClassDemoStatusPos(proc->procfx, 0x78);
+	SetOpClassDemoStatusPos(proc->status, 0x78);
 }
 
 void ClassDemoMain_Loop_Main(struct ProcClassDemoMain *proc)
 {
 	int ret = false;
 
-	if (proc->total_timer > 0x18F) {
+	if (proc->total_timer >= CLASSDEMO_DURATION) {
 		proc->opinfo->mode = OPINFO_STATE_2;
 		goto goto_judge_ret;
 	}
@@ -387,20 +387,20 @@ void ClassDemoMain_Loop_Main(struct ProcClassDemoMain *proc)
 	proc->frame_timer++;
 	proc->total_timer++;
 
-	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == 0)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == CLASSDEMO_CTRL_END)
 		goto goto_judge_ret;
 
 	if (proc->frame_timer > gOpClassDemoBanimCtrl[proc->ctrl_index].duration)
 		goto goto_ret_0;
 
-	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration != 0xFF)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration != CLASSDEMO_CTRL_WAIT_ANIM)
 		goto goto_judge_ret;
 
-	if (proc->unk_3E != 0)
+	if (proc->blocking != 0)
 		if (EkrMainMini_CheckBlocking(&OpEkrMiniDesc) != false)
 			goto goto_ret_0;
 
-	if (proc->unk_3E == 0)
+	if (proc->blocking == 0)
 		if (EkrMainMini_CheckDone(&OpEkrMiniDesc) != false)
 			ret = 1;
 
@@ -413,20 +413,20 @@ goto_ret_0:
 
 	proc->ctrl_index++;
 
-	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == 0)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == CLASSDEMO_CTRL_END)
 		return;
 
-	if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == 0xFF) {
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == CLASSDEMO_CTRL_UNBLOCK) {
 		EkrMainMini_EndBlock(&OpEkrMiniDesc);
-		proc->unk_3E = 0;
+		proc->blocking = 0;
 	} else if (proc->round_type != gOpClassDemoBanimCtrl[proc->ctrl_index].round_type) {
 		OpEkrMiniDesc.round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
 		EkrMainMini_UpdateAnim(&OpEkrMiniDesc);
 
-		if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == 4)
+		if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == ANIM_ROUND_TAKING_MISS_CLOSE)
 			EkrMainMini_EndBlock(&OpEkrMiniDesc);
 
-		proc->unk_3E = 1;
+		proc->blocking = 1;
 	}
 
 	proc->round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
@@ -444,8 +444,8 @@ void ClassDemoMain_OnEnd(struct ProcClassDemoMain *proc)
 	EndActiveClassReelSpell();
 	EndEkrMainMini(&OpEkrMiniDesc);
 
-	if (proc->procfx)
-		Proc_Goto(proc->procfx, 4);
+	if (proc->status)
+		Proc_Goto(proc->status, PL_CLASSDEMO_END);
 
 	proc->opinfo->anim_proc = NULL;
 }
@@ -457,7 +457,7 @@ ProcPtr StartClassAnimDisplay(struct ProcOpInfo *parent, u8 index)
 	proc = SpawnProc(ProcScr_ClassDemoMain, parent);
 	proc->index = index;
 	proc->opinfo = parent;
-	proc->procfx = NULL;
+	proc->status = NULL;
 
 	return proc;
 }
@@ -466,31 +466,31 @@ void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 {
 	int i, j;
 
-	proc->gauge = proc->proc_parent;
+	proc->demo = proc->proc_parent;
 	proc->timer = 0;
-	proc->unk_42 = 0;
-	proc->unk_43 = 250;
+	proc->name_width = 0;
+	proc->name_x = 250;
 
-	for (i = 0; i < 14; i++) {
+	for (i = 0; i < CLASSDEMO_NAME_MAX; i++) {
 		OpClassDemoCharPositions[i].x = 0;
 		OpClassDemoCharPositions[i].y = 0;
 
-		if (gClassDemoNames[proc->gauge->index][i] == '\0') {
-			proc->ch_pos[i] = 0xFF;
+		if (gClassDemoNames[proc->demo->index][i] == '\0') {
+			proc->ch_pos[i] = CLASSDEMO_NAME_END;
 			break;
 		}
 
 		for (j = 0; gClassDisplayFont1[j].sprite != NULL; j++) {
-			if (gClassDisplayFont1[j].ch == gClassDemoNames[proc->gauge->index][i]) {
+			if (gClassDisplayFont1[j].ch == gClassDemoNames[proc->demo->index][i]) {
 				proc->ch_pos[i] = j;
-				proc->unk_42 += gClassDisplayFont1[j].width - gClassDisplayFont1[j].x_start;
+				proc->name_width += gClassDisplayFont1[j].width - gClassDisplayFont1[j].x_start;
 				break;
 			}
 		}
 	}
 
 	Decompress(Img_ClassDemoFont, OBJ_VRAM0);
-	ApplyPalettes(Pal_ClassDemoFont, 0x14, 2);
+	ApplyObPalettes(Pal_ClassDemoFont, OBPAL_CLASSDEMO_FONT, 2);
 }
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Mag");
@@ -500,23 +500,23 @@ void ClassDemoStatus_Loop(struct ProcClassDemoStatus *proc)
 	u8 unused[] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };
 	int i, x;
 
-	for (i = 0; i < 6; i++) {
-		u8 status = proc->gauge->unit_status[i];
+	for (i = 0; i < CLASSDEMO_STAT_COUNT; i++) {
+		u8 status = proc->demo->unit_status[i];
 
 		for (x = 0; x < status / 4; x++)
-			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_OpInfo_0869006C[3], OAM2_PAL(5));
+			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_ClassDemoGaugePips[3], OAM2_PAL(OBPAL_CLASSDEMO_SHADOW));
 
 		if (status % 4)
-			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_OpInfo_0869006C[status % 4 - 1], OAM2_PAL(5));
+			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_ClassDemoGaugePips[status % 4 - 1], OAM2_PAL(OBPAL_CLASSDEMO_SHADOW));
 	}
 
-	x = (0x78 - proc->unk_42) / 2 + proc->unk_43;
+	x = (0x78 - proc->name_width) / 2 + proc->name_x;
 
-	for (i = 0; i < 14 && proc->ch_pos[i] != 0xFF; i++) {
-		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start, 8 - gClassDisplayFont1[proc->ch_pos[i]].c,
-			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(5));
-		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start - 2, 6 - gClassDisplayFont1[proc->ch_pos[i]].c,
-			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(4));
+	for (i = 0; i < CLASSDEMO_NAME_MAX && proc->ch_pos[i] != CLASSDEMO_NAME_END; i++) {
+		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start, 8 - gClassDisplayFont1[proc->ch_pos[i]].y_start,
+			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(OBPAL_CLASSDEMO_SHADOW));
+		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start - 2, 6 - gClassDisplayFont1[proc->ch_pos[i]].y_start,
+			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(OBPAL_CLASSDEMO_FONT));
 
 		x += gClassDisplayFont1[proc->ch_pos[i]].width - gClassDisplayFont1[proc->ch_pos[i]].x_start;
 	}
@@ -525,7 +525,7 @@ void ClassDemoStatus_Loop(struct ProcClassDemoStatus *proc)
 		proc->timer++;
 }
 
-void func_fe6_08095D28(void)
+void ClassDemoStatus_OnEnd(void)
 {
 }
 
@@ -536,16 +536,18 @@ ProcPtr StartClassDemoStatus(ProcPtr parent)
 
 void SetOpClassDemoStatusPos(struct ProcClassDemoStatus *proc, int pos)
 {
-	proc->unk_43 = pos;
+	proc->name_x = pos;
 }
 
-void func_fe6_08095D48(ProcPtr unused)
+// OpClassDemoCharPositions is never read, so this has no visible effect
+void SetOpClassDemoFirstCharPos(ProcPtr unused)
 {
 	OpClassDemoCharPositions[0].x = 0x80;
 	OpClassDemoCharPositions[0].y = 2;
 }
 
-void func_fe6_08095D58(void)
+// uncalled
+void ClassDemoStatus_Nop(void)
 {
 }
 
@@ -821,68 +823,68 @@ i8 const * CONST_DATA gClassDemoNames[] = {
 	"King"
 };
 
-u16 CONST_DATA Sprite_08690DD0[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle0[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690DD8[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle1[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x4) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690DE0[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle2[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x8) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690DE8[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle3[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0xC) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690DF0[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle4[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x10) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690DF8[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle5[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x14) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E00[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle6[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x18) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E08[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle7[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x1C) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E10[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle8[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x80) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E18[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle9[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x84) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E20[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle10[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x88) + OAM2_LAYER(3),
 };
 
-u16 CONST_DATA Sprite_08690E28[] = {
+u16 CONST_DATA Sprite_ClassDemoSparkle11[] = {
 	1,
 	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x8C) + OAM2_LAYER(3),
 };
 
-CONST_DATA u16 * CONST_DATA Sprites_ClassDemo_Unused[] = {
-	Sprite_08690DD0, Sprite_08690DD8, Sprite_08690DE0, Sprite_08690DE8,
-	Sprite_08690DF0, Sprite_08690DF8, Sprite_08690E00, Sprite_08690E08,
-	Sprite_08690E10, Sprite_08690E18, Sprite_08690E20, Sprite_08690E28,
+CONST_DATA u16 * CONST_DATA Sprites_ClassDemoSparkles[] = {
+	Sprite_ClassDemoSparkle0, Sprite_ClassDemoSparkle1, Sprite_ClassDemoSparkle2, Sprite_ClassDemoSparkle3,
+	Sprite_ClassDemoSparkle4, Sprite_ClassDemoSparkle5, Sprite_ClassDemoSparkle6, Sprite_ClassDemoSparkle7,
+	Sprite_ClassDemoSparkle8, Sprite_ClassDemoSparkle9, Sprite_ClassDemoSparkle10, Sprite_ClassDemoSparkle11,
 };

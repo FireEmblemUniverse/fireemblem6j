@@ -109,7 +109,7 @@ void OpInfo_Branch(struct ProcOpInfo *proc)
 void OpInfo_PostAnim(struct ProcOpInfo *proc)
 {
 	if (proc->anim_proc != NULL)
-		Proc_Goto(proc->anim_proc, 4);
+		Proc_Goto(proc->anim_proc, PL_CLASSDEMO_END);
 
 	SetDispEnable(0, 0, 0, 0, 1);
 
@@ -146,7 +146,7 @@ void OpInfo_EndSubProcs(struct ProcOpInfo *proc)
 		Proc_Goto(proc->subproc1, 4);
 
 	if (proc->anim_proc != NULL)
-		Proc_Goto(proc->anim_proc, 4);
+		Proc_Goto(proc->anim_proc, PL_CLASSDEMO_END);
 }
 
 void OpInfo_End(struct ProcOpInfo *proc)
