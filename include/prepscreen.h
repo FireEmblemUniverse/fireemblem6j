@@ -261,7 +261,7 @@ void StartPrepMenuFadeIn(ProcPtr proc);
 
 void PrepDisp_ChangeSubmenuDesc(struct ProcPrepUpperDisp *proc, int idx);
 void PrepDisp_SetWorldMapInfo(struct ProcPrepUpperDisp *proc, fu8 x, fu8 y, int index_gaiden);
-void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible);
+void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, i8 visible);
 void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp *proc);
 void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp *proc);
 void PrepDisp_PutHand(struct ProcPrepUpperDisp *proc);
