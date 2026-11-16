@@ -18,6 +18,7 @@
 
 #include "constants/chapters.h"
 #include "constants/faces.h"
+#include "constants/videoalloc_global.h"
 
 enum
 {
@@ -93,7 +94,7 @@ fu8 StartDebugMainMenu(struct MenuProc * menu)
     ClearUi();
 
     StartMenu(&MenuInfo_DebugMain);
-    DebugInitBg(BG_2, 0);
+    DebugInitBg(BG_2, DEBUGTEXT_BG_VRAM_DEFAULT);
 
     return MENU_ACTION_NOCURSOR;
 }
@@ -177,7 +178,7 @@ fu8 DebugMenu_Idle_DebugInfo(struct MenuProc * menu, struct MenuEntProc * ent)
         proc->debug_info ^= 1;
         DebugMenu_Display_DebugInfo(menu, ent);
 
-        DebugInitObj(-1, 9);
+        DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
     }
 
 #if BUGFIX
@@ -394,7 +395,7 @@ void StartDebugMenu_LoadGame(void)
 
     InitBmDisplay();
 
-    DebugInitBg(BG_2, 0);
+    DebugInitBg(BG_2, DEBUGTEXT_BG_VRAM_DEFAULT);
 
     if (!IsSramWorking())
         PutDrawText(NULL, gBg0Tm + TM_OFFSET(0, 18), 0, 0, 30, JTEXT("ＳＲＡＭが装着されていません"));

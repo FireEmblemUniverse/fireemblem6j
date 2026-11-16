@@ -33,7 +33,7 @@ static int EWRAM_DATA sDebugOam2Pal = 0;
 
 void DebugInitBg(int bg, int vramOffset)
 {
-    if (vramOffset == 0)
+    if (vramOffset == DEBUGTEXT_BG_VRAM_DEFAULT)
         vramOffset = BGCHR_DEBUGTEXT_DEFAULT * CHR_SIZE;
 
     SetBgChrOffset(bg, 0);

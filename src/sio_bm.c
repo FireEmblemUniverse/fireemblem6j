@@ -811,7 +811,7 @@ void func_fe6_0803D178(ProcPtr proc)
 		gSioBmSt.unk_2C[i].unit_id = 0;
 	}
 
-	DebugInitObj(-1, 9);
+	DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
 }
 
 int func_fe6_0803D208(void)
