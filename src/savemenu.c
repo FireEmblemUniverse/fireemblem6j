@@ -7,6 +7,7 @@
 #include "gamecontroller.h"
 #include "util.h"
 #include "helpbox.h"
+#include "chapter_title.h"
 #include "save_core.h"
 #include "save_game.h"
 

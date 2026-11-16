@@ -128,14 +128,6 @@ int HelpBoxTryRelocateRight(struct HelpBoxProc * proc);
 // HelpBoxLockHelper_Loop
 // StartLockingHelpBox
 struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
-void PutChapterTitlePalettle(int flags, int pal);
-void PutChapterTitleGfx(int chr, int chapter);
-void PutChapterTitleBG1(int chr);
-void PutChapterTitleBG2(int chr);
-void PutChapterTitleTextTSA(u16 * tm, int pal);
-void PutChapterTitleBgTSA(u16 * tm, int pal);
-void PutChapterTitleBgDefaultTSA(u16 * tm, int pal);
-int GetChapterTitleExtra(struct PlaySt const * play_st);
 void LoadHelpBoxGfx(void * vram, int pal);
 // LoadHelpBoxGfxTwoLines
 void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box);
@@ -194,8 +186,6 @@ void ClearHelpDialogueText(void);
 
 extern struct ProcScr CONST_DATA ProcScr_HelpBox[];
 extern struct ProcScr CONST_DATA ProcScr_HelpBoxMoveControl[];
-
-extern u8 const * CONST_DATA gChapterTitleData[]; // array img ref
 
 extern struct ProcScr CONST_DATA ProcScr_TypeWriter[];
 extern struct ProcScr CONST_DATA ProcScr_DemoMonologueDisp[];
