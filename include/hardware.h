@@ -230,7 +230,7 @@ void ColFadeTick(void);
 void InitBgs(u16 const * config);
 u16 * GetBgTilemap(int bg);
 void SoftResetIfKeyCombo(void);
-void func_fe6_0800285C(int unk);
+void SleepUntilKeyCombo(int keys);
 void SetOnHBlankA(Func func);
 void SetOnHBlankB(Func func);
 
