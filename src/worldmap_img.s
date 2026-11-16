@@ -134,16 +134,16 @@ ApInfo_WmHighlight_Nation6:
 Pal_WmHightlight: @ 082D3398
     .incbin "fe6-base.gba", 0x2D3398, (0x2D33B8 - 0x2D3398) @ length: 0020
 
-    .global Img_WorldMapStuff
-Img_WorldMapStuff: @ 082D33B8
-    .incbin "data/worldmap/graphics/Img_WorldMapStuff.4bpp.lz"
+    .global Img_WmSprites
+Img_WmSprites: @ 082D33B8
+    .incbin "data/worldmap/graphics/Img_WmSprites.4bpp.lz"
 
     .global ApInfo_WmDot
 ApInfo_WmDot: @ 082D3674
     .incbin "fe6-base.gba", 0x2D3674, (0x2D36E4 - 0x2D3674) @ length: 0070
 
-    .global Pal_WorldMapStuff
-Pal_WorldMapStuff: @ 082D36E4
+    .global Pal_WmSprites
+Pal_WmSprites: @ 082D36E4
     .incbin "fe6-base.gba", 0x2D36E4, (0x2D3764 - 0x2D36E4) @ length: 0080
 
     .global Pal_WmSpriteDisp2
