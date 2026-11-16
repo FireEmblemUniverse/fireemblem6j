@@ -41,7 +41,7 @@ void ApplyIconPalette(int num, int palid)
     ApplyPalette(Pal_Icons + 0x10 * num, palid);
 }
 
-static int CountActiveIcons(void)
+int CountActiveIcons(void)
 { 
     int i, result = 0;
 
@@ -54,12 +54,12 @@ static int CountActiveIcons(void)
     return result;
 }
 
-static u16 IconSlot2Chr(int num)
+u16 IconSlot2Chr(int num)
 {
     return BGCHR_ICON_END - num * 4;
 }
 
-static int GetNewIconSlot(int icon)
+int GetNewIconSlot(int icon)
 {
     int i;
 
@@ -75,7 +75,7 @@ static int GetNewIconSlot(int icon)
     return -1;
 }
 
-static int GetIconChr(int icon)
+int GetIconChr(int icon)
 {
     if (sIconStTable[icon].disp_id != 0)
     {

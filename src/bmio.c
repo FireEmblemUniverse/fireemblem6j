@@ -10,29 +10,29 @@
 #include "unitsprite.h"
 #include "chapterinfo.h"
 
-static void WeatherInit_None(void);
-static void WeatherInit_Snow(void);
-static void WeatherVBlank_Snow(void);
-static void WeatherInit_Rain(void);
-static void WeatherVBlank_Rain(void);
-static void WeatherInit_Sandstorm(void);
-static void WeatherVBlank_Sandstorm(void);
-static void WeatherInit_Snowstorm(void);
-static void WeatherVBlank_Snowstorm(void);
-static void WeatherInit_Blue(void);
-static void WeatherVBlank_Blue(void);
-static void WeatherInit_Flames(void);
-static void WeatherVBlank_Flames(void);
-static void WeatherInit_Clouds(void);
-static void WeatherVBlank_Clouds(void);
-static void WeatherUpdate_Clouds(void);
+void WeatherInit_None(void);
+void WeatherInit_Snow(void);
+void WeatherVBlank_Snow(void);
+void WeatherInit_Rain(void);
+void WeatherVBlank_Rain(void);
+void WeatherInit_Sandstorm(void);
+void WeatherVBlank_Sandstorm(void);
+void WeatherInit_Snowstorm(void);
+void WeatherVBlank_Snowstorm(void);
+void WeatherInit_Blue(void);
+void WeatherVBlank_Blue(void);
+void WeatherInit_Flames(void);
+void WeatherVBlank_Flames(void);
+void WeatherInit_Clouds(void);
+void WeatherVBlank_Clouds(void);
+void WeatherUpdate_Clouds(void);
 
 #include "data/tileset/anims.h"
 
-static void BmVSync_TsImgAnim(struct BmVSyncProc * proc);
-static void BmVSync_TsPalAnim(struct BmVSyncProc * proc);
-static void BmVSync_Repeat(struct BmVSyncProc * proc);
-static void BmVSync_End(struct BmVSyncProc * proc);
+void BmVSync_TsImgAnim(struct BmVSyncProc * proc);
+void BmVSync_TsPalAnim(struct BmVSyncProc * proc);
+void BmVSync_Repeat(struct BmVSyncProc * proc);
+void BmVSync_End(struct BmVSyncProc * proc);
 
 EWRAM_OVERLAY(0) union WeatherEffect gWeatherEffect = {};
 EWRAM_OVERLAY(0) union WeatherGradient gWeatherGradient = {};
@@ -138,7 +138,7 @@ static u16 const sParticleTemplates[] =
     0xE0,  0x240, 2,
 };
 
-static void BmVSync_TsImgAnim(struct BmVSyncProc * proc)
+void BmVSync_TsImgAnim(struct BmVSyncProc * proc)
 {
     if (proc->imgAnimStart == NULL)
         return;
@@ -162,7 +162,7 @@ static void BmVSync_TsImgAnim(struct BmVSyncProc * proc)
         proc->imgAnimCurrent = proc->imgAnimStart;
 }
 
-static void BmVSync_TsPalAnim(struct BmVSyncProc * proc)
+void BmVSync_TsPalAnim(struct BmVSyncProc * proc)
 {
     if (!proc->palAnimStart)
         return;
@@ -188,7 +188,7 @@ static void BmVSync_TsPalAnim(struct BmVSyncProc * proc)
         proc->palAnimCurrent = proc->palAnimStart;
 }
 
-static void BmVSync_AnimInit(struct BmVSyncProc * proc)
+void BmVSync_AnimInit(struct BmVSyncProc * proc)
 {
     proc->imgAnimClock = 0;
     proc->palAnimClock = 0;
@@ -200,12 +200,12 @@ static void BmVSync_AnimInit(struct BmVSyncProc * proc)
         ChapterAssets[GetChapterInfo(gPlaySt.chapter)->asset_pal_anims];
 }
 
-static void BmVSync_End(struct BmVSyncProc * proc)
+void BmVSync_End(struct BmVSyncProc * proc)
 {
     SetOnHBlankB(NULL);
 }
 
-static void BmVSync_Repeat(struct BmVSyncProc * proc)
+void BmVSync_Repeat(struct BmVSyncProc * proc)
 {
     Proc_Goto(proc, 0);
 }
@@ -281,13 +281,13 @@ void AllocWeatherParticles(int weather)
     }
 }
 
-static void WeatherInit_None(void)
+void WeatherInit_None(void)
 {
     AllocWeatherParticles(gPlaySt.weather);
     SetOnHBlankB(NULL);
 }
 
-static void WeatherInit_Snow(void)
+void WeatherInit_Snow(void)
 {
     int i;
 
@@ -315,7 +315,7 @@ static void WeatherInit_Snow(void)
     }
 }
 
-static void WeatherVBlank_Snow(void)
+void WeatherVBlank_Snow(void)
 {
     if (GetOamSplice() != 0)
     {
@@ -348,7 +348,7 @@ static void WeatherVBlank_Snow(void)
     }
 }
 
-static void WeatherInit_Rain(void)
+void WeatherInit_Rain(void)
 {
     int i;
 
@@ -367,7 +367,7 @@ static void WeatherInit_Rain(void)
     }
 }
 
-static void WeatherVBlank_Rain(void)
+void WeatherVBlank_Rain(void)
 {
     if (GetOamSplice() != 0)
     {
@@ -390,7 +390,7 @@ static void WeatherVBlank_Rain(void)
     }
 }
 
-static void WeatherInit_Sandstorm(void)
+void WeatherInit_Sandstorm(void)
 {
     int i;
 
@@ -409,7 +409,7 @@ static void WeatherInit_Sandstorm(void)
     }
 }
 
-static void WeatherVBlank_Sandstorm(void)
+void WeatherVBlank_Sandstorm(void)
 {
     if (GetOamSplice() != 0)
     {
@@ -431,7 +431,7 @@ static void WeatherVBlank_Sandstorm(void)
     }
 }
 
-static void WeatherInit_Snowstorm(void)
+void WeatherInit_Snowstorm(void)
 {
     int i;
 
@@ -467,7 +467,7 @@ static void WeatherInit_Snowstorm(void)
     }
 }
 
-static void WeatherVBlank_Snowstorm(void)
+void WeatherVBlank_Snowstorm(void)
 {
     if (GetOamSplice() != 0)
     {
@@ -490,7 +490,7 @@ static void WeatherVBlank_Snowstorm(void)
     }
 }
 
-static void BlueWeatherHBlank(void)
+void BlueWeatherHBlank(void)
 {
     u16 nextLine = (REG_VCOUNT + 1);
 
@@ -505,7 +505,7 @@ static void BlueWeatherHBlank(void)
         ((u16 *) PLTT)[0] = nextLine[gWeatherGradient.lines];
 }
 
-static void WeatherInit_Blue(void)
+void WeatherInit_Blue(void)
 {
     int i;
 
@@ -517,11 +517,11 @@ static void WeatherInit_Blue(void)
     SetOnHBlankB(BlueWeatherHBlank);
 }
 
-static void WeatherVBlank_Blue(void)
+void WeatherVBlank_Blue(void)
 {
 }
 
-static void FlamesWeatherHBlank(void)
+void FlamesWeatherHBlank(void)
 {
     const u16 * src;
     u16 * dst;
@@ -572,7 +572,7 @@ void ApplyFlamesWeatherGradient(void)
     }
 }
 
-static void FlamesWeatherInitGradient(void)
+void FlamesWeatherInitGradient(void)
 {
     int i, j, k;
 
@@ -604,7 +604,7 @@ static void FlamesWeatherInitGradient(void)
     SetOnHBlankB(FlamesWeatherHBlank);
 }
 
-static void FlamesWeatherInitParticles(void)
+void FlamesWeatherInitParticles(void)
 {
     int i;
 
@@ -623,13 +623,13 @@ static void FlamesWeatherInitParticles(void)
     }
 }
 
-static void WeatherInit_Flames(void)
+void WeatherInit_Flames(void)
 {
     FlamesWeatherInitGradient();
     FlamesWeatherInitParticles();
 }
 
-static void FlamesWeatherUpdateGradient(void)
+void FlamesWeatherUpdateGradient(void)
 {
     int i, j;
 
@@ -658,7 +658,7 @@ static void FlamesWeatherUpdateGradient(void)
     }
 }
 
-static void FlamesWeatherUpdateParticles(void)
+void FlamesWeatherUpdateParticles(void)
 {
     struct WeatherParticle * it = gWeatherEffect.particles;
 
@@ -693,13 +693,13 @@ static void FlamesWeatherUpdateParticles(void)
     }
 }
 
-static void WeatherVBlank_Flames(void)
+void WeatherVBlank_Flames(void)
 {
     FlamesWeatherUpdateGradient();
     FlamesWeatherUpdateParticles();
 }
 
-static void CloudWeatherAnimateImage(u32 * lines)
+void CloudWeatherAnimateImage(u32 * lines)
 {
     u32 buf[8];
     int ix, iy;
@@ -736,7 +736,7 @@ static void CloudWeatherAnimateImage(u32 * lines)
     }
 }
 
-static void WeatherInit_Clouds(void)
+void WeatherInit_Clouds(void)
 {
     AllocWeatherParticles(WEATHER_NONE);
 
@@ -744,7 +744,7 @@ static void WeatherInit_Clouds(void)
     ApplyPalette(Pal_CloudWeather, 0x10+OBPAL_10);
 }
 
-static void WeatherVBlank_Clouds(void)
+void WeatherVBlank_Clouds(void)
 {
     u32 * img = gWeatherEffect.imgCloud;
 
@@ -774,7 +774,7 @@ static void WeatherVBlank_Clouds(void)
     }
 }
 
-static void WeatherUpdate_Clouds(void)
+void WeatherUpdate_Clouds(void)
 {
     int y = gBmSt.camera.y;
 

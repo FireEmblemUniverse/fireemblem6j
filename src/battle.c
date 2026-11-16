@@ -54,7 +54,7 @@ static struct WeaponTriangleRule CONST_DATA sWeaponTriangleRules[] =
     { -1 },
 };
 
-static void DummyBattleAnimLock_UpdateInstigator(ProcPtr proc);
+void DummyBattleAnimLock_UpdateInstigator(ProcPtr proc);
 
 struct ProcScr ProcScr_DummyBattleAnimLock[] =
 {
@@ -1664,7 +1664,7 @@ void BattleInitItemEffectTarget(struct Unit * unit)
             gBattleUnitB.weapon_before = 0;
 }
 
-static void DummyBattleAnimLock_UpdateInstigator(ProcPtr proc)
+void DummyBattleAnimLock_UpdateInstigator(ProcPtr proc)
 {
     UpdateUnitFromBattle(GetUnit(gBattleUnitA.unit.id), &gBattleUnitA);
 }

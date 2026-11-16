@@ -16,16 +16,16 @@ struct AnimProc
     /* 54 */ int x, y;
 };
 
-static void PutAnim(struct SpriteAnim * anim, int x, int y);
-static bool ExecAnim(struct SpriteAnim * anim);
-static void PutAnimAffine(struct SpriteAnim * anim);
-static void SyncAnimImg(struct SpriteAnim * anim);
-static void SetAnimInfo(struct SpriteAnim * anim, u16 const * info);
-static void AnimRunFirstFrame(struct SpriteAnim * anim);
-static void InitAnim(struct SpriteAnim * anim, u16 const * info, u16 layer);
+void PutAnim(struct SpriteAnim * anim, int x, int y);
+bool ExecAnim(struct SpriteAnim * anim);
+void PutAnimAffine(struct SpriteAnim * anim);
+void SyncAnimImg(struct SpriteAnim * anim);
+void SetAnimInfo(struct SpriteAnim * anim, u16 const * info);
+void AnimRunFirstFrame(struct SpriteAnim * anim);
+void InitAnim(struct SpriteAnim * anim, u16 const * info, u16 layer);
 
-static void AnimProc_Update(struct AnimProc * proc);
-static void AnimProc_OnEnd(struct AnimProc * proc);
+void AnimProc_Update(struct AnimProc * proc);
+void AnimProc_OnEnd(struct AnimProc * proc);
 
 #define RESOLVE_REFTABLE(table, id) ((table) + ((table)[id] >> 1))
 
@@ -78,7 +78,7 @@ bool DisplaySpriteAnim(struct SpriteAnim * anim, int x, int y)
     return ExecAnim(anim);
 }
 
-static void PutAnim(struct SpriteAnim * anim, int x, int y)
+void PutAnim(struct SpriteAnim * anim, int x, int y)
 {
     int affineOam1 = 0;
 
@@ -97,7 +97,7 @@ static void PutAnim(struct SpriteAnim * anim, int x, int y)
         SyncAnimImg(anim);
 }
 
-static bool ExecAnim(struct SpriteAnim * anim)
+bool ExecAnim(struct SpriteAnim * anim)
 {
     int tmp;
 
@@ -181,7 +181,7 @@ static bool ExecAnim(struct SpriteAnim * anim)
     }
 }
 
-static void PutAnimAffine(struct SpriteAnim * anim)
+void PutAnimAffine(struct SpriteAnim * anim)
 {
     int i, count;
     u16 const * it;
@@ -219,7 +219,7 @@ void SetSpriteAnimInfo(struct SpriteAnim * anim, u16 const * info)
     AnimRunFirstFrame(anim);
 }
 
-static void SyncAnimImg(struct SpriteAnim * anim)
+void SyncAnimImg(struct SpriteAnim * anim)
 {
     static u8 CONST_DATA oamSizeLut[] =
     {
@@ -285,7 +285,7 @@ static void SyncAnimImg(struct SpriteAnim * anim)
     anim->need_sync_img_b = FALSE;
 }
 
-static void SetAnimInfo(struct SpriteAnim * anim, u16 const * info)
+void SetAnimInfo(struct SpriteAnim * anim, u16 const * info)
 {
     anim->info = info;
 
@@ -295,7 +295,7 @@ static void SetAnimInfo(struct SpriteAnim * anim, u16 const * info)
     anim->script_pc = RESOLVE_REFTABLE(RESOLVE_REFTABLE(anim->info, 1), 0);
 }
 
-static void AnimRunFirstFrame(struct SpriteAnim * anim)
+void AnimRunFirstFrame(struct SpriteAnim * anim)
 {
     int tmp;
 
@@ -309,7 +309,7 @@ static void AnimRunFirstFrame(struct SpriteAnim * anim)
     anim->clock_interval_q8 = tmp;
 }
 
-static void InitAnim(struct SpriteAnim * anim, u16 const * info, u16 layer)
+void InitAnim(struct SpriteAnim * anim, u16 const * info, u16 layer)
 {
     SetAnimInfo(anim, info);
 
@@ -361,14 +361,14 @@ ProcPtr StartSpriteAnimProc(u16 const * info, int x, int y, int oam2, int animid
     return proc;
 }
 
-static void AnimProc_Update(struct AnimProc * proc)
+void AnimProc_Update(struct AnimProc * proc)
 {
     if (!DisplaySpriteAnim(proc->anim, proc->x, proc->y))
         if (!proc->anim || !proc->anim->info)
             Proc_End(proc);
 }
 
-static void AnimProc_OnEnd(struct AnimProc * proc)
+void AnimProc_OnEnd(struct AnimProc * proc)
 {
     EndSpriteAnim(proc->anim);
 }
