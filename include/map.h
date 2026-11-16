@@ -3,6 +3,13 @@
 
 #include "prelude.h"
 
+enum
+{
+    MAP_MOVEMENT_MAX = 120,
+    MAP_MOVEMENT_EXTENDED = 124,
+    MAP_MOVEMENT_UNREACHABLE = -1,
+};
+
 void InitMapForChapter(int chapter);
 void InitMapForMinimap(int chapter);
 void func_fe6_080187EC(void);

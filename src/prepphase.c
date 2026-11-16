@@ -368,7 +368,7 @@ static void PrepPhase_MapSwapSelectBegin(struct Proc * proc)
     info++;
 
     MapFill(gMapRange, 0);
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
 
     while (info->pid != 0)
     {

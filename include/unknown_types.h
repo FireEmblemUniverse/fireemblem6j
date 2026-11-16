@@ -7,12 +7,6 @@
 
 enum
 {
-    MAP_MOVEMENT_MAX = 120,
-    MAP_MOVEMENT_EXTENDED = 124,
-};
-
-enum
-{
     FACING_LEFT,
     FACING_RIGHT,
     FACING_DOWN,

@@ -92,7 +92,7 @@ void BeginMapFlood(int x, int y, int move, int uid)
 
     gMapFloodSt.edge_move = MAP_MOVEMENT_MAX;
 
-    MapFill(gWorkingMap, -1);
+    MapFill(gWorkingMap, MAP_MOVEMENT_UNREACHABLE);
 
     gMapFloodSt.waiting_queue->x = x;
     gMapFloodSt.waiting_queue->y = y;
@@ -168,22 +168,22 @@ void BuildBestMoveScript(int x, int y, u8 * output)
         // Build neighbor cost list
 
         if (x == (gMapSize.x - 1))
-            neighbourCosts[FACING_LEFT] |= 0xFF;
+            neighbourCosts[FACING_LEFT] |= (u8) MAP_MOVEMENT_UNREACHABLE;
         else
             neighbourCosts[FACING_LEFT] = gWorkingMap[y][x+1];
 
         if (x == 0)
-            neighbourCosts[FACING_RIGHT] |= 0xFF;
+            neighbourCosts[FACING_RIGHT] |= (u8) MAP_MOVEMENT_UNREACHABLE;
         else
             neighbourCosts[FACING_RIGHT] = gWorkingMap[y][x-1];
 
         if (y == (gMapSize.y - 1))
-            neighbourCosts[FACING_UP] |= 0xFF;
+            neighbourCosts[FACING_UP] |= (u8) MAP_MOVEMENT_UNREACHABLE;
         else
             neighbourCosts[FACING_UP] = gWorkingMap[y+1][x];
 
         if (y == 0)
-            neighbourCosts[FACING_DOWN] |= 0xFF;
+            neighbourCosts[FACING_DOWN] |= (u8) MAP_MOVEMENT_UNREACHABLE;
         else
             neighbourCosts[FACING_DOWN] = gWorkingMap[y-1][x];
 
