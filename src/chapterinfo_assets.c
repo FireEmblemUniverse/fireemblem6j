@@ -278,7 +278,7 @@ void const * CONST_DATA ChapterAssets[] = {
 	[PLIST_CH20DX_EVENT] = &ChapterEventInfo_Ch20dx,
 	[PLIST_CH20DX_EVENTWM] = EventScr_Wm_Ch20dx,
 
-	[PLIST_MAPASSET4D_IMGANIM] = MapAsset4d_ImgAnims,
+	[PLIST_MAPASSET4D_PAL] = MapAsset04d_Pal,
 
 	[PLIST_CH21X_MAP] = MapTsa_Ch21x,
 	[PLIST_CH21X_MAPCHG] = MapChange_Ch21x,
