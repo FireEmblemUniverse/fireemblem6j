@@ -51,7 +51,7 @@ void InitSubtitleHelpText(struct SubtitleHelpProc * proc)
 
     line = 0;
 
-    while (*it > 1)
+    while (*it > TEXT_CHAR_NEWLINE)
     {
         it = Text_DrawCharacter(proc->text+line, it);
 

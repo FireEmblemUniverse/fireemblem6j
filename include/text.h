@@ -50,6 +50,18 @@ enum
 
 enum
 {
+    TEXT_CHAR_END      = 0x00,
+    TEXT_CHAR_NEWLINE  = 0x01,
+    TEXT_CHAR_CLEAR    = 0x02,
+    TEXT_CHAR_WAIT     = 0x03,
+    TEXT_CHAR_PAUSE_8  = 0x04,
+    TEXT_CHAR_PAUSE_16 = 0x05,
+    TEXT_CHAR_PAUSE_32 = 0x06,
+    TEXT_CHAR_PAUSE_64 = 0x07,
+};
+
+enum
+{
     TEXT_GLYPHS_SYSTEM,
     TEXT_GLYPHS_TALK,
 };

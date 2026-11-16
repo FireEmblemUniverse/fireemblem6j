@@ -408,7 +408,7 @@ void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc)
 
 	do {
 		switch (*str) {
-		case 4:
+		case TEXT_CHAR_PAUSE_8:
 			str++;
 			break;
 
@@ -424,8 +424,8 @@ void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc)
 			break;
 		}
 
-		case 0:
-		case 1:
+		case TEXT_CHAR_END:
+		case TEXT_CHAR_NEWLINE:
 			Proc_Break(proc);
 			return;
 		}
@@ -638,13 +638,13 @@ int GetOpAnimTextStrLength(const char *str)
 {
 	int len = 0;
 
-	while (str[0] != '\0') {
+	while (str[0] != TEXT_CHAR_END) {
 		switch (str[0]) {
-		case 1:
+		case TEXT_CHAR_NEWLINE:
 			return len;
 
 		default:
-			if (str[0] == 4)
+			if (str[0] == TEXT_CHAR_PAUSE_8)
 				str++;
 			else {
 				len = len + GetOpAnimTextChLength(str);
@@ -658,13 +658,13 @@ int GetOpAnimTextStrLength(const char *str)
 
 const char *GetOpAnimTextPrNext(const char *str)
 {
-	while (*str != '\0') {
+	while (*str != TEXT_CHAR_END) {
 		switch (str[0]) {
-		case 4:
+		case TEXT_CHAR_PAUSE_8:
 			str = str + 1;
 			break;
 
-		case 1:
+		case TEXT_CHAR_NEWLINE:
 			return str + 1;
 
 		default:
