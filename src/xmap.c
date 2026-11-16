@@ -40,13 +40,13 @@ bool Xmap_DrawInfoText(struct ProcXmap * proc)
     {
         switch (*proc->info_str)
         {
-            case 0:
+            case TEXT_CHAR_END:
                 SetTextFont(NULL);
                 return TRUE;
 
-            case 1:
-            case 2:
-            case 3:
+            case TEXT_CHAR_NEWLINE:
+            case TEXT_CHAR_CLEAR:
+            case TEXT_CHAR_WAIT:
                 proc->info_str++;
                 proc->info_line++;
                 proc->info_delay = XMAP_INFO_LINE_DELAY;
@@ -59,7 +59,7 @@ bool Xmap_DrawInfoText(struct ProcXmap * proc)
 
                 break;
 
-            case 4:
+            case TEXT_CHAR_PAUSE_8:
                 proc->info_str++;
                 break;
 

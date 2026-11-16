@@ -173,19 +173,16 @@ void TypeWriter_Loop(struct ProcTypeWriter * proc)
     {
         switch (*proc->str_it)
         {
-
-            // TODO: control character constants
-
-        case 0:
+        case TEXT_CHAR_END:
             Proc_Break(proc);
             break;
 
-        case 1:
+        case TEXT_CHAR_NEWLINE:
             proc->str_it++;
             proc->line++;
             continue;
 
-        case 4:
+        case TEXT_CHAR_PAUSE_8:
             proc->str_it++;
             continue;
 
@@ -221,18 +218,15 @@ static inline void DemoMonologueDisp_PrintLines(struct ProcTypeWriter * proc)
         {
             switch (*proc->str_it)
             {
-
-                // TODO: control character constants
-
-            case 0:
+            case TEXT_CHAR_END:
                 return;
 
-            case 4:
-            case 5:
+            case TEXT_CHAR_PAUSE_8:
+            case TEXT_CHAR_PAUSE_16:
                 proc->str_it++;
                 continue;
 
-            case 1:
+            case TEXT_CHAR_NEWLINE:
                 proc->str_it++;
                 break;
 

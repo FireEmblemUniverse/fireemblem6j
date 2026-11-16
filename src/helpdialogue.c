@@ -266,10 +266,7 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
     {
         switch (*str)
         {
-
-            // TODO: control character constants
-
-        case 1: // newline
+        case TEXT_CHAR_NEWLINE:
             h += 16;
 
             if (*out_w < w)
@@ -280,8 +277,8 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
             str++;
             break;
 
-        case 2:
-        case 3:
+        case TEXT_CHAR_CLEAR:
+        case TEXT_CHAR_WAIT:
             if (*out_w < w)
                 *out_w = w;
 
@@ -295,11 +292,11 @@ void GetPagedStringTextBox(char const * str, int * out_w, int * out_h)
             str++;
             break;
 
-        case 4:
+        case TEXT_CHAR_PAUSE_8:
             str++;
             break;
 
-        case 0: // end
+        case TEXT_CHAR_END:
             if (*out_w < w)
                 *out_w = w;
 
@@ -334,22 +331,19 @@ void GetStringPageEndPos(char const * str, u8 * out_x, u8 * out_y)
     {
         switch (*it)
         {
-            // TODO: control character constants
-
-        case 4:
+        case TEXT_CHAR_PAUSE_8:
             it++;
             break;
 
-        case 1: // newline
+        case TEXT_CHAR_NEWLINE:
             it++;
             y += 16;
             x = 0;
             break;
 
-        case 2:
-        case 3:
-        case 0: // end
-            // case end, 2, 3
+        case TEXT_CHAR_CLEAR:
+        case TEXT_CHAR_WAIT:
+        case TEXT_CHAR_END:
             *out_x = x + 2;
             *out_y = y + 8;
             return;
@@ -505,29 +499,26 @@ void HelpDialoguePrint_Loop(struct HelpDialoguePrintProc * proc)
     {
         switch (*proc->str)
         {
-
-            // TODO: control character constants
-
-        case 0:
+        case TEXT_CHAR_END:
             Proc_Break(proc);
             break;
 
-        case 1:
+        case TEXT_CHAR_NEWLINE:
             proc->str++;
             proc->line++;
             continue;
 
-        case 4:
+        case TEXT_CHAR_PAUSE_8:
             proc->str++;
             continue;
 
-        case 2:
-        case 3:
+        case TEXT_CHAR_CLEAR:
+        case TEXT_CHAR_WAIT:
             proc->line = 0;
             proc->str++;
             proc->clear_pending = 1;
 
-            if (*proc->str == 1)
+            if (*proc->str == TEXT_CHAR_NEWLINE)
                 proc->str++;
 
             helpbox_proc = FindProc(ProcScr_HelpDialogueBox);

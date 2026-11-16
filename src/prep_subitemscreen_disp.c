@@ -425,7 +425,7 @@ void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc)
 					0, str);
 
 				str = GetStringLineEnd(str);
-				if (*str == '\0')
+				if (*str == TEXT_CHAR_END)
 					break;
 
 				str++, tm_offset += TM_OFFSET(0, 1) * 2, text++;

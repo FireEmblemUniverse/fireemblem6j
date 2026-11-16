@@ -264,7 +264,7 @@ int GetStringTextLen(char const * str)
     if (gActiveFont->lang != LANG_JAPANESE)
         return GetStringTextLenAscii(str);
 
-    while (*str > 1)
+    while (*str > TEXT_CHAR_NEWLINE)
     {
         byte1 = *str++;
 
@@ -326,7 +326,7 @@ void GetStringTextBox(char const * str, int * out_width, int * out_height)
     *out_width = 0;
     *out_height = 0;
 
-    while (*str > 1)
+    while (*str > TEXT_CHAR_NEWLINE)
     {
         int width = GetStringTextLen(str);
 
@@ -337,7 +337,7 @@ void GetStringTextBox(char const * str, int * out_width, int * out_height)
 
         str = GetStringLineEnd(str);
 
-        if (*str == 0)
+        if (*str == TEXT_CHAR_END)
             break;
 
         str++;
@@ -346,9 +346,9 @@ void GetStringTextBox(char const * str, int * out_width, int * out_height)
 
 char const * GetStringLineEnd(char const * str)
 {
-    while (*str > 1)
+    while (*str > TEXT_CHAR_NEWLINE)
     {
-        if (*str == 4)
+        if (*str == TEXT_CHAR_PAUSE_8)
         {
             str++;
             continue;
@@ -371,7 +371,7 @@ void Text_DrawString(struct Text * text, char const * str)
         return;
     }
 
-    while (*str > 1)
+    while (*str > TEXT_CHAR_NEWLINE)
     {
         byte1 = *str++;
 
@@ -740,16 +740,16 @@ static void TextPrint_OnLoop(struct TextPrintProc * proc)
         switch (*proc->str)
         {
 
-        case 0: // end
+        case TEXT_CHAR_END:
             // fallthrough
 
-        case 1: // newline
+        case TEXT_CHAR_NEWLINE:
             proc->text->is_printing = FALSE;
             Proc_Break(proc);
 
             return;
 
-        case 4: // space?
+        case TEXT_CHAR_PAUSE_8: // space?
             proc->str++;
             Text_Skip(proc->text, 6);
 

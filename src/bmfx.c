@@ -988,7 +988,7 @@ void UpdateEquipInfoWindow(int item_slot)
             Text_InsertDrawString(proc->text + line, 0, TEXT_COLOR_SYSTEM_WHITE, str);
             str = GetStringLineEnd(str);
 
-            if (str[0] == '\0')
+            if (str[0] == TEXT_CHAR_END)
                 break;
 
             str++;
