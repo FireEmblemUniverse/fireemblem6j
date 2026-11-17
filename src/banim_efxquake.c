@@ -304,7 +304,7 @@ void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind)
 
 	proc->unk_64 = anim;
 
-	RegisterDataMove(gpBanimTerrainfxBufs[GetAnimPosition(anim1)], (void *)0x06011800, 0x800);
+	RegisterDataMove(gpBanimTerrainfxBufs[GetAnimPosition(anim1)], OBJ_VRAM0 + 0x1800, 0x800);
 
 	CpuFastCopy(gpBanimTerrainPalBufs[GetAnimPosition(anim1)], gPal + 0x130, PLTT_SIZE_4BPP);
 	EnablePalSync();

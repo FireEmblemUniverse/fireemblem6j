@@ -308,7 +308,7 @@ struct FaceProc * StartFace(int slot, int fid, int x, int y, int disp)
 
     info = GetFaceInfo(fid);
 
-    Decompress(info->img, (u8 *) VRAM + 0x10000 + gFaceConfig[slot].chr_off);
+    Decompress(info->img, OBJ_VRAM0 + gFaceConfig[slot].chr_off);
     ApplyPalette(info->pal, 0x10 + gFaceConfig[slot].palid);
 
     proc = SpawnProc(ProcScr_Face, PROC_TREE_5);
