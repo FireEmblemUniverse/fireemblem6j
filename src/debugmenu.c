@@ -615,7 +615,7 @@ fu8 DebugMenu_OnSelect_ReleaseEntry(struct MenuProc * menu, struct MenuEntProc *
 
 fu8 DebugMenu_OnSelect_Sleep(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    func_fe6_0800285C(KEY_BUTTON_L | KEY_BUTTON_R);
+    SleepUntilKeyCombo(KEY_BUTTON_L | KEY_BUTTON_R);
 
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
