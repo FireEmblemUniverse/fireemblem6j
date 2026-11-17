@@ -4,6 +4,8 @@
 #include "proc.h"
 #include "spriteanim.h"
 
+#include "constants/videoalloc_wm.h"
+
 enum
 {
     WM_VIEW_FULL,
@@ -55,8 +57,8 @@ enum
     WM_ARROW_DOT_ARRIVED = 99,
 };
 
-#define OBCHR_WM_ARROW_HEAD 0x310
-#define OBCHR_WM_ARROW_DOT 0x323
+#define OBCHR_WM_ARROW_HEAD OBCHR_WM_SPRITES
+#define OBCHR_WM_ARROW_DOT (OBCHR_WM_SPRITES + 0x13)
 
 struct WmArrowSt {
     /* 00 */ u8 busy;

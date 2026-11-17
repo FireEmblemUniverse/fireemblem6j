@@ -7,6 +7,8 @@ enum
     OBCHR_WM_FACE_A = 0x200,
     OBCHR_WM_FACE_B = 0x288,
 
+    OBCHR_WM_SPRITES = 0x310,
+
     OBCHR_WM_TEXT = 0x340,
 };
 
