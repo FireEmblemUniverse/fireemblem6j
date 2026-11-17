@@ -2038,7 +2038,7 @@ static void TalkDebug_OnIdle(struct Proc * proc)
 
     if (proc->unk34 == 0)
     {
-        DebugInitObj(-1, 9);
+        DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
         TalkDebug_Unk_0800CA88(proc);
     }
 
@@ -2079,7 +2079,7 @@ static void TalkDebug_OnIdle(struct Proc * proc)
         ClearTalk();
         EndTalk();
 
-        DebugInitObj(-1, 9);
+        DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
 
         proc->x = msg;
 

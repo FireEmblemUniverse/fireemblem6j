@@ -2,6 +2,12 @@
 
 #include "prelude.h"
 
+enum
+{
+    DEBUGTEXT_BG_VRAM_DEFAULT = 0,
+    DEBUGTEXT_OBJ_VRAM_DEFAULT = -1,
+};
+
 void DebugInitBg(int bg, int vramOffset);
 void DebugPutStr(u16 * tm, char const * str);
 void DebugPutFmt(u16 * tm, char const * fmt, ...);

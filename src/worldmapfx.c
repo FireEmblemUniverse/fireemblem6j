@@ -10,6 +10,7 @@
 #include "chapterinfo.h"
 #include "worldmap.h"
 #include "constants/worldmap.h"
+#include "constants/videoalloc_global.h"
 
 void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)
 {
@@ -995,7 +996,7 @@ void WmDebug_Loop(struct ProcWmDebug * proc)
 
     if (proc->state == 0)
     {
-        DebugInitObj(-1, 0x9);
+        DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
         WmDebug_ResetState(proc);
     }
 
@@ -1037,7 +1038,7 @@ void WmDebug_Loop(struct ProcWmDebug * proc)
 
     if (number != proc->number)
     {
-        DebugInitObj(-1, 9);
+        DebugInitObj(DEBUGTEXT_OBJ_VRAM_DEFAULT, OBPAL_DEBUGTEXT);
         proc->number = number;
         return;
     }
