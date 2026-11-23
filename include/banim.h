@@ -118,9 +118,11 @@ enum banim_sprites_size {
 
 extern EWRAM_OVERLAY(banim) u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
 extern EWRAM_OVERLAY(banim) u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE * 2];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE * 2];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf[BAS_IMG_MAX_SIZE * 4];
 extern EWRAM_OVERLAY(banim) u8 gBanimTerrainfxBufObj[0x2000];
+
+#define gBanimImgSheetBuf_Left  &gBanimImgSheetBuf[0]
+#define gBanimImgSheetBuf_Right &gBanimImgSheetBuf[BAS_IMG_MAX_SIZE * 2]
 
 struct ProcEfx {
     PROC_HEADER;

@@ -7,8 +7,7 @@
 #include "constants/banims.h"
 #include "constants/jids.h"
 
-EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE * 2] = {};
-EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE * 2] = {};
+EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf[BAS_IMG_MAX_SIZE * 4] = {};
 EWRAM_OVERLAY(banim) u16 gBanimPaletteLeft[0x50] = {};
 EWRAM_OVERLAY(banim) u16 gBanimPaletteRight[0x50] = {};
 EWRAM_OVERLAY(banim) u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE] = {};
