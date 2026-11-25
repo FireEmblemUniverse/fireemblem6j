@@ -1795,7 +1795,7 @@ void func_fe6_08038D64(struct SioPostBattleProc * proc)
 	u16 * tm = gBg2Tm;
 
 	if (proc->player_id == proc->unk_44[proc->unk_41 - 1].player_id) {
-		TmApplyTsa(tm + TM_OFFSET(0, gUnk_Sio_0810F26C[unk_40][proc->unk_41 - 1]), gUnk_08109CC0, TILEREF(0x60, 2));
+		TmApplyTsa(tm + TM_OFFSET(0, gUnk_Sio_0810F26C[unk_40][proc->unk_41 - 1]), gUnk_08109CC0, TILEREF(BGCHR_SIO_ACTIVE_BANNER_FX, 2));
 	} else {
 		for (i = 0; i < 0x60; i++)
 			tm[TM_OFFSET(i, gUnk_Sio_0810F26C[unk_40][proc->unk_41 - 1])] = 0x1034;
@@ -1850,7 +1850,7 @@ void SioPostBattle_Init(struct SioPostBattleProc * proc)
 	ApplyPalettes(Pal_TacticianSelObj, 0x13, 4);
 	ApplyPalette(Pal_LinkArenaPlacementRanks, 0x17);
 
-	Decompress(Img_LinkArenaActiveBannerFx, BG_CHAR_ADDR(0) + 0x60 * CHR_SIZE);
+	Decompress(Img_LinkArenaActiveBannerFx, BG_CHAR_ADDR(0) + BGCHR_SIO_ACTIVE_BANNER_FX * CHR_SIZE);
 	ApplyPalette(Pal_LinkArenaActiveBannerFx, 2);
 
 	Decompress(Img_LinkArenaPostBattleBg, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
@@ -2586,7 +2586,7 @@ void func_SioBat_0803A08C(ProcPtr proc)
 	ClearSioBG();
 	InitSioBG();
 
-	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + 0xC00 + GetBgChrOffset(BG_1));
+	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + BGCHR_SIO_RANK_ICONS * CHR_SIZE + GetBgChrOffset(BG_1));
 	ApplyPalette(Pal_LinkArenaRankIcons, 6);
 
 	Decompress(Img_TacticianSelObj, OBJ_VRAM0 + 0x4800);
@@ -2813,7 +2813,7 @@ void func_fe6_0803A604(ProcPtr proc)
 
 void DrawLinkArenaRankIcon(u16 * tm, int rank)
 {
-	u16 ref = rank * 3 + TILEREF(0x60, 4);
+	u16 ref = rank * 3 + TILEREF(BGCHR_SIO_RANK_ICONS, 4);
 
 	if (rank > 2)
 		ref += TILEREF(0, 1);
@@ -2872,7 +2872,7 @@ void SioResult_Init(struct SioResultProc * proc)
 	ClearSioBG();
 	InitSioBG();
 
-	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + 0xC00 + GetBgChrOffset(BG_1));
+	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + BGCHR_SIO_RANK_ICONS * CHR_SIZE + GetBgChrOffset(BG_1));
 	ApplyPaletteExt(gUnk_08109AC0, 0x80, 0x40);
 	ApplyPaletteExt(Pal_LinkArenaRankIcons, 0xC0, 0x20);
 
@@ -3001,7 +3001,7 @@ void SioResult_NewHS_Init(struct SioResultProc * proc)
 	ClearSioBG();
 	InitSioBG();
 
-	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + 0xC00 + GetBgChrOffset(BG_1));
+	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + BGCHR_SIO_RANK_ICONS * CHR_SIZE + GetBgChrOffset(BG_1));
 	ApplyPaletteExt(gUnk_08109AC0, 0x80, 0x40);
 	ApplyPaletteExt(Pal_LinkArenaRankIcons, 0xC0, 0x20);
 
@@ -3150,7 +3150,7 @@ void SioRuleSettings_Init(struct ProcSioRuleSettings * proc)
 	ClearSioBG();
 	InitSioBG();
 
-	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + 0xC00 + GetBgChrOffset(BG_1));
+	Decompress(Img_LinkArenaRankIcons, (u8 *)BG_VRAM + BGCHR_SIO_RANK_ICONS * CHR_SIZE + GetBgChrOffset(BG_1));
 	ApplyPaletteExt(Pal_LinkArenaRankIcons, 0xC0, 0x20);
 
 	Decompress(Img_TacticianSelObj, OBJ_VRAM0 + 0x4800);
@@ -3623,7 +3623,7 @@ void SioMenu_End(struct SioMenuProc * proc)
 void StartLinkArenaMainMenu(ProcPtr parent)
 {
 	UnpackUiWindowFrameGraphics();
-	InitTextFont(&gSioFont, BG_CHAR_ADDR(0) + 0xC0 * CHR_SIZE, 0xC0, 0);
+	InitTextFont(&gSioFont, BG_CHAR_ADDR(0) + BGCHR_SIO_TEXT * CHR_SIZE, BGCHR_SIO_TEXT, 0);
 
 	if (!IsSaveValid(SAVE_MULTIARENA))
 		WriteNewMultiArenaSave();

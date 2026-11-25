@@ -47,23 +47,23 @@ void MakeBattlePopupTileMap(u16 * tm, u16 width)
     u32 i;
     u16 * buf = gEkrTsaBuffer;
 
-    tm[0x00] = buf[0x00] + 0x1100;
-    tm[0x20] = buf[0x18] + 0x1100;
-    tm[0x40] = buf[0x30] + 0x1100;
-    tm[0x60] = buf[0x48] + 0x1100;
+    tm[0x00] = buf[0x00] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x20] = buf[0x18] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x40] = buf[0x30] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x60] = buf[0x48] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
 
     for (i = 0; i < width; i++)
     {
-        tm[0x01 + i] = buf[0x01 + i] + 0x1100;
-        tm[0x21 + i] = buf[0x19 + i] + 0x1100;
-        tm[0x41 + i] = buf[0x31 + i] + 0x1100;
-        tm[0x61 + i] = buf[0x49 + i] + 0x1100;
+        tm[0x01 + i] = buf[0x01 + i] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+        tm[0x21 + i] = buf[0x19 + i] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+        tm[0x41 + i] = buf[0x31 + i] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+        tm[0x61 + i] = buf[0x49 + i] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
     }
 
-    tm[0x01 + i] = buf[0x17] + 0x1100;
-    tm[0x21 + i] = buf[0x2F] + 0x1100;
-    tm[0x41 + i] = buf[0x47] + 0x1100;
-    tm[0x61 + i] = buf[0x5F] + 0x1100;
+    tm[0x01 + i] = buf[0x17] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x21 + i] = buf[0x2F] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x41 + i] = buf[0x47] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
+    tm[0x61 + i] = buf[0x5F] + TILEREF(BGCHR_EKRPOPUP_FRAME, 1);
 }
 #else
 NAKEDFUNC
@@ -198,9 +198,9 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     struct Text * text;
     struct Anim * anim;
 
-    LZ77UnCompVram(Img_EkrPopup, BG_CHAR_ADDR(0) + 0x100 * CHR_SIZE);
+    LZ77UnCompVram(Img_EkrPopup, BG_CHAR_ADDR(0) + BGCHR_EKRPOPUP_FRAME * CHR_SIZE);
     LZ77UnCompWram(Tsa_EkrPopup, (void *)gEkrTsaBuffer);
-    InitTextFont(&gBanimFont, BG_CHAR_ADDR(0) + 0x106 * CHR_SIZE, 0x106, 1);
+    InitTextFont(&gBanimFont, BG_CHAR_ADDR(0) + BGCHR_EKRPOPUP_TEXT * CHR_SIZE, BGCHR_EKRPOPUP_TEXT, 1);
     SetTextDrawNoClear();
     CpuFastCopy(Pal_EkrPopup, gPal + BGPAL_OFFSET(1), 0x20);
 
@@ -233,7 +233,7 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     x_cursor = (width_box * 8 - x3) >> 1;
     Text_SetCursor(text, x_cursor);
 
-    LZ77UnCompVram(Img_EkrUnkPopup, BG_CHAR_ADDR(0) + 0x106 * CHR_SIZE);
+    LZ77UnCompVram(Img_EkrUnkPopup, BG_CHAR_ADDR(0) + BGCHR_EKRPOPUP_TEXT * CHR_SIZE);
 
     if (type == 0)
     {
