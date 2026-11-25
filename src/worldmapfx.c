@@ -271,15 +271,15 @@ void WmSpriteDisp_Loop(struct Proc * proc)
 
     pal_off = pal_table[proc->timer1] * 0x10;
 
-    ApplyPalette(Pal_WmSpriteDisp1 + pal_off, 0x10);
-    ApplyPalette(Pal_WmSpriteDisp2 + pal_off, 0x11);
+    ApplyObPalette(Pal_WmSpriteDisp1 + pal_off, OBPAL_WM_SPRITES + 0);
+    ApplyObPalette(Pal_WmSpriteDisp2 + pal_off, OBPAL_WM_SPRITES + 1);
 }
 
 void StartWmSprite(void)
 {
     Decompress(Img_WmSprites, OBJ_VRAM0 + OBCHR_WM_SPRITES * CHR_SIZE);
-    ApplyPalettes(Pal_WmSprites, 0x10, 4);
-    ApplyPalettes(Pal_WmMapText, 0x14, 2);
+    ApplyObPalettes(Pal_WmSprites, OBPAL_WM_SPRITES, 4);
+    ApplyObPalettes(Pal_WmMapText, OBPAL_WM_MAPTEXT, 2);
     ResetWmArrowSt();
 
     SpawnProc(ProcScr_WmSprite, PROC_TREE_3);
@@ -340,10 +340,10 @@ void DisplayWmArrow(int id, int color)
 void SetupWmTalkBoxGfx(void)
 {
     Decompress(Img_WmSprites, OBJ_VRAM0 + OBCHR_WM_SPRITES * CHR_SIZE);
-    ApplyPalettes(Pal_WmSprites, 0x10, 4);
-    ApplyPalettes(Pal_SystemObjects, 0x1B, 2);
-    Decompress(Img_WmDialogueBox, OBJ_VRAM0 + 0x6800);
-    ApplyPalette(Pal_WmDialogueBox, 0x19);
+    ApplyObPalettes(Pal_WmSprites, OBPAL_WM_SPRITES, 4);
+    ApplyObPalettes(Pal_SystemObjects, OBPAL_WM_SYSTEM_OBJECTS, 2);
+    Decompress(Img_WmDialogueBox, OBJ_VRAM0 + OBCHR_WM_TEXT * CHR_SIZE);
+    ApplyObPalette(Pal_WmDialogueBox, OBPAL_WM_TEXTBOX);
 }
 
 struct ProcScr CONST_DATA ProcScr_WmZoomIntro[] =
@@ -504,15 +504,15 @@ void WmHighlight_Init(struct ProcWmHighLight * proc)
     Decompress(
         Config_WmHighlight[proc->nation].img,
         proc->id == 0
-            ? OBJ_VRAM0 + 0x4000
-            : OBJ_VRAM0 + 0x5100);
+            ? OBJ_VRAM0 + OBCHR_WM_NATION_A * CHR_SIZE
+            : OBJ_VRAM0 + OBCHR_WM_NATION_B * CHR_SIZE);
 
-    ApplyObPalette(Pal_WmHightlight, 0xA);
+    ApplyObPalette(Pal_WmHightlight, OBPAL_WM_HIGHLIGHT);
 
     sprite_anim = StartSpriteAnim(Config_WmHighlight[proc->nation].sprite, 0xD);
 
     proc->sprite_anim = sprite_anim;
-    sprite_anim->oam2 = proc->id == 0 ? 0xA200 : 0xA288;
+    sprite_anim->oam2 = OAM2_PAL(OBPAL_WM_HIGHLIGHT) + (proc->id == 0 ? OBCHR_WM_NATION_A : OBCHR_WM_NATION_B);
 
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
     SetBlendTargetA(0, 0, 0, 0, 1);
@@ -745,15 +745,15 @@ void WmMapTextDisp_Init(struct ProcWmMapText * proc)
 void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
 {
     proc->sprite_anim = StartSpriteAnim(ApInfo_WmMapTextDisp, 0xB);
-    proc->sprite_anim->oam2 = ((proc->id == 0) ? 0x200 : 0x288) | ((proc->type_b == 0) ? 0x5000 : 0x4000);
+    proc->sprite_anim->oam2 = ((proc->id == 0) ? OBCHR_WM_NATION_A : OBCHR_WM_NATION_B) | ((proc->type_b == 0) ? OAM2_PAL(OBPAL_WM_MAPTEXT + 1) : OAM2_PAL(OBPAL_WM_MAPTEXT));
 
     if (Config_WmMapText[proc->nation].img2 == Img_DefaultMapText)
         SetSpriteAnimId(proc->sprite_anim, 1);
     else
         SetSpriteAnimId(proc->sprite_anim, 2);
 
-    PutWmMapTextGfx(Config_WmMapText[proc->nation].img1, proc->id == 0 ? (OBJ_VRAM0 + 0x4000) : (OBJ_VRAM0 + 0x5100));
-    PutWmMapTextGfx(Config_WmMapText[proc->nation].img2, proc->id == 0 ? (OBJ_VRAM0 + 0x4200) : (OBJ_VRAM0 + 0x5300));
+    PutWmMapTextGfx(Config_WmMapText[proc->nation].img1, proc->id == 0 ? (OBJ_VRAM0 + OBCHR_WM_NATION_A * CHR_SIZE) : (OBJ_VRAM0 + OBCHR_WM_NATION_B * CHR_SIZE));
+    PutWmMapTextGfx(Config_WmMapText[proc->nation].img2, proc->id == 0 ? (OBJ_VRAM0 + (OBCHR_WM_NATION_A + 0x10) * CHR_SIZE) : (OBJ_VRAM0 + (OBCHR_WM_NATION_B + 0x10) * CHR_SIZE));
 
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
     SetBlendTargetA(0, 0, 0, 0, 1);
