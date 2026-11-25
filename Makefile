@@ -158,6 +158,59 @@ $(PORTRAIT_DIR)/%_face.4bpp: $(PORTRAIT_DIR)/%_face.png
 CLEAN_FILES += $(patsubst %.pal,%.gbapal,$(wildcard $(PORTRAIT_DIR)/*.pal))
 
 # ==============
+# = Map assets =
+# ==============
+
+MAPASSET_DIR := data/mapassets
+
+TILESET_TOOL := $(PYTHON) tools/scripts/tileset.py
+
+# tile sheets are 32 tiles wide; these end on a partial row
+$(MAPASSET_DIR)/MapAsset14_Img.4bpp: NUM_TILES := 508
+$(MAPASSET_DIR)/MapAsset13_Img.4bpp: NUM_TILES := 914
+$(MAPASSET_DIR)/MapAsset12_Img.4bpp: NUM_TILES := 787
+$(MAPASSET_DIR)/MapAsset09_Img.4bpp: NUM_TILES := 838
+$(MAPASSET_DIR)/MapAsset08_Img.4bpp: NUM_TILES := 958
+$(MAPASSET_DIR)/MapAsset02_Img.4bpp: NUM_TILES := 828
+
+MAPASSET_SHEETS := $(patsubst %.png,%.4bpp,$(wildcard $(MAPASSET_DIR)/MapAsset*_Img*.png))
+
+$(MAPASSET_SHEETS): %.4bpp: %.png
+	@echo "[GEN]	$@"
+	@$(TILESET_TOOL) sheet $< $@ $(NUM_TILES)
+
+CLEAN_FILES += $(patsubst %.pal,%.gbapal,$(wildcard $(MAPASSET_DIR)/*.pal))
+
+# metatile images reference tiles in these sheets
+mapasset-sheets = $(MAPASSET_DIR)/MapAsset$(1)_TsaConf.tsa: $(addprefix $(MAPASSET_DIR)/MapAsset,$(addsuffix .4bpp,$(2)))
+
+$(eval $(call mapasset-sheets,01,01_Img1 01_Img2))
+$(eval $(call mapasset-sheets,01B,01_Img1 01B_Img2))
+$(eval $(call mapasset-sheets,02,02_Img))
+$(eval $(call mapasset-sheets,03,03_Img))
+$(eval $(call mapasset-sheets,04,04_Img))
+$(eval $(call mapasset-sheets,05,05_Img))
+$(eval $(call mapasset-sheets,06,06_Img))
+$(eval $(call mapasset-sheets,07,07_Img))
+$(eval $(call mapasset-sheets,08,08_Img))
+$(eval $(call mapasset-sheets,8b,08_Img))
+$(eval $(call mapasset-sheets,09,09_Img))
+$(eval $(call mapasset-sheets,10,10_Img))
+$(eval $(call mapasset-sheets,11,11_Img))
+$(eval $(call mapasset-sheets,12,12_Img))
+$(eval $(call mapasset-sheets,13,13_Img))
+$(eval $(call mapasset-sheets,13b,13_Img))
+$(eval $(call mapasset-sheets,14,14_Img))
+$(eval $(call mapasset-sheets,1c,1c_Img))
+
+%_TsaConf.tsa: %_Metatiles.png %_Terrain.txt %_Hints.txt
+	@echo "[GEN]	$@"
+	@$(TILESET_TOOL) build $*_Metatiles.png $*_Terrain.txt $*_Hints.txt $@ $(filter %.4bpp,$^)
+
+MAPASSET_TSA := $(patsubst %_Metatiles.png,%_TsaConf.tsa,$(wildcard $(MAPASSET_DIR)/*_Metatiles.png))
+CLEAN_FILES += $(MAPASSET_TSA) $(MAPASSET_TSA:%=%.lz)
+
+# ==============
 # = Banim data =
 # ==============
 
