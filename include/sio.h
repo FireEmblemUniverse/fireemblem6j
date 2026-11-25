@@ -59,6 +59,22 @@ struct LATeamListConfig
 
 enum
 {
+    BGCHR_SIO_CHAPTER_TITLE_BG = 0x1A0,
+    BGCHR_SIO_CHAPTER_TITLE_TEXT = 0x220, // .. 0x2DF, one per save
+
+    BGPAL_SIO_CHAPTER_TITLE_BG = 4, // .. 6
+    BGPAL_SIO_CHAPTER_TITLE_TEXT = 7, // .. 9
+};
+
+enum
+{
+    SIO_TITLE_NORMAL = 0,
+    SIO_TITLE_GREYED = 1,
+    SIO_TITLE_HARD = 2,
+};
+
+enum
+{
     MULTIARENA_LIST_NONE = 0,
     MULTIARENA_LIST_BUILDTEAM = 1,
     MULTIARENA_LIST_SELECTTEAM = 2,

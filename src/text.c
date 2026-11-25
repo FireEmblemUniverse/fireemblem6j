@@ -635,7 +635,7 @@ void InitSpriteTextFont(struct Font * font, u8 * draw_dest, int palid)
     font->draw_dest = draw_dest;
     font->get_draw_dest = GetSpriteTextDrawDest;
     font->palid = (palid & 0xF) + 0x10;
-    font->tileref = ((u32) draw_dest & 0x1FFFF) >> 5;
+    font->tileref = ((u32) draw_dest & VRAM_OFFSET_MASK) >> 5;
     font->chr_counter = 0;
     font->lang = GetLang();
 

@@ -9,11 +9,17 @@ enum { BGCHR_SAVEMENU_0 = 0,
 
        OBCHR_SAVEMENU_1C0 = 0x1C0,
        OBCHR_SAVEMENU_200 = 0x200,
+       OBCHR_SAVEMENU_CHAPTER_TITLE_BG = 0x2C0,
+       OBCHR_SAVEMENU_CHAPTER_TITLE_TEXT = 0x340, // .. 0x3FF, one per slot
 
        OBPAL_SAVEMENU_9 = 9,
 
        OBPAL_SAVEMENU_1 = 1,
        OBPAL_SAVEMENU_2 = 2,
+
+       // bg and text palettes alternate per slot, .. 15
+       OBPAL_SAVEMENU_CHAPTER_TITLE_BG = 10,
+       OBPAL_SAVEMENU_CHAPTER_TITLE_TEXT = 11,
 };
 
 enum { L_SAVEMENU_BEGIN = 0,
