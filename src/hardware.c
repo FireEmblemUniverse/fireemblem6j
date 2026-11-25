@@ -767,7 +767,7 @@ void SleepUntilKeyCombo(int keys)
 {
     u16 ie = REG_IE;
 
-    REG_KEYCNT = keys - 0x4000;
+    REG_KEYCNT = keys + (s16) (KEY_INTR_ENABLE | KEY_AND_INTR);
     REG_IE &= ~(INTR_FLAG_SERIAL | INTR_FLAG_GAMEPAK);
     REG_IE |= INTR_FLAG_KEYPAD;
     REG_DISPCNT |= DISPCNT_FORCE_BLANK;
