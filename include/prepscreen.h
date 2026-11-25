@@ -11,9 +11,31 @@ enum
 
 enum
 {
-    L_PREPMENU_5 = 0x05,
-    L_PREPMENU_6 = 0x06,
-    L_PREPMENU_B = 0x0B,
+    PREPMENU_ACT_PICK_UNITS = 1 << 0,
+    PREPMENU_ACT_HOVER_START = 1 << 1,
+};
+
+enum
+{
+    PREPMENU_NO_HELD_UNIT = 0xFF,
+};
+
+enum
+{
+    L_PREPMENU_LOOP = 1,
+    L_PREPMENU_SUBMENU = 3,
+    L_PREPMENU_SUBMENU_END = 4,
+    L_PREPMENU_START_BUTTON = 5,
+    L_PREPMENU_EXIT = 6,
+    L_PREPMENU_SCROLL_UP = 7,
+    L_PREPMENU_SCROLL_DOWN = 8,
+    L_PREPMENU_LEFT_PANEL_IN = 9,
+    L_PREPMENU_LEFT_PANEL_OUT = 10,
+    L_PREPMENU_END = 11,
+    L_PREPMENU_SUBMENU_RETURN = 12,
+    L_PREPMENU_SUBMENU_FADE = 13,
+    L_PREPMENU_START_BATTLE = 14,
+    L_PREPMENU_STATSCREEN_RETURN = 15,
 };
 
 enum prepscreen_text_idx {
@@ -21,36 +43,43 @@ enum prepscreen_text_idx {
 };
 
 enum prepscreen_videoalloc {
-    BGCHR_PREPMENU_230 = 0x230,
-    BGCHR_PREPMENU_240 = 0x240,
+    BGCHR_PREPMENU_CHIBI = 0x230,
+    BGCHR_PREPMENU_SPINNING_ARROW = 0x240,
     BGCHR_PREPMENU_280 = 0x280,
     BGCHR_PREPMENU_328 = 0x328,
     BGCHR_PREPMENU_368 = 0x368,
-    BGCHR_PREPMENU_700 = 0x700,
+    BGCHR_PREPMENU_WORLDMAP = 0x700,
+    BGCHR_PREPMENU_WORLDMAP_BLANK = BGCHR_PREPMENU_WORLDMAP + 0xC0,
 
     OBCHR_PREPMENU_080 = 0x080,
-    OBCHR_PREPMENU_240 = 0x240,
+    OBCHR_PREPMENU_TITLE = 0x240,
     OBCHR_PREPMENU_280 = 0x280,
-    OBCHR_PREPMENU_380 = 0x380,
+    OBCHR_PREPMENU_WORLDMAP = 0x380,
     OBCHR_PREPMENU_390 = 0x390,
 
-    BGPAL_PREPMENU_2 = 0x02,
+    BGPAL_PREPMENU_CHIBI = 0x02,
     BGPAL_PREPMENU_3 = 0x03,
     BGPAL_PREPMENU_ICON = 0x04,
     BGPAL_PREPMENU_AFFIN_ICON = BGPAL_PREPMENU_ICON + 1,
-    BGPAL_PREPMENU_A = 0x0A,
-    BGPAL_PREPMENU_E = 0x0E,
-    BGPAL_PREPMENU_F = 0x0F,
+    BGPAL_PREPMENU_BACKGROUND = 0x0A,
+    BGPAL_PREPMENU_WORLDMAP = 0x0E,
+    BGPAL_PREPMENU_SPINNING_ARROW = 0x0F,
 
     OBPAL_PREPMENU_0 = 0x00,
     OBPAL_PREPMENU_1 = 0x01,
     OBPAL_PREPMENU_2 = 0x02,
     OBPAL_PREPMENU_3 = 0x03,
-    OBPAL_PREPMENU_4 = 0x04,
+    OBPAL_PREPMENU_BACK_HINT = 0x04,
     OBPAL_PREPMENU_5 = 0x05,
-    OBPAL_PREPMENU_6 = 0x06,
+    OBPAL_PREPMENU_WORLDMAP = 0x06,
     OBPAL_PREPMENU_8 = 0x08,
-    OBPAL_PREPMENU_D = 0x0D,
+    OBPAL_PREPMENU_DESC = 0x0D,
+    OBPAL_PREPMENU_HELPBOX = 0x0E,
+};
+
+enum {
+    PREPMENU_WORLDMAP_WIDTH = 15,
+    PREPMENU_WORLDMAP_HEIGHT = 12,
 };
 
 enum {
@@ -60,7 +89,7 @@ enum {
     PREP_ITEMKIND_PAGE_COUNT = 9,
 };
 
-struct UnkProc_08678E18;
+struct ProcPrepUnitItemsAsync;
 struct ProcPrepUpperDisp;
 struct PrepSubItemProc;
 struct MenuScrollBarProc;
@@ -70,37 +99,36 @@ struct PrepMenuProc
     /* 00 */ PROC_HEADER;
     /* 29 */ u8 sel_unit;
     /* 2A */ u8 not_in_upper_menu;
-    /* 2B */ u8 unk_2B;
+    /* 2B */ u8 title_flag;
     /* 2C */ u8 link_arena_flag;
-    /* 2D */ u8 unk_2D; // size of gPrepUnitList?
+    /* 2D */ u8 unit_count;
     /* 2E */ u8 max_counter;
     /* 2F */ u8 cur_counter;
     /* 30 */ u8 list_num_cur; // id within gPrepUnitList
-    /* 31 */ u8 unk_31;
-    /* 32 */ u8 unk_32;
+    /* 31 */ u8 held_list_num;
+    /* 32 */ u8 partner_list_num;
     /* 33 */ u8 disp_idx[2];
     /* 35 */ u8 submenu_level;
     /* 36 */ i8 hand_y_pos;
-    /* 37 */ u8 unk_37; // i8 also?
-    /* 38 */ u8 unk_38;
-    /* 39 */ u8 unk_39;
-    /* 3A */ u8 unk_3A;
+    /* 37 */ i8 held_hand_y_pos;
+    /* 38 */ u8 unused_38;
+    /* 39 */ u8 allitems_page;
+    /* 3A */ u8 convoy_page;
     /* 3B */ u8 sub2_action;
-    /* 3C */ u8 a_button_actions; // Bit1:selection unit, Bit2:Start battle
+    /* 3C */ u8 a_button_actions;
     /* 3D */ u8 do_help;
     /* 3E */ u8 end_prep;
-    /* 3F */ u8 unk_3F;
-    /* 40 */ u16 unk_40;
+    /* 3F */ u8 scroll_speed;
+    /* 40 */ u16 held_ydiff;
     /* 42 */ u16 scroll_timer;
     /* 44 */ u16 yDiff_cur;
-    /* 46 */ u8 unk_46;
-    /* 47 */ u8 unk_47;
+    /* 46 */ STRUCT_PAD(0x46, 0x48);
     /* 48 */ struct Unit *unit1, *unit2;
     /* 50 */ struct ProcPrepUpperDisp * disp_proc;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
-    /* 5C */ struct UnkProc_08678E18 * unk_5C;
-    /* 60 */ ProcPtr unk_60;
+    /* 5C */ struct ProcPrepUnitItemsAsync * items_proc;
+    /* 60 */ ProcPtr desc_proc;
 };
 
 enum PREP_SUB2_ACTION_IDX {
@@ -112,18 +140,18 @@ enum PREP_SUB2_ACTION_IDX {
     PREP_SUB2ACT_CHECK_ALL_ITEM,
     PREP_SUB2ACT_STATSCREEN,
     PREP_SUB2ACT_SAVEMENU,
-    PREP_SUB2ACT_8,
-    PREP_SUB2ACT_9,
+    PREP_SUB2ACT_AUGURY,
+    PREP_SUB2ACT_UNITLIST,
     PREP_SUB2ACT_ARMORY,
 };
 
 #define SYDIFF(proc) (*((i16 *)&(proc)->yDiff_cur))
 
-struct UnkProc_08678DE0
+struct ProcPrepPanelShutter
 {
     /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
     /* 29 */ STRUCT_PAD(0x29, 0x30);
-    /* 30 */ u16 unk_30;
+    /* 30 */ u16 height;
 };
 
 struct ProcPrepUnitPinfoAsync
@@ -133,14 +161,14 @@ struct ProcPrepUnitPinfoAsync
     /* 48 */ struct Unit *unit;
 };
 
-struct UnkProc_08678E18
+struct ProcPrepUnitItemsAsync
 {
     /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
     /* 29 */ STRUCT_PAD(0x29, 0x2C);
     /* 2C */ struct Unit *unit;
     /* 30 */ struct PrepMenuProc * main_proc;
-    /* 34 */ u8 unk_34;
-    /* 35 */ u8 unk_35;
+    /* 34 */ u8 item_idx;
+    /* 35 */ u8 item_count;
 };
 
 struct ProcPrepUpperDisp
@@ -198,31 +226,31 @@ extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepItemListData[400];
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
 void RemoveSioPid(fu8 pid);
-void func_fe6_0807921C(void);
-void func_fe6_08079250(struct UnkProc_08678DE0 *proc);
-void func_fe6_080792C8(struct UnkProc_08678DE0 *proc);
-void func_fe6_08079388(struct UnkProc_08678DE0 *proc);
-void func_fe6_080793F0(struct PrepMenuProc *parent);
+void KillUndeployedPlayerUnits(void);
+void PrepPanelShutter_Init(struct ProcPrepPanelShutter *proc);
+void PrepPanelShutter_Close(struct ProcPrepPanelShutter *proc);
+void PrepPanelShutter_Open(struct ProcPrepPanelShutter *proc);
+void StartPrepPanelShutter(struct PrepMenuProc *parent);
 bool IsUnitMandatoryDeploy(struct Unit *unit);
 void InitPrepScreenMainMenu(struct PrepMenuProc *proc);
 void PrepUnit_DrawLeftUnitInfo(struct Unit *unit, u16 * tm);
 void PrepScreen_ReloadLeftUnitInfo(struct Unit *unit);
 void PrepUnitUpdatePinfoAsync_work(struct ProcPrepUnitPinfoAsync *proc);
 void UpdatePrepUnitPinfoAsync(struct PrepMenuProc *parent);
-void func_fe6_08079804(struct PrepMenuProc *proc);
-void func_fe6_080798EC(struct PrepMenuProc *proc);
-void func_fe6_08079928(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pid);
+void PrepUnit_DrawLeftUnitPanel(struct PrepMenuProc *proc);
+void PrepUnit_UpdateLeftUnitPanel(struct PrepMenuProc *proc);
+void PrepUnit_MoveCursorToUnit(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pid);
 void ReorderPlayerUnitsBasedOnDeployment(void);
-void func_fe6_08079A94(struct PrepMenuProc *proc);
-void func_fe6_08079BC8(struct UnkProc_08678E18 *proc);
-void func_fe6_08079C38(struct UnkProc_08678E18 *proc);
-struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc *parent);
-void func_fe6_08079D84(struct PrepMenuProc *proc);
+void PrepMenu_DrawMenuItems(struct PrepMenuProc *proc);
+void PrepUnitItemsAsync_Init(struct ProcPrepUnitItemsAsync *proc);
+void PrepUnitItemsAsync_Loop(struct ProcPrepUnitItemsAsync *proc);
+struct ProcPrepUnitItemsAsync * StartPrepUnitItemsAsync(struct PrepMenuProc *parent);
+void PrepUnit_DrawItems(struct PrepMenuProc *proc);
 void PrepUnit_DrawPickLeftBar(struct PrepMenuProc *proc);
 void PrepUnit_DrawUnitListNames(struct PrepMenuProc *proc, fu8 row);
 void RearrangeMandatoryDeployUnits(void);
 void SioResetUnitItems(void);
-void func_fe6_0807A1C8(struct PrepMenuProc *proc, bool load_sprites);
+void PrepMenu_BuildUnitList(struct PrepMenuProc *proc, bool load_sprites);
 void PrepMenu_InitScreenExt(struct PrepMenuProc *proc);
 void PrepMenu_InitScreen(struct PrepMenuProc *proc);
 void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc);
@@ -234,18 +262,18 @@ void PrepItem_BlockUpperfxDisp(struct PrepMenuProc *proc);
 void PrepMenu_EndIfNoUnit(struct PrepMenuProc *proc);
 void PrepMenu_Init(struct PrepMenuProc *proc);
 void PrepMenu_Loop(struct PrepMenuProc *proc);
-// AtMenu_SetEndFlag
-// AtMenu_ResetBmUiEffect
-// PrepUnit_HandleScrollUp
-// PrepUnit_HandleScrollDown
-// AtMenu_StartSubmenu
-// AtMenu_OnSubmenuEnd
-// PrepScreen_ReloadLeftUnitInfoFromStatscreen
-// func_fe6_0807B4C0
-// func_fe6_0807B5A0
-// func_fe6_0807B69C
+void AtMenu_SetEndFlag(struct PrepMenuProc *proc);
+void AtMenu_ResetBmUiEffect(struct PrepMenuProc *proc);
+void PrepUnit_HandleScrollUp(struct PrepMenuProc *proc);
+void PrepUnit_HandleScrollDown(struct PrepMenuProc *proc);
+void AtMenu_StartSubmenu(struct PrepMenuProc *proc);
+void AtMenu_OnSubmenuEnd(struct PrepMenuProc *proc);
+void PrepScreen_ReloadLeftUnitInfoFromStatscreen(struct PrepMenuProc *proc);
+void PrepUnit_SlideInLeftPanel(struct PrepMenuProc *proc);
+void PrepUnit_SlideOutLeftPanel(struct PrepMenuProc *proc);
+void AtMenu_EnableDisp(struct PrepMenuProc *proc);
 void StartPrepAtMenu(void);
-// StartSioPrepMenu
+void StartSioPrepMenu(void);
 
 struct ProcPrepFade {
     PROC_HEADER;
@@ -612,8 +640,8 @@ void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale)
 extern EWRAM_OVERLAY(0) u8 gPrepUnitCount;
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_PickLeftBar;
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenTexts_Units[16];
-extern EWRAM_OVERLAY(0) struct Text gPrepItemTexts[5];
-extern EWRAM_OVERLAY(0) struct Text gUnk_0200E88C[2];
+extern EWRAM_OVERLAY(0) struct Text gPrepItemTexts[ITEMSLOT_INV_COUNT];
+extern EWRAM_OVERLAY(0) struct Text gPrepUnusedTexts[2];
 extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_LeftPersonName;
 extern EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400];
 extern EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000];
@@ -704,13 +732,13 @@ extern CONST_DATA u16 Sprite_Prep_0867976C[];
 extern struct ProcScr ProcScr_Prep_08679774[];
 
 extern u16 const Tsa_PrepLeftUnitInfo[]; // tiles
-extern u16 const Tsa_Prep_08326EE6[]; // tiles
-extern u32 const Img_Prep_0831A268[]; // img(lz)
+extern u16 const Tsa_PrepWorldMapFrame[]; // tiles
+extern u32 const Img_PrepTitleSprites[]; // img(lz)
 extern u32 const Img_VeriticalSpinningArrow[]; // img(lz)
-extern u32 const Img_Prep_08326930[]; // img(lz)
+extern u32 const Img_PrepWorldMapSprites[]; // img(lz)
 extern u16 const Pal_SpinningArrow[]; // pal
-extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
-extern u16 const Pal_Prep_08326E64[]; // pal (x4)
-extern u16 const Pal_Prep_08327108[]; // pal
+extern u16 const Pal_PrepTitleSprites[]; // pal (x2)
+extern u16 const Pal_PrepWorldMapSprites[]; // pal (x4)
+extern u16 const Pal_PrepBackHint[]; // pal
 extern u32 const Img_PrepWorldMap[]; // img(lz)
 extern u16 const Pal_PrepWorldMap[]; // pal

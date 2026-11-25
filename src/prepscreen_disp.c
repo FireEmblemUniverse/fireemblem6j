@@ -142,8 +142,8 @@ void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible)
         i8 __visible = visible;
         if (__visible != 0)
         {
-            gBg0Tm[TM_OFFSET(0x14, 4)] = frame + TILEREF(BGCHR_PREPMENU_240, BGPAL_PREPMENU_F);
-            gBg0Tm[TM_OFFSET(0x15, 4)] = frame + TILEREF(BGCHR_PREPMENU_240 + 1, BGPAL_PREPMENU_F);
+            gBg0Tm[TM_OFFSET(0x14, 4)] = frame + TILEREF(BGCHR_PREPMENU_SPINNING_ARROW, BGPAL_PREPMENU_SPINNING_ARROW);
+            gBg0Tm[TM_OFFSET(0x15, 4)] = frame + TILEREF(BGCHR_PREPMENU_SPINNING_ARROW + 1, BGPAL_PREPMENU_SPINNING_ARROW);
         }
         else
         {
@@ -156,8 +156,8 @@ void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible)
         i8 __visible = visible;
         if (__visible != 0)
         {
-            gBg0Tm[TM_OFFSET(0x14, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_240, BGPAL_PREPMENU_F) + TILE_VFLIP;
-            gBg0Tm[TM_OFFSET(0x15, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_240 + 1, BGPAL_PREPMENU_F) + TILE_VFLIP;
+            gBg0Tm[TM_OFFSET(0x14, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_SPINNING_ARROW, BGPAL_PREPMENU_SPINNING_ARROW) + TILE_VFLIP;
+            gBg0Tm[TM_OFFSET(0x15, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_SPINNING_ARROW + 1, BGPAL_PREPMENU_SPINNING_ARROW) + TILE_VFLIP;
         }
         else
         {
@@ -199,13 +199,13 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
         proc->split_win = FALSE;
     }
 
-    if (proc->proc_parent->unk_31 != 0xFF)
+    if (proc->proc_parent->held_list_num != PREPMENU_NO_HELD_UNIT)
     {
-        u32 tmp = proc->proc_parent->unk_31 / 2 - ydiff_quo;
+        u32 tmp = proc->proc_parent->held_list_num / 2 - ydiff_quo;
 
         if (tmp <= 6)
             PutFrozenUiHand(
-                (proc->proc_parent->unk_31 & 1) * 0x40 + 0x70,
+                (proc->proc_parent->held_list_num & 1) * 0x40 + 0x70,
                 tmp * 0x10 + ydiff_mod + 0x28
             );
     }
@@ -219,7 +219,7 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
         int list_idx, y2;
 
         list_idx = r6 + i;
-        if (list_idx >= proc->proc_parent->unk_2D)
+        if (list_idx >= proc->proc_parent->unit_count)
             continue;
 
         y2 = (i >> 1) * 0x10 + r8;
@@ -241,7 +241,7 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
         int list_idx = r6 + i;
         y = ydiff_mod + 0x28;
 
-        if (list_idx >= proc->proc_parent->unk_2D)
+        if (list_idx >= proc->proc_parent->unit_count)
             continue;
 
         PutUnitSprite(
@@ -256,144 +256,144 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
 u16 CONST_DATA Sprite_PrepGmapMarker[] =
 {
     1,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_380) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 1),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 1),
 };
 
 u16 CONST_DATA Sprite_PrepGmapBattleground[] =
 {
     2,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x40) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 1),
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_380 + 0x44) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 1),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x40) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 1),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x44) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 1),
 };
 
 u16 CONST_DATA Sprite_PrepGmapLineVFlip[] =
 {
     2,
-    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_VFLIP, OAM2_CHR(OBCHR_PREPMENU_380 + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32) + OAM1_VFLIP, OAM2_CHR(OBCHR_PREPMENU_380 + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_VFLIP, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32) + OAM1_VFLIP, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
 };
 
 u16 CONST_DATA Sprite_PrepGmapLineHFlip[] =
 {
     2,
-    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32) + OAM1_HFLIP, OAM2_CHR(OBCHR_PREPMENU_380 + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_HFLIP, OAM2_CHR(OBCHR_PREPMENU_380 + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32) + OAM1_HFLIP, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_HFLIP, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
 };
 
 u16 CONST_DATA Sprite_PrepGmapLine[] =
 {
     1,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x18) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
 };
 
 u16 CONST_DATA Sprite_PrepGmapLineEnd[] =
 {
     1,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x1C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP),
 };
 
 u16 CONST_DATA Sprite_PrepChapterLabel[] =
 {
     2,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x48) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_380 + 0x4C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x48) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x4C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterPlateEnd[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x57) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x57) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterPlate[] =
 {
     4,
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x5C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(16), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(48), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(16), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(48), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterPlateWide[] =
 {
     5,
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x5C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(16), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(48), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
-    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(54), OAM2_CHR(OBCHR_PREPMENU_380 + 0x5E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5C) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(16), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(48), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
+    OAM0_SHAPE_16x16, OAM1_SIZE_16x16 + OAM1_X(54), OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x5E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit0[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x4D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x4D) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit1[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x4E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x4E) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit2[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x4F) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x4F) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit3[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x50) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x50) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit4[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x51) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x51) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit5[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x52) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x52) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit6[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x53) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x53) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit7[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x54) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x54) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit8[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x55) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x55) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigit9[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x56) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x56) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterSuffixX[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x58) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x58) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA Sprite_PrepChapterDigitBlank[] =
 {
     1,
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_380 + 0x59) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_6 + 2),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(OBCHR_PREPMENU_WORLDMAP + 0x59) + OAM2_LAYER(1) + OAM2_PAL(OBPAL_PREPMENU_WORLDMAP + 2),
 };
 
 u16 CONST_DATA * Sprites_PrepChapterDigits[12] =
@@ -479,7 +479,7 @@ void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
 
     for (i = 0; i < 10; i++)
     {
-        gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6) + 5 + i] = gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6 + 3) + ((proc->clock / 2 + i) & 0xF)];
+        gPal[OBPAL_OFFSET(OBPAL_PREPMENU_WORLDMAP) + 5 + i] = gPal[OBPAL_OFFSET(OBPAL_PREPMENU_WORLDMAP + 3) + ((proc->clock / 2 + i) & 0xF)];
     }
     EnablePalSync();
 }
@@ -487,45 +487,45 @@ void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
 u16 CONST_DATA Sprite_PrepUnitHighlight[] =
 {
     2,
-    OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(OBCHR_PREPMENU_240 + 0x80) + OAM2_LAYER(2),
-    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_240 + 0x83) + OAM2_LAYER(2),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x80) + OAM2_LAYER(2),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x83) + OAM2_LAYER(2),
 };
 
 u16 CONST_DATA Sprite_PrepTitleBar[] =
 {
     1,
-    OAM0_SHAPE_32x32 + OAM0_BLEND, OAM1_SIZE_32x32, OAM2_CHR(OBCHR_PREPMENU_240) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x32 + OAM0_BLEND, OAM1_SIZE_32x32, OAM2_CHR(OBCHR_PREPMENU_TITLE) + OAM2_LAYER(3),
 };
 
 u16 CONST_DATA Sprite_PrepTitleMenuSelect[] =
 {
     5,
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_240 + 0xE) + OAM2_LAYER(3),
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_240 + 0x12) + OAM2_LAYER(3),
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(64), OAM2_CHR(OBCHR_PREPMENU_240 + 0x16) + OAM2_LAYER(3),
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(96), OAM2_CHR(OBCHR_PREPMENU_240 + 0x1A) + OAM2_LAYER(3),
-    OAM0_SHAPE_16x16 + OAM0_BLEND, OAM1_SIZE_16x16 + OAM1_X(128), OAM2_CHR(OBCHR_PREPMENU_240 + 0x1E) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_TITLE + 0xE) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x12) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(64), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x16) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(96), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x1A) + OAM2_LAYER(3),
+    OAM0_SHAPE_16x16 + OAM0_BLEND, OAM1_SIZE_16x16 + OAM1_X(128), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x1E) + OAM2_LAYER(3),
 };
 
 u16 CONST_DATA Sprite_PrepPressStart[] =
 {
     2,
-    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32, OAM2_CHR(OBCHR_PREPMENU_240 + 0x6) + OAM2_LAYER(1),
-    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_240 + 0xA) + OAM2_LAYER(1),
+    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32, OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x6) + OAM2_LAYER(1),
+    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0xA) + OAM2_LAYER(1),
 };
 
 u16 CONST_DATA Sprite_PrepTitleItemEdit[] =
 {
     2,
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_240 + 0x4E) + OAM2_LAYER(3),
-    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(40), OAM2_CHR(OBCHR_PREPMENU_240 + 0x52) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x4E) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(40), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x52) + OAM2_LAYER(3),
 };
 
 u16 CONST_DATA Sprite_PrepBackHint[] =
 {
     2,
-    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_240 + 0x5B) + OAM2_LAYER(1),
-    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_240 + 0x5F) + OAM2_LAYER(1),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x5B) + OAM2_LAYER(1),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(32), OAM2_CHR(OBCHR_PREPMENU_TITLE + 0x5F) + OAM2_LAYER(1),
 };
 
 u16 CONST_DATA Sprite_PrepItemTitleBar[] =
@@ -589,7 +589,7 @@ void PrepDisp_PutHand(struct ProcPrepUpperDisp * proc)
         break;
 
     case 1:
-        if (parent->a_button_actions & 2 && parent->disp_idx[0] == 0)
+        if (parent->a_button_actions & PREPMENU_ACT_HOVER_START && parent->disp_idx[0] == 0)
             PutUiHand(0x6C, 0x8);
         else
         {
@@ -618,7 +618,7 @@ void PrepDisp_PutPressStart(struct ProcPrepUpperDisp * proc)
 {
     struct PrepMenuProc * parent = proc->proc_parent;
 
-    if ((parent->a_button_actions & 1) && (parent->cur_counter != 0))
+    if ((parent->a_button_actions & PREPMENU_ACT_PICK_UNITS) && (parent->cur_counter != 0))
     {
         if (proc->press_start_scale <= 0xFF)
             proc->press_start_scale += 0x20;
@@ -666,7 +666,7 @@ void PrepDisp_PutTitleSprite(struct ProcPrepUpperDisp * proc)
             proc->title_slide_clock = 0;
     }
 
-    if (proc->proc_parent->unk_2B == 0)
+    if (proc->proc_parent->title_flag == 0)
         x = proc->title_slide_x - 0xA0;
     else
         x = -proc->title_slide_x;
@@ -686,7 +686,7 @@ void PrepDisp_PutTitleSprite(struct ProcPrepUpperDisp * proc)
             {
                 proc->desc_changing = 0;
                 proc->desc_scale = 0;
-                func_fe6_08082D54(proc->proc_parent->unk_60, proc->desc_idx);
+                func_fe6_08082D54(proc->proc_parent->desc_proc, proc->desc_idx);
                 proc->desc_scroll = 0x60;
             }
         }
@@ -713,8 +713,8 @@ void PrepDisp_PutTitleSprite(struct ProcPrepUpperDisp * proc)
     goto L1;
 
 L0:
-    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x200 - proc->desc_scroll), 7, proc->desc_scale);
-    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x100 - proc->desc_scroll), 7, proc->desc_scale);
+    func_fe6_08082DA4(proc->proc_parent->desc_proc, OAM1_X(0x200 - proc->desc_scroll), 7, proc->desc_scale);
+    func_fe6_08082DA4(proc->proc_parent->desc_proc, OAM1_X(0x100 - proc->desc_scroll), 7, proc->desc_scale);
     proc->desc_scroll++;
 
 L1:
@@ -725,7 +725,7 @@ L2:
     if (proc->proc_parent->submenu_level != 0)
         return;
 
-    PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_PrepBackHint, OAM2_PAL(OBPAL_PREPMENU_4));
+    PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_PrepBackHint, OAM2_PAL(OBPAL_PREPMENU_BACK_HINT));
 }
 
 void PrepUpperDisp_Init(struct ProcPrepUpperDisp * proc)
@@ -742,7 +742,7 @@ void PrepUpperDisp_Init(struct ProcPrepUpperDisp * proc)
     proc->title_slide_x = 0xA0;
     proc->unused_2D = proc->proc_parent->sel_unit;
     proc->prev_not_in_upper_menu = proc->proc_parent->not_in_upper_menu;
-    proc->prev_title_flag = proc->proc_parent->unk_2B;
+    proc->prev_title_flag = proc->proc_parent->title_flag;
     proc->title_slide_clock = 0;
     proc->arrow_clock = 0;
     proc->marker_anim = 0;
@@ -755,12 +755,12 @@ void PrepUpperDisp_Init(struct ProcPrepUpperDisp * proc)
     if (((struct PrepMenuProcBug *)(proc->proc_parent))->_bug_34 == 0x100) // submenu_level == 1 && disp_idx[1] == 0
     {
         proc->desc_scale = ((struct PrepMenuProcBug *)(proc->proc_parent))->_bug_34;
-        func_fe6_08082D54(proc->proc_parent->unk_60, 5);
+        func_fe6_08082D54(proc->proc_parent->desc_proc, 5);
     }
     else
     {
         proc->desc_scale = 0;
-        func_fe6_08082D54(proc->proc_parent->unk_60, GetPrepScreenMenuDispItemIndex(proc->desc_idx, 1) - 5);
+        func_fe6_08082D54(proc->proc_parent->desc_proc, GetPrepScreenMenuDispItemIndex(proc->desc_idx, 1) - 5);
     }
 }
 
@@ -769,10 +769,10 @@ void PrepUpperDisp_Loop(struct ProcPrepUpperDisp * proc)
     if (proc->proc_parent->not_in_upper_menu != proc->prev_not_in_upper_menu)
         proc->prev_not_in_upper_menu = proc->proc_parent->not_in_upper_menu;
 
-    if (proc->proc_parent->unk_2B != proc->prev_title_flag)
+    if (proc->proc_parent->title_flag != proc->prev_title_flag)
     {
         proc->menu_item = GetPrepScreenMenuCurrentItemIndex(proc->proc_parent);
-        proc->prev_title_flag = proc->proc_parent->unk_2B;
+        proc->prev_title_flag = proc->proc_parent->title_flag;
         proc->title_slide_clock = 1;
     }
 
@@ -792,7 +792,7 @@ void PrepUpperDisp_Loop(struct ProcPrepUpperDisp * proc)
         else
             PrepDisp_PutScrollArrow(0, proc->arrow_clock, 0);
 
-        if (((proc->proc_parent->yDiff_cur / 0x10 + 7) * 2) < proc->proc_parent->unk_2D)
+        if (((proc->proc_parent->yDiff_cur / 0x10 + 7) * 2) < proc->proc_parent->unit_count)
             PrepDisp_PutScrollArrow(1, proc->arrow_clock, 1);
         else
             PrepDisp_PutScrollArrow(1, proc->arrow_clock, 0);

@@ -58,19 +58,19 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 {
     if (proc->sel_unit == 0)
     {
-        proc->a_button_actions |= 1;
-        Proc_Goto(proc, 9);
+        proc->a_button_actions |= PREPMENU_ACT_PICK_UNITS;
+        Proc_Goto(proc, L_PREPMENU_LEFT_PANEL_IN);
         PlaySe(SONG_6A);
     }
     else if (proc->sel_unit == 1)
     {
         int cur_counter = proc->cur_counter;
 
-        if ((proc->a_button_actions & 1) && proc->a_button_actions & 2)
+        if ((proc->a_button_actions & PREPMENU_ACT_PICK_UNITS) && proc->a_button_actions & PREPMENU_ACT_HOVER_START)
         {
             if (cur_counter != 0)
             {
-                Proc_Goto(proc, 0x5);
+                Proc_Goto(proc, L_PREPMENU_START_BUTTON);
                 proc->disp_proc->start_blink_clock = TRUE;
                 PlaySe(SONG_6A);
             }
@@ -137,19 +137,19 @@ void PrepScreenMenu_OnItems(struct PrepMenuProc * proc)
 {
     if (proc->sel_unit == 0)
     {
-        Proc_Goto(proc, 0x9);
+        Proc_Goto(proc, L_PREPMENU_LEFT_PANEL_IN);
         PlaySe(SONG_6A);
     }
     else if (proc->sel_unit == 1)
     {
-        proc->unk_31 = proc->list_num_cur;
-        proc->unk_32 = proc->list_num_cur;
-        proc->unk_40 = proc->yDiff_cur;
-        proc->unk_37 = proc->hand_y_pos;
+        proc->held_list_num = proc->list_num_cur;
+        proc->partner_list_num = proc->list_num_cur;
+        proc->held_ydiff = proc->yDiff_cur;
+        proc->held_hand_y_pos = proc->hand_y_pos;
         proc->sel_unit = 0;
         proc->submenu_level = 1;
         PlaySe(SONG_6A);
-        func_fe6_08079A94(proc);
+        PrepMenu_DrawMenuItems(proc);
     }
 }
 
@@ -157,14 +157,14 @@ void func_fe6_0807C840(struct PrepMenuProc * proc)
 {
     int list_num_cur;
 
-    if (proc->list_num_cur != proc->unk_31)
+    if (proc->list_num_cur != proc->held_list_num)
         return;
 
     list_num_cur = proc->list_num_cur;
 
     if ((list_num_cur & 1) == 0)
     {
-        if ((list_num_cur + 1) < proc->unk_2D)
+        if ((list_num_cur + 1) < proc->unit_count)
             proc->list_num_cur = list_num_cur + 1;
         else if ((u32)list_num_cur >= 2)
         {
@@ -182,14 +182,14 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
 {
     if (proc->sel_unit == 0)
     {
-        if (proc->unk_2D != 1)
+        if (proc->unit_count != 1)
         {
             PrepDisp_ChangeSubmenuDesc(proc->disp_proc, 5);
-            proc->list_num_cur = proc->unk_32;
+            proc->list_num_cur = proc->partner_list_num;
             proc->sel_unit = 1;
             func_fe6_0807C840(proc);
-            func_fe6_08079D84(proc);
-            func_fe6_080798EC(proc);
+            PrepUnit_DrawItems(proc);
+            PrepUnit_UpdateLeftUnitPanel(proc);
             PlaySe(SONG_6A);
         }
         else
@@ -200,17 +200,17 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
     }
     else if (proc->sel_unit == 1)
     {
-        if (proc->list_num_cur == proc->unk_31 || (GetUnitItemCount(GetUnitFromPrepList(proc->list_num_cur)) + GetUnitItemCount(GetUnitFromPrepList(proc->unk_31))) == 0)
+        if (proc->list_num_cur == proc->held_list_num || (GetUnitItemCount(GetUnitFromPrepList(proc->list_num_cur)) + GetUnitItemCount(GetUnitFromPrepList(proc->held_list_num))) == 0)
         {
             PlaySe(SONG_6C);
         }
         else
         {
-            proc->unit1 = GetUnitFromPrepList(proc->unk_31);
+            proc->unit1 = GetUnitFromPrepList(proc->held_list_num);
             proc->unit2 = GetUnitFromPrepList(proc->list_num_cur);
             NewSallyCir2(proc, 1);
-            proc->sub2_action = 2;
-            Proc_Goto(proc, 3);
+            proc->sub2_action = PREP_SUB2ACT_TRADE_ITEM;
+            Proc_Goto(proc, L_PREPMENU_SUBMENU);
             PlaySe(SONG_6A);
         }
     }
@@ -228,8 +228,8 @@ void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc)
         {
             proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
             NewSallyCir2(proc, 1);
-            proc->sub2_action = 4;
-            Proc_Goto(proc, 3);
+            proc->sub2_action = PREP_SUB2ACT_DISCARD_ITEM;
+            Proc_Goto(proc, L_PREPMENU_SUBMENU);
             PlaySe(SONG_6A);
         }
     }
@@ -241,8 +241,8 @@ void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
         NewSallyCir2(proc, 1);
-        proc->sub2_action = 3;
-        Proc_Goto(proc, 3);
+        proc->sub2_action = PREP_SUB2ACT_CONVOY;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU);
         PlaySe(SONG_6A);
     }
 }
@@ -253,8 +253,8 @@ void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
         NewSallyCir2(proc, 1);
-        proc->sub2_action = 5;
-        Proc_Goto(proc, 3);
+        proc->sub2_action = PREP_SUB2ACT_CHECK_ALL_ITEM;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU);
         PlaySe(SONG_6A);
     }
 }
@@ -264,8 +264,8 @@ void PrepScreenSubMenu_Shop(struct PrepMenuProc * proc)
     if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
-        proc->sub2_action = 10;
-        Proc_Goto(proc, 0xD);
+        proc->sub2_action = PREP_SUB2ACT_ARMORY;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU_FADE);
     }
 }
 
@@ -275,7 +275,7 @@ void func_fe6_0807CAD4(struct PrepMenuProc * proc)
     {
         proc->submenu_level = 2;
         PlaySe(SONG_6A);
-        func_fe6_08079A94(proc);
+        PrepMenu_DrawMenuItems(proc);
     }
 }
 
@@ -284,8 +284,8 @@ void PrepScreenMenu_Augury(struct PrepMenuProc * proc)
     if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
-        proc->sub2_action = 8;
-        Proc_Goto(proc, 0xD);
+        proc->sub2_action = PREP_SUB2ACT_AUGURY;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU_FADE);
     }
 }
 
@@ -294,8 +294,8 @@ void func_fe6_0807CB40(struct PrepMenuProc * proc)
     if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
-        proc->sub2_action = 9;
-        Proc_Goto(proc, 0xD);
+        proc->sub2_action = PREP_SUB2ACT_UNITLIST;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU_FADE);
     }
 }
 
@@ -304,8 +304,8 @@ void PrepScreenMenu_OnSave(struct PrepMenuProc * proc)
     if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
-        proc->sub2_action = 7;
-        Proc_Goto(proc, 0xD);
+        proc->sub2_action = PREP_SUB2ACT_SAVEMENU;
+        Proc_Goto(proc, L_PREPMENU_SUBMENU_FADE);
     }
 }
 
@@ -313,7 +313,7 @@ void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc)
 {
     if (proc->sel_unit == 0)
     {
-        Proc_Goto(proc, 0x6);
+        Proc_Goto(proc, L_PREPMENU_EXIT);
         PlaySe(SONG_6A);
     }
 }
@@ -324,7 +324,7 @@ void PrepScreenSubMenu_StartBattle(struct PrepMenuProc * proc)
     {
         if (proc->cur_counter != 0)
         {
-            Proc_Goto(proc, 0xE);
+            Proc_Goto(proc, L_PREPMENU_START_BATTLE);
             PlaySe(SONG_6A);
         }
         else

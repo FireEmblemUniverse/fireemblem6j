@@ -685,7 +685,7 @@ void SioTeamList_SetupGfx(struct SioTeamListProc * proc)
 	ApplyPaletteExt(Pal_TacticianSelObj, 0x13 * 0x20, 0x80);
 
 	Decompress(Img_Sio_081080D4, OBJ_VRAM0 + 0x300 * CHR_SIZE);
-	ApplyPaletteExt(Pal_Sio_0831AABC, 0x11 * 0x20, 0x40);
+	ApplyPaletteExt(Pal_PrepTitleSprites, 0x11 * 0x20, 0x40);
 
 	gPal[0x20] = 0;
 

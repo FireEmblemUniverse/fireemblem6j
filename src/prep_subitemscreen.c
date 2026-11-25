@@ -84,7 +84,7 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 		InitTextDb(&gPrepTexts1[1][i], 7);
 
 	ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_PREPMENU_2, 3);
-	ApplyPalettes( Pal_Sio_0831AABC, 0x10 + OBPAL_PREPMENU_8, 2);
+	ApplyPalettes( Pal_PrepTitleSprites, 0x10 + OBPAL_PREPMENU_8, 2);
 	ApplyPalette( Pal_Prep_0831A248, BGPAL_PREPMENU_3);
 	Decompress(Img_Prep_08319EE8, gBg0Tm + BGCHR_PREPMENU_280);
 	Decompress(Img_Prep_0831A088, gBg1Tm + BGCHR_PREPMENU_280);
@@ -462,7 +462,7 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 		gPrepAllItemsCount++;
 	}
 
-	proc->convoy_page = proc->proc_parent->unk_39;
+	proc->convoy_page = proc->proc_parent->allitems_page;
 	PrepAllItems_SortByKind(proc->convoy_page);
 	proc->menu_scroll_bar_disp_idx = proc->unk_4E;
 	proc->hand_disp_y = proc->unk_47;
@@ -994,7 +994,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 		}
 
 		if (proc->unk2D < 4)
-			proc->convoy_page = proc->proc_parent->unk_3A;
+			proc->convoy_page = proc->proc_parent->convoy_page;
 		else
 			proc->convoy_page = 0;
 
@@ -1215,7 +1215,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 		}
 
 		if (proc->unk2D <= 3)
-			proc->proc_parent->unk_3A = proc->convoy_page;
+			proc->proc_parent->convoy_page = proc->convoy_page;
 
 		Proc_Goto(proc, PL_PREP_SUBITEM_CONVOY);
 		break;
@@ -1321,7 +1321,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 						PrepSubItem_ClearUnusedIcons(proc);
 
 						if (proc->unk2D <= 3)
-							proc->proc_parent->unk_3A = proc->convoy_page;
+							proc->proc_parent->convoy_page = proc->convoy_page;
 
 						Proc_Goto(proc, PL_PREP_SUBITEM_CONVOY);
 						return;
@@ -1675,7 +1675,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 {
 	if (proc->unk2D == PREP_SUB2U2D_3) {
-		proc->proc_parent->unk_39 = proc->convoy_page;
+		proc->proc_parent->allitems_page = proc->convoy_page;
 
 		SetPrepMenuScrollBarBaseInfo(
 			proc->proc_menuscroll,
@@ -1703,7 +1703,7 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 	TmFillRect(gBg2Tm + TM_OFFSET(0xF, 0), 0xF, 0x1F, 0);
 
 	if (proc->unk2D == PREP_SUB2U2D_3) {
-		proc->proc_parent->unk_39 = proc->convoy_page;
+		proc->proc_parent->allitems_page = proc->convoy_page;
 
 		if (gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].pid == 0) {
 			proc->unk_48 = gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].slot;
@@ -1725,10 +1725,10 @@ void PrepSubItem_OnEnd(struct PrepSubItemProc *proc)
 {
 	if (proc->unk2D != PL_PREP_SUBITEM_5) {
 		if (proc->unk2A == 0)
-			proc->proc_parent->unk_39 = proc->convoy_page;
+			proc->proc_parent->allitems_page = proc->convoy_page;
 
 		if (proc->unk2A == 4)
-			proc->proc_parent->unk_3A = proc->convoy_page;
+			proc->proc_parent->convoy_page = proc->convoy_page;
 
 		InitBmBgLayers();
 	} else {
