@@ -2831,13 +2831,6 @@ bool TrueEnding_SortAlliesExists(void)
     return FindProc(ProcScr_TrueEnding_SortAllies) != NULL ? TRUE : FALSE;
 }
 
-struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeIn[] =
-{
-    PROC_CALL(Epilogue_BgmFadeIn_Init),
-    PROC_REPEAT(Epilogue_BgmFadeIn_Loop),
-    PROC_END,
-};
-
 struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeOut[] =
 {
     PROC_CALL(Epilogue_BgmFadeOut_Init),
@@ -2845,17 +2838,24 @@ struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeOut[] =
     PROC_END,
 };
 
-void Epilogue_BgmFadeIn_Init(struct ProcEpilogueBgmFade * proc)
+struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeIn[] =
+{
+    PROC_CALL(Epilogue_BgmFadeIn_Init),
+    PROC_REPEAT(Epilogue_BgmFadeIn_Loop),
+    PROC_END,
+};
+
+void Epilogue_BgmFadeOut_Init(struct ProcEpilogueBgmFade * proc)
 {
     proc->timer = 0x100;
 }
 
-void Epilogue_BgmFadeOut_Init(struct ProcEpilogueBgmFade * proc)
+void Epilogue_BgmFadeIn_Init(struct ProcEpilogueBgmFade * proc)
 {
     proc->timer = 0;
 }
 
-void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc)
+void Epilogue_BgmFadeOut_Loop(struct ProcEpilogueBgmFade * proc)
 {
     proc->timer -= 3;
 
@@ -2868,7 +2868,7 @@ void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc)
     SetBgmVolume(proc->timer);
 }
 
-void Epilogue_BgmFadeOut_Loop(struct ProcEpilogueBgmFade * proc)
+void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc)
 {
     proc->timer2++;
 
@@ -2888,14 +2888,14 @@ void EarthQuakeSoundFadeOutDefault(void)
     EarthQuakeSoundFadeOut(0);
 }
 
-void Epilogue_BgmFadeIn(ProcPtr parent)
-{
-    SpawnProc(ProcScr_Epilogue_BgmFadeIn, parent);
-}
-
 void Epilogue_BgmFadeOut(ProcPtr parent)
 {
-    SpawnProcLocking(ProcScr_Epilogue_BgmFadeOut, parent);
+    SpawnProc(ProcScr_Epilogue_BgmFadeOut, parent);
+}
+
+void Epilogue_BgmFadeIn(ProcPtr parent)
+{
+    SpawnProcLocking(ProcScr_Epilogue_BgmFadeIn, parent);
 }
 
 void RestoreBlueUnits(void)
@@ -3235,7 +3235,7 @@ EvtLabel(4)
     EvtSleep(60)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676831)
     EvtSleep(100)
-    EvtFunc(Epilogue_BgmFadeIn)
+    EvtFunc(Epilogue_BgmFadeOut)
     EvtSleep(100)
     EvtFunc(Epilogue_StartWind)
     EvtSleep(15)
@@ -3248,12 +3248,12 @@ EvtLabel(4)
     EvtSleep(30)
     EvtFunc(Epilogue_StartCredit)
     EvtSleep(60)
-    EvtFunc(Epilogue_BgmFadeOut)
+    EvtFunc(Epilogue_BgmFadeIn)
     EvtSleep(420)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
     EvtFunc(TriggerEndingDone)
-    EvtFuncWhile(CheckGameEndingDone)
+    EvtFuncWhile(IsGameEndingRunning)
     EvtFadeToBlack(4)
     EvtExitMap
     EvtFunc(EndAllProcsMark1)

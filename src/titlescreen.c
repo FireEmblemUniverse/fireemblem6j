@@ -37,7 +37,7 @@ void Title_Idle(struct ProcTitle * proc)
     if (proc->timer >= gTitleDuration)
     {
         SetNextGameAction(GAME_ACTION_1);
-        FadeInBlackWithCallBack_Speed10(proc);
+        FadeToBlackWithCallBack_Speed10(proc);
         Proc_Break(proc);
         return;
     }
@@ -46,7 +46,7 @@ void Title_Idle(struct ProcTitle * proc)
     {
         PlaySe(SONG_6D);
         SetNextGameAction(GAME_ACTION_0);
-        FadeInBlackWithCallBack_Speed20(proc);
+        FadeToBlackWithCallBack_Speed20(proc);
         Proc_Break(proc);
         return;
     }

@@ -20,7 +20,7 @@ PROC_LABEL(PL_OPINFO_BRANMCH),
 	PROC_REPEAT(OpInfo_Branch),
 
 PROC_LABEL(PL_OPINFO_IDLE),
-	PROC_REPEAT(OpInfo_Idle),
+	PROC_REPEAT(OpInfo_FadeToBlack),
 	PROC_CALL(OpInfo_PostAnim),
 	PROC_GOTO(PL_OPINFO_BRANMCH),
 
@@ -31,7 +31,7 @@ PROC_LABEL(PL_OPINFO_END_TITLE),
 
 PROC_LABEL(PL_OPINFO_NAME_INTRO),
 	PROC_CALL(OpInfo_FadeBgmOut),
-	PROC_REPEAT(OpInfo_Idle),
+	PROC_REPEAT(OpInfo_FadeToBlack),
 
 PROC_LABEL(PL_OPINFO_END_EXT),
 	PROC_CALL(OpInfo_EndSubProcs),
@@ -117,7 +117,7 @@ void OpInfo_PostAnim(struct ProcOpInfo *proc)
 	proc->mode = OPINFO_STATE_IDLE;
 }
 
-void OpInfo_Idle(struct ProcOpInfo *proc)
+void OpInfo_FadeToBlack(struct ProcOpInfo *proc)
 {
 	if (gKeySt->held & (KEY_BUTTON_A | KEY_BUTTON_B | KEY_BUTTON_START) && proc->unk_32 == 0) {
 		SetNextGameAction(GAME_ACTION_0);

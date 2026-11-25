@@ -140,7 +140,7 @@ void EndingCG_Init(struct ProcGameEnding *proc);
 void EndingCG_Loop(struct ProcGameEnding *proc);
 
 /* ending handler */
-bool CheckGameEndingDone(void);
+bool IsGameEndingRunning(void);
 void Ending_Init(struct ProcGameEnding *proc);
 void Ending_Loop(struct ProcGameEnding *proc);
 void StartGameEnding(ProcPtr parent);

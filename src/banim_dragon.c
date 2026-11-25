@@ -366,7 +366,7 @@ void InitEkrDragonStatus(void)
     SetAnimStateHidden(GetDragonPosition());
 }
 
-int CheckEkrDragonWorking(void)
+int CheckEkrIdunnDefeated(void)
 {
     if (GetEkrDragonStateTypeIdunn() == 0)
         return 0;

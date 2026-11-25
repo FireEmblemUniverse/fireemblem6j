@@ -63,7 +63,7 @@ PROC_LABEL 3
 	PROC_GOTO 9
 PROC_LABEL 4
 	PROC_CALL func_fe6_0803EF9C
-	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_CALL FadeToBlackWithCallBack_Speed20
 	PROC_SLEEP 0
 	PROC_CALL SioTeamList_StartUnitList
 	PROC_REPEAT SioTeamList_WaitForUnitListScreen
@@ -82,14 +82,14 @@ PROC_LABEL 7
 	PROC_GOTO 3
 PROC_LABEL 8
 	PROC_CALL func_fe6_0803EF9C
-	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_CALL FadeToBlackWithCallBack_Speed20
 	PROC_SLEEP 0
 	PROC_CALL SioTeamList_LoadTeam_Dummy
 	PROC_SLEEP 0
 	PROC_GOTO 1
 PROC_LABEL 9
 	PROC_CALL func_fe6_0803EF9C
-	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_CALL FadeToBlackWithCallBack_Speed20
 	PROC_SLEEP 0
 	PROC_END
 
@@ -115,7 +115,7 @@ PROC_LABEL 3
 	PROC_GOTO 0
 PROC_LABEL 2
 	PROC_CALL func_fe6_0803EF9C
-	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_CALL FadeToBlackWithCallBack_Speed20
 	PROC_SLEEP 0
 	PROC_END
 

@@ -434,7 +434,7 @@ void ParseBattleHitToBanimCmd(void)
 	}
 }
 
-bool CheckBattleHasHit(void)
+bool CheckBattleEndsOnFirstHit(void)
 {
 	const struct BattleHit *hit = &gBattleHits[0];
 

@@ -1498,7 +1498,7 @@ void EfxEckesachs_Loop(struct ProcEfx *proc)
 	if (time == 6) {
 		NewEfxFarAttackWithDistance(proc->anim, -1);
 		NewEfxEckesachsBG(anim_other, 9);
-		Pal_EfxEckesachsBGCtrl(anim_other, 9);
+		NewEfxEckesachsBGCtrl(anim_other, 9);
 		NewEfxEckesachsBGCOL(anim_other);
 		PlaySFX(SONG_10C, 0x100, anim_other->xPosition, 1);
 		return;
@@ -1572,7 +1572,7 @@ struct ProcScr CONST_DATA ProcScr_EfxEckesachsBGCtrl[] =
 	PROC_END,
 };
 
-void Pal_EfxEckesachsBGCtrl(struct Anim *anim, int duration)
+void NewEfxEckesachsBGCtrl(struct Anim *anim, int duration)
 {
 	struct ProcEfxBG *proc;
 
@@ -8537,7 +8537,7 @@ CONST_DATA u16 gEclipseAnimSpriteCoordinates[] = {
 
 struct ProcScr CONST_DATA ProcScr_EfxHazymoonOBJ3RND[] = {
 	PROC_NAME_DEBUG("efxHazymoonOBJ3RND"),
-	PROC_ONEND(EfxHazymoonOBJ3RND_Loop),
+	PROC_ONEND(EfxHazymoonOBJ3RND_OnEnd),
 	PROC_SLEEP(100),
 	PROC_END,
 };
@@ -9091,7 +9091,7 @@ void NewEfxHazymoonOBJ3RND(struct BaSprite *anim, int x, int y)
 	anim_front->yPosition = y;
 }
 
-void EfxHazymoonOBJ3RND_Loop(struct ProcEfxMagicOBJ *proc)
+void EfxHazymoonOBJ3RND_OnEnd(struct ProcEfxMagicOBJ *proc)
 {
 	gEfxBgSemaphore--;
 	BasRemove(proc->anim2);
@@ -10818,7 +10818,7 @@ CONST_DATA u16 *ImgArray_EfxRestBG[] = {
 
 CONST_DATA struct ProcScr ProcScr_EfxRestOBJ[] = {
 	PROC_NAME_DEBUG("efxRestOBJ"),
-	PROC_ONEND(EfxRestOBJ_Loop),
+	PROC_ONEND(EfxRestOBJ_OnEnd),
 	PROC_SLEEP(80),
 	PROC_END,
 };
@@ -10954,7 +10954,7 @@ void NewEfxRestOBJ(struct Anim *anim)
 	SpellFx_RegisterObjGfx(Img_EfxHammarneOBJ, 0x80 << 4);
 }
 
-void EfxRestOBJ_Loop(void)
+void EfxRestOBJ_OnEnd(void)
 {
 	gEfxBgSemaphore--;
 }

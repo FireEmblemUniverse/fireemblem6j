@@ -15,7 +15,7 @@ EWRAM_OVERLAY(banim) u16 gEkrBgPaletteBackup3[0x20] = {};
 
 struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[] = {
 	PROC_19,
-	PROC_REPEAT(EkrIdunn_BgFadeIn),
+	PROC_REPEAT(EkrIdunn_BgFadeOut),
 	PROC_REPEAT(EkrIdunn_InitBanimfx),
 	PROC_REPEAT(EkrIdunn_InitBodyfx),
 	PROC_REPEAT(EkrIdunn_PreMainBodyIntro),
@@ -42,7 +42,7 @@ void NewEkrDragonIdunn(struct BaSprite *anim)
 	proc->timer = 0;
 }
 
-void EkrIdunn_BgFadeIn(struct ProcEkrDragon *proc)
+void EkrIdunn_BgFadeOut(struct ProcEkrDragon *proc)
 {
 	EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8));
 

@@ -20,7 +20,7 @@ struct ProcScr CONST_DATA ProcScr_Monologue[] =
     PROC_REPEAT(Monologue_Loop),
 
     PROC_CALL_ARG(_FadeBgmOut, 4),
-    PROC_CALL(FadeInBlackWithCallBack_Speed08),
+    PROC_CALL(FadeToBlackWithCallBack_Speed08),
     PROC_SLEEP(0),
     PROC_END,
 };

@@ -86,7 +86,7 @@ struct ProcOpInfo {
 void OpInfo_Init(struct ProcOpInfo *proc);
 void OpInfo_Branch(struct ProcOpInfo *proc);
 void OpInfo_PostAnim(struct ProcOpInfo *proc);
-void OpInfo_Idle(struct ProcOpInfo *proc);
+void OpInfo_FadeToBlack(struct ProcOpInfo *proc);
 void OpInfo_FadeBgmOut(struct ProcOpInfo *proc);
 void OpInfo_EndSubProcs(struct ProcOpInfo *proc);
 void OpInfo_End(struct ProcOpInfo *proc);

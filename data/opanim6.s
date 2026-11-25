@@ -51,14 +51,14 @@ ProcScr_OpAnim5: @ 08691F18
 	PROC_BREAK_EACH ProcScr_Unk_08692060
 	PROC_SLEEP 180
 	PROC_START_CHILD 0x08691810
-	PROC_CALL FadeInBlackWithCallBack_Speed08
+	PROC_CALL FadeToBlackWithCallBack_Speed08
 	PROC_CALL func_fe6_08099644
 	PROC_SLEEP 0
 	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 60
 	PROC_CALL PutOpAnimSubtitle5
 	PROC_SLEEP 290
-	PROC_CALL FadeInBlackWithCallBack_Speed04
+	PROC_CALL FadeToBlackWithCallBack_Speed04
 	PROC_SLEEP 0
 	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 30
@@ -75,7 +75,7 @@ ProcScr_Unk_08691FF8: @ 08691FF8
 	PROC_SLEEP 60
 	PROC_CALL PutOpAnimSubtitle5
 	PROC_SLEEP 300
-	PROC_CALL FadeInBlackWithCallBack_Speed08
+	PROC_CALL FadeToBlackWithCallBack_Speed08
 	PROC_SLEEP 0
 	PROC_CALL RemoveOpAnimText
 	PROC_END
@@ -109,7 +109,7 @@ ProcScr_OpAnim_Nintendo: @ 086920D0
 	PROC_CALL FadeInBlackSpeed10
 	PROC_SLEEP 0
 	PROC_SLEEP 220
-	PROC_CALL FadeInBlackWithCallBack_Speed10
+	PROC_CALL FadeToBlackWithCallBack_Speed10
 	PROC_SLEEP 0
 	PROC_CALL RemoveOpAnimText
 	PROC_END
@@ -160,6 +160,6 @@ ProcScr_TitleScreenFromOp: @ 08692130
 	PROC_SLEEP 0
 	PROC_CALL Title_ReinitTimer
 	PROC_REPEAT Title_Idle
-	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_CALL FadeToBlackWithCallBack_Speed20
 	PROC_SLEEP 0
 	PROC_END

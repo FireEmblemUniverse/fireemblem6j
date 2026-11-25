@@ -248,7 +248,7 @@ struct ProcScr CONST_DATA ProcScr_EndingMonologue[] =
     PROC_REPEAT(EndingMonologue_Loop),
     PROC_SLEEP(300),
 PROC_LABEL(99),
-    PROC_CALL(FadeInBlackWithCallBack_Speed08),
+    PROC_CALL(FadeToBlackWithCallBack_Speed08),
     PROC_SLEEP(1),
     PROC_CALL(EndingMonologue_End),
     PROC_END,

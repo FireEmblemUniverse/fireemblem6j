@@ -925,27 +925,27 @@ void func_fe6_0801482C(ProcPtr parent)
     StartFadeCore(0, 0x40, parent, NULL);
 }
 
-void FadeInBlackWithCallBack_Speed04(ProcPtr parent)
+void FadeToBlackWithCallBack_Speed04(ProcPtr parent)
 {
     StartFadeCore(3, 0x04, parent, Fade_CommonCallBack);
 }
 
-void FadeInBlackWithCallBack_Speed08(ProcPtr parent)
+void FadeToBlackWithCallBack_Speed08(ProcPtr parent)
 {
     StartFadeCore(3, 0x08, parent, Fade_CommonCallBack);
 }
 
-void FadeInBlackWithCallBack_Speed10(ProcPtr parent)
+void FadeToBlackWithCallBack_Speed10(ProcPtr parent)
 {
     StartFadeCore(3, 0x10, parent, Fade_CommonCallBack);
 }
 
-void FadeInBlackWithCallBack_Speed20(ProcPtr parent)
+void FadeToBlackWithCallBack_Speed20(ProcPtr parent)
 {
     StartFadeCore(3, 0x20, parent, Fade_CommonCallBack);
 }
 
-void FadeInBlackWithCallBack_Speed40(ProcPtr parent)
+void FadeToBlackWithCallBack_Speed40(ProcPtr parent)
 {
     StartFadeCore(3, 0x40, parent, Fade_CommonCallBack);
 }

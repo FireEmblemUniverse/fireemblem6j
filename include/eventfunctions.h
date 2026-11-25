@@ -319,13 +319,13 @@ struct ProcEpilogueBgmFade
 };
 
 
-void Epilogue_BgmFadeIn_Init(struct ProcEpilogueBgmFade * proc);
 void Epilogue_BgmFadeOut_Init(struct ProcEpilogueBgmFade * proc);
-void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc);
+void Epilogue_BgmFadeIn_Init(struct ProcEpilogueBgmFade * proc);
 void Epilogue_BgmFadeOut_Loop(struct ProcEpilogueBgmFade * proc);
+void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc);
 void EarthQuakeSoundFadeOutDefault(void);
-void Epilogue_BgmFadeIn(ProcPtr parent);
 void Epilogue_BgmFadeOut(ProcPtr parent);
+void Epilogue_BgmFadeIn(ProcPtr parent);
 
 void RestoreBlueUnits(void);
 

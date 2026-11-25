@@ -26,7 +26,7 @@ void PrepMenuFade_Init(struct ProcPrepFade * proc)
     }
 }
 
-void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc)
+void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc)
 {
     #define SCALE 0x10
     int i;
@@ -56,7 +56,7 @@ void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc)
     #undef SCALE
 }
 
-void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc)
+void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc)
 {
     #define SCALE 0x10
     int i;
@@ -87,14 +87,6 @@ void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc)
     #undef SCALE
 }
 
-struct ProcScr CONST_DATA ProcScr_PrepMenuFadeOut[] =
-{
-    PROC_19,
-    PROC_CALL(PrepMenuFade_Init),
-    PROC_REPEAT(PrepMenuFadeOut_Loop),
-    PROC_END,
-};
-
 struct ProcScr CONST_DATA ProcScr_PrepMenuFadeIn[] =
 {
     PROC_19,
@@ -103,14 +95,22 @@ struct ProcScr CONST_DATA ProcScr_PrepMenuFadeIn[] =
     PROC_END,
 };
 
-void StartPrepMenuFadeOut(ProcPtr proc)
+struct ProcScr CONST_DATA ProcScr_PrepMenuFadeOut[] =
 {
-    SpawnProcLocking(ProcScr_PrepMenuFadeOut, proc);
-}
+    PROC_19,
+    PROC_CALL(PrepMenuFade_Init),
+    PROC_REPEAT(PrepMenuFadeOut_Loop),
+    PROC_END,
+};
 
 void StartPrepMenuFadeIn(ProcPtr proc)
 {
     SpawnProcLocking(ProcScr_PrepMenuFadeIn, proc);
+}
+
+void StartPrepMenuFadeOut(ProcPtr proc)
+{
+    SpawnProcLocking(ProcScr_PrepMenuFadeOut, proc);
 }
 
 void PrepDisp_ChangeSubmenuDesc(struct ProcPrepUpperDisp * proc, int idx)

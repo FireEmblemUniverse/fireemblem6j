@@ -14,7 +14,7 @@
 struct ProcScr CONST_DATA ProcScr_EkrManakete[] =
 {
     PROC_19,
-    PROC_REPEAT(EkrManakete_BgFadeIn),
+    PROC_REPEAT(EkrManakete_BgFadeOut),
     PROC_REPEAT(func_fe6_08059144),
     PROC_REPEAT(EkrManakete_PauseOnStart),
     PROC_REPEAT(func_fe6_080591CC),
@@ -43,7 +43,7 @@ void NewEkrManakete(struct BaSprite * anim)
     proc->timer = 0;
 }
 
-void EkrManakete_BgFadeIn(struct ProcEkrDragon * proc)
+void EkrManakete_BgFadeOut(struct ProcEkrDragon * proc)
 {
     EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8));
 

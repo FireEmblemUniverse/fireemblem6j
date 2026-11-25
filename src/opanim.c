@@ -1190,7 +1190,7 @@ struct ProcScr CONST_DATA ProcScr_OpAnim4[] = {
 	PROC_BREAK_EACH(ProcScr_Unk_08691C58),
 	PROC_SLEEP(240),
 	PROC_END_EACH(ProcScr_Unk_08691C58),
-	PROC_CALL(FadeInBlackWithCallBack_Speed04),
+	PROC_CALL(FadeToBlackWithCallBack_Speed04),
 	PROC_CALL(func_fe6_08099644),
 	PROC_SLEEP(0),
 	PROC_SLEEP(1),

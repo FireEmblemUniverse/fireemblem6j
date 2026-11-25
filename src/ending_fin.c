@@ -13,7 +13,7 @@ struct ProcScr CONST_DATA ProcScr_Fin[] = {
 	PROC_SLEEP(1),
 	PROC_REPEAT(Fin_Loop),
 	PROC_CALL_ARG(_FadeBgmOut, 8),
-	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_CALL(FadeToBlackWithCallBack_Speed08),
 	PROC_SLEEP(1),
 	PROC_SLEEP(180),
 	PROC_END,

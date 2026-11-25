@@ -817,7 +817,7 @@ void EkrPlayMainBGM(void)
 
 void EkrRestoreBGM(void)
 {
-	if (CheckEkrDragonWorking()|| gBmSt.flags & BM_FLAG_5 || gEkrMainBgmPlaying == false) {
+	if (CheckEkrIdunnDefeated()|| gBmSt.flags & BM_FLAG_5 || gEkrMainBgmPlaying == false) {
 		MakeBgmOverridePersist();
 		return;
 	}
