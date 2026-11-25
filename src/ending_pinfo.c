@@ -461,7 +461,7 @@ void EndingPInfo1_StartMerge(struct ProcEndingPInfo1 *proc)
 
 	ResetText();
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x2000);
-	CpuFastFill16(0, (u8 *)BG_VRAM + 0xD800, 0x2000);
+	CpuFastFill16(0, BG_SCREEN_ADDR(27), 4 * sizeof(gBg0Tm)); /* BG0–BG1 512×256 tilemaps */
 	StartFace(0, fid, 0xBE, 2, 0x42);
 	Ending_DrawPInfoTitle(0, 0, unit, 0);
 
@@ -701,7 +701,7 @@ void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc)
 
 	ResetText();
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x2000);
-	CpuFastFill16(0, (u8 *)BG_VRAM + 0xD800, 0x2000);
+	CpuFastFill16(0, BG_SCREEN_ADDR(27), 4 * sizeof(gBg0Tm)); /* BG0–BG1 512×256 tilemaps */
 
 	unit = GetUnit(uid1);
 	fid = GetUnitFid(unit);

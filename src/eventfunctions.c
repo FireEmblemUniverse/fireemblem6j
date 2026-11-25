@@ -2278,7 +2278,7 @@ void PutDemoMonologueMsg(void)
 void DemoScene_TmpCleanup(void)
 {
     SetDispEnable(1, 1, 1, 1, 1);
-    CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000);
+    CpuFastFill(0, BG_SCREEN_ADDR(12), 4 * sizeof(gBg0Tm)); /* BG0–BG3 tilemaps */
 }
 
 void DemoScene_JumpToChapterDirectly(int chapter, int x, int y)

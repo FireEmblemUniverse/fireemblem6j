@@ -1444,7 +1444,7 @@ void StartSaveMenuWindowAnim(ProcPtr parent, fi8 anim_direction, fu8 anim_speed)
 
 void SaveMenu_CopyBg2(ProcPtr proc)
 {
-	RegisterDataMove(gBg2Tm, (void *)VRAM + 0x7000, sizeof(gBg2Tm));
+	RegisterDataMove(gBg2Tm, BG_SCREEN_ADDR(14), sizeof(gBg2Tm));
 }
 
 struct ProcScr CONST_DATA ProcScr_SaveMenuBg2Copy[] = {
