@@ -729,7 +729,7 @@ void func_fe6_08047B10(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len
 void func_fe6_08047B3C(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len_dst);
 void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
-void PutEfxTerrainToLowerLayer(void);
+void RaiseEfxTerrainLayer(void);
 int EfxGetCamMovDuration(void);
 void EfxTmFillA(u32 val);
 void EfxTmFillB(u32 val);
@@ -1722,20 +1722,20 @@ void EfxNormalEffectBG_Loop(struct ProcEfxBG *proc);
 void NewEfxYushaSpinShield(struct Anim *anim, int state);
 void EfxYushaSpinShield_Null(struct ProcEfx *proc);
 void NewEfxYushaSpinShieldOBJ(struct Anim *anim, int state);
-void EfxYushaSpinShieldOBJ_1(struct ProcEfxOBJ *proc);
-void EfxYushaSpinShieldOBJ_2(struct ProcEfxOBJ *proc);
-void EfxYushaSpinShieldOBJ_3(struct ProcEfxOBJ *proc);
-void EfxYushaSpinShieldOBJ_4(struct ProcEfxOBJ *proc);
+void EfxYushaSpinShieldOBJ_StartObj2(struct ProcEfxOBJ *proc);
+void EfxYushaSpinShieldOBJ_WaitForBlockEnd(struct ProcEfxOBJ *proc);
+void EfxYushaSpinShieldOBJ_StartObj3OnHit(struct ProcEfxOBJ *proc);
+void EfxYushaSpinShieldOBJ_End(struct ProcEfxOBJ *proc);
 void NewEfxHurtmutEff00(struct Anim *anim);
 void EfxHurtmutEff00_Null(struct ProcEfx *proc);
 void NewEfxHurtmutEff00OBJ(struct Anim *anim);
-void EfxHurtmutEff00OBJ_1(struct ProcEfxOBJ *proc);
-void EfxHurtmutEff00OBJ_2(struct ProcEfxOBJ *proc);
-void EfxHurtmutEff00OBJ_3(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff00OBJ_StartObj1(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff00OBJ_StartObj2(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff00OBJ_End(struct ProcEfxOBJ *proc);
 void NewEfxHurtmutEff01OBJ(struct Anim *anim);
-void EfxHurtmutEff01OBJ_1(struct ProcEfxOBJ *proc);
-void EfxHurtmutEff01OBJ_2(struct ProcEfxOBJ *proc);
-void EfxHurtmutEff01OBJ_3(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff01OBJ_StartObj1(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff01OBJ_StartObj2(struct ProcEfxOBJ *proc);
+void EfxHurtmutEff01OBJ_End(struct ProcEfxOBJ *proc);
 void NewEfxMagfcast(struct Anim *anim, int type);
 void EfxMagfcast_Loop(struct ProcEfx *proc);
 void NewEfxMagfcastBG(struct Anim *anim, u32 type);
@@ -1865,7 +1865,7 @@ void EfxopLiveOBJ_Loop(struct ProcEfxOBJ *proc);
 
 /* banim_ekrdragon.h */
 
-void FillBGSafelyRect(u16 * tm, u16 width, u16 height, int pal, int chr);
+void ModifyBGRectTileRefs(u16 * tm, u16 width, u16 height, int pal, int chr);
 void FillBGRect(u16 * tm, u16 width, u16 height, int pal, int chr);
 void func_fe6_0805B0D4(u16 * tm, u16 width, u16 height, int pal, int chr);
 void EfxTmModifyPal(u16 * tm, u16 width, u16 height);

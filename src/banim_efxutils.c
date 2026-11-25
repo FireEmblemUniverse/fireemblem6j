@@ -86,7 +86,7 @@ CONST_DATA short PosArray_EfxApocalypseBGCtrl[0x140] = {
 	15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
 };
 
-void FillBGSafelyRect(u16 *tm, u16 width, u16 height, int pal, int chr)
+void ModifyBGRectTileRefs(u16 *tm, u16 width, u16 height, int pal, int chr)
 {
 	int i, j;
 	u16 tileref, len;

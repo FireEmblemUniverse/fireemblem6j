@@ -10632,7 +10632,7 @@ void NewEfxReserveBG2(struct Anim *anim)
 	gDispIo.bg1_ct.priority = 2;
 	gDispIo.bg3_ct.priority = 3;
 
-	PutEfxTerrainToLowerLayer();
+	RaiseEfxTerrainLayer();
 
 	anim->oam2 = (anim->oam2 & 0xF3FF) | OAM2_LAYER(1);
 

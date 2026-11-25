@@ -334,10 +334,10 @@ void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc);
 void ManimLevelUp_EndLevelUpText(struct ManimLevelUpProc * proc);
 void ManimLevelUp_RestoreBgm(struct ManimLevelUpProc * proc);
 void ManimLevelUp_Clear(struct ManimLevelUpProc * proc);
-// NewManimFadeIn
-// ManimFadeIn_Loop
-// NewManimFadeOut
-// ManimFadeOut_Loop
+// NewManimDimMap
+// ManimDimMap_Start
+// NewManimRestoreMap
+// ManimRestoreMap_Start
 // StartManimBgShake
 // ManimBgShake_Init
 // ManimBgShake_Loop
@@ -393,8 +393,8 @@ void ManimAnimateActorDamage(int actor_id, int damage);
 // Manim_DefenderStarImplosion
 // Manim_ShowDefender
 // Manim_MoveDefenderToTarget
-// Manim_FadeIn
-// Manim_FadeOut
+// Manim_DimMap
+// Manim_RestoreMap
 
 extern struct ProcScr CONST_DATA ProcScr_PoisonDamageManim[];
 extern struct ProcScr CONST_DATA ProcScr_TrapDamageManim[];
@@ -427,8 +427,8 @@ extern struct ProcScr CONST_DATA ProcScr_ManimBgScroll[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUpStatGainLabel[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUpLabelColor[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUp[];
-extern struct ProcScr CONST_DATA ProcScr_ManimFadeIn[];
-extern struct ProcScr CONST_DATA ProcScr_ManimFadeOut[];
+extern struct ProcScr CONST_DATA ProcScr_ManimDimMap[];
+extern struct ProcScr CONST_DATA ProcScr_ManimRestoreMap[];
 extern struct ProcScr CONST_DATA ProcScr_ManimBgShake[];
 extern struct ProcScr CONST_DATA ProcScr_ManimWarpStarDisp[];
 extern struct ProcScr CONST_DATA ProcScr_DefaultManimRound[];

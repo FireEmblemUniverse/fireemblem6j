@@ -124,12 +124,12 @@ void EkrDispUP_Loop(struct ProcEkrDispUP *proc)
 	if (height > 0) {
 		if (proc->unk4C == 0) { 
 			EfxTmCpyBG(&Tsa_EkrDispUP_08112968[map_idx], &gBg0Tm2D[iy][ix1], 15, height, -1, -1);
-			FillBGSafelyRect(&gBg0Tm2D[iy][ix1], 15, height, 2, 128);
+			ModifyBGRectTileRefs(&gBg0Tm2D[iy][ix1], 15, height, 2, 128);
 		}
 
 		if (proc->unk50 == 0) {
 			EfxTmCpyBG(&Tsa_EkrDispUP_08112A1C[map_idx], &gBg0Tm2D[iy][ix2], ix2, height, -1, -1);
-			FillBGSafelyRect(&gBg0Tm2D[iy][ix2], 15, height, 3, 128);
+			ModifyBGRectTileRefs(&gBg0Tm2D[iy][ix2], 15, height, 3, 128);
 		}
 	}
 

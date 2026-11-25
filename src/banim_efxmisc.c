@@ -36,10 +36,10 @@ void EfxYushaSpinShield_Null(struct ProcEfx *proc)
 
 struct ProcScr CONST_DATA ProcScr_EfxYushaSpinShieldOBJ[] = {
 	PROC_NAME_DEBUG("efxYushaSpinShieldOBJ"),
-	PROC_REPEAT(EfxYushaSpinShieldOBJ_1),
-	PROC_REPEAT(EfxYushaSpinShieldOBJ_2),
-	PROC_REPEAT(EfxYushaSpinShieldOBJ_3),
-	PROC_REPEAT(EfxYushaSpinShieldOBJ_4),
+	PROC_REPEAT(EfxYushaSpinShieldOBJ_StartObj2),
+	PROC_REPEAT(EfxYushaSpinShieldOBJ_WaitForBlockEnd),
+	PROC_REPEAT(EfxYushaSpinShieldOBJ_StartObj3OnHit),
+	PROC_REPEAT(EfxYushaSpinShieldOBJ_End),
 	PROC_END,
 };
 
@@ -77,7 +77,7 @@ void NewEfxYushaSpinShieldOBJ(struct Anim *anim, int r1)
 		anim2->oam2 |= OAM2_PAL(OBPAL_EFX_UNIT_R) + VRAMOFF_OBJ_6000 / CHR_SIZE;
 }
 
-void EfxYushaSpinShieldOBJ_1(struct ProcEfxOBJ *proc)
+void EfxYushaSpinShieldOBJ_StartObj2(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 	if (++proc->timer != 0x45)
@@ -106,7 +106,7 @@ void EfxYushaSpinShieldOBJ_1(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxYushaSpinShieldOBJ_2(struct ProcEfxOBJ *proc)
+void EfxYushaSpinShieldOBJ_WaitForBlockEnd(struct ProcEfxOBJ *proc)
 {
 	if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCK_END_PREBATTLE))
 		return;
@@ -118,7 +118,7 @@ void EfxYushaSpinShieldOBJ_2(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxYushaSpinShieldOBJ_3(struct ProcEfxOBJ *proc)
+void EfxYushaSpinShieldOBJ_StartObj3OnHit(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 
@@ -148,7 +148,7 @@ void EfxYushaSpinShieldOBJ_3(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxYushaSpinShieldOBJ_4(struct ProcEfxOBJ *proc)
+void EfxYushaSpinShieldOBJ_End(struct ProcEfxOBJ *proc)
 {
 	if (++proc->timer == 0x14) {
 		proc->timer = 0;
@@ -190,11 +190,11 @@ void EfxHurtmutEff00_Null(struct ProcEfx *proc)
 
 struct ProcScr CONST_DATA ProcScr_EfxHurtmutEff00OBJ[] = {
 	PROC_NAME_DEBUG("efxHurtmutEff00OBJ"),
-	PROC_REPEAT(EfxHurtmutEff00OBJ_1),
+	PROC_REPEAT(EfxHurtmutEff00OBJ_StartObj1),
 	PROC_SLEEP(26),
-	PROC_REPEAT(EfxHurtmutEff00OBJ_2),
+	PROC_REPEAT(EfxHurtmutEff00OBJ_StartObj2),
 	PROC_SLEEP(8),
-	PROC_REPEAT(EfxHurtmutEff00OBJ_3),
+	PROC_REPEAT(EfxHurtmutEff00OBJ_End),
 	PROC_END,
 };
 
@@ -208,7 +208,7 @@ void NewEfxHurtmutEff00OBJ(struct Anim *anim)
 	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_Common, AnimScr_Common, AnimScr_Common, AnimScr_Common);
 }
 
-void EfxHurtmutEff00OBJ_1(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff00OBJ_StartObj1(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 
@@ -227,7 +227,7 @@ void EfxHurtmutEff00OBJ_1(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxHurtmutEff00OBJ_2(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff00OBJ_StartObj2(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 
@@ -246,7 +246,7 @@ void EfxHurtmutEff00OBJ_2(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxHurtmutEff00OBJ_3(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff00OBJ_End(struct ProcEfxOBJ *proc)
 {
 	gEfxBgSemaphore--;
 	BasRemove(proc->anim2);
@@ -255,11 +255,11 @@ void EfxHurtmutEff00OBJ_3(struct ProcEfxOBJ *proc)
 
 struct ProcScr CONST_DATA ProcScr_EfxHurtmutEff01OBJ[] = {
 	PROC_NAME_DEBUG("efxHurtmutEff01OBJ"),
-	PROC_REPEAT(EfxHurtmutEff01OBJ_1),
+	PROC_REPEAT(EfxHurtmutEff01OBJ_StartObj1),
 	PROC_SLEEP(58),
-	PROC_REPEAT(EfxHurtmutEff01OBJ_2),
+	PROC_REPEAT(EfxHurtmutEff01OBJ_StartObj2),
 	PROC_SLEEP(21),
-	PROC_REPEAT(EfxHurtmutEff01OBJ_3),
+	PROC_REPEAT(EfxHurtmutEff01OBJ_End),
 	PROC_END,
 };
 
@@ -274,7 +274,7 @@ void NewEfxHurtmutEff01OBJ(struct Anim *anim)
 	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_Common, AnimScr_Common, AnimScr_Common, AnimScr_Common);
 }
 
-void EfxHurtmutEff01OBJ_1(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff01OBJ_StartObj1(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 	if (GetAnimPosition(proc->anim) == POS_R) {
@@ -292,7 +292,7 @@ void EfxHurtmutEff01OBJ_1(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxHurtmutEff01OBJ_2(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff01OBJ_StartObj2(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
 	if (GetAnimPosition(proc->anim) == POS_R) {
@@ -310,7 +310,7 @@ void EfxHurtmutEff01OBJ_2(struct ProcEfxOBJ *proc)
 	Proc_Break(proc);
 }
 
-void EfxHurtmutEff01OBJ_3(struct ProcEfxOBJ *proc)
+void EfxHurtmutEff01OBJ_End(struct ProcEfxOBJ *proc)
 {
 	gEfxBgSemaphore--;
 	BasRemove(proc->anim2);

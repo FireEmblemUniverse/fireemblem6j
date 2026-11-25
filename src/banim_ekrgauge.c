@@ -297,7 +297,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
 
         if (0 == proc->unk4C) {
             EfxTmCpyBG(gUnk_08112AD0 + r8, &gBg0Tm2D[r7][r9], 15, r6, -1, -1);
-            FillBGSafelyRect(&gBg0Tm2D[r7][r9], 15, r6, 2, 0x80);
+            ModifyBGRectTileRefs(&gBg0Tm2D[r7][r9], 15, r6, 2, 0x80);
         }
 
         if (0 == proc->unk50) {
@@ -306,7 +306,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
             ptr = (u8 *)gUnk_08112BA4 + r8;
 
             EfxTmCpyBG(ptr, &gBg0Tm2D[r7][spDC], 16, r6, -1, -1);
-            FillBGSafelyRect(&gBg0Tm2D[r7][spDC], 16, r6, 3, 128);
+            ModifyBGRectTileRefs(&gBg0Tm2D[r7][spDC], 16, r6, 3, 128);
         }
 
         EnableBgSync(1);
