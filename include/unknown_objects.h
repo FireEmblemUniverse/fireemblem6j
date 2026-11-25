@@ -132,7 +132,12 @@ extern u8 const Img_Prep_0831AB1C[]; // img
 extern u16 const Pal_Prep_0831B068[];
 extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];
-extern u16 Tsa_MonologueScrollingBG[30 * 40];
+#define MONOLOGUE_BG_WIDTH 30
+#define MONOLOGUE_BG_HEIGHT 40
+// lcm of the 256px tilemap and the 320px TSA, so both wrap together
+#define MONOLOGUE_BG_SCROLL_WRAP 0x500
+
+extern u16 Tsa_MonologueScrollingBG[MONOLOGUE_BG_WIDTH * MONOLOGUE_BG_HEIGHT];
 extern u16 const Pal_MonologueBG[];
 extern u32 const Img_VeriticalSpinningArrow[];
 // extern ??? Img_HorizontalSpinningArrow
