@@ -592,7 +592,7 @@ void PrepAllItems_PutList(struct Text *text, u8 x, struct Unit *unit, u16 off, i
 		ClearText(&text[i & 7]);
 		Text_SetCursor(&text[i & 7], 0);
 		PutIcon(
-			gBg2Tm + TM_OFFSET(x * 14 + 2, (i * 2) & 0x1F),
+			gBg2Tm + TM_OFFSET(x * 14 + 2, TM_WRAP_Y(i * 2)),
 			GetItemIcon(gPrepItemListData[i].item),
 			OAM2_PAL(BGPAL_PREPMENU_ICON));
 		PrepSubItem_InsertIcon(GetItemIcon(gPrepItemListData[i].item));
@@ -604,9 +604,9 @@ void PrepAllItems_PutList(struct Text *text, u8 x, struct Unit *unit, u16 off, i
 
 		Text_SetColor(&text[i & 7], usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
 		Text_DrawString(&text[i & 7], GetItemName(gPrepItemListData[i].item));
-		PutText(&text[i & 7], gBg2Tm + TM_OFFSET(x * 14 + 4, (i * 2) & 0x1F));
+		PutText(&text[i & 7], gBg2Tm + TM_OFFSET(x * 14 + 4, TM_WRAP_Y(i * 2)));
 		PutNumberOrBlank(
-			gBg2Tm + TM_OFFSET(x * 14 + 0xD, (i * 2) & 0x1F),
+			gBg2Tm + TM_OFFSET(x * 14 + 0xD, TM_WRAP_Y(i * 2)),
 			usable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 			GetItemUses(gPrepItemListData[i].item));
 	}

@@ -924,7 +924,7 @@ void PutPlayRankTexts(int line)
 
 		PutDrawText(
 			&gpPlayRankSt->texts_rank_name[i],
-			gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[i], (gpPlayRankSt->ys[i] + (_line = line - 6)) & 0x1F),
+			gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[i], TM_WRAP_Y(gpPlayRankSt->ys[i] + (_line = line - 6))),
 			gTotalPlayRankConf1[i].color,
 			0, 6,
 			DecodeMsg(gTotalPlayRankConf1[i].msg)
@@ -945,7 +945,7 @@ void PutPlayRankTotalText(int line)
 
 	PutDrawText(
 		gpPlayRankSt->texts_rank_name + index,
-		gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[index], (gpPlayRankSt->ys[index] + line) & 0x1F),
+		gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[index], TM_WRAP_Y(gpPlayRankSt->ys[index] + line)),
 		gTotalPlayRankConf1[index].color,
 		0, tile_width, DecodeMsg(gTotalPlayRankConf1[index].msg)
 	);
@@ -967,7 +967,7 @@ void PlayRank_PutTotalPlayTime(int line)
 	int time = PlayRank_GetTotalPlayTime();
 
 	PutTime(
-		gBg0Tm + TM_OFFSET(0x14, (line + 3) & 0x1F),
+		gBg0Tm + TM_OFFSET(0x14, TM_WRAP_Y(line + 3)),
 		TEXT_COLOR_SYSTEM_BLUE,
 		time, true
 	);

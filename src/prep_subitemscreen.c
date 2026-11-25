@@ -793,7 +793,7 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx -= proc->unk_4A * 4;
 
 		if ((proc->menu_scroll_bar_disp_idx % 16) == 0) {
-			TmFillRect(gBg2Tm + TM_OFFSET(15, ((proc->menu_scroll_bar_disp_idx / 0x10 + 7) * 2) & 0x1F), 15, 1, 0);
+			TmFillRect(gBg2Tm + TM_OFFSET(15, TM_WRAP_Y((proc->menu_scroll_bar_disp_idx / 0x10 + 7) * 2)), 15, 1, 0);
 			EnableBgSync(BG2_SYNC_BIT);
 			proc->menu_scrolling_pos = 0;
 		}
@@ -803,7 +803,7 @@ void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx += proc->unk_4A * 4;
 
 		if ((proc->menu_scroll_bar_disp_idx % 16) == 0) {
-			TmFillRect(gBg2Tm + TM_OFFSET(15, ((proc->menu_scroll_bar_disp_idx / 0x10 - 1) * 2) & 0x1F), 15, 1, 0);
+			TmFillRect(gBg2Tm + TM_OFFSET(15, TM_WRAP_Y((proc->menu_scroll_bar_disp_idx / 0x10 - 1) * 2)), 15, 1, 0);
 			EnableBgSync(BG2_SYNC_BIT);
 			proc->menu_scrolling_pos = 0;
 		}
@@ -1536,7 +1536,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx -= proc->unk_4A * 4;
 
 		if ((proc->menu_scroll_bar_disp_idx % 16) == 0) {
-			TmFillRect(gBg2Tm + TM_OFFSET(0xF, ((proc->menu_scroll_bar_disp_idx / 16 + 7) * 2) & 0x1F), 0xF, 1, 0);
+			TmFillRect(gBg2Tm + TM_OFFSET(0xF, TM_WRAP_Y((proc->menu_scroll_bar_disp_idx / 16 + 7) * 2)), 0xF, 1, 0);
 			EnableBgSync(BG2_SYNC_BIT);
 			proc->menu_scrolling_pos = 0;
 		}
@@ -1546,7 +1546,7 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 		proc->menu_scroll_bar_disp_idx += proc->unk_4A * 4;
 
 		if ((proc->menu_scroll_bar_disp_idx % 16) == 0) {
-			TmFillRect(gBg2Tm + TM_OFFSET(0xF, ((proc->menu_scroll_bar_disp_idx / 16 - 1) * 2) & 0x1F), 0xF, 1, 0);
+			TmFillRect(gBg2Tm + TM_OFFSET(0xF, TM_WRAP_Y((proc->menu_scroll_bar_disp_idx / 16 - 1) * 2)), 0xF, 1, 0);
 			EnableBgSync(BG2_SYNC_BIT);
 			proc->menu_scrolling_pos = 0;
 		}

@@ -354,7 +354,7 @@ void ShopDrawBuyItemLine(struct ProcShop *_proc, int list_idx)
 		&gShopItemTexts[index],
 		item,
 		proc->unit,
-		gBg2Tm + TM_OFFSET(7, (list_idx * 2 & 0x1F))
+		gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(list_idx * 2))
 	);
 }
 
@@ -380,7 +380,7 @@ void ShopDrawSellItemLine(struct ProcShop *_proc, int list_idx)
 		&gShopItemTexts[index],
 		item,
 		proc->unit,
-		gBg2Tm + TM_OFFSET(7, (list_idx * 2 & 0x1F))
+		gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(list_idx * 2))
 	);
 }
 
@@ -808,7 +808,7 @@ void ShopInitTexts_OnBuy(struct ProcShop *parent)
 	for (i = parent->hand_idx; i < parent->hand_idx + SHOP_TEXT_LINES; i++)
 		PutBlankText(
 			&gShopItemTexts[tmp = DivRem(i, SHOP_TEXT_LINES + 1)],
-			gBg2Tm + TM_OFFSET(7, ((i * 2) & 0x1F)));
+			gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(i * 2)));
 
 	SetBgOffset(BG_2, 0, (parent->hand_idx * 0x10) - 0x48);
 	EnableBgSync(BG2_SYNC_BIT);
@@ -841,7 +841,7 @@ void DrawShopSoldItems(struct ProcShop *proc)
 			&gShopItemTexts[index],
 			item,
 			proc->unit,
-			gBg2Tm + TM_OFFSET(7, ((i * 2) & 0x1F))
+			gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(i * 2))
 		);
 	}
 	SetBgOffset(BG_2, 0, (proc->hand_idx * 0x10) - 0x48);
@@ -872,7 +872,7 @@ void ShopInitTexts_OnSell(struct ProcShop *parent)
 	for (i = 0; i < SHOP_TEXT_LINES; i++)
 		PutBlankText(
 			&gShopItemTexts[tmp = DivRem(i, SHOP_TEXT_LINES + 1)],
-			gBg2Tm + TM_OFFSET(7, ((i * 2) & 0x1F)));
+			gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(i * 2)));
 
 	SetBgOffset(2, 0, -0x48);
 	EnableBgSync(BG2_SYNC_BIT);
@@ -903,7 +903,7 @@ void ShopDrawDefaultSellItemLine(struct ProcShop *proc)
 			&gShopItemTexts[index],
 			item,
 			proc->unit,
-			gBg2Tm + TM_OFFSET(7, ((i * 2) & 0x1F)));
+			gBg2Tm + TM_OFFSET(7, TM_WRAP_Y(i * 2)));
 	}
 	EnableBgSync(BG2_SYNC_BIT);
 }
