@@ -58,7 +58,7 @@ struct ProcScr CONST_DATA ProcScr_EfxWhiteIN[] =
     PROC_NAME_DEBUG("efxWhiteIN"),
     PROC_REPEAT(EfxWhiteIn_Loop1),
     PROC_REPEAT(EfxWhiteIn_Loop2),
-    PROC_REPEAT(EfxBlackInRestorePalSync),
+    PROC_REPEAT(EfxWhiteIn_RestorePalSync),
     PROC_END,
 };
 
@@ -98,7 +98,7 @@ void EfxWhiteIn_Loop2(struct ProcEfxFlashing * proc)
         Proc_Break(proc);
 }
 
-void EfxBlackInRestorePalSync(struct ProcEfxFlashing * proc)
+void EfxWhiteIn_RestorePalSync(struct ProcEfxFlashing * proc)
 {
     EnablePalSync();
     Proc_Break(proc);

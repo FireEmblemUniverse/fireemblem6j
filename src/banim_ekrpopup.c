@@ -317,8 +317,8 @@ void NewEkrPopup(void)
     proc->rdebuf = 0;
     proc->rbuff = 0;
 
-    /* No popup in dragon */
-    if (CheckEkrDragonWorking() != false)
+    /* No popup in dragon, once Idunn is defeated */
+    if (CheckEkrIdunnDefeated() != false)
         return;
 
     /* No popup in promotion... */

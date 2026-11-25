@@ -446,7 +446,7 @@ bool CanBuildNewLinkArenaTeam(void)
 	return FALSE;
 }
 
-bool CanDirectlyBuildNewLinkArenaTeam(void)
+bool HasAnyLinkArenaTeam(void)
 {
 	int i;
 
@@ -562,7 +562,7 @@ void SioTeamList_EraseTeam(struct SioTeamListProc * proc)
 	gLinkArenaTeamList[team].unk_0F = team | 0x80;
 	DrawLinkArenaTeamName(team);
 
-	if (!CanDirectlyBuildNewLinkArenaTeam()) {
+	if (!HasAnyLinkArenaTeam()) {
 		func_fe6_080372B0(gLinkArenaSt.unk_00, proc);
 		Proc_Goto(proc, 2);
 	} else if (proc->valid_options[0] == 0) {
@@ -1534,7 +1534,7 @@ void Tactician_Loop(struct ProcTactician * proc)
 	UpdateNameEntrySpriteDraw(proc->child, conf->x - 4, conf->y + 1, GetStringTextLen(buf), conf->kind, proc->line_idx);
 }
 
-void Tactician_VBlank(void)
+void Tactician_HBlank(void)
 {
 	u16 vcount = REG_VCOUNT + 1;
 
@@ -1550,10 +1550,10 @@ void Tactician_VBlank(void)
 	}
 }
 
-void Tactician_SetVBlank(struct ProcTactician * proc)
+void Tactician_SetHBlank(struct ProcTactician * proc)
 {
 	proc->unk_38 = 0;
-	SetOnHBlankA(Tactician_VBlank);
+	SetOnHBlankA(Tactician_HBlank);
 }
 
 void func_fe6_080388A4(struct ProcTactician * proc)

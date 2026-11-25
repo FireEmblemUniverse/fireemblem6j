@@ -178,7 +178,7 @@ bool SioIsKeyInputSequenceComplete(u16 const * list);
 void StartLinkArenaTeamList(ProcPtr parent);
 void SioTeamList_Init(struct SioTeamListProc * proc);
 bool CanBuildNewLinkArenaTeam(void);
-bool CanDirectlyBuildNewLinkArenaTeam(void);
+bool HasAnyLinkArenaTeam(void);
 int GetSioTeams(int active_option, u8 mode);
 void DrawLinkArenaTeamName(int idx);
 void DrawAllLinkArenaTeams(struct SioTeamListProc * proc);
@@ -761,8 +761,8 @@ void SaveTactician(struct ProcTactician * proc, struct TacticianTextConf const *
 bool func_fe6_0803848C(struct ProcTactician * proc, struct TacticianTextConf const * conf, int c, int d);
 void Tactician_LoopCore(struct ProcTactician * proc, struct TacticianTextConf const * conf);
 void Tactician_Loop(struct ProcTactician * proc);
-void Tactician_VBlank(void);
-void Tactician_SetVBlank(struct ProcTactician * proc);
+void Tactician_HBlank(void);
+void Tactician_SetHBlank(struct ProcTactician * proc);
 void func_fe6_080388A4(struct ProcTactician * proc);
 void func_fe6_080388E4(struct ProcTactician * proc);
 void func_fe6_08038910(struct ProcTactician * proc);
@@ -876,7 +876,7 @@ void PointsNumberMover_AwaitEnd(struct PointsNumberMoverProc * proc);
 void PointsSpriteText_Init(struct PointsSpriteTextProc * proc);
 void PointsSpriteText_LoopIn(struct PointsSpriteTextProc * proc);
 void PointsSpriteText_LoopOut(struct PointsSpriteTextProc * proc);
-bool NewSioPointsSpriteText(int x, int y, char const * str, u8 flag, ProcPtr parent);
+bool StartSioPointsNumberMovers(int x, int y, char const * str, u8 flag, ProcPtr parent);
 void StartSioPoints1(ProcPtr parent);
 void StartSioPoints2(ProcPtr parent);
 

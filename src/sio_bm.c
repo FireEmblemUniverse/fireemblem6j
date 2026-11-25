@@ -312,7 +312,7 @@ void PointsSpriteText_LoopOut(struct PointsSpriteTextProc * proc)
 		Proc_Break(proc);
 }
 
-bool NewSioPointsSpriteText(int x, int y, char const * str, u8 flag, ProcPtr parent)
+bool StartSioPointsNumberMovers(int x, int y, char const * str, u8 flag, ProcPtr parent)
 {
 	int i;
 	struct Text text;
@@ -374,14 +374,14 @@ void StartSioPoints1(ProcPtr parent)
 {
 	StartLinkArenaPointsBox();
 
-	if (!NewSioPointsSpriteText(88, 60, gUnk_Sio_0810F408, 1, parent))
+	if (!StartSioPointsNumberMovers(88, 60, gUnk_Sio_0810F408, 1, parent))
 		EndLinkArenaPointsBox();
 }
 
 void StartSioPoints2(ProcPtr parent)
 {
 	StartLinkArenaPointsBox();
-	NewSioPointsSpriteText(88, 60, gUnk_Sio_0810F408, 0, parent);
+	StartSioPointsNumberMovers(88, 60, gUnk_Sio_0810F408, 0, parent);
 }
 
 void func_fe6_0803CA90(struct Unit * unit)

@@ -11,7 +11,7 @@
 
 #include "constants/songs.h"
 
-bool CheckGameEndingDone(void)
+bool IsGameEndingRunning(void)
 {
 	if (gEndingDoneFlag <= 1)
 		return true;

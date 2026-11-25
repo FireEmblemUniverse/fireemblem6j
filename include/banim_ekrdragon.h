@@ -180,7 +180,7 @@ void RestoreBodyFlashingPalForIdunn(int pos);
 void EfxBodyFlashingForDragon(int pos);
 int GetDragonPosition(void);
 void InitEkrDragonStatus(void);
-int CheckEkrDragonWorking(void);
+int CheckEkrIdunnDefeated(void);
 void EkrDragonTmCpyExt(int x);
 void EkrDragonTmCpy2(const u8 * tsa);
 void EkrDragonTmCpy3(const u8 * tsa);
@@ -197,7 +197,7 @@ void NewEkrDragonBark(struct BaSprite *anim);
 void EkrDragonBarkExt(struct ProcEkrDragonBark *proc);
 
 void NewEkrManakete(struct BaSprite *anim);
-void EkrManakete_BgFadeIn(struct ProcEkrDragon *proc);
+void EkrManakete_BgFadeOut(struct ProcEkrDragon *proc);
 void func_fe6_08059144(struct ProcEkrDragon *proc);
 void EkrManakete_PauseOnStart(struct ProcEkrDragon *proc);
 void func_fe6_080591CC(struct ProcEkrDragon *proc);
@@ -270,7 +270,7 @@ void StartEkrFaeTransferfx(struct BaSprite *anim);
 void EkrFaeTransferBackfx_Loop(struct ProcEkrFaefx *proc);
 
 void NewEkrDragonIdunn(struct BaSprite *anim);
-void EkrIdunn_BgFadeIn(struct ProcEkrDragon *proc);
+void EkrIdunn_BgFadeOut(struct ProcEkrDragon *proc);
 void EkrIdunn_InitBanimfx(struct ProcEkrDragon *proc);
 void EkrIdunn_InitBodyfx(struct ProcEkrDragon *proc);
 void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon *proc);

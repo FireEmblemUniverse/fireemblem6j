@@ -157,8 +157,8 @@ void EfxPrepareScreenFx(void)
 
 	TmFill(gBg0Tm, BGCHR_BANIM_PNAME_L - 1);
 	EfxTmCpyBG(Tsa_08112C84, gBg0Tm + 0x1E, 2, 20, -1, -1);
-	FillBGSafelyRect(gBg0Tm + 0x1F, 1, 20, 2, 128);
-	FillBGSafelyRect(gBg0Tm + 0x1E, 1, 20, 3, 128);
+	ModifyBGRectTileRefs(gBg0Tm + 0x1F, 1, 20, 2, 128);
+	ModifyBGRectTileRefs(gBg0Tm + 0x1E, 1, 20, 3, 128);
 	EnableBgSync(BG0_SYNC_BIT);
 
 	CpuFastCopy(&Pal_08112CD4[gBanimFactionPal[POS_L] * 0x10], PAL_BG(BGPAL_EFX_2), 0x20);

@@ -20,7 +20,7 @@ struct ProcScr CONST_DATA ProcScr_Monologue[] =
     PROC_REPEAT(Monologue_Loop),
 
     PROC_CALL_ARG(_FadeBgmOut, 4),
-    PROC_CALL(FadeInBlackWithCallBack_Speed08),
+    PROC_CALL(FadeToBlackWithCallBack_Speed08),
     PROC_SLEEP(0),
     PROC_END,
 };
@@ -46,7 +46,7 @@ void Monologue_Init(struct Proc * proc)
     };
 
     InitBgs(bg_config);
-    Clear4bppFirstTm();
+    Clear4bppFirstTile();
     ResetText();
 
     SetDispEnable(1, 0, 0, 1, 0);
@@ -63,10 +63,10 @@ void Monologue_Init(struct Proc * proc)
     VramCopy(gBuf, gBg3Tm, 0x800);
     ApplyBgPalettes(Pal_MonologueBG, 4, 4);
 
-    BrightenPalette(4);
-    BrightenPalette(5);
-    BrightenPalette(6);
-    BrightenPalette(7);
+    DarkenPalette(4);
+    DarkenPalette(5);
+    DarkenPalette(6);
+    DarkenPalette(7);
 
     TmFill(gBg0Tm, 0);
     TmFill(gBg1Tm, 0);

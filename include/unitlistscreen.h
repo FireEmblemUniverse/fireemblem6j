@@ -207,7 +207,7 @@ void UnitList_PutSortKeyLabel(fu8 sort_key);
 void UnitList_TrackItemIcon(int icon);
 void UnitList_ClearOffscreenItemIcons(fu16 scroll_y);
 void UnitList_PutPageArrow(fu8 is_right, fu8 clock, fi8 visible);
-void UnitList_MoveCursorToLastUnit(struct UnitListScreenProc * proc, fi8 from_prep_menu);
+void UnitList_MoveCursorToLastSelectedUnit(struct UnitListScreenProc * proc, fi8 from_prep_menu);
 void UnitList_SetupWindows(bool use_win1);
 void UnitList_StartStatScreen(struct UnitListScreenProc * proc);
 void UnitList_ResetFromStatScreen(struct UnitListScreenProc * proc);

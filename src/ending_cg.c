@@ -30,7 +30,7 @@ struct ProcScr CONST_DATA ProcScr_EndingCG[] = {
 	PROC_CALL(FadeInBlackSpeed08),
 	PROC_SLEEP(1),
 	PROC_REPEAT(EndingCG_Loop),
-	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_CALL(FadeToBlackWithCallBack_Speed08),
 	PROC_SLEEP(1),
 	PROC_END,
 };

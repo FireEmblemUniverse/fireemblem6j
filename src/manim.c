@@ -2412,8 +2412,8 @@ void ManimTorchFx_Init(struct ManimTorchFxProc * proc)
     ApplyPalette(Pal_ManimTorch, 0x10 + OBPAL_MANIM_4);
 
     SetWhitePal(BGPAL_MANIM_4);
-    SetTm(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
-    SetTm(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
+    FillHalfwords(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
+    FillHalfwords(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->clock = 0;
@@ -3624,24 +3624,24 @@ void ManimLevelUp_Clear(struct ManimLevelUpProc * proc)
     ClearTalk();
 }
 
-void ManimFadeIn_Loop(ProcPtr proc);
+void ManimDimMap_Start(ProcPtr proc);
 
-struct ProcScr CONST_DATA ProcScr_ManimFadeIn[] =
+struct ProcScr CONST_DATA ProcScr_ManimDimMap[] =
 {
-    PROC_CALL(ManimFadeIn_Loop),
+    PROC_CALL(ManimDimMap_Start),
     PROC_SLEEP(15),
     PROC_END,
 };
 
-void NewManimFadeIn(ProcPtr parent)
+void NewManimDimMap(ProcPtr parent)
 {
     if (parent != NULL)
-        SpawnProcLocking(ProcScr_ManimFadeIn, parent);
+        SpawnProcLocking(ProcScr_ManimDimMap, parent);
     else
-        SpawnProc(ProcScr_ManimFadeIn, PROC_TREE_3);
+        SpawnProc(ProcScr_ManimDimMap, PROC_TREE_3);
 }
 
-void ManimFadeIn_Loop(ProcPtr proc)
+void ManimDimMap_Start(ProcPtr proc)
 {
     int i;
 
@@ -3653,24 +3653,24 @@ void ManimFadeIn_Loop(ProcPtr proc)
     }
 }
 
-void ManimFadeOut_Loop(ProcPtr proc);
+void ManimRestoreMap_Start(ProcPtr proc);
 
-struct ProcScr CONST_DATA ProcScr_ManimFadeOut[] =
+struct ProcScr CONST_DATA ProcScr_ManimRestoreMap[] =
 {
-    PROC_CALL(ManimFadeOut_Loop),
+    PROC_CALL(ManimRestoreMap_Start),
     PROC_SLEEP(16),
     PROC_END,
 };
 
-void NewManimFadeOut(ProcPtr parent)
+void NewManimRestoreMap(ProcPtr parent)
 {
     if (parent != NULL)
-        SpawnProcLocking(ProcScr_ManimFadeOut, parent);
+        SpawnProcLocking(ProcScr_ManimRestoreMap, parent);
     else
-        SpawnProc(ProcScr_ManimFadeOut, PROC_TREE_3);
+        SpawnProc(ProcScr_ManimRestoreMap, PROC_TREE_3);
 }
 
-void ManimFadeOut_Loop(ProcPtr proc)
+void ManimRestoreMap_Start(ProcPtr proc)
 {
     int i;
 
@@ -3875,8 +3875,8 @@ void Manim_DefenderStarExplosion(ProcPtr proc);
 void Manim_DefenderStarImplosion(ProcPtr proc);
 void Manim_ShowDefender(ProcPtr proc);
 void Manim_MoveDefenderToTarget(ProcPtr proc);
-void Manim_FadeIn(ProcPtr proc);
-void Manim_FadeOut(ProcPtr proc);
+void Manim_DimMap(ProcPtr proc);
+void Manim_RestoreMap(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_DefaultManimRound[] =
 {
@@ -3908,7 +3908,7 @@ struct ProcScr CONST_DATA ProcScr_DefaultManimRound[] =
 struct ProcScr CONST_DATA ProcScr_ManimFortify[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
@@ -3918,7 +3918,7 @@ struct ProcScr CONST_DATA ProcScr_ManimFortify[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4064,7 +4064,7 @@ struct ProcScr CONST_DATA ProcScr_ManimTorch[] =
 struct ProcScr CONST_DATA ProcScr_ManimUnlock[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchTarget),
     PROC_SLEEP(2),
@@ -4076,7 +4076,7 @@ struct ProcScr CONST_DATA ProcScr_ManimUnlock[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4085,7 +4085,7 @@ struct ProcScr CONST_DATA ProcScr_ManimUnlock[] =
 struct ProcScr CONST_DATA ProcScr_ManimWatch[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4100,7 +4100,7 @@ struct ProcScr CONST_DATA ProcScr_ManimWatch[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4109,7 +4109,7 @@ struct ProcScr CONST_DATA ProcScr_ManimWatch[] =
 struct ProcScr CONST_DATA ProcScr_ManimSleep[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4124,7 +4124,7 @@ struct ProcScr CONST_DATA ProcScr_ManimSleep[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4133,7 +4133,7 @@ struct ProcScr CONST_DATA ProcScr_ManimSleep[] =
 struct ProcScr CONST_DATA ProcScr_ManimSilence[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4148,7 +4148,7 @@ struct ProcScr CONST_DATA ProcScr_ManimSilence[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4157,7 +4157,7 @@ struct ProcScr CONST_DATA ProcScr_ManimSilence[] =
 struct ProcScr CONST_DATA ProcScr_ManimRestore[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4169,7 +4169,7 @@ struct ProcScr CONST_DATA ProcScr_ManimRestore[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4178,7 +4178,7 @@ struct ProcScr CONST_DATA ProcScr_ManimRestore[] =
 struct ProcScr CONST_DATA ProcScr_ManimHammerne[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4190,7 +4190,7 @@ struct ProcScr CONST_DATA ProcScr_ManimHammerne[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4235,7 +4235,7 @@ struct ProcScr CONST_DATA ProcScr_TrapDamageManimHit[] =
 struct ProcScr CONST_DATA ProcScr_ManimBarrier[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
-    PROC_CALL(Manim_FadeIn),
+    PROC_CALL(Manim_DimMap),
     PROC_SLEEP(1),
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4247,7 +4247,7 @@ struct ProcScr CONST_DATA ProcScr_ManimBarrier[] =
     PROC_SLEEP(10),
     PROC_CALL(Manim_AttackerFaceDefenderDelayed),
     PROC_SLEEP(30),
-    PROC_CALL(Manim_FadeOut),
+    PROC_CALL(Manim_RestoreMap),
     PROC_SLEEP(1),
     PROC_CALL(EnableTilesetPalAnim),
     PROC_END,
@@ -4666,12 +4666,12 @@ void Manim_MoveDefenderToTarget(ProcPtr proc)
     unit->y = gManimSt.target_y;
 }
 
-void Manim_FadeIn(ProcPtr proc)
+void Manim_DimMap(ProcPtr proc)
 {
-    NewManimFadeIn(proc);
+    NewManimDimMap(proc);
 }
 
-void Manim_FadeOut(ProcPtr proc)
+void Manim_RestoreMap(ProcPtr proc)
 {
-    NewManimFadeOut(proc);
+    NewManimRestoreMap(proc);
 }

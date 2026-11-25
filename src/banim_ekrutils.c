@@ -413,7 +413,7 @@ i16 EfxAdvanceFrameLut(i16 *ptime, i16 *pcount, const i16 lut[])
     }
 }
 
-void PutEfxTerrainToLowerLayer(void)
+void RaiseEfxTerrainLayer(void)
 {
     gEfxTerrainLayerLow = true;
 }

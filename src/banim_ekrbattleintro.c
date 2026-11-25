@@ -186,9 +186,9 @@ void EkrBaStart_BgPaletteIn(struct ProcEkrBattleStarting *proc)
 struct ProcScr CONST_DATA ProcScr_Ekrbattleending[] =
 {
 	PROC_NAME_DEBUG("ekrBattleEnding"),
-	PROC_REPEAT(EkrBaEnd_BgPaletteIn),
+	PROC_REPEAT(EkrBaEnd_BgPaletteOut),
 	PROC_REPEAT(EkrBaEnd_RestoreChapterMap),
-	PROC_REPEAT(EkrBaEnd_ChapterMapFadeOut),
+	PROC_REPEAT(EkrBaEnd_ChapterMapFadeIn),
 	PROC_REPEAT(EkrBaEnd_InitOutroFx),
 	PROC_REPEAT(EkrBaEnd_WaitOutroAndEndGauge),
 	PROC_REPEAT(EkrBaEnd_RestoreMapDisplay),
@@ -204,7 +204,7 @@ void NewEkrbattleending(void)
 	proc->timer = 0;
 }
 
-void EkrBaEnd_BgPaletteIn(struct ProcEkrBattleEnding *proc)
+void EkrBaEnd_BgPaletteOut(struct ProcEkrBattleEnding *proc)
 {
 	int ret;
 
@@ -238,7 +238,7 @@ void EkrBaEnd_RestoreChapterMap(struct ProcEkrBattleEnding *proc)
 	Proc_Break(proc);
 }
 
-void EkrBaEnd_ChapterMapFadeOut(struct ProcEkrBattleEnding *proc)
+void EkrBaEnd_ChapterMapFadeIn(struct ProcEkrBattleEnding *proc)
 {
 	if (gBanimBG == 0 || GetEkrDragonStateType() != 0) {
 		Proc_Break(proc);

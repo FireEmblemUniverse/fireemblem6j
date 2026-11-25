@@ -420,7 +420,7 @@ void EndingP0InfoText_Loop(struct ProcEndingPinfoText *proc)
 
 struct ProcScr CONST_DATA ProcScr_EndingPInfo_x1[] = {
 	PROC_19,
-	PROC_CALL(FadeInBlackWithCallBack_Speed40),
+	PROC_CALL(FadeToBlackWithCallBack_Speed40),
 	PROC_SLEEP(1),
 	PROC_CALL(EndingPInfoDisp_InitDisp),
 	PROC_CALL(EndingPInfo1_StartMerge),
@@ -428,7 +428,7 @@ struct ProcScr CONST_DATA ProcScr_EndingPInfo_x1[] = {
 	PROC_SLEEP(1),
 	PROC_CALL(EndingPInfo1_PutP0InfoText),
 	PROC_REPEAT(EndingPInfo1_Idle),
-	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_CALL(FadeToBlackWithCallBack_Speed08),
 	PROC_SLEEP(1),
 	PROC_CALL(EndingPInfo1_End),
 	PROC_SLEEP(32),
@@ -666,14 +666,14 @@ void SpawnEndingP2InfoText(void)
 
 struct ProcScr CONST_DATA ProcScr_EndingPInfo_x2[] = {
 	PROC_19,
-	PROC_CALL(FadeInBlackWithCallBack_Speed40),
+	PROC_CALL(FadeToBlackWithCallBack_Speed40),
 	PROC_SLEEP(1),
 	PROC_CALL(EndingPInfoDisp_InitDisp),
 	PROC_CALL(Ending_DrawDyadPInfo),
 	PROC_CALL(FadeInBlackSpeed08),
 	PROC_SLEEP(1),
 	PROC_REPEAT(EndingPInfoDisp_Loop),
-	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_CALL(FadeToBlackWithCallBack_Speed08),
 	PROC_SLEEP(1),
 	PROC_CALL(EndingPInfoDisp_End),
 	PROC_SLEEP(32),

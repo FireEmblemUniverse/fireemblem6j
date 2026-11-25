@@ -254,10 +254,10 @@ struct ProcPrepFade {
 };
 
 void PrepMenuFade_Init(struct ProcPrepFade *proc);
-void PrepMenuFadeOut_Loop(struct ProcPrepFade *proc);
 void PrepMenuFadeIn_Loop(struct ProcPrepFade *proc);
-void StartPrepMenuFadeOut(ProcPtr proc);
+void PrepMenuFadeOut_Loop(struct ProcPrepFade *proc);
 void StartPrepMenuFadeIn(ProcPtr proc);
+void StartPrepMenuFadeOut(ProcPtr proc);
 
 void PrepDisp_ChangeSubmenuDesc(struct ProcPrepUpperDisp *proc, int idx);
 void PrepDisp_SetWorldMapInfo(struct ProcPrepUpperDisp *proc, fu8 x, fu8 y, int index_gaiden);
@@ -624,8 +624,8 @@ extern EWRAM_OVERLAY(0) u16 gPrepAllItemsCount;
 extern EWRAM_OVERLAY(0) u16 gPrepMenuScrollPos;
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
-extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];
 extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeIn[];
+extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];
 extern CONST_DATA u16 Sprite_PrepGmapMarker[];
 extern CONST_DATA u16 Sprite_PrepGmapBattleground[];
 extern CONST_DATA u16 Sprite_PrepGmapLine[];
