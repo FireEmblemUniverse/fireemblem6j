@@ -6,6 +6,7 @@
 // TODO: MOVE
 enum { BGCHR_SAVEMENU_0 = 0,
        BGCHR_SAVEMENU_2_0 = 0, // 8000
+       BGCHR_SAVEMENU_TEXT = 1, // c000
 
        OBCHR_SAVEMENU_1C0 = 0x1C0,
        OBCHR_SAVEMENU_200 = 0x200,

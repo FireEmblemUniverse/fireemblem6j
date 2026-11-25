@@ -172,12 +172,12 @@ struct ProcScr CONST_DATA ProcScr_EndManim[] =
 
 u16 CONST_DATA gManimHpBarTilesBaseInfo[] =
 {
-    4, 42,
-    9, 47,
-    9, 57,
-    9, 67,
-    9, 77,
-    5, 87,
+    4, BGCHR_MANIM_HPBAR + 0,
+    9, BGCHR_MANIM_HPBAR + 5,
+    9, BGCHR_MANIM_HPBAR + 15,
+    9, BGCHR_MANIM_HPBAR + 25,
+    9, BGCHR_MANIM_HPBAR + 35,
+    5, BGCHR_MANIM_HPBAR + 45,
     0, 0,
 };
 
@@ -878,8 +878,8 @@ void PutManimWindowNumber(u16 * tm, int num, int tileref, int len, u16 blank_til
 
 void UnpackManimWindowGraphics(void const * hp_bar_img)
 {
-    UnpackManimWindowDigits(0x20);
-    Decompress(hp_bar_img, (void *) (VRAM + CHR_SIZE * 0x2A)); // TODO: CHR constant
+    UnpackManimWindowDigits(BGCHR_MANIM_DIGITS);
+    Decompress(hp_bar_img, (void *) (VRAM + CHR_SIZE * BGCHR_MANIM_HPBAR));
     ApplyPalette(Pal_ManimWindowHpBar, 5);
 }
 
@@ -1043,7 +1043,7 @@ void PutManimInfoWindowActorValues(struct ManimInfoWindowProc * proc, int actor_
             gManimSt.actor[actor_id].hp_info_x + 2,
             gManimSt.actor[actor_id].hp_info_y + 2),
         gManimSt.actor[actor_id].hp_displayed_q4 / 16,
-        TILEREF(BGCHR_MANIM_INFOFRAME + 31, BGPAL_MANIM_INFO), 3, 0);
+        TILEREF(BGCHR_MANIM_DIGITS, BGPAL_MANIM_INFO), 3, 0);
 
     PutManimWindowBar(
         gBg0Tm + TM_OFFSET(
