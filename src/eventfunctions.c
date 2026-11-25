@@ -2639,7 +2639,7 @@ void RemoveEndingMonologueBG(void)
     SetDispEnable(1, 1, 1, 1, 1);
 
     CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3), CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
+    CpuFastFill(0, BG_CHAR_ADDR(0) + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
 }
 
 struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[] =

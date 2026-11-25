@@ -269,9 +269,9 @@ void EndingPInfoDisp_InitDisp(struct ProcEndingPInfo1 *proc)
 	InitFaces();
 	ResetText();
 	ApplyPalettes(Pal_MonologueBG, 2, 2);
-	Decompress(Img_MonologueBG, (u8 *)BG_VRAM + 0x8000);
+	Decompress(Img_MonologueBG, BG_CHAR_ADDR(2));
 	ApplyPalettes(Pal_EndingPInfoWindow, 4, 2);
-	Decompress(Img_EndingPInfoWindow, (u8 *)BG_VRAM + 0x6000);
+	Decompress(Img_EndingPInfoWindow, BG_CHAR_ADDR(0) + 0x300 * CHR_SIZE);
 }
 
 u8 PopNextEndingPerson(void)

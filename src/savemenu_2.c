@@ -1190,7 +1190,7 @@ struct SaveMenuCursorProc *StartSaveMenuCursor(ProcPtr parent)
 
 void SaveMenu_InitText(void)
 {
-	InitTextFont(&gSaveMenuFont, (void *)VRAM + 0x601 * 0x20, 1, 0);
+	InitTextFont(&gSaveMenuFont, BG_CHAR_ADDR(3) + 1 * CHR_SIZE, 1, 0);
 	InitText(&gSaveMenuText, 10);
 }
 
@@ -1232,8 +1232,8 @@ void SaveMenu_UpdatePrompt(struct SaveMenuProc *proc, bool display)
 
 void SaveMenu_ClearVram(void)
 {
-	CpuFastFill(0, (void *)VRAM + 0x8000, 0x40 * 0x20);
-	CpuFastFill(0, (void *)VRAM + 0xC000, 0x40 * 0x20);
+	CpuFastFill(0, BG_CHAR_ADDR(2), 0x40 * 0x20);
+	CpuFastFill(0, BG_CHAR_ADDR(3), 0x40 * 0x20);
 }
 
 void SaveMenu_UpdateAvailableActions(struct SaveMenuProc *proc)

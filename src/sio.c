@@ -1850,7 +1850,7 @@ void SioPostBattle_Init(struct SioPostBattleProc * proc)
 	ApplyPalettes(Pal_TacticianSelObj, 0x13, 4);
 	ApplyPalette(Pal_LinkArenaPlacementRanks, 0x17);
 
-	Decompress(Img_LinkArenaActiveBannerFx, (u8 *)BG_VRAM + 0xC00);
+	Decompress(Img_LinkArenaActiveBannerFx, BG_CHAR_ADDR(0) + 0x60 * CHR_SIZE);
 	ApplyPalette(Pal_LinkArenaActiveBannerFx, 2);
 
 	Decompress(Img_LinkArenaPostBattleBg, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
@@ -3623,7 +3623,7 @@ void SioMenu_End(struct SioMenuProc * proc)
 void StartLinkArenaMainMenu(ProcPtr parent)
 {
 	UnpackUiWindowFrameGraphics();
-	InitTextFont(&gSioFont, (u8 *)BG_VRAM + 0x1800, 0xC0, 0);
+	InitTextFont(&gSioFont, BG_CHAR_ADDR(0) + 0xC0 * CHR_SIZE, 0xC0, 0);
 
 	if (!IsSaveValid(SAVE_MULTIARENA))
 		WriteNewMultiArenaSave();
