@@ -220,7 +220,7 @@ void UnitList_PutPageArrow(fu8 is_right, fu8 clock, fi8 visible)
     EnableBgSync(BG2_SYNC_BIT);
 }
 
-void UnitList_MoveCursorToLastUnit(struct UnitListScreenProc * proc, fi8 from_prep_menu)
+void UnitList_MoveCursorToLastSelectedUnit(struct UnitListScreenProc * proc, fi8 from_prep_menu)
 {
     fu8 i;
 
@@ -653,13 +653,13 @@ void UnitList_Setup(struct UnitListScreenProc * proc)
 
     if (proc->state == UNITLIST_STATE_STATSCREEN)
     {
-        UnitList_MoveCursorToLastUnit(proc, 0);
+        UnitList_MoveCursorToLastSelectedUnit(proc, 0);
         proc->state = UNITLIST_STATE_ROWS;
     }
     else
     {
         if (proc->mode == UNITLIST_MODE_PREPMENU)
-            UnitList_MoveCursorToLastUnit(proc, 1);
+            UnitList_MoveCursorToLastSelectedUnit(proc, 1);
     }
 
     proc->page_slide_clock = 0;

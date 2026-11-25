@@ -11,7 +11,7 @@
 struct ProcScr CONST_DATA ProcScr_EfxDeadEvent[] =
 {
     PROC_NAME_DEBUG("efxDeadEVTENT"),
-    PROC_REPEAT(EfxDeathEvent_Init),
+    PROC_REPEAT(EfxDeathEvent_WaitForAnims),
     PROC_REPEAT(EfxDeathEvent_RemoveUI),
     PROC_REPEAT(EfxDeathEvent_CallEvent),
     PROC_REPEAT(EfxDeathEvent_WaitEvent),
@@ -38,7 +38,7 @@ void NewEfxDeadEvent(struct BaSprite * anim_f, struct BaSprite * anim_b)
     }
 }
 
-void EfxDeathEvent_Init(struct ProcEfxDead * proc)
+void EfxDeathEvent_WaitForAnims(struct ProcEfxDead * proc)
 {
     struct Anim * another = GetAnimAnotherSide(proc->anim1);
     int ret = false;

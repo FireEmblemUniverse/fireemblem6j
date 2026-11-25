@@ -2412,8 +2412,8 @@ void ManimTorchFx_Init(struct ManimTorchFxProc * proc)
     ApplyPalette(Pal_ManimTorch, 0x10 + OBPAL_MANIM_4);
 
     SetWhitePal(BGPAL_MANIM_4);
-    SetTm(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
-    SetTm(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
+    FillHalfwords(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
+    FillHalfwords(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->clock = 0;

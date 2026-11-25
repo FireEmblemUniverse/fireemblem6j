@@ -481,7 +481,7 @@ struct ProcEfxDead {
 };
 
 void NewEfxDeadEvent(struct BaSprite *anim1, struct BaSprite *anim2);
-void EfxDeathEvent_Init(struct ProcEfxDead *proc);
+void EfxDeathEvent_WaitForAnims(struct ProcEfxDead *proc);
 void EfxDeathEvent_RemoveUI(struct ProcEfxDead *proc);
 void EfxDeathEvent_CallEvent(struct ProcEfxDead *proc);
 void EfxDeathEvent_WaitEvent(struct ProcEfxDead *proc);
@@ -768,7 +768,7 @@ void EkrBaStart_MergeBG(struct ProcEkrBattleStarting *proc);
 void EkrBaStart_BgPaletteIn(struct ProcEkrBattleStarting *proc);
 
 void NewEkrbattleending(void);
-void EkrBaEnd_BgPaletteIn(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_BgPaletteOut(struct ProcEkrBattleEnding *proc);
 void EkrBaEnd_RestoreChapterMap(struct ProcEkrBattleEnding *proc);
 void EkrBaEnd_ChapterMapFadeOut(struct ProcEkrBattleEnding *proc);
 void EkrBaEnd_InitOutroFx(struct ProcEkrBattleEnding *proc);

@@ -1558,7 +1558,7 @@ void CallDelayedArg(void (* func)(int), int arg, int delay)
     proc->clock = delay;
 }
 
-void ClearTm(u8 * out, int size)
+void ClearBytes(u8 * out, int size)
 {
     while (size > 0)
     {
@@ -1567,7 +1567,7 @@ void ClearTm(u8 * out, int size)
     }
 }
 
-void SetTm_unused(u8 * out, int size, int value)
+void FillBytes(u8 * out, int size, int value)
 {
     while (size > 0)
     {
@@ -1576,7 +1576,7 @@ void SetTm_unused(u8 * out, int size, int value)
     }
 }
 
-void SetTm(u16 * out, int size, int value)
+void FillHalfwords(u16 * out, int size, int value)
 {
     while (size > 0)
     {
@@ -1687,19 +1687,19 @@ u16 * GetTmOffsetById(int bgid, int x, int y)
     }
 }
 
-void Clear4bppFirstTm(void)
+void Clear4bppFirstTile(void)
 {
     if (gDispIo.bg0_ct.color_depth == BG_COLORDEPTH_4BPP)
-        SetTm((u16 *) (VRAM + GetBgChrOffset(0)), 0x10, 0);
+        FillHalfwords((u16 *) (VRAM + GetBgChrOffset(0)), 0x10, 0);
 
     if (gDispIo.bg1_ct.color_depth == BG_COLORDEPTH_4BPP)
-        SetTm((u16 *) (VRAM + GetBgChrOffset(1)), 0x10, 0);
+        FillHalfwords((u16 *) (VRAM + GetBgChrOffset(1)), 0x10, 0);
 
     if (gDispIo.bg2_ct.color_depth == BG_COLORDEPTH_4BPP)
-        SetTm((u16 *) (VRAM + GetBgChrOffset(2)), 0x10, 0);
+        FillHalfwords((u16 *) (VRAM + GetBgChrOffset(2)), 0x10, 0);
 
     if (gDispIo.bg3_ct.color_depth == BG_COLORDEPTH_4BPP)
-        SetTm((u16 *) (VRAM + GetBgChrOffset(3)), 0x10, 0);
+        FillHalfwords((u16 *) (VRAM + GetBgChrOffset(3)), 0x10, 0);
 }
 
 int Screen2Pan(int x)
@@ -1747,7 +1747,7 @@ void _FadeBgmOut(short speed)
     FadeBgmOut(speed);
 }
 
-void BrightenPalette(int palid)
+void DarkenPalette(int palid)
 {
     int i;
 

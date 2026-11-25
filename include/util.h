@@ -132,21 +132,21 @@ void func_fe6_0801501C(u16 * tm, int x, int y, u16 tileref, int width, int heigh
 // func_fe6_080150DC
 void CallDelayed(void (* func)(void), int delay);
 void CallDelayedArg(void (* func)(int), int arg, int delay);
-void ClearTm(u8 * out, int size);
-// SetTm_unused
-void SetTm(u16 * out, int size, int value);
+void ClearBytes(u8 * out, int size);
+// FillBytes
+void FillHalfwords(u16 * out, int size, int value);
 void StartPartialGameLock(ProcPtr proc);
 void VramCopy(void const * src, void * dst, int size);
 void func_fe6_08015298(u8 const * src, u8 * dst, int width, int height);
 void PutTmLinear(u16 const * src, u16 * dst, int size, u16 tileref);
 u16 * GetTmOffsetById(int bgid, int x, int y);
-void Clear4bppFirstTm(void);
+void Clear4bppFirstTile(void);
 int Screen2Pan(int x);
 void PlaySeSpacial(int song, int x);
 void PlaySeDelayed(int song, int delay);
 void _StartBgm(short song);
 void _FadeBgmOut(short speed);
-void BrightenPalette(int palid);
+void DarkenPalette(int palid);
 void PutDrawTextCentered(struct Text * text, int x, int y, char const * str, int width);
 void VecMulMat(int const * vec, int const * mat, int * ovec);
 void MatMulMat(int const * lmat, int const * rmat, int * omat);
