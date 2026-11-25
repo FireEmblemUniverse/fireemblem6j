@@ -332,7 +332,7 @@ bool TrialC_CheckRedOnTile(struct EventInfo * info)
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
 
-    return func_fe6_0806AE7C(10, 14, 10, 14);
+    return CheckAnyRedUnitArea(10, 14, 10, 14);
 }
 
 bool TrialD_CheckBerserkerDefeated(struct EventInfo * info)
@@ -1648,7 +1648,7 @@ bool FinalChapter_PlayUnitQuotes(struct EventProc * proc)
                 {
                     if (gDefeatTalkPid == gBattleDefeatTalkList[j].pid)
                     {
-                        gDefeatTalkMsg = gBattleDefeatTalkList[j].unk_0C;
+                        gDefeatTalkMsg = gBattleDefeatTalkList[j].final_chapter_msg;
                         gDefeatTalkNextIdx = i + 1;
                         gDefeatTalkState++;
                         return TRUE;

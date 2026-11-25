@@ -221,14 +221,14 @@ int EvtListCmd_ItemChest(struct EventInfo * info)
     int x = EVT_CMD_B1(info->list_script[2]);
     int y = EVT_CMD_B2(info->list_script[2]);
     int tile_command = EVT_CMD_B3(info->list_script[2]);
-    int unk_d = EVT_CMD_B4(info->list_script[2]);
+    int money = EVT_CMD_B4(info->list_script[2]);
 
     if (x == info->x_location && y == info->y_location)
     {
         info->script = (void const *) EVENT_NOSCRIPT;
         info->flag = EVT_CMD_HI(info->list_script[0]);
         info->tile_command = tile_command;
-        info->given_money = unk_d;
+        info->given_money = money;
         info->given_iid = EVT_CMD_LO(info->list_script[1]);
         info->given_money = EVT_CMD_HI(info->list_script[1]);
 
@@ -243,7 +243,7 @@ int EvtListCmd_Door(struct EventInfo * info)
     int x = EVT_CMD_B1(info->list_script[2]);
     int y = EVT_CMD_B2(info->list_script[2]);
     int tile_command = EVT_CMD_B3(info->list_script[2]);
-    int unk_d = EVT_CMD_B4(info->list_script[2]);
+    int money = EVT_CMD_B4(info->list_script[2]);
 
     if (x == info->x_location && y == info->y_location)
     {
@@ -253,7 +253,7 @@ int EvtListCmd_Door(struct EventInfo * info)
 #endif
         info->flag = EVT_CMD_HI(info->list_script[0]);
         info->tile_command = tile_command;
-        info->given_money = unk_d;
+        info->given_money = money;
 
         return TRUE;
     }
@@ -266,7 +266,7 @@ int EvtListCmd_Drawbridge(struct EventInfo * info)
     int x = EVT_CMD_B1(info->list_script[2]);
     int y = EVT_CMD_B2(info->list_script[2]);
     int tile_command = EVT_CMD_B3(info->list_script[2]);
-    int unk_d = EVT_CMD_B4(info->list_script[2]);
+    int money = EVT_CMD_B4(info->list_script[2]);
 
     if (x == info->x_location && y == info->y_location)
     {
@@ -276,7 +276,7 @@ int EvtListCmd_Drawbridge(struct EventInfo * info)
 #endif
         info->flag = EVT_CMD_HI(info->list_script[0]);
         info->tile_command = tile_command;
-        info->given_money = unk_d;
+        info->given_money = money;
 
         return TRUE;
     }
@@ -391,7 +391,7 @@ bool CheckAnyBlueUnitArea(int x1, int y1, int x2, int y2)
     return FALSE;
 }
 
-bool func_fe6_0806AD48(struct EventInfo * info)
+bool Chapter6_CheckNoBlueInSouth(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -402,7 +402,7 @@ bool func_fe6_0806AD48(struct EventInfo * info)
     return TRUE;
 }
 
-bool func_fe6_0806AD74(struct EventInfo * info)
+bool Chapter11B_CheckBlueInSouthwest(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -419,12 +419,12 @@ bool func_fe6_0806AD74(struct EventInfo * info)
     return FALSE;
 }
 
-bool func_fe6_0806ADC4(struct EventInfo * info)
+bool Chapter21_CheckBlueEntersSouth(struct EventInfo * info)
 {
     return CheckAnyBlueUnitArea(12, 21, 31, 24);
 }
 
-bool func_fe6_0806ADDC(struct EventInfo * info)
+bool Chapter21_CheckBlueInSoutheast(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -432,7 +432,7 @@ bool func_fe6_0806ADDC(struct EventInfo * info)
     return CheckAnyBlueUnitArea(17, 21, 31, 35);
 }
 
-bool func_fe6_0806AE04(struct EventInfo * info)
+bool Chapter21_CheckBlueInWest(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -440,7 +440,7 @@ bool func_fe6_0806AE04(struct EventInfo * info)
     return CheckAnyBlueUnitArea(0, 15, 8, 18);
 }
 
-bool func_fe6_0806AE2C(struct EventInfo * info)
+bool Chapter21_CheckBlueInSouthwest(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -448,7 +448,7 @@ bool func_fe6_0806AE2C(struct EventInfo * info)
     return CheckAnyBlueUnitArea(0, 24, 12, 27);
 }
 
-bool func_fe6_0806AE54(struct EventInfo * info)
+bool Chapter21_CheckBlueInNortheast(struct EventInfo * info)
 {
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
@@ -456,7 +456,7 @@ bool func_fe6_0806AE54(struct EventInfo * info)
     return CheckAnyBlueUnitArea(21, 0, 30, 6);
 }
 
-bool func_fe6_0806AE7C(int x1, int y1, int x2, int y2)
+bool CheckAnyRedUnitArea(int x1, int y1, int x2, int y2)
 {
     FOR_UNITS_FACTION(FACTION_RED, unit,
     {
@@ -1073,55 +1073,55 @@ void StartBattleDefeatTalk(fu8 pid)
     }
 }
 
-bool func_fe6_0806B898(void)
+bool EventInfo_FalseStub1(void)
 {
     return FALSE;
 }
 
-void func_fe6_0806B89C(void)
+void EventInfo_EmptyStub1(void)
 {
 }
 
-void func_fe6_0806B8A0(void)
+void EventInfo_EmptyStub2(void)
 {
 }
 
-bool func_fe6_0806B8A4(void)
-{
-    return FALSE;
-}
-
-void func_fe6_0806B8A8(void)
-{
-}
-
-bool func_fe6_0806B8AC(void)
+bool EventInfo_FalseStub2(void)
 {
     return FALSE;
 }
 
-bool func_fe6_0806B8B0(void)
+void EventInfo_EmptyStub3(void)
+{
+}
+
+bool EventInfo_FalseStub3(void)
 {
     return FALSE;
 }
 
-void func_fe6_0806B8B4(void)
+bool EventInfo_FalseStub4(void)
+{
+    return FALSE;
+}
+
+void EventInfo_EmptyStub4(void)
 {
 }
 
-void func_fe6_0806B8B8(void)
+void EventInfo_EmptyStub5(void)
 {
 }
 
-void func_fe6_0806B8BC(void)
+void EventInfo_EmptyStub6(void)
 {
 }
 
-void func_fe6_0806B8C0(void)
+void EventInfo_EmptyStub7(void)
 {
 }
 
-void func_fe6_0806B8C4(void)
+void EventInfo_EmptyStub8(void)
 {
 }
 
