@@ -1190,7 +1190,7 @@ struct SaveMenuCursorProc *StartSaveMenuCursor(ProcPtr parent)
 
 void SaveMenu_InitText(void)
 {
-	InitTextFont(&gSaveMenuFont, (void *)VRAM + 0x601 * 0x20, 1, 0);
+	InitTextFont(&gSaveMenuFont, BG_CHAR_ADDR(3) + 1 * CHR_SIZE, 1, 0);
 	InitText(&gSaveMenuText, 10);
 }
 
@@ -1232,8 +1232,8 @@ void SaveMenu_UpdatePrompt(struct SaveMenuProc *proc, bool display)
 
 void SaveMenu_ClearVram(void)
 {
-	CpuFastFill(0, (void *)VRAM + 0x8000, 0x40 * 0x20);
-	CpuFastFill(0, (void *)VRAM + 0xC000, 0x40 * 0x20);
+	CpuFastFill(0, BG_CHAR_ADDR(2), 0x40 * 0x20);
+	CpuFastFill(0, BG_CHAR_ADDR(3), 0x40 * 0x20);
 }
 
 void SaveMenu_UpdateAvailableActions(struct SaveMenuProc *proc)
@@ -1444,7 +1444,7 @@ void StartSaveMenuWindowAnim(ProcPtr parent, fi8 anim_direction, fu8 anim_speed)
 
 void SaveMenu_CopyBg2(ProcPtr proc)
 {
-	RegisterDataMove(gBg2Tm, (void *)VRAM + 0x7000, sizeof(gBg2Tm));
+	RegisterDataMove(gBg2Tm, BG_SCREEN_ADDR(14), sizeof(gBg2Tm));
 }
 
 struct ProcScr CONST_DATA ProcScr_SaveMenuBg2Copy[] = {

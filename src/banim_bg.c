@@ -36,7 +36,7 @@ void PutBanimBgIMG(int index)
 {
 	int _i = index * 3;
 
-	LZ77UnCompVram(gBattleBGDataTable[_i], (u8 *)BG_VRAM + 0x8000);
+	LZ77UnCompVram(gBattleBGDataTable[_i], BG_CHAR_ADDR(2));
 }
 
 void PutBanimBgTSA(int index)

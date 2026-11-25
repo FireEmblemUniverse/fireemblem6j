@@ -87,7 +87,7 @@ void LAPointsBox_LoadBoxes(struct LAPointsBoxProc * proc)
 	int i;
 	int tileref;
 
-	Decompress(Img_LAPointsBox, (void *) 0x06002000);
+	Decompress(Img_LAPointsBox, BG_CHAR_ADDR(0) + 0x100 * CHR_SIZE);
 	ApplyPalettes(Pal_TacticianSelObj, 2, 4);
 
 	SetTextFont(NULL);
@@ -2603,7 +2603,7 @@ void func_fe6_0803F694(struct MuProc * mu)
 
 void func_fe6_0803F6C8(struct SioWarpProc * proc)
 {
-	Decompress(Img_ManimWarp, (void *) 0x06004400);
+	Decompress(Img_ManimWarp, BG_CHAR_ADDR(0) + 0x220 * CHR_SIZE);
 	ApplyPalette(Pal_ManimWarp, 3);
 
 	proc->clock = 0;
@@ -3671,26 +3671,26 @@ void UpdateLinkArenaMenuScrollBar(u8 total, i16 scroll)
 
 void func_fe6_08040B44(void)
 {
-	Decompress(gUnk_0810B900, (void *) 0x06002000);
+	Decompress(gUnk_0810B900, BG_CHAR_ADDR(0) + 0x100 * CHR_SIZE);
 
 	switch (gPlaySt.faction) {
 	case 0:
-		Decompress(gUnk_0810A62C, (void *) 0x06002800);
+		Decompress(gUnk_0810A62C, BG_CHAR_ADDR(0) + 0x140 * CHR_SIZE);
 		ApplyPalette(gUnk_0810BA60, 5);
 		break;
 
 	case 1:
-		Decompress(gUnk_0810AADC, (void *) 0x06002800);
+		Decompress(gUnk_0810AADC, BG_CHAR_ADDR(0) + 0x140 * CHR_SIZE);
 		ApplyPalette(gUnk_0810BAA0, 5);
 		break;
 
 	case 2:
-		Decompress(gUnk_0810AF9C, (void *) 0x06002800);
+		Decompress(gUnk_0810AF9C, BG_CHAR_ADDR(0) + 0x140 * CHR_SIZE);
 		ApplyPalette(gUnk_0810BA80, 5);
 		break;
 
 	case 3:
-		Decompress(gUnk_0810B44C, (void *) 0x06002800);
+		Decompress(gUnk_0810B44C, BG_CHAR_ADDR(0) + 0x140 * CHR_SIZE);
 		ApplyPalette(gUnk_0810BAC0, 5);
 		break;
 	}

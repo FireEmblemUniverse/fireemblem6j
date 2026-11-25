@@ -78,8 +78,8 @@ void OnMain_SioError(void)
     gDispIo.mosaic = 0;
     SyncDispIo();
 
-    CpuFastFill(0, (void *) VRAM + 0x0000, CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x8000, CHR_SIZE);
+    CpuFastFill(0, BG_CHAR_ADDR(0), CHR_SIZE);
+    CpuFastFill(0, BG_CHAR_ADDR(2), CHR_SIZE);
 
     PutSioErrorMessage();
 
