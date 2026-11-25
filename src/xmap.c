@@ -521,7 +521,7 @@ void XmapSprites_InitText(struct ProcXmapSprites * proc)
 
     SetTextFont(NULL);
 
-    gXmapState.sprite_oam2 = OAM2_CHR((((uptr)vram) & 0x1FFFF) >> 5) + OAM2_PAL(OBPAL_XMAP_SPRITETEXT);
+    gXmapState.sprite_oam2 = OAM2_CHR((((uptr)vram) & VRAM_OFFSET_MASK) >> 5) + OAM2_PAL(OBPAL_XMAP_SPRITETEXT);
 }
 
 void XmapSprites_Init(struct ProcXmapSprites * proc)

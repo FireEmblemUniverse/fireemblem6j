@@ -667,7 +667,7 @@ void InitSoundRoomText(void)
 
 	SetTextFont(NULL);
 
-	gSoundRoomText.oam2[0] = OAM2_PAL(OBPAL_SOUNDROOM_TEXT) + (((vram & 0x1ffff) >> 5) & 0x3ff);
+	gSoundRoomText.oam2[0] = OAM2_PAL(OBPAL_SOUNDROOM_TEXT) + (((vram & VRAM_OFFSET_MASK) >> 5) & 0x3ff);
 }
 
 void PutSoundRoomSongText(struct ProcSoundRoom *proc)

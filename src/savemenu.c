@@ -595,17 +595,18 @@ void SaveMenu_ExitAnim_Loop(struct SaveMenuProc *proc)
 
 		if (proc->slot_titles[proc->selected_id] != 0xFF) {
 			// tyvm Eebit
-			// TODO: there's probably something better to do here
 			PutChapterTitleGfx(
-				((u32)(proc->selected_id * 0x800 + 0x16800) &
-				 0x0001FFFF) >>
-					5,
+				((u32) (OBJ_VRAM0_CHR + OBCHR_SAVEMENU_CHAPTER_TITLE_TEXT +
+				       proc->selected_id * CHAPTER_TITLE_TEXT_TILES) *
+					 CHR_SIZE &
+				 VRAM_OFFSET_MASK) / CHR_SIZE,
 				proc->slot_titles[proc->selected_id]);
 		} else {
 			PutChapterTitleGfx(
-				((u32)(proc->selected_id * 0x800 + 0x16800) &
-				 0x0001FFFF) >>
-					5,
+				((u32) (OBJ_VRAM0_CHR + OBCHR_SAVEMENU_CHAPTER_TITLE_TEXT +
+				       proc->selected_id * CHAPTER_TITLE_TEXT_TILES) *
+					 CHR_SIZE &
+				 VRAM_OFFSET_MASK) / CHR_SIZE,
 				-1);
 		}
 
