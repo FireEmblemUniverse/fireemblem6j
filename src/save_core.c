@@ -306,7 +306,7 @@ bool IsNotFirstPlaythrough(void)
     return FALSE;
 }
 
-bool func_fe6_08084714(void)
+bool IsTutorialAvailable(void)
 {
     return TRUE;
 }

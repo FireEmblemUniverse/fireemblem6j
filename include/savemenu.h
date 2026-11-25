@@ -12,10 +12,17 @@ enum { BGCHR_SAVEMENU_0 = 0,
        OBCHR_SAVEMENU_CHAPTER_TITLE_BG = 0x2C0,
        OBCHR_SAVEMENU_CHAPTER_TITLE_TEXT = 0x340, // .. 0x3FF, one per slot
 
+       OBCHR_SAVEMENU_QUILL = 0x1A0,
+
        OBPAL_SAVEMENU_9 = 9,
 
-       OBPAL_SAVEMENU_1 = 1,
-       OBPAL_SAVEMENU_2 = 2,
+       OBPAL_SAVEMENU_FRAME_SELECTED = 1, // blended from OBPAL_SAVEMENU_FRAME
+       OBPAL_SAVEMENU_FRAME = 2,
+       OBPAL_SAVEMENU_LABEL_SELECTED = 3,
+       OBPAL_SAVEMENU_FRAME_UNSELECTED = 4,
+       OBPAL_SAVEMENU_PLAY_TIME = 5,
+       OBPAL_SAVEMENU_QUILL = 6,
+       OBPAL_SAVEMENU_LABEL_UNSELECTED = 8,
 
        // bg and text palettes alternate per slot, .. 15
        OBPAL_SAVEMENU_CHAPTER_TITLE_BG = 10,
@@ -63,6 +70,17 @@ enum { SAVEMENU_ACTION_RESUME = 1 << 0,
        SAVEMENU_ACTION_EXIT = 1 << 7,
 };
 
+enum { SAVEMENU_EXTRA_TRIAL_MAP = 1 << 0,
+       SAVEMENU_EXTRA_LINK_ARENA = 1 << 1,
+       SAVEMENU_EXTRA_TUTORIAL = 1 << 2,
+       SAVEMENU_EXTRA_SOUND_ROOM = 1 << 3,
+};
+
+enum {
+	SAVEMENU_DIGIT_SEPARATOR = 10,
+	SAVEMENU_QUILL_AFFINE = 3,
+};
+
 struct SaveMenuSlotProc;
 struct SaveMenuBgProc;
 struct SaveMenuCursorProc;
@@ -108,15 +126,15 @@ struct SaveMenuSlotProc {
 	/* 29 */ STRUCT_PAD(0x29, 0x2A);
 	/* 2A */ u16 clock;
 	/* 2C */ u16 angle;
-	/* 2E */ u16 unk_2E;
-	/* 30 */ u16 unk_30;
-	/* 30 */ u8 unk_32;
+	/* 2E */ u16 unused_2E;
+	/* 30 */ u16 unused_30;
+	/* 32 */ u8 unused_32;
 	/* 33 */ u8 action;
 	/* 34 */ struct SaveMenuCursorProc *cursor_proc;
 	/* 38 */ STRUCT_PAD(0x38, 0x39);
-	/* 39 */ u8 unk_39;
-	/* 3A */ u8 unk_3A;
-	/* 3B */ u8 unk_3B;
+	/* 39 */ u8 unused_39;
+	/* 3A */ u8 unused_3A;
+	/* 3B */ u8 unused_3B;
 	/* 3C */ u8 last_selected_id;
 };
 
@@ -127,16 +145,16 @@ struct SaveMenuBgProc {
 	/* 2C */ u16 angle;
 	/* 2E */ STRUCT_PAD(0x2E, 0x30);
 	/* 30 */ struct SaveMenuProc *sm_proc;
-	/* 34 */ u8 unk_34;
-	/* 35 */ u8 unk_35;
-	/* 36 */ u8 unk_36;
-	/* 37 */ u8 unk_37;
-	/* 38 */ u8 unk_38;
-	/* 39 */ u8 unk_39;
-	/* 3A */ u8 unk_3A;
-	/* 3B */ u8 unk_3B;
+	/* 34 */ u8 unused_34;
+	/* 35 */ u8 unused_35;
+	/* 36 */ u8 unused_36;
+	/* 37 */ u8 unused_37;
+	/* 38 */ u8 unused_38;
+	/* 39 */ u8 unused_39;
+	/* 3A */ u8 unused_3A;
+	/* 3B */ u8 unused_3B;
 	/* 3C */ STRUCT_PAD(0x3C, 0x3D);
-	/* 3D */ u8 unk_3D;
+	/* 3D */ u8 unused_3D;
 };
 
 struct SaveMenuCursorProc {
@@ -208,11 +226,11 @@ void SaveMenu_SetBgAffine(fu8 bg,
 			  fi16 angle,
 			  fi16 scale);
 void SaveMenuSlot_Init(struct SaveMenuSlotProc *proc);
-void SaveMenu_SetIconPalette(bool arg_0, fu16 arg_1);
+void SaveMenu_SetIconPalette(bool animate, fu16 clock);
 void SaveMenu_PutAction(
-	ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal_b);
+	ProcPtr proc, int x, int y, fu8 id, fu8 pal_a, fu8 pal_b);
 void SaveMenu_PutExtraAction(
-	ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal_b);
+	ProcPtr proc, int x, int y, fu8 id, fu8 pal_a, fu8 pal_b);
 void SaveMenuSlot_UpdateCursor(struct SaveMenuSlotProc *proc);
 void SaveMenuSlot_PutSuspendIcon(struct SaveMenuSlotProc *proc);
 void SaveMenuSlot_Loop(struct SaveMenuSlotProc *proc);
@@ -261,5 +279,17 @@ extern u16 gSaveMenuUnk00;
 extern u16 gSaveMenuPalBackup[0x200];
 
 extern u16 gSaveMenuPalFx[0x20];
+
+struct SaveMenuSpriteEntry {
+	/* 00 */ u16 const *sprite;
+	/* 04 */ u8 x_offset;
+};
+
+extern struct SaveMenuSpriteEntry CONST_DATA Sprites_SaveMenuActionLabels[];
+extern struct SaveMenuSpriteEntry CONST_DATA Sprites_SaveMenuExtraLabels[];
+extern u16 const *CONST_DATA Sprites_SaveMenuSlotTitleText[];
+extern u16 const *CONST_DATA Sprites_SaveMenuSlotTitleBg[];
+
+extern u16 const SpriteAnim_SaveMenuQuill[];
 
 #endif // SAVEMENU_H

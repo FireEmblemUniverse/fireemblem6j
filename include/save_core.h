@@ -56,7 +56,7 @@ void ReadPermanentFlags(void const * sram_src);
 void WriteSupplyItems(void * sram_dst);
 void ReadSupplyItems(void const * sram_src);
 bool IsNotFirstPlaythrough(void);
-bool func_fe6_08084714(void);
+bool IsTutorialAvailable(void);
 bool IsMultiArenaAvailable(void);
 bool IsNotFirstPlaythrough_2(void);
 bool CheckHasCompletedSave(void);
