@@ -203,19 +203,19 @@ struct ProcScr CONST_DATA ProcScr_ManimInfoWindow[] =
 
 u16 CONST_DATA gManimExpBarTilesBaseInfo[] =
 {
-    6, BGCHR_MANIM_200 + 7,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    9, BGCHR_MANIM_200 + 14,
-    6, BGCHR_MANIM_200 + 24,
+    MANIM_EXPBAR_END_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_MID_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES,
+    MANIM_EXPBAR_END_SEGMENTS, BGCHR_MANIM_EXPBAR_FILL + MANIM_EXPBAR_END_TILES + MANIM_EXPBAR_MID_TILES,
     0, // end
 };
 
@@ -880,7 +880,7 @@ void UnpackManimWindowGraphics(void const * hp_bar_img)
 {
     UnpackManimWindowDigits(BGCHR_MANIM_DIGITS);
     Decompress(hp_bar_img, (void *) (VRAM + CHR_SIZE * BGCHR_MANIM_HPBAR));
-    ApplyPalette(Pal_ManimWindowHpBar, 5);
+    ApplyPalette(Pal_ManimWindowHpBar, BGPAL_MANIM_INFO);
 }
 
 void PutManimWindowBarTile(u16 * tm, int * segments_left, int pal, int segments, int chr_base)
@@ -1146,7 +1146,7 @@ void PutManimExpBar(int x_tm, int y_tm, int amt)
         gBg0Tm + TM_OFFSET(
             x_tm + 2,
             y_tm + 1),
-        amt, TILEREF(BGCHR_MANIM_200 + 0x1F, BGPAL_MANIM_INFO), 2, TILEREF(BGCHR_MANIM_200 + 0x29, BGPAL_MANIM_INFO));
+        amt, TILEREF(BGCHR_MANIM_EXPBAR_DIGITS, BGPAL_MANIM_INFO), 2, TILEREF(BGCHR_MANIM_EXPBAR_DIGITS + MANIM_EXPBAR_DIGIT_BLANK, BGPAL_MANIM_INFO));
 
     PutManimWindowBar(
         gBg0Tm + TM_OFFSET(
@@ -1164,24 +1164,24 @@ void ManimExpBar_Init(struct ManimExpBarProc * proc)
 
     RegisterDataMove(
         Img_EkrExpBar,
-        (void *)(VRAM) + GetBgChrOffset(0) + (BGCHR_MANIM_200 + 0x00) * CHR_SIZE,
-        7 * CHR_SIZE);
+        (void *)(VRAM) + GetBgChrOffset(0) + BGCHR_MANIM_EXPBAR * CHR_SIZE,
+        MANIM_EXPBAR_FRAME_TILES * CHR_SIZE);
 
     RegisterDataMove(
         Img_EkrExpBarChange,
-        (void *)(VRAM) + GetBgChrOffset(0) + (BGCHR_MANIM_200 + 0x07) * CHR_SIZE,
-        24 * CHR_SIZE);
+        (void *)(VRAM) + GetBgChrOffset(0) + BGCHR_MANIM_EXPBAR_FILL * CHR_SIZE,
+        MANIM_EXPBAR_FILL_TILES * CHR_SIZE);
 
     RegisterDataMove(
         Img_BarNumfx,
-        (void *)(VRAM) + GetBgChrOffset(0) + (BGCHR_MANIM_200 + 0x1F) * CHR_SIZE,
-        11 * CHR_SIZE);
+        (void *)(VRAM) + GetBgChrOffset(0) + BGCHR_MANIM_EXPBAR_DIGITS * CHR_SIZE,
+        MANIM_EXPBAR_DIGIT_TILES * CHR_SIZE);
 
     ApplyPalette(Pal_EkrExpBar, BGPAL_MANIM_INFO);
 
-    TmApplyTsa(gBg0Tm + TM_OFFSET(6, 8), Tsa_ManimExpBar, TILEREF(BGCHR_MANIM_200, BGPAL_MANIM_INFO));
+    TmApplyTsa(gBg0Tm + TM_OFFSET(MANIM_EXPBAR_X, MANIM_EXPBAR_Y), Tsa_ManimExpBar, TILEREF(BGCHR_MANIM_EXPBAR, BGPAL_MANIM_INFO));
 
-    PutManimExpBar(6, 8, proc->exp_from);
+    PutManimExpBar(MANIM_EXPBAR_X, MANIM_EXPBAR_Y, proc->exp_from);
 }
 
 void ManimExpBar_PlaySe(struct ManimExpBarProc * proc)
@@ -1196,7 +1196,7 @@ void ManimExpBar_Fill(struct ManimExpBarProc * proc)
     if (proc->exp_from >= 100)
         proc->exp_from = 0;
 
-    PutManimExpBar(6, 8, proc->exp_from);
+    PutManimExpBar(MANIM_EXPBAR_X, MANIM_EXPBAR_Y, proc->exp_from);
 
     if (proc->exp_from == proc->exp_to % 100)
     {
@@ -1730,22 +1730,22 @@ void ManimDebug_StartBattleManim(struct ManimDebugProc * proc)
 
 void StartManimMissTag(struct Unit * unit)
 {
-    Decompress(Img_ManimMissTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
+    Decompress(Img_ManimMissTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_HITFX);
 
     StartSpriteAnimProc(Ap_ManimMissTag,
         SCREEN_TILE_X(unit->x) * 8 + 8,
         SCREEN_TILE_Y(unit->y) * 8 + 16,
-        OAM2_CHR(OBCHR_MANIM_180), 0, 2);
+        OAM2_CHR(OBCHR_MANIM_HITFX), 0, 2);
 }
 
 void StartManimNoDamageTag(struct Unit * unit)
 {
-    Decompress(Img_ManimNoDamageTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
+    Decompress(Img_ManimNoDamageTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_HITFX);
 
     StartSpriteAnimProc(Ap_ManimNoDamageTag,
         SCREEN_TILE_X(unit->x) * 8 + 8,
         SCREEN_TILE_Y(unit->y) * 8 + 16,
-        OAM2_CHR(OBCHR_MANIM_180), 0, 2);
+        OAM2_CHR(OBCHR_MANIM_HITFX), 0, 2);
 }
 
 struct ManimRubbleAnimProc
@@ -1782,12 +1782,12 @@ void StartManimRubbleAnim(struct Unit * unit, int is_defeat)
 
 void ManimRubbleAnim_Init(struct ManimRubbleAnimProc * proc)
 {
-    Decompress(Img_ManimRubble, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
-    ApplyPalette(Pal_ManimRubble, 0x10 + OBPAL_MANIM_3);
+    Decompress(Img_ManimRubble, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_HITFX);
+    ApplyPalette(Pal_ManimRubble, 0x10 + OBPAL_MANIM_HITFX);
 
     StartSpriteAnimProc(SpriteAnim_ManimRubble,
         proc->x, proc->y + 16,
-        OAM2_CHR(OBCHR_MANIM_180) | OAM2_PAL(OBPAL_MANIM_3), proc->anim_id, 2);
+        OAM2_CHR(OBCHR_MANIM_HITFX) | OAM2_PAL(OBPAL_MANIM_HITFX), proc->anim_id, 2);
 }
 
 struct ManimPoisonAnimProc
@@ -1823,12 +1823,12 @@ void ManimPoisonAnim_Init(struct ManimPoisonAnimProc * proc)
 {
     PlaySeSpacial(SONG_B7, proc->x);
 
-    Decompress(Img_ManimPoison, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
-    ApplyPalette(Pal_ManimPoison, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimPoison, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimPoison, 0x10 + OBPAL_MANIM_EFFECT);
 
     StartSpriteAnimProc(SpriteAnim_ManimPoison,
         proc->x - 8, proc->y + 8,
-        OAM2_CHR(OBCHR_MANIM_1C0) | OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+        OAM2_CHR(OBCHR_MANIM_EFFECT) | OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 }
 
 struct ProcScr CONST_DATA ProcScr_ManimFortifyFx[] =
@@ -1859,7 +1859,7 @@ void ManimFortifyFx_Init(struct ManimFortifyFxProc * proc)
 
     SetBgOffset(2, 0, 0);
 
-    Decompress(Img_ManimHeal, ((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE);
+    Decompress(Img_ManimHeal, ((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_EFFECT * CHR_SIZE);
 
     SetBlendAlpha(16, 16);
     SetBlendTargetA(0, 0, 1, 0, 0); SetBlendBackdropA(0);
@@ -1868,7 +1868,7 @@ void ManimFortifyFx_Init(struct ManimFortifyFxProc * proc)
     proc->unused_40 = 0;
     proc->shine_count = 0;
 
-    func_fe6_08014D9C(Pal_ManimHeal, 0x20 * BGPAL_MANIM_4, 0x20, 2, proc);
+    func_fe6_08014D9C(Pal_ManimHeal, 0x20 * BGPAL_MANIM_EFFECT, 0x20, 2, proc);
 }
 
 i16 CONST_DATA gManimFortifyShineOffsets[] =
@@ -1884,9 +1884,9 @@ void ManimFortifyFx_Loop(struct ManimFortifyFxProc * proc)
     if (proc->shine_count > 2)
     {
         func_fe6_08014D50();
-        func_fe6_08014DB4(Pal_ManimHeal, 0x20 * BGPAL_MANIM_4, 0x20, 4, proc);
+        func_fe6_08014DB4(Pal_ManimHeal, 0x20 * BGPAL_MANIM_EFFECT, 0x20, 4, proc);
 
-        Decompress(Img_ManimFortify, ((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE);
+        Decompress(Img_ManimFortify, ((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_EFFECT * CHR_SIZE);
 
         StartManimFortifyShine(proc->x / 8 - 4, proc->y / 8 - 4, 8, 60, 0, proc);
 
@@ -2004,7 +2004,7 @@ void ManimFortifyShine_Init(struct ManimFortifyShineProc * proc)
 
 void ManimFortifyShine_Start(struct ManimFortifyShineProc * proc)
 {
-    func_fe6_08014E30(gBg2Tm, proc->x, proc->y, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), proc->square_size, proc->square_size);
+    func_fe6_08014E30(gBg2Tm, proc->x, proc->y, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT), proc->square_size, proc->square_size);
     EnableBgSync(BG2_SYNC_BIT);
     SetBlendAlpha(0, 0x10);
     proc->counter = 0;
@@ -2101,8 +2101,8 @@ void ManimAntitoxinFx_Init(struct ManimAntitoxinFxProc * proc)
 
     SetBgOffset(2, 0, 0);
 
-    Decompress(proc->img, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(proc->pal, BGPAL_MANIM_4);
+    Decompress(proc->img, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
+    ApplyPalette(proc->pal, BGPAL_MANIM_EFFECT);
 
     SetDefaultManimScreenConf();
 
@@ -2124,7 +2124,7 @@ void ManimAntitoxinFx_Loop(struct ManimAntitoxinFxProc * proc)
         UINT8_MAX, // end
     };
 
-    func_fe6_08014F70(gBg2Tm, proc->x / 8 - 3, proc->y / 8 - 3, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 6, 6, Tsa_ManimAntitoxin, lut[proc->counter / 2]);
+    func_fe6_08014F70(gBg2Tm, proc->x / 8 - 3, proc->y / 8 - 3, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT), 6, 6, Tsa_ManimAntitoxin, lut[proc->counter / 2]);
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->counter++;
@@ -2216,12 +2216,12 @@ void ManimHealFx_Init(struct ManimHealFxProc * proc)
 
     SetBgOffset(2, 0, 0);
 
-    Decompress(proc->img, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
+    Decompress(proc->img, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
 
-    func_fe6_08014E30(gBg2Tm, SCREEN_TILE_X(proc->unit->x) - 2, SCREEN_TILE_Y(proc->unit->y) - 2, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 6, 6);
+    func_fe6_08014E30(gBg2Tm, SCREEN_TILE_X(proc->unit->x) - 2, SCREEN_TILE_Y(proc->unit->y) - 2, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT), 6, 6);
     EnableBgSync(BG2_SYNC_BIT);
 
-    func_fe6_08014DB4(proc->pal, BGPAL_MANIM_4 * 0x20, 0x20, 4, proc);
+    func_fe6_08014DB4(proc->pal, BGPAL_MANIM_EFFECT * 0x20, 0x20, 4, proc);
 
     proc->ca = 0;
     proc->cb = 0x10;
@@ -2330,8 +2330,8 @@ void ManimWarpFx_Init(struct ManimWarpFxProc * proc)
 {
     SetBgOffset(2, 0, 0);
 
-    Decompress(Img_ManimWarp, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(Pal_ManimWarp, BGPAL_MANIM_4);
+    Decompress(Img_ManimWarp, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimWarp, BGPAL_MANIM_EFFECT);
 
     SetupManimStarImage();
 
@@ -2351,7 +2351,7 @@ void ManimWarpFx_Loop(struct ManimWarpFxProc * proc)
         UINT8_MAX, // end
     };
 
-    func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 4, 6, TsaRef_ManimWarp, lut[proc->counter / 2]);
+    func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT), 4, 6, TsaRef_ManimWarp, lut[proc->counter / 2]);
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->counter++;
@@ -2408,18 +2408,18 @@ void ManimTorchFx_Init(struct ManimTorchFxProc * proc)
 {
     PlaySe(SONG_B3);
 
-    Decompress(Img_ManimTorch, OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalette(Pal_ManimTorch, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimTorch, OBJ_VRAM0 + OBCHR_MANIM_EFFECT * CHR_SIZE);
+    ApplyPalette(Pal_ManimTorch, 0x10 + OBPAL_MANIM_EFFECT);
 
-    SetWhitePal(BGPAL_MANIM_4);
-    SetTm(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
-    SetTm(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
+    SetWhitePal(BGPAL_MANIM_EFFECT);
+    SetTm(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_EFFECT * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
+    SetTm(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT));
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->clock = 0;
     proc->unused_42 = 0;
 
-    StartSpriteAnimProc(SpriteAnim_ManimTorch, proc->x + 4, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimTorch, proc->x + 4, proc->y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 
     InitScanlineEffect();
     func_fe6_08069C74();
@@ -2514,9 +2514,9 @@ void ManimBerserkFx_Init(struct ManimBerserkFxProc * proc)
     PlaySeSpacial(SONG_87, proc->x);
     SetBgOffset(2, 0, 0);
     SetDefaultManimScreenConf();
-    Decompress(Img_ManimBerserk, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
-    ApplyPalette(Pal_ManimBerserk, 0x10 + OBPAL_MANIM_4);
-    StartSpriteAnimProc(SpriteAnim_ManimBerserk, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    Decompress(Img_ManimBerserk, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimBerserk, 0x10 + OBPAL_MANIM_EFFECT);
+    StartSpriteAnimProc(SpriteAnim_ManimBerserk, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
     proc->unused_48 = 1;
 }
 
@@ -2582,8 +2582,8 @@ void ManimHammerneFx_Init(struct ManimHammerneFxProc * proc)
     SetBgOffset(2, 0, 0);
     SetDefaultManimScreenConf();
     SetBlendAlpha(0x10, 0x10);
-    Decompress(Img_ManimHammerne, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(Pal_EfxHammarneBG, BGPAL_MANIM_4);
+    Decompress(Img_ManimHammerne, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_EfxHammarneBG, BGPAL_MANIM_EFFECT);
     proc->frame = 0;
     proc->blink_clock = 0;
 }
@@ -2598,7 +2598,7 @@ void ManimHammerneFx_Loop(struct ManimHammerneFxProc * proc)
 
     func_fe6_0801501C(gBg2Tm,
         proc->x / 8 - 2, proc->y / 8 - 9,
-        TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4),
+        TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT),
         4, 11, Tsa_ManimHammerne,
         frame_lut[proc->frame++]);
 
@@ -2652,7 +2652,7 @@ void StartManimRestoreFx(struct Unit * unit)
 void ManimRestoreFx_Init(struct ManimHammerneFxProc * proc)
 {
     PlaySeSpacial(SONG_82, proc->x);
-    ApplyPalette(Pal_EfxRestBG, BGPAL_MANIM_4);
+    ApplyPalette(Pal_EfxRestBG, BGPAL_MANIM_EFFECT);
 }
 
 void ManimRestoreFx_Loop(struct ManimHammerneFxProc * proc)
@@ -2665,7 +2665,7 @@ void ManimRestoreFx_Loop(struct ManimHammerneFxProc * proc)
 
     func_fe6_0801501C(gBg2Tm,
         proc->x / 8 - 2, proc->y / 8 - 9,
-        TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4),
+        TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT),
         4, 11, Tsa_ManimRestore,
         frame_lut[proc->frame++]);
 
@@ -2715,24 +2715,24 @@ void ManimSleepFx_Init(struct ManimSleepFxProc * proc)
     SetBgOffset(2, 0, 0);
     SetDefaultManimScreenConf();
 
-    Decompress(Img_EfxHammarneOBJ, OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalette(Pal_EfxRestOBJ, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_EfxHammarneOBJ, OBJ_VRAM0 + OBCHR_MANIM_EFFECT * CHR_SIZE);
+    ApplyPalette(Pal_EfxRestOBJ, 0x10 + OBPAL_MANIM_EFFECT);
 
-    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y - 16, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y - 16, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 }
 
 void ManimSleepFx_Anim2(struct ManimSleepFxProc * proc)
 {
     PlaySeSpacial(SONG_85, proc->x);
 
-    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y - 8, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y - 8, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 }
 
 void ManimSleepFx_Anim3(struct ManimSleepFxProc * proc)
 {
     PlaySeSpacial(SONG_85, proc->x);
 
-    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimSleep, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 }
 
 struct ManimWaveFxProc
@@ -2781,7 +2781,7 @@ void ManimWaveFx_Init(struct ManimWaveFxProc * proc)
     SetDefaultManimScreenConf();
     SetBlendAlpha(0x10, 0x10);
 
-    TmApplyTsa(gBg2Tm, gBuf, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
+    TmApplyTsa(gBg2Tm, gBuf, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT));
     EnableBgSync(BG2_SYNC_BIT);
 
     StartManimBgScroll(2, 0, 1, proc);
@@ -2861,12 +2861,12 @@ void ManimSilenceFx_Init(struct ManimSilenceFxProc * proc)
     SetBgOffset(2, 0, 0);
     SetDefaultManimScreenConf();
 
-    Decompress(Img_ManimSilenceBg, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    Decompress(Img_ManimSilenceObj, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
-    ApplyPalette(Pal_ManimSilence, BGPAL_MANIM_4);
-    ApplyPalette(Pal_ManimSilence, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimSilenceBg, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
+    Decompress(Img_ManimSilenceObj, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimSilence, BGPAL_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimSilence, 0x10 + OBPAL_MANIM_EFFECT);
 
-    StartSpriteAnimProc(SpriteAnim_ManimSilence, proc->x, proc->y | OAM0_BLEND, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimSilence, proc->x, proc->y | OAM0_BLEND, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
 
     proc->clock = 0;
 
@@ -2878,7 +2878,7 @@ void ManimSilenceFx_Start(struct ManimSilenceFxProc * proc)
 {
     PlaySeSpacial(SONG_84, proc->x);
 
-    func_fe6_08014E30(gBg2Tm, proc->x / 8 - 2, proc->y / 8 - 2, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 4, 4);
+    func_fe6_08014E30(gBg2Tm, proc->x / 8 - 2, proc->y / 8 - 2, TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT), 4, 4);
     EnableBgSync(BG2_SYNC_BIT);
 
     SetBlendTargetA(0, 0, 1, 0, 0); SetBlendBackdropA(0);
@@ -2933,8 +2933,8 @@ void ManimBarrierFx_Init(struct ManimBarrierFxProc * proc)
 
     SetBlendAlpha(0x10, 0x10);
 
-    Decompress(Img_ManimBarrier, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(Pal_EfxMshieldBG, BGPAL_MANIM_4);
+    Decompress(Img_ManimBarrier, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_EfxMshieldBG, BGPAL_MANIM_EFFECT);
 
     proc->frame = 0;
     proc->unused_4A = 0;
@@ -2955,7 +2955,7 @@ void ManimBarrierFx_Loop(struct ManimBarrierFxProc * proc)
 
     func_fe6_0801501C(gBg2Tm,
         proc->x / 8 - 2, proc->y / 8 - 8,
-        TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4),
+        TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT),
         4, 10, Tsa_ManimBarrier,
         frame_lut[proc->frame++]);
 
@@ -3021,19 +3021,19 @@ void ManimUnlockFx_Init(struct ManimUnlockFxProc * proc)
     PlaySeSpacial(SONG_8D, proc->x);
 
     SetBgOffset(2, 0, 0);
-    Decompress(Img_ManimUnlockBg, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
+    Decompress(Img_ManimUnlockBg, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_EFFECT);
 
     func_fe6_0801501C(gBg2Tm,
         proc->x / 8 - 2, proc->y / 8 - 2,
-        TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4),
+        TILEREF(BGCHR_MANIM_EFFECT, BGPAL_MANIM_EFFECT),
         4, 4, Tsa_ManimUnlockBg, 0);
 
     EnableBgSync(BG2_SYNC_BIT);
 
-    Decompress(Img_ManimUnlockObj, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_1C0);
-    ApplyPalette(Pal_ManimUnlockObj, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimUnlockObj, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_EFFECT);
+    ApplyPalette(Pal_ManimUnlockObj, 0x10 + OBPAL_MANIM_EFFECT);
 
-    func_fe6_08014D9C(Pal_ManimUnlockBg, 0x20 * BGPAL_MANIM_4, 0x20, 4, proc);
+    func_fe6_08014D9C(Pal_ManimUnlockBg, 0x20 * BGPAL_MANIM_EFFECT, 0x20, 4, proc);
 
     InitScanlineEffect();
     func_fe6_08069C74();
@@ -3058,8 +3058,8 @@ void ManimUnlockFx_Open(struct ManimUnlockFxProc * proc)
 
         Proc_Break(proc);
 
-        StartSpriteAnimProc(SpriteAnim_ManimUnlock, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
-        StartSpriteAnimProc(SpriteAnim_ManimUnlock, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 1, 2);
+        StartSpriteAnimProc(SpriteAnim_ManimUnlock, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 0, 2);
+        StartSpriteAnimProc(SpriteAnim_ManimUnlock, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT), 1, 2);
     }
 }
 
@@ -3204,9 +3204,9 @@ void PutManimLevelUpFrame(int actor_id, int x, int y)
 
     TmFill(gBg1Tm, 0);
 
-    Decompress(Img_LevelUpFrame, ((void *) VRAM) + GetBgChrOffset(1) + BGCHR_MANIM_200 * CHR_SIZE);
+    Decompress(Img_LevelUpFrame, ((void *) VRAM) + GetBgChrOffset(1) + BGCHR_MANIM_LEVELUPFRAME * CHR_SIZE);
     Decompress(Tm_LevelUpFrame, gBuf);
-    PutTmLinear((u16 const *) gBuf, gBg1Tm, 0x20 * 0x1C, TILEREF(BGCHR_MANIM_200, BGPAL_MANIM_INFO));
+    PutTmLinear((u16 const *) gBuf, gBg1Tm, 0x20 * 0x1C, TILEREF(BGCHR_MANIM_LEVELUPFRAME, BGPAL_MANIM_INFO));
     ApplyPalette(Pal_LevelUpFrame, BGPAL_MANIM_INFO);
 
     PutString(
@@ -3490,8 +3490,7 @@ void ManimLevelUp_InitMainScreen(struct ManimLevelUpProc * proc)
     StartFace(0, gManimSt.actor[proc->actor_id].unit->pinfo->fid, 184, 80, FACE_DISP_KIND(FACE_96x80) | FACE_DISP_HLAYER(1));
     gFaces[0]->y_disp = -proc->y_scroll_offset;
 
-    // TODO: constants
-    StartManimLevelUpStatGainLabels(BGCHR_MANIM_200, 3, 1, proc);
+    StartManimLevelUpStatGainLabels(OBCHR_MANIM_LEVELUP_STATGAIN, OBPAL_MANIM_LEVELUP, 1, proc);
 }
 
 void ManimLevelUpLabelColor_Init(struct ManimLevelUpLabelColorProc * proc)
@@ -3590,8 +3589,8 @@ void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc)
 {
     int x, y;
 
-    Decompress(Img_ManimLevelUpText, (void *) OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalettes(Pal_ManimLevelUp, 0x10 + OBPAL_MANIM_3, 3);
+    Decompress(Img_ManimLevelUpText, (void *) OBJ_VRAM0 + OBCHR_MANIM_EFFECT * CHR_SIZE);
+    ApplyPalettes(Pal_ManimLevelUp, 0x10 + OBPAL_MANIM_LEVELUP, 3);
 
     x = SCREEN_TILE_X(gManimSt.actor[proc->actor_id].unit->x) * 8 + 16;
     y = SCREEN_TILE_Y(gManimSt.actor[proc->actor_id].unit->y) * 8 - 8;
@@ -3605,7 +3604,7 @@ void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc)
     if (SCREEN_TILE_X(gManimSt.actor[proc->actor_id].unit->x) > 25)
         x = 208;
 
-    StartSpriteAnimProc(SpriteAnim_ManimLevelUpText, x, y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_3), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_ManimLevelUpText, x, y, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_LEVELUP), 0, 2);
     PlaySe(SONG_5B);
 }
 
@@ -3722,8 +3721,8 @@ void ManimBgShake_Loop(struct ManimBgShakeProc * proc)
 
 void SetupManimStarImage(void)
 {
-    Decompress(Img_ManimStar, (void *) OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalette(Pal_ManimStar, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimStar, (void *) OBJ_VRAM0 + OBCHR_MANIM_EFFECT * CHR_SIZE);
+    ApplyPalette(Pal_ManimStar, 0x10 + OBPAL_MANIM_EFFECT);
 }
 
 void PutManimStar(int x, int y)
@@ -3738,7 +3737,7 @@ void PutManimStar(int x, int y)
     if (y >= DISPLAY_HEIGHT - 4)
         return;
 
-    PutOamHi(OAM1_X(x - 4), OAM0_Y(y - 4), Sprite_8x8, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4));
+    PutOamHi(OAM1_X(x - 4), OAM0_Y(y - 4), Sprite_8x8, OAM2_CHR(OBCHR_MANIM_EFFECT) + OAM2_PAL(OBPAL_MANIM_EFFECT));
 }
 
 void PutManimStarAtAngle(int x, int y, int radius, int angle)
