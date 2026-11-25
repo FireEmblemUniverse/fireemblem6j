@@ -192,7 +192,7 @@ void EndingMonologue_MoveText(int x, int y)
 
     for (iy = -1; iy < 3; iy++)
     {
-        u16 * tm = gBg0Tm + TM_OFFSET(0, (x + iy) & 0x1F);
+        u16 * tm = gBg0Tm + TM_OFFSET(0, TM_WRAP_Y(x + iy));
 
         if (iy == -1 || iy == 2)
         {

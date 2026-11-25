@@ -1182,7 +1182,7 @@ void PrepUnit_HandleScrollUp(struct PrepMenuProc *proc)
 		if (_ret == 1)
 			Proc_Goto(proc, 0x8);
 
-		TmFillRect(gBg2Tm + TM_OFFSET(0, (proc->yDiff_cur / 8 + 14) & 0x1F), 12, 1, 0);
+		TmFillRect(gBg2Tm + TM_OFFSET(0, TM_WRAP_Y(proc->yDiff_cur / 8 + 14)), 12, 1, 0);
 		EnableBgSync(BG2_SYNC_BIT);
 	}
 }
@@ -1203,7 +1203,7 @@ void PrepUnit_HandleScrollDown(struct PrepMenuProc *proc)
 		if (_ret == -1)
 			Proc_Goto(proc, 0x7);
 
-		TmFillRect(gBg2Tm + TM_OFFSET(0, (proc->yDiff_cur / 8 - 2) & 0x1F), 12, 1, 0);
+		TmFillRect(gBg2Tm + TM_OFFSET(0, TM_WRAP_Y(proc->yDiff_cur / 8 - 2)), 12, 1, 0);
 		EnableBgSync(BG2_SYNC_BIT);
 	}
 }

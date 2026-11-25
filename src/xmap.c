@@ -695,7 +695,7 @@ void XmapBgScroll_Loop(struct ProcXmapBgScroll * proc)
         fu16 ix;
 
         u16 const * src = Tsa_MonologueScrollingBG;
-        u32 dst_row_off = TM_OFFSET(0, (proc->pos / 8 - 1) & 0x1F);
+        u32 dst_row_off = TM_OFFSET(0, TM_WRAP_Y(proc->pos / 8 - 1));
         fu8 src_row = (proc->pos / 8 + 30) % 40;
 
         for (ix = 0; ix < 30; ix++)

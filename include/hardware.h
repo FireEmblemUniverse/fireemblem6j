@@ -267,6 +267,11 @@ extern IWRAM_DATA u8 SoundMainRam[0x400];
 #define RGB5_MASK_G (0x1F << 5)
 #define RGB5_MASK_B (0x1F << 10)
 
+#define TM_WIDTH 32
+#define TM_HEIGHT 32
+#define TM_WRAP_X(x) ((x) & (TM_WIDTH - 1))
+#define TM_WRAP_Y(y) ((y) & (TM_HEIGHT - 1))
+
 #define TM_OFFSET(x, y) (((y) << 5) + (x))
 
 // TODO: remove the SAFE from the names
