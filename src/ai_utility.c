@@ -820,7 +820,7 @@ bool AiFindSafestReachableLocation(struct Unit * unit, struct Vec2i * pos_out)
 
     if (gAiSt.flags & AI_FLAG_STAY)
     {
-        MapFill(gMapMovement, -1);
+        MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
         gMapMovement[unit->y][unit->x] = 0;
     }
     else

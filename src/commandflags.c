@@ -113,7 +113,7 @@ int GetActiveUnitCommandFlagsAfterMove(void)
 
 int GetActiveUnitCommandFlagsInPlace(void)
 {
-    MapFill(gMapMovement, -1);
+    MapFill(gMapMovement, MAP_MOVEMENT_UNREACHABLE);
     gMapMovement[gActiveUnit->y][gActiveUnit->x] = 0;
 
     return GetActiveUnitCommandFlags();
