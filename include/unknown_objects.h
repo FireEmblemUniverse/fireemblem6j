@@ -125,8 +125,6 @@ extern u16 const Pal_SpinningArrow[];
 extern u8 const Img_Prep_08319EE8[];
 extern u8 const Img_Prep_0831A088[];
 extern u16 const Pal_Prep_0831A248[];
-// extern ??? Img_Prep_0831A268
-extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
 extern u16 const Pal_PrepGoldPulse[];
 extern u8 const Img_Prep_0831AB1C[]; // img
 extern u16 const Pal_Prep_0831B068[];
@@ -143,10 +141,6 @@ extern u32 const Img_VeriticalSpinningArrow[];
 extern u16 const gUnk_Ui_Pal_08321F24[3 * 0x10];
 // extern ??? Img_PrepWorldMap
 // extern ??? Pal_PrepWorldMap
-// extern ??? Img_Prep_08326930
-// extern ??? Pal_Prep_08326E64
-// extern ??? Tsa_Prep_08326EE6
-// extern ??? Pal_Prep_08327108
 
 extern struct ProcScr CONST_DATA ProcScr_OpAnim[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];

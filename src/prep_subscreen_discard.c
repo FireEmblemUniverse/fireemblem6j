@@ -108,7 +108,7 @@ void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc)
 	Decompress(Img_Prep_083198CC, OBJ_VRAM0 + OBCHR_PREPMENU_390 * CHR_SIZE);
 	ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_PREPMENU_2, 3);
 	Decompress(Img_Prep_0831AB1C, OBJ_VRAM0 + OBCHR_PREPMENU_080 * CHR_SIZE);
-	ApplyPalette(Pal_Sio_0831AABC, 0x10 + OBPAL_PREPMENU_8);
+	ApplyPalette(Pal_PrepTitleSprites, 0x10 + OBPAL_PREPMENU_8);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 
 	NewPrepDiscardHand(proc);

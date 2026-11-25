@@ -20,12 +20,12 @@ Img_Prep_0831A088: @ 0831A088
 Pal_Prep_0831A248: @ 0831A248
 	.incbin "fe6-base.gba", 0x31A248, (0x31A268 - 0x31A248) @ length: 0020
 
-	.global Img_Prep_0831A268
-Img_Prep_0831A268: @ 0831A268
+	.global Img_PrepTitleSprites
+Img_PrepTitleSprites: @ 0831A268
 	.incbin "fe6-base.gba", 0x31A268, (0x31AABC - 0x31A268) @ length: 0854
 
-	.global Pal_Sio_0831AABC
-Pal_Sio_0831AABC: @ 0831AABC
+	.global Pal_PrepTitleSprites
+Pal_PrepTitleSprites: @ 0831AABC
 	.incbin "fe6-base.gba", 0x31AABC, (0x31AAFC - 0x31AABC) @ length: 0040
 
 	.global Pal_PrepGoldPulse
@@ -96,20 +96,20 @@ Img_PrepWorldMap: @ 08321FA4
 Pal_PrepWorldMap: @ 08326910
 	.incbin "data/prep/Img_PrepWorldMap.gbapal", 0, 0x20
 
-	.global Img_Prep_08326930
-Img_Prep_08326930: @ 08326930
+	.global Img_PrepWorldMapSprites
+Img_PrepWorldMapSprites: @ 08326930
 	.incbin "fe6-base.gba", 0x326930, (0x326E64 - 0x326930) @ length: 0534
 
-	.global Pal_Prep_08326E64
-Pal_Prep_08326E64: @ 08326E64
+	.global Pal_PrepWorldMapSprites
+Pal_PrepWorldMapSprites: @ 08326E64
 	.incbin "fe6-base.gba", 0x326E64, (0x326EE4 - 0x326E64) @ length: 0080
 
-.short 0xF10 @ ?
+.short 0xF10 @ ? 17x16 size header of Tsa_PrepWorldMapFrame
 
-	.global Tsa_Prep_08326EE6
-Tsa_Prep_08326EE6: @ 08326EE6
+	.global Tsa_PrepWorldMapFrame
+Tsa_PrepWorldMapFrame: @ 08326EE6
 	.incbin "fe6-base.gba", 0x326EE6, (0x327108 - 0x326EE6) @ length: 0222
 
-	.global Pal_Prep_08327108
-Pal_Prep_08327108: @ 08327108
+	.global Pal_PrepBackHint
+Pal_PrepBackHint: @ 08327108
 	.incbin "fe6-base.gba", 0x327108, (0x327148 - 0x327108) @ length: 0040

@@ -157,7 +157,7 @@ u8 GetAuguryIndex(void)
 			}
 		}
 	}
-	return -1;
+	return AUGURY_NONE;
 }
 
 void StartAuguryDialogue1(int msg, ProcPtr proc)
