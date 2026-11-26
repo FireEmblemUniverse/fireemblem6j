@@ -11,19 +11,11 @@
 void PrepMenuFade_Init(struct ProcPrepFade * proc)
 {
     int i;
-    u16 * src, * dst;
 
     proc->timer = 0;
 
-    src = gPal;
-    dst = gPrepFadePal;
-
-    for (i = 0x200; i != 0; i--)
-    {
-        *dst = *src;
-        src++;
-        dst++;
-    }
+    for (i = 0; i < 0x200; i++)
+        gPrepFadePal[i] = gPal[i];
 }
 
 void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc)
@@ -132,15 +124,13 @@ void PrepDisp_SetWorldMapInfo(struct ProcPrepUpperDisp * proc, fu8 x, fu8 y, int
     proc->disp_y = GetChapterInfo(gPlaySt.chapter)->gmap_dispy;
 }
 
-void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible)
+void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, i8 visible)
 {
-    u8 _visible = visible;
     u8 frame = ((clock / 8) % PREPDISP_ARROW_FRAMES) * 2;
 
     if (bottom == FALSE)
     {
-        i8 __visible = visible;
-        if (__visible != 0)
+        if (visible)
         {
             gBg0Tm[TM_OFFSET(0x14, 4)] = frame + TILEREF(BGCHR_PREPMENU_240, BGPAL_PREPMENU_F);
             gBg0Tm[TM_OFFSET(0x15, 4)] = frame + TILEREF(BGCHR_PREPMENU_240 + 1, BGPAL_PREPMENU_F);
@@ -153,8 +143,7 @@ void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible)
     }
     else
     {
-        i8 __visible = visible;
-        if (__visible != 0)
+        if (visible)
         {
             gBg0Tm[TM_OFFSET(0x14, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_240, BGPAL_PREPMENU_F) + TILE_VFLIP;
             gBg0Tm[TM_OFFSET(0x15, 0x13)] = frame + TILEREF(BGCHR_PREPMENU_240 + 1, BGPAL_PREPMENU_F) + TILE_VFLIP;
@@ -171,8 +160,7 @@ void PrepDisp_PutScrollArrow(u8 bottom, u8 clock, int visible)
 void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
 {
     u8 i;
-    int r6, r8;
-    u32 x, y;
+    int first_idx, base_y;
     i16 ydiff_mod;
     u32 ydiff_quo;
 
@@ -211,26 +199,20 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
     }
 
     i = 0;
-    r6 = ydiff_quo << 1;
-    r8 = ydiff_mod + 0x28;
+    first_idx = ydiff_quo * 2;
+    base_y = ydiff_mod + 0x28;
 
     for (; i < 0xE; i++)
     {
-        int list_idx, y2;
+        int list_idx = first_idx + i;
+        int y;
 
-        list_idx = r6 + i;
         if (list_idx >= proc->proc_parent->unk_2D)
             continue;
 
-        y2 = (i >> 1) * 0x10 + r8;
-        if (y2 <= 0x27)
-            continue;
-
-        PutUnitSprite(
-            3,
-            (i & 1) * 0x40 + 0x70,
-            y2,
-            GetUnitFromPrepList(list_idx));
+        y = (i >> 1) * 0x10 + base_y;
+        if (y > 0x27)
+            PutUnitSprite(3, (i & 1) * 0x40 + 0x70, y, GetUnitFromPrepList(list_idx));
     }
 
     if (ydiff_mod == 0)
@@ -238,18 +220,11 @@ void PrepUnit_DrawSMSAndObjs(struct ProcPrepUpperDisp * proc)
 
     for (; i < 0x10; i++)
     {
-        int list_idx = r6 + i;
-        y = ydiff_mod + 0x28;
+        int list_idx = first_idx + i;
+        u32 y = ydiff_mod + 0x28;
 
-        if (list_idx >= proc->proc_parent->unk_2D)
-            continue;
-
-        PutUnitSprite(
-            3,
-            (i & 1) * 0x40 + 0x70,
-            ((i >> 1) * 0x10 + y) & 0xFF,
-            GetUnitFromPrepList(list_idx)
-        );
+        if (list_idx < proc->proc_parent->unk_2D)
+            PutUnitSprite(3, (i & 1) * 0x40 + 0x70, ((i >> 1) * 0x10 + y) & 0xFF, GetUnitFromPrepList(list_idx));
     }
 }
 
@@ -415,7 +390,6 @@ u16 CONST_DATA * Sprites_PrepChapterDigits[12] =
 void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
 {
     u8 order[6] = { 8, 5, 4, 3, 4, 5 };
-    u32 marker_anim;
     int i, xpos, ypos = 0x28;
 
     if (proc->cursor_y < 0x20)
@@ -424,7 +398,7 @@ void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
     if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0 && proc->index_gaiden != 0)
     {
         u8 index_gaiden;
-        if ((1 & proc->index_gaiden) != 0)
+        if (proc->index_gaiden & 1)
         {
             xpos = 0xA4;
 
@@ -447,10 +421,10 @@ void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
         else
             PutSpriteExt(4, xpos + 0x28, ypos, Sprites_PrepChapterDigits[index_gaiden / 10], 0);
 
-            PutSpriteExt(4, xpos + 0x30, ypos, Sprites_PrepChapterDigits[(proc->index_gaiden / 2) % 10], 0);
+        PutSpriteExt(4, xpos + 0x30, ypos, Sprites_PrepChapterDigits[(proc->index_gaiden / 2) % 10], 0);
     }
 
-    if ((0xF & proc->marker_anim) == 0)
+    if ((proc->marker_anim & 0xF) == 0)
     {
         proc->marker_anim += 0x10;
         if (proc->marker_anim >= 0x60)
@@ -459,19 +433,18 @@ void PrepMenu_DrawGmapSprites(struct ProcPrepUpperDisp * proc)
         proc->marker_anim = (proc->marker_anim & 0xF0) + order[proc->marker_anim >> 4];
     }
 
-    marker_anim = proc->marker_anim - 1;
-    proc->marker_anim = marker_anim;
+    proc->marker_anim--;
 
     if (proc->cursor_x < 0x20)
     {
-        PutSpriteExt(4, proc->cursor_x + 0x68, proc->cursor_y + 0x26, Sprite_PrepGmapMarker, ((marker_anim << 0x18) >> 0x1C) * 4);
+        PutSpriteExt(4, proc->cursor_x + 0x68, proc->cursor_y + 0x26, Sprite_PrepGmapMarker, (proc->marker_anim >> 4) * 4);
         PutSpriteExt(4, OAM1_HFLIP + proc->cursor_x + 0x88, proc->cursor_y + 0x1E, Sprite_PrepGmapLine, 0);
         PutSpriteExt(4, OAM1_HFLIP + proc->cursor_x + 0x68, proc->cursor_y + 0x1E, Sprite_PrepGmapLineEnd, 0);
         PutSpriteExt(4, proc->cursor_x + 0x68, proc->cursor_y + 0x16, Sprite_PrepGmapBattleground, 0);
     }
     else
     {
-        PutSpriteExt(4, proc->cursor_x + 0x62, proc->cursor_y + 0x26, Sprite_PrepGmapMarker, ((marker_anim << 0x18) >> 0x1C) * 4);
+        PutSpriteExt(4, proc->cursor_x + 0x62, proc->cursor_y + 0x26, Sprite_PrepGmapMarker, (proc->marker_anim >> 4) * 4);
         PutSpriteExt(4, proc->cursor_x + 0x42, proc->cursor_y + 0x1E, Sprite_PrepGmapLine, 0);
         PutSpriteExt(4, proc->cursor_x + 0x62, proc->cursor_y + 0x1E, Sprite_PrepGmapLineEnd, 0);
         PutSpriteExt(4, proc->cursor_x + 0x42, proc->cursor_y + 0x16, Sprite_PrepGmapBattleground, 0);
@@ -589,7 +562,7 @@ void PrepDisp_PutHand(struct ProcPrepUpperDisp * proc)
         break;
 
     case 1:
-        if (parent->a_button_actions & 2 && parent->disp_idx[0] == 0)
+        if ((parent->a_button_actions & 2) && parent->disp_idx[0] == 0)
             PutUiHand(0x6C, 0x8);
         else
         {
@@ -623,10 +596,9 @@ void PrepDisp_PutPressStart(struct ProcPrepUpperDisp * proc)
         if (proc->press_start_scale <= 0xFF)
             proc->press_start_scale += 0x20;
     }
-    else
+    else if (proc->press_start_scale != 0)
     {
-        if (proc->press_start_scale != 0)
-            proc->press_start_scale -= 0x20;
+        proc->press_start_scale -= 0x20;
     }
 
     if (proc->press_start_scale > 0x10)
@@ -678,54 +650,42 @@ void PrepDisp_PutTitleSprite(struct ProcPrepUpperDisp * proc)
             if (proc->desc_scale < 0x100)
                 proc->desc_scale += 0x20;
         }
+        else if (proc->desc_scale >= 0x40)
+        {
+            proc->desc_scale -= 0x40;
+        }
         else
         {
-            if (proc->desc_scale >= 0x40)
-                proc->desc_scale -= 0x40;
-            else
-            {
-                proc->desc_changing = 0;
-                proc->desc_scale = 0;
-                func_fe6_08082D54(proc->proc_parent->unk_60, proc->desc_idx);
-                proc->desc_scroll = 0x60;
-            }
-        }
-
-        if (proc->proc_parent->submenu_level == 1)
-        {
-            goto L0;
+            proc->desc_changing = 0;
+            proc->desc_scale = 0;
+            func_fe6_08082D54(proc->proc_parent->unk_60, proc->desc_idx);
+            proc->desc_scroll = 0x60;
         }
     }
 
-    PutSprite(0xD, OAM1_X(x + 8), 8, Sprite_PrepTitleMenuSelect, OAM2_PAL(OBPAL_PREPMENU_2));
-
-    if (proc->menu_item == 0)
+    if (proc->proc_parent->submenu_level != 1)
     {
-        if (proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA)
-            goto L2;
+        PutSprite(0xD, OAM1_X(x + 8), 8, Sprite_PrepTitleMenuSelect, OAM2_PAL(OBPAL_PREPMENU_2));
 
-        PrepDisp_PutPressStart(proc);
+        if (proc->menu_item == 0)
+        {
+            if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0)
+                PrepDisp_PutPressStart(proc);
+        }
+        else
+        {
+            PutSprite(0xD, OAM1_X(0x140 + x), 8, Sprite_PrepTitleItemEdit, OAM2_PAL(OBPAL_PREPMENU_2));
+        }
     }
     else
     {
-        PutSprite(0xD, OAM1_X(0x140 + x), 8, Sprite_PrepTitleItemEdit, OAM2_PAL(OBPAL_PREPMENU_2));
+        func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x200 - proc->desc_scroll), 7, proc->desc_scale);
+        func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x100 - proc->desc_scroll), 7, proc->desc_scale);
+        proc->desc_scroll++;
     }
-    goto L1;
 
-L0:
-    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x200 - proc->desc_scroll), 7, proc->desc_scale);
-    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x100 - proc->desc_scroll), 7, proc->desc_scale);
-    proc->desc_scroll++;
-
-L1:
-    if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0)
-        return;
-
-L2:
-    if (proc->proc_parent->submenu_level != 0)
-        return;
-
-    PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_PrepBackHint, OAM2_PAL(OBPAL_PREPMENU_4));
+    if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) && proc->proc_parent->submenu_level == 0)
+        PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_PrepBackHint, OAM2_PAL(OBPAL_PREPMENU_4));
 }
 
 void PrepUpperDisp_Init(struct ProcPrepUpperDisp * proc)
@@ -856,7 +816,7 @@ PROC_LABEL(L_PREPUPPERDISP_END),
 
 ProcPtr StartPrepUpperDisp(ProcPtr parent)
 {
-    struct ProcPrepUpperDisp * proc;
-    proc = SpawnProc(ProcScr_PrepUpperDisp, parent);
+    struct ProcPrepUpperDisp * proc = SpawnProc(ProcScr_PrepUpperDisp, parent);
     proc->press_start_scale = 0;
+    return proc;
 }
