@@ -236,7 +236,7 @@ void EndingMonologue_RemoveBg(void)
     SetDispEnable(1, 1, 1, 1, 1);
 
     CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3), CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000); // TODO: constants
+    CpuFastFill(0, BG_SCREEN_ADDR(12), 4 * sizeof(gBg0Tm)); /* BG0–BG3 tilemaps */
 }
 
 struct ProcScr CONST_DATA ProcScr_EndingMonologue[] =

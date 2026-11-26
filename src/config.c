@@ -492,7 +492,7 @@ void Config_Init(struct UiConfigProc * proc)
     ApplyPalette(Pal_PlayRankTimeOBJ, 4);
     ApplyPalette(Pal_PlayRankTimeOBJ, 0x12);
     Decompress(Img_0833B958, OBJ_VRAM0 + 0x1800);
-    Decompress(Img_0833BB28, (void *)BG_VRAM + 0x4000);
+    Decompress(Img_0833BB28, BG_CHAR_ADDR(1));
     Decompress(Img_0833BB14, (void *)BG_VRAM + 0x5000 + GetBgChrOffset(BG_2));
     TmApplyTsa(gBg1Tm, Tsa_0833BE84, 0x1000);
     TmApplyTsa(gBg1Tm + TM_OFFSET(2, 0x10), Tsa_0833BF08, 0x1000);

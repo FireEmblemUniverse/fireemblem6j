@@ -74,7 +74,7 @@ void EkrIdunn_InitBanimfx(struct ProcEkrDragon *proc)
 
 void EkrIdunn_InitBodyfx(struct ProcEkrDragon *proc)
 {
-	LZ77UnCompVram(Img_EkrIdunn_081C1C94, (u8 *)BG_VRAM + 0x8000);
+	LZ77UnCompVram(Img_EkrIdunn_081C1C94, BG_CHAR_ADDR(2));
 	LZ77UnCompWram(Tsa_EkrIdunnBody0, gEkrTsaBuffer);
 
 	EfxTmFillB(0x001F001F);

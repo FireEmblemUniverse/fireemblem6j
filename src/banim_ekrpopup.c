@@ -198,9 +198,9 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     struct Text * text;
     struct Anim * anim;
 
-    LZ77UnCompVram(Img_EkrPopup, (void *)BG_VRAM + 0x2000);
+    LZ77UnCompVram(Img_EkrPopup, BG_CHAR_ADDR(0) + 0x100 * CHR_SIZE);
     LZ77UnCompWram(Tsa_EkrPopup, (void *)gEkrTsaBuffer);
-    InitTextFont(&gBanimFont, (void *)BG_VRAM + 0x20C0, 0x106, 1);
+    InitTextFont(&gBanimFont, BG_CHAR_ADDR(0) + 0x106 * CHR_SIZE, 0x106, 1);
     SetTextDrawNoClear();
     CpuFastCopy(Pal_EkrPopup, gPal + BGPAL_OFFSET(1), 0x20);
 
@@ -233,7 +233,7 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     x_cursor = (width_box * 8 - x3) >> 1;
     Text_SetCursor(text, x_cursor);
 
-    LZ77UnCompVram(Img_EkrUnkPopup, (void *)BG_VRAM + 0x20C0);
+    LZ77UnCompVram(Img_EkrUnkPopup, BG_CHAR_ADDR(0) + 0x106 * CHR_SIZE);
 
     if (type == 0)
     {
