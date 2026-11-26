@@ -708,8 +708,8 @@ void UnitList_Setup(struct UnitListScreenProc * proc)
     if (proc->mode == UNITLIST_MODE_PREPMENU && proc->is_link_arena == 0)
     {
         Decompress(Img_MonologueBG, (void *) VRAM + GetBgChrOffset(3));
-        ApplyPalettes(Pal_MonologueBG, BGPAL_UNITLIST_10, 4);
-        proc->bg_proc = func_fe6_08082560(proc);
+        ApplyPalettes(Pal_MonologueBG, BGPAL_PREP_BGSCROLL, 4);
+        proc->bg_proc = StartPrepBgScrolling(proc);
     }
     else
     {

@@ -774,8 +774,8 @@ void PrepMenu_InitScreen(struct PrepMenuProc *proc)
 		proc->procbg = StartMuralBackground(NULL, NULL, BGPAL_PREPMENU_A);
 	else {
 		Decompress(Img_MonologueBG, (void *) VRAM + GetBgChrOffset(3));
-		ApplyBgPalettes(Pal_MonologueBG, BGPAL_PREPMENU_A, 4);
-		proc->procbg = func_fe6_08082560(proc);
+		ApplyBgPalettes(Pal_MonologueBG, BGPAL_PREP_BGSCROLL, 4);
+		proc->procbg = StartPrepBgScrolling(proc);
 	}
 
 	Decompress(Img_PrepWorldMap, ImgBuf_PrepWorldMap);
