@@ -209,7 +209,6 @@ extern struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[];
 extern struct ProcScr CONST_DATA ProcScr_TrueEnding_SortAllies[];
 extern u8 EWRAM_DATA gEndingSceneKind;
 extern EventScr const * CONST_DATA EventScrs_DemoScene[];
-extern struct ProcScr CONST_DATA ProcScr_EndingMonologueText[];
 extern struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeIn[];
 extern struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeOut[];
 
