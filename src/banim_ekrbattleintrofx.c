@@ -439,7 +439,7 @@ void EkrUnitKakudai_PrepareAnimScript(struct ProcEkrUnitKakudai *proc)
 		LZ77UnCompWram(gBanimBallistaImages[POS_R], gBanimImgSheetBuf_Right + BAS_IMG_MAX_SIZE);
 
     vram = OBJ_VRAM1;
-	RegisterDataMove(gBanimImgSheetBuf_Left, vram, 0x4000);
+	RegisterDataMove(gBanimImgSheetBuf, vram, sizeof(gBanimImgSheetBuf));
 
 	proc->timer = 0;
 	proc->terminator = 0xB;
