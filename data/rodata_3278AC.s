@@ -40,8 +40,8 @@ Pal_XmapObj: @ 0832C33C
 gUnk_0832C35C: @ 0832C35C
 	.incbin "fe6-base.gba", 0x32C35C, (0x32C39C - 0x32C35C) @ length: 0040
 
-	.global gUnk_0832C39C
-gUnk_0832C39C: @ 0832C39C
+	.global SpriteAnim_SaveMenuQuill
+SpriteAnim_SaveMenuQuill: @ 0832C39C
 	.incbin "fe6-base.gba", 0x32C39C, (0x32C5E8 - 0x32C39C) @ length: 024C
 
 	.global Tsa_SoundRoomFrame
