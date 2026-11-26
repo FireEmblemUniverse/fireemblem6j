@@ -228,8 +228,8 @@ void DrawStatusScreenPageA(int unused)
     PutFaceChibi(FID_FACTION_CHIBI + chibi,
         gUiTmScratchC + TM_OFFSET(4, 4), 0x400 + BGCHR_B_STATUSSCREEN_280 + 1 + 0x10, 9, FALSE);
 
-    TmApplyTsa(gUiTmScratchB + TM_OFFSET(0, 0), Tsa_StatusScreen_FactionInfoBg, TILEREF(0, 2));
-    TmApplyTsa(gUiTmScratchB + TM_OFFSET(19, 8), Tsa_StatusScreen_PlaytimeBg, TILEREF(0, 2));
+    TmApplyTsa(gUiTmScratchB + TM_OFFSET(0, 0), Tsa_StatusScreen_FactionInfoBg, TILEREF(BGCHR_STATUSSCREEN_BG, BGPAL_STATUSSCREEN_2));
+    TmApplyTsa(gUiTmScratchB + TM_OFFSET(19, 8), Tsa_StatusScreen_PlaytimeBg, TILEREF(BGCHR_STATUSSCREEN_BG, BGPAL_STATUSSCREEN_2));
 
     PutText(gStatusScreenSt.text + 4, gUiTmScratchA + TM_OFFSET(8, 1));
     PutText(gStatusScreenSt.text + 5, gUiTmScratchA + TM_OFFSET(8, 5));
@@ -287,14 +287,14 @@ void DrawStatusScreenPageB(int unused)
     gActiveFont->tileref &= ~TILE_PAL_SAFE(-1);
 
     Decompress(Tsa_StatusScreen_ExtraMapInfoBg, gBuf);
-    TmApplyTsa(gUiTmScratchB + TM_OFFSET(2, 0), gBuf, TILEREF(0, BGPAL_STATUSSCREEN_2));
+    TmApplyTsa(gUiTmScratchB + TM_OFFSET(2, 0), gBuf, TILEREF(BGCHR_STATUSSCREEN_BG, BGPAL_STATUSSCREEN_2));
 }
 
 void DrawStatusScreenPage(struct StatusScreenProc * proc, int page)
 {
     CpuFastFill(0, gUiTmScratchA, 12 * 0x20 * sizeof(u16));
     CpuFastFill(0, gUiTmScratchB, 12 * 0x20 * sizeof(u16));
-    CpuFastFill16(TILEREF(0x280, 0) | TILE_HFLIP, gUiTmScratchC, 12 * 0x20 * sizeof(u16));
+    CpuFastFill16(TILEREF(BGCHR_B_STATUSSCREEN_280, 0) | TILE_HFLIP, gUiTmScratchC, 12 * 0x20 * sizeof(u16));
 
     switch (page)
     {
@@ -361,7 +361,7 @@ void StatusScreen_Init(struct StatusScreenProc * proc)
     ApplyIconPalette(1, 0x10 + 3);
 
     Decompress(Img_PlayRankTimeOBJ, (void *) VRAM + CHR_SIZE * (0x400 + BGCHR_B_STATUSSCREEN_380));
-    Decompress(Img_StatusScreen_Bg, (void *) VRAM + CHR_SIZE * 0);
+    Decompress(Img_StatusScreen_Bg, (void *) VRAM + CHR_SIZE * BGCHR_STATUSSCREEN_BG);
     Decompress(Img_Statscreen_MiscSprites, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
 
     PutStatusScreenChapterTitle();
@@ -412,7 +412,7 @@ void StatusScreenPageSlide_Loop(struct StatusScreenProc * proc)
 
     CpuFastFill(0, gBg0Tm + TM_OFFSET(0, 8), 12 * 0x20 * sizeof(u16));
     CpuFastFill(0, gBg1Tm + TM_OFFSET(0, 8), 12 * 0x20 * sizeof(u16));
-    CpuFastFill16(TILEREF(0x280, 0) | TILE_HFLIP, gBg2Tm + TM_OFFSET(0, 8), 12 * 0x20 * sizeof(u16));
+    CpuFastFill16(TILEREF(BGCHR_B_STATUSSCREEN_280, 0) | TILE_HFLIP, gBg2Tm + TM_OFFSET(0, 8), 12 * 0x20 * sizeof(u16));
 
     offset = offset_table[proc->clock];
 

@@ -422,11 +422,11 @@ void EndingStep1_Init(struct ProcGameEnding *proc)
 	ApplyPalette(Pal_Fin, 6);
 	ApplyPalettes(Pal_MonologueBG, 4, 2);
 
-	Decompress(Img_EndingFighterText, BG_CHAR_ADDR(0) + 0x80 * CHR_SIZE);
+	Decompress(Img_EndingFighterText, BG_CHAR_ADDR(0) + BGCHR_ENDING_FIGHTERTEXT * CHR_SIZE);
 	Decompress(Img_MonologueBG, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x4000);
 
-	oam2_base = 0x6080;
+	oam2_base = TILEREF(BGCHR_ENDING_FIGHTERTEXT, 6);
 
 	for (i = 0; i < 17; i++) {
 		gBg0Tm[i + 0x107] = oam2_base + i;

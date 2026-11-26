@@ -1190,7 +1190,7 @@ struct SaveMenuCursorProc *StartSaveMenuCursor(ProcPtr parent)
 
 void SaveMenu_InitText(void)
 {
-	InitTextFont(&gSaveMenuFont, BG_CHAR_ADDR(3) + 1 * CHR_SIZE, 1, 0);
+	InitTextFont(&gSaveMenuFont, BG_CHAR_ADDR(3) + BGCHR_SAVEMENU_TEXT * CHR_SIZE, BGCHR_SAVEMENU_TEXT, 0);
 	InitText(&gSaveMenuText, 10);
 }
 
