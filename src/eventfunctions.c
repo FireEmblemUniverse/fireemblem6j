@@ -332,7 +332,7 @@ bool TrialC_CheckRedOnTile(struct EventInfo * info)
     if (gPlaySt.faction != FACTION_RED)
         return FALSE;
 
-    return func_fe6_0806AE7C(10, 14, 10, 14);
+    return CheckAnyRedUnitArea(10, 14, 10, 14);
 }
 
 bool TrialD_CheckBerserkerDefeated(struct EventInfo * info)
@@ -1648,7 +1648,7 @@ bool FinalChapter_PlayUnitQuotes(struct EventProc * proc)
                 {
                     if (gDefeatTalkPid == gBattleDefeatTalkList[j].pid)
                     {
-                        gDefeatTalkMsg = gBattleDefeatTalkList[j].unk_0C;
+                        gDefeatTalkMsg = gBattleDefeatTalkList[j].final_chapter_msg;
                         gDefeatTalkNextIdx = i + 1;
                         gDefeatTalkState++;
                         return TRUE;
@@ -2278,7 +2278,7 @@ void PutDemoMonologueMsg(void)
 void DemoScene_TmpCleanup(void)
 {
     SetDispEnable(1, 1, 1, 1, 1);
-    CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000);
+    CpuFastFill(0, BG_SCREEN_ADDR(12), 4 * sizeof(gBg0Tm)); /* BG0–BG3 tilemaps */
 }
 
 void DemoScene_JumpToChapterDirectly(int chapter, int x, int y)
@@ -2639,7 +2639,7 @@ void RemoveEndingMonologueBG(void)
     SetDispEnable(1, 1, 1, 1, 1);
 
     CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3), CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
+    CpuFastFill(0, BG_SCREEN_ADDR(12), 4 * sizeof(gBg0Tm)); /* BG0–BG3 tilemaps */
 }
 
 struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[] =
@@ -3137,7 +3137,7 @@ EventScr CONST_DATA EventScr_TrueEnding_IndunnNotDie[] =
     EvtFadeToBlack(4)
     EvtExitMap
     EvtFunc(ClearTalk)
-    EvtFunc(StartEndingMonologue0)
+    EvtFunc(StartTrueEndingMonologue)
     EvtFuncWhile(EndingMonologueExists)
     EvtFadeBgmOut(4)
     EvtSleep(120)
@@ -3304,7 +3304,7 @@ EvtLabel(20)
     EvtFadeToBlack(4)
     EvtExitMap
     EvtFunc(ClearTalk)
-    EvtFunc(StartEndingMonologue1)
+    EvtFunc(StartNormalEndingMonologue)
     EvtFuncWhile(EndingMonologueExists)
     EvtFadeBgmOut(4)
     EvtSleep(120)
@@ -3358,7 +3358,7 @@ EvtLabel(4)
     EvtExitMap
     EvtFunc(ClearTalk)
     EvtFunc(EndAllProcsMark1)
-    EvtFunc(StartEndingMonologue2)
+    EvtFunc(StartNormalEndingClosingMonologue)
     EvtFuncWhile(EndingMonologueExists)
     EvtSleep(75)
     EvtFunc(EndingCredit_ReinitType2)
@@ -3447,7 +3447,7 @@ EventScr CONST_DATA EventScr_FalseEnding[] =
     EvtFunc(EndAllProcsMark1)
     EvtSleep(75)
     EvtSetBgm(SONG_34)
-    EvtFunc(StartEndingMonologue3)
+    EvtFunc(StartFalseEndingMonologue)
     EvtFuncWhile(EndingMonologueExists)
     EvtSleep(128)
     EvtFunc(EndingCredit_ReinitType0)

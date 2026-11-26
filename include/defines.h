@@ -33,8 +33,11 @@
 #define BG_TILE_ADDR(n)    (void *)(BG_VRAM + (0x80 * (n)))
 
 // text-mode BG
-#define OBJ_VRAM0      (void *)(VRAM + 0x10000)
-#define OBJ_VRAM0_SIZE 0x8000
+#define OBJ_VRAM0_OFFSET 0x10000
+#define OBJ_VRAM0        (void *)(VRAM + OBJ_VRAM0_OFFSET)
+#define OBJ_VRAM0_SIZE   0x8000
+#define OBJ_VRAM0_CHR    0x800
+#define VRAM_OFFSET_MASK 0x1FFFF
 
 // bitmap-mode BG
 #define OBJ_VRAM1      (void *)(VRAM + 0x14000)

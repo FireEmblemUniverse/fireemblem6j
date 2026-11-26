@@ -521,7 +521,7 @@ void XmapSprites_InitText(struct ProcXmapSprites * proc)
 
     SetTextFont(NULL);
 
-    gXmapState.sprite_oam2 = OAM2_CHR((((uptr)vram) & 0x1FFFF) >> 5) + OAM2_PAL(OBPAL_XMAP_SPRITETEXT);
+    gXmapState.sprite_oam2 = OAM2_CHR((((uptr)vram) & VRAM_OFFSET_MASK) >> 5) + OAM2_PAL(OBPAL_XMAP_SPRITETEXT);
 }
 
 void XmapSprites_Init(struct ProcXmapSprites * proc)
@@ -656,10 +656,10 @@ void XmapBgScroll_Init(struct ProcXmapBgScroll * proc)
         u16 const * src = Tsa_MonologueScrollingBG;
         u32 row_offset = TM_OFFSET(0, iy);
 
-        for (ix = 0; ix < 30; ix++)
+        for (ix = 0; ix < MONOLOGUE_BG_WIDTH; ix++)
         {
-            (gBg3Tm + row_offset)[30 - (ix + 1)] =
-                (src + (40 - (iy + 1)) * 30)[ix] +
+            (gBg3Tm + row_offset)[MONOLOGUE_BG_WIDTH - (ix + 1)] =
+                (src + (MONOLOGUE_BG_HEIGHT - (iy + 1)) * MONOLOGUE_BG_WIDTH)[ix] +
                 TILE_PAL_SAFE(BGPAL_XMAP_BACKGROUND) + TILE_HFLIP;
         }
     }
@@ -677,7 +677,7 @@ void XmapBgScroll_Loop(struct ProcXmapBgScroll * proc)
 {
     if (proc->timer == 3)
     {
-        if (++proc->pos == 0x500)
+        if (++proc->pos == MONOLOGUE_BG_SCROLL_WRAP)
         {
             proc->pos = 0;
         }
@@ -696,16 +696,21 @@ void XmapBgScroll_Loop(struct ProcXmapBgScroll * proc)
 
         u16 const * src = Tsa_MonologueScrollingBG;
         u32 dst_row_off = TM_OFFSET(0, (proc->pos / 8 - 1) & 0x1F);
-        fu8 src_row = (proc->pos / 8 + 30) % 40;
+        // BUG: the rewritten row next shows 31 rows down, so TSA row 30 repeats on the first pass
+#if BUGFIX
+        fu8 src_row = (proc->pos / 8 - 1 + 32) % MONOLOGUE_BG_HEIGHT;
+#else
+        fu8 src_row = (proc->pos / 8 + 30) % MONOLOGUE_BG_HEIGHT;
+#endif
 
-        for (ix = 0; ix < 30; ix++)
+        for (ix = 0; ix < MONOLOGUE_BG_WIDTH; ix++)
         {
-            (gBg3Tm + dst_row_off)[30 - (ix + 1)] =
-                (src + (40 - (src_row + 1)) * 30)[ix] +
+            (gBg3Tm + dst_row_off)[MONOLOGUE_BG_WIDTH - (ix + 1)] =
+                (src + (MONOLOGUE_BG_HEIGHT - (src_row + 1)) * MONOLOGUE_BG_WIDTH)[ix] +
                 TILE_PAL_SAFE(BGPAL_XMAP_BACKGROUND) + TILE_HFLIP;
         }
 
-        CpuFastCopy(gBg3Tm + dst_row_off, (u16*)(VRAM + 0x7800) + dst_row_off, 0x3C);
+        CpuFastCopy(gBg3Tm + dst_row_off, (u16*)BG_SCREEN_ADDR(15) + dst_row_off, MONOLOGUE_BG_WIDTH * sizeof(u16));
     }
 }
 

@@ -269,9 +269,9 @@ void EndingPInfoDisp_InitDisp(struct ProcEndingPInfo1 *proc)
 	InitFaces();
 	ResetText();
 	ApplyPalettes(Pal_MonologueBG, 2, 2);
-	Decompress(Img_MonologueBG, (u8 *)BG_VRAM + 0x8000);
+	Decompress(Img_MonologueBG, BG_CHAR_ADDR(2));
 	ApplyPalettes(Pal_EndingPInfoWindow, 4, 2);
-	Decompress(Img_EndingPInfoWindow, (u8 *)BG_VRAM + 0x6000);
+	Decompress(Img_EndingPInfoWindow, BG_CHAR_ADDR(0) + BGCHR_ENDING_PINFO_WINDOW * CHR_SIZE);
 }
 
 u8 PopNextEndingPerson(void)
@@ -461,7 +461,7 @@ void EndingPInfo1_StartMerge(struct ProcEndingPInfo1 *proc)
 
 	ResetText();
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x2000);
-	CpuFastFill16(0, (u8 *)BG_VRAM + 0xD800, 0x2000);
+	CpuFastFill16(0, BG_SCREEN_ADDR(27), 4 * sizeof(gBg0Tm)); /* BG0–BG1 512×256 tilemaps */
 	StartFace(0, fid, 0xBE, 2, 0x42);
 	Ending_DrawPInfoTitle(0, 0, unit, 0);
 
@@ -701,7 +701,7 @@ void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc)
 
 	ResetText();
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x2000);
-	CpuFastFill16(0, (u8 *)BG_VRAM + 0xD800, 0x2000);
+	CpuFastFill16(0, BG_SCREEN_ADDR(27), 4 * sizeof(gBg0Tm)); /* BG0–BG1 512×256 tilemaps */
 
 	unit = GetUnit(uid1);
 	fid = GetUnitFid(unit);
@@ -810,11 +810,11 @@ void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type)
 	int var;
 
 	if (type == 0) {
-		TmApplyTsa(gBg1Tm + TM_OFFSET(0, 0),  Tsa_GameRank_083461C4, 0x4300);
-		TmApplyTsa(gBg1Tm + TM_OFFSET(17, 6), Tsa_GameRank_08346330, 0x4300);
-		TmApplyTsa(gBg1Tm + TM_OFFSET(0, 19), Tsa_GameRank_083463B4, 0x4300);
+		TmApplyTsa(gBg1Tm + TM_OFFSET(0, 0),  Tsa_GameRank_083461C4, TILEREF(BGCHR_ENDING_PINFO_WINDOW, 4));
+		TmApplyTsa(gBg1Tm + TM_OFFSET(17, 6), Tsa_GameRank_08346330, TILEREF(BGCHR_ENDING_PINFO_WINDOW, 4));
+		TmApplyTsa(gBg1Tm + TM_OFFSET(0, 19), Tsa_GameRank_083463B4, TILEREF(BGCHR_ENDING_PINFO_WINDOW, 4));
 	} else {
-		TmApplyTsa(gBg1Tm + TM_OFFSET(x, y), Tsa_GameRank_083463F4, 0x4300);
+		TmApplyTsa(gBg1Tm + TM_OFFSET(x, y), Tsa_GameRank_083463F4, TILEREF(BGCHR_ENDING_PINFO_WINDOW, 4));
 	}
 
 	var = (0x48 - GetStringTextLen(DecodeMsg(gPersonEndingInfo[pid].msg_06))) / 2;

@@ -623,8 +623,8 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
     gDispIo.win_ct.win0_enable_blend = FALSE;
     gDispIo.win_ct.wout_enable_blend = FALSE;
 
-    RegisterDataMove(Img_EkrExpBar, (void *)0x6002000, 0x300);
-    EfxTmCpyBG(Tsa_EkrExpBar, gBg1Tm + TM_OFFSET(6, 17), 18, 3, 1, 0x100);
+    RegisterDataMove(Img_EkrExpBar, BG_CHAR_ADDR(0) + BGCHR_EKREXPBAR * CHR_SIZE, 0x300);
+    EfxTmCpyBG(Tsa_EkrExpBar, gBg1Tm + TM_OFFSET(6, 17), 18, 3, 1, BGCHR_EKREXPBAR);
     CpuFastCopy(Pal_EkrExpBar, &PAL_BG_COLOR(1, 0), 0x20);
     EnableBgSync(BG1_SYNC_BIT);
     EnablePalSync();
@@ -662,14 +662,14 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
 
     EkrModifyBarfx(gEkrBarfxBuf, val1);
 
-    for (i = 0; i < 13; i++)
+    for (i = 0; i < EKREXPBAR_FILL_TILES; i++)
     {
-        CpuFastCopy(&Img_EkrExpBarChange[buf[i] * 0x20], &buf0[0x10 * i], 0x20);
+        CpuFastCopy(&Img_EkrExpBarChange[buf[i] * CHR_SIZE], &buf0[i * CHR_SIZE / 2], CHR_SIZE);
     }
 
-    CpuFastCopy(&Img_BarNumfx[val2 * 0x20], &buf0[0xD0], 0x20);
-    CpuFastCopy(&Img_BarNumfx[val3 * 0x20], &buf0[0xE0], 0x20);
-    RegisterDataMove(buf0, (void *)0x60020E0, 0x1E0);
+    CpuFastCopy(&Img_BarNumfx[val2 * CHR_SIZE], &buf0[(EKREXPBAR_FILL_TILES + 0) * CHR_SIZE / 2], CHR_SIZE);
+    CpuFastCopy(&Img_BarNumfx[val3 * CHR_SIZE], &buf0[(EKREXPBAR_FILL_TILES + 1) * CHR_SIZE / 2], CHR_SIZE);
+    RegisterDataMove(buf0, BG_CHAR_ADDR(0) + BGCHR_EKREXPBAR_FILL * CHR_SIZE, (EKREXPBAR_FILL_TILES + 2) * CHR_SIZE);
 
     proc->timer = 0;
     proc->proc_repeat_func = (ProcFunc)func_fe6_08043078;
@@ -727,14 +727,14 @@ void EkrBattleWaitExpBar(struct ProcEkrBattle * proc)
 
     EkrModifyBarfx(buf, val1);
 
-    for (i = 0; i < 13; i++)
+    for (i = 0; i < EKREXPBAR_FILL_TILES; i++)
     {
-        CpuFastSet(&Img_EkrExpBarChange[buf[i] * 0x20], &buf0[0x10 * i], 8);
+        CpuFastSet(&Img_EkrExpBarChange[buf[i] * CHR_SIZE], &buf0[i * CHR_SIZE / 2], 8);
     }
 
-    CpuFastSet(&Img_BarNumfx[val2 * 0x20], &buf0[0xD0], 8);
-    CpuFastSet(&Img_BarNumfx[val3 * 0x20], &buf0[0xE0], 8);
-    RegisterDataMove(buf0, (void *)0x60020E0, 0x1E0);
+    CpuFastSet(&Img_BarNumfx[val2 * CHR_SIZE], &buf0[(EKREXPBAR_FILL_TILES + 0) * CHR_SIZE / 2], 8);
+    CpuFastSet(&Img_BarNumfx[val3 * CHR_SIZE], &buf0[(EKREXPBAR_FILL_TILES + 1) * CHR_SIZE / 2], 8);
+    RegisterDataMove(buf0, BG_CHAR_ADDR(0) + BGCHR_EKREXPBAR_FILL * CHR_SIZE, (EKREXPBAR_FILL_TILES + 2) * CHR_SIZE);
 
     if (++proc->timer > proc->end) {
         proc->timer = 0;

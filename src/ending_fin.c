@@ -41,11 +41,11 @@ void Fin_Init(struct ProcGameEnding *proc)
 	ApplyPalette(Pal_MuralBackground, 4);
 	ApplyPalette(Pal_Fin, 6);
 
-	Decompress(Img_Fin, (u8 *)BG_VRAM + 0x1000);
+	Decompress(Img_Fin, BG_CHAR_ADDR(0) + BGCHR_ENDING_FIN * CHR_SIZE);
 	Decompress(Img_MuralBackground, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	PutEndingLinearTSA(gBg3Tm, 0x4000);
 
-	oam2_base = 0x6080;
+	oam2_base = TILEREF(BGCHR_ENDING_FIN, 6);
 
 	for (i = 0; i < 6; i++) {
 		gBg0Tm[i + 0x10C] = oam2_base + i;

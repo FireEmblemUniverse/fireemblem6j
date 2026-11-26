@@ -400,7 +400,7 @@ enum
     KEY_BUTTON_ANY    = KEY_ANY &~ KEY_DPAD_ANY,
 };
 
-#define KEY_INTR_ENABLE 0x0400
+#define KEY_INTR_ENABLE 0x4000
 #define KEY_OR_INTR     0x0000
 #define KEY_AND_INTR    0x8000
 

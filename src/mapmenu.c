@@ -897,7 +897,7 @@ fu8 SingleItemMenu_Entry_SwitchOut(struct MenuProc * menu, struct MenuEntProc * 
 
 void func_fe6_0801F854(int x, int y)
 {
-    InitTextFont(&gItemActionMenuFont, (u8 *) VRAM + CHR_SIZE*0x200, 0x200, 0);
+    InitTextFont(&gItemActionMenuFont, (u8 *) VRAM + CHR_SIZE * BGCHR_ITEMACTIONMENU_TEXT, BGCHR_ITEMACTIONMENU_TEXT, 0);
 
     TmCopyRect(gBg0Tm + TM_OFFSET(11, 1), gUiTmScratchA, 9, 19);
     TmCopyRect(gBg1Tm + TM_OFFSET(11, 1), gUiTmScratchB, 9, 19);

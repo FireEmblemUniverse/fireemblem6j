@@ -11,11 +11,11 @@ EventListScr CONST_DATA EventListScr_Unk_086691F8[] =
 {
     EvtListTurn(0, EventScr_Unk_08671B48, 1, 0, FACTION_BLUE)
     EvtListTurn(0, EventScr_Unk_08671E6C, 31, 0, FACTION_BLUE)
-    EvtListFunc(FLAG_CHAPTER21_4, EventScr_Unk_08671C4C, func_fe6_0806ADC4)
-    EvtListFunc(0, EventScr_Unk_08671CA8, func_fe6_0806ADDC)
-    EvtListFunc(0, EventScr_Unk_08671D34, func_fe6_0806AE04)
-    EvtListFunc(FLAG_CHAPTER21_11, EventScr_Unk_08671DC0, func_fe6_0806AE2C)
-    EvtListFunc(0, EventScr_Unk_08671DD4, func_fe6_0806AE54)
+    EvtListFunc(FLAG_CHAPTER21_4, EventScr_Unk_08671C4C, Chapter21_CheckBlueEntersSouth)
+    EvtListFunc(0, EventScr_Unk_08671CA8, Chapter21_CheckBlueInSoutheast)
+    EvtListFunc(0, EventScr_Unk_08671D34, Chapter21_CheckBlueInWest)
+    EvtListFunc(FLAG_CHAPTER21_11, EventScr_Unk_08671DC0, Chapter21_CheckBlueInSouthwest)
+    EvtListFunc(0, EventScr_Unk_08671DD4, Chapter21_CheckBlueInNortheast)
     EvtListEnd
 };
 

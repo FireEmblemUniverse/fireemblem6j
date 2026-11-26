@@ -39,6 +39,7 @@ enum prepscreen_videoalloc {
     BGPAL_PREPMENU_ICON = 0x04,
     BGPAL_PREPMENU_AFFIN_ICON = BGPAL_PREPMENU_ICON + 1,
     BGPAL_PREPMENU_A = 0x0A,
+    BGPAL_PREP_BGSCROLL = 0x0A, // ..0x0D
     BGPAL_PREPMENU_E = 0x0E,
     BGPAL_PREPMENU_F = 0x0F,
 
@@ -547,7 +548,7 @@ struct Proc_0867968C {
 void PrepBgScrolling_Init(struct Proc_0867968C *proc);
 void PrepBgScrolling_Loop(struct Proc_0867968C *proc);
 void PrepBgScrolling_End(struct Proc_0867968C *proc);
-ProcPtr func_fe6_08082560(ProcPtr parent);
+ProcPtr StartPrepBgScrolling(ProcPtr parent);
 
 struct Win1H {
     /* 00 */ u8 left;

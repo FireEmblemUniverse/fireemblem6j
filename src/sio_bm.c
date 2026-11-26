@@ -87,7 +87,7 @@ void LAPointsBox_LoadBoxes(struct LAPointsBoxProc * proc)
 	int i;
 	int tileref;
 
-	Decompress(Img_LAPointsBox, (void *) 0x06002000);
+	Decompress(Img_LAPointsBox, BG_CHAR_ADDR(0) + BGCHR_SIO_POINTS_BOX * CHR_SIZE);
 	ApplyPalettes(Pal_TacticianSelObj, 2, 4);
 
 	SetTextFont(NULL);
@@ -100,7 +100,7 @@ void LAPointsBox_LoadBoxes(struct LAPointsBoxProc * proc)
 			if (gSioBmSt.unk_0A[player_id] == 0)
 				ApplyPalette(gUnk_08109C60, player_id + 2);
 
-			tileref = 0x100 + OAM2_PAL(player_id + 2);
+			tileref = BGCHR_SIO_POINTS_BOX + OAM2_PAL(player_id + 2);
 
 			InitTextDb(&proc->text[i], 4);
 			DrawLinkArenaPointsBox(&proc->text[i], gUnk_Sio_0810F400[i * 2 + 0], gUnk_Sio_0810F400[i * 2 + 1], tileref,
@@ -2603,7 +2603,7 @@ void func_fe6_0803F694(struct MuProc * mu)
 
 void func_fe6_0803F6C8(struct SioWarpProc * proc)
 {
-	Decompress(Img_ManimWarp, (void *) 0x06004400);
+	Decompress(Img_ManimWarp, BG_CHAR_ADDR(0) + BGCHR_SIO_WARP * CHR_SIZE);
 	ApplyPalette(Pal_ManimWarp, 3);
 
 	proc->clock = 0;
@@ -2614,7 +2614,7 @@ void func_fe6_0803F6C8(struct SioWarpProc * proc)
 
 void func_fe6_0803F714(struct SioWarpProc * proc)
 {
-	func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, 0x3220, 4, 6, TsaRef_ManimWarp, gUnk_Sio_085CAE9C[proc->clock]);
+	func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, TILEREF(BGCHR_SIO_WARP, 3), 4, 6, TsaRef_ManimWarp, gUnk_Sio_085CAE9C[proc->clock]);
 
 	EnableBgSync(BG2_SYNC_BIT);
 
@@ -3671,27 +3671,27 @@ void UpdateLinkArenaMenuScrollBar(u8 total, i16 scroll)
 
 void func_fe6_08040B44(void)
 {
-	Decompress(gUnk_0810B900, (void *) 0x06002000);
+	Decompress(gUnk_0810B900, BG_CHAR_ADDR(0) + BGCHR_PHASE_CHANGE_SQUARES * CHR_SIZE);
 
 	switch (gPlaySt.faction) {
 	case 0:
-		Decompress(gUnk_0810A62C, (void *) 0x06002800);
-		ApplyPalette(gUnk_0810BA60, 5);
+		Decompress(gUnk_0810A62C, BG_CHAR_ADDR(0) + BGCHR_PHASE_CHANGE_NAME * CHR_SIZE);
+		ApplyPalette(gUnk_0810BA60, BGPAL_PHASE_CHANGE);
 		break;
 
 	case 1:
-		Decompress(gUnk_0810AADC, (void *) 0x06002800);
-		ApplyPalette(gUnk_0810BAA0, 5);
+		Decompress(gUnk_0810AADC, BG_CHAR_ADDR(0) + BGCHR_PHASE_CHANGE_NAME * CHR_SIZE);
+		ApplyPalette(gUnk_0810BAA0, BGPAL_PHASE_CHANGE);
 		break;
 
 	case 2:
-		Decompress(gUnk_0810AF9C, (void *) 0x06002800);
-		ApplyPalette(gUnk_0810BA80, 5);
+		Decompress(gUnk_0810AF9C, BG_CHAR_ADDR(0) + BGCHR_PHASE_CHANGE_NAME * CHR_SIZE);
+		ApplyPalette(gUnk_0810BA80, BGPAL_PHASE_CHANGE);
 		break;
 
 	case 3:
-		Decompress(gUnk_0810B44C, (void *) 0x06002800);
-		ApplyPalette(gUnk_0810BAC0, 5);
+		Decompress(gUnk_0810B44C, BG_CHAR_ADDR(0) + BGCHR_PHASE_CHANGE_NAME * CHR_SIZE);
+		ApplyPalette(gUnk_0810BAC0, BGPAL_PHASE_CHANGE);
 		break;
 	}
 

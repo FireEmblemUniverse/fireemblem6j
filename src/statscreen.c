@@ -1204,7 +1204,7 @@ void StatScreen_Init(ProcPtr proc)
     ApplySystemGraphics();
     ApplyUnitSpritePalettes();
 
-    StartMuralBackground(NULL, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_BACKMURAL * CHR_SIZE, -1);
+    StartMuralBackground(NULL, BG_CHAR_ADDR(2) + BGCHR_STATSCREEN_BACKMURAL * CHR_SIZE, -1);
 
     Decompress(Img_Statscreen_MiscSprites, OBJ_VRAM0 + OBCHR_STATSCREEN_240 * CHR_SIZE);
 
@@ -1215,7 +1215,7 @@ void StatScreen_Init(ProcPtr proc)
     Decompress(Tsa_Statscreen_08307CEC, gBuf);
     TmApplyTsa(gBg1Tm, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
-    Decompress(Img_Statscreen_08307ED4, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_EQUIPSTATFRAME * CHR_SIZE);
+    Decompress(Img_Statscreen_08307ED4, BG_CHAR_ADDR(2) + BGCHR_STATSCREEN_EQUIPSTATFRAME * CHR_SIZE);
     ApplyPalette(Pal_Statscreen_08308050, BGPAL_STATSCREEN_EQUIPSTATFRAME);
 
     CpuFastCopy(gPal + 0x10 * BGPAL_WINDOWFRAME, gPal + 0x100 + 0x10 * OBPAL_STATSCREEN_WINDOWFRAME, 0x20);

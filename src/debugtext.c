@@ -57,8 +57,9 @@ void DebugPutStr(u16 * tm, char const * str)
 {
     while (*str)
     {
+        // Img_DebugFont holds ' ' through '_'; lowercase reuses the uppercase glyphs
         *tm = *str > '`'
-            ? *str - '`' + (sDebugTextSt.chr + 0x20)
+            ? *str - '`' + (sDebugTextSt.chr + ('@' - ' '))
             : *str - ' ' + (sDebugTextSt.chr);
 
         tm++;
@@ -223,9 +224,9 @@ void DebugPutScreen(void)
             chr = sDebugTextSt.screen[(iv + sDebugTextSt.vdisp) & 0xFF][ih];
 
             if (chr > '`')
-                chr = chr - 0x40;
+                chr = chr - (' ' + 'a' - 'A');
             else
-                chr = chr - 0x20;
+                chr = chr - ' ';
 
             *tm = chr + sDebugTextSt.chr;
         }
@@ -272,7 +273,7 @@ void DebugInitObj(int offset, int palid)
     sDebugOam2Chr = offset / CHR_SIZE;
     sDebugOam2Pal = OAM2_PAL(palid);
 
-    RegisterVramMove(Img_DebugFont, 0x10000 + offset, 0x40 * CHR_SIZE);
+    RegisterVramMove(Img_DebugFont, OBJ_VRAM0_OFFSET + offset, 0x40 * CHR_SIZE);
 
     PAL_OBJ_COLOR(palid, 0) = RGB(0, 0, 0);
     PAL_OBJ_COLOR(palid, 1) = RGB(0, 0, 31);
@@ -285,9 +286,9 @@ void DebugPutObjStr(int x, int y, char const * str)
 {
     while (*str)
     {
-        char chr = *str > 0x60
-            ? *str - 0x40
-            : *str - 0x20;
+        char chr = *str > '`'
+            ? *str - (' ' + 'a' - 'A')
+            : *str - ' ';
 
         PutOamHi(x, y, Sprite_8x8, chr + sDebugOam2Chr + sDebugOam2Pal);
 

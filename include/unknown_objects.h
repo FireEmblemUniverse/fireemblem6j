@@ -132,7 +132,12 @@ extern u8 const Img_Prep_0831AB1C[]; // img
 extern u16 const Pal_Prep_0831B068[];
 extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];
-extern u16 Tsa_MonologueScrollingBG[30 * 40];
+#define MONOLOGUE_BG_WIDTH 30
+#define MONOLOGUE_BG_HEIGHT 40
+// lcm of the 256px tilemap and the 320px TSA, so both wrap together
+#define MONOLOGUE_BG_SCROLL_WRAP 0x500
+
+extern u16 Tsa_MonologueScrollingBG[MONOLOGUE_BG_WIDTH * MONOLOGUE_BG_HEIGHT];
 extern u16 const Pal_MonologueBG[];
 extern u32 const Img_VeriticalSpinningArrow[];
 // extern ??? Img_HorizontalSpinningArrow
@@ -363,11 +368,6 @@ extern u8 const Tsa_GameRank_083463F4[];
 // extern const ??? gUnk_08346574
 extern u32 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
-extern u32 const Img_EndingMonologueText_a[];
-extern u32 const Img_EndingMonologueText_b[];
-extern u32 const Img_EndingMonologueText_c[];
-extern u32 const Img_EndingMonologueText_d[];
-extern u16 const Pal_EndingMonologueText[];
 extern const int gSinLut_u32[20 * 0x100];
 // extern const ??? gUnk_08354728
 extern u16 const Pal_OpInfoViewLetters[];
@@ -427,11 +427,6 @@ extern u8 const gUnk_08380F54[];
 extern u8 const gUnk_08380F5A[];
 extern u8 const gUnk_08380F62[];
 
-// extern CONST_DATA ??? Sprites_0868A4F8
-// extern CONST_DATA ??? Sprites_0868A518
-// extern CONST_DATA ??? Sprites_0868A550
-// extern CONST_DATA ??? Sprites_0868A55C
-
 extern const u16 Pal_CommGameBgScreenInShop[];
 extern const u8 Tsa_CommGameBgScreenInShop[];
 extern const u16 gUnk_083280B0[];
@@ -440,7 +435,6 @@ extern const u8 Img_SupportMenu[];
 extern const u8 gUnk_0832B554[];
 extern const u16 Pal_SupportMenu[];
 extern const u16 gUnk_0832C35C[];
-extern const u16 gUnk_0832C39C[];
 extern u8 EndingCG_Img1[];
 extern u16 EndingCG_Pal1[];
 extern u8 EndingCG_Img2[];

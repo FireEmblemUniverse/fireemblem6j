@@ -124,7 +124,7 @@ IWRAM_DATA u16 gManimPalBackup[10 * 0x10] = {};
 IWRAM_DATA ALIGNED(4) u8 gPermanentFlagBits[(MAX_PERMANENT_FLAGS + CHAR_BIT - 1) / CHAR_BIT] = {};
 IWRAM_DATA ALIGNED(4) u8 gChapterFlagBits[(MAX_CHAPTER_FLAGS + CHAR_BIT - 1) / CHAR_BIT] = {};
 IWRAM_DATA u8 Pad_Common_0300489C[8] = {};
-IWRAM_DATA ALIGNED(4) u8 gEndingMonologueState = 0;
+IWRAM_DATA ALIGNED(4) u8 gEndingMonologueId = 0;
 IWRAM_DATA ALIGNED(4) u8 gUnk_030048A8 = 0;
 // ALIGN 16
 IWRAM_DATA u8 Pad_Common_030048A9[0xF] = {};

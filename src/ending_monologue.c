@@ -8,38 +8,38 @@
 #include "scanline.h"
 #include "ending_monologue.h"
 
-i8 CONST_DATA Ctrl_EndingMonologueText1[] = {
-    0, 1, -1,
-    2, 3, 4, 5, -1,
-    6, 7, 8, 9, -1, -1,
+i8 CONST_DATA Ctrl_EndingMonologueText_TrueEnding[] = {
+    0, 1, ENDING_MONOLOGUE_LINE_BLANK,
+    2, 3, 4, 5, ENDING_MONOLOGUE_LINE_BLANK,
+    6, 7, 8, 9, ENDING_MONOLOGUE_LINE_BLANK, ENDING_MONOLOGUE_LINE_BLANK,
     10,
-    -3
+    ENDING_MONOLOGUE_LINE_END
 };
 
-i8 CONST_DATA Ctrl_EndingMonologueText2[] = {
-    11, 12, -1,
-    2, 3, 4, 5, -1,
-    6, 7, 8, 9, -1, -1,
+i8 CONST_DATA Ctrl_EndingMonologueText_NormalEnding[] = {
+    11, 12, ENDING_MONOLOGUE_LINE_BLANK,
+    2, 3, 4, 5, ENDING_MONOLOGUE_LINE_BLANK,
+    6, 7, 8, 9, ENDING_MONOLOGUE_LINE_BLANK, ENDING_MONOLOGUE_LINE_BLANK,
     10,
-    -3
+    ENDING_MONOLOGUE_LINE_END
 };
 
-i8 CONST_DATA Ctrl_EndingMonologueText3[] = {
-    0, 1, 2, 3, -1,
+i8 CONST_DATA Ctrl_EndingMonologueText_NormalClosing[] = {
+    0, 1, 2, 3, ENDING_MONOLOGUE_LINE_BLANK,
     4, 5, 6, 7, 8,
-    -3
+    ENDING_MONOLOGUE_LINE_END
 };
 
-i8 CONST_DATA Ctrl_EndingMonologueText4[] = {
-    0, 1, -1,
-    2, 3, -1,
-    4, 5, 6, 7, -1,
-    8, 9, 10, 11, 12, -1,
-    13, 14, -1,
-    15, -2, -1,
-    1, 2, 3, -1, -1,
+i8 CONST_DATA Ctrl_EndingMonologueText_FalseEnding[] = {
+    0, 1, ENDING_MONOLOGUE_LINE_BLANK,
+    2, 3, ENDING_MONOLOGUE_LINE_BLANK,
+    4, 5, 6, 7, ENDING_MONOLOGUE_LINE_BLANK,
+    8, 9, 10, 11, 12, ENDING_MONOLOGUE_LINE_BLANK,
+    13, 14, ENDING_MONOLOGUE_LINE_BLANK,
+    15, ENDING_MONOLOGUE_LINE_NEXT_IMG, ENDING_MONOLOGUE_LINE_BLANK,
+    1, 2, 3, ENDING_MONOLOGUE_LINE_BLANK, ENDING_MONOLOGUE_LINE_BLANK,
     4,
-    -3
+    ENDING_MONOLOGUE_LINE_END
 };
 
 struct ProcScr CONST_DATA ProcScr_EndingMonologueText[] =
@@ -51,37 +51,37 @@ struct ProcScr CONST_DATA ProcScr_EndingMonologueText[] =
 
 void EndingMonologueText_Init(struct ProcEndingMonologueText * proc)
 {
-    if (gEndingMonologueState == 0)
+    if (gEndingMonologueId == ENDING_MONOLOGUE_TRUE)
     {
-        Decompress(Img_EndingMonologueText_b, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText1;
+        Decompress(Img_EndingMonologueText_FinalChapter, (void *) VRAM + BGCHR_ENDING_MONOLOGUE_TEXT * CHR_SIZE);
+        proc->lines = Ctrl_EndingMonologueText_TrueEnding;
         proc->bg_x = -28;
     }
-    else if (gEndingMonologueState == 1)
+    else if (gEndingMonologueId == ENDING_MONOLOGUE_NORMAL)
     {
-        Decompress(Img_EndingMonologueText_b, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText2;
+        Decompress(Img_EndingMonologueText_FinalChapter, (void *) VRAM + BGCHR_ENDING_MONOLOGUE_TEXT * CHR_SIZE);
+        proc->lines = Ctrl_EndingMonologueText_NormalEnding;
         proc->bg_x = -28;
     }
-    else if (gEndingMonologueState == 2)
+    else if (gEndingMonologueId == ENDING_MONOLOGUE_NORMAL_CLOSING)
     {
-        Decompress(Img_EndingMonologueText_a, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText3;
+        Decompress(Img_EndingMonologueText_NormalClosing, (void *) VRAM + BGCHR_ENDING_MONOLOGUE_TEXT * CHR_SIZE);
+        proc->lines = Ctrl_EndingMonologueText_NormalClosing;
         proc->bg_x = -48;
     }
-    else if (gEndingMonologueState == 3)
+    else if (gEndingMonologueId == ENDING_MONOLOGUE_FALSE)
     {
-        Decompress(Img_EndingMonologueText_c, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText4;
+        Decompress(Img_EndingMonologueText_FalseEnding, (void *) VRAM + BGCHR_ENDING_MONOLOGUE_TEXT * CHR_SIZE);
+        proc->lines = Ctrl_EndingMonologueText_FalseEnding;
         proc->bg_x = -24;
     }
 
     proc->delay_timer = 0;
     proc->bg_y = -144;
     proc->main_timer = 0;
-    proc->paulse_timer = 0;
+    proc->end_timer = 0;
 
-    EndingMonologue_MoveText(0, proc->ctrl_y[0]);
+    EndingMonologue_MoveText(0, proc->lines[0]);
     SetBgOffset(0, proc->bg_x, proc->bg_y);
 }
 
@@ -89,7 +89,7 @@ void EndingMonologueText_Loop(struct ProcEndingMonologueText * proc)
 {
     proc->delay_timer++;
 
-    if (proc->delay_timer < 7)
+    if (proc->delay_timer < ENDING_MONOLOGUE_SCROLL_INTERVAL)
         return;
 
     proc->delay_timer = 0;
@@ -99,28 +99,28 @@ void EndingMonologueText_Loop(struct ProcEndingMonologueText * proc)
 
     proc->main_timer++;
 
-    if ((proc->main_timer % 24) != 0)
+    if ((proc->main_timer % ENDING_MONOLOGUE_LINE_SPACING) != 0)
         return;
 
-    if (proc->paulse_timer != 0)
+    if (proc->end_timer != 0)
     {
-        EndingMonologue_MoveText(proc->main_timer / 8, -3);
+        EndingMonologue_MoveText(proc->main_timer / 8, ENDING_MONOLOGUE_LINE_END);
     }
     else
     {
-        if (proc->ctrl_y[proc->main_timer / 24] == -2 && proc->ctrl_y == Ctrl_EndingMonologueText4)
+        if (proc->lines[proc->main_timer / ENDING_MONOLOGUE_LINE_SPACING] == ENDING_MONOLOGUE_LINE_NEXT_IMG && proc->lines == Ctrl_EndingMonologueText_FalseEnding)
         {
-            Decompress(Img_EndingMonologueText_d, (void *) VRAM + 1 * CHR_SIZE);
+            Decompress(Img_EndingMonologueText_FalseEnding2, (void *) VRAM + BGCHR_ENDING_MONOLOGUE_TEXT * CHR_SIZE);
         }
 
-        EndingMonologue_MoveText(proc->main_timer / 8, proc->ctrl_y[proc->main_timer / 24]);
+        EndingMonologue_MoveText(proc->main_timer / 8, proc->lines[proc->main_timer / ENDING_MONOLOGUE_LINE_SPACING]);
     }
 
-    if (proc->paulse_timer != 0 || proc->ctrl_y[proc->main_timer / 24] == -3)
+    if (proc->end_timer != 0 || proc->lines[proc->main_timer / ENDING_MONOLOGUE_LINE_SPACING] == ENDING_MONOLOGUE_LINE_END)
     {
-        proc->paulse_timer++;
+        proc->end_timer++;
 
-        if (proc->paulse_timer == 4)
+        if (proc->end_timer == ENDING_MONOLOGUE_END_STEPS)
             gEndingMonologueTextDone = true;
     }
 }
@@ -170,7 +170,7 @@ void EndingMonologue_Init(void)
 
     ApplyPalettes(gBuf, 0, 0x10);
     gPal[0] = 0;
-    ApplyPalette(Pal_EndingMonologueText, 15);
+    ApplyPalette(Pal_EndingMonologueText, BGPAL_ENDING_MONOLOGUE_TEXT);
 
     OpAnim_SetWin0Layers(1, 0, 1, 0, 1);
 
@@ -183,31 +183,32 @@ void EndingMonologue_Init(void)
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 }
 
-void EndingMonologue_MoveText(int x, int y)
+void EndingMonologue_MoveText(int row, int line)
 {
     int iy, ix;
 
-    if (y == -2)
-        y = 0;
+    if (line == ENDING_MONOLOGUE_LINE_NEXT_IMG)
+        line = 0;
 
     for (iy = -1; iy < 3; iy++)
     {
-        u16 * tm = gBg0Tm + TM_OFFSET(0, (x + iy) & 0x1F);
+        u16 * tm = gBg0Tm + TM_OFFSET(0, (row + iy) & 0x1F);
 
         if (iy == -1 || iy == 2)
         {
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = 0;
         }
-        else if (y == -1 || y == -3)
+        else if (line == ENDING_MONOLOGUE_LINE_BLANK || line == ENDING_MONOLOGUE_LINE_END)
         {
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = 0;
         }
         else
         {
-            // TODO: constants
-            int base = TILEREF(y * 0x40 + iy * 0x20 + 1, 15);
+            int base = TILEREF(
+                line * ENDING_MONOLOGUE_TEXT_LINE_TILES + iy * ENDING_MONOLOGUE_TEXT_ROW_TILES + BGCHR_ENDING_MONOLOGUE_TEXT,
+                BGPAL_ENDING_MONOLOGUE_TEXT);
 
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = base + ix;
@@ -228,14 +229,14 @@ void EndingMonologue_End(void)
     SetOnHBlankA(NULL);
 }
 
-void func_fe6_0806E73C(void)
+void EndingMonologue_RemoveBg(void)
 {
     InitBgs(NULL);
 
     SetDispEnable(1, 1, 1, 1, 1);
 
     CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3), CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000); // TODO: constants
+    CpuFastFill(0, BG_SCREEN_ADDR(12), 4 * sizeof(gBg0Tm)); /* BG0–BG3 tilemaps */
 }
 
 struct ProcScr CONST_DATA ProcScr_EndingMonologue[] =
@@ -254,27 +255,27 @@ PROC_LABEL(99),
     PROC_END,
 };
 
-void StartEndingMonologue0(ProcPtr parent)
+void StartTrueEndingMonologue(ProcPtr parent)
 {
-    gEndingMonologueState = 0;
+    gEndingMonologueId = ENDING_MONOLOGUE_TRUE;
     SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void StartEndingMonologue1(ProcPtr parent)
+void StartNormalEndingMonologue(ProcPtr parent)
 {
-    gEndingMonologueState = 1;
+    gEndingMonologueId = ENDING_MONOLOGUE_NORMAL;
     SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void StartEndingMonologue2(ProcPtr parent)
+void StartNormalEndingClosingMonologue(ProcPtr parent)
 {
-    gEndingMonologueState = 2;
+    gEndingMonologueId = ENDING_MONOLOGUE_NORMAL_CLOSING;
     SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void StartEndingMonologue3(ProcPtr parent)
+void StartFalseEndingMonologue(ProcPtr parent)
 {
-    gEndingMonologueState = 3;
+    gEndingMonologueId = ENDING_MONOLOGUE_FALSE;
     SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
