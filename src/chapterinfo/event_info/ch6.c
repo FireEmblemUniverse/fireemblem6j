@@ -15,7 +15,7 @@ EventListScr CONST_DATA EventListScr_Unk_08667BD8[] =
     EvtListTurn(FLAG_CHAPTER6_12, EventScr_Unk_0866CCDC, 5, 0, FACTION_RED)
     EvtListFlag(FLAG_CHAPTER6_7, EventScr_Unk_0866CC5C, FLAG_CHAPTER6_4)
     EvtListFlag(FLAG_CHAPTER6_11, EventScr_Unk_0866CC9C, FLAG_CHAPTER6_8)
-    EvtListFunc(FLAG_CHAPTER6_14, EventScr_Unk_0866CD4C, func_fe6_0806AD48)
+    EvtListFunc(FLAG_CHAPTER6_14, EventScr_Unk_0866CD4C, Chapter6_CheckNoBlueInSouth)
     EvtListTurnHard(0, EventScr_LoadUnits_Unk_0867B3F0, 8, 0, FACTION_RED)
     EvtListTurnHard(0, EventScr_LoadUnits_Unk_0867B440, 12, 0, FACTION_RED)
     EvtListTurnHard(0, EventScr_LoadUnits_Unk_0867B490, 16, 0, FACTION_RED)

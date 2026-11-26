@@ -11,245 +11,245 @@ struct BattleTalkEnt CONST_DATA gBattleTalkList[] = {
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_00E,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_CHAPTER2_4B,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_05C,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4C,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_06C,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4D,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_07E,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4E,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_08A,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4F,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_093,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_50,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0AF,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_51,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0BB,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B5,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BD5,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_52,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0D7,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_53,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0E8,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_56,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_100,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_58,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_111,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B8,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BDB,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_55,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_131,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5A,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_140,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B9,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BE1,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5D,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_151,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_NARCIAN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_16F,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C6,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BE9,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5E,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_181,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5F,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_191,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_60,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_19D,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_61,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1AB,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_BA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BF3,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_MURDOCK,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1BD,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_ZEPHIEL,
 		.chapter = CHAPTER_22,
 		.msg = MSG_1CB,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BRUNNYA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1F3,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_JAHN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1FD,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_68,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_966,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C8,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_976,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_69,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_990,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_6A,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_99E,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BORS_TUTORIAL,
 		.chapter = CHAPTER_TUTORIAL,
 		.msg = MSG_04B,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C4,
 		.chapter = CHAPTER_21X,
 		.msg = MSG_C04,
 		.flag = EVT_FLAG(1),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{}
 };
@@ -453,42 +453,42 @@ struct BattleTalkEnt CONST_DATA gTriangleAttackTalkList[] = {
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1AF,
 		.flag = EVT_FLAG(115),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_THEA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1B0,
 		.flag = EVT_FLAG(116),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_SHANNA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1B1,
 		.flag = EVT_FLAG(117),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BARTHE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0C4,
 		.flag = EVT_FLAG(120),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BORS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0C5,
 		.flag = EVT_FLAG(121),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_GWENDOLYN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0C6,
 		.flag = EVT_FLAG(122),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{}
 };
@@ -499,763 +499,763 @@ struct BattleTalkEnt CONST_DATA gBattleDefeatTalkList[] = {
 		.chapter = CHAPTER_13,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_233,
+		.final_chapter_msg = MSG_233,
 	},
 	{
 		.pid = PID_ROY,
 		.chapter = CHAPTER_TUTORIAL,
 		.msg = MSG_046,
 		.flag = EVT_FLAG(101),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_LILINA,
 		.chapter = CHAPTER_TUTORIAL,
 		.msg = MSG_047,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_221,
+		.final_chapter_msg = MSG_221,
 	},
 	{
 		.pid = PID_WOLT,
 		.chapter = CHAPTER_TUTORIAL,
 		.msg = MSG_048,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20B,
+		.final_chapter_msg = MSG_20B,
 	},
 	{
 		.pid = PID_CLARINE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_26C,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_202,
+		.final_chapter_msg = MSG_202,
 	},
 	{
 		.pid = PID_FAE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_26D,
 		.flag = EVT_FLAG(108),
-		.unk_0C = MSG_203,
+		.final_chapter_msg = MSG_203,
 	},
 	{
 		.pid = PID_SIN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_26E,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_204,
+		.final_chapter_msg = MSG_204,
 	},
 	{
 		.pid = PID_SUE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_26F,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_205,
+		.final_chapter_msg = MSG_205,
 	},
 	{
 		.pid = PID_DAYAN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_270,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_206,
+		.final_chapter_msg = MSG_206,
 	},
 	{
 		.pid = PID_BARTHE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_271,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_207,
+		.final_chapter_msg = MSG_207,
 	},
 	{
 		.pid = PID_BORS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_272,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_208,
+		.final_chapter_msg = MSG_208,
 	},
 	{
 		.pid = PID_GWENDOLYN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_273,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_209,
+		.final_chapter_msg = MSG_209,
 	},
 	{
 		.pid = PID_DOUGLAS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_274,
 		.flag = EVT_FLAG(110),
-		.unk_0C = MSG_20A,
+		.final_chapter_msg = MSG_20A,
 	},
 	{
 		.pid = PID_WOLT,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_275,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20B,
+		.final_chapter_msg = MSG_20B,
 	},
 	{
 		.pid = PID_DOROTHY,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_276,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20C,
+		.final_chapter_msg = MSG_20C,
 	},
 	{
 		.pid = PID_KLEIN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_277,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20D,
+		.final_chapter_msg = MSG_20D,
 	},
 	{
 		.pid = PID_SAUL,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_278,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20E,
+		.final_chapter_msg = MSG_20E,
 	},
 	{
 		.pid = PID_ELEN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_279,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_20F,
+		.final_chapter_msg = MSG_20F,
 	},
 	{
 		.pid = PID_YODER,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27A,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_210,
+		.final_chapter_msg = MSG_210,
 	},
 	{
 		.pid = PID_CHAD,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27B,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_211,
+		.final_chapter_msg = MSG_211,
 	},
 	{
 		.pid = PID_KAREL,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27C,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_212,
+		.final_chapter_msg = MSG_212,
 	},
 	{
 		.pid = PID_FIR,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27D,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_213,
+		.final_chapter_msg = MSG_213,
 	},
 	{
 		.pid = PID_RUTGER,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27E,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_214,
+		.final_chapter_msg = MSG_214,
 	},
 	{
 		.pid = PID_DIECK,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_27F,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_215,
+		.final_chapter_msg = MSG_215,
 	},
 	{
 		.pid = PID_GARRET,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_280,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_216,
+		.final_chapter_msg = MSG_216,
 	},
 	{
 		.pid = PID_ALEN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_281,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_217,
+		.final_chapter_msg = MSG_217,
 	},
 	{
 		.pid = PID_LANCE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_282,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_218,
+		.final_chapter_msg = MSG_218,
 	},
 	{
 		.pid = PID_PERCEVAL,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_283,
 		.flag = EVT_FLAG(111),
-		.unk_0C = MSG_219,
+		.final_chapter_msg = MSG_219,
 	},
 	{
 		.pid = PID_IGRENE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_284,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21A,
+		.final_chapter_msg = MSG_21A,
 	},
 	{
 		.pid = PID_MARCUS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_285,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21B,
+		.final_chapter_msg = MSG_21B,
 	},
 	{
 		.pid = PID_ASTOLFO,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_286,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21C,
+		.final_chapter_msg = MSG_21C,
 	},
 	{
 		.pid = PID_WARD,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_287,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21D,
+		.final_chapter_msg = MSG_21D,
 	},
 	{
 		.pid = PID_LOT,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_288,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21E,
+		.final_chapter_msg = MSG_21E,
 	},
 	{
 		.pid = PID_BARTRE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_289,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_21F,
+		.final_chapter_msg = MSG_21F,
 	},
 	{
 		.pid = PID_LUGH,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28A,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_220,
+		.final_chapter_msg = MSG_220,
 	},
 	{
 		.pid = PID_LILINA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28B,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_221,
+		.final_chapter_msg = MSG_221,
 	},
 	{
 		.pid = PID_HUGH,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28C,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_222,
+		.final_chapter_msg = MSG_222,
 	},
 	{
 		.pid = PID_NIIME,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28D,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_223,
+		.final_chapter_msg = MSG_223,
 	},
 	{
 		.pid = PID_RAIGH,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28E,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_224,
+		.final_chapter_msg = MSG_224,
 	},
 	{
 		.pid = PID_LARUM,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_28F,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_225,
+		.final_chapter_msg = MSG_225,
 	},
 	{
 		.pid = PID_JUNO,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_290,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_226,
+		.final_chapter_msg = MSG_226,
 	},
 	{
 		.pid = PID_THEA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_291,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_227,
+		.final_chapter_msg = MSG_227,
 	},
 	{
 		.pid = PID_SHANNA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_292,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_228,
+		.final_chapter_msg = MSG_228,
 	},
 	{
 		.pid = PID_ZEISS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_293,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_229,
+		.final_chapter_msg = MSG_229,
 	},
 	{
 		.pid = PID_ELFFIN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_294,
 		.flag = EVT_FLAG(118),
-		.unk_0C = MSG_22A,
+		.final_chapter_msg = MSG_22A,
 	},
 	{
 		.pid = PID_CATH,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_295,
 		.flag = EVT_FLAG(112),
-		.unk_0C = MSG_22B,
+		.final_chapter_msg = MSG_22B,
 	},
 	{
 		.pid = PID_SOPHIA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_296,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_22C,
+		.final_chapter_msg = MSG_22C,
 	},
 	{
 		.pid = PID_MELADY,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_297,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_22D,
+		.final_chapter_msg = MSG_22D,
 	},
 	{
 		.pid = PID_GONZALEZ,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_298,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_22E,
+		.final_chapter_msg = MSG_22E,
 	},
 	{
 		.pid = PID_NOAH,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_299,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_22F,
+		.final_chapter_msg = MSG_22F,
 	},
 	{
 		.pid = PID_TREC,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29A,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_230,
+		.final_chapter_msg = MSG_230,
 	},
 	{
 		.pid = PID_ZELOT,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29B,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_231,
+		.final_chapter_msg = MSG_231,
 	},
 	{
 		.pid = PID_ECHIDNA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29C,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_232,
+		.final_chapter_msg = MSG_232,
 	},
 	{
 		.pid = PID_CECILIA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29D,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_233,
+		.final_chapter_msg = MSG_233,
 	},
 	{
 		.pid = PID_GEESE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29E,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_234,
+		.final_chapter_msg = MSG_234,
 	},
 	{
 		.pid = PID_MERLINUS,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_2A0,
 		.flag = EVT_FLAG(0),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_OGIER,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_29F,
 		.flag = EVT_FLAG(0),
-		.unk_0C = MSG_235,
+		.final_chapter_msg = MSG_235,
 	},
 	{
 		.pid = PID_CHAPTER1_4A,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_00F,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_CHAPTER2_4B,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_05D,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4C,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_06D,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4D,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_07F,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4E,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_08B,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_4F,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_094,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_50,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0B0,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_51,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0BC,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B5,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BD6,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_52,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0D8,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_53,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_0E9,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_56,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_101,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_58,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_112,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B8,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BDC,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_55,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_132,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5A,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_141,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5B,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_13E,
 		.flag = EVT_FLAG(0),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5C,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_13F,
 		.flag = EVT_FLAG(0),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_B9,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BE2,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5D,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_152,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_NARCIAN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_170,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C6,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BEA,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5E,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_182,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_5F,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_192,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_60,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_19E,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_61,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1AC,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_BA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_BF4,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_MURDOCK,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1BE,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_GALLE,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_2BE,
 		.flag = EVT_FLAG(109),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_ZEPHIEL,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1CC,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BRUNNYA,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1F4,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_JAHN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_1FE,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_IDUNN,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_238,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_IDUNN_DRAGON,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_238,
 		.flag = EVT_FLAG(114),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_68,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_967,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C8,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_977,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_69,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_991,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_6A,
 		.chapter = TALK_CHAPTER_ANY,
 		.msg = MSG_99F,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_KLEIN_SQUAD,
 		.chapter = CHAPTER_10_B,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(17),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_THEA_SQUAD,
 		.chapter = CHAPTER_10_B,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(18),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_KLEIN_SQUAD,
 		.chapter = CHAPTER_11_A,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(22),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_THEA_SQUAD,
 		.chapter = CHAPTER_11_A,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(23),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_CITIZEN_A4,
 		.chapter = CHAPTER_11_B,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(14),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_CITIZEN_CD,
 		.chapter = CHAPTER_11_B,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(14),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_D5,
 		.chapter = CHAPTER_13,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(14),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_D6,
 		.chapter = CHAPTER_13,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(14),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_D7,
 		.chapter = CHAPTER_13,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(14),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_D3,
 		.chapter = CHAPTER_15,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(11),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_9D,
 		.chapter = CHAPTER_20_I,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(13),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_CE,
 		.chapter = CHAPTER_20_I,
 		.msg = MSG_000,
 		.flag = EVT_FLAG(13),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_UNKNOWN_C4,
 		.chapter = CHAPTER_21X,
 		.msg = MSG_C05,
 		.flag = EVT_FLAG(2),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{
 		.pid = PID_BORS_TUTORIAL,
 		.chapter = CHAPTER_TUTORIAL,
 		.msg = MSG_04C,
 		.flag = EVT_FLAG(0),
-		.unk_0C = 0
+		.final_chapter_msg = 0
 	},
 	{}
 };
