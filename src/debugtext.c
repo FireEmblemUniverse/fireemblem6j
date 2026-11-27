@@ -107,7 +107,7 @@ void DebugPrintFmt(char const * fmt, ...)
     DebugPrintStr(buffer);
 }
 
-static void ClearNumberStr(void)
+void ClearNumberStr(void)
 {
     u32 * ptr = (u32 *) gNumberStr;
 

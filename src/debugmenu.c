@@ -36,7 +36,7 @@ enum
 // in main.c
 extern void PutBuildInfo(u16 * tm);
 
-static void DebugTextFrame_DoPut(struct ProcDebugTextFrame * proc);
+void DebugTextFrame_DoPut(struct ProcDebugTextFrame * proc);
 
 struct ProcScr CONST_DATA ProcScr_DebugMonitor[] =
 {
@@ -59,7 +59,7 @@ void DebugApplyBonusLevelsToCursorUnit(void)
         UnitApplyBonusLevels(unit, DEBUG_BONUS_LEVELS);
 }
 
-static void DebugTextFrame_DoPut(struct ProcDebugTextFrame * proc)
+void DebugTextFrame_DoPut(struct ProcDebugTextFrame * proc)
 {
     struct Text text;
 

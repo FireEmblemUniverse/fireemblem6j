@@ -43,7 +43,7 @@
 
 EWRAM_OVERLAY(0) struct Font gItemActionMenuFont = {};
 
-static void CheckTutorialInterruptPromptResult(ProcPtr proc);
+void CheckTutorialInterruptPromptResult(ProcPtr proc);
 
 EventScr CONST_DATA EventScr_WmTutorialInterruptQuitConfirm[] =
 {
@@ -64,8 +64,8 @@ EvtLabel(99)
     EvtEnd
 };
 
-static void BackToUnitMenu_CamWatch(ProcPtr proc);
-static void BackToUnitMenu_RestartMenu(ProcPtr proc);
+void BackToUnitMenu_CamWatch(ProcPtr proc);
+void BackToUnitMenu_RestartMenu(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_BackToUnitMenu[] =
 {
@@ -81,8 +81,8 @@ struct ProcScr CONST_DATA ProcScr_BackToUnitMenu[] =
     PROC_END,
 };
 
-static void func_fe6_0801F35C(ProcPtr proc);
-static void func_fe6_0801F378(ProcPtr proc);
+void func_fe6_0801F35C(ProcPtr proc);
+void func_fe6_0801F378(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_Unk_085C5E58[] =
 {
@@ -165,7 +165,7 @@ u8 TutorialInterruptMenu_Continue_Select(struct MenuProc * menu, struct MenuEntP
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
-static void CheckTutorialInterruptPromptResult(ProcPtr proc)
+void CheckTutorialInterruptPromptResult(ProcPtr proc)
 {
     if (GetTalkChoiceResult() != TALK_CHOICE_YES)
         EventGotoLabel(proc, 99);
@@ -201,7 +201,7 @@ fu8 MapSelectActionReturnToUnitActionMenuWithCamera(struct MapSelectProc * proc,
     return MENU_ACTION_NOCURSOR | MENU_ACTION_SE_6B | MENU_ACTION_CLEAR;
 }
 
-static void BackToUnitMenu_CamWatch(ProcPtr proc)
+void BackToUnitMenu_CamWatch(ProcPtr proc)
 {
     if (IsCameraNotWatchingPosition(gActiveUnit->x, gActiveUnit->y))
     {
@@ -216,7 +216,7 @@ static void BackToUnitMenu_CamWatch(ProcPtr proc)
     }
 }
 
-static void BackToUnitMenu_RestartMenu(ProcPtr proc)
+void BackToUnitMenu_RestartMenu(ProcPtr proc)
 {
     StartCenteredMenu(&MenuInfo_UnitAction, gBmSt.cursor_sprite_target.x - gBmSt.camera.x, 1, 22);
 }
@@ -622,12 +622,12 @@ fu8 AttackMapSelect_Select(struct MapSelectProc * proc, struct SelectTarget * ta
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
-static void func_fe6_0801F35C(ProcPtr proc)
+void func_fe6_0801F35C(ProcPtr proc)
 {
     CameraMoveWatchPosition(NULL, gActiveUnit->x, gActiveUnit->y);
 }
 
-static void func_fe6_0801F378(ProcPtr proc)
+void func_fe6_0801F378(ProcPtr proc)
 {
     UnitActionMenu_Attack_Select(NULL, NULL);
 }
